@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:17.4
+    restart: always
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - ${DB_PORT:-5432}:"5432"
+    networks:
+      default:
+        aliases: [ habit-tracker-db ]

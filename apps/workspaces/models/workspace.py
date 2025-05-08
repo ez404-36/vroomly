@@ -1,0 +1,20 @@
+from pydantic.v1 import UUID4
+from sqlalchemy import String, ForeignKey
+from sqlalchemy.orm import Mapped, mapped_column
+
+from core.models.base import BaseModel
+from core.models.mixins.deleted import DeletedModelMixin
+from core.models.mixins.timestamped_model import TimestampedModelMixin
+
+
+class WorkspaceModel(
+    BaseModel,
+    TimestampedModelMixin,
+    DeletedModelMixin,
+):
+    """
+    Модель рабочего пространства пользователя.
+    Позволяет логически отделять одни привычки от других
+    """
+    name: Mapped[str] = mapped_column(String(50))
+    user_id: Mapped[UUID4] = mapped_column(ForeignKey('users.id'))
