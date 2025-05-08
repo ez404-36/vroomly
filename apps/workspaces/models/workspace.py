@@ -1,5 +1,5 @@
 from pydantic.v1 import UUID4
-from sqlalchemy import String, ForeignKey
+from sqlalchemy import String, ForeignKey, Index
 from sqlalchemy.orm import Mapped, mapped_column
 
 from core.models.base import BaseModel
@@ -18,3 +18,7 @@ class WorkspaceModel(
     """
     name: Mapped[str] = mapped_column(String(50))
     user_id: Mapped[UUID4] = mapped_column(ForeignKey('users.id'))
+
+    __table_args__ = (
+        Index('idx_workspace_user_id', 'user_id'),
+    )

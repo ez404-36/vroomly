@@ -12,3 +12,12 @@ alembic revision --autogenerate -m "%some_comment"
 ```bash
 alembic upgrade head
 ```
+
+Откат миграций
+```bash
+alembic downgrade -1 # откат на 1 миграцию назад
+```
+или
+```bash
+alembic downgrade d97a9824423b # откат к определенной миграции
+```

@@ -25,7 +25,7 @@ class UserModel(
 
     name: Mapped[str | None]
     surname: Mapped[str | None]
-    birth_date: Mapped[date] = mapped_column(Date, unique=True)
+    birth_date: Mapped[date] = mapped_column(Date)
 
     workspaces: Mapped[list['WorkspaceModel']] = relationship(
         'WorkspaceModel',
