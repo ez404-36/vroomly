@@ -18,6 +18,7 @@ class WorkspaceModel(
     """
     name: Mapped[str] = mapped_column(String(50))
     user_id: Mapped[UUID4] = mapped_column(ForeignKey('users.id'))
+    # TODO: settings: Mapped[dict] = mapped_column(BSON, default={})
 
     __table_args__ = (
         Index('idx_workspace_user_id', 'user_id'),
