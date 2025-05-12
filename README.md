@@ -1,7 +1,7 @@
 ### Приложение для отслеживания привычек
 Позволяет нам становиться чуточку лучше
 
-[Документация](https://app.archbee.com/docs/X9aAXSXIiyx5OaC1iHJF0/2MVKtp0b8-8XX0sZhL2rp)
+[Документация](https://www.notion.so/1ef6b13aa64e808080fdecaf67c112bb)
 
 ### Запуск бекенда
 ```bash

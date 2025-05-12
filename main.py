@@ -1,11 +1,15 @@
 import logging
+from typing import Annotated, TypeAlias
 
 import uvicorn
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, Depends
+from fastapi.security import OAuth2PasswordBearer
 
 from core.constants import APPS_DIR
 
 app = FastAPI()
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+TOKEN: TypeAlias = Annotated[str, Depends(oauth2_scheme)]
 
 logger = logging.getLogger(__name__)
 

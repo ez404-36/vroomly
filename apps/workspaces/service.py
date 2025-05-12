@@ -1,3 +1,4 @@
 from core.micro_services.micro_service_base import init_service
 
-service = init_service('workspaces')
+service_name = 'workspaces'
+service = init_service(service_name)
