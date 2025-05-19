@@ -1,50 +1,19 @@
 import logging
-from typing import Annotated, TypeAlias
 
 import uvicorn
-from fastapi import FastAPI, APIRouter, Depends
-from fastapi.security import OAuth2PasswordBearer
+from fastapi import FastAPI
 
-from core.constants import APPS_DIR
+from core.micro_services.routers.utils import register_all_service_routers
 
 app = FastAPI()
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
-TOKEN: TypeAlias = Annotated[str, Depends(oauth2_scheme)]
 
 logger = logging.getLogger(__name__)
 
-
-def register_routers(_app: FastAPI) -> None:
-    for service_dir in APPS_DIR.iterdir():
-        if not service_dir.is_dir():
-            continue
-
-        service_name = service_dir.name
-        if service_name.startswith('__'):
-            continue
-
-        api_dir = service_dir / 'api'
-        if not api_dir.exists():
-            continue
-
-        service_module_path = api_dir / 'routers.py'
-
-        if not service_module_path.exists():
-            logger.error(f'{service_dir} doesnt have routers.py')
-            continue
-
-        try:
-            router_file_module = __import__(f"apps.{service_name}.api.routers", fromlist=["*"])
-            for file_name in dir(router_file_module):
-                obj = getattr(router_file_module, file_name)
-                if isinstance(obj, APIRouter):
-                    app.include_router(obj)
-        except ImportError as e:
-            logger.error(f"Не удалось импортировать роутер для сервиса {service_name}: {e}")
-            continue
-
-
-register_routers(app)
+# TODO: с root_router не работают роуты
+# root_router = APIRouter(prefix="/api")
+# app.include_router(root_router)
+# register_all_service_routers(root_router)
+register_all_service_routers(app)
 
 
 if __name__ == '__main__':

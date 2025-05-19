@@ -25,17 +25,21 @@ class UserModel(
 
     name: Mapped[str | None]
     surname: Mapped[str | None]
-    birth_date: Mapped[date] = mapped_column(Date)
+    birth_date: Mapped[date | None] = mapped_column(Date)
 
-    workspaces: Mapped[list['WorkspaceModel']] = relationship(
-        'WorkspaceModel',
-        back_populates='user',
-    )
+    # workspaces: Mapped[list['WorkspaceModel']] = relationship(
+    #     'WorkspaceModel',
+    #     back_populates='user',
+    # )
+
+    @staticmethod
+    def generate_password_hash(password: str) -> str:
+        salt = bcrypt.gensalt()
+        return bcrypt.hashpw(password.encode(settings.ENCODING), salt).decode(settings.ENCODING)
 
     def set_password(self, password: str) -> None:
         """Генерация пароля"""
-        salt = bcrypt.gensalt()
-        self.password_hash = bcrypt.hashpw(password.encode(settings.ENCODING), salt).decode(settings.ENCODING)
+        self.password_hash = self.generate_password_hash(password)
 
     def check_password(self, password: str) -> bool:
         """Проверка пароля"""
