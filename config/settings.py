@@ -15,6 +15,7 @@ class Settings(BaseSettings):
 
     model_config = SettingsConfigDict(
         env_file=Path(__file__).parent.parent / '.env',
+        extra='ignore',
     )
 
 
