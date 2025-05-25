@@ -2,13 +2,13 @@ from pydantic.v1 import UUID4
 from sqlalchemy import String, ForeignKey, Index
 from sqlalchemy.orm import Mapped, mapped_column
 
-from core.models.base import BaseModel
+from core.models.base import BaseDBModel
 from core.models.mixins.deleted import DeletedModelMixin
 from core.models.mixins.timestamped_model import TimestampedModelMixin
 
 
 class WorkspaceModel(
-    BaseModel,
+    BaseDBModel,
     TimestampedModelMixin,
     DeletedModelMixin,
 ):

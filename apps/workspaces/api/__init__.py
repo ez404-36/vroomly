@@ -1,1 +1,1 @@
-from .list_workspaces import *
+from apps.workspaces.api.endpoints import *

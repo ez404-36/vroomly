@@ -1,9 +1,10 @@
 __all__ = (
     'get_current_user',
+    'request_user',
 )
 
 import jwt
-from fastapi import HTTPException, status
+from fastapi import HTTPException, status, Depends
 from sqlalchemy import select
 
 from apps.users.api.schemas.readers import UserDetail
@@ -23,14 +24,8 @@ async def decode_token(token: TokenData) -> UserDetail | None:
     if not user:
         return None
 
-    return UserDetail(
-        id=str(user.id),
-        email=user.email,
-        login=user.login,
-        name=user.name,
-        surname=user.surname,
-        birth_date=user.birth_date,
-    )
+    return UserDetail.model_validate(user)
+
 
 async def get_current_user(token: TOKEN) -> UserDetail:
     credentials_exception = HTTPException(
@@ -49,3 +44,6 @@ async def get_current_user(token: TOKEN) -> UserDetail:
         raise credentials_exception
     else:
         return await decode_token(token_data)
+
+
+request_user: UserDetail = Depends(get_current_user)

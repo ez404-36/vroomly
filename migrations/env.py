@@ -12,7 +12,7 @@ from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
 
 from config.database import DATABASE_URL
-from core.models.base import BaseModel
+from core.models.base import BaseDBModel
 
 # Добавляем корень проекта в sys.path для импорта модулей
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -48,11 +48,11 @@ def load_all_models():
                 models_file_module = __import__(f"apps.{service_name}.models.{file_name}", fromlist=["*"])
                 # Собираем все объекты, которые могут быть моделями
                 for name in filter(
-                        lambda var: var.endswith('Model') and var != BaseModel.__name__ ,
+                        lambda var: var.endswith('Model') and var != BaseDBModel.__name__ ,
                         dir(models_file_module)
                 ):
                     obj = getattr(models_file_module, name)
-                    if isinstance(obj, type) and issubclass(obj, BaseModel) and obj is not BaseModel:
+                    if isinstance(obj, type) and issubclass(obj, BaseDBModel) and obj is not BaseDBModel:
                         obj.metadata    # Регистрируем модель
             except ImportError as e:
                 logger.warning(f"Предупреждение: Не удалось загрузить модели для сервиса {service_name}: {e}")
@@ -67,7 +67,7 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-target_metadata = BaseModel.metadata
+target_metadata = BaseDBModel.metadata
 
 
 config.set_main_option("sqlalchemy.url", DATABASE_URL)

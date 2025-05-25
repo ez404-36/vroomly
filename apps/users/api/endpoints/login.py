@@ -12,11 +12,11 @@ from core.safety.token import create_access_token, Token
 
 from ..routers import router
 from ..schemas.readers import UserDetail
-from ..utils import authenticate_user, get_current_user
+from ..utils import authenticate_user, request_user
 
 
 @router.get('/me')
-async def api_get_current_user(user: UserDetail = Depends(get_current_user)) -> UserDetail:
+async def api_get_current_user(user: UserDetail = request_user) -> UserDetail:
     return user
 
 

@@ -5,13 +5,13 @@ from sqlalchemy import String, Date
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from config.settings import settings
-from core.models.base import BaseModel
+from core.models.base import BaseDBModel
 from core.models.mixins.deleted import DeletedModelMixin
 from core.models.mixins.timestamped_model import TimestampedModelMixin
 
 
 class UserModel(
-    BaseModel,
+    BaseDBModel,
     DeletedModelMixin,
     TimestampedModelMixin,
 ):
