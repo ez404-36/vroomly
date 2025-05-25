@@ -9,7 +9,7 @@ from sqlalchemy import select
 
 from apps.users.api.schemas.readers import UserDetail
 from apps.users.models.user import UserModel
-from config.database import get_async_session
+from config.database import get_async_session, fetch_one
 from core.safety.token import TOKEN, SECRET_KEY, ALGORITHM, TokenData
 
 
@@ -19,7 +19,7 @@ async def decode_token(token: TokenData) -> UserDetail | None:
             select(UserModel)
             .where(UserModel.id == token.user_id)
         )
-        user: UserModel = (await session.scalars(user_query)).one()
+        user: UserModel = await fetch_one(session, user_query)
 
     if not user:
         return None

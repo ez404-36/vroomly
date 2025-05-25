@@ -8,7 +8,7 @@ from apps.users.api.utils import request_user
 from apps.workspaces.api.routers import router
 from apps.workspaces.api.schemas.readers import WorkspaceDetail
 from apps.workspaces.models.workspace import WorkspaceModel
-from config.database import get_async_session
+from config.database import get_async_session, fetch_all
 
 
 @router.get('/')
@@ -23,7 +23,7 @@ async def api_get_current_workspaces(user = request_user):
                 )
             )
         )
-        workspaces = (await session.scalars(query)).all()
+        workspaces = await fetch_all(session, query)
 
     return [
         WorkspaceDetail.model_validate(workspace)
