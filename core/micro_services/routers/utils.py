@@ -9,10 +9,11 @@ logger = logging.getLogger(__name__)
 
 def get_default_router(service_name: str, tag_name: str=None) -> APIRouter:
     tag_name = tag_name or service_name
-    return APIRouter(prefix=f"/{service_name}", tags=[tag_name])
+    router = APIRouter(prefix=f"/{service_name}", tags=[tag_name])
+    return router
 
 
-def register_all_service_routers(root_router: APIRouter | FastAPI) -> None:
+def register_all_service_routers(_root_router: APIRouter | FastAPI) -> None:
     for service_dir in APPS_DIR.iterdir():
         if not service_dir.is_dir():
             continue
@@ -32,7 +33,7 @@ def register_all_service_routers(root_router: APIRouter | FastAPI) -> None:
         try:
             router_file_module = __import__(f"apps.{service_name}.api.routers", fromlist=["*"])
             for router in getattr(router_file_module, 'list_routers', []):
-                root_router.include_router(router)
+                _root_router.include_router(router)
         except ImportError as e:
             logger.error(f"Не удалось импортировать роутеры для сервиса {service_name}: {e}")
             continue

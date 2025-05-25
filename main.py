@@ -1,7 +1,7 @@
 import logging
 
 import uvicorn
-from fastapi import FastAPI
+from fastapi import FastAPI, APIRouter
 
 from core.micro_services.routers.utils import register_all_service_routers
 
@@ -9,11 +9,9 @@ app = FastAPI()
 
 logger = logging.getLogger(__name__)
 
-# TODO: с root_router не работают роуты
-# root_router = APIRouter(prefix="/api")
-# app.include_router(root_router)
-# register_all_service_routers(root_router)
-register_all_service_routers(app)
+root_router = APIRouter(prefix="/api")
+register_all_service_routers(root_router)
+app.include_router(root_router)
 
 
 if __name__ == '__main__':

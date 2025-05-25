@@ -9,9 +9,10 @@ services:
       POSTGRES_PASSWORD: password
     ports:
       - ${DB_PORT:-5432}:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     networks:
-      default:
-        aliases: [ habit-tracker-db ]
+      - app-network
 
   backend:
     build: .
@@ -26,8 +27,36 @@ services:
     environment:
       - ENVIRONMENT=development
       - PYTHONUNBUFFERED=1
+      - DB_HOST=db
+      - DB_PORT=5432
     restart: unless-stopped
     networks:
-      default:
-        aliases: [ habit-tracker-backend ]
+      - app-network
     profiles: [ ht-frontend ]
+
+  migrations:
+    build: .
+    command: alembic upgrade head
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    environment:
+      - ENVIRONMENT=development
+      - PYTHONUNBUFFERED=1
+      - DB_HOST=db
+      - DB_PORT=5432
+    restart: no
+    networks:
+      - app-network
+    profiles: [ ht-frontend ]
+
+
+volumes:
+  postgres_data:
+
+networks:
+  app-network:
+    driver: bridge
