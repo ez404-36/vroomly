@@ -7,7 +7,7 @@ from fastapi.security import OAuth2PasswordBearer
 from passlib.context import CryptContext
 from pydantic import BaseModel
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/users/login")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/accounts/login")
 TOKEN: TypeAlias = Annotated[str, Depends(oauth2_scheme)]
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 

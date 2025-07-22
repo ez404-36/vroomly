@@ -12,10 +12,12 @@ from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
 
 from config.database import DATABASE_URL
-from core.models.base import BaseDBModel
+from core.models.base import AutoSchemaBase
 
 # Добавляем корень проекта в sys.path для импорта модулей
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+base = AutoSchemaBase
 
 # Загружаем .env
 load_dotenv()
@@ -48,11 +50,11 @@ def load_all_models():
                 models_file_module = __import__(f"apps.{service_name}.models.{file_name}", fromlist=["*"])
                 # Собираем все объекты, которые могут быть моделями
                 for name in filter(
-                        lambda var: var.endswith('Model') and var != BaseDBModel.__name__ ,
+                        lambda var: var.endswith('Model') and var != base.__name__ ,
                         dir(models_file_module)
                 ):
                     obj = getattr(models_file_module, name)
-                    if isinstance(obj, type) and issubclass(obj, BaseDBModel) and obj is not BaseDBModel:
+                    if isinstance(obj, type) and issubclass(obj, base) and obj is not base:
                         obj.metadata    # Регистрируем модель
             except ImportError as e:
                 logger.warning(f"Предупреждение: Не удалось загрузить модели для сервиса {service_name}: {e}")
@@ -63,11 +65,7 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-# add your model's MetaData object here
-# for 'autogenerate' support
-# from myapp import mymodel
-# target_metadata = mymodel.Base.metadata
-target_metadata = BaseDBModel.metadata
+target_metadata = base.metadata
 
 
 config.set_main_option("sqlalchemy.url", DATABASE_URL)

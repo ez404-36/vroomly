@@ -7,8 +7,8 @@ import jwt
 from fastapi import HTTPException, status, Depends
 from sqlalchemy import select
 
-from apps.users.api.schemas.readers import UserDetail
-from apps.users.models.user import UserModel
+from apps.accounts.api.schemas.readers import UserDetail
+from apps.accounts.models.user import UserModel
 from config.database import get_async_session, fetch_one
 from core.safety.token import TOKEN, SECRET_KEY, ALGORITHM, TokenData
 

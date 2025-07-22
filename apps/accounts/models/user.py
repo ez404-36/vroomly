@@ -2,16 +2,16 @@ from datetime import date
 
 import bcrypt
 from sqlalchemy import String, Date
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy.orm import Mapped, mapped_column
 
 from config.settings import settings
-from core.models.base import BaseDBModel
+from core.models.base import AutoSchemaBase
 from core.models.mixins.deleted import DeletedModelMixin
 from core.models.mixins.timestamped_model import TimestampedModelMixin
 
 
 class UserModel(
-    BaseDBModel,
+    AutoSchemaBase,
     DeletedModelMixin,
     TimestampedModelMixin,
 ):
@@ -26,11 +26,6 @@ class UserModel(
     name: Mapped[str | None]
     surname: Mapped[str | None]
     birth_date: Mapped[date | None] = mapped_column(Date)
-
-    # workspaces: Mapped[list['WorkspaceModel']] = relationship(
-    #     'WorkspaceModel',
-    #     back_populates='user',
-    # )
 
     @staticmethod
     def generate_password_hash(password: str) -> str:

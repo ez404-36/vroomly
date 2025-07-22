@@ -32,7 +32,7 @@ services:
     restart: unless-stopped
     networks:
       - app-network
-    profiles: [ ht-frontend ]
+    profiles: [ vr-frontend ]
 
   migrations:
     build: .
@@ -51,7 +51,7 @@ services:
     restart: no
     networks:
       - app-network
-    profiles: [ ht-frontend ]
+    profiles: [ vr-frontend ]
 
 
 volumes:

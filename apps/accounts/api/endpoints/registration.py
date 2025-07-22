@@ -7,10 +7,10 @@ from typing import Annotated
 from fastapi import Form
 
 from config.database import get_async_session
-from apps.users.api.schemas.mutators import RegistrationData
+from apps.accounts.api.schemas.mutators import RegistrationData
 
-from apps.users.models.user import UserModel
-from apps.users.api.routers import router
+from apps.accounts.models.user import UserModel
+from apps.accounts.api.routers import router
 
 
 @router.post("/registration", status_code=201)

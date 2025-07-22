@@ -2,15 +2,41 @@ import uuid
 
 from pydantic.v1 import UUID4
 from sqlalchemy import UUID
-from sqlalchemy.ext.asyncio import AsyncAttrs
-from sqlalchemy.orm import DeclarativeBase, declared_attr, Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, declarative_base
+
+Base = declarative_base()
 
 
-class BaseDBModel(AsyncAttrs, DeclarativeBase):
+class AutoSchemaBase(Base):
     __abstract__ = True
 
     id: Mapped[UUID4] = mapped_column(UUID, primary_key=True, default=uuid.uuid4)
 
-    @declared_attr.directive
-    def __tablename__(cls) -> str:
-        return cls.__name__.lower().split('model')[0] + 's'
+    def __init_subclass__(cls, **kwargs):
+        super().__init_subclass__()
+        module_name = cls.__module__
+        schema_name = module_name.split('.')[1]
+
+        # Задаём название таблицы
+        table_name = getattr(cls, '__tablename__', cls.__name__.lower().split('model')[0] + 's')
+        cls.__tablename__ = table_name
+
+        # Если __table_args__ ещё не задан или не словарь — задаём
+        table_args = getattr(cls, '__table_args__', None)
+
+        if table_args is None:
+            cls.__table_args__ = {'schema': schema_name}
+        elif isinstance(table_args, dict):
+            # обновляем, не перезаписываем
+            table_args.setdefault('schema', schema_name)
+            cls.__table_args__ = table_args
+        elif isinstance(table_args, tuple):
+            # если __table_args__ — кортеж с доп. опциями и словарём, обновим словарь
+            *args, last = table_args
+            if isinstance(last, dict):
+                last.setdefault('schema', schema_name)
+                cls.__table_args__ = (*args, last)
+            else:
+                # если словаря нет, добавим новый
+                cls.__table_args__ = (*table_args, {'schema': schema_name})
+
