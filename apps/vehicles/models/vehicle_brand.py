@@ -1,6 +1,6 @@
 from pydantic.v1 import UUID4
 from sqlalchemy import String
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy.orm import Mapped, mapped_column
 
 from apps.geo.models.country import Country
 from core.models.base import AutoSchemaBase

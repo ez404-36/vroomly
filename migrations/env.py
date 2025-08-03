@@ -6,6 +6,7 @@ from logging.config import fileConfig
 from pathlib import Path
 
 from alembic import context
+from alembic.operations.ops import CreateTableOp
 from dotenv import load_dotenv
 from sqlalchemy import pool
 from sqlalchemy.engine import Connection
@@ -68,6 +69,30 @@ def load_all_models():
         load_models_in_module(root_models_dir)
 
 
+def sort_columns_create_table(op: CreateTableOp):
+    """
+    Переносит колонку 'id' в начало при создании таблицы
+    """
+    id_column = None
+    other_columns = []
+
+    for col in op.columns:
+        if col.name == "id":
+            id_column = col
+        else:
+            other_columns.append(col)
+
+    if id_column is not None:
+        op.columns = [id_column] + other_columns
+
+def process_revision_directives(_, revision, directives):
+    for directive in directives:
+        if hasattr(directive, "upgrade_ops"):
+            for op in directive.upgrade_ops.ops:
+                if isinstance(op, CreateTableOp):
+                    sort_columns_create_table(op)
+
+
 config = context.config
 
 if config.config_file_name is not None:
@@ -97,6 +122,8 @@ def run_migrations_offline() -> None:
         target_metadata=target_metadata,
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},
+        include_schemas=True,
+        process_revision_directives=process_revision_directives,
     )
 
     with context.begin_transaction():
@@ -108,6 +135,8 @@ def do_run_migrations(connection: Connection) -> None:
         connection=connection,
         target_metadata=target_metadata,
         render_item=render_item,
+        include_schemas=True,
+        process_revision_directives=process_revision_directives,
     )
 
     with context.begin_transaction():

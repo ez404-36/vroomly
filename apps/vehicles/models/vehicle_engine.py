@@ -1,4 +1,4 @@
-from enum import IntFlag, auto
+from enum import IntFlag
 
 from sqlalchemy import String, SmallInteger
 from sqlalchemy.orm import mapped_column, Mapped

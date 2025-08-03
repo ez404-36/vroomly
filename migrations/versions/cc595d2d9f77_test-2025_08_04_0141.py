@@ -1,8 +1,8 @@
 """init project tables
 
-Revision ID: d99bee194f42
+Revision ID: cc595d2d9f77
 Revises:
-Create Date: 2025-08-03 22:19:54.853680
+Create Date: 2025-08-04 01:41:10.854974
 
 """
 
@@ -13,7 +13,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = "d99bee194f42"
+revision: str = "cc595d2d9f77"
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -28,13 +28,13 @@ def upgrade() -> None:
 
     op.create_table(
         "user",
+        sa.Column("id", sa.UUID(), nullable=False),
         sa.Column("login", sa.String(length=50), nullable=False),
         sa.Column("email", sa.String(), nullable=False),
         sa.Column("password_hash", sa.String(length=255), nullable=False),
         sa.Column("name", sa.String(), nullable=True),
         sa.Column("surname", sa.String(), nullable=True),
         sa.Column("birth_date", sa.Date(), nullable=True),
-        sa.Column("id", sa.UUID(), nullable=False),
         sa.Column("deleted", sa.Boolean(), nullable=False),
         sa.Column(
             "created_at", sa.DateTime(), server_default=sa.text("now()"), nullable=False
@@ -47,28 +47,30 @@ def upgrade() -> None:
     )
     op.create_table(
         "country",
-        sa.Column("name", sa.String(length=20), nullable=False),
-        sa.Column("full_name", sa.String(length=100), nullable=True),
         sa.Column("id", sa.UUID(), nullable=False),
+        sa.Column("prefix", sa.String(length=3), nullable=False),
+        sa.Column("name", sa.String(length=100), nullable=False),
+        sa.Column("short_name", sa.String(length=20), nullable=True),
         sa.PrimaryKeyConstraint("id"),
-        sa.UniqueConstraint("full_name"),
         sa.UniqueConstraint("name"),
+        sa.UniqueConstraint("prefix"),
+        sa.UniqueConstraint("short_name"),
         schema="geo",
     )
     op.create_table(
         "vehicle_engine",
+        sa.Column("id", sa.UUID(), nullable=False),
         sa.Column("name", sa.String(length=50), nullable=False),
         sa.Column("power", sa.SmallInteger(), nullable=False),
         sa.Column("type", sa.SmallInteger(), nullable=False),
-        sa.Column("id", sa.UUID(), nullable=False),
         sa.PrimaryKeyConstraint("id"),
         schema="vehicles",
     )
     op.create_table(
         "vehicle_brand",
+        sa.Column("id", sa.UUID(), nullable=False),
         sa.Column("country_id", sa.UUID(), nullable=False),
         sa.Column("name", sa.String(length=50), nullable=False),
-        sa.Column("id", sa.UUID(), nullable=False),
         sa.ForeignKeyConstraint(
             ["country_id"],
             ["geo.country.id"],
@@ -79,10 +81,10 @@ def upgrade() -> None:
     )
     op.create_table(
         "vehicle_group",
+        sa.Column("id", sa.UUID(), nullable=False),
         sa.Column("user_id", sa.UUID(), nullable=False),
         sa.Column("name", sa.String(length=50), nullable=False),
         sa.Column("description", sa.String(), nullable=True),
-        sa.Column("id", sa.UUID(), nullable=False),
         sa.ForeignKeyConstraint(
             ["user_id"],
             ["accounts.user.id"],
@@ -92,10 +94,10 @@ def upgrade() -> None:
     )
     op.create_table(
         "vehicle_model",
+        sa.Column("id", sa.UUID(), nullable=False),
         sa.Column("brand_id", sa.UUID(), nullable=False),
         sa.Column("name", sa.String(length=50), nullable=False),
         sa.Column("vehicle_type", sa.SmallInteger(), nullable=False),
-        sa.Column("id", sa.UUID(), nullable=False),
         sa.ForeignKeyConstraint(
             ["brand_id"],
             ["vehicles.vehicle_brand.id"],
@@ -105,12 +107,12 @@ def upgrade() -> None:
     )
     op.create_table(
         "vehicle_generation",
+        sa.Column("id", sa.UUID(), nullable=False),
         sa.Column("model_id", sa.UUID(), nullable=False),
         sa.Column("name", sa.String(length=50), nullable=False),
         sa.Column("is_restyling", sa.Boolean(), nullable=False),
         sa.Column("start_year", sa.SmallInteger(), nullable=False),
         sa.Column("end_year", sa.SmallInteger(), nullable=True),
-        sa.Column("id", sa.UUID(), nullable=False),
         sa.ForeignKeyConstraint(
             ["model_id"],
             ["vehicles.vehicle_model.id"],
