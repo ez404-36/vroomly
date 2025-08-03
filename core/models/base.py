@@ -1,4 +1,5 @@
 import uuid
+import re
 
 from pydantic.v1 import UUID4
 from sqlalchemy import UUID
@@ -18,8 +19,7 @@ class AutoSchemaBase(Base):
         schema_name = module_name.split('.')[1]
 
         # Задаём название таблицы
-        table_name = getattr(cls, '__tablename__', cls.__name__.lower().split('model')[0] + 's')
-        cls.__tablename__ = table_name
+        cls.__tablename__ = cls.get_table_name()
 
         # Если __table_args__ ещё не задан или не словарь — задаём
         table_args = getattr(cls, '__table_args__', None)
@@ -40,3 +40,16 @@ class AutoSchemaBase(Base):
                 # если словаря нет, добавим новый
                 cls.__table_args__ = (*table_args, {'schema': schema_name})
 
+    @classmethod
+    def get_table_name(cls) -> str:
+        """
+        Преобразует имя класса в имя таблицы в БД (если не задано внутри класса) по принципу:
+        CamelCase в snake_case
+        """
+
+        if existing_table_name := getattr(cls, '__tablename__', None):
+            return existing_table_name
+
+        pattern = r'(?<!^)(?=[A-Z])'
+
+        return re.sub(pattern, '_', cls.__name__).lower()

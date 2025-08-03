@@ -10,13 +10,13 @@ from core.models.mixins.deleted import DeletedModelMixin
 from core.models.mixins.timestamped_model import TimestampedModelMixin
 
 
-class UserModel(
+class User(
     AutoSchemaBase,
     DeletedModelMixin,
     TimestampedModelMixin,
 ):
     """
-    Модель пользователя
+    Модель Пользователь
     """
 
     login: Mapped[str] = mapped_column(String(50), unique=True)

@@ -13,6 +13,7 @@ from sqlalchemy.ext.asyncio import async_engine_from_config
 
 from config.database import DATABASE_URL
 from core.models.base import AutoSchemaBase
+from core.models.utils import render_item
 
 # Добавляем корень проекта в sys.path для импорта модулей
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -37,40 +38,45 @@ def load_all_models():
             continue
 
         service_name = service_dir.name
-        models_dir = service_dir / "models"
+        root_models_dir = service_dir / "models"
 
-        if not models_dir.exists():
-            continue
+        def load_models_in_module(models_dir: Path):
+            if not models_dir.exists():
+                return
 
-        for model_file in models_dir.iterdir():
-            file_name = model_file.stem
-            if file_name.startswith('__') and file_name.endswith('__') or model_file.suffix != '.py':
-                continue
-            try:
-                models_file_module = __import__(f"apps.{service_name}.models.{file_name}", fromlist=["*"])
-                # Собираем все объекты, которые могут быть моделями
-                for name in filter(
-                        lambda var: var.endswith('Model') and var != base.__name__ ,
-                        dir(models_file_module)
-                ):
-                    obj = getattr(models_file_module, name)
-                    if isinstance(obj, type) and issubclass(obj, base) and obj is not base:
-                        obj.metadata    # Регистрируем модель
-            except ImportError as e:
-                logger.warning(f"Предупреждение: Не удалось загрузить модели для сервиса {service_name}: {e}")
-                continue
+            for model_file in models_dir.iterdir():
+                if model_file.is_dir():
+                    load_models_in_module(model_file)
+                else:
+                    file_name = model_file.stem
+                    if file_name.startswith('__') and file_name.endswith('__') or model_file.suffix != '.py':
+                        continue
+                    try:
+                        models_file_module = __import__(f"apps.{service_name}.models.{file_name}", fromlist=["*"])
+                        # Собираем все объекты, которые могут быть моделями
+                        for name in filter(
+                                lambda var: var != base.__name__,
+                                dir(models_file_module)
+                        ):
+                            obj = getattr(models_file_module, name)
+                            if isinstance(obj, type) and issubclass(obj, base) and obj is not base:
+                                obj.metadata  # Регистрируем модель
+                    except ImportError as e:
+                        logger.warning(f"Предупреждение: Не удалось загрузить модели для сервиса {service_name}: {e}")
+                        continue
+
+        load_models_in_module(root_models_dir)
+
 
 config = context.config
 
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-target_metadata = base.metadata
-
-
 config.set_main_option("sqlalchemy.url", DATABASE_URL)
 
 load_all_models()
+target_metadata = base.metadata
 
 
 def run_migrations_offline() -> None:
@@ -98,7 +104,11 @@ def run_migrations_offline() -> None:
 
 
 def do_run_migrations(connection: Connection) -> None:
-    context.configure(connection=connection, target_metadata=target_metadata)
+    context.configure(
+        connection=connection,
+        target_metadata=target_metadata,
+        render_item=render_item,
+    )
 
     with context.begin_transaction():
         context.run_migrations()
@@ -107,7 +117,6 @@ def do_run_migrations(connection: Connection) -> None:
 async def run_async_migrations() -> None:
     """In this scenario we need to create an Engine
     and associate a connection with the context.
-
     """
 
     connectable = async_engine_from_config(
@@ -124,7 +133,6 @@ async def run_async_migrations() -> None:
 
 def run_migrations_online() -> None:
     """Run migrations in 'online' mode."""
-
     asyncio.run(run_async_migrations())
 
 

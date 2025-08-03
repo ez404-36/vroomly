@@ -5,7 +5,7 @@ __all__ = (
 from fastapi import HTTPException
 from sqlalchemy import select, and_, or_
 
-from apps.accounts.models.user import UserModel
+from apps.accounts.models.user import User
 from config.database import get_async_session
 from core.safety.token import TokenData, verify_password
 
@@ -13,18 +13,18 @@ from core.safety.token import TokenData, verify_password
 async def authenticate_user(username: str, password: str) -> TokenData | None:
     async with get_async_session() as session:
         user_query = (
-            select(UserModel)
+            select(User)
             .where(
                 and_(
                     or_(
-                        UserModel.login == username,
-                        UserModel.email == username,
+                        User.login == username,
+                        User.email == username,
                     ),
-                    UserModel.deleted.isnot(True),
+                    User.deleted.isnot(True),
                 )
             )
         )
-        user: UserModel = (await session.scalars(user_query)).one()
+        user: User = (await session.scalars(user_query)).one()
 
     if not user:
         raise HTTPException(status_code=404, detail='User not found')
