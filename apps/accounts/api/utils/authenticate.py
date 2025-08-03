@@ -6,7 +6,7 @@ from fastapi import HTTPException
 from sqlalchemy import select, and_, or_
 
 from apps.accounts.models.user import User
-from config.database import get_async_session
+from config.db import get_async_session
 from core.safety.token import TokenData, verify_password
 
 

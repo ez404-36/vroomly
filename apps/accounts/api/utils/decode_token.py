@@ -9,17 +9,15 @@ from sqlalchemy import select
 
 from apps.accounts.api.schemas.readers import UserDetail
 from apps.accounts.models.user import User
-from config.database import get_async_session, fetch_one
+from config.db import database
 from core.safety.token import TOKEN, SECRET_KEY, ALGORITHM, TokenData
 
 
 async def decode_token(token: TokenData) -> UserDetail | None:
-    async with get_async_session() as session:
-        user_query = (
-            select(User)
-            .where(User.id == token.user_id)
-        )
-        user: User = await fetch_one(session, user_query)
+    user = await database.fetch_one(
+        select(User)
+        .where(User.id == token.user_id)
+    )
 
     if not user:
         return None
