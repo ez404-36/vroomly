@@ -12,5 +12,7 @@ class VehicleBrand(AutoSchemaBase):
     Модель "Марка ТС".
     Примеры: Skoda, BMW, Lada
     """
+
+    # TODO: уникальность надо поддерживать по полям country_id + name
     country_id: Mapped[UUID4] = mapped_column(ForeignKeyTo(Country))
     name: Mapped[str] = mapped_column(String(50), unique=True)

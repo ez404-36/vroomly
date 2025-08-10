@@ -1,5 +1,7 @@
+from typing import Any, Iterable
+
 from databases import Database
-from sqlalchemy import MetaData, create_engine
+from sqlalchemy import MetaData, create_engine, Select
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 from sqlalchemy.orm import sessionmaker, Session
 
@@ -25,3 +27,11 @@ def get_session() -> Session:
 
 def get_async_session() -> AsyncSession:
     return async_session_maker()
+
+
+async def session_fetch_one(session: AsyncSession, query: Select) -> Any:
+    return (await session.scalars(query)).one()
+
+
+async def session_fetch_all(session: AsyncSession, query: Select) -> Iterable[Any]:
+    return (await session.scalars(query)).all()

@@ -1,0 +1,602 @@
+country,brand
+DZ,SNVI
+AR,ASA Aluminium Body
+AR,Zanella
+AR,Sero Electric
+AU,ACE EV Group
+AU,BCI Bus
+AU,Borland Racing
+AU,Bolwell
+AU,Custom Bus
+AU,Elfin Sports Cars
+AU,Minetti Sports Cars
+AU,Nota
+AU,P&D Coachworks
+AU,Volgren
+AT,KTM
+AT,Magna Steyr
+AT,Rosenbauer
+AT,Tushek & Spigel
+AZ,AzSamand
+AZ,Ganja Auto Plant
+AZ,Nakhchivan Automobile Plant
+BY,BelAZ
+BY,BelGee
+BY,Belkommunmash
+BY,MAZ
+BY,MoAZ
+BY,MZKT
+BY,Neman
+BE,Edran
+BE,Gillet
+BE,Van Hool
+BO,Quantum Motors
+BR,Agrale
+BR,Comil
+BR,Grupo Caoa
+BR,Chamonix NG Cars
+BR,Carbuss
+BR,Marcopolo
+BR,Mascarello
+BR,Neobus
+BR,Puma
+BR,TAC
+BG,Litex
+BG,SIN
+CA,Bombardier
+CA,Campagna
+CA,Felino Corporation
+CA,Intermeccanica
+CA,INKAS
+CA,Lion Electric Company
+CA,Magnum Cars
+CA,New Flyer
+CA,Nova Bus
+CA,Prevost
+CA,Terradyne
+CA,Vicinity Motor Corp.
+CN,Arcfox
+CN,Aion
+CN,Apex Motors
+CN,Ankai
+CN,BAIC
+CN,Bonluck Bus
+CN,Baojun
+CN,BAW
+CN,Bestune
+CN,Brilliance
+CN,BYD
+CN,Changan
+CN,Changhe
+CN,Chery
+CN,Dongfeng
+CN,Denza
+CN,Englon
+CN,Exeed
+CN,EuAuto
+CN,Everus
+CN,FAW
+CN,Hongqi
+CN,Foton
+CN,Firefly
+CN,Fangchengbao
+CN,GAC
+CN,Geely
+CN,Great Wall
+CN,Gyon
+CN,Henrey Automobile
+CN,Hafei
+CN,Haima
+CN,Hanteng
+CN,Hawtai
+CN,Haval
+CN,Heibao
+CN,HiPhi
+CN,Higer
+CN,Hozon Auto
+CN,Jetour
+CN,Jiangling
+CN,JMEV
+CN,Jinbei
+CN,Jonway
+CN,JAC
+CN,Jetta
+CN,JuneYao Auto
+CN,Karry
+CN,Kandi
+CN,King Long
+CN,ORA
+CN,Landwind
+CN,Leahead
+CN,Li Auto
+CN,Leapmotor
+CN,Lynk&Co
+CN,Maextro
+CN,Mudan Auto
+CN,Maxus
+CN,Nio
+CN,Qoros
+CN,Roewe
+CN,Ranz
+CN,SAIC
+CN,Sehol
+CN,Soueast
+CN,Spotlight Automotive
+CN,Stelato
+CN,Sunlong Bus
+CN,Skyworth Auto
+CN,Trumpchi
+CN,Wuling
+CN,Voyah
+CN,Xpeng
+CN,Xiaomi Auto
+CN,Yudo Auto
+CN,Yutong
+CN,Zhongtong Bus
+CN,Zinoro
+CN,Zotye
+CN,Zeekr
+CN,WEY
+CN,Xiamen Golden Dragon Bus
+CN,Yangwang
+CN,ZX Auto
+CO,Busscar de Colombia
+CO,Sofasa
+HR,DOK-ING
+HR,Rimac
+CZ,Škoda
+CZ,Tatra
+CZ,Avia
+CZ,Kaipan
+CZ,MTX
+CZ,Praga
+DK,Hydrema
+DK,Zenvo
+EC,Aymesa
+EG,MCV Bus & Coach
+ET,Marathon Motors Engineering
+FI,Valmet Automotive
+FI,Electric Raceabout
+FI,Sisu Auto
+FR,Aixam
+FR,Alpine
+FR,Auverland
+FR,Bolloré
+FR,Bugatti
+FR,Citroën
+FR,Delage
+FR,De La Chapelle
+FR,DS
+FR,Exagon
+FR,Heuliez Bus
+FR,Hopium
+FR,Ligier
+FR,Microcar
+FR,Méga
+FR,Navya SAS
+FR,Peugeot
+FR,PGO
+FR,Power Vehicle Innovation
+FR,Renault
+FR,Renault Trucks
+FR,SECMA
+FR,Venturi
+GE,KAZ
+DE,BMW
+DE,Alpina
+DE,BMW I
+DE,BMW M
+DE,Mercedes-Benz
+DE,Daimler Truck
+DE,Setra
+DE,Smart
+DE,Volkswagen
+DE,Audi
+DE,MAN
+DE,Porsche
+DE,Apollo
+DE,Artega
+DE,Bitter
+DE,Elaris
+DE,e.GO Mobile
+DE,Isdera
+DE,Lotec
+DE,Multicar
+DE,Neoplan
+DE,Opel
+DE,Ruf
+DE,Sono
+DE,Wiesmann
+GT,Rosmo
+GH,Kantanka
+GR,ELVO
+GR,Keraboss
+GR,Kioleides
+GR,Korres
+GR,Namco
+GR,Replicar Hellas
+GR,Temax
+HU,Ikarus
+HU,Rába
+IS,Arctic Trucks
+IN,Ajanta Group
+IN,Ashok Leyland
+IN,Asia MotorWorks
+IN,Atul Auto
+IN,Bajaj
+IN,Eicher
+IN,Force
+IN,Hindustan
+IN,ICML motors
+IN,KAL
+IN,Mahindra
+IN,Maruti
+IN,Ola Electric
+IN,Omega Seiki Mobility
+IN,Tara International
+IN,Tata
+ID,Astra International
+ID,Esemka
+ID,Indomobil Group
+ID,Pindad
+IR,Azar Motor Industrial Co
+IR,Bahman
+IR,Diar
+IR,Fath Vehicle Industries
+IR,Iran Khodro
+IR,Khodro Kaveer
+IR,MVM
+IR,Morattab
+IR,SAIPA
+IR,Zagross Khodro
+IL,City Transformer
+IL,Ha'argaz
+IL,Merkavim
+IL,REE Automotive
+IL,Tomcar
+IL,Zibar
+IT,Abarth
+IT,Alkè
+IT,Astra
+IT,Alfa Romeo
+IT,Automobili Estrema
+IT,Bremach
+IT,Casalini
+IT,Covini
+IT,CTS
+IT,DR Motor
+IT,Dallara
+IT,Fiat
+IT,Ferrari
+IT,Iso
+IT,Italdesign
+IT,Iveco
+IT,Lancia
+IT,Lamborghini
+IT,Maserati
+IT,M.A.T
+IT,Mazzanti
+IT,Minardi
+IT,Pagani
+IT,Piaggio
+IT,Pininfarina
+IT,SCV Srl
+IT,XEV
+IT,Zagato
+JP,Acura
+JP,Daihatsu
+JP,Hino
+JP,Honda
+JP,Infiniti
+JP,Isuzu
+JP,Lexus
+JP,Mazda
+JP,Mitsubishi
+JP,Mitsubishi Fuso
+JP,Nissan
+JP,Subaru
+JP,Suzuki
+JP,Toyota
+JP,UD Trucks
+JP,Aspark
+JP,Dome
+JP,GLM
+JP,J-Bus
+JP,Mitsuoka
+JP,NMKV
+JP,Tommykaira
+KE,Cooper Motor Corporation
+KE,Mobius Motors
+LV,Dartz
+LV,Drive eO
+LB,EV Electra
+LB,W Motors
+LU,MDI
+MY,Bufori
+MY,DefTech
+MY,Inokom
+MY,Naza
+MY,Perodua
+MY,Proton
+MX,DINA
+MX,Mastretta
+MX,VUHL
+MX,Zacua
+MC,Venturi
+MA,Laraki
+MA,Neo Motors
+MA,Somaca
+MM,Shan Star
+NL,Burton
+NL,Carver
+NL,DAF
+NL,Dakar
+NL,Donkervoort
+NL,Spijkstaal
+NL,Spyker
+NL,Stellantis
+NL,Vandenbrink
+NL,VDL Bus & Coach
+NL,Vencer
+NZ,Almac
+NZ,Anziel
+NZ,Kiwi Bus Builders
+NZ,Saker Cars
+NZ,Trekka
+NG,Innoson Motors
+KP,Pyeonghwa Motors
+KP,Sungri Motors
+KP,Samhung Motors
+MK,FAS Sanos
+PK,Sazgar
+PK,United Auto Industries
+PH,Almazora Motors
+PH,Francisco Motors
+PH,Del Monte Motors
+PH,Sarao Motors
+PL,AMZ
+PL,Arrinera
+PL,Autosan
+PL,FSO Syrena in Kutno
+PL,Jelcz
+PL,Melex
+PL,Solaris
+PL,Solbus
+PL,Ursus
+PT,MOBIpeople
+PT,Salvador Caetano
+PT,Vinci
+RO,Dacia
+RO,Astra Bus
+RO,C&I Eurotrans XXI
+RO,El Car
+RO,Grivița
+RO,ROMAN
+RU,Aurus
+RU,Avtotor
+RU,AvtoVAZ
+RU,GAZ
+RU,KAvZ
+RU,LiAZ
+RU,PAZ
+RU,KAMAZ
+RU,NefAZ
+RU,Kombat Armouring
+RU,Moskvich
+RU,Sollers
+RU,UAZ
+RU,TREKOL
+RU,UralAZ
+RU,Volgabus
+SA,KSU Gazal-1
+SA,Ceer Motors
+RS,FAP
+RS,FAS
+RS,Ikarbus
+RS,IMT
+SI,Adria Mobil
+SI,Revoz
+SI,TAM-Europe
+ZA,Advanced Automotive Design
+ZA,Perana Performance Group
+KR,CT&T United
+KR,Daewoo Bus
+KR,Genesis
+KR,Gwangju Global
+KR,Hyundai
+KR,KGM Commercial
+KR,Kia
+KR,Renault Korea
+KR,Spirra
+KR,SsangYong
+KR,Tata Daewoo
+KR,Woojin Industrial Systems
+ES,Aspid
+ES,Ayats
+ES,Beulas
+ES,Baltasar Cars
+ES,Carrocera Castrosua
+ES,Cupra
+ES,Comarth
+ES,GTA
+ES,Hispano-Suiza
+ES,Hurtan
+ES,Irizar
+ES,Sunsundegui
+ES,SEAT
+ES,Spania
+ES,Tauro
+ES,Tramontana
+ES,Uro
+LK,Micro
+SD,Giad Auto
+SE,Caresto
+SE,Koenigsegg
+SE,Polestar
+SE,Scania
+SE,Volvo
+CH,Micro Mobility Systems
+CH,Leblanc
+CH,Piëch Automotive
+CH,Rinspeed
+CH,Sbarro
+TW,CMC
+TW,Hotai Motors
+TW,Foxtron
+TW,Kuozui Motors
+TW,Luxgen
+TW,Thunder Power
+TW,Yulon
+TH,Bangchan
+TH,Thai Rung
+TN,Wallyscar
+TR,BMC
+TR,Erkunt
+TR,Etox
+TR,Guleryuz
+TR,Karsan
+TR,Katmerciler
+TR,Otokar
+TR,Ozaltin
+TR,Temsa
+TR,Tofas
+TR,Togg
+UA,Bogdan
+UA,Boryspil Bus Factory
+UA,Chernihiv Bus Factory
+UA,Eurocar
+UA,KrAZ
+UA,Sherp
+UA,ZAZ
+AE,NIMR
+AE,STREIT Group
+AE,W Motors
+GB,AC
+GB,Alexander Dennis
+GB,Apex
+GB,Ariel
+GB,Aston Martin
+GB,Atalanta
+GB,BAC
+GB,Bentley
+GB,Bowler
+GB,Caterham
+GB,David Brown
+GB,Elemental Cars
+GB,Ginetta
+GB,Gordon Murray Automotive
+GB,GKD Sports
+GB,Grinnall
+GB,Ineos
+GB,Jaguar
+GB,Lagonda
+GB,London EV Company
+GB,Land Rover
+GB,Lister
+GB,Lotus
+GB,Munro Vehicles
+GB,McLaren
+GB,Mcmutry Automotive
+GB,MG
+GB,Mini
+GB,Morgan
+GB,Noble
+GB,Radical Sportscars
+GB,Rolls-Royce
+GB,Ronart
+GB,Switch Mobility
+GB,TVR
+GB,Ultima Sports
+GB,Vauxhall
+US,General Motors
+US,Buick
+US,Cadillac
+US,Chevrolet
+US,GMC
+US,Stellantis
+US,Chrysler
+US,Dodge
+US,Jeep
+US,Ram
+US,Ford Motor
+US,Ford
+US,Lincoln
+US,All American Racers
+US,AM General
+US,Anteros Coachworks
+US,Aptera
+US,Arcimoto
+US,Autocar
+US,Alpha
+US,Bremach
+US,Bollinger
+US,Callaway
+US,Canoo
+US,Czinger
+US,DDR Motorsport
+US,DeLorean
+US,Drako
+US,Detroit Electric
+US,E-Z-GO
+US,Equus
+US,EdisonFuture
+US,Falcon Motorsports
+US,Factory Five Racing
+US,Faraday
+US,Fisker
+US,Freightliner
+US,Gillig
+US,Google
+US,GEM
+US,Hennessey
+US,Harley Davidson
+US,International Harvester
+US,IC Bus
+US,Karma
+US,Kenworth
+US,Lingenfelter Performance Engineering
+US,Lordstown
+US,Lucid
+US,Mullen
+US,Mack
+US,Myers
+US,MCI
+US,Navistar
+US,Nikola
+US,Oshkosh
+US,Panoz
+US,Phoenix Motorcars
+US,Peterbilt
+US,Pierce
+US,Polaris
+US,Proterra
+US,RAESR
+US,Rezvani
+US,Rivian
+US,Ronn Motor Group
+US,Rossion
+US,Saleen
+US,SCG
+US,Shelby
+US,Slate Auto
+US,SRT
+US,SSC
+US,Thomas Built Buses
+US,Tesla
+US,Telo Trucks
+US,Trion Supercars
+US,VLF
+US,Vanderhall Motor Works
+US,Western Star
+US,Workhorse
+US,Xos, Inc.
+UY,Effa
+UZ,MAN Auto-Uzbekistan
+UZ,UzAuto Motors
+UZ,SAZ
+VE,Venirauto
+VN,Mekong
+VN,SAMCO
+VN,THACO
+VN,VinFast
+ZW,Willowvale Motor Industries
