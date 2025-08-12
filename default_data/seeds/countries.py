@@ -6,6 +6,5 @@ class ImportCountriesCSV(ImportFromCSVBase):
     model = Country
     filename = 'country.csv'
     mapper = {
-        'id': 'prefix',
         'value': 'name',
     }

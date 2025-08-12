@@ -1,7 +1,6 @@
 import csv
 from pathlib import Path
 from typing import Any
-from uuid import UUID
 
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import Session
@@ -15,14 +14,16 @@ class ImportFromCSVBase:
     """
 
     model: type[AutoSchemaBase]
-    mapper: dict[str, str] = NotImplemented     # {ключ в csv: поле в модели}
+    mapper: dict[str, str] = NotImplemented     # {ключ в csv: поле в модели} (если отличаются)
     filename: str = NotImplemented
 
-    @classmethod
-    async def run(cls, session: Session | AsyncSession):
-        prefetched_data = await cls.prefetch_data(session)
+    def __init__(self, session: Session | AsyncSession) -> None:
+        self.session = session
 
-        with open(Path(__file__).parent / 'csv_files' / cls.filename) as f_obj:
+    async def run(self):
+        prefetched_data = await self.prefetch_data()
+
+        with open(Path(__file__).parent / 'csv_files' / self.filename) as f_obj:
             reader = csv.DictReader(f_obj)
 
             instances = []
@@ -32,21 +33,29 @@ class ImportFromCSVBase:
                     if key is None:
                         continue
 
-                    mapped_key = cls.mapper.get(key, key)
+                    mapped_key = self.mapper.get(key, key)
                     if ':' in mapped_key:
                         mapped_key, instance_column = mapped_key.split(':')
                         instance_name, _ = instance_column.rsplit('.')
                         if instance_name not in prefetched_data:
-                            raise ValueError(f'Вспомогательные данные по {instance_name} не были предзагружены')
+                            raise ValueError(f'Вспомогательные данные по {instance_name} не были загружены из БД')
 
                         instance_data[mapped_key] = prefetched_data[instance_name][value]
                     else:
                         instance_data[mapped_key] = value
-                instance = cls.model(**instance_data)
+                instance = self.model(**instance_data)
                 instances.append(instance)
 
-        session.add_all(instances)
+        self.session.add_all(instances)
 
-    @classmethod
-    async def prefetch_data(cls, session: Session | AsyncSession) -> dict[str, dict[Any, AutoSchemaBase]]:
+    async def prefetch_data(self) -> dict[str, dict[Any, Any]]:
+        """
+        Загруженные из БД данные для маппинга данных из CSV-файла.
+        Пример:
+        1) Загрузка стран
+        {'country': {$column_in_csv: $foreign_key_column}}
+        country - обозначение типа сущности
+        $column_in_csv - название столбца с данными о стране в CSV-файле
+        $foreign_key_column - поле внешнего ключа для связи со страной в модели
+        """
         return {}

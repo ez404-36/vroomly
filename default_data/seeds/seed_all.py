@@ -7,8 +7,8 @@ from default_data.seeds.vehicle_brands import ImportVehicleBrandsCSV
 
 async def seed_all():
     async with get_async_session() as session:
-        # ImportCountriesCSV.run(session)
-        await ImportVehicleBrandsCSV.run(session)
+        await ImportCountriesCSV(session).run()
+        await ImportVehicleBrandsCSV(session).run()
 
         await session.commit()
         await session.close()
