@@ -1,3 +1,4 @@
+from mako.parsetree import Code
 from pydantic.v1 import UUID4
 from sqlalchemy import String, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column
@@ -14,8 +15,10 @@ class VehicleBrand(AutoSchemaBase):
     """
 
     country_id: Mapped[UUID4] = mapped_column(ForeignKeyTo(Country))
-    name: Mapped[str] = mapped_column(String(50))
+    code: Mapped[str] = mapped_column(String(50))   # КОД_БРЕНДА (англ. язык, верхний регистр)
+    name: Mapped[str] = mapped_column(String(50))   # Название бренда на английском языке
+    original_name: Mapped[str] = mapped_column(String(50))  # Название бренда на родном языке
 
     __table_args__ = (
-        UniqueConstraint('country_id', 'name', name='vehicle_brand_country_id_name_unique'),
+        UniqueConstraint('country_id', 'code', name='vehicle_brand_country_id_code_unique'),
     )

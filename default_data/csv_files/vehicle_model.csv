@@ -1,4 +1,4 @@
-ID_MARK,brand,country,model
+brand,_brand_name,_country,name
 ABARTH,Abarth,IT,124 Spider
 ABARTH,Abarth,IT,500
 ABARTH,Abarth,IT,600e

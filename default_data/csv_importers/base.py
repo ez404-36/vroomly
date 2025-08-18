@@ -14,8 +14,23 @@ class ImportFromCSVBase:
     """
 
     model: type[AutoSchemaBase]
-    mapper: dict[str, str] = NotImplemented     # {ключ в csv: поле в модели} (если отличаются)
+
+    """
+    Маппер столбцов csv на поля в модели.
+    Если названия совпадают, можно не указывать.
+    Если данные будут браться из prefetch_data(), то значение записывается в виде:
+    $instance_name:$fk_field.
+    Пример: 
+    prefetched_data = {'brands': {'GAC': 15, 'BMW': 35}}
+    mapper = {
+        'brand': 'brands:brand_id',
+        # поле в csv: 'ключ в prefetched_data:внешний ключ для связи с маркой ТС'
+    }
+    """
+    mapper: dict[str, str] = {}
+
     filename: str = NotImplemented
+    default_data = {}   # данные по умолчанию для создаваемых сущностей
 
     def __init__(self, session: Session | AsyncSession) -> None:
         self.session = session
@@ -23,26 +38,29 @@ class ImportFromCSVBase:
     async def run(self):
         prefetched_data = await self.prefetch_data()
 
-        with open(Path(__file__).parent / 'csv_files' / self.filename) as f_obj:
+        with open(Path(__file__).parent.parent / 'csv_files' / self.filename) as f_obj:
             reader = csv.DictReader(f_obj)
 
             instances = []
             for row in reader:
                 instance_data = {}
                 for key, value in row.items():
-                    if key is None:
+                    if key is None or key.startswith('_'):
+                        # столбцы, которые начинаются с _, будут игнорироваться
                         continue
 
                     mapped_key = self.mapper.get(key, key)
                     if ':' in mapped_key:
-                        mapped_key, instance_column = mapped_key.split(':')
-                        instance_name, _ = instance_column.rsplit('.')
-                        if instance_name not in prefetched_data:
-                            raise ValueError(f'Вспомогательные данные по {instance_name} не были загружены из БД')
+                        prefetched_data_field, fk_field = mapped_key.split(':')
+                        if prefetched_data_field not in prefetched_data:
+                            raise ValueError(f'Вспомогательные данные по {prefetched_data_field} не были загружены из БД')
 
-                        instance_data[mapped_key] = prefetched_data[instance_name][value]
+                        related_instances = prefetched_data[prefetched_data_field]
+                        instance_data[fk_field] = related_instances[value]
                     else:
                         instance_data[mapped_key] = value
+
+                instance_data.update(**self.default_data)
                 instance = self.model(**instance_data)
                 instances.append(instance)
 
