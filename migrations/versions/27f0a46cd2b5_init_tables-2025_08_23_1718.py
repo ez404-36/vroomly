@@ -1,8 +1,8 @@
-"""test
+"""init tables
 
-Revision ID: 5ecffafbe842
+Revision ID: 27f0a46cd2b5
 Revises: cc595d2d9f77
-Create Date: 2025-08-12 18:02:22.253220
+Create Date: 2025-08-23 17:18:47.273785
 
 """
 
@@ -13,7 +13,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = "5ecffafbe842"
+revision: str = "27f0a46cd2b5"
 down_revision: Union[str, None] = "cc595d2d9f77"
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -64,14 +64,16 @@ def upgrade() -> None:
         "vehicle_brand",
         sa.Column("id", sa.UUID(), nullable=False),
         sa.Column("country_id", sa.String(length=3), nullable=False),
+        sa.Column("code", sa.String(length=50), nullable=False),
         sa.Column("name", sa.String(length=50), nullable=False),
+        sa.Column("original_name", sa.String(length=50), nullable=True),
         sa.ForeignKeyConstraint(
             ["country_id"],
             ["geo.country.id"],
         ),
         sa.PrimaryKeyConstraint("id"),
         sa.UniqueConstraint(
-            "country_id", "name", name="vehicle_brand_country_id_name_unique"
+            "country_id", "code", name="vehicle_brand_country_id_code_unique"
         ),
         schema="vehicles",
     )

@@ -1,5 +1,6 @@
 from apps.geo.models.country import Country
-from default_data.import_from_csv_base import ImportFromCSVBase
+
+from .base import ImportFromCSVBase
 
 
 class ImportCountriesCSV(ImportFromCSVBase):

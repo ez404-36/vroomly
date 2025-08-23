@@ -3,15 +3,23 @@ from pathlib import Path
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
-class Settings(BaseSettings):
-    # Database settings
-    DB_USER: str
-    DB_PASSWORD: str
-    DB_HOST: str
-    DB_PORT: str
-    DB_NAME: str
+class DatabaseSettings(BaseSettings):
+    user: str
+    password: str
+    host: str
+    port: int
+    name: str
 
-    ENCODING: str = 'utf-8'
+    model_config = SettingsConfigDict(env_prefix="DB_")
+
+    @property
+    def url(self) -> str:
+        return f'postgresql+asyncpg://{self.user}:{self.password}@{self.host}:{self.port}/{self.name}'
+
+
+class Settings(BaseSettings):
+    db: DatabaseSettings = DatabaseSettings()   # noqa
+    encoding: str = 'utf-8'
 
     model_config = SettingsConfigDict(
         env_file=Path(__file__).parent.parent / '.env',

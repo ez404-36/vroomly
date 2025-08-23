@@ -1,61 +1,61 @@
+networks:
+  default:
+    name: vroomly
+    external: true
+
+volumes:
+  vroomly-postgres-data:
+    external: true
+
+
 services:
   db:
     image: postgres:17.4
     restart: always
-    env_file:
-      - .env
+    env_file: .env
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:
-      - ${DB_PORT:-5432}:5432
+      - ${EXPOSE_DB_PORT:-5432}:5432
     volumes:
-      - postgres_data:/var/lib/postgresql/default_data
+      - vroomly-postgres-data:/var/lib/postgresql/data:rw
     networks:
-      - app-network
+      default:
+        aliases: [ vroomly-db ]
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 1G
 
   backend:
     build: .
-    env_file:
-      - .env
+    env_file: .env
     volumes:
-      - .:/app
+      - &app .:/app:rw
     ports:
       - ${BACKEND_PORT:-8000}:8000
     depends_on:
       - db
-    environment:
-      - ENVIRONMENT=development
-      - PYTHONUNBUFFERED=1
-      - DB_HOST=db
-      - DB_PORT=5432
     restart: unless-stopped
-    networks:
-      - app-network
     profiles: [ vr ]
+    networks:
+      default:
+        aliases: [ vroomly-backend ]
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 1G
 
   migrations:
     build: .
     command: alembic upgrade head
-    env_file:
-      - .env
+    env_file: .env
     volumes:
-      - .:/app
+      - *app
     depends_on:
       - db
-    environment:
-      - ENVIRONMENT=development
-      - PYTHONUNBUFFERED=1
-      - DB_HOST=db
-      - DB_PORT=5432
     restart: no
-    networks:
-      - app-network
-
-
-volumes:
-  postgres_data:
-
-networks:
-  app-network:
-    driver: bridge
+    profiles: [ vr ]
