@@ -1,4 +1,4 @@
-country,brand
+country,name,original_name
 DZ,SNVI
 AR,ASA Aluminium Body
 AR,Zanella
@@ -10,23 +10,25 @@ AU,Bolwell
 AU,Custom Bus
 AU,Elfin Sports Cars
 AU,Minetti Sports Cars
+AU,Holden
+AU,HSV
 AU,Nota
 AU,P&D Coachworks
 AU,Volgren
 AT,KTM
-AT,Magna Steyr
+AT,Steyr
 AT,Rosenbauer
 AT,Tushek & Spigel
 AZ,AzSamand
 AZ,Ganja Auto Plant
 AZ,Nakhchivan Automobile Plant
-BY,BelAZ
+BY,BelAZ,БелАЗ
 BY,BelGee
 BY,Belkommunmash
-BY,MAZ
-BY,MoAZ
-BY,MZKT
-BY,Neman
+BY,MAZ,МАЗ
+BY,MoAZ,МоАЗ
+BY,MZKT,МЗКТ
+BY,Neman,Неман
 BE,Edran
 BE,Gillet
 BE,Van Hool
@@ -56,68 +58,123 @@ CA,Prevost
 CA,Terradyne
 CA,Vicinity Motor Corp.
 CN,Arcfox
+CN,Avatr
 CN,Aion
+CN,Aito
 CN,Apex Motors
 CN,Ankai
+CN,Aiways
 CN,BAIC
+CN,Bio Auto
 CN,Bonluck Bus
 CN,Baojun
+CN,Blaval
+CN,Byvin
 CN,BAW
 CN,Bestune
 CN,Brilliance
 CN,BYD
 CN,Changan
+CN,Chana
 CN,Changhe
+CN,Ciimo
+CN,Changfeng
+CN,Cowin
 CN,Chery
 CN,Dongfeng
+CN,Dadi
+CN,Dayun
 CN,Denza
 CN,Englon
+CN,E-Car
 CN,Exeed
 CN,EuAuto
 CN,Everus
+CN,Enovate (Enoreve)
 CN,FAW
 CN,Hongqi
 CN,Foton
+CN,Fuqi
 CN,Firefly
+CN,Forthing
 CN,Fangchengbao
 CN,GAC
 CN,Geely
+CN,Gonow
 CN,Great Wall
 CN,Gyon
 CN,Henrey Automobile
 CN,Hafei
 CN,Haima
 CN,Hanteng
+CN,Hedmos
 CN,Hawtai
 CN,Haval
 CN,Heibao
+CN,Hycan
+CN,Huaihai (Hoann)
+CN,HuangHai
+CN,Huazi
 CN,HiPhi
 CN,Higer
-CN,Hozon Auto
+CN,Hozon
 CN,Jetour
 CN,Jiangling
 CN,JMEV
 CN,Jinbei
 CN,Jonway
+CN,Jaecoo
+CN,Jiangnan
+CN,JMC
+CN,Jidu
 CN,JAC
 CN,Jetta
 CN,JuneYao Auto
 CN,Karry
 CN,Kandi
+CN,Kaiyi
+CN,Kawei
+CN,Knewstar
+CN,KYC
 CN,King Long
 CN,ORA
+CN,Omoda
+CN,Orange
+CN,Oshan
+CN,Oting
+CN,Polar Stone (Jishi)
+CN,Punk
+CN,iCar
+CN,iCaur
+CN,IM Motors (Zhiji)
 CN,Landwind
 CN,Leahead
-CN,Li Auto
+CN,Lixiang
 CN,Leapmotor
-CN,Lynk&Co
+CN,Lynk & Co
+CN,Letin
+CN,Lifan
+CN,Livan
+CN,Lingxi
+CN,Logem
+CN,Luxeed
+CN,Liebao Motor
 CN,Maextro
 CN,Mudan Auto
 CN,Maxus
+CN,Maple
+CN,M-Hero
 CN,Nio
+CN,Nevo
+CN,Nordcross
 CN,Qoros
+CN,Qiantu
+CN,Qingling
 CN,Roewe
 CN,Ranz
+CN,Radar
+CN,Rox
+CN,Rising Auto
 CN,SAIC
 CN,Sehol
 CN,Soueast
@@ -125,31 +182,49 @@ CN,Spotlight Automotive
 CN,Stelato
 CN,Sunlong Bus
 CN,Skyworth Auto
+CN,Seres
+CN,Shanghai Maple
+CN,ShuangHuan
+CN,Skywell
+CN,SWM
+CN,Skyworth
 CN,Trumpchi
+CN,Tank
+CN,Tianma
+CN,Tianye
 CN,Wuling
+CN,Weltmeister
 CN,Voyah
+CN,Venucia
+CN,VGV
 CN,Xpeng
-CN,Xiaomi Auto
+CN,Xiaomi
+CN,Xin Kai
 CN,Yudo Auto
 CN,Yutong
 CN,Zhongtong Bus
 CN,Zinoro
 CN,Zotye
 CN,Zeekr
+CN,Zhido
+CN,ZX
 CN,WEY
 CN,Xiamen Golden Dragon Bus
 CN,Yangwang
+CN,Yema
+CN,Yipai
 CN,ZX Auto
 CO,Busscar de Colombia
 CO,Sofasa
 HR,DOK-ING
 HR,Rimac
-CZ,Škoda
+CZ,Skoda,Škoda
 CZ,Tatra
 CZ,Avia
 CZ,Kaipan
 CZ,MTX
 CZ,Praga
+CZ,Gordon
 DK,Hydrema
 DK,Zenvo
 EC,Aymesa
@@ -163,7 +238,7 @@ FR,Alpine
 FR,Auverland
 FR,Bolloré
 FR,Bugatti
-FR,Citroën
+FR,Citroen,Citroën
 FR,Delage
 FR,De La Chapelle
 FR,DS
@@ -172,7 +247,9 @@ FR,Heuliez Bus
 FR,Hopium
 FR,Ligier
 FR,Microcar
-FR,Méga
+FR,Mobilize
+FR,Matra
+FR,Mega,Méga
 FR,Navya SAS
 FR,Peugeot
 FR,PGO
@@ -180,33 +257,49 @@ FR,Power Vehicle Innovation
 FR,Renault
 FR,Renault Trucks
 FR,SECMA
+FR,Simca
 FR,Venturi
+FR,Facel Vega
 GE,KAZ
-DE,BMW
+DE,Adler
+DE,Auto Union
 DE,Alpina
-DE,BMW I
-DE,BMW M
+DE,BMW
+DE,Borgward
 DE,Mercedes-Benz
-DE,Daimler Truck
+DE,Messerschmitt
+DE,BharatBenz
+DE,Brabus
+DE,FUSO
 DE,Setra
 DE,Smart
+DE,Trabant
 DE,Volkswagen
 DE,Audi
 DE,MAN
 DE,Porsche
+DE,Puch
 DE,Apollo
 DE,Artega
 DE,Bitter
 DE,Elaris
-DE,e.GO Mobile
+DE,e.GO
 DE,Isdera
 DE,Lotec
 DE,Multicar
+DE,Maybach
 DE,Neoplan
+DE,DKW
 DE,Opel
+DE,Goggomobil
+DE,Hanomag
+DE,Heinkel
+DE,Horch
 DE,Ruf
 DE,Sono
 DE,Wiesmann
+DE,Wanderer
+DE,Wartburg
 GT,Rosmo
 GH,Kantanka
 GR,ELVO
@@ -217,7 +310,7 @@ GR,Namco
 GR,Replicar Hellas
 GR,Temax
 HU,Ikarus
-HU,Rába
+HU,Raba,Rába
 IS,Arctic Trucks
 IN,Ajanta Group
 IN,Ashok Leyland
@@ -235,6 +328,7 @@ IN,Ola Electric
 IN,Omega Seiki Mobility
 IN,Tara International
 IN,Tata
+IN,Premier
 ID,Astra International
 ID,Esemka
 ID,Indomobil Group
@@ -250,21 +344,26 @@ IR,Morattab
 IR,SAIPA
 IR,Zagross Khodro
 IL,City Transformer
-IL,Ha'argaz
+IL,Haargaz,Ha'argaz
 IL,Merkavim
 IL,REE Automotive
 IL,Tomcar
 IL,Zibar
 IT,Abarth
-IT,Alkè
+IT,Autobianchi
+IT,Alke,Alkè
 IT,Astra
 IT,Alfa Romeo
 IT,Automobili Estrema
 IT,Bremach
+IT,Bertone
 IT,Casalini
+IT,Cizeta
 IT,Covini
+IT,Coggiola
 IT,CTS
-IT,DR Motor
+IT,De Tomaso
+IT,DR
 IT,Dallara
 IT,Fiat
 IT,Ferrari
@@ -277,10 +376,15 @@ IT,Maserati
 IT,M.A.T
 IT,Mazzanti
 IT,Minardi
+IT,Osca
 IT,Pagani
 IT,Piaggio
 IT,Pininfarina
+IT,Innocenti
 IT,SCV Srl
+IT,Tazzari
+IT,Qvale
+IT,Rayton Fissore
 IT,XEV
 IT,Zagato
 JP,Acura
@@ -300,6 +404,7 @@ JP,Toyota
 JP,UD Trucks
 JP,Aspark
 JP,Dome
+JP,Datsun
 JP,GLM
 JP,J-Bus
 JP,Mitsuoka
@@ -307,6 +412,7 @@ JP,NMKV
 JP,Tommykaira
 KE,Cooper Motor Corporation
 KE,Mobius Motors
+LV,Baltijas Dzips
 LV,Dartz
 LV,Drive eO
 LB,EV Electra
@@ -346,8 +452,9 @@ NZ,Trekka
 NG,Innoson Motors
 KP,Pyeonghwa Motors
 KP,Sungri Motors
-KP,Samhung Motors
+KP,Samsung
 MK,FAS Sanos
+NO,Think
 PK,Sazgar
 PK,ADAM
 PK,United Auto Industries
@@ -358,7 +465,8 @@ PH,Sarao Motors
 PL,AMZ
 PL,Arrinera
 PL,Autosan
-PL,FSO Syrena in Kutno
+PL,FSO
+PL,FSR
 PL,Jelcz
 PL,Melex
 PL,Solaris
@@ -367,6 +475,7 @@ PL,Ursus
 PT,MOBIpeople
 PT,Salvador Caetano
 PT,Vinci
+RO,Aro
 RO,Dacia
 RO,Astra Bus
 RO,C&I Eurotrans XXI
@@ -374,45 +483,72 @@ RO,El Car
 RO,Grivița
 RO,ROMAN
 RU,Aurus
-RU,Amberavto
+RU,Apal
+RU,Atom,Атом
+RU,Avtokam,Автокам
+RU,Amberavto,Амберавто
 RU,Ambertruck
 RU,Ambervan
-RU,Lada
-RU,VAZ
-RU,Oka
-RU,Sputnik
-RU,GAZ
-RU,KAvZ
-RU,LiAZ
-RU,PAZ
-RU,KAMAZ
-RU,NefAZ
+RU,Bilenkin
+RU,Lada,ЛАДА
+RU,VAZ,ВАЗ
+RU,Volga,Волга
+RU,Vortex
+RU,Oka,ОКА
+RU,Sputnik,Спутник
+RU,SMZ,СМЗ
+RU,Derways
+RU,DW Hower
+RU,GAZ,ГАЗ
+RU,KAvZ,КАвЗ
+RU,LiAZ,ЛиАЗ
+RU,PAZ,ПАЗ
+RU,Promo Auto,Спортивные авто и реплики
+RU,IG,Иж
+RU,KAMAZ,КАМАЗ
+RU,Kombat,Комбат
+RU,NefAZ,НефАЗ
 RU,Kombat Armouring
-RU,Moskvich
+RU,Kanonir,Канонир
+RU,Moskvich,Москвич
+RU,Rossa
+RU,Russo-Balt,Руссо-Балт
 RU,Sollers
-RU,UAZ
-RU,TREKOL
-RU,UralAZ
+RU,Eonyx
+RU,Flanker
+RU,Evolute
+RU,E-Mobil,Ё-мобиль
+RU,Doninvest
+RU,UAZ,УАЗ
+RU,TREKOL,ТРЭКОЛ
+RU,Tenet
+RU,TagAZ,ТагАЗ
+RU,UralAZ,УралАЗ
 RU,Volgabus
-RU,ZIL
-RU,ZiS
+RU,ZIL,ЗИЛ
+RU,ZiS,ЗиС
+RU,Marussia
+RU,Xcite
 SA,KSU Gazal-1
 SA,Ceer Motors
 RS,FAP
 RS,FAS
 RS,Ikarbus
 RS,IMT
+RS,Zastava
 SI,Adria Mobil
 SI,Revoz
 SI,TAM-Europe
 ZA,Advanced Automotive Design
 ZA,Perana Performance Group
+KR,Asia
 KR,CT&T United
+KR,Daewoo
 KR,Daewoo Bus
 KR,Genesis
 KR,Gwangju Global
 KR,Hyundai
-KR,KGM Commercial
+KR,KGM
 KR,Kia
 KR,Renault Korea
 KR,Spirra
@@ -433,6 +569,7 @@ ES,Irizar
 ES,Sunsundegui
 ES,SEAT
 ES,Spania
+ES,Santana
 ES,Tauro
 ES,Tramontana
 ES,Uro
@@ -443,9 +580,11 @@ SE,Koenigsegg
 SE,Polestar
 SE,Scania
 SE,Volvo
+SE,Saab
 CH,Micro Mobility Systems
+CH,Minelli
 CH,Leblanc
-CH,Piëch Automotive
+CH,Piech Automotive,Piëch Automotive
 CH,Rinspeed
 CH,Sbarro
 TW,CMC
@@ -456,7 +595,7 @@ TW,Luxgen
 TW,Thunder Power
 TW,Yulon
 TH,Bangchan
-TH,Thai Rung
+TH,Thairung
 TN,Wallyscar
 TR,BMC
 TR,Erkunt
@@ -473,59 +612,101 @@ UA,Bogdan
 UA,Boryspil Bus Factory
 UA,Chernihiv Bus Factory
 UA,Eurocar
-UA,KrAZ
+UA,KrAZ,КрАЗ
 UA,Sherp
-UA,ZAZ
+UA,ZAZ,ЗАЗ
+UA,LuAZ,ЛуАЗ
 AE,NIMR
 AE,STREIT Group
 AE,W Motors
+AE,Sandstorm
 GB,AC
 GB,Alexander Dennis
 GB,Apex
+GB,Austin
+GB,Austin Healey
 GB,Ariel
 GB,Aston Martin
 GB,Atalanta
 GB,BAC
 GB,Bentley
+GB,Bristol
 GB,Bowler
 GB,Caterham
+GB,Carbodies
+GB,Daimler
 GB,David Brown
 GB,Elemental Cars
 GB,Ginetta
-GB,Gordon Murray Automotive
+GB,GMA
 GB,GKD Sports
+GB,GP
 GB,Grinnall
 GB,Ineos
 GB,Jaguar
 GB,Lagonda
+GB,LTI
 GB,London EV Company
 GB,Land Rover
 GB,Lister
 GB,Lotus
+GB,LEVC
+GB,Jensen
 GB,Munro Vehicles
+GB,Marlin
+GB,Marcos
 GB,McLaren
+GB,Metrocab
+GB,Morris
 GB,Mcmutry Automotive
 GB,MG
 GB,Mini
 GB,Morgan
 GB,Noble
+GB,Humber
 GB,Radical Sportscars
 GB,Rolls-Royce
 GB,Ronart
+GB,Radford
+GB,Rover
+GB,Reliant
 GB,Switch Mobility
+GB,Spectre
+GB,Invicta
 GB,TVR
-GB,Ultima Sports
+GB,Talbot
+GB,Triumph
+GB,Ultima
+GB,Westfield
 GB,Vauxhall
+GB,Zenos
+US,AMC
+US,Auburn
 US,General Motors
 US,Buick
+US,Batmobile
 US,Cadillac
 US,Chevrolet
+US,Coda
+US,Cord
 US,GMC
+US,Geo
+US,Saturn
 US,Stellantis
+US,Scion
+US,Scout
+US,Sears
+US,Studebaker
 US,Chrysler
 US,Dodge
+US,DeSoto
+US,Deco Rides
+US,Eagle
+US,Excalibur
+US,Eagle Cars
 US,Jeep
 US,Ram
+US,Renaissance
 US,Ford Motor
 US,Ford
 US,Lincoln
@@ -552,11 +733,15 @@ US,Falcon Motorsports
 US,Factory Five Racing
 US,Faraday
 US,Fisker
+US,Franklin
 US,Freightliner
 US,Gillig
 US,Google
 US,GEM
 US,Hennessey
+US,Hudson
+US,Hummer
+US,Hyperion
 US,Harley Davidson
 US,International Harvester
 US,IC Bus
@@ -569,15 +754,24 @@ US,Mullen
 US,Mack
 US,Myers
 US,MCI
+US,Mercury
+US,Merkur
+US,Nash
 US,Navistar
 US,Nikola
 US,Oshkosh
+US,Oldsmobile
+US,Overland
+US,Packard
 US,Panoz
 US,Phoenix Motorcars
 US,Peterbilt
 US,Pierce
 US,Polaris
 US,Proterra
+US,Pierce-Arrow
+US,Plymouth
+US,Pontiac
 US,RAESR
 US,Rezvani
 US,Rivian
@@ -595,13 +789,16 @@ US,Telo Trucks
 US,Trion Supercars
 US,VLF
 US,Vanderhall Motor Works
+US,Vector
 US,Western Star
 US,Workhorse
-US,Xos, Inc.
+US,Willys
+US,Xos
 UY,Effa
 UZ,MAN Auto-Uzbekistan
 UZ,UzAuto Motors
 UZ,SAZ
+UZ,Ravon
 VE,Venirauto
 VN,Mekong
 VN,SAMCO

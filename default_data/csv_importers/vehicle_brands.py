@@ -8,5 +8,4 @@ class ImportVehicleBrandsCSV(ImportFromCSVBase):
     filename = 'vehicle_brand.csv'
     mapper = {
         'country': 'country_id',
-        'brand': 'name',
     }

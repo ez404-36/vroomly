@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Iterable
 
 from sqlalchemy import select
 
@@ -14,14 +14,13 @@ class ImportVehicleModelsCSV(ImportFromCSVBase):
     filename = 'vehicle_model.csv'
     mapper = {
         'brand': 'brands:brand_id',
-        'model': 'name',
     }
     default_data = {'vehicle_type': VehicleType.CAR}
 
     async def prefetch_data(self) -> dict[str, dict[Any, Any]]:
-        brands = await session_fetch_all(self.session, select(VehicleBrand))
+        brands: Iterable[VehicleBrand] = await session_fetch_all(self.session, select(VehicleBrand))
         mapped_brands = {
-            brand.name.upper().replace(' ', '_'): brand for brand in brands
+            brand.code: brand.id for brand in brands
         }
 
         return {

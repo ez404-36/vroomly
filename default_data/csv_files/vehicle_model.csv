@@ -113,7 +113,7 @@ ALPINE,Alpine,FR,A310
 ALPINE,Alpine,FR,A390
 ALPINE,Alpine,FR,A610
 ALPINE,Alpine,FR,GTA
-AMBERAUTO,Амберавто,RU,А5
+AMBERAVTO,Амберавто,RU,А5
 AMBERTRUCK,Ambertruck,RU,Work
 AMC,AMC,US,Eagle
 AMC,AMC,US,Gremlin
@@ -300,7 +300,7 @@ BAIC,BAIC,CN,X55
 BAIC,BAIC,CN,X7
 BAIC,BAIC,CN,X75
 BAJAJ,Bajaj,IN,Qute
-BALTIJAS_DZIPS,Baltijas Dzips,Латвия,BD-1322
+BALTIJAS_DZIPS,Baltijas Dzips,LV,BD-1322
 BAOJUN,Baojun,CN,510
 BAOJUN,Baojun,CN,530
 BAOJUN,Baojun,CN,E100
@@ -712,16 +712,16 @@ CHERY,Chery,CN,Tiggo 8 Pro Plug-in Hybrid
 CHERY,Chery,CN,Tiggo 9
 CHERY,Chery,CN,Very (A13)
 CHERY,Chery,CN,Windcloud (A11)
-CHERYEXEED,Exeed,CN,Sterra ES
-CHERYEXEED,Exeed,CN,Exlantix ES
-CHERYEXEED,Exeed,CN,Exlantix ET
-CHERYEXEED,Exeed,CN,LX
-CHERYEXEED,Exeed,CN,RX
-CHERYEXEED,Exeed,CN,Sterra ET
-CHERYEXEED,Exeed,CN,TX
-CHERYEXEED,Exeed,CN,TXL
-CHERYEXEED,Exeed,CN,VX
-CHERYEXEED,Exeed,CN,Yaoguang
+EXEED,Exeed,CN,Sterra ES
+EXEED,Exeed,CN,Exlantix ES
+EXEED,Exeed,CN,Exlantix ET
+EXEED,Exeed,CN,LX
+EXEED,Exeed,CN,RX
+EXEED,Exeed,CN,Sterra ET
+EXEED,Exeed,CN,TX
+EXEED,Exeed,CN,TXL
+EXEED,Exeed,CN,VX
+EXEED,Exeed,CN,Yaoguang
 CHEVROLET,Chevrolet,US,3000-Series
 CHEVROLET,Chevrolet,US,Alero
 CHEVROLET,Chevrolet,US,Apache
@@ -1207,8 +1207,8 @@ EAGLE,Eagle,US,Talon
 EAGLE,Eagle,US,Vision
 EAGLE,Eagle,US,Vista
 EAGLE_CARS,Eagle Cars,GB,SS
-ENOVATE,Enovate (Enoreve),CN,ME5
-ENOVATE,Enovate (Enoreve),CN,ME7
+ENOVATE_ENOREVE,Enovate (Enoreve),CN,ME5
+ENOVATE_ENOREVE,Enovate (Enoreve),CN,ME7
 EONYX,Eonyx,RU,M2
 EVERUS,Everus,CN,VE-1
 EVOLUTE,Evolute,RU,i-JET
@@ -1219,8 +1219,8 @@ EVOLUTE,Evolute,RU,i-SPACE
 EVOLUTE,Evolute,RU,i-VAN
 EXCALIBUR,Excalibur,US,Series IV
 EXCALIBUR,Excalibur,US,Series V
-E_CAR,E-Car,CN,GD04B
-E_MOBIL,Ё-мобиль,RU,Ё-Кроссовер
+E-CAR,E-Car,CN,GD04B
+E-MOBIL,Ё-мобиль,RU,Ё-Кроссовер
 FACEL_VEGA,Facel Vega,FR,FV
 FAW,FAW,CN,Bestune B70
 FAW,FAW,CN,Bestune B70S
@@ -1481,14 +1481,14 @@ FOTON,Foton,CN,Tunland G9
 FOTON,Foton,CN,Tunland V7
 FOTON,Foton,CN,Tunland V9
 FRANKLIN,Franklin,US,Series 15
-FSO,FSO,Польша,125p
-FSO,FSO,Польша,126p
-FSO,FSO,Польша,127p
-FSO,FSO,Польша,132p
-FSO,FSO,Польша,Lanos
-FSO,FSO,Польша,Polonez
-FSO,FSO,Польша,Warszawa
-FSR,FSR,Польша,Tarpan
+FSO,FSO,PL,125p
+FSO,FSO,PL,126p
+FSO,FSO,PL,127p
+FSO,FSO,PL,132p
+FSO,FSO,PL,Lanos
+FSO,FSO,PL,Polonez
+FSO,FSO,PL,Warszawa
+FSR,FSR,PL,Tarpan
 FUQI,Fuqi,CN,6500 (Land King)
 GAC,GAC,CN,Empow
 GAC,GAC,CN,GN8
@@ -1727,7 +1727,7 @@ HINDUSTAN,Hindustan,IN,Contessa
 HIPHI,HiPhi,CN,X
 HIPHI,HiPhi,CN,Y
 HIPHI,HiPhi,CN,Z
-HISPANO_SUIZA,Hispano-Suiza,ES,K6
+HISPANO-SUIZA,Hispano-Suiza,ES,K6
 HOLDEN,Holden,AU,Apollo
 HOLDEN,Holden,AU,Astra
 HOLDEN,Holden,AU,Barina
@@ -1987,10 +1987,10 @@ IG,Иж,RU,2715
 IG,Иж,RU,2717
 IG,Иж,RU,27175
 IG,Иж,RU,Москвич-412
-IM_MOTORS,IM Motors (Zhiji),CN,L6
-IM_MOTORS,IM Motors (Zhiji),CN,L7
-IM_MOTORS,IM Motors (Zhiji),CN,LS6
-IM_MOTORS,IM Motors (Zhiji),CN,LS7
+IM_MOTORS_ZHIJI,IM Motors (Zhiji),CN,L6
+IM_MOTORS_ZHIJI,IM Motors (Zhiji),CN,L7
+IM_MOTORS_ZHIJI,IM Motors (Zhiji),CN,LS6
+IM_MOTORS_ZHIJI,IM Motors (Zhiji),CN,LS7
 INEOS,Ineos,GB,Grenadier
 INFINITI,Infiniti,JP,EX
 INFINITI,Infiniti,JP,FX
@@ -2016,8 +2016,8 @@ INFINITI,Infiniti,JP,QX80
 INNOCENTI,Innocenti,IT,Elba
 INNOCENTI,Innocenti,IT,Mille
 INNOCENTI,Innocenti,IT,Mini
-INTERNATIONAL,International Harvester,US,Scout
-INTERNATIONAL,International Harvester,US,Travelall
+INTERNATIONAL_HARVESTER,International Harvester,US,Scout
+INTERNATIONAL_HARVESTER,International Harvester,US,Travelall
 INVICTA,Invicta,GB,S1
 IRAN_KHODRO,Iran Khodro,IR,Arisun
 IRAN_KHODRO,Iran Khodro,IR,Dena
@@ -2389,7 +2389,7 @@ LEXUS,Lexus,JP,RZ
 LEXUS,Lexus,JP,SC
 LEXUS,Lexus,JP,TX
 LEXUS,Lexus,JP,UX
-LIEBAO,Liebao Motor,CN,Leopard
+LIEBAO_MOTOR,Liebao Motor,CN,Leopard
 LIFAN,Lifan,CN,650 EV
 LIFAN,Lifan,CN,Breez (520)
 LIFAN,Lifan,CN,Cebrium (720)
@@ -2472,17 +2472,17 @@ LUXGEN,Luxgen,TW,Luxgen7 SUV
 LUXGEN,Luxgen,TW,Luxgen5
 LUXGEN,Luxgen,TW,U6 Turbo
 LUXGEN,Luxgen,TW,U7 Turbo
-LYNK_CO,Lynk & Co,CN,1
-LYNK_CO,Lynk & Co,CN,2
-LYNK_CO,Lynk & Co,CN,3
-LYNK_CO,Lynk & Co,CN,5
-LYNK_CO,Lynk & Co,CN,6
-LYNK_CO,Lynk & Co,CN,7
-LYNK_CO,Lynk & Co,CN,8
-LYNK_CO,Lynk & Co,CN,9
-LYNK_CO,Lynk & Co,CN,900
-LYNK_CO,Lynk & Co,CN,Z10
-LYNK_CO,Lynk & Co,CN,Z20
+LYNK_AND_CO,Lynk & Co,CN,1
+LYNK_AND_CO,Lynk & Co,CN,2
+LYNK_AND_CO,Lynk & Co,CN,3
+LYNK_AND_CO,Lynk & Co,CN,5
+LYNK_AND_CO,Lynk & Co,CN,6
+LYNK_AND_CO,Lynk & Co,CN,7
+LYNK_AND_CO,Lynk & Co,CN,8
+LYNK_AND_CO,Lynk & Co,CN,9
+LYNK_AND_CO,Lynk & Co,CN,900
+LYNK_AND_CO,Lynk & Co,CN,Z10
+LYNK_AND_CO,Lynk & Co,CN,Z20
 MAEXTRO,Maextro,CN,S800
 MAHINDRA,Mahindra,IN,Armada
 MAHINDRA,Mahindra,IN,Bolero
@@ -2680,115 +2680,115 @@ MCLAREN,McLaren,GB,W1
 MEGA,Mega,FR,Club
 MEGA,Mega,FR,Monte Carlo
 MEGA,Mega,FR,Track
-MERCEDES,Mercedes-Benz,DE,190 SL
-MERCEDES,Mercedes-Benz,DE,220 (W187)
-MERCEDES,Mercedes-Benz,DE,300 SLR
-MERCEDES,Mercedes-Benz,DE,GLC Coupe AMG
-MERCEDES,Mercedes-Benz,DE,AMG GT
-MERCEDES,Mercedes-Benz,DE,AMG ONE
-MERCEDES,Mercedes-Benz,DE,AMG PureSpeed
-MERCEDES,Mercedes-Benz,DE,A-Класс
-MERCEDES,Mercedes-Benz,DE,A-Класс AMG
-MERCEDES,Mercedes-Benz,DE,B-Класс
-MERCEDES,Mercedes-Benz,DE,Citan
-MERCEDES,Mercedes-Benz,DE,CLA
-MERCEDES,Mercedes-Benz,DE,CLA AMG
-MERCEDES,Mercedes-Benz,DE,CLC-Класс
-MERCEDES,Mercedes-Benz,DE,CLE
-MERCEDES,Mercedes-Benz,DE,CLE AMG
-MERCEDES,Mercedes-Benz,DE,CLK AMG GTR
-MERCEDES,Mercedes-Benz,DE,CLK-Класс
-MERCEDES,Mercedes-Benz,DE,CLK-Класс AMG
-MERCEDES,Mercedes-Benz,DE,CLS
-MERCEDES,Mercedes-Benz,DE,CLS AMG
-MERCEDES,Mercedes-Benz,DE,CL-Класс
-MERCEDES,Mercedes-Benz,DE,CL-Класс AMG
-MERCEDES,Mercedes-Benz,DE,C-Класс
-MERCEDES,Mercedes-Benz,DE,C-Класс AMG
-MERCEDES,Mercedes-Benz,DE,EQA
-MERCEDES,Mercedes-Benz,DE,EQB
-MERCEDES,Mercedes-Benz,DE,EQC
-MERCEDES,Mercedes-Benz,DE,EQE
-MERCEDES,Mercedes-Benz,DE,EQE AMG
-MERCEDES,Mercedes-Benz,DE,EQE SUV
-MERCEDES,Mercedes-Benz,DE,EQE SUV AMG
-MERCEDES,Mercedes-Benz,DE,EQS
-MERCEDES,Mercedes-Benz,DE,EQS AMG
-MERCEDES,Mercedes-Benz,DE,EQS SUV
-MERCEDES,Mercedes-Benz,DE,EQT
-MERCEDES,Mercedes-Benz,DE,EQV
-MERCEDES,Mercedes-Benz,DE,E-Класс
-MERCEDES,Mercedes-Benz,DE,E-Класс AMG
-MERCEDES,Mercedes-Benz,DE,GLA
-MERCEDES,Mercedes-Benz,DE,GLA AMG
-MERCEDES,Mercedes-Benz,DE,GLB AMG
-MERCEDES,Mercedes-Benz,DE,GLB
-MERCEDES,Mercedes-Benz,DE,GLC Coupe
-MERCEDES,Mercedes-Benz,DE,GLC
-MERCEDES,Mercedes-Benz,DE,GLC AMG
-MERCEDES,Mercedes-Benz,DE,GLE
-MERCEDES,Mercedes-Benz,DE,GLE AMG
-MERCEDES,Mercedes-Benz,DE,GLE Coupe
-MERCEDES,Mercedes-Benz,DE,GLE Coupe AMG
-MERCEDES,Mercedes-Benz,DE,GLK-Класс
-MERCEDES,Mercedes-Benz,DE,GLS
-MERCEDES,Mercedes-Benz,DE,GLS AMG
-MERCEDES,Mercedes-Benz,DE,GL-Класс
-MERCEDES,Mercedes-Benz,DE,GL-Класс AMG
-MERCEDES,Mercedes-Benz,DE,G-Класс
-MERCEDES,Mercedes-Benz,DE,G-Класс AMG
-MERCEDES,Mercedes-Benz,DE,G-Класс AMG 6x6
-MERCEDES,Mercedes-Benz,DE,Marco Polo
-MERCEDES,Mercedes-Benz,DE,Maybach EQS SUV
-MERCEDES,Mercedes-Benz,DE,Maybach GLS
-MERCEDES,Mercedes-Benz,DE,Maybach G 650 Landaulet
-MERCEDES,Mercedes-Benz,DE,Maybach SL
-MERCEDES,Mercedes-Benz,DE,Metris
-MERCEDES,Mercedes-Benz,DE,M-Класс
-MERCEDES,Mercedes-Benz,DE,M-Класс AMG
-MERCEDES,Mercedes-Benz,DE,R-Класс
-MERCEDES,Mercedes-Benz,DE,R-Класс AMG
-MERCEDES,Mercedes-Benz,DE,Simplex
-MERCEDES,Mercedes-Benz,DE,SLC
-MERCEDES,Mercedes-Benz,DE,SLC AMG
-MERCEDES,Mercedes-Benz,DE,SLK-Класс
-MERCEDES,Mercedes-Benz,DE,SLK-Класс AMG
-MERCEDES,Mercedes-Benz,DE,SLR McLaren
-MERCEDES,Mercedes-Benz,DE,SLS AMG
-MERCEDES,Mercedes-Benz,DE,SL-Класс
-MERCEDES,Mercedes-Benz,DE,SL-Класс AMG
-MERCEDES,Mercedes-Benz,DE,Maybach S-Класс
-MERCEDES,Mercedes-Benz,DE,S-Класс
-MERCEDES,Mercedes-Benz,DE,S-Класс AMG
-MERCEDES,Mercedes-Benz,DE,T-Класс
-MERCEDES,Mercedes-Benz,DE,Vaneo
-MERCEDES,Mercedes-Benz,DE,Viano
-MERCEDES,Mercedes-Benz,DE,Vito
-MERCEDES,Mercedes-Benz,DE,V-Класс
-MERCEDES,Mercedes-Benz,DE,W100
-MERCEDES,Mercedes-Benz,DE,W105
-MERCEDES,Mercedes-Benz,DE,W108
-MERCEDES,Mercedes-Benz,DE,W110
-MERCEDES,Mercedes-Benz,DE,W111
-MERCEDES,Mercedes-Benz,DE,W114
-MERCEDES,Mercedes-Benz,DE,W115
-MERCEDES,Mercedes-Benz,DE,W120
-MERCEDES,Mercedes-Benz,DE,W121
-MERCEDES,Mercedes-Benz,DE,W123
-MERCEDES,Mercedes-Benz,DE,W124
-MERCEDES,Mercedes-Benz,DE,W128
-MERCEDES,Mercedes-Benz,DE,W136
-MERCEDES,Mercedes-Benz,DE,W138
-MERCEDES,Mercedes-Benz,DE,W142
-MERCEDES,Mercedes-Benz,DE,W180
-MERCEDES,Mercedes-Benz,DE,W186
-MERCEDES,Mercedes-Benz,DE,W188
-MERCEDES,Mercedes-Benz,DE,W189
-MERCEDES,Mercedes-Benz,DE,W191
-MERCEDES,Mercedes-Benz,DE,190 (W201)
-MERCEDES,Mercedes-Benz,DE,W21
-MERCEDES,Mercedes-Benz,DE,W29
-MERCEDES,Mercedes-Benz,DE,X-Класс
+MERCEDES-BENZ,Mercedes-Benz,DE,190 SL
+MERCEDES-BENZ,Mercedes-Benz,DE,220 (W187)
+MERCEDES-BENZ,Mercedes-Benz,DE,300 SLR
+MERCEDES-BENZ,Mercedes-Benz,DE,GLC Coupe AMG
+MERCEDES-BENZ,Mercedes-Benz,DE,AMG GT
+MERCEDES-BENZ,Mercedes-Benz,DE,AMG ONE
+MERCEDES-BENZ,Mercedes-Benz,DE,AMG PureSpeed
+MERCEDES-BENZ,Mercedes-Benz,DE,A-Класс
+MERCEDES-BENZ,Mercedes-Benz,DE,A-Класс AMG
+MERCEDES-BENZ,Mercedes-Benz,DE,B-Класс
+MERCEDES-BENZ,Mercedes-Benz,DE,Citan
+MERCEDES-BENZ,Mercedes-Benz,DE,CLA
+MERCEDES-BENZ,Mercedes-Benz,DE,CLA AMG
+MERCEDES-BENZ,Mercedes-Benz,DE,CLC-Класс
+MERCEDES-BENZ,Mercedes-Benz,DE,CLE
+MERCEDES-BENZ,Mercedes-Benz,DE,CLE AMG
+MERCEDES-BENZ,Mercedes-Benz,DE,CLK AMG GTR
+MERCEDES-BENZ,Mercedes-Benz,DE,CLK-Класс
+MERCEDES-BENZ,Mercedes-Benz,DE,CLK-Класс AMG
+MERCEDES-BENZ,Mercedes-Benz,DE,CLS
+MERCEDES-BENZ,Mercedes-Benz,DE,CLS AMG
+MERCEDES-BENZ,Mercedes-Benz,DE,CL-Класс
+MERCEDES-BENZ,Mercedes-Benz,DE,CL-Класс AMG
+MERCEDES-BENZ,Mercedes-Benz,DE,C-Класс
+MERCEDES-BENZ,Mercedes-Benz,DE,C-Класс AMG
+MERCEDES-BENZ,Mercedes-Benz,DE,EQA
+MERCEDES-BENZ,Mercedes-Benz,DE,EQB
+MERCEDES-BENZ,Mercedes-Benz,DE,EQC
+MERCEDES-BENZ,Mercedes-Benz,DE,EQE
+MERCEDES-BENZ,Mercedes-Benz,DE,EQE AMG
+MERCEDES-BENZ,Mercedes-Benz,DE,EQE SUV
+MERCEDES-BENZ,Mercedes-Benz,DE,EQE SUV AMG
+MERCEDES-BENZ,Mercedes-Benz,DE,EQS
+MERCEDES-BENZ,Mercedes-Benz,DE,EQS AMG
+MERCEDES-BENZ,Mercedes-Benz,DE,EQS SUV
+MERCEDES-BENZ,Mercedes-Benz,DE,EQT
+MERCEDES-BENZ,Mercedes-Benz,DE,EQV
+MERCEDES-BENZ,Mercedes-Benz,DE,E-Класс
+MERCEDES-BENZ,Mercedes-Benz,DE,E-Класс AMG
+MERCEDES-BENZ,Mercedes-Benz,DE,GLA
+MERCEDES-BENZ,Mercedes-Benz,DE,GLA AMG
+MERCEDES-BENZ,Mercedes-Benz,DE,GLB AMG
+MERCEDES-BENZ,Mercedes-Benz,DE,GLB
+MERCEDES-BENZ,Mercedes-Benz,DE,GLC Coupe
+MERCEDES-BENZ,Mercedes-Benz,DE,GLC
+MERCEDES-BENZ,Mercedes-Benz,DE,GLC AMG
+MERCEDES-BENZ,Mercedes-Benz,DE,GLE
+MERCEDES-BENZ,Mercedes-Benz,DE,GLE AMG
+MERCEDES-BENZ,Mercedes-Benz,DE,GLE Coupe
+MERCEDES-BENZ,Mercedes-Benz,DE,GLE Coupe AMG
+MERCEDES-BENZ,Mercedes-Benz,DE,GLK-Класс
+MERCEDES-BENZ,Mercedes-Benz,DE,GLS
+MERCEDES-BENZ,Mercedes-Benz,DE,GLS AMG
+MERCEDES-BENZ,Mercedes-Benz,DE,GL-Класс
+MERCEDES-BENZ,Mercedes-Benz,DE,GL-Класс AMG
+MERCEDES-BENZ,Mercedes-Benz,DE,G-Класс
+MERCEDES-BENZ,Mercedes-Benz,DE,G-Класс AMG
+MERCEDES-BENZ,Mercedes-Benz,DE,G-Класс AMG 6x6
+MERCEDES-BENZ,Mercedes-Benz,DE,Marco Polo
+MERCEDES-BENZ,Mercedes-Benz,DE,Maybach EQS SUV
+MERCEDES-BENZ,Mercedes-Benz,DE,Maybach GLS
+MERCEDES-BENZ,Mercedes-Benz,DE,Maybach G 650 Landaulet
+MERCEDES-BENZ,Mercedes-Benz,DE,Maybach SL
+MERCEDES-BENZ,Mercedes-Benz,DE,Metris
+MERCEDES-BENZ,Mercedes-Benz,DE,M-Класс
+MERCEDES-BENZ,Mercedes-Benz,DE,M-Класс AMG
+MERCEDES-BENZ,Mercedes-Benz,DE,R-Класс
+MERCEDES-BENZ,Mercedes-Benz,DE,R-Класс AMG
+MERCEDES-BENZ,Mercedes-Benz,DE,Simplex
+MERCEDES-BENZ,Mercedes-Benz,DE,SLC
+MERCEDES-BENZ,Mercedes-Benz,DE,SLC AMG
+MERCEDES-BENZ,Mercedes-Benz,DE,SLK-Класс
+MERCEDES-BENZ,Mercedes-Benz,DE,SLK-Класс AMG
+MERCEDES-BENZ,Mercedes-Benz,DE,SLR McLaren
+MERCEDES-BENZ,Mercedes-Benz,DE,SLS AMG
+MERCEDES-BENZ,Mercedes-Benz,DE,SL-Класс
+MERCEDES-BENZ,Mercedes-Benz,DE,SL-Класс AMG
+MERCEDES-BENZ,Mercedes-Benz,DE,Maybach S-Класс
+MERCEDES-BENZ,Mercedes-Benz,DE,S-Класс
+MERCEDES-BENZ,Mercedes-Benz,DE,S-Класс AMG
+MERCEDES-BENZ,Mercedes-Benz,DE,T-Класс
+MERCEDES-BENZ,Mercedes-Benz,DE,Vaneo
+MERCEDES-BENZ,Mercedes-Benz,DE,Viano
+MERCEDES-BENZ,Mercedes-Benz,DE,Vito
+MERCEDES-BENZ,Mercedes-Benz,DE,V-Класс
+MERCEDES-BENZ,Mercedes-Benz,DE,W100
+MERCEDES-BENZ,Mercedes-Benz,DE,W105
+MERCEDES-BENZ,Mercedes-Benz,DE,W108
+MERCEDES-BENZ,Mercedes-Benz,DE,W110
+MERCEDES-BENZ,Mercedes-Benz,DE,W111
+MERCEDES-BENZ,Mercedes-Benz,DE,W114
+MERCEDES-BENZ,Mercedes-Benz,DE,W115
+MERCEDES-BENZ,Mercedes-Benz,DE,W120
+MERCEDES-BENZ,Mercedes-Benz,DE,W121
+MERCEDES-BENZ,Mercedes-Benz,DE,W123
+MERCEDES-BENZ,Mercedes-Benz,DE,W124
+MERCEDES-BENZ,Mercedes-Benz,DE,W128
+MERCEDES-BENZ,Mercedes-Benz,DE,W136
+MERCEDES-BENZ,Mercedes-Benz,DE,W138
+MERCEDES-BENZ,Mercedes-Benz,DE,W142
+MERCEDES-BENZ,Mercedes-Benz,DE,W180
+MERCEDES-BENZ,Mercedes-Benz,DE,W186
+MERCEDES-BENZ,Mercedes-Benz,DE,W188
+MERCEDES-BENZ,Mercedes-Benz,DE,W189
+MERCEDES-BENZ,Mercedes-Benz,DE,W191
+MERCEDES-BENZ,Mercedes-Benz,DE,190 (W201)
+MERCEDES-BENZ,Mercedes-Benz,DE,W21
+MERCEDES-BENZ,Mercedes-Benz,DE,W29
+MERCEDES-BENZ,Mercedes-Benz,DE,X-Класс
 MERCURY,Mercury,US,Capri
 MERCURY,Mercury,US,Colony Park
 MERCURY,Mercury,US,Cougar
@@ -2979,38 +2979,38 @@ MORGAN,Morgan,GB,Roadster
 MORGAN,Morgan,GB,Supersport
 MORRIS,Morris,GB,Eight
 MORRIS,Morris,GB,Marina
-MOSCVICH,Москвич,RU,2136
-MOSCVICH,Москвич,RU,2137
-MOSCVICH,Москвич,RU,2138
-MOSCVICH,Москвич,RU,2140
-MOSCVICH,Москвич,RU,2141
-MOSCVICH,Москвич,RU,2142
-MOSCVICH,Москвич,RU,3
-MOSCVICH,Москвич,RU,3е
-MOSCVICH,Москвич,RU,400
-MOSCVICH,Москвич,RU,401
-MOSCVICH,Москвич,RU,402
-MOSCVICH,Москвич,RU,403
-MOSCVICH,Москвич,RU,407
-MOSCVICH,Москвич,RU,408
-MOSCVICH,Москвич,RU,410
-MOSCVICH,Москвич,RU,411
-MOSCVICH,Москвич,RU,412
-MOSCVICH,Москвич,RU,423
-MOSCVICH,Москвич,RU,424
-MOSCVICH,Москвич,RU,426
-MOSCVICH,Москвич,RU,427
-MOSCVICH,Москвич,RU,430
-MOSCVICH,Москвич,RU,434П
-MOSCVICH,Москвич,RU,5
-MOSCVICH,Москвич,RU,6
-MOSCVICH,Москвич,RU,8
-MOSCVICH,Москвич,RU,Дуэт
-MOSCVICH,Москвич,RU,Иван Калита
-MOSCVICH,Москвич,RU,Князь Владимир
-MOSCVICH,Москвич,RU,Святогор
-MOSCVICH,Москвич,RU,Юрий Долгорукий
-M_HERO,M-Hero,CN,I
+MOSKVICH,Москвич,RU,2136
+MOSKVICH,Москвич,RU,2137
+MOSKVICH,Москвич,RU,2138
+MOSKVICH,Москвич,RU,2140
+MOSKVICH,Москвич,RU,2141
+MOSKVICH,Москвич,RU,2142
+MOSKVICH,Москвич,RU,3
+MOSKVICH,Москвич,RU,3е
+MOSKVICH,Москвич,RU,400
+MOSKVICH,Москвич,RU,401
+MOSKVICH,Москвич,RU,402
+MOSKVICH,Москвич,RU,403
+MOSKVICH,Москвич,RU,407
+MOSKVICH,Москвич,RU,408
+MOSKVICH,Москвич,RU,410
+MOSKVICH,Москвич,RU,411
+MOSKVICH,Москвич,RU,412
+MOSKVICH,Москвич,RU,423
+MOSKVICH,Москвич,RU,424
+MOSKVICH,Москвич,RU,426
+MOSKVICH,Москвич,RU,427
+MOSKVICH,Москвич,RU,430
+MOSKVICH,Москвич,RU,434П
+MOSKVICH,Москвич,RU,5
+MOSKVICH,Москвич,RU,6
+MOSKVICH,Москвич,RU,8
+MOSKVICH,Москвич,RU,Дуэт
+MOSKVICH,Москвич,RU,Иван Калита
+MOSKVICH,Москвич,RU,Князь Владимир
+MOSKVICH,Москвич,RU,Святогор
+MOSKVICH,Москвич,RU,Юрий Долгорукий
+M-HERO,M-Hero,CN,I
 NASH,Nash,US,Ambassador
 NEVO,Nevo,CN,A05
 NEVO,Nevo,CN,A06
@@ -3341,7 +3341,7 @@ PGO,PGO,FR,Cevennes
 PGO,PGO,FR,Hemera
 PGO,PGO,FR,Speedster II
 PIAGGIO,Piaggio,IT,Porter
-PIERCE_ARROW,Pierce-Arrow,US,Twelve
+PIERCE-ARROW,Pierce-Arrow,US,Twelve
 PLYMOUTH,Plymouth,US,Acclaim
 PLYMOUTH,Plymouth,US,Barracuda
 PLYMOUTH,Plymouth,US,Breeze
@@ -3474,7 +3474,7 @@ RAVON,Ravon,UZ,R2
 RAVON,Ravon,UZ,R4
 RAYTON_FISSORE,Rayton Fissore,IT,Magnum
 RELIANT,Reliant,GB,Scimitar Sabre
-RENAISSANCE_CARS,Renaissance,US,Tropica Roadster
+RENAISSANCE,Renaissance,US,Tropica Roadster
 RENAULT,Renault,FR,10
 RENAULT,Renault,FR,11
 RENAULT,Renault,FR,12
@@ -3580,25 +3580,25 @@ ROEWE,Roewe,CN,RX5 Max
 ROEWE,Roewe,CN,RX8
 ROEWE,Roewe,CN,RX9
 ROEWE,Roewe,CN,Whale
-ROLLS_ROYCE,Rolls-Royce,GB,20
-ROLLS_ROYCE,Rolls-Royce,GB,20/25
-ROLLS_ROYCE,Rolls-Royce,GB,Boat Tail
-ROLLS_ROYCE,Rolls-Royce,GB,Camargue
-ROLLS_ROYCE,Rolls-Royce,GB,Corniche
-ROLLS_ROYCE,Rolls-Royce,GB,Cullinan
-ROLLS_ROYCE,Rolls-Royce,GB,Dawn
-ROLLS_ROYCE,Rolls-Royce,GB,Ghost
-ROLLS_ROYCE,Rolls-Royce,GB,Park Ward
-ROLLS_ROYCE,Rolls-Royce,GB,Phantom
-ROLLS_ROYCE,Rolls-Royce,GB,Silver Cloud
-ROLLS_ROYCE,Rolls-Royce,GB,Silver Ghost
-ROLLS_ROYCE,Rolls-Royce,GB,Silver Seraph
-ROLLS_ROYCE,Rolls-Royce,GB,Silver Shadow
-ROLLS_ROYCE,Rolls-Royce,GB,Silver Spirit
-ROLLS_ROYCE,Rolls-Royce,GB,Silver Spur
-ROLLS_ROYCE,Rolls-Royce,GB,Silver Wraith
-ROLLS_ROYCE,Rolls-Royce,GB,Spectre
-ROLLS_ROYCE,Rolls-Royce,GB,Wraith
+ROLLS-ROYCE,Rolls-Royce,GB,20
+ROLLS-ROYCE,Rolls-Royce,GB,20/25
+ROLLS-ROYCE,Rolls-Royce,GB,Boat Tail
+ROLLS-ROYCE,Rolls-Royce,GB,Camargue
+ROLLS-ROYCE,Rolls-Royce,GB,Corniche
+ROLLS-ROYCE,Rolls-Royce,GB,Cullinan
+ROLLS-ROYCE,Rolls-Royce,GB,Dawn
+ROLLS-ROYCE,Rolls-Royce,GB,Ghost
+ROLLS-ROYCE,Rolls-Royce,GB,Park Ward
+ROLLS-ROYCE,Rolls-Royce,GB,Phantom
+ROLLS-ROYCE,Rolls-Royce,GB,Silver Cloud
+ROLLS-ROYCE,Rolls-Royce,GB,Silver Ghost
+ROLLS-ROYCE,Rolls-Royce,GB,Silver Seraph
+ROLLS-ROYCE,Rolls-Royce,GB,Silver Shadow
+ROLLS-ROYCE,Rolls-Royce,GB,Silver Spirit
+ROLLS-ROYCE,Rolls-Royce,GB,Silver Spur
+ROLLS-ROYCE,Rolls-Royce,GB,Silver Wraith
+ROLLS-ROYCE,Rolls-Royce,GB,Spectre
+ROLLS-ROYCE,Rolls-Royce,GB,Wraith
 RONART,Ronart,GB,Lightning
 ROSSA,Rossa,RU,Concept
 ROVER,Rover,GB,100
@@ -3620,7 +3620,7 @@ ROVER,Rover,GB,P6
 ROVER,Rover,GB,SD1
 ROVER,Rover,GB,Streetwise
 ROX,Rox,CN,1
-RUSSO_BALTIQUE,Руссо-Балт,RU,С24
+RUSSO-BALT,Руссо-Балт,RU,С24
 SAAB,Saab,SE,600
 SAAB,Saab,SE,90
 SAAB,Saab,SE,900
@@ -3779,25 +3779,25 @@ SOUEAST,Soueast,CN,V6 Cross
 SPECTRE,Spectre,GB,R42
 SPYKER,Spyker,DK,C12
 SPYKER,Spyker,DK,C8
-SSANG_YONG,SsangYong,KR,Actyon
-SSANG_YONG,SsangYong,KR,Actyon Sports
-SSANG_YONG,SsangYong,KR,Chairman
-SSANG_YONG,SsangYong,KR,Istana
-SSANG_YONG,SsangYong,KR,Kallista
-SSANG_YONG,SsangYong,KR,Korando
-SSANG_YONG,SsangYong,KR,Korando Family
-SSANG_YONG,SsangYong,KR,Korando Sports
-SSANG_YONG,SsangYong,KR,Korando Turismo
-SSANG_YONG,SsangYong,KR,Kyron
-SSANG_YONG,SsangYong,KR,Musso
-SSANG_YONG,SsangYong,KR,Nomad
-SSANG_YONG,SsangYong,KR,Rexton
-SSANG_YONG,SsangYong,KR,Rexton Sports
-SSANG_YONG,SsangYong,KR,Rodius
-SSANG_YONG,SsangYong,KR,Stavic
-SSANG_YONG,SsangYong,KR,Tivoli
-SSANG_YONG,SsangYong,KR,XLV
-SSANG_YONG,SsangYong,KR,Torres
+SSANGYONG,SsangYong,KR,Actyon
+SSANGYONG,SsangYong,KR,Actyon Sports
+SSANGYONG,SsangYong,KR,Chairman
+SSANGYONG,SsangYong,KR,Istana
+SSANGYONG,SsangYong,KR,Kallista
+SSANGYONG,SsangYong,KR,Korando
+SSANGYONG,SsangYong,KR,Korando Family
+SSANGYONG,SsangYong,KR,Korando Sports
+SSANGYONG,SsangYong,KR,Korando Turismo
+SSANGYONG,SsangYong,KR,Kyron
+SSANGYONG,SsangYong,KR,Musso
+SSANGYONG,SsangYong,KR,Nomad
+SSANGYONG,SsangYong,KR,Rexton
+SSANGYONG,SsangYong,KR,Rexton Sports
+SSANGYONG,SsangYong,KR,Rodius
+SSANGYONG,SsangYong,KR,Stavic
+SSANGYONG,SsangYong,KR,Tivoli
+SSANGYONG,SsangYong,KR,XLV
+SSANGYONG,SsangYong,KR,Torres
 STELATO,Stelato,CN,S9
 STEYR,Steyr,AT,1500
 STEYR,Steyr,AT,Haflinger
@@ -4484,10 +4484,10 @@ WEY,Wey,CN,VV6
 WEY,Wey,CN,VV7
 WIESMANN,Wiesmann,DE,GT
 WIESMANN,Wiesmann,DE,Roadster
-WILLIS,Willys,US,CJ
-WILLIS,Willys,US,Jeepster
-WILLIS,Willys,US,MB
-WILLIS,Willys,US,Knight Model 20
+WILLYS,Willys,US,CJ
+WILLYS,Willys,US,Jeepster
+WILLYS,Willys,US,MB
+WILLYS,Willys,US,Knight Model 20
 WULING,Wuling,CN,Binguo
 WULING,Wuling,CN,Hongguang
 WULING,Wuling,CN,Hongguang Plus
@@ -4509,9 +4509,9 @@ XCITE,Xcite,RU,X-Cross 8
 XEV,XEV,IT,Yoyo
 XIAOMI,Xiaomi,CN,SU7
 XIAOMI,Xiaomi,CN,YU7
-XINKAI,Xin Kai,CN,Pickup X3
-XINKAI,Xin Kai,CN,SR-V X3
-XINKAI,Xin Kai,CN,SUV X3
+XIN_KAI,Xin Kai,CN,Pickup X3
+XIN_KAI,Xin Kai,CN,SR-V X3
+XIN_KAI,Xin Kai,CN,SUV X3
 XPENG,Xpeng,CN,G3
 XPENG,Xpeng,CN,G6
 XPENG,Xpeng,CN,G7

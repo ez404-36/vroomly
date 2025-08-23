@@ -1,11 +1,37 @@
-### Приложение для отслеживания привычек
-Позволяет нам становиться чуточку лучше
+# Vroomly
 
-[Документация](https://www.notion.so/1ef6b13aa64e808080fdecaf67c112bb)
+### Развёртывание docker compose проекта
 
-### Запуск бекенда
+1. Создать docker сеть и docker volumes
+```bash
+docker network create vroomly
+docker volume create vroomly-postgres-data
+```
+
+2. Скопировать содержимое .env.example в .env
+```bash
+cp .env.example .env
+```
+
+3. Указать профиль запуска
+В проекте есть несколько определенных профилей для запуска приложения в docker:
+- vr - Запуск всех сервисов в контейнерах
+- vr-backend-local - запускает всё в контейнере, кроме бекенда. Миграции так же запускаются вручную
+В файле `.env` задать нужный профиль в COMPOSE_PROFILES. Профили можно комбинировать между собой, указав их через запятую
+
+4. Запустить проект
+
+```bash
+docker compose up -d
+```
+
+### Локальный запуск бекенда
 ```bash
 uvicorn main:app --reload --host 127.0.0.1 --port 8000
+```
+или
+```bash
+python3 main.py
 ```
 
 ### Работа с БД
