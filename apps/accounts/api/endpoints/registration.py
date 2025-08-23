@@ -6,7 +6,7 @@ from typing import Annotated
 
 from fastapi import Form
 
-from config.db import get_async_session
+from core.db import get_async_session
 from apps.accounts.api.schemas.mutators import RegistrationData
 
 from apps.accounts.models.user import User

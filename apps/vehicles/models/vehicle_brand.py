@@ -10,7 +10,7 @@ from core.models.fields.foreign_key_to import ForeignKeyTo
 
 class VehicleBrand(AutoSchemaBase):
     """
-    Модель "Марка ТС".
+    Модель "Марка ТС (Торговая)".
     Примеры: Skoda, BMW, Lada
     """
 
