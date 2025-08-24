@@ -3,8 +3,15 @@ from typing import Any, Iterable
 from sqlalchemy import create_engine, Select
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 from sqlalchemy.orm import sessionmaker, Session
+from databases import Database
+from sqlalchemy import MetaData
 
-from config.db import DATABASE_URL
+from core.settings import settings
+
+
+DATABASE_URL = settings.db.url
+metadata = MetaData()
+database = Database(DATABASE_URL)
 
 engine = create_engine(DATABASE_URL)
 session_maker = sessionmaker(bind=engine)

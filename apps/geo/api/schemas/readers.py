@@ -1,8 +1,7 @@
-from pydantic import BaseModel, UUID4
+from pydantic import BaseModel
 
 
 class CountryDetail(BaseModel):
-    id: UUID4
-    prefix: str
+    id: str
     name: str
     short_name: str | None

@@ -9,7 +9,7 @@ from sqlalchemy import select
 
 from apps.accounts.api.schemas.readers import UserDetail
 from apps.accounts.models.user import User
-from config.db import database
+from core.db import database
 from core.safety.token import TOKEN, SECRET_KEY, ALGORITHM, TokenData
 
 

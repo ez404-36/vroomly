@@ -8,9 +8,8 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 from apps.vehicles.models.vehicle_engine import VehicleEngine
 from apps.vehicles.models.vehicle_generation import VehicleGeneration
-from core.models.base import AutoSchemaBase
-from core.models.fields.enum_types import IntEnumType
-from core.models.fields.foreign_key_to import ForeignKeyTo
+from core.models import AutoSchemaBase
+from common.models import IntEnumType, ForeignKeyTo
 
 
 class CarWheelDriveType(Enum):

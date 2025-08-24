@@ -1,0 +1,39 @@
+from typing import Annotated
+
+from fastapi import Query
+from fastapi_utils.cbv import cbv
+from sqlalchemy import select
+
+from apps.accounts.api.schemas.readers import UserDetail
+from apps.accounts.api.utils import request_user
+from apps.vehicles.api.routers import router
+from apps.vehicles.api.vehicle_brand.filters import VehicleBrandFilterParams
+from apps.vehicles.api.vehicle_brand.schemas.readers import VehicleBrandDetail
+from apps.vehicles.models.vehicle_brand import VehicleBrand
+from common.orm.filters import apply_search
+from core.db import database
+
+
+@cbv(router)
+class BrandAPI:
+    user: UserDetail = request_user
+
+    @router.get(
+        '/brand/',
+        response_model=list[VehicleBrandDetail],
+        summary='Список всех марок',
+    )
+    async def list(self, filter_query: Annotated[VehicleBrandFilterParams, Query()]):
+        search_fields = ('code',)
+
+        query = apply_search(
+            select(VehicleBrand)
+            .order_by(filter_query.ordering),
+            filter_query.search,
+            search_fields,
+        )
+
+        if filter_query.country:
+            query = query.filter(VehicleBrand.country_id == filter_query.country)
+
+        return await database.fetch_all(query)

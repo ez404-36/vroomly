@@ -10,9 +10,8 @@ from apps.vehicles.models.cars.car_generation_configuration import CarGeneration
 from apps.vehicles.models.vehicle_brand import VehicleBrand
 from apps.vehicles.models.vehicle_generation import VehicleGeneration
 from apps.vehicles.models.vehicle_model import VehicleModel
-from core.models.base import AutoSchemaBase
-from core.models.fields.enum_types import IntEnumType
-from core.models.fields.foreign_key_to import ForeignKeyTo
+from core.models import AutoSchemaBase
+from common.models import IntEnumType, ForeignKeyTo
 
 
 class SteeringWheelPositionType(Enum):
@@ -24,7 +23,7 @@ class Car(
     AutoSchemaBase,
 ):
     """
-    Модель "Автомобиль"
+    Модель "Автомобиль". Представляет собой добавленный в гараж автомобиль пользователя
     """
 
     vin: Mapped[str] = mapped_column(String(50))

@@ -3,8 +3,8 @@ from enum import IntFlag
 from sqlalchemy import String, SmallInteger
 from sqlalchemy.orm import mapped_column, Mapped
 
-from core.models.base import AutoSchemaBase
-from core.models.fields.enum_types import IntFlagType
+from core.models import AutoSchemaBase
+from common.models import IntFlagType
 
 
 class EngineType(IntFlag):

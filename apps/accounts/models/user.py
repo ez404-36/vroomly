@@ -4,10 +4,9 @@ import bcrypt
 from sqlalchemy import String, Date
 from sqlalchemy.orm import Mapped, mapped_column
 
-from config.settings import settings
-from core.models.base import AutoSchemaBase
-from core.models.mixins.deleted import DeletedModelMixin
-from core.models.mixins.timestamped_model import TimestampedModelMixin
+from core.settings import settings
+from core.models import AutoSchemaBase
+from common.models import DeletedModelMixin, TimestampedModelMixin
 
 
 class User(
@@ -30,7 +29,7 @@ class User(
     @staticmethod
     def generate_password_hash(password: str) -> str:
         salt = bcrypt.gensalt()
-        return bcrypt.hashpw(password.encode(settings.ENCODING), salt).decode(settings.ENCODING)
+        return bcrypt.hashpw(password.encode(settings.encoding), salt).decode(settings.encoding)
 
     def set_password(self, password: str) -> None:
         """Генерация пароля"""
@@ -38,4 +37,4 @@ class User(
 
     def check_password(self, password: str) -> bool:
         """Проверка пароля"""
-        return bcrypt.checkpw(password.encode(settings.ENCODING), self.password_hash.encode(settings.ENCODING))
+        return bcrypt.checkpw(password.encode(settings.encoding), self.password_hash.encode(settings.encoding))
