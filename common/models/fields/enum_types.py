@@ -1,3 +1,8 @@
+__all__ = (
+    'IntFlagType',
+    'IntEnumType',
+)
+
 import enum
 
 from sqlalchemy.types import TypeDecorator, SmallInteger

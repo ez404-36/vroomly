@@ -5,9 +5,8 @@ from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column
 
 from apps.vehicles.models.vehicle_brand import VehicleBrand
-from core.models.base import AutoSchemaBase
-from core.models.fields.enum_types import IntEnumType
-from core.models.fields.foreign_key_to import ForeignKeyTo
+from core.models import AutoSchemaBase
+from common.models import IntEnumType, ForeignKeyTo
 
 
 class VehicleType(IntEnum):

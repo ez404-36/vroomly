@@ -1,6 +1,6 @@
 from sqlalchemy import ForeignKey
 
-from core.models.base import AutoSchemaBase
+from core.models import AutoSchemaBase
 
 
 def ForeignKeyTo(model: type[AutoSchemaBase]):  # noqa

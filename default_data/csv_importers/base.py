@@ -5,7 +5,7 @@ from typing import Any
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import Session
 
-from core.models.base import AutoSchemaBase
+from core.models import AutoSchemaBase
 
 
 class ImportFromCSVBase:

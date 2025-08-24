@@ -1,6 +1,6 @@
 from pydantic import Field, model_validator, ValidationError
 
-from core.schema import FrozenModelType
+from common.schemas.models import FrozenModelType
 
 
 class RegistrationData(FrozenModelType):

@@ -3,8 +3,8 @@ from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column
 
 from apps.accounts.models.user import User
-from core.models.base import AutoSchemaBase
-from core.models.fields.foreign_key_to import ForeignKeyTo
+from core.models import AutoSchemaBase
+from common.models import ForeignKeyTo
 
 
 class VehicleGroup(

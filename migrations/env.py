@@ -12,9 +12,9 @@ from sqlalchemy import pool
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
 
-from config.db import DATABASE_URL
-from core.models.base import AutoSchemaBase
-from core.models.utils import render_item
+from core.db import DATABASE_URL
+from core.models import AutoSchemaBase
+from common.models import render_item
 
 # Добавляем корень проекта в sys.path для импорта модулей
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))

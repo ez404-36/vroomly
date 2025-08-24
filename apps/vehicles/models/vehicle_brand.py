@@ -2,8 +2,8 @@ from sqlalchemy import String, UniqueConstraint, event
 from sqlalchemy.orm import Mapped, mapped_column
 
 from apps.geo.models.country import Country
-from core.models.base import AutoSchemaBase
-from core.models.fields.foreign_key_to import ForeignKeyTo
+from core.models import AutoSchemaBase
+from common.models import ForeignKeyTo
 
 
 class VehicleBrand(AutoSchemaBase):
@@ -24,7 +24,7 @@ class VehicleBrand(AutoSchemaBase):
 
 @event.listens_for(VehicleBrand, "before_insert")
 def generate_code(mapper, connection, target):
-    # генерация кода бренда по имени
+    # генерация кода марки ТС по названию марки
     if target.name and not target.code:
         target.code = (
             target.name.upper()

@@ -6,7 +6,7 @@ import uvicorn
 from dotenv import load_dotenv
 from fastapi import FastAPI, APIRouter
 
-from config.db import database
+from core.db import database
 from core.micro_services.routers.utils import register_all_service_routers
 
 logger = logging.getLogger(__name__)
@@ -27,4 +27,4 @@ app.include_router(_root_api_router)
 
 
 if __name__ == '__main__':
-    uvicorn.run('main:app', host="0.0.0.0", port=int(os.getenv('BACKEND_PORT', 8077)), reload=True)
+    uvicorn.run('main:app', host="0.0.0.0", port=int(os.getenv('BACKEND_PORT', 8000)), reload=True)

@@ -1,7 +1,7 @@
 from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column
 
-from core.models.base import AutoSchemaBase
+from core.models import AutoSchemaBase
 
 
 class Country(AutoSchemaBase):

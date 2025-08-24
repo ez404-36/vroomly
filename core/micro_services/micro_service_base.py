@@ -1,3 +1,8 @@
+__all__ = (
+    'init_service',
+    'get_service_name',
+)
+
 import os
 import sys
 

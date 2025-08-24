@@ -1,3 +1,8 @@
+__all__ = (
+    'get_default_router',
+    'register_all_service_routers',
+)
+
 import logging
 
 from fastapi import APIRouter, FastAPI

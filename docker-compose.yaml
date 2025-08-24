@@ -35,7 +35,7 @@ services:
     volumes:
       - &app .:/app:rw
     ports:
-      - ${BACKEND_PORT:-8000}:8000
+      - ${EXPOSE_BACKEND_PORT:-8000}:${BACKEND_PORT:-8000}
     depends_on:
       - db
     restart: unless-stopped
@@ -51,7 +51,7 @@ services:
 
   migrations:
     build: .
-    command: alembic upgrade head
+    command: uv run alembic upgrade head
     env_file: .env
     volumes:
       - *app
