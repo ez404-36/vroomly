@@ -39,7 +39,7 @@ services:
     depends_on:
       - db
     restart: unless-stopped
-    profiles: [ vr ]
+    profiles: [ vr-frontend ]
     networks:
       default:
         aliases: [ vroomly-backend ]
@@ -48,6 +48,7 @@ services:
         limits:
           cpus: "2"
           memory: 1G
+    command: ["uv", "run", "python", "/app/main.py"]
 
   migrations:
     build: .
@@ -58,4 +59,4 @@ services:
     depends_on:
       - db
     restart: no
-    profiles: [ vr ]
+    profiles: [ vr-frontend ]

@@ -27,6 +27,7 @@ class Car(
     """
 
     vin: Mapped[str] = mapped_column(String(50))
+    body_number: Mapped[str] = mapped_column(String(50))
     number: Mapped[str] = mapped_column(String(15))
 
     brand_id: Mapped[UUID4] = mapped_column(ForeignKeyTo(VehicleBrand))
