@@ -1,4 +1,4 @@
-from core.integrations.base_api_provider import BaseApiProvider
+from core.providers.base_api_provider import BaseApiProvider
 
 
 class VinO1ApiProvider(BaseApiProvider):

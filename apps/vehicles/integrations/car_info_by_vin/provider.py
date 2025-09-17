@@ -1,4 +1,4 @@
-from core.integrations.vin01 import VinO1ApiProvider
+from core.providers.vin01 import VinO1ApiProvider
 
 
 class CarInfoByVinProvider(VinO1ApiProvider):

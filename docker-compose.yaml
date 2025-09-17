@@ -60,3 +60,14 @@ services:
       - db
     restart: no
     profiles: [ vr-frontend ]
+
+  libretranslate:
+    image: libretranslate/libretranslate
+    environment:
+      LT_LOAD_ONLY: ru,en
+    ports:
+      - 5000:${LIBRETRANSLATE_PORT:-5000}
+    networks:
+      default:
+        aliases: [ $LIBRETRANSLATE_HOST ]
+    restart: unless-stopped

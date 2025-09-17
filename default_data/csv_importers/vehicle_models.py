@@ -3,7 +3,8 @@ from typing import Any, Iterable
 from sqlalchemy import select
 
 from apps.vehicles.models.vehicle_brand import VehicleBrand
-from apps.vehicles.models.vehicle_model import VehicleModel, VehicleType
+from apps.vehicles.models.vehicle_model import VehicleModel
+from apps.vehicles.models.enums import VehicleType
 from core.db import session_fetch_all
 
 from .base import ImportFromCSVBase
