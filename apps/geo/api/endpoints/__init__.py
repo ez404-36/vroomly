@@ -1,1 +1,1 @@
-from .readers import *
+from .readers import CountryAPI

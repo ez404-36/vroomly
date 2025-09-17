@@ -4,20 +4,21 @@ from uuid import UUID
 from fastapi import Query
 from fastapi_utils.cbv import cbv
 from sqlalchemy import select
+from sqlalchemy.orm import joinedload
 
-from apps.accounts.api.schemas.readers import UserDetail
-from apps.accounts.api.utils import request_user
 from apps.vehicles.api.routers import router
 from apps.vehicles.api.vehicle_model.filters import VehicleModelFilterParams
 from apps.vehicles.api.vehicle_model.schemas.readers import VehicleModelList, VehicleModelDetail
 from apps.vehicles.models.vehicle_model import VehicleModel
 from common.orm.filters import apply_search
+from common.orm.views.mixins import AuthenticatedUserAPIMixin
 from core.db import database
 
 
 @cbv(router)
-class VehicleModelAPI:
-    user: UserDetail = request_user
+class VehicleModelAPI(
+    AuthenticatedUserAPIMixin,
+):
 
     @router.get(
         '/models/',
@@ -44,6 +45,10 @@ class VehicleModelAPI:
         summary='Детальный просмотр модели',
     )
     async def retrieve(self, model_id: UUID):
-        return await database.fetch_one(
-            select(VehicleModel).where(VehicleModel.id == model_id)
+        query = (
+            select(VehicleModel)
+            .options(joinedload(VehicleModel.brand))
+            .where(VehicleModel.id == model_id)
         )
+
+        return await database.fetch_one(query)

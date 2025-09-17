@@ -52,5 +52,5 @@ class IntEnumType(TypeDecorator):
         return value.value if value is not None else None
 
     def process_result_value(self, value, dialect):
-        return self.enum_cls(value) if value is not None else None
+        return self.enum_class(value) if value is not None else None
 
