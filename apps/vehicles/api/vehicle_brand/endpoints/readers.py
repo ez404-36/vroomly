@@ -19,9 +19,9 @@ class BrandAPI:
     user: UserDetail = request_user
 
     @router.get(
-        '/brand/',
+        '/brands/',
         response_model=list[VehicleBrandDetail],
-        summary='Список всех марок',
+        summary='Список марок',
     )
     async def list(self, filter_query: Annotated[VehicleBrandFilterParams, Query()]):
         search_fields = ('code',)
@@ -33,7 +33,7 @@ class BrandAPI:
             search_fields,
         )
 
-        if filter_query.country:
-            query = query.filter(VehicleBrand.country_id == filter_query.country)
+        if country := filter_query.country:
+            query = query.filter(VehicleBrand.country_id == country.upper())
 
         return await database.fetch_all(query)

@@ -2,6 +2,7 @@ import csv
 from pathlib import Path
 from typing import Any
 
+from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import Session
 
@@ -61,10 +62,18 @@ class ImportFromCSVBase:
                         instance_data[mapped_key] = value
 
                 instance_data.update(**self.default_data)
-                instance = self.model(**instance_data)
-                instances.append(instance)
+                instance_data = self.transform_data(instance_data)
+                instances.append(instance_data)
 
-        self.session.add_all(instances)
+        query = insert(self.model).values(instances).on_conflict_do_nothing()
+        await self.session.execute(query)
+        print(f'Обработано {len(instances)} записей {self.model}')
+
+    def transform_data(self, instance_data: dict) -> dict:
+        """
+        Преобразование входных данных создаваемого объекта
+        """
+        return instance_data
 
     async def prefetch_data(self) -> dict[str, dict[Any, Any]]:
         """

@@ -6,6 +6,17 @@ from core.models import AutoSchemaBase
 from common.models import ForeignKeyTo
 
 
+def generate_brand_code(brand_name: str) -> str:
+    return (
+        brand_name.upper()
+        .replace(' ', '_')
+        .replace('.', '')
+        .replace('&', 'AND')
+        .replace('(', '')
+        .replace(')', '')
+    )
+
+
 class VehicleBrand(AutoSchemaBase):
     """
     Модель "Марка ТС (Торговая)".
@@ -23,14 +34,7 @@ class VehicleBrand(AutoSchemaBase):
 
 
 @event.listens_for(VehicleBrand, "before_insert")
-def generate_code(mapper, connection, target):
+def generate_code_listener(mapper, connection, target):
     # генерация кода марки ТС по названию марки
     if target.name and not target.code:
-        target.code = (
-            target.name.upper()
-            .replace(' ', '_')
-            .replace('.', '')
-            .replace('&', 'AND')
-            .replace('(', '')
-            .replace(')', '')
-        )
+        target.code = generate_brand_code(target.name)

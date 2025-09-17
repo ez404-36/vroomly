@@ -25,6 +25,11 @@ cp .env.example .env
 docker compose up -d
 ```
 
+5. Наполнение БД первичными данными
+```bash
+docker compose up -d seed
+```
+
 ### Локальный запуск бекенда
 ```bash
 uvicorn main:app --reload --host 127.0.0.1 --port 8000

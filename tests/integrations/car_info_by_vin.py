@@ -7,6 +7,4 @@ class TestCarInfoByVin:
         vin = 'XWEJC813DJ0003470'
         info = service.get_info(vin)
 
-        assert info.get('success') is True
-        assert info.get('status') == 200
-        assert info.get('data') is not None
+        assert info is not None

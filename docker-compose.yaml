@@ -61,6 +61,17 @@ services:
     restart: no
     profiles: [ vr-frontend ]
 
+  seed: # Наполнение БД первичными данными
+    build: .
+    command: uv run python default_data/seed_all.py
+    env_file: .env
+    volumes:
+      - *app
+    depends_on:
+      - db
+    restart: no
+    profiles: [ no-profiles ]
+
   libretranslate:
     image: libretranslate/libretranslate
     environment:

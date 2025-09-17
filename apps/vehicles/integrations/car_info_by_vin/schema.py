@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class CarInfoByVinSchema(BaseModel):
+class CarInfoByVinData(BaseModel):
     model: str  # по-русски
     year: int
     frame: str | None   # хз что это
@@ -13,3 +13,9 @@ class CarInfoByVinSchema(BaseModel):
     power: int
     frame_id: int   # хз что это
     vehicle_type: str
+
+
+class CarInfoByVIN(BaseModel):
+    success: bool
+    status: int
+    data: CarInfoByVinData

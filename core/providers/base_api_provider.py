@@ -17,6 +17,7 @@ class BaseApiProvider:
             path_params: dict | None = None,
             headers: dict = None,
             query_params: dict = None,
+            is_json_response: bool = True,
     ) -> dict:
         path_params = path_params or {}
         url = get_url(self.base_url, endpoint_url)
@@ -28,7 +29,10 @@ class BaseApiProvider:
             timeout=self.timeout,
         )
         response.raise_for_status()
-        return response.json()
+        if is_json_response:
+            return response.json()
+        else:
+            return {'html': response.text}
 
     def post(
             self,

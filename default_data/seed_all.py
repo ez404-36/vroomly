@@ -15,6 +15,8 @@ async def seed_all():
         await session.commit()
         await session.close()
 
+    print('Наполнение БД первичными данными успешно завершено')
+
 
 if __name__ == '__main__':
     asyncio.run(seed_all())

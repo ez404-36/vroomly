@@ -1,6 +1,6 @@
 from pydantic.v1 import UUID4
 from sqlalchemy import String
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from apps.vehicles.models.enums import VehicleType
 from apps.vehicles.models.vehicle_brand import VehicleBrand
@@ -19,3 +19,5 @@ class VehicleModel(
     brand_id: Mapped[UUID4] = mapped_column(ForeignKeyTo(VehicleBrand))
     name: Mapped[str] = mapped_column(String(50))
     vehicle_type: Mapped[VehicleType] = mapped_column(IntEnumType(VehicleType))
+
+    brand = relationship('VehicleBrand', backref='vehicle_models', foreign_keys=[brand_id])
