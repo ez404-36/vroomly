@@ -15,9 +15,13 @@ load_dotenv()
 
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
-    await database.connect()
+    if hasattr(database, 'connect'):
+        await database.connect()
+
     yield
-    await database.disconnect()
+
+    if hasattr(database, 'disconnect'):
+        await database.disconnect()
 
 app = FastAPI(lifespan=lifespan)
 

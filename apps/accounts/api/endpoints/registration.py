@@ -6,7 +6,7 @@ from typing import Annotated
 
 from fastapi import Form
 
-from core.db import get_async_session
+from core.db import database
 from apps.accounts.api.schemas.mutators import RegistrationData
 
 from apps.accounts.models.user import User
@@ -20,6 +20,6 @@ async def api_registration(data: Annotated[RegistrationData, Form()]):
         email=data.email,
     )
     user.set_password(data.password)
-    async with get_async_session() as session:
+    async with database.get_async_session() as session:
         session.add(user)
         await session.commit()

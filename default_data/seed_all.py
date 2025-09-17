@@ -1,13 +1,13 @@
 import asyncio
 
-from core.db import get_async_session
+from core.db import database
 from default_data.csv_importers.countries import ImportCountriesCSV
 from default_data.csv_importers.vehicle_brands import ImportVehicleBrandsCSV
 from default_data.csv_importers.vehicle_models import ImportVehicleModelsCSV
 
 
 async def seed_all():
-    async with get_async_session() as session:
+    async with database.get_async_session() as session:
         await ImportCountriesCSV(session).run()
         await ImportVehicleBrandsCSV(session).run()
         await ImportVehicleModelsCSV(session).run()

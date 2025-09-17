@@ -4,19 +4,19 @@ from fastapi import Query
 from fastapi_utils.cbv import cbv
 from sqlalchemy import select
 
-from apps.accounts.api.schemas.readers import UserDetail
-from apps.accounts.api.utils import request_user
 from apps.vehicles.api.routers import router
 from apps.vehicles.api.vehicle_brand.filters import VehicleBrandFilterParams
 from apps.vehicles.api.vehicle_brand.schemas.readers import VehicleBrandDetail
 from apps.vehicles.models.vehicle_brand import VehicleBrand
 from common.orm.filters import apply_search
+from common.orm.views.mixins import AuthenticatedUserAPIMixin
 from core.db import database
 
 
 @cbv(router)
-class BrandAPI:
-    user: UserDetail = request_user
+class BrandAPI(
+    AuthenticatedUserAPIMixin,
+):
 
     @router.get(
         '/brands/',

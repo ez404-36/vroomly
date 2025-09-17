@@ -1,15 +1,21 @@
-__all__ = (
-    'get_list_countries',
-)
-
+from fastapi_utils.cbv import cbv
 from sqlalchemy import select
 
 from apps.geo.api.routers import router
 from apps.geo.api.schemas.readers import CountryDetail
 from apps.geo.models.country import Country
+from common.orm.views.mixins import AuthenticatedUserAPIMixin
 from core.db import database
 
 
-@router.get('/country/', response_model=list[CountryDetail])
-async def get_list_countries():
-    return await database.fetch_all(select(Country))
+@cbv(router)
+class CountryAPI(
+    AuthenticatedUserAPIMixin,
+):
+    @router.get(
+        '/country/',
+        response_model=list[CountryDetail],
+        summary='Список стран',
+    )
+    async def list(self):
+        return await database.fetch_all(select(Country))
