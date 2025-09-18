@@ -1,7 +1,7 @@
 FROM python:3.13-slim as build
 
 ARG python_version=3.13
-ARG backend_dir=/app/
+ARG backend_dir=/app
 
 ARG UID
 ARG GID

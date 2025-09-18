@@ -34,6 +34,7 @@ services:
     env_file: .env
     volumes:
       - &app-backend ./backend:/app:rw
+      - .git:/app/.git
     ports:
       - ${EXPOSE_BACKEND_PORT:-8000}:${BACKEND_PORT:-8000}
     depends_on:
@@ -41,7 +42,7 @@ services:
       - libretranslate
     user: "${UID}:${GID}"
     restart: unless-stopped
-    profiles: [ vr-backend ]
+    profiles: [ no-profile ]
     networks:
       default:
         aliases: [ vroomly-backend ]
@@ -53,8 +54,8 @@ services:
 
   backend:
     <<: *backend-build
-    command: uv run python /app/backend/main.py
-    profiles: [ vr-frontend ]
+    command: uv run python main.py
+    profiles: [ vr-backend, vr-frontend ]
 
   migrations:
     build: *backend-build-path
