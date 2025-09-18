@@ -8,8 +8,6 @@ ARG GID
 
 WORKDIR $backend_dir
 
-SHELL ["/bin/sh", "-exc"]
-
 
 RUN apt-get update --quiet && \
     apt-get install -y git
@@ -42,7 +40,6 @@ EOF
 ENV UV_PYTHON=$UV_PROJECT_ENVIRONMENT
 
 COPY .python-version $backend_dir
-COPY . $backend_dir
 
 RUN --mount=type=cache,destination=/root/.cache/uv
 RUN <<EOF
@@ -55,5 +52,3 @@ uv sync \
 EOF
 
 RUN pip install pre-commit
-CMD ["pre-commit", "install", "--install-hooks", "--overwrite"]
-# RUN pre-commit install
