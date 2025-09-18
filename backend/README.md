@@ -2,21 +2,10 @@
 1. Контейнер - backend-build
 2. Путь - /.venv/bin/python
 
-
-### Локальный запуск бекенда
-```bash
-uvicorn main:app --reload --host 127.0.0.1 --port 8000
-```
-или
-```bash
-python3 main.py
-```
-
 ### Установка новых python-пакетов
 Внутри контейнера выполнить команду
-TODO: тупая команда это, надо сделать чтобы было `uv add $package_name`
 ```bash
-uv pip install --system $package_name
+uv add $package_name
 ```
 После чего пересобрать Docker-образ бекенд
 ```bash
@@ -45,5 +34,8 @@ alembic downgrade d97a9824423b # откат к определенной мигр
 ```
 
 ### Возможные проблемы
+# TODO: настроить автоимпорт всех роутеров, чтобы не приходилось заниматься этими неявными импортами
 1. Я зарегистрировал роутер, но fastapi не добавляет мои эндпоинты.
-**Решение:** Убедиться, что ваш роутер лежит в `apps/<your_app>/api/routers.py` и добавлен в список `list_routers`
+**Решение:**
+- Убедиться, что ваш роутер лежит в `apps/<your_app>/api/routers.py` и добавлен в список `list_routers`
+- в `$module/api/__init__.py` добавить `from .endpoints import *` и в `$module/api/endpoints/__init__.py` тоже импортировать все эндпоинты 
