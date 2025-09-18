@@ -29,17 +29,19 @@ services:
           cpus: "2"
           memory: 1G
 
-  backend:
-    build: .
+  backend-build:  &backend-build
+    build: &backend-build-path ./backend
     env_file: .env
     volumes:
-      - &app .:/app:rw
+      - &app-backend ./backend:/app:rw
     ports:
       - ${EXPOSE_BACKEND_PORT:-8000}:${BACKEND_PORT:-8000}
     depends_on:
       - db
+      - libretranslate
+    user: "${UID}:${GID}"
     restart: unless-stopped
-    profiles: [ vr-frontend ]
+    profiles: [ vr-backend ]
     networks:
       default:
         aliases: [ vroomly-backend ]
@@ -48,25 +50,29 @@ services:
         limits:
           cpus: "2"
           memory: 1G
-    command: ["uv", "run", "python", "/app/main.py"]
+
+  backend:
+    <<: *backend-build
+    command: uv run python /app/backend/main.py
+    profiles: [ vr-frontend ]
 
   migrations:
-    build: .
+    build: *backend-build-path
     command: uv run alembic upgrade head
     env_file: .env
     volumes:
-      - *app
+      - *app-backend
     depends_on:
       - db
     restart: no
     profiles: [ vr-frontend ]
 
   seed: # Наполнение БД первичными данными
-    build: .
+    build: *backend-build-path
     command: uv run python default_data/seed_all.py
     env_file: .env
     volumes:
-      - *app
+      - *app-backend
     depends_on:
       - db
     restart: no
