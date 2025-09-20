@@ -26,5 +26,8 @@ install-git-hooks:
 seeds:
 	docker compose up -d seed
 
+tests:
+	docker compose up -d tests
 
-.PHONY: base-setup docker-setup setup-for-backend setup-for-frontend network-prepare volumes-prepare env-prepare set-profile-frontend up-project seeds
+
+.PHONY: base-setup docker-setup setup-for-backend setup-for-frontend network-prepare volumes-prepare env-prepare set-profile-frontend up-project seeds tests

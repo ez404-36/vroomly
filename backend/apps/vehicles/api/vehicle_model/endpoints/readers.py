@@ -9,7 +9,7 @@ from apps.vehicles.api.vehicle_model.schemas.readers import (
 )
 from apps.vehicles.models.vehicle_model import VehicleModel
 from common.orm.filters import apply_search
-from common.orm.views.mixins import AuthenticatedUserAPIMixin
+from common.orm.views.mixins import BaseAPI
 from core.db import database
 from fastapi import Query
 from fastapi_utils.cbv import cbv
@@ -19,7 +19,7 @@ from sqlalchemy.orm import joinedload
 
 @cbv(router)
 class VehicleModelAPI(
-    AuthenticatedUserAPIMixin,
+    BaseAPI,
 ):
 
     @router.get(

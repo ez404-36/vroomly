@@ -8,3 +8,4 @@ class TestCarInfoByVin:
         info = service.get_info(vin)
 
         assert info is not None
+        assert info.vin == vin

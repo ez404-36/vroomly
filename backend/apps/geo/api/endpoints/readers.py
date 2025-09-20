@@ -1,7 +1,7 @@
 from apps.geo.api.routers import router
 from apps.geo.api.schemas.readers import CountryDetail
 from apps.geo.models.country import Country
-from common.orm.views.mixins import AuthenticatedUserAPIMixin
+from common.orm.views.mixins import BaseAPI
 from core.db import database
 from fastapi_utils.cbv import cbv
 from sqlalchemy import select
@@ -9,7 +9,7 @@ from sqlalchemy import select
 
 @cbv(router)
 class CountryAPI(
-    AuthenticatedUserAPIMixin,
+    BaseAPI,
 ):
     @router.get(
         "/country/",

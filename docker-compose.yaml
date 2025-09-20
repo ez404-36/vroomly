@@ -42,7 +42,7 @@ services:
       - libretranslate
     user: "${UID}:${GID}"
     restart: unless-stopped
-    profiles: [ no-profile ]
+    profiles: [ vr-backend ]
     networks:
       default:
         aliases: [ vroomly-backend ]
@@ -55,7 +55,7 @@ services:
   backend:
     <<: *backend-build
     command: uv run python main.py
-    profiles: [ vr-backend, vr-frontend ]
+    profiles: [ vr-frontend ]
 
   migrations:
     build: *backend-build-path
@@ -72,6 +72,19 @@ services:
     build: *backend-build-path
     command: uv run python default_data/seed_all.py
     env_file: .env
+    volumes:
+      - *app-backend
+    depends_on:
+      - db
+    restart: no
+    profiles: [ no-profiles ]
+
+  tests: # тесты бекенда
+    build: *backend-build-path
+    command: uv run pytest
+    env_file: .env
+    environment:
+      PYTHONOPTIMIZE: 0
     volumes:
       - *app-backend
     depends_on:

@@ -1,2 +1,2 @@
-from .login import *
-from .registration import *
+from .auth import *
+from .readers import *

@@ -1,5 +1,5 @@
-from apps.accounts.api.schemas.readers import UserDetail
-from apps.accounts.api.utils import request_user
+from common.depends import request_user
+from common.schemas.models import CurrentUser
 
 
 class AuthenticatedUserAPIMixin:
@@ -8,4 +8,12 @@ class AuthenticatedUserAPIMixin:
     только авторизованным пользователям.
     """
 
-    user: UserDetail = request_user
+    user: CurrentUser = request_user
+
+
+class BaseAPI(
+    AuthenticatedUserAPIMixin,
+):
+    """
+    Базовый класс для всех API, которыми может пользоваться авторизованный пользователь
+    """
