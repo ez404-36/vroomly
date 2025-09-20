@@ -2,7 +2,7 @@ from apps.vehicles.integrations.car_info_by_vin.schema import (
     CarInfoByVIN,
     CarInfoByVinData,
 )
-from core.providers.vin01 import Vin01ApiException, VinO1ApiProvider
+from common.providers.vin01 import Vin01ApiException, VinO1ApiProvider
 
 
 class CarInfoByVinProvider(VinO1ApiProvider):

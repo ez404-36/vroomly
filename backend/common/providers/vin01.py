@@ -1,4 +1,4 @@
-from core.providers.base_api_provider import BaseApiProvider
+from common.providers.base_api_provider import BaseApiProvider
 
 
 class Vin01ApiException(Exception):

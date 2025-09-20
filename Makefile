@@ -21,7 +21,7 @@ up-project:
 
 install-git-hooks:
 	docker exec -it vroomly-backend-1 bash -c "pre-commit install --install-hooks --overwrite"
-	./backend/setup_docker_precommit.sh vroomly-backend-1
+	./backend/scripts/setup_docker_precommit.sh vroomly-backend-1
 
 seeds:
 	docker compose up -d seed
