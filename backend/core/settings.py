@@ -28,7 +28,7 @@ class LibretranslateSettings(BaseSettings):
 
     @property
     def url(self) -> str:
-        return f"http://{self.host}:{self.port}"
+        return f"http://{self.host}:{self.port}"    # noqa
 
 
 class Settings(BaseSettings):
@@ -36,6 +36,8 @@ class Settings(BaseSettings):
     libretranslate: LibretranslateSettings = LibretranslateSettings()  # noqa
 
     encoding: str = "utf-8"
+
+    user_model: str = 'apps.accounts.models.user.User'
 
     model_config = SettingsConfigDict(
         env_file=Path(__file__).parent.parent / ".env",
