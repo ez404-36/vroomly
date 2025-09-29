@@ -1,6 +1,6 @@
 import pytest
 
-from core.providers.libre_translate import LibreTranslate
+from common.providers.translators.libre_translate import LibreTranslate
 
 
 class TestLibreTranslate:

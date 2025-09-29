@@ -3,17 +3,18 @@ import logging
 import os
 import sys
 from logging.config import fileConfig
-from pathlib import Path
 
 from alembic import context
 from alembic.operations.ops import CreateTableOp
-from common.models import render_item
-from core.db import DATABASE_URL
-from core.models import AutoSchemaBase
 from dotenv import load_dotenv
 from sqlalchemy import pool
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
+
+from common.models import render_item
+from core.db import DATABASE_URL
+from core.models import AutoSchemaBase
+from core.models.loader import load_all_models
 
 # Добавляем корень проекта в sys.path для импорта модулей
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -24,60 +25,6 @@ base = AutoSchemaBase
 load_dotenv()
 
 logger = logging.getLogger(__name__)
-
-
-def load_all_models():
-    """
-    Сканирует директорию apps/ и загружает модели из всех apps/<service>/models
-    """
-    apps_dir = Path(__file__).parent.parent / "apps"
-    if not apps_dir.exists():
-        raise FileNotFoundError("Директория apps/ не найдена")
-
-    for service_dir in apps_dir.iterdir():
-        if not service_dir.is_dir():
-            continue
-
-        service_name = service_dir.name
-        root_models_dir = service_dir / "models"
-
-        def load_models_in_module(models_dir: Path):
-            if not models_dir.exists():
-                return
-
-            for model_file in models_dir.iterdir():
-                if model_file.is_dir():
-                    load_models_in_module(model_file)
-                else:
-                    file_name = model_file.stem
-                    if (
-                        file_name.startswith("__")
-                        and file_name.endswith("__")
-                        or model_file.suffix != ".py"
-                    ):
-                        continue
-                    try:
-                        models_file_module = __import__(
-                            f"apps.{service_name}.models.{file_name}", fromlist=["*"]
-                        )
-                        # Собираем все объекты, которые могут быть моделями
-                        for name in filter(
-                            lambda var: var != base.__name__, dir(models_file_module)
-                        ):
-                            obj = getattr(models_file_module, name)
-                            if (
-                                isinstance(obj, type)
-                                and issubclass(obj, base)
-                                and obj is not base
-                            ):
-                                obj.metadata  # Регистрируем модель
-                    except ImportError as e:
-                        logger.warning(
-                            f"Предупреждение: Не удалось загрузить модели для сервиса {service_name}: {e}"
-                        )
-                        continue
-
-        load_models_in_module(root_models_dir)
 
 
 def sort_columns_create_table(op: CreateTableOp):

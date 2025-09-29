@@ -16,21 +16,21 @@ docker compose build backend
 
 Создание миграций
 ```bash
-alembic revision --autogenerate -m "%some_comment"
+uv run alembic revision --autogenerate -m "%some_comment"
 ```
 
 Применение миграций
 ```bash
-alembic upgrade head
+uv run alembic upgrade head
 ```
 
 Откат миграций
 ```bash
-alembic downgrade -1 # откат на 1 миграцию назад
+uv run alembic downgrade -1 # откат на 1 миграцию назад
 ```
 или
 ```bash
-alembic downgrade d97a9824423b # откат к определенной миграции
+uv run alembic downgrade d97a9824423b # откат к определенной миграции
 ```
 
 ### Возможные проблемы

@@ -15,6 +15,10 @@ class AutoSchemaBase(Base):
 
     def __init_subclass__(cls, **kwargs):
         super().__init_subclass__()
+
+        if cls.__name__.endswith('Abstract'):
+            return
+
         module_name = cls.__module__
         schema_name = module_name.split(".")[1]
 

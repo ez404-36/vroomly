@@ -1,24 +1,24 @@
 from typing import Any, Iterable
 
-from apps.vehicles.models.enums import VehicleType
-from apps.vehicles.models.vehicle_brand import VehicleBrand
-from apps.vehicles.models.vehicle_model import VehicleModel
-from core.db import session_fetch_all
+from apps.vehicles.models.vehicle.enums import VehicleType
 from sqlalchemy import select
 
+from apps.vehicles.models.vehicle.vehicle_brand import VehicleBrand
+from apps.vehicles.models.vehicle.vehicle_series import VehicleSeries
+from core.db import database
 from .base import ImportFromCSVBase
 
 
-class ImportVehicleModelsCSV(ImportFromCSVBase):
-    model = VehicleModel
-    filename = "vehicle_model.csv"
+class ImportVehicleSeriesCSV(ImportFromCSVBase):
+    model = VehicleSeries
+    filename = "vehicle_series.csv"
     mapper = {
         "brand": "brands:brand_id",
     }
     default_data = {"vehicle_type": VehicleType.CAR}
 
     async def prefetch_data(self) -> dict[str, dict[Any, Any]]:
-        brands: Iterable[VehicleBrand] = await session_fetch_all(
+        brands: Iterable[VehicleBrand] = await database.session_fetch_all(
             self.session, select(VehicleBrand)
         )
         mapped_brands = {brand.code: brand.id for brand in brands}

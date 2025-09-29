@@ -2,7 +2,7 @@ from fastapi_utils.cbv import cbv
 
 from apps.vehicles.api.routers import router
 from apps.vehicles.integrations.car_info_by_vin.provider import CarInfoByVinProvider
-from apps.vehicles.integrations.car_info_by_vin.schema import CarInfoByVinData
+from apps.vehicles.integrations.car_info_by_vin.schema import CarInfoByVinDataSchema
 from common.orm.views.mixins import BaseAPI
 
 
@@ -13,7 +13,7 @@ class CarInfoByVinAPI(
 	@router.get(
 		'/by_vin',
 		summary='Информация об автомобиле по ВИН-номеру',
-		response_model=CarInfoByVinData,
+		response_model=CarInfoByVinDataSchema,
 	)
 	async def get_by_vin(self, vin: str):
 		service = CarInfoByVinProvider()

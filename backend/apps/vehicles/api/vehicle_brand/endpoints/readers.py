@@ -2,8 +2,8 @@ from typing import Annotated
 
 from apps.vehicles.api.routers import router
 from apps.vehicles.api.vehicle_brand.filters import VehicleBrandFilterParams
-from apps.vehicles.api.vehicle_brand.schemas.readers import VehicleBrandDetail
-from apps.vehicles.models.vehicle_brand import VehicleBrand
+from apps.vehicles.api.vehicle_brand.schemas.readers import VehicleBrandDetailSchema
+from apps.vehicles.models.vehicle.vehicle_brand import VehicleBrand
 from common.orm.filters import apply_search
 from common.orm.views.mixins import BaseAPI
 from core.db import database
@@ -19,7 +19,7 @@ class BrandAPI(
 
     @router.get(
         "/brands/",
-        response_model=list[VehicleBrandDetail],
+        response_model=list[VehicleBrandDetailSchema],
         summary="Список марок",
     )
     async def list(self, filter_query: Annotated[VehicleBrandFilterParams, Query()]):

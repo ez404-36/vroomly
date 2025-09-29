@@ -1,5 +1,5 @@
 from apps.geo.api.routers import router
-from apps.geo.api.schemas.readers import CountryDetail
+from apps.geo.api.schemas.readers import CountryDetailSchema
 from apps.geo.models.country import Country
 from common.orm.views.mixins import BaseAPI
 from core.db import database
@@ -13,7 +13,7 @@ class CountryAPI(
 ):
     @router.get(
         "/country/",
-        response_model=list[CountryDetail],
+        response_model=list[CountryDetailSchema],
         summary="Список стран",
     )
     async def list(self):
