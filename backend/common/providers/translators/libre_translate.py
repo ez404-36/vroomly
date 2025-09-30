@@ -1,4 +1,5 @@
 from common.providers.base_api_provider import BaseApiProvider
+from common.providers.translators.base import AbstractTranslator
 from core.settings import settings
 from pydantic import BaseModel
 
@@ -18,7 +19,7 @@ class LibreTranslateResponse(BaseModel):
     detectedLanguage: LibreTranslateDetectedLanguage | None = None
 
 
-class LibreTranslate(BaseApiProvider):
+class LibreTranslate(AbstractTranslator, BaseApiProvider):
     """
     Клиент для использования libretranslate
     """
@@ -30,7 +31,7 @@ class LibreTranslate(BaseApiProvider):
         return self.get("languages")
 
     def translate(
-        self, text: str, source: str = "ru", target: str = "en", fmt: str = "text"
+        self, text: str, source: str = "ru", target: str = "en", fmt: str = "text", **kwargs
     ) -> str:
         """
         Перевод текста.

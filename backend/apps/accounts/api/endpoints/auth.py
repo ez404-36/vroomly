@@ -6,7 +6,7 @@ from fastapi_utils.cbv import cbv
 from starlette import status
 
 from apps.accounts.api.routers import router
-from apps.accounts.api.schemas.mutators import RegistrationData
+from apps.accounts.api.schemas.mutators import RegistrationDataForm
 from apps.accounts.api.utils import authenticate_user
 from apps.accounts.models.user import User
 from core.db import database
@@ -29,7 +29,7 @@ class UserAuthAPI:
         return Token(access_token=access_token, token_type="bearer")
 
     @router.post("/registration", status_code=status.HTTP_201_CREATED)
-    async def api_registration(self, data: Annotated[RegistrationData, Form()]):
+    async def api_registration(self, data: Annotated[RegistrationDataForm, Form()]):
         user = User(
             login=data.login,
             email=data.email,

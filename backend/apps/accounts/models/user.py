@@ -1,24 +1,28 @@
 from datetime import date
 
 import bcrypt
-from common.models import DeletedModelMixin, TimestampedModelMixin
-from core.models import AutoSchemaBase
-from core.settings import settings
 from sqlalchemy import Date, String
 from sqlalchemy.orm import Mapped, mapped_column
+
+from apps.geo.models.country import get_country_link_mixin
+from common.models import DeletedModelMixin, TimestampedModelMixin
+from common.models.mixins.relations import get_foreign_key_mixin
+from core.models import AutoSchemaBase
+from core.settings import settings
 
 
 class User(
     AutoSchemaBase,
     DeletedModelMixin,
     TimestampedModelMixin,
+    get_country_link_mixin(back_populates='users', nullable=True, verbose_name='Местоположение (страна)'),
 ):
     """
-    Модель Пользователь
+    Пользователь
     """
 
     login: Mapped[str] = mapped_column(String(50), unique=True)
-    email: Mapped[str] = mapped_column(String, unique=True)
+    email: Mapped[str] = mapped_column(String(50), unique=True)
     password_hash: Mapped[str] = mapped_column(String(255))
 
     name: Mapped[str | None]
@@ -42,3 +46,17 @@ class User(
             password.encode(settings.encoding),
             self.password_hash.encode(settings.encoding),
         )
+
+
+def get_user_link_mixin(
+    back_populates: str | None,
+    nullable: bool,
+    verbose_name='Пользователь',
+):
+    """
+    Миксин связи с пользователем
+    """
+    return get_foreign_key_mixin(
+        User, 'user',
+        back_populates=back_populates, nullable=nullable, verbose_name=verbose_name,
+    )

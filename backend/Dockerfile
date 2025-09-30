@@ -3,8 +3,8 @@ FROM python:3.13-slim as build
 ARG python_version=3.13
 ARG backend_dir=/app
 
-ARG UID
-ARG GID
+ARG UID=1000
+ARG GID=1000
 
 WORKDIR $backend_dir
 
@@ -14,9 +14,9 @@ RUN apt-get update --quiet && \
 
 
 # Cоздание пользователя
-#RUN groupadd -g "${GID}" vroomly
-#RUN useradd --uid "${UID}" --gid vroomly --shell /bin/bash -d /app vroomly
-#RUN chown -R vroomly:vroomly /app
+RUN groupadd -g "${GID}" vroomly && \
+    useradd --uid "${UID}" --gid vroomly --shell /bin/bash -d /app vroomly && \
+    chown -R vroomly:vroomly /app
 
 
 COPY --link --from=ghcr.io/astral-sh/uv:0.4 /uv /usr/local/bin/uv

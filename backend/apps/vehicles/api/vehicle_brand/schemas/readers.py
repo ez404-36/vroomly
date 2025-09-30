@@ -3,7 +3,7 @@ from uuid import UUID
 from fastapi_utils.api_model import APIModel
 
 
-class VehicleBrandDetail(APIModel):
+class VehicleBrandDetailSchema(APIModel):
     id: UUID
     country_id: str
     code: str

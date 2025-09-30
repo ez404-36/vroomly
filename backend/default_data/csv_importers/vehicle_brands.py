@@ -1,5 +1,4 @@
-from apps.vehicles.models.vehicle_brand import VehicleBrand, generate_brand_code
-
+from apps.vehicles.models.vehicle.vehicle_brand import VehicleBrand, generate_brand_code
 from .base import ImportFromCSVBase
 
 

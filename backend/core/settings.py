@@ -38,6 +38,7 @@ class Settings(BaseSettings):
     encoding: str = "utf-8"
 
     user_model: str = 'apps.accounts.models.user.User'
+    translator_model: str = 'common.providers.libre_translate.LibreTranslate'
 
     model_config = SettingsConfigDict(
         env_file=Path(__file__).parent.parent / ".env",

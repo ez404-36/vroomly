@@ -16,17 +16,21 @@ class OrmDatabase:
             self.async_engine, expire_on_commit=False
         )
 
-    async def fetch_one(self, query: Select) -> Any:
+    async def fetch_one(self, query: Select, raise_exc=False) -> Any:
         async with self.get_async_session() as session:
-            return await self.session_fetch_one(session, query)
+            return await self.session_fetch_one(session, query, raise_exc)
 
     async def fetch_all(self, query: Select) -> Any:
         async with self.get_async_session() as session:
             return await self.session_fetch_all(session, query)
 
     @staticmethod
-    async def session_fetch_one(session: AsyncSession, query: Select) -> Any:
-        return (await session.scalars(query)).one()
+    async def session_fetch_one(session: AsyncSession, query: Select, raise_exc=False) -> Any:
+        result = await session.scalars(query)
+        if raise_exc:
+            return result.one()
+        else:
+            return result.one_or_none()
 
     @staticmethod
     async def session_fetch_all(session: AsyncSession, query: Select) -> Iterable[Any]:

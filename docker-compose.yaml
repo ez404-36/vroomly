@@ -43,6 +43,7 @@ services:
     user: "${UID}:${GID}"
     restart: unless-stopped
     profiles: [ vr-backend ]
+    working_dir: '/app'
     networks:
       default:
         aliases: [ vroomly-backend ]
