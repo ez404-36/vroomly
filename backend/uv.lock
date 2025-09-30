@@ -799,6 +799,18 @@ wheels = [
 ]
 
 [[package]]
+name = "sqlalchemy2-stubs"
+version = "0.0.2a38"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/94/df/be9e0062f649fd2e9b9b73a98c250f520fa10beaebddb8948dffad23c3b6/sqlalchemy2-stubs-0.0.2a38.tar.gz", hash = "sha256:861d722abeb12f13eacd775a9f09379b11a5a9076f469ccd4099961b95800f9e", size = 123950 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ee/ea/6eff437d0a26c894da2982429ed2c148ecaf0526349ddc8cda1e7151c171/sqlalchemy2_stubs-0.0.2a38-py3-none-any.whl", hash = "sha256:b62aa46943807287550e2033dafe07564b33b6a815fbaa3c144e396f9cc53bcb", size = 191786 },
+]
+
+[[package]]
 name = "starlette"
 version = "0.47.2"
 source = { registry = "https://pypi.org/simple" }
@@ -927,6 +939,7 @@ dependencies = [
     { name = "python-dotenv" },
     { name = "requests" },
     { name = "sqlalchemy" },
+    { name = "sqlalchemy2-stubs" },
 ]
 
 [package.metadata]
@@ -947,6 +960,7 @@ requires-dist = [
     { name = "python-dotenv", specifier = ">=1.1.0" },
     { name = "requests", specifier = ">=2.32.5" },
     { name = "sqlalchemy", specifier = ">=2.0.40" },
+    { name = "sqlalchemy2-stubs", specifier = ">=0.0.2a38" },
 ]
 
 [[package]]

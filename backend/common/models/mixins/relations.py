@@ -1,4 +1,4 @@
-from pydantic.v1 import UUID4
+from sqlalchemy import UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship, declared_attr
 
 from common.models import ForeignKeyTo
@@ -23,21 +23,25 @@ def get_foreign_key_mixin(
     field_name = f'{relation_name}_id'
 
     annotations = {
-        field_name: Mapped[UUID4 | None] if nullable else Mapped[UUID4]
+        field_name: Mapped[UUID | None] if nullable else Mapped[UUID]
     }
 
+    def make_column():
+        return mapped_column(
+            ForeignKeyTo(model), doc=verbose_name, nullable=nullable
+        )
+
     attrs = {
+        "extend_existing": True,
         "__annotations__": annotations,
-        field_name: declared_attr(
-            lambda cls, _model=model, _doc=verbose_name, _nullable=nullable: mapped_column(
-                ForeignKeyTo(_model), doc=_doc, nullable=_nullable
-            )
-        ),
+        field_name: declared_attr(lambda cls: make_column()),
         relation_name: declared_attr(
             lambda cls, _model_str=model_str, _field_name=field_name, _lazy=lazy, _back_pop=back_populates: relationship(
                 _model_str,
                 foreign_keys=lambda: getattr(cls, _field_name),
-                back_populates=_back_pop,
+                # TODO: линтер плохо понимает backref, об этом говорит сама дока SQLAlchemy
+                # back_populates=_back_pop,
+                backref=_back_pop,
                 lazy=_lazy,
             )
         ),

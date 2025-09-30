@@ -23,7 +23,7 @@ class VehicleModelAPI(
 ):
 
     @router.get(
-        "/models/",
+        "/series/",
         response_model=list[VehicleModelListSchema],
         summary="Список моделей",
     )
@@ -42,15 +42,15 @@ class VehicleModelAPI(
         return await database.fetch_all(query)
 
     @router.get(
-        "/models/{model_id}",
+        "/series/{series_id}",
         response_model=VehicleModelDetailSchema,
         summary="Детальный просмотр модели",
     )
-    async def retrieve(self, model_id: UUID):
+    async def retrieve(self, series_id: UUID):
         query = (
             select(VehicleSeries)
             .options(joinedload(VehicleSeries.brand))
-            .where(VehicleSeries.id == model_id)
+            .where(VehicleSeries.id == series_id)
         )
 
         return await database.fetch_one(query)
