@@ -1,6 +1,7 @@
 from datetime import date
 
-from pydantic import UUID4, BaseModel
+from uuid import UUID
+from pydantic import BaseModel
 
 
 class FrozenModelType(BaseModel):
@@ -18,7 +19,7 @@ class CurrentUser(BaseModel):
     Модель текущего пользователя, доступная в API-запросах
     """
 
-    id: UUID4
+    id: UUID
     login: str
     email: str
     name: str | None

@@ -3,8 +3,8 @@ FROM python:3.13-slim as build
 ARG python_version=3.13
 ARG backend_dir=/app
 
-ARG UID=1000
-ARG GID=1000
+ARG UID
+ARG GID
 
 WORKDIR $backend_dir
 
@@ -51,4 +51,19 @@ uv sync \
   --frozen
 EOF
 
+FROM build as backend
+
 RUN pip install pre-commit
+
+
+FROM build as codegen
+
+# Обновляем пакеты и ставим Node.js + npm
+RUN apt-get update && apt-get install -y \
+    curl \
+    && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y nodejs \
+    && npm install -g json-schema-to-typescript \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
