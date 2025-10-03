@@ -30,7 +30,12 @@ services:
           memory: 1G
 
   backend-build:  &backend-build
-    build: &backend-build-path ./backend
+    build: &backend-build-context
+      context: ./backend
+      target: backend
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
     env_file: .env
     volumes:
       - &app-backend ./backend:/app:rw
@@ -58,8 +63,29 @@ services:
     command: uv run python main.py
     profiles: [ vr-frontend ]
 
+  codegen:
+    build:
+      context: ./backend
+      target: codegen
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
+    env_file: .env
+    working_dir: "/app"
+    restart: no
+    volumes:
+      - *app-backend
+      - ./src:/app/src:rw
+    command: uv run python generate_dataclasses.py
+    profiles: [ vr-frontend, vr-backend ]
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 1G
+
   migrations:
-    build: *backend-build-path
+    build: *backend-build-context
     command: uv run alembic upgrade head
     env_file: .env
     volumes:
@@ -70,7 +96,7 @@ services:
     profiles: [ vr-frontend ]
 
   seed: # Наполнение БД первичными данными
-    build: *backend-build-path
+    build: *backend-build-context
     command: uv run python default_data/seed_all.py
     env_file: .env
     volumes:
@@ -81,7 +107,7 @@ services:
     profiles: [ no-profiles ]
 
   tests: # тесты бекенда
-    build: *backend-build-path
+    build: *backend-build-context
     command: uv run pytest
     env_file: .env
     environment:

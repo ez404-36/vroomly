@@ -8,6 +8,12 @@ base = AutoSchemaBase
 logger = logging.getLogger(__name__)
 
 
+def path_to_module_name(path: Path, start="apps") -> str:
+    path_parts = path.parts
+    models_file_module_path = '.'.join(path_parts[path_parts.index(start):])
+    return models_file_module_path.removesuffix('.py')
+
+
 def load_all_models() -> (set[str], list[str]):
     """
     Сканирует директорию apps/ и загружает модели из всех apps/<service>/models/*
@@ -43,11 +49,7 @@ def load_all_models() -> (set[str], list[str]):
                     ):
                         continue
                     try:
-                        path_parts = model_file.parts
-                        models_file_module_path =  '.'.join(path_parts[path_parts.index("apps"):])
-                        models_file_module = __import__(
-                            models_file_module_path.removesuffix('.py'), fromlist=["*"]
-                        )
+                        models_file_module = path_to_module_name(model_file)
                         # Собираем все объекты, которые могут быть моделями
                         for name in filter(
                             lambda var: var != base.__name__, dir(models_file_module)
@@ -56,7 +58,7 @@ def load_all_models() -> (set[str], list[str]):
 
                             if name in loaded_models:
                                 errors.append(
-                                    f'Model {name} already loaded before (current path: {models_file_module_path})'
+                                    f'Model {name} already loaded before (current path: {models_file_module})'
                                 )
                                 continue
 
