@@ -81,7 +81,7 @@ services:
     volumes:
       - *app-backend
       - ./frontend/src:/frontend/src:rw
-    command: uv run python collect_models.py
+    command: uv run python scripts/collect_models.py
     profiles: [ vr-frontend, vr-backend ]
     deploy:
       resources:

@@ -34,7 +34,7 @@ from fastapi_utils.api_model import APIModel
 from pydantic import BaseModel
 
 # Настройки
-BACKEND_DIR = Path(__file__).parent
+BACKEND_DIR = Path(__file__).parent.parent
 OUTPUT_FILE = BACKEND_DIR / "src" / "generated_dataclasses.py"
 
 # Safety repr limiter for large defaults

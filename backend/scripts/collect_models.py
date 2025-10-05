@@ -5,9 +5,11 @@ import subprocess
 from pathlib import Path
 from typing import List, Dict, Set, Tuple
 
+from common.utils.utils import get_all_python_files
+
 
 class BaseModelCollector:
-    def __init__(self, project_root: str, output_file: str = "all_models.py"):
+    def __init__(self, project_root: str, output_file: str):
         self.project_root = Path(project_root)
         self.output_file = Path(output_file)
         self.models: Dict[str, Dict] = {}  # name -> {code, file, dependencies}
@@ -15,30 +17,12 @@ class BaseModelCollector:
         self.processed_files: Set[str] = set()
         self.base_model_classes: Set[str] = {'BaseModel', 'APIModel'}
 
-    def is_python_file(self, file_path: Path) -> bool:
-        """Проверяет, является ли файл Python файлом"""
-        return file_path.suffix == '.py' and file_path.name != '__init__.py'
-
     def get_all_python_files(self) -> List[Path]:
         """Получает все Python файлы в проекте"""
-        python_files = []
-        for root, dirs, files in os.walk(self.project_root):
-            # Пропускаем служебные директории
-            dirs[:] = [
-                d for d in dirs
-                if not d.startswith('.') and d not in [
-                    '__pycache__', 'venv', 'env', 'tests', 'src', 'migrations'
-                ]
-            ]
+        return get_all_python_files(self.project_root)
 
-            for file in files:
-                file_path = Path(root) / file
-                if self.is_python_file(file_path):
-                    python_files.append(file_path)
-
-        return python_files
-
-    def extract_imports_from_code(self, code: str) -> Set[str]:
+    @staticmethod
+    def extract_imports_from_code(code: str) -> Set[str]:
         """Извлекает импорты из кода"""
         imports = set()
         try:
@@ -53,8 +37,8 @@ class BaseModelCollector:
                         names = [alias.name for alias in node.names]
                         if names:
                             imports.add(f"from {module} import {', '.join(names)}")
-        except:
-            pass
+        except Exception as e:
+            print(f'[error] Не удалось извлечь импорты: {e}')
         return imports
 
     def is_base_model_class(self, class_node: ast.ClassDef, content: str) -> Tuple[bool, Set[str]]:
