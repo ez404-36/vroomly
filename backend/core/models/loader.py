@@ -1,17 +1,12 @@
 import logging
 from pathlib import Path
 
+from common.utils.utils import path_to_module_name
 from core.models import AutoSchemaBase
 
 base = AutoSchemaBase
 
 logger = logging.getLogger(__name__)
-
-
-def path_to_module_name(path: Path, start="apps") -> str:
-    path_parts = path.parts
-    models_file_module_path = '.'.join(path_parts[path_parts.index(start):])
-    return models_file_module_path.removesuffix('.py')
 
 
 def load_all_models() -> (set[str], list[str]):
