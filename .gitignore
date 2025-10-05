@@ -2,6 +2,16 @@
 .idea
 TODO.md
 .env
-__pycache__
 .cache
-backend/generated.py
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+logs
+*.log

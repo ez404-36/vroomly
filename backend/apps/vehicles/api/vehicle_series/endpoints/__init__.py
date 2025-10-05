@@ -1,1 +1,1 @@
-from .readers import VehicleModelAPI
+from .readers import VehicleSeriesAPI

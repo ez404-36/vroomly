@@ -20,7 +20,7 @@ up-project:
 	docker compose up -d
 
 install-git-hooks:
-	docker exec -it vroomly-backend-1 bash -c "pre-commit install --install-hooks --overwrite"
+	docker exec -it vroomly-backend-build-1 bash -c "pre-commit install --install-hooks --overwrite"
 	./backend/scripts/setup_docker_precommit.sh vroomly-backend-1
 
 seeds:
@@ -29,5 +29,8 @@ seeds:
 tests:
 	docker compose up -d tests
 
+codegen:
+	docker compose up -d codegen
 
-.PHONY: base-setup docker-setup setup-for-backend setup-for-frontend network-prepare volumes-prepare env-prepare set-profile-frontend up-project seeds tests
+
+.PHONY: base-setup docker-setup setup-for-backend setup-for-frontend network-prepare volumes-prepare env-prepare set-profile-frontend up-project seeds tests codegen
