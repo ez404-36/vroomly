@@ -2,10 +2,10 @@ from typing import Annotated
 from uuid import UUID
 
 from apps.vehicles.api.routers import router
-from apps.vehicles.api.vehicle_series.filters import VehicleModelFilterParams
+from apps.vehicles.api.vehicle_series.filters import VehicleSeriesFilterParams
 from apps.vehicles.api.vehicle_series.schemas.readers import (
-    VehicleModelDetailSchema,
-    VehicleModelListSchema,
+    VehicleSeriesDetailSchema,
+    VehicleSeriesListSchema,
 )
 from apps.vehicles.models.vehicle.vehicle_series import VehicleSeries
 from common.orm.filters import apply_search
@@ -18,16 +18,16 @@ from sqlalchemy.orm import joinedload
 
 
 @cbv(router)
-class VehicleModelAPI(
+class VehicleSeriesAPI(
     BaseAPI,
 ):
 
     @router.get(
         "/series/",
-        response_model=list[VehicleModelListSchema],
+        response_model=list[VehicleSeriesListSchema],
         summary="Список моделей",
     )
-    async def list(self, filter_query: Annotated[VehicleModelFilterParams, Query()]):
+    async def list(self, filter_query: Annotated[VehicleSeriesFilterParams, Query()]):
         search_fields = ("name",)
 
         query = apply_search(
@@ -43,7 +43,7 @@ class VehicleModelAPI(
 
     @router.get(
         "/series/{series_id}",
-        response_model=VehicleModelDetailSchema,
+        response_model=VehicleSeriesDetailSchema,
         summary="Детальный просмотр модели",
     )
     async def retrieve(self, series_id: UUID):

@@ -32,7 +32,7 @@ services:
   backend-build:  &backend-build
     build: &backend-build-context
       context: ./backend
-      target: backend
+      target: backend-with-hooks
       args:
         - UID=${UID:-1000}
         - GID=${GID:-1000}
@@ -45,7 +45,6 @@ services:
     depends_on:
       - db
       - libretranslate
-    user: "${UID}:${GID}"
     restart: unless-stopped
     profiles: [ vr-backend ]
     working_dir: '/app'
@@ -60,6 +59,12 @@ services:
 
   backend:
     <<: *backend-build
+    build:
+      context: ./backend
+      target: backend-base
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
     command: uv run python main.py
     profiles: [ vr-frontend ]
 
@@ -75,8 +80,8 @@ services:
     restart: no
     volumes:
       - *app-backend
-      - ./src:/app/src:rw
-    command: uv run python generate_dataclasses.py
+      - ./frontend/src:/frontend/src:rw
+    command: uv run python collect_models.py
     profiles: [ vr-frontend, vr-backend ]
     deploy:
       resources:

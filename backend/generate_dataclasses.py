@@ -3,13 +3,13 @@
 generate_dataclasses.py
 
 Сканирует проект на предмет pydantic.BaseModel и enum.Enum,
-и записывает их в один файл vroomly/src/dataclasses.py
+и записывает их в один файл backend/src/dataclasses.py
 в виде:
  - dataclasses (@dataclass) для BaseModel (с полными аннотациями и дефолтами)
  - enum (копируются как есть)
 
 Классы в выходном файле отсортированы в алфавитном порядке.
-Работает с Pydantic v1 и v2.
+Работает с Pydantic v2.
 """
 import builtins
 import dataclasses
@@ -35,8 +35,7 @@ from pydantic import BaseModel
 
 # Настройки
 BACKEND_DIR = Path(__file__).parent
-OUTPUT_FILE = BACKEND_DIR / "generated.py"
-TS_OUTPUT_FILE = BACKEND_DIR.parent / "src" / "generated.ts"
+OUTPUT_FILE = BACKEND_DIR / "src" / "generated_dataclasses.py"
 
 # Safety repr limiter for large defaults
 _repr = reprlib.Repr()

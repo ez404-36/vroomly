@@ -1,4 +1,4 @@
-FROM python:3.13-slim as build
+FROM python:3.13-slim as backend-base
 
 ARG python_version=3.13
 ARG backend_dir=/app
@@ -51,12 +51,14 @@ uv sync \
   --frozen
 EOF
 
-FROM build as backend
+RUN chmod 777 /.venv/
+
+FROM backend-base as backend-with-hooks
 
 RUN pip install pre-commit
 
 
-FROM build as codegen
+FROM backend-base as codegen
 
 # Обновляем пакеты и ставим Node.js + npm
 RUN apt-get update && apt-get install -y \
