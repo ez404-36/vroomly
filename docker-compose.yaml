@@ -41,7 +41,7 @@ services:
     env_file: .env
     volumes:
       - &app-backend ./backend:/app:rw
-      - vroomly-backend-venv:/app/.venv
+      - &backend-venv vroomly-backend-venv:/app/.venv
       - .git:/app/.git
     ports:
       - ${EXPOSE_BACKEND_PORT:-8000}:${BACKEND_PORT:-8000}
@@ -63,7 +63,7 @@ services:
 
   backend:
     <<: *backend-build
-    command: uv run python main.py
+    command: python main.py
     profiles: [ vr-frontend ]
 
   codegen:
@@ -78,8 +78,9 @@ services:
     restart: no
     volumes:
       - *app-backend
+      - *backend-venv
       - ./frontend/src:/frontend/src:rw
-    command: uv run python scripts/collect_models.py
+    command: python scripts/collect_models.py
     profiles: [ vr-frontend, vr-backend ]
     deploy:
       resources:
@@ -89,10 +90,11 @@ services:
 
   migrations:
     build: *backend-build-context
-    command: uv run alembic upgrade head
+    command: alembic upgrade head
     env_file: .env
     volumes:
       - *app-backend
+      - *backend-venv
     depends_on:
       - db
     restart: no
@@ -100,10 +102,11 @@ services:
 
   seed: # Наполнение БД первичными данными
     build: *backend-build-context
-    command: uv run python default_data/seed_all.py
+    command: python default_data/seed_all.py
     env_file: .env
     volumes:
       - *app-backend
+      - *backend-venv
     depends_on:
       - db
     restart: no
@@ -111,12 +114,13 @@ services:
 
   tests: # тесты бекенда
     build: *backend-build-context
-    command: uv run pytest
+    command: pytest
     env_file: .env
     environment:
       PYTHONOPTIMIZE: 0
     volumes:
       - *app-backend
+      - *backend-venv
     depends_on:
       - db
     restart: no

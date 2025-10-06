@@ -34,12 +34,12 @@ def get_all_python_files(
 
 		module_name = root.split('/')[-1]
 
-		is_root_match = module_name in only_names
+		is_root_match = module_name in _only_names
 
 		for file in files:
 			file_path = Path(root) / file
 			if is_python_file(file_path):
-				if only_names and file_path.stem not in only_names and not is_root_match:
+				if _only_names and file_path.stem not in _only_names and not is_root_match:
 					continue
 				python_files.append(file_path)
 

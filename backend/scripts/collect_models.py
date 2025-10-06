@@ -254,5 +254,6 @@ def main():
 
 
 if __name__ == "__main__":
+    # TODO: VR-31 кодген для енамов
     main()
-    subprocess.run("uv run pydantic2ts --module src.generated_models --output /frontend/src/types/schemas.ts".split())
+    subprocess.run("pydantic2ts --module src.generated_models --output /frontend/src/types/schemas.ts".split())
