@@ -6,6 +6,7 @@ networks:
 volumes:
   vroomly-postgres-data:
     external: true
+  vroomly-backend-venv:
 
 
 services:
@@ -20,6 +21,7 @@ services:
       - ${EXPOSE_DB_PORT:-5432}:5432
     volumes:
       - vroomly-postgres-data:/var/lib/postgresql/data:rw
+      - ./backend/scripts/:/app/scripts/
     networks:
       default:
         aliases: [ vroomly-db ]
@@ -32,13 +34,14 @@ services:
   backend-build:  &backend-build
     build: &backend-build-context
       context: ./backend
-      target: backend-with-hooks
+      target:  backend-base
       args:
         - UID=${UID:-1000}
         - GID=${GID:-1000}
     env_file: .env
     volumes:
       - &app-backend ./backend:/app:rw
+      - vroomly-backend-venv:/app/.venv
       - .git:/app/.git
     ports:
       - ${EXPOSE_BACKEND_PORT:-8000}:${BACKEND_PORT:-8000}
@@ -46,6 +49,7 @@ services:
       - db
       - libretranslate
     restart: unless-stopped
+    user: "${UID}:${GID}"
     profiles: [ vr-backend ]
     working_dir: '/app'
     networks:
@@ -59,12 +63,6 @@ services:
 
   backend:
     <<: *backend-build
-    build:
-      context: ./backend
-      target: backend-base
-      args:
-        - UID=${UID:-1000}
-        - GID=${GID:-1000}
     command: uv run python main.py
     profiles: [ vr-frontend ]
 

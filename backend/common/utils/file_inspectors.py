@@ -1,18 +1,7 @@
 import importlib
 import os
 from pathlib import Path
-from typing import Any, Iterable
-
-
-def import_class(path_to_class: str) -> Any:
-	"""
-	Извлекает класс из модуля. Путь до класса записывается через точку.
-	Пример: apps.users.models.User
-	"""
-	path_chunks = path_to_class.split(".")
-	module_name = ".".join(path_chunks[:-1])
-	module = importlib.import_module(module_name)
-	return getattr(module, path_chunks[-1], None)
+from typing import Iterable, Any
 
 
 def is_python_file(file_path: Path) -> bool:
@@ -61,3 +50,14 @@ def path_to_module_name(path: Path, start="apps") -> str:
 	path_parts = path.parts
 	models_file_module_path = '.'.join(path_parts[path_parts.index(start):])
 	return models_file_module_path.removesuffix('.py')
+
+
+def import_class(path_to_class: str) -> Any:
+	"""
+	Извлекает класс из модуля. Путь до класса записывается через точку.
+	Пример: apps.users.models.User
+	"""
+	path_chunks = path_to_class.split(".")
+	module_name = ".".join(path_chunks[:-1])
+	module = importlib.import_module(module_name)
+	return getattr(module, path_chunks[-1], None)

@@ -3,7 +3,7 @@ import asyncio
 from core.db import database
 from default_data.csv_importers.countries import ImportCountriesCSV
 from default_data.csv_importers.vehicle_brands import ImportVehicleBrandsCSV
-from default_data.csv_importers.vehicle_models import ImportVehicleSeriesCSV
+from default_data.csv_importers.vehicle_series import ImportVehicleSeriesCSV
 
 
 async def seed_all():
@@ -18,5 +18,9 @@ async def seed_all():
     print("Наполнение БД первичными данными успешно завершено")
 
 
+async def main():
+    await seed_all()
+
+
 if __name__ == "__main__":
-    asyncio.run(seed_all())
+    asyncio.run(main())

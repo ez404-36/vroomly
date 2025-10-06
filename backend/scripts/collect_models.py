@@ -5,7 +5,7 @@ import subprocess
 from pathlib import Path
 from typing import List, Dict, Set, Tuple
 
-from common.utils.utils import get_all_python_files
+from common.utils.file_inspectors import get_all_python_files
 
 
 class BaseModelCollector:

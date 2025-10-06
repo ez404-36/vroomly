@@ -1,4 +1,4 @@
-from core.providers.vin01 import VinO1ApiProvider
+from common.providers.vin01 import VinO1ApiProvider
 
 
 class TestVinO1ApiProvider:

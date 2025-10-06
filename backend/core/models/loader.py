@@ -1,7 +1,8 @@
+import importlib
 import logging
 from pathlib import Path
 
-from common.utils.utils import path_to_module_name
+from common.utils.file_inspectors import is_python_file, path_to_module_name
 from core.models import AutoSchemaBase
 
 base = AutoSchemaBase
@@ -36,18 +37,13 @@ def load_all_models() -> (set[str], list[str]):
                 if model_file.is_dir():
                     load_models_in_module(model_file)
                 else:
-                    file_name = model_file.stem
-                    if (
-                        file_name.startswith("__")
-                        and file_name.endswith("__")
-                        or model_file.suffix != ".py"
-                    ):
+                    if not is_python_file(model_file):
                         continue
                     try:
-                        models_file_module = path_to_module_name(model_file)
+                        models_file_module = importlib.import_module(path_to_module_name(model_file))
                         # Собираем все объекты, которые могут быть моделями
                         for name in filter(
-                            lambda var: var != base.__name__, dir(models_file_module)
+                            lambda var: var != base.__name__ and not var.startswith('_'), dir(models_file_module)
                         ):
                             obj = getattr(models_file_module, name)
 

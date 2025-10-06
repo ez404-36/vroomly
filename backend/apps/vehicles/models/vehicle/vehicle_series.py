@@ -1,4 +1,4 @@
-from sqlalchemy import String
+from sqlalchemy import String, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column
 
 from apps.vehicles.models.vehicle.enums import VehicleType
@@ -19,6 +19,12 @@ class VehicleSeries(
 
     name: Mapped[str] = mapped_column(String(50), doc='Название модели')
     vehicle_type: Mapped[VehicleType] = mapped_column(IntEnumType(VehicleType), doc='Тип ТС')
+
+    __table_args__ = (
+        UniqueConstraint(
+            "brand_id", "name", name="vehicle_series_brand_id_name_unique"
+        ),
+    )
 
 
 def get_vehicle_series_link_mixin(
