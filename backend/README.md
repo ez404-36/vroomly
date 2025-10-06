@@ -1,6 +1,6 @@
-### Настройка интерпретатора для IDE
+### Настройка интерпретатора/дебагера для IDE
 1. Контейнер - backend-build
-2. Путь - /.venv/bin/python
+2. Путь - /app/.venv/bin/python
 
 ### Установка новых python-пакетов
 Внутри контейнера выполнить команду
@@ -16,26 +16,40 @@ docker compose build backend
 
 Создание миграций
 ```bash
-uv run alembic revision --autogenerate -m "%some_comment"
+alembic revision --autogenerate -m "%some_comment"
 ```
 
 Применение миграций
 ```bash
-uv run alembic upgrade head
+alembic upgrade head
 ```
 
 Откат миграций
 ```bash
-uv run alembic downgrade -1 # откат на 1 миграцию назад
+alembic downgrade -1 # откат на 1 миграцию назад
 ```
 или
 ```bash
-uv run alembic downgrade d97a9824423b # откат к определенной миграции
+alembic downgrade d97a9824423b # откат к определенной миграции
 ```
 
 ### Возможные проблемы
-# TODO: настроить автоимпорт всех роутеров, чтобы не приходилось заниматься этими неявными импортами
 1. Я зарегистрировал роутер, но fastapi не добавляет мои эндпоинты.
+**Причина:**
+В приложении настроены автоимпорты роутеров, чтобы не пришлось заниматься этим вручную.
+Для подробной информации см. реализацию `register_all_service_routers()`.
 **Решение:**
-- Убедиться, что ваш роутер лежит в `apps/<your_app>/api/routers.py` и добавлен в список `list_routers`
-- в `$module/api/__init__.py` добавить `from .endpoints import *` и в `$module/api/endpoints/__init__.py` тоже импортировать все эндпоинты 
+Убедиться, что ваш роутер лежит в `apps/<your_app>/api/routers.py` и добавлен в список `list_routers`
+
+2. При запуске команд alembic `FAILED: No 'script_location' key found in configuration`
+**Причина:**
+В терминале докер-контейнера дефолтная папка `/opt/project`, 
+именно в неё мапится папка с бекендом, несмотря на то, что мы явно указываем `/app` в настройках compose.
+**Решение:**
+Сделать `cp /app` и уже затем выполнить нужную команду.
+
+3. Ошибка при установке гит-хуков внутри контейнера
+**Решение:**
+Повторно выполнить установку гит-хуков с помощью команды `make install-git-hooks` в терминале в корне проекта. 
+Если у вас Windows (мои соболезнования) и команды `make` нет, 
+см. реализацию `install-git-hooks` в файле `Makefile` и выполните команду вручную.

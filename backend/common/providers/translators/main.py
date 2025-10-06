@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING
 
-from common.utils.utils import import_class
+from common.utils.file_inspectors import import_class
 from core.settings import settings
 
 if TYPE_CHECKING:

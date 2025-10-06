@@ -24,4 +24,6 @@ dependencies = [
     "sqlalchemy2-stubs>=0.0.2a38",
     "astroid>=3.3.11",
     "pydantic2-to-typescript>=0.0.1",
+    "ruff>=0.13.3",
+    "pre-commit>=4.3.0",
 ]

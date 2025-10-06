@@ -19,46 +19,23 @@ RUN groupadd -g "${GID}" vroomly && \
     chown -R vroomly:vroomly /app
 
 
+RUN mkdir -p /.venv && chown -R vroomly:vroomly /.venv
+
 COPY --link --from=ghcr.io/astral-sh/uv:0.4 /uv /usr/local/bin/uv
+ENV PATH="/root/.cargo/bin:${PATH}"
 
-ENV UV_PYTHON="python$python_version" \
-  UV_PYTHON_DOWNLOADS=never \
-  UV_PROJECT_ENVIRONMENT=/.venv \
-  UV_LINK_MODE=copy \
-  UV_COMPILE_BYTECODE=1 \
-  PYTHONOPTIMIZE=1
+COPY --chown=vroomly:vroomly pyproject.toml uv.lock .pre-commit-config.yaml $backend_dir
 
-COPY pyproject.toml uv.lock .pre-commit-config.yaml $backend_dir
+USER vroomly
+RUN uv venv /app/.venv
+ENV PATH="/app/.venv/bin:$PATH"
 
-RUN --mount=type=cache,destination=/root/.cache/uv <<EOF
-uv sync \
-  --no-dev \
-  --no-install-project \
-  --frozen
-EOF
-
-ENV UV_PYTHON=$UV_PROJECT_ENVIRONMENT
-
-COPY .python-version $backend_dir
-
-RUN --mount=type=cache,destination=/root/.cache/uv
-RUN <<EOF
-# cd /app
-sed -Ei "s/^(version = \")0\.0\.0(\")$/\1$(cat .python-version)\2/" pyproject.toml
-uv sync \
-  --no-dev \
-  --no-editable \
-  --frozen
-EOF
-
-RUN chmod 777 /.venv/
-
-FROM backend-base as backend-with-hooks
-
-RUN pip install pre-commit
+RUN uv sync --frozen
 
 
 FROM backend-base as codegen
+
+USER root
 
 # Обновляем пакеты и ставим Node.js + npm
 RUN apt-get update && apt-get install -y \

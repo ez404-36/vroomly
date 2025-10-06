@@ -5,7 +5,7 @@ import subprocess
 from pathlib import Path
 from typing import List, Dict, Set, Tuple
 
-from common.utils.utils import get_all_python_files
+from common.utils.file_inspectors import get_all_python_files
 
 
 class BaseModelCollector:
@@ -254,5 +254,6 @@ def main():
 
 
 if __name__ == "__main__":
+    # TODO: VR-31 кодген для енамов
     main()
-    subprocess.run("uv run pydantic2ts --module src.generated_models --output /frontend/src/types/schemas.ts".split())
+    subprocess.run("pydantic2ts --module src.generated_models --output /frontend/src/types/schemas.ts".split())
