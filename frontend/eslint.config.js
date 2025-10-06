@@ -1,43 +1,41 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import tseslint from '@typescript-eslint/eslint-plugin'
-import parser from '@typescript-eslint/parser'
-import { defineConfig, globalIgnores } from 'eslint/config'
+import { defineConfig, globalIgnores } from "eslint/config";
 
 export default defineConfig([
   // Игнорируем сборку
-  globalIgnores(['dist']),
+  globalIgnores(["dist", "node_modules"]),
 
-  // Конфиг для TypeScript и React
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ["**/*.{ts,tsx}"],
     languageOptions: {
-      parser, // подключаем TypeScript парсер
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-      globals: globals.browser,
+      parser: "@typescript-eslint/parser",
+      ecmaVersion: "latest",
+      sourceType: "module",
+      globals: {
+        window: true,
+        document: true,
+      },
     },
     plugins: {
-      reactHooks,
-      '@typescript-eslint': tseslint,
+      "@typescript-eslint": "@typescript-eslint/eslint-plugin",
+      react: "eslint-plugin-react",
+      "react-hooks": "eslint-plugin-react-hooks",
     },
     settings: {
       react: {
-        version: 'detect',
+        version: "detect",
       },
     },
     extends: [
-      js.configs.recommended,
-      tseslint.configs.recommended,
-      reactHooks.configs['recommended-latest'],
-      'prettier', // отключаем правила, конфликтующие с Prettier
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react/recommended",
+      "plugin:react-hooks/recommended",
+      "prettier",
     ],
     rules: {
-      // кастомные правила из старого конфига
-      'react/react-in-jsx-scope': 'off',
-      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
-      'react/prop-types': 'off',
+      "react/react-in-jsx-scope": "off",
+      "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+      "react/prop-types": "off",
     },
   },
-])
+]);
