@@ -13,6 +13,7 @@ class BaseModelCollector:
         self.project_root = Path(project_root)
         self.output_file = Path(output_file)
         self.models: Dict[str, Dict] = {}  # name -> {code, file, dependencies}
+        self.custom_types: Dict[str, Dict] = {}  # name -> {code, file, dependencies}
         self.imports: Set[str] = set()
         self.processed_files: Set[str] = set()
         self.base_model_classes: Set[str] = {'BaseModel', 'APIModel'}
@@ -40,6 +41,59 @@ class BaseModelCollector:
         except Exception as e:
             print(f'[error] Не удалось извлечь импорты: {e}')
         return imports
+
+    def extract_custom_types_from_code(self, content: str, file_path: Path) -> List[Dict]:
+        """Извлекает кастомные типы (type aliases) из кода"""
+        custom_types = []
+
+        try:
+            tree = ast.parse(content)
+
+            for node in ast.walk(tree):
+                # Обрабатываем type aliases (Python 3.12+)
+                if isinstance(node, ast.TypeAlias):
+                    type_name = node.name.id
+                    start_line = node.lineno - 1
+                    end_line = node.end_lineno if hasattr(node, 'end_lineno') else start_line + 1
+
+                    lines = content.split('\n')
+                    type_code = '\n'.join(lines[start_line:end_line])
+
+                    custom_types.append({
+                        'name': type_name,
+                        'code': type_code,
+                        'file': str(file_path),
+                        'imports': self.extract_imports_from_code(content)
+                    })
+
+                # Обрабатываем старые style type aliases (присваивание)
+                elif isinstance(node, ast.Assign):
+                    if (node.targets and
+                            isinstance(node.targets[0], ast.Name) and
+                            isinstance(node.value, (ast.Subscript, ast.BinOp, ast.Name, ast.Attribute))):
+
+                        # Проверяем, похоже ли это на объявление типа
+                        target_name = node.targets[0].id
+                        if target_name.isupper():  # Обычно типы называют в UPPER_CASE
+                            start_line = node.lineno - 1
+                            end_line = node.end_lineno if hasattr(node, 'end_lineno') else start_line + 1
+
+                            lines = content.split('\n')
+                            type_code = '\n'.join(lines[start_line:end_line])
+
+                            # Проверяем, содержит ли код аннотацию типа
+                            if any(keyword in type_code for keyword in ['Union', 'List', 'Dict', 'Optional', 'Any']):
+                                custom_types.append({
+                                    'name': target_name,
+                                    'code': type_code,
+                                    'file': str(file_path),
+                                    'imports': self.extract_imports_from_code(content)
+                                })
+
+        except Exception as e:
+            print(f"Ошибка при извлечении кастомных типов из {file_path}: {e}")
+
+        return custom_types
 
     def is_base_model_class(self, class_node: ast.ClassDef, content: str) -> Tuple[bool, Set[str]]:
         """Проверяет, является ли класс Pydantic моделью (прямо или косвенно)"""
@@ -103,14 +157,29 @@ class BaseModelCollector:
 
         return classes
 
-    def collect_all_classes(self):
-        """Собирает все классы из проекта для анализа"""
+    def collect_all_classes_and_types(self):
+        """Собирает все классы и кастомные типы из проекта для анализа"""
         python_files = self.get_all_python_files()
         all_classes = []
 
         for file_path in python_files:
             classes = self.extract_all_models(file_path)
             all_classes.extend(classes)
+
+            # Собираем кастомные типы
+            try:
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                custom_types = self.extract_custom_types_from_code(content, file_path)
+
+                for type_info in custom_types:
+                    if type_info['name'] not in self.custom_types:
+                        self.custom_types[type_info['name']] = type_info
+                        self.imports.update(type_info['imports'])
+                        print(f"Найден кастомный тип: {type_info['name']} в {file_path}")
+            except Exception as e:
+                print(f"Ошибка при сборе кастомных типов из {file_path}: {e}")
+
             self.processed_files.add(str(file_path))
 
         return all_classes
@@ -185,7 +254,7 @@ class BaseModelCollector:
         print(f"Найдено {len(python_files)} Python файлов для обработки")
 
         # Собираем все классы
-        all_classes = self.collect_all_classes()
+        all_classes = self.collect_all_classes_and_types()
         print(f"Найдено {len(all_classes)} классов для анализа")
 
         # Находим Pydantic модели
@@ -227,6 +296,17 @@ class BaseModelCollector:
                 f.write(f'{imp}\n')
 
             f.write('\n\n')
+
+            # Записываем кастомные типы
+            if self.custom_types:
+                f.write('# ' + '=' * 50 + '\n')
+                f.write('# КАСТОМНЫЕ ТИПЫ\n')
+                f.write('# ' + '=' * 50 + '\n\n')
+
+                for type_name, type_info in self.custom_types.items():
+                    f.write(f'# Тип: {type_name} (из {os.path.basename(type_info["file"])})\n')
+                    f.write(type_info['code'])
+                    f.write('\n\n')
 
             # Записываем модели в правильном порядке
             for model_name in sorted_model_names:

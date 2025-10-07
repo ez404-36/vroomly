@@ -1,3 +1,5 @@
+from enum import Enum
+
 from common.schemas.fields import ChoiceFieldSchema, ChoiceFieldWithParentSchema
 from core.models import AutoSchemaBase
 
@@ -33,4 +35,13 @@ def to_choice_field_with_parent_list(instances: list[AutoSchemaBase], parent_att
 	return [
 		to_choice_field_with_parent(instance, parent_attr)
 		for instance in instances
+	]
+
+
+def enum_to_choices_list(enum_cls: type[Enum]) -> list[ChoiceFieldSchema]:
+	if not hasattr(enum_cls, 'choices'):
+		return []
+
+	return [
+		ChoiceFieldSchema(id=el[0], name=el[1]) for el in enum_cls.choices()
 	]

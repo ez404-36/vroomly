@@ -4,6 +4,11 @@ from ..service import service_name
 
 router = get_default_router(service_name)
 
+vehicle_router = get_default_router(prefix=f"{service_name}/vehicle", tag_name=service_name)
+series_router = get_default_router(prefix=f"{service_name}/series", tag_name=service_name)
+
 list_routers = [
     router,
+    vehicle_router,
+    series_router,
 ]

@@ -53,12 +53,12 @@ def iter_all_module_names(start_path: Path, package_name: str):
 
 def import_all_modules_from_path(path: Path):
     """
-    Импортирует рекурсивно модули, возвращает set импортированных модулных объектов.
+    Импортирует рекурсивно модули, возвращает set импортированных объектов модулей.
     Игнорирует ошибки импорта (логирует в stderr).
     """
     modules = []
 
-    for child_name in ("apps", "common"):
+    for child_name in ("common", "apps"):
         child_path = path / child_name
         for modname in iter_all_module_names(child_path, child_path.name):
             try:
