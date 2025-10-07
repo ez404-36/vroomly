@@ -6,10 +6,11 @@ from pathlib import Path
 from typing import List, Dict, Set, Tuple
 
 from common.utils.file_inspectors import get_all_python_files
+from core.constants import BACKEND_DIR
 
 
 class BaseModelCollector:
-    def __init__(self, project_root: str, output_file: str):
+    def __init__(self, project_root: str | Path, output_file: str | Path):
         self.project_root = Path(project_root)
         self.output_file = Path(output_file)
         self.models: Dict[str, Dict] = {}  # name -> {code, file, dependencies}
@@ -107,9 +108,50 @@ class BaseModelCollector:
 
         return '\n'.join(normalized_lines)
 
+    def get_pydantic_models_in_annotation(self, class_node: ast.ClassDef) -> set[str]:
+        annotated_models = set()
+        for child in class_node.body:   # type: ast.AnnAssign
+            annotation = getattr(child, 'annotation', None)
+            if not annotation:
+                continue
+
+            if isinstance(annotation, ast.Name):
+                if annotation.id in self.base_model_classes:
+                    annotated_models.add(annotation.id)
+
+            elif isinstance(annotation, ast.Subscript):
+                slice_id = getattr(annotation.slice, "id", None)
+                value_id = getattr(annotation.value, "id", None)
+
+                if slice_id in self.base_model_classes:
+                    annotated_models.add(slice_id)
+
+                if value_id in self.base_model_classes:
+                    annotated_models.add(value_id)
+
+            elif isinstance(annotation, ast.BinOp):
+                left_id = getattr(annotation.left, "id", None)
+                right_id = getattr(annotation.right, "id", None)
+
+                if left_id in self.base_model_classes:
+                    annotated_models.add(left_id)
+
+                if right_id in self.base_model_classes:
+                    annotated_models.add(right_id)
+
+            else:
+                print(f"[warning] Необработанный тип в {class_node.name}: {child.target.id}")
+
+            if annotation := getattr(child, 'annotation', None):
+                if id_attr := getattr(annotation, "id", None):
+                    if id_attr in self.base_model_classes:
+                        annotated_models.add(id_attr)
+
+        return annotated_models
+
     def is_base_model_class(self, class_node: ast.ClassDef, content: str) -> Tuple[bool, Set[str]]:
         """Проверяет, является ли класс Pydantic моделью (прямо или косвенно)"""
-        dependencies = set()
+        dependencies = self.get_pydantic_models_in_annotation(class_node)
 
         # Проверяем прямые базовые классы
         for base in class_node.bases:
@@ -415,6 +457,8 @@ class BaseModelCollector:
                 f.write('\n\n')
                 f.write('#' + '=' * 50 + '\n\n')
 
+        Path(self.output_file).chmod(0o777)
+
     def run(self):
         """Запускает процесс сбора моделей"""
         print("Начало сбора Pydantic моделей...")
@@ -425,8 +469,8 @@ class BaseModelCollector:
 
 
 def main():
-    project_root = "."
-    output_file = "src/generated_models.py"
+    project_root = BACKEND_DIR
+    output_file = BACKEND_DIR / "src" / "generated_models.py"
 
     collector = BaseModelCollector(project_root, output_file)
     collector.run()
