@@ -1,7 +1,7 @@
 from typing import Annotated
 from uuid import UUID
 
-from apps.vehicles.api.routers import router
+from apps.vehicles.api.routers import series_router
 from apps.vehicles.api.vehicle_series.filters import VehicleSeriesFilterParams
 from apps.vehicles.api.vehicle_series.schemas.readers import (
     VehicleSeriesDetailSchema,
@@ -17,13 +17,13 @@ from sqlalchemy import select
 from sqlalchemy.orm import joinedload
 
 
-@cbv(router)
+@cbv(series_router)
 class VehicleSeriesAPI(
     BaseAPI,
 ):
 
-    @router.get(
-        "/series/",
+    @series_router.get(
+        "/",
         response_model=list[VehicleSeriesListSchema],
         summary="Список моделей",
     )
@@ -41,8 +41,8 @@ class VehicleSeriesAPI(
 
         return await database.fetch_all(query)
 
-    @router.get(
-        "/series/{series_id}",
+    @series_router.get(
+        "/{series_id}",
         response_model=VehicleSeriesDetailSchema,
         summary="Детальный просмотр модели",
     )

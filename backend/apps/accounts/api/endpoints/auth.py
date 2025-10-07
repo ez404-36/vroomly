@@ -15,7 +15,10 @@ from core.safety.token import create_access_token, Token
 
 @cbv(router)
 class UserAuthAPI:
-    @router.post("/login")
+    @router.post(
+        "/login",
+        summary="Аутентификация пользователя",
+    )
     async def api_login(self, form_data: Annotated[OAuth2PasswordRequestForm, Depends()]):
         token_data = await authenticate_user(form_data.username, form_data.password)
 
@@ -28,7 +31,11 @@ class UserAuthAPI:
 
         return Token(access_token=access_token, token_type="bearer")
 
-    @router.post("/registration", status_code=status.HTTP_201_CREATED)
+    @router.post(
+        "/registration",
+        status_code=status.HTTP_201_CREATED,
+        summary="Регистрация пользователя",
+    )
     async def api_registration(self, data: Annotated[RegistrationDataForm, Form()]):
         user = User(
             login=data.login,

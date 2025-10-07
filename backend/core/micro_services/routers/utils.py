@@ -13,9 +13,9 @@ from fastapi import APIRouter, FastAPI
 logger = logging.getLogger(__name__)
 
 
-def get_default_router(service_name: str, tag_name: str = None) -> APIRouter:
-    tag_name = tag_name or service_name
-    router = APIRouter(prefix=f"/{service_name}", tags=[tag_name])
+def get_default_router(prefix: str, tag_name: str = None) -> APIRouter:
+    tag_name = tag_name or prefix
+    router = APIRouter(prefix=f"/{prefix}", tags=[tag_name])
     return router
 
 

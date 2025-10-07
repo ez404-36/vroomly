@@ -24,7 +24,8 @@ RUN mkdir -p /.venv && chown -R vroomly:vroomly /.venv
 COPY --link --from=ghcr.io/astral-sh/uv:0.4 /uv /usr/local/bin/uv
 ENV PATH="/root/.cargo/bin:${PATH}"
 
-COPY --chown=vroomly:vroomly pyproject.toml uv.lock .pre-commit-config.yaml $backend_dir
+COPY --chown=vroomly:vroomly pyproject.toml uv.lock $backend_dir
+COPY .pre-commit-config.yaml $backend_dir
 
 USER vroomly
 RUN uv venv /app/.venv
