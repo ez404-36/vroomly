@@ -1,41 +1,22 @@
-import { defineConfig, globalIgnores } from "eslint/config";
+import js from "@eslint/js";
+import globals from "globals";
+import tseslint from "typescript-eslint";
+import pluginReact from "eslint-plugin-react";
+import { defineConfig } from "eslint/config";
 
 export default defineConfig([
-  // Игнорируем сборку
-  globalIgnores(["dist", "node_modules"]),
-
-  {
-    files: ["**/*.{ts,tsx}"],
-    languageOptions: {
-      parser: "@typescript-eslint/parser",
-      ecmaVersion: "latest",
-      sourceType: "module",
-      globals: {
-        window: true,
-        document: true,
-      },
-    },
-    plugins: {
-      "@typescript-eslint": "@typescript-eslint/eslint-plugin",
-      react: "eslint-plugin-react",
-      "react-hooks": "eslint-plugin-react-hooks",
-    },
-    settings: {
-      react: {
-        version: "detect",
-      },
-    },
-    extends: [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:react/recommended",
-      "plugin:react-hooks/recommended",
-      "prettier",
-    ],
+  { files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"], 
+    plugins: { js }, 
+    extends: ["js/recommended"],
     rules: {
+      "no-console": 'warn',
+      "eqeqeq": 'warn',
+      "curly": 'warn',
+      "no-else-return": 'warn',
       "react/react-in-jsx-scope": "off",
-      "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
-      "react/prop-types": "off",
+       "react/jsx-uses-react": "off",
     },
-  },
+    languageOptions: { globals: globals.browser } },
+  tseslint.configs.recommended,
+  pluginReact.configs.flat.recommended,
 ]);
