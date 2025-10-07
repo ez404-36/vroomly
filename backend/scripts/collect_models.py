@@ -276,28 +276,6 @@ class BaseModelCollector:
 
     def sort_models_by_dependencies(self) -> List[str]:
         """Сортирует модели по зависимостям (сначала базовые, потом производные)"""
-        sorted_models = []
-        visited = set()
-
-        def visit(_model_name):
-            if _model_name in visited:
-                return
-            visited.add(_model_name)
-
-            if _model_name in self.models:
-                for dep in self.models[_model_name]['dependencies']:
-                    if dep in self.models:
-                        visit(dep)
-
-                sorted_models.append(_model_name)
-
-        for model_name in self.models:
-            visit(model_name)
-
-        return sorted_models
-
-    def sort_models_by_dependencies2(self) -> List[str]:
-        """Сортирует модели по зависимостям (сначала базовые, потом производные)"""
         # Создаем копию моделей для работы
         models_to_sort = self.models.copy()
         sorted_models = []
@@ -336,49 +314,6 @@ class BaseModelCollector:
 
         return sorted_models
 
-    def topological_sort(self) -> List[str]:
-        """Топологическая сортировка моделей по зависимостям"""
-        graph = {}
-        in_degree = {}
-
-        # Инициализируем граф и степени входа
-        for model_name in self.models:
-            graph[model_name] = set()
-            in_degree[model_name] = 0
-
-        # Строим граф зависимостей
-        for model_name, model_info in self.models.items():
-            for dep in model_info['dependencies']:
-                if dep in self.models:
-                    graph[dep].add(model_name)
-
-        # Вычисляем степени входа
-        for model_name in graph:
-            for dependent in graph[model_name]:
-                in_degree[dependent] += 1
-
-        # Находим модели без зависимостей (степень входа = 0)
-        queue = [model for model in in_degree if in_degree[model] == 0]
-        sorted_models = []
-
-        while queue:
-            model = queue.pop(0)
-            sorted_models.append(model)
-
-            for dependent in graph[model]:
-                in_degree[dependent] -= 1
-                if in_degree[dependent] == 0:
-                    queue.append(dependent)
-
-        # Проверяем, все ли модели были отсортированы
-        if len(sorted_models) != len(self.models):
-            print("Предупреждение: Обнаружена циклическая зависимость! Модели могут быть не полностью отсортированы.")
-            # Добавляем оставшиеся модели в конец
-            remaining = [model for model in self.models if model not in sorted_models]
-            sorted_models.extend(remaining)
-
-        return sorted_models
-
     def collect_models(self):
         """Собирает все модели из проекта"""
         python_files = self.get_all_python_files()
@@ -407,7 +342,7 @@ class BaseModelCollector:
         filtered_imports.add("from fastapi_utils.api_model import APIModel")
 
         # Сортируем модели по зависимостям
-        sorted_model_names = self.sort_models_by_dependencies2()
+        sorted_model_names = self.sort_models_by_dependencies()
 
         Path(self.output_file).unlink(missing_ok=True)
         Path(self.output_file).parent.mkdir(exist_ok=True, parents=True)
