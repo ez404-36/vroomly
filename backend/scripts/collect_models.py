@@ -110,42 +110,32 @@ class BaseModelCollector:
 
     def get_pydantic_models_in_annotation(self, class_node: ast.ClassDef) -> set[str]:
         annotated_models = set()
+
+        def check_is_base_class_and_add_to_output(annotation_value: str | None):
+            _val = annotation_value or ""
+            if _val in self.base_model_classes:
+                annotated_models.add(_val)
+            if _val.endswith("Schema"):
+                annotated_models.add(_val)
+                self.base_model_classes.add(_val)
+
         for child in class_node.body:   # type: ast.AnnAssign
             annotation = getattr(child, 'annotation', None)
             if not annotation:
                 continue
 
             if isinstance(annotation, ast.Name):
-                if annotation.id in self.base_model_classes:
-                    annotated_models.add(annotation.id)
+                check_is_base_class_and_add_to_output(getattr(annotation, "id", None))
 
             elif isinstance(annotation, ast.Subscript):
-                slice_id = getattr(annotation.slice, "id", None)
-                value_id = getattr(annotation.value, "id", None)
-
-                if slice_id in self.base_model_classes:
-                    annotated_models.add(slice_id)
-
-                if value_id in self.base_model_classes:
-                    annotated_models.add(value_id)
+                check_is_base_class_and_add_to_output(getattr(annotation.slice, "id", ""))
+                check_is_base_class_and_add_to_output(getattr(annotation.value, "id", ""))
 
             elif isinstance(annotation, ast.BinOp):
-                left_id = getattr(annotation.left, "id", None)
-                right_id = getattr(annotation.right, "id", None)
-
-                if left_id in self.base_model_classes:
-                    annotated_models.add(left_id)
-
-                if right_id in self.base_model_classes:
-                    annotated_models.add(right_id)
-
+                check_is_base_class_and_add_to_output(getattr(annotation.left, "id", ""))
+                check_is_base_class_and_add_to_output(getattr(annotation.right, "id", ""))
             else:
                 print(f"[warning] Необработанный тип в {class_node.name}: {child.target.id}")
-
-            if annotation := getattr(child, 'annotation', None):
-                if id_attr := getattr(annotation, "id", None):
-                    if id_attr in self.base_model_classes:
-                        annotated_models.add(id_attr)
 
         return annotated_models
 
@@ -317,6 +307,8 @@ class BaseModelCollector:
             name for name, data in models_to_sort.items()
             if not data['dependencies'] or all(dep not in models_to_sort for dep in data['dependencies'])
         ]
+
+        print("models_without_deps", len(models_without_deps), models_without_deps)
 
         for model_name in models_without_deps:
             sorted_models.append(model_name)
