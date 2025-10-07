@@ -95,6 +95,18 @@ class BaseModelCollector:
 
         return custom_types
 
+    def normalize_indentation(self, code: str) -> str:
+        """Нормализует отступы, заменяя табы на пробелы"""
+        lines = code.split('\n')
+        normalized_lines = []
+
+        for line in lines:
+            # Заменяем табы на 4 пробела
+            normalized_line = line.replace('\t', '    ')
+            normalized_lines.append(normalized_line)
+
+        return '\n'.join(normalized_lines)
+
     def is_base_model_class(self, class_node: ast.ClassDef, content: str) -> Tuple[bool, Set[str]]:
         """Проверяет, является ли класс Pydantic моделью (прямо или косвенно)"""
         dependencies = set()
@@ -143,6 +155,8 @@ class BaseModelCollector:
                     lines = content.split('\n')
                     class_code = '\n'.join(lines[start_line:end_line])
 
+                    class_code = self.normalize_indentation(class_code)
+
                     classes.append({
                         'name': node.name,
                         'code': class_code,
@@ -174,6 +188,7 @@ class BaseModelCollector:
 
                 for type_info in custom_types:
                     if type_info['name'] not in self.custom_types:
+                        type_info['code'] = self.normalize_indentation(type_info['code'])
                         self.custom_types[type_info['name']] = type_info
                         self.imports.update(type_info['imports'])
                         print(f"Найден кастомный тип: {type_info['name']} в {file_path}")
@@ -214,7 +229,8 @@ class BaseModelCollector:
 
                 if is_base_model:
                     # Проверяем, что все зависимости уже в моделях
-                    if all(dep in self.models for dep in deps):
+                    missing_deps = [dep for dep in deps if dep not in self.models]
+                    if not missing_deps:
                         self.models[class_info['name']] = {
                             'code': class_info['code'],
                             'file': class_info['file'],
@@ -248,6 +264,89 @@ class BaseModelCollector:
 
         return sorted_models
 
+    def sort_models_by_dependencies2(self) -> List[str]:
+        """Сортирует модели по зависимостям (сначала базовые, потом производные)"""
+        # Создаем копию моделей для работы
+        models_to_sort = self.models.copy()
+        sorted_models = []
+
+        # Сначала добавляем модели без зависимостей
+        models_without_deps = [
+            name for name, data in models_to_sort.items()
+            if not data['dependencies'] or all(dep not in models_to_sort for dep in data['dependencies'])
+        ]
+
+        for model_name in models_without_deps:
+            sorted_models.append(model_name)
+            del models_to_sort[model_name]
+
+        # Затем добавляем остальные модели в порядке их обнаружения
+        # Это дает более предсказуемый порядок, чем строгая топологическая сортировка
+        remaining_models = list(models_to_sort.keys())
+
+        # Пытаемся упорядочить по зависимостям, но не строго
+        for model_name in remaining_models:
+            if model_name not in sorted_models:
+                # Вставляем перед зависимостями, если это возможно
+                model_deps = [dep for dep in self.models[model_name]['dependencies'] if dep in sorted_models]
+
+                if model_deps:
+                    # Находим максимальную позицию среди зависимостей
+                    max_dep_index = max(sorted_models.index(dep) for dep in model_deps)
+                    # Вставляем после последней зависимости
+                    insert_index = max_dep_index + 1
+                else:
+                    # Нет зависимостей - вставляем в начало
+                    insert_index = 0
+
+                # Вставляем модель на найденную позицию
+                sorted_models.insert(insert_index, model_name)
+
+        return sorted_models
+
+    def topological_sort(self) -> List[str]:
+        """Топологическая сортировка моделей по зависимостям"""
+        graph = {}
+        in_degree = {}
+
+        # Инициализируем граф и степени входа
+        for model_name in self.models:
+            graph[model_name] = set()
+            in_degree[model_name] = 0
+
+        # Строим граф зависимостей
+        for model_name, model_info in self.models.items():
+            for dep in model_info['dependencies']:
+                if dep in self.models:
+                    graph[dep].add(model_name)
+
+        # Вычисляем степени входа
+        for model_name in graph:
+            for dependent in graph[model_name]:
+                in_degree[dependent] += 1
+
+        # Находим модели без зависимостей (степень входа = 0)
+        queue = [model for model in in_degree if in_degree[model] == 0]
+        sorted_models = []
+
+        while queue:
+            model = queue.pop(0)
+            sorted_models.append(model)
+
+            for dependent in graph[model]:
+                in_degree[dependent] -= 1
+                if in_degree[dependent] == 0:
+                    queue.append(dependent)
+
+        # Проверяем, все ли модели были отсортированы
+        if len(sorted_models) != len(self.models):
+            print("Предупреждение: Обнаружена циклическая зависимость! Модели могут быть не полностью отсортированы.")
+            # Добавляем оставшиеся модели в конец
+            remaining = [model for model in self.models if model not in sorted_models]
+            sorted_models.extend(remaining)
+
+        return sorted_models
+
     def collect_models(self):
         """Собирает все модели из проекта"""
         python_files = self.get_all_python_files()
@@ -276,7 +375,7 @@ class BaseModelCollector:
         filtered_imports.add("from fastapi_utils.api_model import APIModel")
 
         # Сортируем модели по зависимостям
-        sorted_model_names = self.sort_models_by_dependencies()
+        sorted_model_names = self.sort_models_by_dependencies2()
 
         Path(self.output_file).unlink(missing_ok=True)
         Path(self.output_file).parent.mkdir(exist_ok=True, parents=True)
