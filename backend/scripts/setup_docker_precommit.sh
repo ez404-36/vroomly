@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Настройка pre-commit хука для работы внутри Docker-контейнера
 # Использование: ./setup_docker_precommit.sh <container_name>
 
