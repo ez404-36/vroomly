@@ -10,3 +10,9 @@ make setup-for-backend
 ```bash
 make setup-for-frontend
 ```
+
+### Известные проблемы
+
+В Windows не устанавливаются гит-хуки в контейнер бекенда:
+Ошибка: `./backend/scripts/setup_docker_precommit.sh: /bin/sh^M: bad interpreter: No such file or directory`
+Решение: для файла (а лучше для всего проекта) `./backend/scripts/setup_docker_precommit.sh` изменить отступы с CRLF на LF

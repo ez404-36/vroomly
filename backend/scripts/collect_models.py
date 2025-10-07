@@ -308,8 +308,6 @@ class BaseModelCollector:
             if not data['dependencies'] or all(dep not in models_to_sort for dep in data['dependencies'])
         ]
 
-        print("models_without_deps", len(models_without_deps), models_without_deps)
-
         for model_name in models_without_deps:
             sorted_models.append(model_name)
             del models_to_sort[model_name]
