@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Настройка pre-commit хука для работы внутри Docker-контейнера
 # Использование: ./setup_docker_precommit.sh <container_name>
 
@@ -27,7 +27,7 @@ cat > "$HOOK_FILE" <<EOL
 CONTAINER_NAME="$CONTAINER_NAME"
 
 if [ "\$(docker ps -q -f name=\$CONTAINER_NAME)" ]; then
-    docker exec -i \$CONTAINER_NAME pre-commit run --hook-stage pre-commit
+    docker exec -i \$CONTAINER_NAME sh -c "cd /app; pre-commit run --hook-stage pre-commit"
     EXIT_CODE=\$?
     if [ \$EXIT_CODE -ne 0 ]; then
         echo "Pre-commit hooks failed inside container \$CONTAINER_NAME"

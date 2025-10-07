@@ -6,10 +6,11 @@ from pathlib import Path
 from typing import List, Dict, Set, Tuple
 
 from common.utils.file_inspectors import get_all_python_files
+from core.constants import BACKEND_DIR
 
 
 class BaseModelCollector:
-    def __init__(self, project_root: str, output_file: str):
+    def __init__(self, project_root: str | Path, output_file: str | Path):
         self.project_root = Path(project_root)
         self.output_file = Path(output_file)
         self.models: Dict[str, Dict] = {}  # name -> {code, file, dependencies}
@@ -95,9 +96,52 @@ class BaseModelCollector:
 
         return custom_types
 
+    def normalize_indentation(self, code: str) -> str:
+        """Нормализует отступы, заменяя табы на пробелы"""
+        lines = code.split('\n')
+        normalized_lines = []
+
+        for line in lines:
+            # Заменяем табы на 4 пробела
+            normalized_line = line.replace('\t', '    ')
+            normalized_lines.append(normalized_line)
+
+        return '\n'.join(normalized_lines)
+
+    def get_pydantic_models_in_annotation(self, class_node: ast.ClassDef) -> set[str]:
+        annotated_models = set()
+
+        def check_is_base_class_and_add_to_output(annotation_value: str | None):
+            _val = annotation_value or ""
+            if _val in self.base_model_classes:
+                annotated_models.add(_val)
+            if _val.endswith("Schema"):
+                annotated_models.add(_val)
+                self.base_model_classes.add(_val)
+
+        for child in class_node.body:   # type: ast.AnnAssign
+            annotation = getattr(child, 'annotation', None)
+            if not annotation:
+                continue
+
+            if isinstance(annotation, ast.Name):
+                check_is_base_class_and_add_to_output(getattr(annotation, "id", None))
+
+            elif isinstance(annotation, ast.Subscript):
+                check_is_base_class_and_add_to_output(getattr(annotation.slice, "id", ""))
+                check_is_base_class_and_add_to_output(getattr(annotation.value, "id", ""))
+
+            elif isinstance(annotation, ast.BinOp):
+                check_is_base_class_and_add_to_output(getattr(annotation.left, "id", ""))
+                check_is_base_class_and_add_to_output(getattr(annotation.right, "id", ""))
+            else:
+                print(f"[warning] Необработанный тип в {class_node.name}: {child.target.id}")
+
+        return annotated_models
+
     def is_base_model_class(self, class_node: ast.ClassDef, content: str) -> Tuple[bool, Set[str]]:
         """Проверяет, является ли класс Pydantic моделью (прямо или косвенно)"""
-        dependencies = set()
+        dependencies = self.get_pydantic_models_in_annotation(class_node)
 
         # Проверяем прямые базовые классы
         for base in class_node.bases:
@@ -143,6 +187,8 @@ class BaseModelCollector:
                     lines = content.split('\n')
                     class_code = '\n'.join(lines[start_line:end_line])
 
+                    class_code = self.normalize_indentation(class_code)
+
                     classes.append({
                         'name': node.name,
                         'code': class_code,
@@ -174,6 +220,7 @@ class BaseModelCollector:
 
                 for type_info in custom_types:
                     if type_info['name'] not in self.custom_types:
+                        type_info['code'] = self.normalize_indentation(type_info['code'])
                         self.custom_types[type_info['name']] = type_info
                         self.imports.update(type_info['imports'])
                         print(f"Найден кастомный тип: {type_info['name']} в {file_path}")
@@ -214,7 +261,8 @@ class BaseModelCollector:
 
                 if is_base_model:
                     # Проверяем, что все зависимости уже в моделях
-                    if all(dep in self.models for dep in deps):
+                    missing_deps = [dep for dep in deps if dep not in self.models]
+                    if not missing_deps:
                         self.models[class_info['name']] = {
                             'code': class_info['code'],
                             'file': class_info['file'],
@@ -228,23 +276,41 @@ class BaseModelCollector:
 
     def sort_models_by_dependencies(self) -> List[str]:
         """Сортирует модели по зависимостям (сначала базовые, потом производные)"""
+        # Создаем копию моделей для работы
+        models_to_sort = self.models.copy()
         sorted_models = []
-        visited = set()
 
-        def visit(_model_name):
-            if _model_name in visited:
-                return
-            visited.add(_model_name)
+        # Сначала добавляем модели без зависимостей
+        models_without_deps = [
+            name for name, data in models_to_sort.items()
+            if not data['dependencies'] or all(dep not in models_to_sort for dep in data['dependencies'])
+        ]
 
-            if _model_name in self.models:
-                for dep in self.models[_model_name]['dependencies']:
-                    if dep in self.models:
-                        visit(dep)
+        for model_name in models_without_deps:
+            sorted_models.append(model_name)
+            del models_to_sort[model_name]
 
-                sorted_models.append(_model_name)
+        # Затем добавляем остальные модели в порядке их обнаружения
+        # Это дает более предсказуемый порядок, чем строгая топологическая сортировка
+        remaining_models = list(models_to_sort.keys())
 
-        for model_name in self.models:
-            visit(model_name)
+        # Пытаемся упорядочить по зависимостям, но не строго
+        for model_name in remaining_models:
+            if model_name not in sorted_models:
+                # Вставляем перед зависимостями, если это возможно
+                model_deps = [dep for dep in self.models[model_name]['dependencies'] if dep in sorted_models]
+
+                if model_deps:
+                    # Находим максимальную позицию среди зависимостей
+                    max_dep_index = max(sorted_models.index(dep) for dep in model_deps)
+                    # Вставляем после последней зависимости
+                    insert_index = max_dep_index + 1
+                else:
+                    # Нет зависимостей - вставляем в начало
+                    insert_index = 0
+
+                # Вставляем модель на найденную позицию
+                sorted_models.insert(insert_index, model_name)
 
         return sorted_models
 
@@ -316,6 +382,8 @@ class BaseModelCollector:
                 f.write('\n\n')
                 f.write('#' + '=' * 50 + '\n\n')
 
+        Path(self.output_file).chmod(0o777)
+
     def run(self):
         """Запускает процесс сбора моделей"""
         print("Начало сбора Pydantic моделей...")
@@ -326,8 +394,8 @@ class BaseModelCollector:
 
 
 def main():
-    project_root = "."
-    output_file = "src/generated_models.py"
+    project_root = BACKEND_DIR
+    output_file = BACKEND_DIR / "src" / "generated_models.py"
 
     collector = BaseModelCollector(project_root, output_file)
     collector.run()
