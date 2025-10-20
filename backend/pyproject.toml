@@ -27,33 +27,21 @@ dependencies = [
     "pre-commit>=4.3.0",
 ]
 
-#[tool.vulture]
-#paths = [
-#    "backend",
-#]
-#exclude = [
-#    ".git/",
-#    ".venv/",
-#    ".pytest_cache/",
-#    "__pypackages__/",
-#    "frontend/",
-#    "migrations/",
-#    "*.py"
-#]
-#ignore_names = [
-#    "_*",
-#]
-#sort_by_size = true
-#min_confidence = 80
-#
-#[tool.isort]
-#py_version=313
-#skip_gitignore = true
-#skip_glob = [
-#    ".git/",
-#    ".venv/",
-#    ".pytest_cache/",
-#    "__pypackages__/",
-#    "frontend/",
-#    "migrations/",
-#]
+[tool.ruff]
+exclude = [
+    ".git",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".venv",
+    "__pypackages__",
+    "frontend",
+    "migrations",
+]
+line-length = 120
+indent-width = 4
+target-version = "py313"
+
+[tool.ruff.format]
+quote-style = "single"

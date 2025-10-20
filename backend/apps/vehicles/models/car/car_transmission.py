@@ -16,8 +16,12 @@ class CarTransmission(
     Коробка передач автомобиля
     """
 
-    drive_type: Mapped[CarDriveType] = mapped_column(IntEnumType(CarDriveType), doc='Тип привода')
-    torque: Mapped[int | None] = mapped_column(SmallInteger, doc='Крутящий момент (Нм)')
+    drive_type: Mapped[CarDriveType] = mapped_column(
+        IntEnumType(CarDriveType), doc='Тип привода',
+    )
+    torque: Mapped[int | None] = mapped_column(
+        SmallInteger, doc='Крутящий момент (Нм)',
+    )
 
 
 def get_car_transmission_link_mixin(
