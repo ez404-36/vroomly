@@ -9,8 +9,8 @@ from apps.vehicles.models.vehicle.vehicle_brand import VehicleBrand
 from apps.vehicles.models.vehicle.vehicle_generation import VehicleGeneration
 from apps.vehicles.models.vehicle.vehicle_series import VehicleSeries
 from common.providers.translators.main import Translator
-from common.schemas.fields import ChoiceFieldSchema, ChoiceFieldWithParentSchema
 from common.schemas.choices_utils import to_choice_field, to_choice_field_list, to_choice_field_with_parent_list
+from common.schemas.fields import ChoiceFieldSchema, ChoiceFieldWithParentSchema
 from core.db import database
 
 
