@@ -1,3 +1,6 @@
+default_language_version:
+    python: python3
+
 repos:
   - repo: https://github.com/psf/black
     rev: 25.1.0
@@ -9,7 +12,6 @@ repos:
     rev: 'v2.14'
     hooks:
       - id: vulture
-        args: [".", "--min-confidence", "80"]
 
   - repo: https://github.com/PyCQA/isort
     rev: 6.0.1

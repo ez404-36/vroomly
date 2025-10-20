@@ -1,0 +1,9 @@
+name,index,type,gears,drive_type,torque
+ВАЗ 2180,21806,MT,5,front,158, # granta, kalina, priora 16 клапанов
+ВАЗ 2181,21810,MT,5,front,142, # 8 клапанов
+ВАЗ 2181,21816,MT,5,front,142, # 8 клапанов
+ВАЗ 21807,21807,MT,5,front,170,	# vesta 2016-н.в
+ВАЗ 21809,21809,MT,5,front,175,	# x-ray с 2017
+ВАЗ 1118,-,MT,5,front,145, # калина 2004-2013
+Lada 6MF23F,-,MT,6,front,220
+Lada 6MF23G,-,MT,6,front,220

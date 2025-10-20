@@ -1,4 +1,4 @@
-from sqlalchemy import SmallInteger
+from sqlalchemy import SmallInteger, String
 from sqlalchemy.orm import Mapped, mapped_column
 
 from apps.vehicles.models.vehicle.enums import VehicleTransmissionType
@@ -14,6 +14,8 @@ class VehicleTransmissionAbstract(
     """
     __abstract__ = True
 
+    name: Mapped[str] = mapped_column(String(50), doc='Название')
+    index: Mapped[str | None] = mapped_column(String(50), doc='Заводской индекс')
     type: Mapped[VehicleTransmissionType] = mapped_column(
         IntEnumType(VehicleTransmissionType), doc='Тип коробки передач'
     )

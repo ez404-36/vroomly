@@ -1,4 +1,4 @@
-from sqlalchemy import String, SmallInteger, Boolean
+from sqlalchemy import String, SmallInteger
 from sqlalchemy.orm import Mapped, mapped_column
 
 from apps.vehicles.models.utils import SpecBackRefs
@@ -16,4 +16,4 @@ class CarEngineSpec(
 
 	eco_class: Mapped[str] = mapped_column(String(50), doc='Экологический класс')
 	cylinders: Mapped[int] = mapped_column(SmallInteger, doc='Кол-во цилиндров')
-	is_turbo: Mapped[bool] = mapped_column(Boolean, doc='Турбированный')
+	valves: Mapped[int] = mapped_column(SmallInteger, doc='Кол-во клапанов')

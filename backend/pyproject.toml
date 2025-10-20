@@ -27,3 +27,32 @@ dependencies = [
     "ruff>=0.13.3",
     "pre-commit>=4.3.0",
 ]
+
+[tool.vulture]
+paths = [
+    "backend",
+]
+exclude = [
+    ".git/",
+    ".venv/",
+    ".pytest_cache/",
+    "__pypackages__/",
+    "frontend/",
+    "migrations/",
+    "*.py"
+]
+ignore_names = [
+    "_*",
+]
+sort_by_size = true
+min_confidence = 80
+
+[tool.isort]
+py_version=313
+skip_glob = [
+    ".git/*",
+    ".venv/*",
+    ".pytest_cache/*",
+    "__pypackages__/*",
+    "frontend/*",
+]

@@ -99,5 +99,6 @@ class GuessCommonCarInfo:
 
 	@staticmethod
 	async def _guess_configuration(generation_ids: list[UUID], **kwargs) -> list[CarTrim]:
-		pass
 		# TODO
+		print(generation_ids)
+		return []
