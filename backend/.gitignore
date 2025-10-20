@@ -1,2 +1,8 @@
 __pycache__
+.git
+.mypy_cache
+.pytest_cache
+.pytype
+.ruff_cache
+
 src/generated_models.py

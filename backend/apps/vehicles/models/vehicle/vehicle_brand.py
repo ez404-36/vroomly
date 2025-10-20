@@ -7,13 +7,17 @@ from core.models import AutoSchemaBase
 
 
 def generate_brand_code(brand_name: str) -> str:
+    """
+    Генерирует код бренда в формате FOO_BAR
+    """
+
     return (
         brand_name.upper()
-        .replace(" ", "_")
-        .replace(".", "")
-        .replace("&", "AND")
-        .replace("(", "")
-        .replace(")", "")
+        .replace('' '', '_')
+        .replace('.', '')
+        .replace('&', 'AND')
+        .replace('(', '')
+        .replace(')', '')
     )
 
 
@@ -38,7 +42,7 @@ class VehicleBrand(
 
     __table_args__ = (
         UniqueConstraint(
-            "country_id", "code", name="vehicle_brand_country_id_code_unique"
+            'country_id', 'code', name='vehicle_brand_country_id_code_unique'
         ),
     )
 
@@ -57,8 +61,8 @@ def get_vehicle_brand_link_mixin(
     )
 
 
-@event.listens_for(VehicleBrand, "before_insert")
-def generate_code_listener(_mapper, _connection, target):
-    # генерация кода марки ТС по названию марки
+@event.listens_for(VehicleBrand, 'before_insert')
+def generate_code_listener(mapper, connection, target):
+    """Генерация кода марки ТС по названию марки"""
     if target.name and not target.code:
         target.code = generate_brand_code(target.name)
