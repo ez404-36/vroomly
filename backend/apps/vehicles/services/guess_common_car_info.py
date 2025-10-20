@@ -1,7 +1,7 @@
 from uuid import UUID
 
 from pydantic import BaseModel, Field
-from sqlalchemy import select, and_, between
+from sqlalchemy import and_, between, select
 
 from apps.vehicles.integrations.car_info_by_vin.schema import CarInfoByVinDataSchema
 from apps.vehicles.models.car.car_trim import CarTrim
@@ -14,91 +14,86 @@ from common.schemas.fields import ChoiceFieldSchema, ChoiceFieldWithParentSchema
 from core.db import database
 
 
-class GuessCommonCarInfoException(Exception): ...
+class GuessCommonCarInfoError(Exception): ...
 
 
 class GuessCommonCarInfoSchema(BaseModel):
-	brand: ChoiceFieldSchema = Field(description="Бренд")
-	model: ChoiceFieldSchema = Field(description="Модель")
-	generation: list[ChoiceFieldSchema] = Field(description="Поколение")
-	configuration: list[ChoiceFieldWithParentSchema] = Field(description="Комплектация")
+	"""
+	Данные об автомобиле, полученные в результате обработки
+	информации по VIN-номеру, предоставленной внешним источником
+	"""
+
+	brand: ChoiceFieldSchema = Field(description='Бренд')
+	model: ChoiceFieldSchema = Field(description='Модель')
+	generation: list[ChoiceFieldSchema] = Field(description='Поколение')
+	configuration: list[ChoiceFieldWithParentSchema] = Field(description='Комплектация')
 
 
 class GuessCommonCarInfo:
 	"""
 	Сервис, отвечающий за предоставление основной информации об автомобиле
-	по некоторым входным параметрам
+	по информации по VIN-номеру, предоставленной внешним источником
 	"""
+
 	async def get_from_vin01(self, data: CarInfoByVinDataSchema) -> GuessCommonCarInfoSchema:
 		translator = Translator()
 
-		brand_and_model_ru = data.model.split()
-		brand_ru = " ".join(brand_and_model_ru[:-1])
-		model_ru = " ".join(brand_and_model_ru[-1])
+		brand_and_series_ru = data.model.split()
+		brand_ru = ' '.join(brand_and_series_ru[:-1])
+		series_ru = ' '.join(brand_and_series_ru[-1])
 
 		brand_en = translator.translate(brand_ru)
-		model_en = translator.translate(model_ru)
+		series_en = translator.translate(series_ru)
 
 		guess_brand = await self._guess_brand(brand_en)
 
 		if not guess_brand:
-			raise GuessCommonCarInfoException(f'Не удалось определить марку: {brand_ru} -> {brand_en}')
+			raise GuessCommonCarInfoError(f'Не удалось определить марку: {brand_ru} -> {brand_en}')
 
-		guess_model = await self._guess_brand_model(guess_brand.id, model_en)
-		if not guess_model:
-			raise GuessCommonCarInfoException(
-				f'Не удалось определить модель марки {brand_en}: {model_ru} -> {model_en}'
-			)
+		guess_series = await self._guess_series(guess_brand.id, series_en)
+		if not guess_series:
+			raise GuessCommonCarInfoError(f'Не удалось определить модель марки {brand_en}: {series_ru} -> {series_en}')
 
-		guess_generation = await self._guess_generation(guess_model.id, data.year)
-		guess_configuration = []    # TODO await self._guess_configuration()
+		guess_generation = await self._guess_generations(guess_series.id, data.year)
+		guess_trims = await self._guess_trims(guess_generation)
 
 		return GuessCommonCarInfoSchema(
 			brand=to_choice_field(guess_brand),
-			model=to_choice_field(guess_model),
+			model=to_choice_field(guess_series),
 			generation=to_choice_field_list(guess_generation),
-			configuration=to_choice_field_with_parent_list(guess_configuration),
+			configuration=to_choice_field_with_parent_list(guess_trims),
 		)
 
 	@staticmethod
 	async def _guess_brand(brand_en: str) -> VehicleBrand | None:
-		guess_brand_query = (
-			select(VehicleBrand)
-			.where(VehicleBrand.name == brand_en)
-		)
+		guess_brand_query = select(VehicleBrand).where(VehicleBrand.name == brand_en)
 
 		return await database.fetch_one(guess_brand_query)
 
 	@staticmethod
-	async def _guess_brand_model(brand_id: UUID, model_en: str) -> VehicleSeries | None:
-		guess_model_query = (
-			select(VehicleSeries)
-			.where(
-				and_(
-					VehicleSeries.brand_id == brand_id,
-					VehicleSeries.name == model_en,
-				)
+	async def _guess_series(brand_id: UUID, model_en: str) -> VehicleSeries | None:
+		guess_series_query = select(VehicleSeries).where(
+			and_(
+				VehicleSeries.brand_id == brand_id,
+				VehicleSeries.name == model_en,
 			)
 		)
 
-		return await database.fetch_one(guess_model_query)
+		return await database.fetch_one(guess_series_query)
 
 	@staticmethod
-	async def _guess_generation(model_id: UUID, car_production_year: int) -> list[VehicleGeneration]:
-		guess_generation_query = (
-			select(VehicleGeneration)
-			.where(
-				and_(
-					VehicleGeneration.model_id == model_id,
-					between(car_production_year, VehicleGeneration.start_year, VehicleGeneration.end_year),
-				)
+	async def _guess_generations(model_id: UUID, car_production_year: int) -> list[VehicleGeneration]:
+		guess_generation_query = select(VehicleGeneration).where(
+			and_(
+				VehicleGeneration.model_id == model_id,
+				between(car_production_year, VehicleGeneration.start_year, VehicleGeneration.end_year),
 			)
 		)
 
 		return await database.fetch_all(guess_generation_query)
 
 	@staticmethod
-	async def _guess_configuration(generation_ids: list[UUID], **kwargs) -> list[CarTrim]:
+	async def _guess_trims(generation_ids: list[UUID], **kwargs) -> list[CarTrim]:
 		# TODO
 		print(generation_ids)
 		return []
