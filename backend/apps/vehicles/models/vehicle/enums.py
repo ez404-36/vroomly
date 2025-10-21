@@ -1,4 +1,4 @@
-from enum import IntEnum, IntFlag, Enum
+from enum import Enum, IntEnum, IntFlag
 
 from common.schemas.choices_mixin import ChoicesMixin
 
@@ -25,6 +25,13 @@ class VehicleEngineType(IntFlag):
     TURBO = 16
 
 
+class VehicleEngineGRMType(Enum):
+    """Тип привода ГРМ"""
+    BELT = 0    # Ремень
+    CHAIN = 1   # Цепь
+    GEARS = 2   # Шестерни
+
+
 class VehicleTransmissionType(Enum):
     """Тип коробки передач"""
 
@@ -44,5 +51,3 @@ class VehicleBodyType(IntFlag):
     ABS = 16 # Полипропилен, ABS и другие пластики
     TITAN = 32   # Титан
     TREE = 64    # Дерево
-
-
