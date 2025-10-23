@@ -1,4 +1,4 @@
-country,name,original_name
+country,name,original_name,abbreviation,concern
 DZ,SNVI
 AR,ASA Aluminium Body
 AR,Zanella
@@ -8,6 +8,7 @@ AU,BCI Bus
 AU,Borland Racing
 AU,Bolwell
 AU,Custom Bus
+AU,DSI
 AU,Elfin Sports Cars
 AU,Minetti Sports Cars
 AU,Holden
@@ -31,6 +32,7 @@ BY,MZKT,МЗКТ
 BY,Neman,Неман
 BE,Edran
 BE,Gillet
+BE,Punch Powertrain
 BE,Van Hool
 BO,Quantum Motors
 BR,Agrale
@@ -73,7 +75,7 @@ CN,Byvin
 CN,BAW
 CN,Bestune
 CN,Brilliance
-CN,BYD
+CN,BYD,,,BYD_A
 CN,Changan
 CN,Chana
 CN,Changhe
@@ -92,14 +94,15 @@ CN,EuAuto
 CN,Everus
 CN,Enovate (Enoreve)
 CN,FAW
+CN,Fuzhen
 CN,Hongqi
 CN,Foton
 CN,Fuqi
 CN,Firefly
 CN,Forthing
-CN,Fangchengbao
+CN,Fangchengbao,,,BYD_A
 CN,GAC
-CN,Geely
+CN,Geely,,,GEELY_A
 CN,Gonow
 CN,Great Wall
 CN,Gyon
@@ -151,7 +154,7 @@ CN,Landwind
 CN,Leahead
 CN,Lixiang
 CN,Leapmotor
-CN,Lynk & Co
+CN,Lynk & Co,,,GEELY_A
 CN,Letin
 CN,Lifan
 CN,Livan
@@ -161,7 +164,7 @@ CN,Luxeed
 CN,Liebao Motor
 CN,Maextro
 CN,Mudan Auto
-CN,Maxus
+CN,Maxus,,,SAIC_M
 CN,Maple
 CN,M-Hero
 CN,Nio
@@ -170,12 +173,13 @@ CN,Nordcross
 CN,Qoros
 CN,Qiantu
 CN,Qingling
-CN,Roewe
+CN,Roewe,,,SAIC_M
 CN,Ranz
 CN,Radar
 CN,Rox
 CN,Rising Auto
-CN,SAIC
+CN,SAIC,,,SAIC_M
+CN,SAGW
 CN,Sehol
 CN,Soueast
 CN,Spotlight Automotive
@@ -184,6 +188,7 @@ CN,Sunlong Bus
 CN,Skyworth Auto
 CN,Seres
 CN,Shanghai Maple
+CN,Shengrui
 CN,ShuangHuan
 CN,Skywell
 CN,SWM
@@ -205,12 +210,12 @@ CN,Yutong
 CN,Zhongtong Bus
 CN,Zinoro
 CN,Zotye
-CN,Zeekr
+CN,Zeekr,,,GEELY_A
 CN,Zhido
 CN,ZX
 CN,WEY
 CN,Xiamen Golden Dragon Bus
-CN,Yangwang
+CN,Yangwang,,,BYD_A
 CN,Yema
 CN,Yipai
 CN,ZX Auto
@@ -218,7 +223,7 @@ CO,Busscar de Colombia
 CO,Sofasa
 HR,DOK-ING
 HR,Rimac
-CZ,Skoda,Škoda
+CZ,Skoda,Škoda,,VA_G
 CZ,Tatra
 CZ,Avia
 CZ,Kaipan
@@ -234,11 +239,11 @@ FI,Valmet Automotive
 FI,Electric Raceabout
 FI,Sisu Auto
 FR,Aixam
-FR,Alpine
+FR,Alpine,,,RNM_A
 FR,Auverland
 FR,Bolloré
 FR,Bugatti
-FR,Citroen,Citroën
+FR,Citroen,Citroën,,STELLANTIS
 FR,Delage
 FR,De La Chapelle
 FR,DS
@@ -251,11 +256,11 @@ FR,Mobilize
 FR,Matra
 FR,Mega,Méga
 FR,Navya SAS
-FR,Peugeot
+FR,Peugeot,,,STELLANTIS
 FR,PGO
 FR,Power Vehicle Innovation
-FR,Renault
-FR,Renault Trucks
+FR,Renault,,,RNM_A
+FR,Renault Trucks,,,RNM_A
 FR,SECMA
 FR,Simca
 FR,Venturi
@@ -264,20 +269,21 @@ GE,KAZ
 DE,Adler
 DE,Auto Union
 DE,Alpina
-DE,BMW
+DE,BMW,,,BMW_G
 DE,Borgward
-DE,Mercedes-Benz
+DE,Getrag
+DE,Mercedes-Benz,,,MERCEDES_AG
 DE,Messerschmitt
 DE,BharatBenz
 DE,Brabus
 DE,FUSO
 DE,Setra
-DE,Smart
+DE,Smart,,,MERCEDES_AG
 DE,Trabant
-DE,Volkswagen
-DE,Audi
-DE,MAN
-DE,Porsche
+DE,Volkswagen,,VW,VA_G
+DE,Audi,,,VA_G
+DE,MAN,,,VA_G
+DE,Porsche,,,VA_G
 DE,Puch
 DE,Apollo
 DE,Artega
@@ -287,10 +293,10 @@ DE,e.GO
 DE,Isdera
 DE,Lotec
 DE,Multicar
-DE,Maybach
+DE,Maybach,,,MERCEDES_AG
 DE,Neoplan
 DE,DKW
-DE,Opel
+DE,Opel,,,STELLANTIS
 DE,Goggomobil
 DE,Hanomag
 DE,Heinkel
@@ -327,7 +333,7 @@ IN,Maruti
 IN,Ola Electric
 IN,Omega Seiki Mobility
 IN,Tara International
-IN,Tata
+IN,Tata,,,TATA_M
 IN,Premier
 ID,Astra International
 ID,Esemka
@@ -349,11 +355,11 @@ IL,Merkavim
 IL,REE Automotive
 IL,Tomcar
 IL,Zibar
-IT,Abarth
+IT,Abarth,,,STELLANTIS
 IT,Autobianchi
 IT,Alke,Alkè
 IT,Astra
-IT,Alfa Romeo
+IT,Alfa Romeo,,,STELLANTIS
 IT,Automobili Estrema
 IT,Bremach
 IT,Bertone
@@ -365,14 +371,14 @@ IT,CTS
 IT,De Tomaso
 IT,DR
 IT,Dallara
-IT,Fiat
-IT,Ferrari
+IT,Fiat,,,STELLANTIS
+IT,Ferrari,,,FERRARI_NV
 IT,Iso
 IT,Italdesign
 IT,Iveco
-IT,Lancia
-IT,Lamborghini
-IT,Maserati
+IT,Lancia,,,STELLANTIS
+IT,Lamborghini,,,VA_G
+IT,Maserati,,,STELLANTIS
 IT,M.A.T
 IT,Mazzanti
 IT,Minardi
@@ -387,26 +393,28 @@ IT,Qvale
 IT,Rayton Fissore
 IT,XEV
 IT,Zagato
-JP,Acura
-JP,Daihatsu
-JP,Hino
-JP,Honda
-JP,Infiniti
+JP,Acura,,,HONDA_MC
+JP,Aisin
+JP,Daihatsu,,,TOYOTA_MC
+JP,Hino,,,TOYOTA_MC
+JP,Honda,,,HONDA_MC
+JP,Infiniti,,,RNM_A
 JP,Isuzu
-JP,Lexus
-JP,Mazda
-JP,Mitsubishi
-JP,Mitsubishi Fuso
-JP,Nissan
-JP,Subaru
+JP,Lexus,,,TOYOTA_MC
+JP,Mazda,,,MAZDA_MC
+JP,Mitsubishi,,,RNM_A
+JP,Mitsubishi Fuso,,,RNM_A
+JP,Nissan,,,RNM_A
+JP,Subaru,,,TOYOTA_MC
 JP,Suzuki
-JP,Toyota
+JP,Toyota,,,TOYOTA_MC
 JP,UD Trucks
 JP,Aspark
 JP,Dome
 JP,Datsun
 JP,GLM
 JP,J-Bus
+JP,Jatco
 JP,Mitsuoka
 JP,NMKV
 JP,Tommykaira
@@ -423,7 +431,7 @@ MY,DefTech
 MY,Inokom
 MY,Naza
 MY,Perodua
-MY,Proton
+MY,Proton,,,GEELY_A
 MX,DINA
 MX,Mastretta
 MX,VUHL
@@ -452,7 +460,7 @@ NZ,Trekka
 NG,Innoson Motors
 KP,Pyeonghwa Motors
 KP,Sungri Motors
-KP,Samsung
+KP,Samsung,,,RNM_A
 MK,FAS Sanos
 NO,Think
 PK,Sazgar
@@ -476,7 +484,7 @@ PT,MOBIpeople
 PT,Salvador Caetano
 PT,Vinci
 RO,Aro
-RO,Dacia
+RO,Dacia,,,RNM_A
 RO,Astra Bus
 RO,C&I Eurotrans XXI
 RO,El Car
@@ -490,7 +498,7 @@ RU,Amberavto,Амберавто
 RU,Ambertruck
 RU,Ambervan
 RU,Bilenkin
-RU,Lada,ЛАДА
+RU,Lada,ЛАДА,,RNM_A
 RU,VAZ,ВАЗ
 RU,Volga,Волга
 RU,Vortex
@@ -520,6 +528,7 @@ RU,Evolute
 RU,E-Mobil,Ё-мобиль
 RU,Doninvest
 RU,UAZ,УАЗ
+RU,UMZ,УМЗ
 RU,TREKOL,ТРЭКОЛ
 RU,Tenet
 RU,TagAZ,ТагАЗ
@@ -527,6 +536,7 @@ RU,UralAZ,УралАЗ
 RU,Volgabus
 RU,ZIL,ЗИЛ
 RU,ZiS,ЗиС
+RU,ZMZ,ЗМЗ
 RU,Marussia
 RU,Xcite
 SA,KSU Gazal-1
@@ -545,15 +555,15 @@ KR,Asia
 KR,CT&T United
 KR,Daewoo
 KR,Daewoo Bus
-KR,Genesis
+KR,Genesis,,,HYUNDAI_MG
 KR,Gwangju Global
-KR,Hyundai
+KR,Hyundai,,,HYUNDAI_MG
 KR,KGM
-KR,Kia
+KR,Kia,,,HYUNDAI_MG
 KR,Renault Korea
 KR,Spirra
 KR,SsangYong
-KR,Tata Daewoo
+KR,Tata Daewoo,,,TATA_M
 KR,Woojin Industrial Systems
 ES,Aspid
 ES,Ayats
@@ -567,7 +577,7 @@ ES,Hispano-Suiza
 ES,Hurtan
 ES,Irizar
 ES,Sunsundegui
-ES,SEAT
+ES,SEAT,,,VA_G
 ES,Spania
 ES,Santana
 ES,Tauro
@@ -577,9 +587,9 @@ LK,Micro
 SD,Giad Auto
 SE,Caresto
 SE,Koenigsegg
-SE,Polestar
-SE,Scania
-SE,Volvo
+SE,Polestar,,,GEELY_A
+SE,Scania,,,VA_G
+SE,Volvo,,,GEELY_A
 SE,Saab
 CH,Micro Mobility Systems
 CH,Minelli
@@ -629,7 +639,7 @@ GB,Ariel
 GB,Aston Martin
 GB,Atalanta
 GB,BAC
-GB,Bentley
+GB,Bentley,,,VA_G
 GB,Bristol
 GB,Bowler
 GB,Caterham
@@ -643,13 +653,13 @@ GB,GKD Sports
 GB,GP
 GB,Grinnall
 GB,Ineos
-GB,Jaguar
+GB,Jaguar,,,TATA_M
 GB,Lagonda
 GB,LTI
-GB,London EV Company
-GB,Land Rover
+GB,London EV Company,,LEVC,GEELY_A
+GB,Land Rover,,,TATA_M
 GB,Lister
-GB,Lotus
+GB,Lotus,,,GEELY_A
 GB,LEVC
 GB,Jensen
 GB,Munro Vehicles
@@ -659,13 +669,13 @@ GB,McLaren
 GB,Metrocab
 GB,Morris
 GB,Mcmutry Automotive
-GB,MG
-GB,Mini
+GB,MG motor,,MG,SAIC_M
+GB,Mini,,,BMW_G
 GB,Morgan
 GB,Noble
 GB,Humber
 GB,Radical Sportscars
-GB,Rolls-Royce
+GB,Rolls-Royce,,,BMW_G
 GB,Ronart
 GB,Radford
 GB,Rover
@@ -678,18 +688,18 @@ GB,Talbot
 GB,Triumph
 GB,Ultima
 GB,Westfield
-GB,Vauxhall
+GB,Vauxhall,,,STELLANTIS
 GB,Zenos
 US,AMC
 US,Auburn
-US,General Motors
-US,Buick
+US,General Motors,,,G_M
+US,Buick,,,G_M
 US,Batmobile
-US,Cadillac
-US,Chevrolet
+US,Cadillac,,,G_M
+US,Chevrolet,,,G_M
 US,Coda
 US,Cord
-US,GMC
+US,GMC,,,G_M
 US,Geo
 US,Saturn
 US,Stellantis
@@ -697,19 +707,19 @@ US,Scion
 US,Scout
 US,Sears
 US,Studebaker
-US,Chrysler
-US,Dodge
+US,Chrysler,,,STELLANTIS
+US,Dodge,,,STELLANTIS
 US,DeSoto
 US,Deco Rides
 US,Eagle
 US,Excalibur
 US,Eagle Cars
-US,Jeep
-US,Ram
+US,Jeep,,,STELLANTIS
+US,Ram,,,STELLANTIS
 US,Renaissance
-US,Ford Motor
-US,Ford
-US,Lincoln
+US,Ford Motor,,,FORD_MC
+US,Ford,,,FORD_MC
+US,Lincoln,,,FORD_MC
 US,All American Racers
 US,AM General
 US,Anteros Coachworks
@@ -749,7 +759,7 @@ US,Karma
 US,Kenworth
 US,Lingenfelter Performance Engineering
 US,Lordstown
-US,Lucid
+US,Lucid,,,LUCID_M
 US,Mullen
 US,Mack
 US,Myers
@@ -774,7 +784,7 @@ US,Plymouth
 US,Pontiac
 US,RAESR
 US,Rezvani
-US,Rivian
+US,Rivian,,,RIVIAN
 US,Ronn Motor Group
 US,Rossion
 US,Saleen

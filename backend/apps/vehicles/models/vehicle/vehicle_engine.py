@@ -1,7 +1,9 @@
-from sqlalchemy import Boolean, SmallInteger, String
+from sqlalchemy import SmallInteger, String
 from sqlalchemy.orm import Mapped, mapped_column
 
-from apps.vehicles.models.vehicle.enums import VehicleEngineGRMType, VehicleEngineType
+from apps.vehicles.models.vehicle.enums import VehicleEngineGRMType, VehicleEnginePhaseRegulatorType, VehicleEngineType
+from apps.vehicles.models.vehicle.vehicle_brand import get_vehicle_brand_link_mixin
+from apps.vehicles.models.vehicle.vehicle_concern import get_vehicle_concern_link_mixin
 from common.models import IntEnumType, IntFlagType
 from common.models.mixins.relations import get_foreign_key_mixin
 from core.models import AutoSchemaBase
@@ -9,6 +11,8 @@ from core.models import AutoSchemaBase
 
 class VehicleEngine(
     AutoSchemaBase,
+    get_vehicle_brand_link_mixin(back_populates='engines', nullable=False),
+    get_vehicle_concern_link_mixin(back_populates='engines', nullable=True),
 ):
     """
     Модель "Двигатель ТС"
@@ -25,7 +29,10 @@ class VehicleEngine(
     grm_drive_type: Mapped[VehicleEngineGRMType] = mapped_column(
         IntEnumType(VehicleEngineGRMType), doc='Тип привода ГРМ',
     )
-    phase_regulator: Mapped[bool | None] = mapped_column(Boolean, doc='Фазорегулятор')
+    phase_regulator: Mapped[VehicleEnginePhaseRegulatorType | None] = mapped_column(
+        IntEnumType(VehicleEnginePhaseRegulatorType), doc='Фазорегулятор'
+    )
+    phase_regulator_system: Mapped[str | None] = mapped_column(String(50), doc='Система управления фазорегулятора')
 
 
 def get_engine_link_mixin(

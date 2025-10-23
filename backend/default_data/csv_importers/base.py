@@ -38,46 +38,47 @@ class ImportFromCSVBase:
     async def run(self):
         prefetched_data = await self.prefetch_data()
 
-        with open(Path(__file__).parent.parent / "csv_files" / self.filename) as f_obj:
+        with open(Path(__file__).parent.parent / 'csv_files' / self.filename) as f_obj:
             reader = csv.DictReader(f_obj)
 
             instances = []
             for row in reader:
                 instance_data = {}
                 for key, value in row.items():
-                    if key is None or key.startswith("_"):
+                    if key is None or key.startswith('_'):
                         # столбцы, которые начинаются с _, будут игнорироваться
                         continue
 
                     mapped_key = self.mapper.get(key, key)
-                    if ":" in mapped_key:
-                        prefetched_data_field, fk_field = mapped_key.split(":")
+                    if ':' in mapped_key:
+                        prefetched_data_field, fk_field = mapped_key.split(':')
                         if prefetched_data_field not in prefetched_data:
                             raise ValueError(
-                                f"Вспомогательные данные по {prefetched_data_field} не были загружены из БД"
+                                f'Вспомогательные данные по {prefetched_data_field} не были загружены из БД'
                             )
 
                         related_instances = prefetched_data[prefetched_data_field]
-                        instance_data[fk_field] = related_instances[value]
+                        related_instance_id = related_instances.get(value)
+                        instance_data[fk_field] = related_instance_id
                     else:
                         instance_data[mapped_key] = value
 
                 instance_data.update(**self.default_data)
-                instance_data = self.transform_data(instance_data)
+                instance_data = self.transform_object_data(instance_data)
                 instances.append(instance_data)
 
         query = insert(self.model).values(instances).on_conflict_do_nothing()
         await self.session.execute(query)
-        print(f"Обработано {len(instances)} записей {self.model}")
+        print(f'Обработано {len(instances)} записей {self.model}')
 
-    def transform_data(self, instance_data: dict) -> dict:
-        """
+    def transform_object_data(self, instance_data: dict) -> dict:
+        '''
         Преобразование входных данных создаваемого объекта
-        """
+        '''
         return instance_data
 
     async def prefetch_data(self) -> dict[str, dict[Any, Any]]:
-        """
+        '''
         Загруженные из БД данные для маппинга данных из CSV-файла.
         Пример:
         1) Загрузка стран
@@ -85,5 +86,5 @@ class ImportFromCSVBase:
         country - обозначение типа сущности
         $column_in_csv - название столбца с данными о стране в CSV-файле
         $foreign_key_column - поле внешнего ключа для связи со страной в модели
-        """
+        '''
         return {}

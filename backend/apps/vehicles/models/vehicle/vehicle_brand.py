@@ -2,28 +2,16 @@ from sqlalchemy import String, UniqueConstraint, event
 from sqlalchemy.orm import Mapped, mapped_column
 
 from apps.geo.models.country import get_country_link_mixin
+from apps.vehicles.models.vehicle.vehicle_concern import get_vehicle_concern_link_mixin
 from common.models.mixins.relations import get_foreign_key_mixin
+from common.utils.generators import generate_code
 from core.models import AutoSchemaBase
-
-
-def generate_brand_code(brand_name: str) -> str:
-    """
-    Генерирует код бренда в формате FOO_BAR
-    """
-
-    return (
-        brand_name.upper()
-        .replace('' '', '_')
-        .replace('.', '')
-        .replace('&', 'AND')
-        .replace('(', '')
-        .replace(')', '')
-    )
 
 
 class VehicleBrand(
     AutoSchemaBase,
     get_country_link_mixin(back_populates='brands', nullable=False),
+    get_vehicle_concern_link_mixin(back_populates='brands', nullable=True),
 ):
     """
     Марка ТС (Торговая).
@@ -35,6 +23,9 @@ class VehicleBrand(
     )
     name: Mapped[str] = mapped_column(
         String(50), doc='Название бренда на английском языке'
+    )
+    abbreviation: Mapped[str | None] = mapped_column(
+        String(6), doc='Аббревиатура'
     )
     original_name: Mapped[str | None] = mapped_column(
         String(50), doc='Название бренда на родном языке, если отличается от name'
@@ -62,7 +53,7 @@ def get_vehicle_brand_link_mixin(
 
 
 @event.listens_for(VehicleBrand, 'before_insert')
-def generate_code_listener(mapper, connection, target):
-    """Генерация кода марки ТС по названию марки"""
-    if target.name and not target.code:
-        target.code = generate_brand_code(target.name)
+def __generate_code_listener(mapper, connection, target):
+    """Генерация кода марки ТС по аббревиатуре или названию марки"""
+    if not target.code:
+        target.code = generate_code(target.abbreviation or target.name)

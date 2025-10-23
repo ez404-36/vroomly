@@ -1,4 +1,4 @@
-id,value
+id,value,short_name
 AF,Afghanistan
 AX,"Åland Islands"
 AL,Albania
@@ -236,7 +236,7 @@ UG,Uganda
 UA,Ukraine
 AE,"United Arab Emirates"
 GB,"United Kingdom"
-US,"United States"
+US,"United States",USA
 UY,Uruguay
 UZ,Uzbekistan
 VU,Vanuatu

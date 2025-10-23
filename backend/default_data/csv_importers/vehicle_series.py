@@ -11,16 +11,16 @@ from .base import ImportFromCSVBase
 
 class ImportVehicleSeriesCSV(ImportFromCSVBase):
     model = VehicleSeries
-    filename = "vehicle_series.csv"
+    filename = 'vehicle_series.csv'
     mapper = {
-        "brand": "brands:brand_id",
+        'brand': 'brands:brand_id',
     }
-    default_data = {"vehicle_type": VehicleType.CAR}
+    default_data = {'vehicle_type': VehicleType.CAR}
 
     async def prefetch_data(self) -> dict[str, dict[Any, Any]]:
         brands: Iterable[VehicleBrand] = await database.session_fetch_all(
             self.session, select(VehicleBrand)
         )
-        mapped_brands = {brand.code: brand.id for brand in brands}
+        mapped = {brand.code: brand.id for brand in brands}
 
-        return {"brands": mapped_brands}
+        return {'brands': mapped}
