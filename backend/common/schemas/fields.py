@@ -1,10 +1,10 @@
-from uuid import UUID
-
 from pydantic import BaseModel
+
+from common.schemas.types import ID
 
 
 class ChoiceFieldSchema(BaseModel):
-	id: UUID | str
+	id: ID
 	name: str
 
 

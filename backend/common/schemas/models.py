@@ -1,6 +1,9 @@
 from datetime import date
 
-from pydantic import UUID4, BaseModel
+from uuid import UUID
+
+from fastapi_utils.api_model import APIModel
+from pydantic import BaseModel
 
 
 class FrozenModelType(BaseModel):
@@ -13,17 +16,14 @@ class FrozenModelType(BaseModel):
     model_config = {"frozen": True}
 
 
-class CurrentUser(BaseModel):
+class CurrentUser(APIModel):
     """
     Модель текущего пользователя, доступная в API-запросах
     """
 
-    id: UUID4
+    id: UUID
     login: str
     email: str
     name: str | None
     surname: str | None
     birth_date: date | None
-
-    class Config:
-        from_attributes = True

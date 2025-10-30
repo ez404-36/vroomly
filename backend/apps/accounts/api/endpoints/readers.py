@@ -14,6 +14,9 @@ from ..routers import router
 class UserAPI(
     BaseAPI,
 ):
-    @router.get("/me")
+    @router.get(
+        "/me",
+        summary="Получение информации о текущем пользователе",
+    )
     async def api_get_current_user(self) -> CurrentUser:
         return self.user

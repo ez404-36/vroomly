@@ -8,7 +8,6 @@ dependencies = [
     "alembic>=1.15.2",
     "asyncpg>=0.30.0",
     "bcrypt>=4.3.0",
-    "black>=25.1.0",
     "databases>=0.9.0",
     "email-validator>=2.2.0",
     "fastapi-utils[all]>=0.8.0",
@@ -22,4 +21,57 @@ dependencies = [
     "requests>=2.32.5",
     "sqlalchemy>=2.0.40",
     "sqlalchemy2-stubs>=0.0.2a38",
+    "astroid>=3.3.11",
+    "pydantic2-to-typescript>=0.0.1",
+    "ruff>=0.13.3",
+    "pre-commit>=4.3.0",
 ]
+
+[tool.ruff]
+exclude = [
+    ".git",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".venv",
+    "__pypackages__",
+    "frontend",
+    "migrations",
+]
+line-length = 120
+indent-width = 4
+target-version = "py313"
+respect-gitignore = true
+
+[tool.ruff.format]
+quote-style = "single"
+indent-style = "tab"
+line-ending = "lf"
+
+[tool.ruff.lint]
+select = [
+    "E", "F", "W", "D", # базовые правила
+    "I",  # isort
+    "N",  # pep8-naming
+    "PLR",  # pylint rules
+]
+ignore = [
+    "W191", "D206", # Конфликтуют с indent-style = "tab"
+    "D100", # Missing docstring in public module
+    "D101", # Missing docstring in public class
+    "D102", # Missing docstring in public method
+    "D200", # One-line docstring should fit on one line
+    "D202", # No blank lines allowed after function docstring
+    "D203", # incorrect-blank-line-before-class
+    "D204", # incorrect-blank-line-after-class
+    "D205", # 1 blank line required between summary line and description
+    "D212", # Multi-line docstring summary should start at the first line
+    "D213", # multi-line-summary-second-line
+    "D415", # точка в конце docstring
+    "D400", # отступы после docstring
+    "COM812", # пробелы вместо табов ?
+]
+
+[tool.ruff.lint.pylint]
+allow-magic-value-types = ["str"]

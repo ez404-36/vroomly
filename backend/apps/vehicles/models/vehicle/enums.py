@@ -1,11 +1,18 @@
 from enum import IntEnum, IntFlag, Enum
 
+from common.schemas.choices_mixin import ChoicesMixin
 
-class VehicleType(IntEnum):
+
+class VehicleType(ChoicesMixin, IntEnum):
     """Тип ТС"""
 
     CAR = 0
     MOTORCYCLE = 1
+
+    __labels__ = {
+        CAR: "Автомобиль",
+        MOTORCYCLE: "Мотоцикл",
+    }
 
 
 class VehicleEngineType(IntFlag):

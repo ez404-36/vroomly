@@ -7,7 +7,7 @@ from sqlalchemy import select
 from starlette import status
 
 from common.schemas.models import CurrentUser
-from common.utils.utils import import_class
+from common.utils.file_inspectors import import_class
 from core.db import database
 from core.safety.token import TOKEN, SECRET_KEY, ALGORITHM, TokenData
 

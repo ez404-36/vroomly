@@ -21,7 +21,7 @@ class IntFlagType(TypeDecorator):
         self.enum_class = enum_class
         super().__init__(*args, **kwargs)
 
-    def process_bind_param(self, value, dialect):
+    def process_bind_param(self, value, _dialect):
         # При сохранении в БД: из IntFlag в int
         if value is None:
             return None
@@ -29,7 +29,7 @@ class IntFlagType(TypeDecorator):
             return value.value
         raise ValueError(f"Expected {self.enum_class}, got {type(value)}")
 
-    def process_result_value(self, value, dialect):
+    def process_result_value(self, value, _dialect):
         # При чтении из БД: из int в IntFlag
         if value is None:
             return None
@@ -50,8 +50,8 @@ class IntEnumType(TypeDecorator):
         self.enum_class = enum_class
         super().__init__(*args, **kwargs)
 
-    def process_bind_param(self, value, dialect):
+    def process_bind_param(self, value, _dialect):
         return value.value if value is not None else None
 
-    def process_result_value(self, value, dialect):
+    def process_result_value(self, value, _dialect):
         return self.enum_class(value) if value is not None else None

@@ -3,6 +3,8 @@ from decimal import Decimal
 from sqlalchemy import Numeric, SmallInteger
 from sqlalchemy.orm import Mapped, mapped_column
 
+from apps.vehicles.models.car.car_body import get_car_body_link_mixin
+from apps.vehicles.models.car.car_transmission import get_car_transmission_link_mixin
 from apps.vehicles.models.vehicle.abstract.vehicle_trim import VehicleTrimAbstract
 from apps.vehicles.models.vehicle.vehicle_generation import get_vehicle_generation_link_mixin
 from common.models.mixins.relations import get_foreign_key_mixin
@@ -11,6 +13,8 @@ from common.models.mixins.relations import get_foreign_key_mixin
 class CarTrim(
     VehicleTrimAbstract,
     get_vehicle_generation_link_mixin('car_trims', False),
+    get_car_transmission_link_mixin('car_trims', False),
+    get_car_body_link_mixin('car_trims', False),
 ):
     """
     Комплектация автомобиля.
@@ -38,6 +42,6 @@ def get_car_trim_link_mixin(
     Миксин связи с комплектацией автомобиля
     """
     return get_foreign_key_mixin(
-        CarTrim, 'trims',
+        CarTrim, 'trim',
         back_populates=back_populates, nullable=nullable, verbose_name=verbose_name,
     )

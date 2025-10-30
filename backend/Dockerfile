@@ -1,10 +1,10 @@
-FROM python:3.13-slim as build
+FROM python:3.13-slim as backend-base
 
 ARG python_version=3.13
 ARG backend_dir=/app
 
-ARG UID=1000
-ARG GID=1000
+ARG UID
+ARG GID
 
 WORKDIR $backend_dir
 
@@ -19,36 +19,31 @@ RUN groupadd -g "${GID}" vroomly && \
     chown -R vroomly:vroomly /app
 
 
+RUN mkdir -p /.venv && chown -R vroomly:vroomly /.venv
+
 COPY --link --from=ghcr.io/astral-sh/uv:0.4 /uv /usr/local/bin/uv
+ENV PATH="/root/.cargo/bin:${PATH}"
 
-ENV UV_PYTHON="python$python_version" \
-  UV_PYTHON_DOWNLOADS=never \
-  UV_PROJECT_ENVIRONMENT=/.venv \
-  UV_LINK_MODE=copy \
-  UV_COMPILE_BYTECODE=1 \
-  PYTHONOPTIMIZE=1
+COPY --chown=vroomly:vroomly pyproject.toml uv.lock $backend_dir
+COPY .pre-commit-config.yaml $backend_dir
 
-COPY pyproject.toml uv.lock .pre-commit-config.yaml $backend_dir
+USER vroomly
+RUN uv venv /app/.venv
+ENV PATH="/app/.venv/bin:$PATH"
 
-RUN --mount=type=cache,destination=/root/.cache/uv <<EOF
-uv sync \
-  --no-dev \
-  --no-install-project \
-  --frozen
-EOF
+RUN uv sync --frozen
 
-ENV UV_PYTHON=$UV_PROJECT_ENVIRONMENT
 
-COPY .python-version $backend_dir
+FROM backend-base as codegen
 
-RUN --mount=type=cache,destination=/root/.cache/uv
-RUN <<EOF
-# cd /app
-sed -Ei "s/^(version = \")0\.0\.0(\")$/\1$(cat .python-version)\2/" pyproject.toml
-uv sync \
-  --no-dev \
-  --no-editable \
-  --frozen
-EOF
+USER root
 
-RUN pip install pre-commit
+# Обновляем пакеты и ставим Node.js + npm
+RUN apt-get update && apt-get install -y \
+    curl \
+    && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y nodejs \
+    && npm install -g json-schema-to-typescript \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+

@@ -44,7 +44,7 @@ def sort_columns_create_table(op: CreateTableOp):
         op.columns = [id_column] + other_columns
 
 
-def process_revision_directives(_, revision, directives):
+def process_revision_directives(_, _revision, directives):
     for directive in directives:
         if hasattr(directive, "upgrade_ops"):
             for op in directive.upgrade_ops.ops:

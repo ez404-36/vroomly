@@ -22,6 +22,7 @@ def get_foreign_key_mixin(
     mixin_name = f'{model_str}ForeignKeyMixin'
     field_name = f'{relation_name}_id'
 
+    # TODO: в качестве ID может быть не только UUID
     annotations = {
         field_name: Mapped[UUID | None] if nullable else Mapped[UUID]
     }

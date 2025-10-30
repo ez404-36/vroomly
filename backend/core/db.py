@@ -2,7 +2,7 @@ from typing import Any, Iterable
 
 from core.settings import settings
 from sqlalchemy import MetaData, Select
-from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine, AsyncEngine
 
 DATABASE_URL = settings.db.url
 metadata = MetaData()
@@ -11,7 +11,7 @@ metadata = MetaData()
 class OrmDatabase:
     def __init__(self, db_url: str):
         self.db_url = db_url
-        self.async_engine = create_async_engine(self.db_url)
+        self.async_engine: AsyncEngine = create_async_engine(self.db_url)
         self.async_session_maker = async_sessionmaker(
             self.async_engine, expire_on_commit=False
         )

@@ -1,11 +1,11 @@
 from typing import Annotated
 from uuid import UUID
 
-from apps.vehicles.api.routers import router
-from apps.vehicles.api.vehicle_series.filters import VehicleModelFilterParams
+from apps.vehicles.api.routers import series_router
+from apps.vehicles.api.vehicle_series.filters import VehicleSeriesFilterParams
 from apps.vehicles.api.vehicle_series.schemas.readers import (
-    VehicleModelDetailSchema,
-    VehicleModelListSchema,
+    VehicleSeriesDetailSchema,
+    VehicleSeriesListSchema,
 )
 from apps.vehicles.models.vehicle.vehicle_series import VehicleSeries
 from common.orm.filters import apply_search
@@ -17,17 +17,17 @@ from sqlalchemy import select
 from sqlalchemy.orm import joinedload
 
 
-@cbv(router)
-class VehicleModelAPI(
+@cbv(series_router)
+class VehicleSeriesAPI(
     BaseAPI,
 ):
 
-    @router.get(
-        "/series/",
-        response_model=list[VehicleModelListSchema],
+    @series_router.get(
+        "/",
+        response_model=list[VehicleSeriesListSchema],
         summary="Список моделей",
     )
-    async def list(self, filter_query: Annotated[VehicleModelFilterParams, Query()]):
+    async def list(self, filter_query: Annotated[VehicleSeriesFilterParams, Query()]):
         search_fields = ("name",)
 
         query = apply_search(
@@ -41,9 +41,9 @@ class VehicleModelAPI(
 
         return await database.fetch_all(query)
 
-    @router.get(
-        "/series/{series_id}",
-        response_model=VehicleModelDetailSchema,
+    @series_router.get(
+        "/{series_id}",
+        response_model=VehicleSeriesDetailSchema,
         summary="Детальный просмотр модели",
     )
     async def retrieve(self, series_id: UUID):

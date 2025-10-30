@@ -6,6 +6,7 @@ networks:
 volumes:
   vroomly-postgres-data:
     external: true
+  vroomly-backend-venv:
 
 
 services:
@@ -20,6 +21,7 @@ services:
       - ${EXPOSE_DB_PORT:-5432}:5432
     volumes:
       - vroomly-postgres-data:/var/lib/postgresql/data:rw
+      - ./backend/scripts/:/app/scripts/
     networks:
       default:
         aliases: [ vroomly-db ]
@@ -30,20 +32,26 @@ services:
           memory: 1G
 
   backend-build:  &backend-build
-    build: &backend-build-path ./backend
+    build: &backend-build-context
+      context: ./backend
+      target:  backend-base
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
     env_file: .env
     volumes:
       - &app-backend ./backend:/app:rw
+      - &backend-venv vroomly-backend-venv:/app/.venv
       - .git:/app/.git
     ports:
       - ${EXPOSE_BACKEND_PORT:-8000}:${BACKEND_PORT:-8000}
     depends_on:
       - db
       - libretranslate
-    user: "${UID}:${GID}"
     restart: unless-stopped
+    user: "${UID}:${GID}"
     profiles: [ vr-backend ]
-    working_dir: '/app'
+    working_dir: /app
     networks:
       default:
         aliases: [ vroomly-backend ]
@@ -55,39 +63,64 @@ services:
 
   backend:
     <<: *backend-build
-    command: uv run python main.py
+    command: python main.py
     profiles: [ vr-frontend ]
 
+  codegen:
+    build:
+      context: ./backend
+      target: codegen
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
+    env_file: .env
+    working_dir: "/app"
+    restart: no
+    volumes:
+      - *app-backend
+      - *backend-venv
+      - ./frontend/src:/frontend/src:rw
+    command: python scripts/collect_models.py
+    profiles: [ vr-frontend, vr-backend ]
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 1G
+
   migrations:
-    build: *backend-build-path
-    command: uv run alembic upgrade head
+    build: *backend-build-context
+    command: alembic upgrade head
     env_file: .env
     volumes:
       - *app-backend
+      - *backend-venv
     depends_on:
       - db
     restart: no
     profiles: [ vr-frontend ]
 
   seed: # Наполнение БД первичными данными
-    build: *backend-build-path
-    command: uv run python default_data/seed_all.py
+    build: *backend-build-context
+    command: python default_data/seed_all.py
     env_file: .env
     volumes:
       - *app-backend
+      - *backend-venv
     depends_on:
       - db
     restart: no
     profiles: [ no-profiles ]
 
   tests: # тесты бекенда
-    build: *backend-build-path
-    command: uv run pytest
+    build: *backend-build-context
+    command: pytest
     env_file: .env
     environment:
       PYTHONOPTIMIZE: 0
     volumes:
       - *app-backend
+      - *backend-venv
     depends_on:
       - db
     restart: no
