@@ -1,6 +1,6 @@
 """
 Автоматически сгенерированный файл со всеми Pydantic моделями
-Дата генерации: 2025-10-07 20:37:32.681624
+Дата генерации: 2025-10-30 11:09:00.533101
 Собрано из 91 файлов
 Найдено 19 моделей
 Сгенерировано автоматически
@@ -144,10 +144,15 @@ class ChoiceFieldWithParentSchema(ChoiceFieldSchema):
 
 # Модель: GuessCommonCarInfoSchema (из guess_common_car_info.py)
 class GuessCommonCarInfoSchema(BaseModel):
-    brand: ChoiceFieldSchema = Field(description="Бренд")
-    model: ChoiceFieldSchema = Field(description="Модель")
-    generation: list[ChoiceFieldSchema] = Field(description="Поколение")
-    configuration: list[ChoiceFieldWithParentSchema] = Field(description="Комплектация")
+    """
+    Данные об автомобиле, полученные в результате обработки
+    информации по VIN-номеру, предоставленной внешним источником
+    """
+
+    brand: ChoiceFieldSchema = Field(description='Бренд')
+    model: ChoiceFieldSchema = Field(description='Модель')
+    generation: list[ChoiceFieldSchema] = Field(description='Поколение')
+    configuration: list[ChoiceFieldWithParentSchema] = Field(description='Комплектация')
 
 #==================================================
 

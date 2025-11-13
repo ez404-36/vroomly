@@ -68,6 +68,10 @@ export interface CurrentUser {
  * Модель данных, в которой запрещено изменять поля
  */
 export interface FrozenModelType {}
+/**
+ * Данные об автомобиле, полученные в результате обработки
+ * информации по VIN-номеру, предоставленной внешним источником
+ */
 export interface GuessCommonCarInfoSchema {
   brand: ChoiceFieldSchema1;
   model: ChoiceFieldSchema2;
@@ -133,7 +137,7 @@ export interface VehicleBrandFilterParams {
   /**
    * Сортировка
    */
-  ordering?: 'country_id' | 'code';
+  ordering?: "country_id" | "code";
   /**
    * Поиск (по названию/коду)
    */
