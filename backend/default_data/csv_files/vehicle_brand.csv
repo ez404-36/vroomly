@@ -82,14 +82,14 @@ CN,Changhe
 CN,Ciimo
 CN,Changfeng
 CN,Cowin
-CN,Chery
+CN,Chery,,,CHERY_A
 CN,Dongfeng
 CN,Dadi
 CN,Dayun
 CN,Denza
 CN,Englon
 CN,E-Car
-CN,Exeed
+CN,Exeed,,,CHERY_A
 CN,EuAuto
 CN,Everus
 CN,Enovate (Enoreve)
@@ -121,33 +121,33 @@ CN,Huazi
 CN,HiPhi
 CN,Higer
 CN,Hozon
-CN,Jetour
+CN,Jetour,,,CHERY_A
 CN,Jiangling
 CN,JMEV
 CN,Jinbei
 CN,Jonway
-CN,Jaecoo
+CN,Jaecoo,,,CHERY_A
 CN,Jiangnan
 CN,JMC
 CN,Jidu
 CN,JAC
 CN,Jetta
 CN,JuneYao Auto
-CN,Karry
+CN,Karry,,,CHERY_A
 CN,Kandi
-CN,Kaiyi
+CN,Kaiyi,,,CHERY_A
 CN,Kawei
 CN,Knewstar
 CN,KYC
 CN,King Long
 CN,ORA
-CN,Omoda
+CN,Omoda,,,CHERY_A
 CN,Orange
 CN,Oshan
 CN,Oting
 CN,Polar Stone (Jishi)
 CN,Punk
-CN,iCar
+CN,iCar,,,CHERY_A
 CN,iCaur
 CN,IM Motors (Zhiji)
 CN,Landwind
@@ -160,7 +160,7 @@ CN,Lifan
 CN,Livan
 CN,Lingxi
 CN,Logem
-CN,Luxeed
+CN,Luxeed,,,CHERY_A
 CN,Liebao Motor
 CN,Maextro
 CN,Mudan Auto
@@ -170,13 +170,14 @@ CN,M-Hero
 CN,Nio
 CN,Nevo
 CN,Nordcross
-CN,Qoros
+CN,Qoros,,,CHERY_A
 CN,Qiantu
 CN,Qingling
 CN,Roewe,,,SAIC_M
 CN,Ranz
 CN,Radar
 CN,Rox
+CN,Ruizhang
 CN,Rising Auto
 CN,SAIC,,,SAIC_M
 CN,SAGW
@@ -197,8 +198,10 @@ CN,Trumpchi
 CN,Tank
 CN,Tianma
 CN,Tianye
+CN,Tsingshan
 CN,Wuling
 CN,Weltmeister
+CN,WLY
 CN,Voyah
 CN,Venucia
 CN,VGV
@@ -306,6 +309,7 @@ DE,Sono
 DE,Wiesmann
 DE,Wanderer
 DE,Wartburg
+DE,ZF
 GT,Rosmo
 GH,Kantanka
 GR,ELVO
@@ -370,6 +374,7 @@ IT,Coggiola
 IT,CTS
 IT,De Tomaso
 IT,DR
+IT,Ducati
 IT,Dallara
 IT,Fiat,,,STELLANTIS
 IT,Ferrari,,,FERRARI_NV
@@ -418,6 +423,7 @@ JP,Jatco
 JP,Mitsuoka
 JP,NMKV
 JP,Tommykaira
+JP,Yamaha
 KE,Cooper Motor Corporation
 KE,Mobius Motors
 LV,Baltijas Dzips
@@ -698,6 +704,7 @@ US,Batmobile
 US,Cadillac,,,G_M
 US,Chevrolet,,,G_M
 US,Coda
+US,Cummins
 US,Cord
 US,GMC,,,G_M
 US,Geo

@@ -1,14 +1,20 @@
 import csv
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterable, TypeVar
 
+from sqlalchemy import select
+
+from common.utils.generators import generate_code
+from core.db import database
 from core.models import AutoSchemaBase
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import Session
 
+T = TypeVar('T', bound=type[AutoSchemaBase])
 
-class ImportFromCSVBase:
+
+class ImportObjectsFromCSVBase:
     """
     Базовый класс импорта данных из CSV-файла в БД
     """
@@ -72,13 +78,13 @@ class ImportFromCSVBase:
         print(f'Обработано {len(instances)} записей {self.model}')
 
     def transform_object_data(self, instance_data: dict) -> dict:
-        '''
+        """
         Преобразование входных данных создаваемого объекта
-        '''
+        """
         return instance_data
 
     async def prefetch_data(self) -> dict[str, dict[Any, Any]]:
-        '''
+        """
         Загруженные из БД данные для маппинга данных из CSV-файла.
         Пример:
         1) Загрузка стран
@@ -86,5 +92,33 @@ class ImportFromCSVBase:
         country - обозначение типа сущности
         $column_in_csv - название столбца с данными о стране в CSV-файле
         $foreign_key_column - поле внешнего ключа для связи со страной в модели
-        '''
+        """
         return {}
+
+    async def prefetch_objects(self, model: T) -> Iterable[T]:
+        return await database.session_fetch_all(
+            self.session, select(model)
+        )
+
+
+class ImportObjectsFromCsvWithGenerateCode(ImportObjectsFromCSVBase):
+    """
+    Класс для объектов, содержащих поле code (наследующихся от CodeModelMixin)
+    """
+
+    """
+    Из какого поля модели генерировать код.
+    Будет выбрано первое не пустое значение
+    """
+    code_from_fields: Iterable[str] = ()
+
+    def transform_object_data(self, instance_data: dict) -> dict:
+        instance_data = super().transform_object_data(instance_data)
+
+        if not instance_data.get('code'):
+            for field in self.code_from_fields:
+                if value := instance_data.get(field):
+                    instance_data['code'] = generate_code(value)
+                    break
+
+        return instance_data

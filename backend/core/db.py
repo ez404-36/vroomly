@@ -33,6 +33,11 @@ class OrmDatabase:
             return result.one_or_none()
 
     @staticmethod
+    async def session_fetch_first(session: AsyncSession, query: Select) -> Any:
+        result = await session.scalars(query)
+        return result.first()
+
+    @staticmethod
     async def session_fetch_all(session: AsyncSession, query: Select) -> Iterable[Any]:
         return (await session.scalars(query)).all()
 

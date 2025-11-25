@@ -5,6 +5,8 @@ from core.models import AutoSchemaBase
 from default_data.csv_importers.countries import ImportCountriesCSV
 from default_data.csv_importers.vehicle_brands import ImportVehicleBrandsCSV
 from default_data.csv_importers.vehicle_concerns import ImportVehicleConcernsCSV
+from default_data.csv_importers.vehicle_engine_phase_regulator_systems import \
+    ImportVehicleEnginePhaseRegulatorSystemsCSV
 from default_data.csv_importers.vehicle_series import ImportVehicleSeriesCSV
 
 
@@ -15,6 +17,7 @@ async def seed_all():
     - Автомобильных концернах
     - Автопроизводителях
     - Марках автомобилей
+    - Системах управления фазами газораспределения в двигателе
     """
 
     async with database.get_async_session() as session:
@@ -22,6 +25,7 @@ async def seed_all():
         await ImportVehicleConcernsCSV(session).run()
         await ImportVehicleBrandsCSV(session).run()
         await ImportVehicleSeriesCSV(session).run()
+        await ImportVehicleEnginePhaseRegulatorSystemsCSV(session).run()
 
         await session.commit()
         await session.close()

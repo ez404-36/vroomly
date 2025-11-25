@@ -1,18 +1,12 @@
 from apps.vehicles.models.vehicle.vehicle_concern import VehicleConcern
-from common.utils.generators import generate_code
 
-from .base import ImportFromCSVBase
+from .base import ImportObjectsFromCsvWithGenerateCode
 
 
-class ImportVehicleConcernsCSV(ImportFromCSVBase):
+class ImportVehicleConcernsCSV(ImportObjectsFromCsvWithGenerateCode):
     model = VehicleConcern
     filename = 'vehicle_concern.csv'
     mapper = {
         'country': 'country_id',
     }
-
-    def transform_object_data(self, instance_data: dict) -> dict:
-        if not instance_data.get('code'):
-            instance_data['code'] = generate_code(instance_data.get('name'))
-
-        return instance_data
+    code_from_fields = ('name',)

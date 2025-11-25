@@ -21,7 +21,7 @@ class VehicleEngineType(IntFlag):
     Комбинируемые значения через ИЛИ (|).
 
     Например, бензиновый атмосферный двигатель записывается так:
-    1 | 16 (== 17)
+    PETROL ATMOSPHERIC == 1 | 16 == 17
     """
     PETROL = 1
     DIESEL = 2
@@ -31,17 +31,28 @@ class VehicleEngineType(IntFlag):
     TURBO = 32
 
 
-class VehicleEngineGRMType(Enum):
+class VehicleEngineGRMType(IntFlag):
     """Тип привода ГРМ"""
     BELT = 1    # Ремень
     CHAIN = 2   # Цепь
-    GEARS = 3   # Шестерни
+    GEARS = 4   # Шестерни
+    TWO_CHAINS = 8  # 2 Цепи
+    THREE_CHAINS = 16   # 3 цепи
+    FOUR_CHAINS = 32    # 4 Цепи
+    WET_BELT = 64   # "Мокрый" ремень (ремень ГРМ погружен в моторное масло)
+    TWO_BELTS = 128 # 2 ремня
 
 
-class VehicleEnginePhaseRegulatorType(Enum):
+class VehicleEnginePhaseRegulatorType(IntEnum):
     """Тип привода ГРМ"""
     INPUT = 1   # На впускном распределительном валу
     OUTPUT = 2   # На выпускном распределительном валу
+    DUAL = 3    # На обоих валах
+    """
+    Сложные системы, управляющие в 1 очередь впускными клапанами, но имеющими доп. механизмы на выпуске.
+    Системы изменения высоты подъема клапанов.
+    """
+    COMPLEX = 4
 
 
 class VehicleTransmissionType(Enum):

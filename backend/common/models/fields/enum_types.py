@@ -52,7 +52,10 @@ class IntEnumType(TypeDecorator):
         self.enum_class = enum_class
         super().__init__(*args, **kwargs)
 
-    def process_bind_param(self, value, _dialect):
+    def process_bind_param(self, value, _dialect) -> int:
+        if isinstance(value, str):
+            return int(value)
+
         return value.value if value is not None else None
 
     def process_result_value(self, value, _dialect):
