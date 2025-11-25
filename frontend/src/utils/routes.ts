@@ -1,4 +1,6 @@
 export const routes = {
   home: '/',
-  profile: '/profile',
+  userprofile: '/userprofile',
+  registration: '/userprofile/registrationform',
+  login: '/userprofile/loginform',
 };

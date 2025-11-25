@@ -5,8 +5,8 @@ const Home = () => {
   return (
     <>
       <h1>VR-24: Страница регистрации и авторизации</h1>
-      <Link to={routes.profile}>
-        <button>К странице регистрации</button>
+      <Link to={routes.userprofile}>
+        <button style={{ color: 'black' }}>К странице регистрации</button>
       </Link>
     </>
   );

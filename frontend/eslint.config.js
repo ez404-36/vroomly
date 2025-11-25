@@ -41,7 +41,8 @@ export default defineConfig([
     },
     rules: {
       ...eslintPluginPrettier.configs.recommended.rules,
-      'no-console': 'warn',
+      'prettier/prettier': 'warn',
+      'no-console': 'off',
       eqeqeq: 'warn',
       curly: 'warn',
       'no-else-return': 'warn',
