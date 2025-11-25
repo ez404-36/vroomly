@@ -1,6 +1,6 @@
 from typing import Annotated
 
-from fastapi import Depends, HTTPException, Form
+from fastapi import Depends, Form, HTTPException
 from fastapi.security import OAuth2PasswordRequestForm
 from fastapi_utils.cbv import cbv
 from starlette import status
@@ -10,7 +10,7 @@ from apps.accounts.api.schemas.mutators import RegistrationDataForm
 from apps.accounts.api.utils import authenticate_user
 from apps.accounts.models.user import User
 from core.db import database
-from core.safety.token import create_access_token, Token
+from core.safety.token import Token, create_access_token
 
 
 @cbv(router)
@@ -35,6 +35,7 @@ class UserAuthAPI:
         "/registration",
         status_code=status.HTTP_201_CREATED,
         summary="Регистрация пользователя",
+        response_model=str,
     )
     async def api_registration(self, data: Annotated[RegistrationDataForm, Form()]):
         user = User(
@@ -45,3 +46,5 @@ class UserAuthAPI:
         async with database.get_async_session() as session:
             session.add(user)
             await session.commit()
+
+        return 'ok'
