@@ -28,23 +28,8 @@ export const theme: MantineThemeOverride = {
       background: (theme: any) =>
         theme.colorScheme === 'dark' ? theme.colors.dark[9] : theme.white,
 
-      surface: (theme: any) =>
-        theme.colorScheme === 'dark'
-          ? theme.colors.dark[8]
-          : theme.colors.gray[0],
-
       textPrimary: (theme: any) =>
         theme.colorScheme === 'dark' ? theme.white : theme.black,
-
-      textSecondary: (theme: any) =>
-        theme.colorScheme === 'dark'
-          ? theme.colors.dark[2]
-          : theme.colors.gray[7],
-
-      border: (theme: any) =>
-        theme.colorScheme === 'dark'
-          ? theme.colors.dark[6]
-          : theme.colors.gray[3],
     },
   },
 };
