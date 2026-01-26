@@ -1,6 +1,7 @@
 import logging
 import os
 from contextlib import asynccontextmanager
+from typing import Awaitable, Callable
 
 import uvicorn
 from dotenv import load_dotenv
@@ -19,13 +20,15 @@ load_dotenv()
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
     """Жизненный цикл приложения"""
-    if hasattr(database, "connect"):
-        await database.connect()
+    if connect := getattr(database, "connect", None):
+        connect: Callable
+        await connect()
 
     yield
 
-    if hasattr(database, "disconnect"):
-        await database.disconnect()
+    if disconnect := getattr(database, "disconnect", None):
+        disconnect: Callable
+        await disconnect()
 
 
 app = FastAPI(lifespan=lifespan)

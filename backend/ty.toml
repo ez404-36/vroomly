@@ -1,0 +1,12 @@
+[environment]
+python-version = "3.13"
+
+[rules]
+invalid-assignment = "ignore"
+index-out-of-bounds = "ignore"
+
+[src]
+exclude = [
+    "src/**",
+    "migrations/versions/**"
+]

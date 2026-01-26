@@ -72,7 +72,6 @@ services:
       - libretranslate
     restart: unless-stopped
     profiles: [ vr-backend ]
-    working_dir: "/app"
     networks:
       default:
         aliases: [ vroomly-backend ]
@@ -95,7 +94,6 @@ services:
         - UID=${UID:-1000}
         - GID=${GID:-1000}
     env_file: .env
-    working_dir: "/app"
     restart: no
     volumes:
       - *app-backend
