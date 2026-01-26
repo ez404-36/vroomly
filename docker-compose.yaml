@@ -49,9 +49,8 @@ services:
       - db
       - libretranslate
     restart: unless-stopped
-    user: "${UID}:${GID}"
     profiles: [ vr-backend ]
-    working_dir: /app
+    working_dir: "/app"
     networks:
       default:
         aliases: [ vroomly-backend ]

@@ -25,6 +25,7 @@ dependencies = [
     "pydantic2-to-typescript>=0.0.1",
     "ruff>=0.13.3",
     "pre-commit>=4.3.0",
+    "ty>=0.0.13",
 ]
 
 [tool.ruff]
