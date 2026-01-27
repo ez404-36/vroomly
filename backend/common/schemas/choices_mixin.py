@@ -12,6 +12,6 @@ class ChoicesMixin:
         return cls.__labels__.items()
 
     @classmethod
-    def get_label(cls, value) -> str:
+    def get_label(cls, value: ID) -> str:
         """Получить label по значению"""
-        return cls.__labels__.get(value)
+        return cls.__labels__.get(value, 'undefined')

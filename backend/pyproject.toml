@@ -19,7 +19,7 @@ dependencies = [
     "pytest>=8.4.2",
     "python-dotenv>=1.1.0",
     "requests>=2.32.5",
-    "sqlalchemy>=2.0.40",
+    "sqlalchemy==2.0.46",
     "sqlalchemy2-stubs>=0.0.2a38",
     "astroid>=3.3.11",
     "pydantic2-to-typescript>=0.0.1",

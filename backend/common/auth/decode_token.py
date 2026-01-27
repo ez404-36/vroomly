@@ -27,7 +27,7 @@ async def decode_token(token: TokenData) -> CurrentUser | None:
 	return CurrentUser.model_validate(user)
 
 
-async def get_current_user(token: TOKEN) -> CurrentUser:
+async def get_current_user(token: TOKEN) -> CurrentUser | None:
 	credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Invalid credentials",

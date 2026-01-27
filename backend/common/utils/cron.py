@@ -1,7 +1,7 @@
 from datetime import datetime
 
 
-def parse_cron(cron_str):
+def parse_cron(cron_str: str):
     """Парсит строку cron в компоненты."""
     parts = cron_str.strip().split()
     if len(parts) != 5:
@@ -17,14 +17,14 @@ def parse_cron(cron_str):
     }
 
 
-def matches_cron_field(value: int, pattern: str, max_value: int = None) -> bool:
+def matches_cron_field(value: int, pattern: str, max_value: int | None = None) -> bool:
     """
     Проверяет, соответствует ли значение шаблону cron для одного поля.
     :param value: Значение времени или даты (минута, час, день, месяц, день недели)
     :param pattern: То, что указано в паттерне для этого значения
     :param max_value: Максимально возможное значение, применяемое к этому паттерну
     """
-    if value > max_value:
+    if max_value and value > max_value:
         return False
 
     if pattern == "*":
@@ -40,7 +40,7 @@ def matches_cron_field(value: int, pattern: str, max_value: int = None) -> bool:
     return int(pattern) == value
 
 
-def can_run_now(cron_str, current_time: datetime = None) -> bool:
+def can_run_now(cron_str, current_time: datetime | None = None) -> bool:
     """
     Проверяет, можно ли запустить задачу по расписанию cron в текущий момент.
     :param cron_str: Строка в формате cron (минута час день месяц день_недели)

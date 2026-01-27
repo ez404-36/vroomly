@@ -71,6 +71,7 @@ services:
       - db
       - libretranslate
     restart: unless-stopped
+    working_dir: /app
     profiles: [ vr-backend ]
     networks:
       default:
