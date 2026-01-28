@@ -30,6 +30,12 @@ export const theme: MantineThemeOverride = {
 
       textPrimary: (theme: any) =>
         theme.colorScheme === 'dark' ? theme.white : theme.black,
+
+      // Именованные константы для orange цветов
+      orangePrimary: (theme: any) => theme.colors.orange[6],
+      orangeHover: (theme: any) => theme.colors.orange[7],
+      orangeLight: (theme: any) => theme.colors.orange[0],
+      orangeDark: (theme: any) => theme.colors.orange[9],
     },
   },
 };

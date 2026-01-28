@@ -6,8 +6,7 @@ const Home = () => {
   return (
     <>
       <Title order={1} ta="center">
-        VR-88 и VR-89: Место хранения переменных в проекте; Настройка светлой и
-        темной тем по клику на кнопку
+        VR-90: Верстка страницы "Мой Гараж"
       </Title>
       <Center mt="xl">
         <Link to={routes.userprofile}>
