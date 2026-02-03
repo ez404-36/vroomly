@@ -54,14 +54,14 @@ class GuessCommonCarInfo:
 		if not guess_series:
 			raise GuessCommonCarInfoError(f'Не удалось определить модель марки {brand_en}: {series_ru} -> {series_en}')
 
-		guess_generation = await self._guess_generations(guess_series.id, data.year)
-		guess_trims = await self._guess_trims(guess_generation)
+		guess_generations = await self._guess_generations(guess_series.id, data.year)
+		guess_trims = await self._guess_trims([it.id for it in guess_generations])
 
 		return GuessCommonCarInfoSchema(
 			brand=to_choice_field(guess_brand),
 			model=to_choice_field(guess_series),
-			generation=to_choice_field_list(guess_generation),
-			configuration=to_choice_field_with_parent_list(guess_trims),
+			generation=to_choice_field_list(guess_generations),
+			configuration=to_choice_field_with_parent_list(guess_trims, ''),	# TODO
 		)
 
 	@staticmethod

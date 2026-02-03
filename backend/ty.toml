@@ -1,0 +1,20 @@
+[environment]
+python-version = "3.13"
+
+[rules]
+invalid-assignment = "ignore"
+index-out-of-bounds = "ignore"
+unresolved-import = "ignore"
+unsupported-base = "ignore"
+invalid-method-override = "ignore"
+
+[src]
+include = [
+    "apps",
+    "common",
+    "core",
+    "tests",
+]
+exclude = [
+    "core/settings.py",
+]

@@ -8,6 +8,19 @@ ARG GID
 
 WORKDIR $backend_dir
 
+ENV PYTHONUNBEFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    DEBIAN_FRONTEND=noninteractive \
+    PIP_NO_CACHE_DIR=False \
+    LC_CTYPE=ru_RU.UTF-8 \
+    LANG=ru_RU.UTF-8 \
+    LANGUAGE=en_US.UTF-8 \
+    ACCEPT_EULA=Y
+
+
+ENV VIRTUAL_ENV=/app/.venv
+ENV PATH="${VIRTUAL_ENV}/bin:$PATH"
+
 
 RUN apt-get update --quiet && \
     apt-get install -y git
@@ -19,19 +32,22 @@ RUN groupadd -g "${GID}" vroomly && \
     chown -R vroomly:vroomly /app
 
 
-RUN mkdir -p /.venv && chown -R vroomly:vroomly /.venv
-
 COPY --link --from=ghcr.io/astral-sh/uv:0.4 /uv /usr/local/bin/uv
 ENV PATH="/root/.cargo/bin:${PATH}"
 
-COPY --chown=vroomly:vroomly pyproject.toml uv.lock $backend_dir
 COPY .pre-commit-config.yaml $backend_dir
 
-USER vroomly
 RUN uv venv /app/.venv
 ENV PATH="/app/.venv/bin:$PATH"
 
-RUN uv sync --frozen
+RUN --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+    uv sync \
+      --locked \
+      --no-editable \
+      --no-install-project
+
+USER vroomly
 
 
 FROM backend-base as codegen
@@ -47,3 +63,5 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+
+USER vroomly

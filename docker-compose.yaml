@@ -31,6 +31,28 @@ services:
           cpus: "2"
           memory: 1G
 
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
+    env_file: .env
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app:rw
+    profiles: [ vr-frontend, vr-backend ]
+    user: ${FRONTEND_USER:-node}
+    command: bash -c "npm install && npm run dev"
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: 1G
+
+
   backend-build:  &backend-build
     build: &backend-build-context
       context: ./backend
@@ -49,9 +71,8 @@ services:
       - db
       - libretranslate
     restart: unless-stopped
-    user: "${UID}:${GID}"
-    profiles: [ vr-backend ]
     working_dir: /app
+    profiles: [ vr-backend ]
     networks:
       default:
         aliases: [ vroomly-backend ]
@@ -74,7 +95,6 @@ services:
         - UID=${UID:-1000}
         - GID=${GID:-1000}
     env_file: .env
-    working_dir: "/app"
     restart: no
     volumes:
       - *app-backend

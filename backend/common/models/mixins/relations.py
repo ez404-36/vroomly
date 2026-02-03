@@ -1,3 +1,5 @@
+from typing import cast
+
 from sqlalchemy import UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship, declared_attr
 
@@ -47,8 +49,8 @@ def get_foreign_key_mixin(
                 foreign_keys=lambda: getattr(cls, _field_name),
                 # TODO: линтер плохо понимает backref, об этом говорит сама дока SQLAlchemy
                 # back_populates=_back_pop,
-                backref=_back_pop,
-                lazy=_lazy,
+                backref=cast(str, _back_pop),
+                lazy=cast(str, _lazy),
             )
         ),
     }

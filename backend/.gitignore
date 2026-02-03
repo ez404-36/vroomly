@@ -5,4 +5,4 @@ __pycache__
 .pytype
 .ruff_cache
 
-src/generated_models.py
+src/*.py

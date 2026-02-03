@@ -19,7 +19,7 @@ class IntFlagType(TypeDecorator):
     impl = SmallInteger
     cache_ok = True
 
-    def __init__(self, enum_class: enum.Flag | enum.IntFlag, *args, **kwargs):
+    def __init__(self, enum_class: type[enum.Flag | enum.IntFlag], *args, **kwargs):
         self.enum_class = enum_class
         super().__init__(*args, **kwargs)
 
@@ -48,7 +48,7 @@ class IntEnumType(TypeDecorator):
     impl = SmallInteger
     cache_ok = True
 
-    def __init__(self, enum_class: enum.Flag | enum.IntFlag, *args, **kwargs):
+    def __init__(self, enum_class: type[enum.Enum | enum.IntEnum], *args, **kwargs):
         self.enum_class = enum_class
         super().__init__(*args, **kwargs)
 

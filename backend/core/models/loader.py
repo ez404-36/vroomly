@@ -10,7 +10,7 @@ base = AutoSchemaBase
 logger = logging.getLogger(__name__)
 
 
-def load_all_models() -> (set[str], list[str]):
+def load_all_models() -> tuple[set[str], list[str]]:
     """
     Сканирует директорию apps/ и загружает модели из всех apps/<service>/models/*
     :return: Загруженные модели, ошибки

@@ -14,8 +14,8 @@ class BaseApiProvider:
         self,
         endpoint_url: str | None = None,
         path_params: dict | None = None,
-        headers: dict = None,
-        query_params: dict = None,
+        headers: dict | None = None,
+        query_params: dict | None = None,
         is_json_response: bool = True,
     ) -> dict:
         path_params = path_params or {}
@@ -38,7 +38,7 @@ class BaseApiProvider:
         endpoint_url: str | None = None,
         path_params: dict | None = None,
         payload: dict | None = None,
-        headers: dict = None,
+        headers: dict | None = None,
     ) -> dict:
         path_params = path_params or {}
         url = get_url(self.base_url, endpoint_url)

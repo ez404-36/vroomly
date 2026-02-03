@@ -1,43 +1,56 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import tseslint from '@typescript-eslint/eslint-plugin'
-import parser from '@typescript-eslint/parser'
-import { defineConfig, globalIgnores } from 'eslint/config'
+import js from '@eslint/js';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
+import pluginReact from 'eslint-plugin-react';
+import { defineConfig } from 'eslint/config';
+import eslintPluginPrettier from 'eslint-plugin-prettier';
+import eslintConfigPrettier from 'eslint-config-prettier';
+import reactHooks from 'eslint-plugin-react-hooks';
+import { FlatCompat } from '@eslint/eslintrc';
+
+const compat = new FlatCompat({ baseDirectory: import.meta.dirname });
 
 export default defineConfig([
-  // Игнорируем сборку
-  globalIgnores(['dist']),
-
-  // Конфиг для TypeScript и React
   {
-    files: ['**/*.{ts,tsx}'],
-    languageOptions: {
-      parser, // подключаем TypeScript парсер
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-      globals: globals.browser,
-    },
+    files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    ignores: ['dist', 'build', 'node_modules'],
     plugins: {
-      reactHooks,
-      '@typescript-eslint': tseslint,
-    },
-    settings: {
-      react: {
-        version: 'detect',
-      },
+      prettier: eslintPluginPrettier,
+      react: pluginReact,
+      'react-hooks': reactHooks,
     },
     extends: [
       js.configs.recommended,
-      tseslint.configs.recommended,
-      reactHooks.configs['recommended-latest'],
-      'prettier', // отключаем правила, конфликтующие с Prettier
+      ...tseslint.configs.recommended,
+      ...compat.extends('plugin:react/recommended'),
+      ...compat.extends('plugin:react-hooks/recommended'),
+      eslintConfigPrettier,
     ],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: 'module',
+      globals: globals.browser,
+      parserOptions: {
+        ecmaFeatures: { jsx: true },
+      },
+    },
+    settings: {
+      react: {
+        version: 'detect', // автоматически определяет версию React
+      },
+    },
     rules: {
-      // кастомные правила из старого конфига
+      ...eslintPluginPrettier.configs.recommended.rules,
+      'prettier/prettier': 'warn',
+      'no-console': 'off',
+      eqeqeq: 'warn',
+      curly: 'warn',
+      'no-else-return': 'warn',
       'react/react-in-jsx-scope': 'off',
-      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      'react/jsx-uses-react': 'off',
       'react/prop-types': 'off',
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'warn',
     },
   },
-])
+]);
