@@ -8,7 +8,7 @@ from .base import ImportObjectsFromCSVBase
 
 class ImportVehicleSeriesCSV(ImportObjectsFromCSVBase):
     model = VehicleSeries
-    filename = 'vehicle_series.csv'
+    source_filename = 'vehicle_series.csv'
     mapper = {
         'brand': 'brands:brand_id',
     }

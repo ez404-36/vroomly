@@ -8,7 +8,7 @@ from .base import ImportObjectsFromCsvWithGenerateCode
 
 class ImportVehicleEnginePhaseRegulatorSystemsCSV(ImportObjectsFromCsvWithGenerateCode):
     model = VehicleEnginePhaseRegulatorSystem
-    filename = 'vehicle_engine_phase_regulator_system.csv'
+    source_filename = 'vehicle_engine_phase_regulator_system.csv'
     mapper = {
         'brand': 'brands:brand_id',
         'concern': 'concerns:concern_id',

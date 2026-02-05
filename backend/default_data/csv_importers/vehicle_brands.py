@@ -7,7 +7,7 @@ from .base import ImportObjectsFromCsvWithGenerateCode
 
 class ImportVehicleBrandsCSV(ImportObjectsFromCsvWithGenerateCode):
     model = VehicleBrand
-    filename = 'vehicle_brand.csv'
+    source_filename = 'vehicle_brand.csv'
     mapper = {
         'country': 'country_id',
         'concern': 'concerns:concern_id',

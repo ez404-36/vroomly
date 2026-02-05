@@ -6,7 +6,7 @@ from .base import ImportObjectsFromCSVBase
 # TODO: не все названия стран на английском языке в csv-файле
 class ImportCountriesCSV(ImportObjectsFromCSVBase):
     model = Country
-    filename = "country.csv"
+    source_filename = "country.csv"
     mapper = {
         "value": "name",
     }

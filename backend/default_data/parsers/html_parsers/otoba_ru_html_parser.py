@@ -8,6 +8,7 @@ from typing import Any, Callable, Iterable, Literal
 import requests
 from bs4 import BeautifulSoup, Tag
 from sqlalchemy import ColumnElement, and_, or_, select, true
+from typing_inspect import get_args
 
 from apps.vehicles.models.car.car_transmission import CarTransmission
 from apps.vehicles.models.car.enums import CarDriveType
@@ -86,16 +87,20 @@ phase_regulator_system_mapper: dict[str, str] = {
 	'VTC + i-VTEC': 'I_VTEC_AND_VTC',
 	# BMW
 	'single VANOS': 'VANOS',
+	'VANOS': 'VANOS',
 	'dual-VANOS': 'DOUBLE_VANOS',
 	'double VANOS': 'DOUBLE_VANOS',
-	# mitsubishi
+	# Mitsubishi
+	'MIVEC': 'MIVEC',
 	'MIVEC 2': 'MIVEC',
 	'опция': 'MIVEC',
 	'опция MIVEC': 'MIVEC',
 	'опция AVCS': 'AVCS',
 	'eVTC': 'E_VTC',
-	# toyota
+	# Toyota
 	'VVT-i с 2013 года': 'VVT_I',
+	# Suzuki
+	'(опция)': 'VVT',
 }
 
 grm_drive_type_mapper = {
@@ -132,17 +137,18 @@ grm_drive_type_mapper = {
 transmission_type_mapper = {
 	'механика': VehicleTransmissionType.MANUAL,
 	'механическая коробка': VehicleTransmissionType.MANUAL,
-	'МКПП': VehicleTransmissionType.MANUAL,
+	'мкпп': VehicleTransmissionType.MANUAL,
 	'автомат': VehicleTransmissionType.AUTO,
 	'гибридный автомат': VehicleTransmissionType.AUTO,
 	'гидроавтомат': VehicleTransmissionType.AUTO,
-	'АКПП': VehicleTransmissionType.AUTO,
+	'гидроавтомат + dct': VehicleTransmissionType.AUTO,
+	'акпп': VehicleTransmissionType.AUTO,
 	'вариатор': VehicleTransmissionType.VARIATOR,
-	'CVT': VehicleTransmissionType.VARIATOR,
+	'cvt': VehicleTransmissionType.VARIATOR,
 	'робот': VehicleTransmissionType.ROBOT,
 	'роботизированная': VehicleTransmissionType.ROBOT,
 	'роботизированная коробка': VehicleTransmissionType.ROBOT,
-	'DCT': VehicleTransmissionType.ROBOT,
+	'dct': VehicleTransmissionType.ROBOT,
 	'однодисковый робот': VehicleTransmissionType.ROBOT,
 	'преселективный робот': VehicleTransmissionType.ROBOT,
 }
@@ -187,6 +193,8 @@ class OtobaRuValueBaseTransformer:
 		:param page_uri: URI страницы, которую парсим. Нужно для логирования
 		"""
 
+		assert brand or concern, f'Не удалось опрелить бренд на странице {page_uri}'
+
 		self.tags_data = tags_data
 		self.page_uri = page_uri
 		self.brand = brand
@@ -198,7 +206,12 @@ class OtobaRuValueBaseTransformer:
 		for orig_key, orig_value in self.tags_data.items():
 			output.update(await self.run_for_field(orig_key, orig_value))
 
+		await self.set_default_values(output)
+
 		return output
+
+	async def set_default_values(self, output: dict[str, Any]):
+		pass
 
 	async def get_field(self, orig_key: str) -> str:
 		return self.fields_map.get(orig_key)
@@ -264,14 +277,23 @@ class OtobaRuEngineValueTransformer(OtobaRuValueBaseTransformer):
 	fields_map = {
 		'точный объем': 'volume',
 		'мощность двс': 'power',
+		'мощность': 'power',
 		'крутящий момент': 'torque',
 		'блок цилиндров': 'cylinders',
+		'кол-во цилиндров': 'cylinders',
 		'головка блока': 'valves',
+		'кол-во клапанов': 'valves',
 		'привод грм': 'grm_drive_type',
 		'фазорегулятор': 'phase_regulator',
 		'экологич. класс': 'eco_class',
+		'экологические нормы': 'eco_class',
 		'тип топлива': 'type',
 	}
+
+	async def set_default_values(self, output: dict[str, Any]):
+		output.setdefault('grm_drive_type', VehicleEngineGRMType.UNDEFINED)
+		output.setdefault('type', VehicleEngineType.UNDEFINED)
+		output.setdefault('volume', 0)
 
 	async def parse_phase_regulator(self, value: str):
 		"""
@@ -309,7 +331,19 @@ class OtobaRuEngineValueTransformer(OtobaRuValueBaseTransformer):
 				if phase_regulator_system:
 					output['phase_regulator_system_id'] = phase_regulator_system.id
 				else:
-					logger.warning(f'Не опознан тип регулирования фаз странице {self.page_uri}: {value}')
+					# Пытаемся найти регулятор фаз с таким же названием у другого Бренда
+					other_brand_phase_regulator_system = await database.fetch_first(
+						select(VehicleEnginePhaseRegulatorSystem).where(
+								or_(
+									VehicleEnginePhaseRegulatorSystem.code == code,
+									VehicleEnginePhaseRegulatorSystem.code == value,
+								)
+						)
+					)
+					if other_brand_phase_regulator_system:
+						output['phase_regulator_system_id'] = other_brand_phase_regulator_system.id
+					else:
+						logger.warning(f'Не опознан тип регулирования фаз странице {self.page_uri}: {value}')
 
 		return output
 
@@ -360,11 +394,17 @@ class OtobaRuTransmissionValueTransformer(OtobaRuValueBaseTransformer):
 		'для привода': 'drive_types',
 	}
 
+	async def set_default_values(self, output: dict[str, Any]):
+		if not output.get('gears'):
+			output['gears'] = 0
+
 	async def parse_type(self, value: str):
 		output = {}
 
 		if t_type := transmission_type_mapper.get(value.lower()):
 			output['type'] = t_type
+			if t_type == VehicleTransmissionType.VARIATOR:
+				output['gears'] = 0
 		else:
 			logger.warning(f'Не опознан тип коробки передач на странице {self.page_uri}: {value}')
 
@@ -437,7 +477,7 @@ class OtobaRuHtmlParser:
 		}
 
 	async def run(self, output_path: Path, only: VehicleNodeType = None):
-		parse_pages: tuple[VehicleNodeType] = ('engine', 'transmission')
+		parse_pages: tuple[VehicleNodeType] = get_args(VehicleNodeType)
 		for page in parse_pages:
 			if only is None or only == page:
 				await self.parse_vehicle_node_page(page)
@@ -610,12 +650,16 @@ class OtobaRuHtmlParser:
 			instance_data = await transformer.run()
 
 			for modification in modifications:
-				instance_data.update({
-					'name': modification,
-					'brand_id': brand.id if brand and not concern else None,
-					'concern_id': concern.id if concern and not brand else None,
-				})
+				instance_data['name'] = modification
+				if brand:
+					instance_data['brand_id'] = brand.id
+				elif concern:
+					instance_data['concern_id'] = concern.id
+
 				instance = model(**instance_data)
+				errors = instance.validate()
+				if errors:
+					logger.error(f'Ошибка валидации модели на странице {detail_page_uri}: {errors}')
 				self.parsed_data[parsed_data_key].append(instance)
 				logger.info(f'Обработан {parsed_data_key}: {instance_data}')
 
@@ -639,5 +683,5 @@ async def create_from_pkl_file(pkl_file: str | Path):
 if __name__ == '__main__':
 	parser = OtobaRuHtmlParser()
 	file_path = PARSED_DATA_DIR / 'transmissions.pkl'
-	# asyncio.run(parser.run(file_path, only='transmission'))
-	asyncio.run(create_from_pkl_file(file_path))
+	asyncio.run(parser.run(file_path, only='transmission'))
+	# asyncio.run(create_from_pkl_file(file_path))

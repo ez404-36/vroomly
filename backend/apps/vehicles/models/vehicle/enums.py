@@ -23,6 +23,8 @@ class VehicleEngineType(IntFlag):
     Например, бензиновый атмосферный двигатель записывается так:
     PETROL ATMOSPHERIC == 1 | 16 == 17
     """
+    UNDEFINED = 0  # Не определено
+
     PETROL = 1
     DIESEL = 2
     ELECTRO = 4
@@ -33,6 +35,8 @@ class VehicleEngineType(IntFlag):
 
 class VehicleEngineGRMType(IntFlag):
     """Тип привода ГРМ"""
+    UNDEFINED = 0   # Не определено
+
     BELT = 1    # Ремень
     CHAIN = 2   # Цепь
     GEARS = 4   # Шестерни
@@ -45,6 +49,8 @@ class VehicleEngineGRMType(IntFlag):
 
 class VehicleEnginePhaseRegulatorType(IntEnum):
     """Тип привода ГРМ"""
+    UNDEFINED = 0  # Не определено
+
     INPUT = 1   # На впускном распределительном валу
     OUTPUT = 2   # На выпускном распределительном валу
     DUAL = 3    # На обоих валах
@@ -57,6 +63,7 @@ class VehicleEnginePhaseRegulatorType(IntEnum):
 
 class VehicleTransmissionType(Enum):
     """Тип коробки передач"""
+    UNDEFINED = 0  # Не определено
 
     MANUAL = 1
     AUTO = 2
@@ -66,6 +73,8 @@ class VehicleTransmissionType(Enum):
 
 class VehicleBodyType(IntFlag):
     """Тип кузова ТС (комбинируемые значения)"""
+    UNDEFINED = 0  # Не определено
+
     STEEL = 1   # Сталь
     ALUMINUM = 2   # Алюминий
     MAGNESIUM_ALLOYS = 4    # Магниевые сплавы

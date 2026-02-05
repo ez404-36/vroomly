@@ -35,7 +35,7 @@ class ImportObjectsFromCSVBase:
     """
     mapper: dict[str, str] = {}
 
-    filename: str = NotImplemented
+    source_filename: str = NotImplemented
     default_data = {}  # данные по умолчанию для создаваемых сущностей
 
     def __init__(self, session: Session | AsyncSession) -> None:
@@ -44,7 +44,7 @@ class ImportObjectsFromCSVBase:
     async def run(self):
         prefetched_data = await self.prefetch_data()
 
-        with open(Path(__file__).parent.parent / 'csv_files' / self.filename) as f_obj:
+        with open(Path(__file__).parent.parent / 'csv_files' / self.source_filename) as f_obj:
             reader = csv.DictReader(f_obj)
 
             instances = []
