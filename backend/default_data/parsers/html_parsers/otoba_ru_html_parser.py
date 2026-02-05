@@ -671,8 +671,6 @@ async def create_from_pkl_file(pkl_file: str | Path):
 	engines = data.get('engines', [])
 	transmissions = data.get('transmissions', [])
 
-	# [it.type for it in transmissions if not isinstance(it.type, VehicleTransmissionType)] -> [None, None]
-
 	async with database.get_async_session() as session:
 		session.add_all(engines)
 		session.add_all(transmissions)
@@ -682,6 +680,6 @@ async def create_from_pkl_file(pkl_file: str | Path):
 
 if __name__ == '__main__':
 	parser = OtobaRuHtmlParser()
-	file_path = PARSED_DATA_DIR / 'transmissions.pkl'
-	asyncio.run(parser.run(file_path, only='transmission'))
-	# asyncio.run(create_from_pkl_file(file_path))
+	file_path = PARSED_DATA_DIR / 'engines.pkl'
+	# asyncio.run(parser.run(file_path, only='transmission'))
+	asyncio.run(create_from_pkl_file(file_path))

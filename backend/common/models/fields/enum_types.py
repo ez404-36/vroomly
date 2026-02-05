@@ -29,6 +29,10 @@ class IntFlagType(TypeDecorator):
             return None
         if isinstance(value, self.enum_class):
             return value.value
+        elif isinstance(value, str) and value.isdigit():
+            return int(value)
+        elif isinstance(value, int):
+            return value
         raise ValueError(f'Expected {self.enum_class}, got {type(value)}')
 
     def process_result_value(self, value, _dialect):
@@ -55,6 +59,8 @@ class IntEnumType(TypeDecorator):
     def process_bind_param(self, value, _dialect) -> int:
         if isinstance(value, str):
             return int(value)
+        elif isinstance(value, int):
+            return value
 
         return value.value if value is not None else None
 

@@ -78,5 +78,6 @@ class AutoSchemaBase(Base):
 
         return dict(errors)
 
-    def get_table_columns(self) -> list[Column]:
-        return list(self.__table__.columns)
+    @classmethod
+    def get_table_columns(cls) -> list[Column]:
+        return list(cls.__table__.columns)

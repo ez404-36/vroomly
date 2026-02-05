@@ -7,19 +7,9 @@ from .base import ImportObjectsFromCsvWithGenerateCode
 
 
 class ImportVehicleEnginePhaseRegulatorSystemsCSV(ImportObjectsFromCsvWithGenerateCode):
+    """
+    Импорт систем фазорегулирования
+    """
+
     model = VehicleEnginePhaseRegulatorSystem
     source_filename = 'vehicle_engine_phase_regulator_system.csv'
-    mapper = {
-        'brand': 'brands:brand_id',
-        'concern': 'concerns:concern_id',
-    }
-    code_from_fields = ('name',)
-
-    async def prefetch_data(self) -> dict[str, dict[Any, Any]]:
-        brands = await self.prefetch_objects(VehicleBrand)
-        concerns = await self.prefetch_objects(VehicleConcern)
-
-        return {
-            'brands': {brand.code: brand.id for brand in brands},
-            'concerns': {concern.code: concern.id for concern in concerns},
-        }

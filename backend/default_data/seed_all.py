@@ -5,6 +5,7 @@ from core.models import AutoSchemaBase
 from default_data.csv_importers.countries import ImportCountriesCSV
 from default_data.csv_importers.vehicle_brands import ImportVehicleBrandsCSV
 from default_data.csv_importers.vehicle_concerns import ImportVehicleConcernsCSV
+from default_data.csv_importers.vehicle_engine import ImportVehicleEnginesCSV
 from default_data.csv_importers.vehicle_engine_phase_regulator_systems import \
     ImportVehicleEnginePhaseRegulatorSystemsCSV
 from default_data.csv_importers.vehicle_series import ImportVehicleSeriesCSV
@@ -26,6 +27,7 @@ async def seed_all():
         await ImportVehicleBrandsCSV(session).run()
         await ImportVehicleSeriesCSV(session).run()
         await ImportVehicleEnginePhaseRegulatorSystemsCSV(session).run()
+        await ImportVehicleEnginesCSV(session).run()
 
         await session.commit()
         await session.close()

@@ -1,22 +1,22 @@
-country,name,code,abbreviation
-DE,Volkswagen-Audi Group,VA_G,VAG
-NL,Stellantis
-JP,Toyota Motor Corporation,TOYOTA_MC,TMC
-KR,Hyundai Motor Group,HYUNDAI_MG
-US,General Motors,G_M,GM
-US,Ford Motor Company,FORD_MC
-JP,Renault-Nissan-Mitsubishi Alliance,RNM_A
-DE,BMW Group,BMW_G
-DE,Mercedes-Benz Group AG,MERCEDES_AG
-CN,Geely Auto,GEELY_A
-CN,Chery Automobile,CHERY_A
-CN,SAIC Motor,SAIC_M
-CN,BYD Auto,BYD_A
-JP,Honda Motor Company,HONDA_MC
-JP,Suzuki Motor Corporation,SUZUKI_MC
-JP,Mazda Motor Corporation,MAZDA_MC
-IN,Tata Motors,TATA_M
-GB,Aston Martin Lagonda,ASTON_MATRIN_L
-IT,Ferrari N.V.,FERRARI_NV
-US,Rivian
-US,Lucid Motors,LUCID_M
+id,country_id,code,name,abbreviation
+af3efd39-13ea-444a-8806-ad68a110224c,DE,VA_G,Volkswagen-Audi Group,VAG
+785b6991-0019-4806-a0b0-66fa88dc4383,NL,STELLANTIS,Stellantis,
+895e98e4-935b-4fbd-959b-911876497d66,JP,TOYOTA_MC,Toyota Motor Corporation,TMC
+2e58e296-ddea-4c5b-8253-f373c6487c1c,KR,HYUNDAI_MG,Hyundai Motor Group,
+44fa372b-95e2-4601-866e-b86f3e126203,US,G_M,General Motors,GM
+30a11ee9-1a39-483f-b02d-dada656e55e1,US,FORD_MC,Ford Motor Company,
+28442497-d127-43f1-bf61-1a679754c3a4,JP,RNM_A,Renault-Nissan-Mitsubishi Alliance,
+ddc8864e-30e3-44c2-8f42-ad9fecac99b1,DE,BMW_G,BMW Group,
+a6a503fb-a698-41bc-b3d2-a5049f2264f3,DE,MERCEDES_AG,Mercedes-Benz Group AG,
+4441a3a0-c292-4486-a8b5-019027c6c2aa,CN,GEELY_A,Geely Auto,
+1595ccb9-6e57-42dc-a448-2b29812f77bb,CN,CHERY_A,Chery Automobile,
+419677c1-3c8c-4ffa-96c3-421dc7f81744,CN,SAIC_M,SAIC Motor,
+91a02c3c-87db-4492-adb7-221c76979209,CN,BYD_A,BYD Auto,
+ea535446-c3e1-4b1f-bc34-a83014e43ca3,JP,HONDA_MC,Honda Motor Company,
+a53a6a88-7c0f-42d8-9a29-2c860592aed9,JP,SUZUKI_MC,Suzuki Motor Corporation,
+7de1a811-b60b-48d4-8df8-f7ba0c4e166c,JP,MAZDA_MC,Mazda Motor Corporation,
+1f08bdd0-c3f5-4f6e-a3cd-36a593526e2a,IN,TATA_M,Tata Motors,
+9e868fbe-b03e-470d-a0b7-7410f3da0c02,GB,ASTON_MATRIN_L,Aston Martin Lagonda,
+84d3a440-b65a-4a4b-8648-fbbf08996e17,IT,FERRARI_NV,Ferrari N.V.,
+307e7113-435a-470d-a5a8-bd735a4da2b5,US,RIVIAN,Rivian,
+7f10c855-0c92-4692-b2f9-a5ddf2362c3f,US,LUCID_M,Lucid Motors,

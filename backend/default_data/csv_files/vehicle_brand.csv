@@ -1,824 +1,823 @@
-country,name,original_name,abbreviation,concern
-DZ,SNVI
-AR,ASA Aluminium Body
-AR,Zanella
-AR,Sero Electric
-AU,ACE EV Group
-AU,BCI Bus
-AU,Borland Racing
-AU,Bolwell
-AU,Custom Bus
-AU,DSI
-AU,Elfin Sports Cars
-AU,Minetti Sports Cars
-AU,Holden
-AU,HSV
-AU,Nota
-AU,P&D Coachworks
-AU,Volgren
-AT,KTM
-AT,Steyr
-AT,Rosenbauer
-AT,Tushek & Spigel
-AZ,AzSamand
-AZ,Ganja Auto Plant
-AZ,Nakhchivan Automobile Plant
-BY,BelAZ,БелАЗ
-BY,BelGee
-BY,Belkommunmash
-BY,MAZ,МАЗ
-BY,MoAZ,МоАЗ
-BY,MZKT,МЗКТ
-BY,Neman,Неман
-BE,Edran
-BE,Gillet
-BE,Punch Powertrain
-BE,Van Hool
-BO,Quantum Motors
-BR,Agrale
-BR,Comil
-BR,Grupo Caoa
-BR,Chamonix NG Cars
-BR,Carbuss
-BR,Marcopolo
-BR,Mascarello
-BR,Neobus
-BR,Puma
-BR,TAC
-BG,Litex
-BG,SIN
-CA,Bombardier
-CA,Campagna
-CA,Felino Corporation
-CA,Intermeccanica
-CA,INKAS
-CA,Lion Electric Company
-CA,Magnum Cars
-CA,New Flyer
-CA,Nova Bus
-CA,Prevost
-CA,Terradyne
-CA,Vicinity Motor Corp.
-CN,Arcfox
-CN,Avatr
-CN,Aion
-CN,Aito
-CN,Apex Motors
-CN,Ankai
-CN,Aiways
-CN,BAIC
-CN,Bio Auto
-CN,Bonluck Bus
-CN,Baojun
-CN,Blaval
-CN,Byvin
-CN,BAW
-CN,Bestune
-CN,Brilliance
-CN,BYD,,,BYD_A
-CN,Changan
-CN,Chana
-CN,Changhe
-CN,Ciimo
-CN,Changfeng
-CN,Cowin
-CN,Chery,,,CHERY_A
-CN,Dongfeng
-CN,Dadi
-CN,Dayun
-CN,Denza
-CN,Englon
-CN,E-Car
-CN,Exeed,,,CHERY_A
-CN,EuAuto
-CN,Everus
-CN,Enovate (Enoreve)
-CN,FAW
-CN,Fuzhen
-CN,Hongqi
-CN,Foton
-CN,Fuqi
-CN,Firefly
-CN,Forthing
-CN,Fangchengbao,,,BYD_A
-CN,GAC
-CN,Geely,,,GEELY_A
-CN,Gonow
-CN,Great Wall
-CN,Gyon
-CN,Henrey Automobile
-CN,Hafei
-CN,Haima
-CN,Hanteng
-CN,Hedmos
-CN,Hawtai
-CN,Haval
-CN,Heibao
-CN,Hycan
-CN,Huaihai (Hoann)
-CN,HuangHai
-CN,Huazi
-CN,HiPhi
-CN,Higer
-CN,Hozon
-CN,Jetour,,,CHERY_A
-CN,Jiangling
-CN,JMEV
-CN,Jinbei
-CN,Jonway
-CN,Jaecoo,,,CHERY_A
-CN,Jiangnan
-CN,JMC
-CN,Jidu
-CN,JAC
-CN,Jetta
-CN,JuneYao Auto
-CN,Karry,,,CHERY_A
-CN,Kandi
-CN,Kaiyi,,,CHERY_A
-CN,Kawei
-CN,Knewstar
-CN,KYC
-CN,King Long
-CN,ORA
-CN,Omoda,,,CHERY_A
-CN,Orange
-CN,Oshan
-CN,Oting
-CN,Polar Stone (Jishi)
-CN,Punk
-CN,iCar,,,CHERY_A
-CN,iCaur
-CN,IM Motors (Zhiji)
-CN,Landwind
-CN,Leahead
-CN,Lixiang
-CN,Leapmotor
-CN,Lynk & Co,,,GEELY_A
-CN,Letin
-CN,Lifan
-CN,Livan
-CN,Lingxi
-CN,Logem
-CN,Luxeed,,,CHERY_A
-CN,Liebao Motor
-CN,Maextro
-CN,Mudan Auto
-CN,Maxus,,,SAIC_M
-CN,Maple
-CN,M-Hero
-CN,Nio
-CN,Nevo
-CN,Nordcross
-CN,Qoros,,,CHERY_A
-CN,Qiantu
-CN,Qingling
-CN,Roewe,,,SAIC_M
-CN,Ranz
-CN,Radar
-CN,Rox
-CN,Ruizhang
-CN,Rising Auto
-CN,SAIC,,,SAIC_M
-CN,SAGW
-CN,Sehol
-CN,Soueast
-CN,Spotlight Automotive
-CN,Stelato
-CN,Sunlong Bus
-CN,Skyworth Auto
-CN,Seres
-CN,Shanghai Maple
-CN,Shengrui
-CN,ShuangHuan
-CN,Skywell
-CN,SWM
-CN,Skyworth
-CN,Trumpchi
-CN,Tank
-CN,Tianma
-CN,Tianye
-CN,Tsingshan
-CN,Wuling
-CN,Weltmeister
-CN,WLY
-CN,Voyah
-CN,Venucia
-CN,VGV
-CN,Xpeng
-CN,Xiaomi
-CN,Xin Kai
-CN,Yudo Auto
-CN,Yutong
-CN,Zhongtong Bus
-CN,Zinoro
-CN,Zotye
-CN,Zeekr,,,GEELY_A
-CN,Zhido
-CN,ZX
-CN,WEY
-CN,Xiamen Golden Dragon Bus
-CN,Yangwang,,,BYD_A
-CN,Yema
-CN,Yipai
-CN,ZX Auto
-CO,Busscar de Colombia
-CO,Sofasa
-HR,DOK-ING
-HR,Rimac
-CZ,Skoda,Škoda,,VA_G
-CZ,Tatra
-CZ,Avia
-CZ,Kaipan
-CZ,MTX
-CZ,Praga
-CZ,Gordon
-DK,Hydrema
-DK,Zenvo
-EC,Aymesa
-EG,MCV Bus & Coach
-ET,Marathon Motors Engineering
-FI,Valmet Automotive
-FI,Electric Raceabout
-FI,Sisu Auto
-FR,Aixam
-FR,Alpine,,,RNM_A
-FR,Auverland
-FR,Bolloré
-FR,Bugatti
-FR,Citroen,Citroën,,STELLANTIS
-FR,Delage
-FR,De La Chapelle
-FR,DS
-FR,Exagon
-FR,Heuliez Bus
-FR,Hopium
-FR,Ligier
-FR,Microcar
-FR,Mobilize
-FR,Matra
-FR,Mega,Méga
-FR,Navya SAS
-FR,Peugeot,,,STELLANTIS
-FR,PGO
-FR,Power Vehicle Innovation
-FR,Renault,,,RNM_A
-FR,Renault Trucks,,,RNM_A
-FR,SECMA
-FR,Simca
-FR,Venturi
-FR,Facel Vega
-GE,KAZ
-DE,Adler
-DE,Auto Union
-DE,Alpina
-DE,BMW,,,BMW_G
-DE,Borgward
-DE,Getrag
-DE,Mercedes-Benz,,,MERCEDES_AG
-DE,Messerschmitt
-DE,BharatBenz
-DE,Brabus
-DE,FUSO
-DE,Setra
-DE,Smart,,,MERCEDES_AG
-DE,Trabant
-DE,Volkswagen,,VW,VA_G
-DE,Audi,,,VA_G
-DE,MAN,,,VA_G
-DE,Porsche,,,VA_G
-DE,Puch
-DE,Apollo
-DE,Artega
-DE,Bitter
-DE,Elaris
-DE,e.GO
-DE,Isdera
-DE,Lotec
-DE,Multicar
-DE,Maybach,,,MERCEDES_AG
-DE,Neoplan
-DE,DKW
-DE,Opel,,,STELLANTIS
-DE,Goggomobil
-DE,Hanomag
-DE,Heinkel
-DE,Horch
-DE,Ruf
-DE,Sono
-DE,Wiesmann
-DE,Wanderer
-DE,Wartburg
-DE,ZF
-GT,Rosmo
-GH,Kantanka
-GR,ELVO
-GR,Keraboss
-GR,Kioleides
-GR,Korres
-GR,Namco
-GR,Replicar Hellas
-GR,Temax
-HU,Ikarus
-HU,Raba,Rába
-IS,Arctic Trucks
-IN,Ajanta Group
-IN,Ashok Leyland
-IN,Asia MotorWorks
-IN,Atul Auto
-IN,Bajaj
-IN,Eicher
-IN,Force
-IN,Hindustan
-IN,ICML motors
-IN,KAL
-IN,Mahindra
-IN,Maruti
-IN,Ola Electric
-IN,Omega Seiki Mobility
-IN,Tara International
-IN,Tata,,,TATA_M
-IN,Premier
-ID,Astra International
-ID,Esemka
-ID,Indomobil Group
-ID,Pindad
-IR,Azar Motor Industrial Co
-IR,Bahman
-IR,Diar
-IR,Fath Vehicle Industries
-IR,Iran Khodro
-IR,Khodro Kaveer
-IR,MVM
-IR,Morattab
-IR,SAIPA
-IR,Zagross Khodro
-IL,City Transformer
-IL,Haargaz,Ha'argaz
-IL,Merkavim
-IL,REE Automotive
-IL,Tomcar
-IL,Zibar
-IT,Abarth,,,STELLANTIS
-IT,Autobianchi
-IT,Alke,Alkè
-IT,Astra
-IT,Alfa Romeo,,,STELLANTIS
-IT,Automobili Estrema
-IT,Bremach
-IT,Bertone
-IT,Casalini
-IT,Cizeta
-IT,Covini
-IT,Coggiola
-IT,CTS
-IT,De Tomaso
-IT,DR
-IT,Ducati
-IT,Dallara
-IT,Fiat,,,STELLANTIS
-IT,Ferrari,,,FERRARI_NV
-IT,Iso
-IT,Italdesign
-IT,Iveco
-IT,Lancia,,,STELLANTIS
-IT,Lamborghini,,,VA_G
-IT,Maserati,,,STELLANTIS
-IT,M.A.T
-IT,Mazzanti
-IT,Minardi
-IT,Osca
-IT,Pagani
-IT,Piaggio
-IT,Pininfarina
-IT,Innocenti
-IT,SCV Srl
-IT,Tazzari
-IT,Qvale
-IT,Rayton Fissore
-IT,XEV
-IT,Zagato
-JP,Acura,,,HONDA_MC
-JP,Aisin
-JP,Daihatsu,,,TOYOTA_MC
-JP,Hino,,,TOYOTA_MC
-JP,Honda,,,HONDA_MC
-JP,Infiniti,,,RNM_A
-JP,Isuzu
-JP,Lexus,,,TOYOTA_MC
-JP,Mazda,,,MAZDA_MC
-JP,Mitsubishi,,,RNM_A
-JP,Mitsubishi Fuso,,,RNM_A
-JP,Nissan,,,RNM_A
-JP,Subaru,,,TOYOTA_MC
-JP,Suzuki
-JP,Toyota,,,TOYOTA_MC
-JP,UD Trucks
-JP,Aspark
-JP,Dome
-JP,Datsun
-JP,GLM
-JP,J-Bus
-JP,Jatco
-JP,Mitsuoka
-JP,NMKV
-JP,Tommykaira
-JP,Yamaha
-KE,Cooper Motor Corporation
-KE,Mobius Motors
-LV,Baltijas Dzips
-LV,Dartz
-LV,Drive eO
-LB,EV Electra
-LB,W Motors
-LU,MDI
-MY,Bufori
-MY,DefTech
-MY,Inokom
-MY,Naza
-MY,Perodua
-MY,Proton,,,GEELY_A
-MX,DINA
-MX,Mastretta
-MX,VUHL
-MX,Zacua
-MC,Venturi
-MA,Laraki
-MA,Neo Motors
-MA,Somaca
-MM,Shan Star
-NL,Burton
-NL,Carver
-NL,DAF
-NL,Dakar
-NL,Donkervoort
-NL,Spijkstaal
-NL,Spyker
-NL,Stellantis
-NL,Vandenbrink
-NL,VDL Bus & Coach
-NL,Vencer
-NZ,Almac
-NZ,Anziel
-NZ,Kiwi Bus Builders
-NZ,Saker Cars
-NZ,Trekka
-NG,Innoson Motors
-KP,Pyeonghwa Motors
-KP,Sungri Motors
-KP,Samsung,,,RNM_A
-MK,FAS Sanos
-NO,Think
-PK,Sazgar
-PK,ADAM
-PK,United Auto Industries
-PH,Almazora Motors
-PH,Francisco Motors
-PH,Del Monte Motors
-PH,Sarao Motors
-PL,AMZ
-PL,Arrinera
-PL,Autosan
-PL,FSO
-PL,FSR
-PL,Jelcz
-PL,Melex
-PL,Solaris
-PL,Solbus
-PL,Ursus
-PT,MOBIpeople
-PT,Salvador Caetano
-PT,Vinci
-RO,Aro
-RO,Dacia,,,RNM_A
-RO,Astra Bus
-RO,C&I Eurotrans XXI
-RO,El Car
-RO,Grivița
-RO,ROMAN
-RU,Aurus
-RU,Apal
-RU,Atom,Атом
-RU,Avtokam,Автокам
-RU,Amberavto,Амберавто
-RU,Ambertruck
-RU,Ambervan
-RU,Bilenkin
-RU,Lada,ЛАДА,,RNM_A
-RU,VAZ,ВАЗ
-RU,Volga,Волга
-RU,Vortex
-RU,Oka,ОКА
-RU,Sputnik,Спутник
-RU,SMZ,СМЗ
-RU,Derways
-RU,DW Hower
-RU,GAZ,ГАЗ
-RU,KAvZ,КАвЗ
-RU,LiAZ,ЛиАЗ
-RU,PAZ,ПАЗ
-RU,Promo Auto,Спортивные авто и реплики
-RU,IG,Иж
-RU,KAMAZ,КАМАЗ
-RU,Kombat,Комбат
-RU,NefAZ,НефАЗ
-RU,Kombat Armouring
-RU,Kanonir,Канонир
-RU,Moskvich,Москвич
-RU,Rossa
-RU,Russo-Balt,Руссо-Балт
-RU,Sollers
-RU,Eonyx
-RU,Flanker
-RU,Evolute
-RU,E-Mobil,Ё-мобиль
-RU,Doninvest
-RU,UAZ,УАЗ
-RU,UMZ,УМЗ
-RU,TREKOL,ТРЭКОЛ
-RU,Tenet
-RU,TagAZ,ТагАЗ
-RU,UralAZ,УралАЗ
-RU,Volgabus
-RU,ZIL,ЗИЛ
-RU,ZiS,ЗиС
-RU,ZMZ,ЗМЗ
-RU,Marussia
-RU,Xcite
-SA,KSU Gazal-1
-SA,Ceer Motors
-RS,FAP
-RS,FAS
-RS,Ikarbus
-RS,IMT
-RS,Zastava
-SI,Adria Mobil
-SI,Revoz
-SI,TAM-Europe
-ZA,Advanced Automotive Design
-ZA,Perana Performance Group
-KR,Asia
-KR,CT&T United
-KR,Daewoo
-KR,Daewoo Bus
-KR,Genesis,,,HYUNDAI_MG
-KR,Gwangju Global
-KR,Hyundai,,,HYUNDAI_MG
-KR,KGM
-KR,Kia,,,HYUNDAI_MG
-KR,Renault Korea
-KR,Spirra
-KR,SsangYong
-KR,Tata Daewoo,,,TATA_M
-KR,Woojin Industrial Systems
-ES,Aspid
-ES,Ayats
-ES,Beulas
-ES,Baltasar Cars
-ES,Carrocera Castrosua
-ES,Cupra
-ES,Comarth
-ES,GTA
-ES,Hispano-Suiza
-ES,Hurtan
-ES,Irizar
-ES,Sunsundegui
-ES,SEAT,,,VA_G
-ES,Spania
-ES,Santana
-ES,Tauro
-ES,Tramontana
-ES,Uro
-LK,Micro
-SD,Giad Auto
-SE,Caresto
-SE,Koenigsegg
-SE,Polestar,,,GEELY_A
-SE,Scania,,,VA_G
-SE,Volvo,,,GEELY_A
-SE,Saab
-CH,Micro Mobility Systems
-CH,Minelli
-CH,Leblanc
-CH,Piech Automotive,Piëch Automotive
-CH,Rinspeed
-CH,Sbarro
-TW,CMC
-TW,Hotai Motors
-TW,Foxtron
-TW,Kuozui Motors
-TW,Luxgen
-TW,Thunder Power
-TW,Yulon
-TH,Bangchan
-TH,Thairung
-TN,Wallyscar
-TR,BMC
-TR,Erkunt
-TR,Etox
-TR,Guleryuz
-TR,Karsan
-TR,Katmerciler
-TR,Otokar
-TR,Ozaltin
-TR,Temsa
-TR,Tofas
-TR,Togg
-UA,Bogdan
-UA,Boryspil Bus Factory
-UA,Chernihiv Bus Factory
-UA,Eurocar
-UA,KrAZ,КрАЗ
-UA,Sherp
-UA,ZAZ,ЗАЗ
-UA,LuAZ,ЛуАЗ
-AE,NIMR
-AE,STREIT Group
-AE,W Motors
-AE,Sandstorm
-GB,AC
-GB,Alexander Dennis
-GB,Apex
-GB,Austin
-GB,Austin Healey
-GB,Ariel
-GB,Aston Martin
-GB,Atalanta
-GB,BAC
-GB,Bentley,,,VA_G
-GB,Bristol
-GB,Bowler
-GB,Caterham
-GB,Carbodies
-GB,Daimler
-GB,David Brown
-GB,Elemental Cars
-GB,Ginetta
-GB,GMA
-GB,GKD Sports
-GB,GP
-GB,Grinnall
-GB,Ineos
-GB,Jaguar,,,TATA_M
-GB,Lagonda
-GB,LTI
-GB,London EV Company,,LEVC,GEELY_A
-GB,Land Rover,,,TATA_M
-GB,Lister
-GB,Lotus,,,GEELY_A
-GB,LEVC
-GB,Jensen
-GB,Munro Vehicles
-GB,Marlin
-GB,Marcos
-GB,McLaren
-GB,Metrocab
-GB,Morris
-GB,Mcmutry Automotive
-GB,MG motor,,MG,SAIC_M
-GB,Mini,,,BMW_G
-GB,Morgan
-GB,Noble
-GB,Humber
-GB,Radical Sportscars
-GB,Rolls-Royce,,,BMW_G
-GB,Ronart
-GB,Radford
-GB,Rover
-GB,Reliant
-GB,Switch Mobility
-GB,Spectre
-GB,Invicta
-GB,TVR
-GB,Talbot
-GB,Triumph
-GB,Ultima
-GB,Westfield
-GB,Vauxhall,,,STELLANTIS
-GB,Zenos
-US,AMC
-US,Auburn
-US,General Motors,,,G_M
-US,Buick,,,G_M
-US,Batmobile
-US,Cadillac,,,G_M
-US,Chevrolet,,,G_M
-US,Coda
-US,Cummins
-US,Cord
-US,GMC,,,G_M
-US,Geo
-US,Saturn
-US,Stellantis
-US,Scion
-US,Scout
-US,Sears
-US,Studebaker
-US,Chrysler,,,STELLANTIS
-US,Dodge,,,STELLANTIS
-US,DeSoto
-US,Deco Rides
-US,Eagle
-US,Excalibur
-US,Eagle Cars
-US,Jeep,,,STELLANTIS
-US,Ram,,,STELLANTIS
-US,Renaissance
-US,Ford Motor,,,FORD_MC
-US,Ford,,,FORD_MC
-US,Lincoln,,,FORD_MC
-US,All American Racers
-US,AM General
-US,Anteros Coachworks
-US,Aptera
-US,Arcimoto
-US,Autocar
-US,Alpha
-US,Bremach
-US,Bollinger
-US,Callaway
-US,Canoo
-US,Czinger
-US,DDR Motorsport
-US,DeLorean
-US,Drako
-US,Detroit Electric
-US,E-Z-GO
-US,Equus
-US,EdisonFuture
-US,Falcon Motorsports
-US,Factory Five Racing
-US,Faraday
-US,Fisker
-US,Franklin
-US,Freightliner
-US,Gillig
-US,Google
-US,GEM
-US,Hennessey
-US,Hudson
-US,Hummer
-US,Hyperion
-US,Harley Davidson
-US,International Harvester
-US,IC Bus
-US,Karma
-US,Kenworth
-US,Lingenfelter Performance Engineering
-US,Lordstown
-US,Lucid,,,LUCID_M
-US,Mullen
-US,Mack
-US,Myers
-US,MCI
-US,Mercury
-US,Merkur
-US,Nash
-US,Navistar
-US,Nikola
-US,Oshkosh
-US,Oldsmobile
-US,Overland
-US,Packard
-US,Panoz
-US,Phoenix Motorcars
-US,Peterbilt
-US,Pierce
-US,Polaris
-US,Proterra
-US,Pierce-Arrow
-US,Plymouth
-US,Pontiac
-US,RAESR
-US,Rezvani
-US,Rivian,,,RIVIAN
-US,Ronn Motor Group
-US,Rossion
-US,Saleen
-US,SCG
-US,Shelby
-US,Slate Auto
-US,SRT
-US,SSC
-US,Thomas Built Buses
-US,Tesla
-US,Telo Trucks
-US,Trion Supercars
-US,VLF
-US,Vanderhall Motor Works
-US,Vector
-US,Western Star
-US,Workhorse
-US,Willys
-US,Xos
-UY,Effa
-UZ,MAN Auto-Uzbekistan
-UZ,UzAuto Motors
-UZ,SAZ
-UZ,Ravon
-VE,Venirauto
-VN,Mekong
-VN,SAMCO
-VN,THACO
-VN,VinFast
-ZW,Willowvale Motor Industries
+id,code,name,original_name,country_id,abbreviation,concern_id
+bff02be3-5ad3-445b-99f0-164aab156452,LAGONDA,Lagonda,,GB,,
+52e047b0-c893-42ac-a982-a9366fe1bbb7,LTI,LTI,,GB,,
+4dd276b2-9eef-46b2-85c7-f0175953f1db,LEVC,London EV Company,"",GB,LEVC,4441a3a0-c292-4486-a8b5-019027c6c2aa
+03e8b02b-6a09-43dd-8b10-a43d52f5b329,LAND_ROVER,Land Rover,"",GB,"",1f08bdd0-c3f5-4f6e-a3cd-36a593526e2a
+ba9f2aea-1c94-4f46-9d92-ab5a692a449a,LISTER,Lister,,GB,,
+bb65b2bb-60b6-40c4-b91e-87b594cac26a,LOTUS,Lotus,"",GB,"",4441a3a0-c292-4486-a8b5-019027c6c2aa
+166afb82-d10a-4813-b91d-91939296956f,JENSEN,Jensen,,GB,,
+6f4d2144-aa40-492a-aad2-68fb6f6a75c6,MUNRO_VEHICLES,Munro Vehicles,,GB,,
+d19643a6-71b3-4deb-b8a5-1500be4d525a,MARLIN,Marlin,,GB,,
+5e93614a-20a2-413d-8f0e-0d770b291a9a,MARCOS,Marcos,,GB,,
+20986c2a-4d8f-496d-b198-a383a199ca33,MCLAREN,McLaren,,GB,,
+2c9d3541-e6dc-4f53-ab6f-11633252ce8b,METROCAB,Metrocab,,GB,,
+9ee5af97-27de-4475-81ab-91539f3f1c63,MORRIS,Morris,,GB,,
+e80b31e7-6dd6-40b2-8fb7-aa4945dfedd5,MCMUTRY_AUTOMOTIVE,Mcmutry Automotive,,GB,,
+9ed4a46d-79ba-43da-8179-51721cf08dc3,MG,MG motor,"",GB,MG,419677c1-3c8c-4ffa-96c3-421dc7f81744
+690bd4c3-4de7-49c0-9041-c4a76bea287d,MINI,Mini,"",GB,"",ddc8864e-30e3-44c2-8f42-ad9fecac99b1
+f17e28d0-c68e-4cd6-b75c-21b5c2bb7f61,MORGAN,Morgan,,GB,,
+244aa9de-ef6d-4185-8f06-674971708d6c,NOBLE,Noble,,GB,,
+0c04f925-4c2d-41f9-af47-0088d0b044ff,HUMBER,Humber,,GB,,
+6110ff57-39ee-4bcd-94f0-2ae88f596693,RADICAL_SPORTSCARS,Radical Sportscars,,GB,,
+1600012f-6d49-403b-b57b-30a3667747db,ROLLS_ROYCE,Rolls-Royce,"",GB,"",ddc8864e-30e3-44c2-8f42-ad9fecac99b1
+d7344178-af83-4a8a-9d65-5d7eff0f644b,RONART,Ronart,,GB,,
+4191234e-3c95-4663-8530-344c8994bc92,RADFORD,Radford,,GB,,
+789a3717-2f81-40ef-a69c-222d6b362080,ROVER,Rover,,GB,,
+172f8ef3-2474-4661-8bb8-783cc0d4ee3d,RELIANT,Reliant,,GB,,
+00cf4c3e-3a87-422a-ba4a-4e4004e96e4e,SWITCH_MOBILITY,Switch Mobility,,GB,,
+28d30aaf-6fb8-4329-97f3-c91ee6dca4bb,SPECTRE,Spectre,,GB,,
+99478d79-9884-4d52-8df1-3028c2f8da02,INVICTA,Invicta,,GB,,
+b9c1a76d-eda3-447d-985a-69adf45b098c,TVR,TVR,,GB,,
+bd66b79c-8c6d-474a-aa35-b2154295a628,TALBOT,Talbot,,GB,,
+2735930e-c6a0-4cab-99af-43e169174178,TRIUMPH,Triumph,,GB,,
+7ce57712-0ac1-4b59-a061-704cd5040036,ULTIMA,Ultima,,GB,,
+f359716d-4984-448c-a58c-76e48f6dae44,WESTFIELD,Westfield,,GB,,
+76dbf9bc-54fd-42d3-ac91-841f4e089099,VAUXHALL,Vauxhall,"",GB,"",785b6991-0019-4806-a0b0-66fa88dc4383
+a74110f3-641e-4fbc-84e2-010cd466112c,ZENOS,Zenos,,GB,,
+91d43260-2485-4b68-bc3d-dc5b07e15203,AMC,AMC,,US,,
+bdf58c9e-bc96-4fac-9cc3-7bc3b22f62e1,AUBURN,Auburn,,US,,
+3dc03a68-a9ed-4d5b-a3dd-309273be62f4,GENERAL_MOTORS,General Motors,"",US,"",44fa372b-95e2-4601-866e-b86f3e126203
+2c07bbfb-c0f5-4294-88d0-db65239d9f57,BUICK,Buick,"",US,"",44fa372b-95e2-4601-866e-b86f3e126203
+cdae05b0-1d21-4088-8474-cfd5c5114b4a,BATMOBILE,Batmobile,,US,,
+eb066c9b-dec5-40ad-91b3-ce3a8656c88e,CADILLAC,Cadillac,"",US,"",44fa372b-95e2-4601-866e-b86f3e126203
+31366774-e420-4a3d-8f18-27fc2af924f2,CHEVROLET,Chevrolet,"",US,"",44fa372b-95e2-4601-866e-b86f3e126203
+640de6ca-a850-48e6-8558-4cd601c030f6,CODA,Coda,,US,,
+aaa0434f-ee43-4e13-9664-0c52fb1b3eb8,CUMMINS,Cummins,,US,,
+ab3a5003-7e58-43e0-b813-35f1f1c89497,CORD,Cord,,US,,
+0fd90f01-a8d0-4a88-8f38-67b8b44bb2ba,GMC,GMC,"",US,"",44fa372b-95e2-4601-866e-b86f3e126203
+20c78062-e8ce-4a8d-aae8-8d3dfc40925e,GEO,Geo,,US,,
+d9737c4f-8177-40a1-b4f4-44b69a8ff0aa,SATURN,Saturn,,US,,
+dd3231c2-59ab-4fcb-95be-b5ba3ce48ca1,STELLANTIS,Stellantis,,US,,
+13acfe7f-b36a-49d2-9dd1-c65b797cbc59,SCION,Scion,,US,,
+fb42c507-922e-4daa-af25-1ba53879152f,SCOUT,Scout,,US,,
+7bca3f3e-0ce3-4359-b0bd-f3901fdbe843,SEARS,Sears,,US,,
+4e466496-e55b-4c73-9cb5-aac0ce240310,STUDEBAKER,Studebaker,,US,,
+5b779cef-19b7-4f96-b944-4fa2c0accc4c,CHRYSLER,Chrysler,"",US,"",785b6991-0019-4806-a0b0-66fa88dc4383
+a6e1b3fe-86c6-46d6-8169-7098c11c5aad,DODGE,Dodge,"",US,"",785b6991-0019-4806-a0b0-66fa88dc4383
+1de3fe4e-6ab4-4032-b3cb-7dc78e0a2287,DESOTO,DeSoto,,US,,
+90af3268-9502-47a4-af13-f924876afef0,DECO_RIDES,Deco Rides,,US,,
+6a80df73-1bef-4fbc-bdec-ff7213ec1ac8,EAGLE,Eagle,,US,,
+fa4a67fd-88cb-4466-be51-7f90946ace9e,EXCALIBUR,Excalibur,,US,,
+48a83c13-2ac6-4cee-9e33-9d03f8c10143,EAGLE_CARS,Eagle Cars,,US,,
+29bdb2ad-56e0-4d77-8394-d352ba38ae18,JEEP,Jeep,"",US,"",785b6991-0019-4806-a0b0-66fa88dc4383
+63acb29f-9c5f-4db3-a3d3-5fa2fce74e86,RAM,Ram,"",US,"",785b6991-0019-4806-a0b0-66fa88dc4383
+b60302d2-c854-42a0-939f-3701966bcf04,RENAISSANCE,Renaissance,,US,,
+60941e0d-b937-4dcc-95d1-869233237ed4,FORD_MOTOR,Ford Motor,"",US,"",30a11ee9-1a39-483f-b02d-dada656e55e1
+1f8e2f68-9fa0-4094-9656-369bd379e684,FORD,Ford,"",US,"",30a11ee9-1a39-483f-b02d-dada656e55e1
+e76eafef-a918-456e-8e97-f3ff8b049958,LINCOLN,Lincoln,"",US,"",30a11ee9-1a39-483f-b02d-dada656e55e1
+01548424-9d46-4484-a02d-bd68ff4c2927,ALL_AMERICAN_RACERS,All American Racers,,US,,
+5af91d32-8798-4711-8863-5993cc2c22e5,AM_GENERAL,AM General,,US,,
+125ce74a-9f46-44d1-a8ab-b551f00965fe,ANTEROS_COACHWORKS,Anteros Coachworks,,US,,
+e886bc46-c569-4da5-bb22-6030183b2a81,APTERA,Aptera,,US,,
+719c79e9-4b08-4cde-bc8e-7eec78c99012,ARCIMOTO,Arcimoto,,US,,
+86e1268e-3889-4637-a752-2d2ef7ad00fa,AUTOCAR,Autocar,,US,,
+a1ebcadb-af75-450c-8e54-043aac806c0c,ALPHA,Alpha,,US,,
+40f68b20-030b-4a61-bdf7-75653139cd7c,BREMACH,Bremach,,US,,
+93e5e9de-934b-4871-acc5-c41fa00a5c93,BOLLINGER,Bollinger,,US,,
+69e76277-4647-4dae-9eeb-74fd131354cc,CALLAWAY,Callaway,,US,,
+e9dc79a8-7b77-4799-be87-55cb64c07219,CANOO,Canoo,,US,,
+3d9ab81f-4f9d-4160-bff7-1e9e7bbeb0b7,CZINGER,Czinger,,US,,
+df19659c-9996-4ec1-9de3-d5d98df2e071,DDR_MOTORSPORT,DDR Motorsport,,US,,
+e70f679f-7f79-49e4-9cc1-543f488fd57b,DELOREAN,DeLorean,,US,,
+6176e380-8089-4f01-aba3-f8e3f295d37d,DRAKO,Drako,,US,,
+a53cf72e-c838-4269-8954-41f136d9e707,DETROIT_ELECTRIC,Detroit Electric,,US,,
+2bdee74d-6933-497a-a0ab-cb6adfa72077,E_Z_GO,E-Z-GO,,US,,
+1ddc0469-2d1e-4bd8-b379-2a4b3886612c,EQUUS,Equus,,US,,
+e4ab812f-9303-4163-a376-0b7b9b79c1e5,EDISONFUTURE,EdisonFuture,,US,,
+55e54df7-137e-4925-aef8-2bfc0ff56818,FALCON_MOTORSPORTS,Falcon Motorsports,,US,,
+ae211e63-67b3-4db2-9b2e-4b7e53d47a9d,FACTORY_FIVE_RACING,Factory Five Racing,,US,,
+bb694d7d-9e09-4019-a59c-8416aa294a8a,FARADAY,Faraday,,US,,
+9891ab26-2014-4563-9f5e-2994c0322b0d,FISKER,Fisker,,US,,
+d64d11ca-8b96-43f1-8019-e4341bd0b897,FRANKLIN,Franklin,,US,,
+91047474-565c-47fa-a87d-483d58b20274,FREIGHTLINER,Freightliner,,US,,
+5e6ad946-43fe-4832-a70d-e655231ca840,GILLIG,Gillig,,US,,
+1298ceea-8ad5-433c-920b-886b45f98fa8,GOOGLE,Google,,US,,
+853b285b-7c2c-40ba-be35-358074ff634b,GEM,GEM,,US,,
+f7960d8b-e2a9-4d92-874a-7b4fe0ae832a,HENNESSEY,Hennessey,,US,,
+c7ab0da8-5677-402f-860d-6564e02d4a67,HUDSON,Hudson,,US,,
+102b3a31-256f-4e3a-8bbb-cd693d6d18b4,HUMMER,Hummer,,US,,
+13372f49-a8d2-41b1-b20f-c06eb3994820,HYPERION,Hyperion,,US,,
+020e937e-67cb-43ad-a77f-542a5ce7f3a1,HARLEY_DAVIDSON,Harley Davidson,,US,,
+e9d8f3ec-6080-457a-b190-d5c5fd562f3b,INTERNATIONAL_HARVESTER,International Harvester,,US,,
+a7d3f46f-5d15-4102-b01d-6a280155a38e,IC_BUS,IC Bus,,US,,
+707df6de-ff36-4c9d-b36e-d6358bb5323a,KARMA,Karma,,US,,
+ce0f6a32-281e-4a91-81cc-196a0711d89c,KENWORTH,Kenworth,,US,,
+5ecfd8d7-b957-4c5d-b417-de7bbed609f8,LINGENFELTER_PERFORMANCE_ENGINEERING,Lingenfelter Performance Engineering,,US,,
+c36d3340-1f1d-4579-86bb-d51618b5dcdd,LORDSTOWN,Lordstown,,US,,
+6a58b4c9-e9c6-41a4-88b7-017e30fc3f86,LUCID,Lucid,"",US,"",7f10c855-0c92-4692-b2f9-a5ddf2362c3f
+eabbf841-6017-4b63-865a-7872197c777d,MULLEN,Mullen,,US,,
+8e242360-0972-4f36-97e5-1e5c67b2b6ee,MACK,Mack,,US,,
+141c3950-1dba-4ce6-9fa5-8b737469bba4,MYERS,Myers,,US,,
+ee18ea12-c35e-4dcf-8347-5f708aa41cf0,MCI,MCI,,US,,
+2b34b053-14ea-4f68-a44a-f7f901130f3a,MERCURY,Mercury,,US,,
+7430fb93-b321-436d-b1bb-459b916fe7a9,MERKUR,Merkur,,US,,
+e276504e-fec2-4b27-90c8-625faeff73ad,NASH,Nash,,US,,
+53f6b225-ccd0-4dc4-804d-4e4a1c9c0fce,NAVISTAR,Navistar,,US,,
+0e480f54-b8c2-4db3-a2a6-faf8187c61e8,NIKOLA,Nikola,,US,,
+412f1c86-a705-48a7-943e-2bbd69921eef,OSHKOSH,Oshkosh,,US,,
+306e90b6-a8bc-4175-ac8e-5c5493ac3206,OLDSMOBILE,Oldsmobile,,US,,
+8135f8c2-87fe-42c0-ac08-12293b161489,OVERLAND,Overland,,US,,
+bd3dc2a0-7fd0-4f4b-b325-57aae76a1d20,PACKARD,Packard,,US,,
+6dfc1f3e-68de-40e1-8d8b-1e8dc6e3b57f,PANOZ,Panoz,,US,,
+745f2277-bf83-4353-8f52-8f6efad62177,PHOENIX_MOTORCARS,Phoenix Motorcars,,US,,
+b3968450-67ad-49bb-95f4-a4c365f5ab8b,PETERBILT,Peterbilt,,US,,
+b0299a7b-c62c-4e74-9e22-6453bcb84005,PIERCE,Pierce,,US,,
+e0d96b68-3fd1-4f55-bfb9-730d91a1bbfc,POLARIS,Polaris,,US,,
+6d64f7fa-cad0-49f2-aca9-b1d566ab4d0d,PROTERRA,Proterra,,US,,
+30c12bd4-1dc8-48fb-b4f2-4d6be4f59555,PIERCE_ARROW,Pierce-Arrow,,US,,
+cac4ffa0-ff11-490f-832a-c23ce6b306ad,PLYMOUTH,Plymouth,,US,,
+2cbb9a1e-bb5b-40b6-b14b-c9a9c1f28dec,PONTIAC,Pontiac,,US,,
+3e1c1d42-d662-48aa-820a-2026c11441e7,RAESR,RAESR,,US,,
+85bbf251-41ed-46c4-8e81-dc067551a303,REZVANI,Rezvani,,US,,
+970e8d99-114a-4978-b468-1e33c8f84aef,RIVIAN,Rivian,"",US,"",307e7113-435a-470d-a5a8-bd735a4da2b5
+5e619184-b87a-45a9-b3d0-e2a8cb21fc65,RONN_MOTOR_GROUP,Ronn Motor Group,,US,,
+01ddaba4-98f2-4f9a-8c60-789f2bc0130a,ROSSION,Rossion,,US,,
+ce2f5c5e-0ee1-4c56-9811-424555785b4c,SALEEN,Saleen,,US,,
+4092a842-7857-4483-aeb5-4a92f178a0b3,SCG,SCG,,US,,
+8f6c193e-7edf-47ed-aa67-42434568d035,SHELBY,Shelby,,US,,
+a13177da-ca52-47d7-993e-5c8bc440bf2e,SLATE_AUTO,Slate Auto,,US,,
+8a75b35b-94a3-4ed9-becf-0e27dc2ba981,SRT,SRT,,US,,
+fc1ddadb-32bd-4d62-a737-980635c0a3c3,SSC,SSC,,US,,
+34561367-865a-4ebf-a596-00a4913e23c7,THOMAS_BUILT_BUSES,Thomas Built Buses,,US,,
+bd912c4a-5602-4576-b2c1-b984227367ed,TESLA,Tesla,,US,,
+d20862c3-accb-480a-bcd8-2a720767363a,TELO_TRUCKS,Telo Trucks,,US,,
+e1c7cd5c-2bb7-491b-86bf-36ac0fed8b48,TRION_SUPERCARS,Trion Supercars,,US,,
+a5f5e672-b757-46b5-9b74-9ac14fc882b5,VLF,VLF,,US,,
+06e2260a-2024-43b5-9991-03d5935cc2b8,VANDERHALL_MOTOR_WORKS,Vanderhall Motor Works,,US,,
+11170324-051a-4127-8c25-998bd150c87c,VECTOR,Vector,,US,,
+ca9c6add-60b6-4a9b-aca6-f3af34d8dfa1,WESTERN_STAR,Western Star,,US,,
+74dd5d6b-ad75-4b8d-b814-74e08326541a,WORKHORSE,Workhorse,,US,,
+b689df9b-7989-4733-a96f-570c8f7284df,WILLYS,Willys,,US,,
+d8779364-0439-4d6e-a8d7-4605d6904660,XOS,Xos,,US,,
+e7b6675b-90aa-4d2d-a523-1a27b3f24ef5,EFFA,Effa,,UY,,
+23eac4b7-e313-4129-96fd-f7512bba86c5,MAN_AUTO_UZBEKISTAN,MAN Auto-Uzbekistan,,UZ,,
+acdaad5b-edad-453b-a466-42a6ee00e004,UZAUTO_MOTORS,UzAuto Motors,,UZ,,
+36de7eb2-2d95-4b5e-8c14-03800c3e4d69,SAZ,SAZ,,UZ,,
+ceccab9b-730e-4831-bbd7-4febd26b50f6,RAVON,Ravon,,UZ,,
+8c3756f1-57cf-4943-85ee-44a6cae392ca,VENIRAUTO,Venirauto,,VE,,
+d4e6803f-1621-4085-baa6-df423e0d86ff,MEKONG,Mekong,,VN,,
+e2326da2-178e-4cec-ad27-e6f435bf9ecc,SAMCO,SAMCO,,VN,,
+b89d2e54-f61d-41bd-8f9c-4d43129c5615,THACO,THACO,,VN,,
+9c0ce819-01bb-4cab-8534-af0bc5217a33,VINFAST,VinFast,,VN,,
+31ce7e41-46ff-450a-9640-2c58757c7d19,WILLOWVALE_MOTOR_INDUSTRIES,Willowvale Motor Industries,,ZW,,
+48042dd6-cdca-4839-a373-6414b38dfa63,SNVI,SNVI,,DZ,,
+7c430c09-4a1c-47c1-bf96-ebed2a6ee763,ASA_ALUMINIUM_BODY,ASA Aluminium Body,,AR,,
+5974d507-d501-4482-8276-c71c25ac7ad0,ZANELLA,Zanella,,AR,,
+a794d8db-18f3-4ea1-aaad-74b04c4f83bd,SERO_ELECTRIC,Sero Electric,,AR,,
+61ac1966-3bc5-420f-a0ca-ea3ce9719039,ACE_EV_GROUP,ACE EV Group,,AU,,
+72f7920e-a03b-44b8-bfd3-ced3f5f8ef84,BCI_BUS,BCI Bus,,AU,,
+ab84a3e5-cc06-4d49-9e34-8ef09d2a331b,BORLAND_RACING,Borland Racing,,AU,,
+09fb4658-db6a-4d55-a7df-04224e77aea5,BOLWELL,Bolwell,,AU,,
+f796f520-c224-4257-8745-bd0a33f1a770,CUSTOM_BUS,Custom Bus,,AU,,
+1be4ed55-2cf9-419f-a3a8-d9087959b263,DSI,DSI,,AU,,
+64cd97ca-c8a2-4c03-bfd3-ca0c0a466bd2,ELFIN_SPORTS_CARS,Elfin Sports Cars,,AU,,
+3d4f3b0e-a0ab-4ec0-9cfc-5ba706dd98f7,MINETTI_SPORTS_CARS,Minetti Sports Cars,,AU,,
+7a0d838c-ac28-4472-b7e5-484696f8c172,HOLDEN,Holden,,AU,,
+ed99df40-11f5-48fd-b0f2-e21151fbdc03,HSV,HSV,,AU,,
+afe3bc8b-ce5b-45c6-bc66-8de35c7d4b8f,NOTA,Nota,,AU,,
+02f44565-6b09-4044-a4c6-67fe72a793b4,PANDD_COACHWORKS,P&D Coachworks,,AU,,
+7f514379-c293-4790-8aec-be56d853bb71,VOLGREN,Volgren,,AU,,
+a3ae6d3c-a85f-4f01-8f93-1f6b57fe0890,KTM,KTM,,AT,,
+85e0875d-e3cd-4964-9617-dc9e96849d02,STEYR,Steyr,,AT,,
+fe63614b-cde0-419f-816d-638a1ab9fdc6,ROSENBAUER,Rosenbauer,,AT,,
+2a3d9f1f-42d8-4999-b2cb-9c9ab64b161c,TUSHEK_AND_SPIGEL,Tushek & Spigel,,AT,,
+14d1d93c-6a16-4b41-b1ba-63e94aa00226,AZSAMAND,AzSamand,,AZ,,
+3bc7739f-88d7-4788-bb6e-996397d64d62,GANJA_AUTO_PLANT,Ganja Auto Plant,,AZ,,
+1b06a713-f09f-4c5a-bd35-2429be218419,NAKHCHIVAN_AUTOMOBILE_PLANT,Nakhchivan Automobile Plant,,AZ,,
+e167d3e7-8103-4ce1-b9c4-c8fc279ec5c1,BELAZ,BelAZ,БелАЗ,BY,,
+83a65209-86bf-4e2b-b080-3064fe530c29,BELGEE,BelGee,,BY,,
+79180bfb-5bb2-410f-8f3b-cc7bc86a51d4,BELKOMMUNMASH,Belkommunmash,,BY,,
+cef731a5-47f5-4417-8af6-db7b9c5545b5,MAZ,MAZ,МАЗ,BY,,
+bae4928b-2de4-44a9-990b-875ba57512b4,MOAZ,MoAZ,МоАЗ,BY,,
+196ac6b4-010b-4408-ac22-ac90224e3752,MZKT,MZKT,МЗКТ,BY,,
+ced479fc-0f66-4f16-9534-5f97fafb42b4,NEMAN,Neman,Неман,BY,,
+90eda574-cc60-4f97-88a6-fc6a89bac367,EDRAN,Edran,,BE,,
+853b847f-8f7b-4bf9-bfda-b12143547afe,GILLET,Gillet,,BE,,
+866dad05-c27a-476d-95f2-a8e1ca3b505d,PUNCH_POWERTRAIN,Punch Powertrain,,BE,,
+de73bfed-5503-40b6-b59c-466a43e0e7a8,VAN_HOOL,Van Hool,,BE,,
+3a3279e6-d7c0-4613-9156-9889dc3dadbc,QUANTUM_MOTORS,Quantum Motors,,BO,,
+7394641e-aa6d-4c4a-b63e-f5789a5e6118,AGRALE,Agrale,,BR,,
+e96c4963-fab0-4616-86b7-b271ab150039,COMIL,Comil,,BR,,
+a29d0521-e15f-4c7b-94cb-edf247f302ee,GRUPO_CAOA,Grupo Caoa,,BR,,
+bc10e8ab-59b0-4f1c-863d-2b33a54bfc37,CHAMONIX_NG_CARS,Chamonix NG Cars,,BR,,
+ff542364-6ebb-45ff-bb89-bee87899dbfa,CARBUSS,Carbuss,,BR,,
+af15a504-d645-4992-8f2a-ba80f0659309,MARCOPOLO,Marcopolo,,BR,,
+f27bac10-de82-4997-9095-4e57edcf8664,MASCARELLO,Mascarello,,BR,,
+8445a928-9334-49de-9fad-a2c27777356d,NEOBUS,Neobus,,BR,,
+fcf4d9fe-97e5-4727-af98-91b3ce9b92a0,PUMA,Puma,,BR,,
+470a4a10-8781-4121-a996-5513134e41de,TAC,TAC,,BR,,
+735a1a04-eead-4e68-982b-54c3b71099eb,LITEX,Litex,,BG,,
+d1c21cc7-91a8-4825-942c-5812a0fcf353,SIN,SIN,,BG,,
+386fe81c-1185-48de-9a92-c5995e240537,BOMBARDIER,Bombardier,,CA,,
+c06c0832-f053-4189-80f7-3141915263b5,CAMPAGNA,Campagna,,CA,,
+987363b2-d222-4e29-a64c-641f308dc8a1,FELINO_CORPORATION,Felino Corporation,,CA,,
+6982b823-886d-436d-a554-b30b796f1700,INTERMECCANICA,Intermeccanica,,CA,,
+165f65af-41dd-4b49-9144-eb6da0bf5f34,INKAS,INKAS,,CA,,
+79a8f600-02f5-4b5c-a3e2-55bac7390753,LION_ELECTRIC_COMPANY,Lion Electric Company,,CA,,
+725b0be2-eebd-4ae6-838f-769a8db132a9,MAGNUM_CARS,Magnum Cars,,CA,,
+87f667ea-aca6-42dc-a2a7-9a337b208b82,NEW_FLYER,New Flyer,,CA,,
+5d2bd2c7-f975-4c56-88b9-1b07546220db,NOVA_BUS,Nova Bus,,CA,,
+52ddb6e3-88f8-4a90-92aa-66bda03e3e7f,PREVOST,Prevost,,CA,,
+5fe9d3ed-ddf0-4f25-b022-bc45e323c7c8,TERRADYNE,Terradyne,,CA,,
+075dbf77-d050-425c-b3b7-8ee28c7f9548,VICINITY_MOTOR_CORP,Vicinity Motor Corp.,,CA,,
+46f07c1b-c947-4e5a-b4fe-f8306f60fcb5,ARCFOX,Arcfox,,CN,,
+3364d6b1-bd79-410d-b29b-aadc7bebcf50,AVATR,Avatr,,CN,,
+4550e324-583d-4cd5-b464-aa5e938142ec,AION,Aion,,CN,,
+76c2e1d2-6bc1-4066-8a7b-b9faae1f2643,AITO,Aito,,CN,,
+19ce5bb6-7fe3-4f45-bcab-ec9787fd39c5,APEX_MOTORS,Apex Motors,,CN,,
+a072bc76-51a2-49bc-824f-19c1f45ad74a,ANKAI,Ankai,,CN,,
+96c4afe6-8faa-4cba-b9f2-952eadfd9417,AIWAYS,Aiways,,CN,,
+29e654d1-190c-4772-9c62-23517cb8f6a4,BAIC,BAIC,,CN,,
+c9a00b69-219a-416d-81b4-f33fa62399b2,BIO_AUTO,Bio Auto,,CN,,
+33c07b64-d3e5-4123-a643-1037b1f13a7f,BONLUCK_BUS,Bonluck Bus,,CN,,
+e76b6534-2edc-4601-9101-054cceaeb755,BAOJUN,Baojun,,CN,,
+3d726dcb-20f7-4970-99b0-6f550a0fc843,BLAVAL,Blaval,,CN,,
+8331f307-0e92-4730-855a-03fa7aeed91f,BYVIN,Byvin,,CN,,
+7fea86e0-3671-4268-a9cb-9a99ac43a308,BAW,BAW,,CN,,
+5fa48626-2224-4b88-90d6-3bb920d2c351,BESTUNE,Bestune,,CN,,
+a09e0aab-bde5-4754-8b69-47cfe2ca992b,BRILLIANCE,Brilliance,,CN,,
+fec3a855-b8c5-4575-aec2-4d81633efa24,BYD,BYD,"",CN,"",91a02c3c-87db-4492-adb7-221c76979209
+ae10b686-eac5-4b47-a4ec-ce62131e1472,CHANGAN,Changan,,CN,,
+6cdf1550-e3af-45af-a2b9-403d58ce1174,CHANA,Chana,,CN,,
+dd7b03a8-2829-4980-a7b9-409b48931906,CHANGHE,Changhe,,CN,,
+237dcef0-e8c3-4bd7-b017-ef105de44c80,CIIMO,Ciimo,,CN,,
+1f6a7c61-ae2f-44db-a061-5e6404bcd0f9,CHANGFENG,Changfeng,,CN,,
+9b1e3c3f-1a79-4270-b439-1eb7939d9d1e,COWIN,Cowin,,CN,,
+d49afeb0-fd76-4f8b-88c8-9a6e85948f2c,CHERY,Chery,"",CN,"",1595ccb9-6e57-42dc-a448-2b29812f77bb
+3b738291-f051-40ea-bfb6-cc7e733bf4e6,DONGFENG,Dongfeng,,CN,,
+c07c6415-e41d-4e6e-a4f1-279e39ab48d4,DADI,Dadi,,CN,,
+d5de57c1-b984-4015-951b-e3dc4c14053c,DAYUN,Dayun,,CN,,
+2d6221fa-c41f-4e50-9530-d8045d5c81bc,DENZA,Denza,,CN,,
+a0cd6bd7-7139-4296-b8c9-9f21277bc836,ENGLON,Englon,,CN,,
+ec847a43-b6fc-45ce-9d65-a00d20f95308,E_CAR,E-Car,,CN,,
+c6dee0e8-21f4-4c72-ae02-6ea6552e740b,EXEED,Exeed,"",CN,"",1595ccb9-6e57-42dc-a448-2b29812f77bb
+adf56598-e89b-4266-8878-777b44535a49,EUAUTO,EuAuto,,CN,,
+8d0ccd21-5a45-4f06-b423-8249fc4d9adb,EVERUS,Everus,,CN,,
+3c91d950-30a2-4d8b-8e25-74a4d644194c,ENOVATE_ENOREVE,Enovate (Enoreve),,CN,,
+f17c6606-1cf9-4b58-9516-d11844bac26b,FAW,FAW,,CN,,
+6358cf4b-e6eb-427d-889b-3d92655885a9,FUZHEN,Fuzhen,,CN,,
+dfc5497e-5fa2-435f-9930-118c4412a995,HONGQI,Hongqi,,CN,,
+62634b3a-9acb-4241-98c7-19f9b3a0ea8c,FOTON,Foton,,CN,,
+2617de1d-81b6-49d4-aff1-ab59acaca25c,FUQI,Fuqi,,CN,,
+b4d732f0-56c5-40ef-ad19-413619876b98,FIREFLY,Firefly,,CN,,
+c768f64b-8207-46db-844e-ba664a738442,FORTHING,Forthing,,CN,,
+576fb2f6-9bb1-4516-8485-0fc820efeba5,FANGCHENGBAO,Fangchengbao,"",CN,"",91a02c3c-87db-4492-adb7-221c76979209
+d6c62057-8f7c-4f41-8b3c-33e12f53cb09,GAC,GAC,,CN,,
+4a358b56-ee14-4a12-a2b7-dddd7d9ecf63,GEELY,Geely,"",CN,"",4441a3a0-c292-4486-a8b5-019027c6c2aa
+19247151-31a3-46b6-bc87-a5265f4c124c,GONOW,Gonow,,CN,,
+4378bd7f-cb59-4336-a316-f3086b6c965a,GREAT_WALL,Great Wall,,CN,,
+839ab462-fa50-47fd-894a-bb6c03cbdf21,GYON,Gyon,,CN,,
+a1f7df6a-537f-4aee-bcd7-20c4f9c22949,HENREY_AUTOMOBILE,Henrey Automobile,,CN,,
+d54c7e21-51c2-4a9d-be14-fda5dc462f85,HAFEI,Hafei,,CN,,
+00947f10-0663-4077-bde3-def2895dd3b5,HAIMA,Haima,,CN,,
+57266029-dc65-4eb2-b9f5-a22fd76522a3,HANTENG,Hanteng,,CN,,
+2a9f969c-7e4e-4a6d-8e6a-4d163813a541,HEDMOS,Hedmos,,CN,,
+42e109eb-aa87-440e-b7a0-4ebd2cba9484,HAWTAI,Hawtai,,CN,,
+b9d4502f-2d2b-4ec8-8c3e-85456157d975,HAVAL,Haval,,CN,,
+8b9af635-0fac-448b-ba49-e99f971aa5cc,HEIBAO,Heibao,,CN,,
+5980fd3b-4fcb-4b5d-9b13-30ce816ff388,HYCAN,Hycan,,CN,,
+68da232e-5d0b-4206-8b0a-81ac380a31f5,HUAIHAI_HOANN,Huaihai (Hoann),,CN,,
+b3eb7cae-628d-4bf3-9a9c-5cebf64eb06b,HUANGHAI,HuangHai,,CN,,
+bbd7f641-9562-417b-ab6b-b3e945f43b10,HUAZI,Huazi,,CN,,
+2a73558e-c19a-4e96-a306-32a33215b9f2,HIPHI,HiPhi,,CN,,
+721a421e-5748-42b0-8bb7-2e4b8ab5f93d,HIGER,Higer,,CN,,
+8a9b6b39-e39c-4699-a079-feb5d0645ee1,HOZON,Hozon,,CN,,
+41219301-803d-4aa2-b504-6fccc9a3f878,JETOUR,Jetour,"",CN,"",1595ccb9-6e57-42dc-a448-2b29812f77bb
+54d1f586-4f82-4074-9e3c-154ecbbd81e0,JIANGLING,Jiangling,,CN,,
+65faaffb-017b-4fc7-863a-7f0b3e194053,JMEV,JMEV,,CN,,
+c3646010-90f6-4cdf-a960-bdd1ff163a1e,JINBEI,Jinbei,,CN,,
+d04afd38-ee75-4e8a-83f4-efc7dccec7f3,JONWAY,Jonway,,CN,,
+3c28ac93-fd3e-478f-a9f5-ede31685ea7e,JAECOO,Jaecoo,"",CN,"",1595ccb9-6e57-42dc-a448-2b29812f77bb
+8c47004b-1256-4940-ba33-1db8e9e8c67e,JIANGNAN,Jiangnan,,CN,,
+d9068a4d-31a9-46a5-8707-ea3514260506,JMC,JMC,,CN,,
+46ee4b6c-71b1-4cd3-b6e1-abaabe9f3650,JIDU,Jidu,,CN,,
+3252ed59-13d6-4a75-a3d4-68e111f5f0e8,JAC,JAC,,CN,,
+fa4c9d7a-dc07-4242-ad5c-be04931f99ea,JETTA,Jetta,,CN,,
+11b2ca74-3cab-4b5c-bfaf-94588eb9af4b,JUNEYAO_AUTO,JuneYao Auto,,CN,,
+7fb03c0a-e810-4904-9481-7551453724c8,KARRY,Karry,"",CN,"",1595ccb9-6e57-42dc-a448-2b29812f77bb
+fe3d7f7c-f3b9-4a0f-904a-53267711b309,KANDI,Kandi,,CN,,
+dbddda70-ca69-4a84-93b2-a7b60b659240,KAIYI,Kaiyi,"",CN,"",1595ccb9-6e57-42dc-a448-2b29812f77bb
+d4fafcf7-6305-423c-a337-5546e790cc65,KAWEI,Kawei,,CN,,
+3766ade7-c465-4d46-9f7e-a75c08bda174,KNEWSTAR,Knewstar,,CN,,
+99a7cef9-fab8-4b13-a0c0-4077c200420d,KYC,KYC,,CN,,
+210abd37-f9e6-4274-a12d-02168a7b065c,KING_LONG,King Long,,CN,,
+b3d2896d-0350-4d59-961e-ae99fb8f447e,ORA,ORA,,CN,,
+b35a0222-c0b9-4a89-a232-a2be0a959cdc,OMODA,Omoda,"",CN,"",1595ccb9-6e57-42dc-a448-2b29812f77bb
+e6c2c64a-0664-4e7a-b2cd-b7edb7f7de5f,ORANGE,Orange,,CN,,
+99f48ec0-8953-465e-9ef4-2626e84bdc4d,OSHAN,Oshan,,CN,,
+504fec7c-0df5-4f73-b26d-5ec5e25aa503,OTING,Oting,,CN,,
+9e757d9a-cb0e-4444-ba04-1d6c6e53cbac,POLAR_STONE_JISHI,Polar Stone (Jishi),,CN,,
+446612f8-875b-4518-8e78-e7597cc093d2,PUNK,Punk,,CN,,
+09787235-de7b-449a-b12d-1e360ff602cd,ICAR,iCar,"",CN,"",1595ccb9-6e57-42dc-a448-2b29812f77bb
+b763789d-32a6-46f5-bf38-94d3c0bae1c4,ICAUR,iCaur,,CN,,
+22c56c49-ef38-4832-bbee-db5cd65e4ada,IM_MOTORS_ZHIJI,IM Motors (Zhiji),,CN,,
+88a9292b-1d97-404b-b823-8060c94a10fd,LANDWIND,Landwind,,CN,,
+c7b3df48-b6a5-4568-823c-6b855376ac16,LEAHEAD,Leahead,,CN,,
+e21746db-ae83-4182-b95e-1a30cf010c62,LIXIANG,Lixiang,,CN,,
+e32b1535-7ad7-409f-917f-4a848e1d1c80,LEAPMOTOR,Leapmotor,,CN,,
+2fa7cad0-a234-4724-8c6e-d1dc062aa03d,LYNK_AND_CO,Lynk & Co,"",CN,"",4441a3a0-c292-4486-a8b5-019027c6c2aa
+1b3497f6-f4da-43e5-a271-3d6a972e0de6,LETIN,Letin,,CN,,
+2f37d090-1067-44f3-8181-4ed9510426ee,LIFAN,Lifan,,CN,,
+8d93d8c1-92c9-4c39-a221-2f1d851f33ff,LIVAN,Livan,,CN,,
+e94c809a-4f3c-442c-b740-fe7b91ef3fb2,LINGXI,Lingxi,,CN,,
+928685e7-a5ae-458d-b2cc-57b811e044ff,LOGEM,Logem,,CN,,
+84eb7ad0-3a1e-41a6-9ca4-e1e0d5c4e591,LUXEED,Luxeed,"",CN,"",1595ccb9-6e57-42dc-a448-2b29812f77bb
+245dc82e-03f4-417a-b00d-fdcdb8843c58,LIEBAO_MOTOR,Liebao Motor,,CN,,
+1ad9ce39-6df8-478f-aa80-0a82bc9735b2,MAEXTRO,Maextro,,CN,,
+a9eb5b11-b61f-49f5-b1bb-cbcc48378677,MUDAN_AUTO,Mudan Auto,,CN,,
+36c8684d-4dcd-48fa-a430-10d3f2eb98d3,MAXUS,Maxus,"",CN,"",419677c1-3c8c-4ffa-96c3-421dc7f81744
+3dda9e7a-67f4-4222-823d-fecc8080a759,MAPLE,Maple,,CN,,
+42191fca-6881-496b-bae4-dc8d011a1f99,M_HERO,M-Hero,,CN,,
+8a576038-f9d4-4498-999c-e73b4a4fbd84,NIO,Nio,,CN,,
+67be418f-16f0-4398-be6a-2a9dda324cfa,NEVO,Nevo,,CN,,
+e9421a9a-d211-45ec-9af3-a522b31a16a8,NORDCROSS,Nordcross,,CN,,
+132cdf08-d794-47e4-9e0d-3151d26d2739,QOROS,Qoros,"",CN,"",1595ccb9-6e57-42dc-a448-2b29812f77bb
+dd73fb1c-7988-4e66-bf12-aaeb2cafe23f,QIANTU,Qiantu,,CN,,
+e1d4bd8b-a1ad-467c-9eb1-4c54932666b3,QINGLING,Qingling,,CN,,
+fac5505c-9e4e-412b-8011-85dd1e50dfdd,ROEWE,Roewe,"",CN,"",419677c1-3c8c-4ffa-96c3-421dc7f81744
+210d41a6-eff2-4c13-9d20-f2b9d79c0ca6,RANZ,Ranz,,CN,,
+bcfbd8f5-9c45-4c2e-b504-8bc24c3095b4,RADAR,Radar,,CN,,
+872b5f8e-a5f1-4903-8c80-04b6bb8edeac,ROX,Rox,,CN,,
+27d3dd95-75e8-49a6-bb27-779da8ac825d,RUIZHANG,Ruizhang,,CN,,
+1a84fbc2-431e-4e00-bf85-05108790639c,RISING_AUTO,Rising Auto,,CN,,
+0af6c1dc-2329-443f-9e95-b035d2d61e1e,SAIC,SAIC,"",CN,"",419677c1-3c8c-4ffa-96c3-421dc7f81744
+b359762e-f29a-4fed-a5ec-8475765b99a9,SAGW,SAGW,,CN,,
+75c325f9-daed-40fb-9909-66a67184900c,SEHOL,Sehol,,CN,,
+ed4cd2cf-9fbc-4e36-a2c2-af2d87978fe4,SOUEAST,Soueast,,CN,,
+1ee581f9-7ea5-45eb-965d-8390528607c5,SPOTLIGHT_AUTOMOTIVE,Spotlight Automotive,,CN,,
+768cf6c0-47bc-427d-959a-4e86fee04ee0,STELATO,Stelato,,CN,,
+dcb98aa6-61d9-4eb4-8215-435c9ecd72fe,SUNLONG_BUS,Sunlong Bus,,CN,,
+2692d1b7-e359-4b95-a23d-8dbdc3b75fe4,SKYWORTH_AUTO,Skyworth Auto,,CN,,
+305b707d-539c-4968-b448-847fde231d6b,SERES,Seres,,CN,,
+768988c3-9b78-4d6c-b9b1-a62f370043f2,SHANGHAI_MAPLE,Shanghai Maple,,CN,,
+e30692fe-1faa-4123-9454-c4b94f72de9a,SHENGRUI,Shengrui,,CN,,
+4a82faba-e2ad-4ca7-9a60-9e67e6a393ed,SHUANGHUAN,ShuangHuan,,CN,,
+a991d2bf-db55-48b7-bd9d-8406aadeb295,SKYWELL,Skywell,,CN,,
+8217340a-16c6-4361-baae-2db3bec34c07,SWM,SWM,,CN,,
+0304a670-d3ab-429c-81ef-e4050707d83c,SKYWORTH,Skyworth,,CN,,
+9a2efb46-01ea-4b26-8c86-1ea7a50f0360,TRUMPCHI,Trumpchi,,CN,,
+6c6683ce-0ff0-4d73-9928-7ea328484743,TANK,Tank,,CN,,
+fef64b6b-1264-4447-b161-4aa7ff5319d8,TIANMA,Tianma,,CN,,
+8a860031-1fba-45eb-a545-4091d4348db7,TIANYE,Tianye,,CN,,
+69ebb8b7-580a-4cce-81ec-5b93134be4a8,TSINGSHAN,Tsingshan,,CN,,
+6c8ba3a3-fcf0-4c19-823d-a4e3f8386c71,WULING,Wuling,,CN,,
+47c8bbe3-ecae-405f-9bc7-c666a976cd30,WELTMEISTER,Weltmeister,,CN,,
+4640f65d-3711-4e54-a3b9-fe7e17e24ac2,WLY,WLY,,CN,,
+938dd2a7-ebe7-47b0-ab56-19f2ae6c7930,VOYAH,Voyah,,CN,,
+86d05a59-0663-4a51-a474-9cce8c11ff32,VENUCIA,Venucia,,CN,,
+df1544f3-7a85-43d6-b9ad-8af05afc02c3,VGV,VGV,,CN,,
+923d8b5b-ba89-4eca-a74b-2a722e83ced0,XPENG,Xpeng,,CN,,
+f922a57e-9b9a-4b44-b140-071f4859262c,XIAOMI,Xiaomi,,CN,,
+1ab5ade9-39eb-4234-ac37-93702f18c891,XIN_KAI,Xin Kai,,CN,,
+33314248-25a4-41eb-aa8f-016311ded699,YUDO_AUTO,Yudo Auto,,CN,,
+5c77ded8-868f-40b5-81d5-a90fd91e1fb3,YUTONG,Yutong,,CN,,
+5d902f60-fdf2-44e9-a7fa-786424a22070,ZHONGTONG_BUS,Zhongtong Bus,,CN,,
+72406774-2087-486a-a804-da29766e69f5,ZINORO,Zinoro,,CN,,
+01a41729-6ee4-4821-b0bb-ad1fc1cec5d3,ZOTYE,Zotye,,CN,,
+4ee11afa-57c1-4ce1-a0a9-05750f357026,ZEEKR,Zeekr,"",CN,"",4441a3a0-c292-4486-a8b5-019027c6c2aa
+42afc2cc-7093-484a-9045-2a11d112c3bc,ZHIDO,Zhido,,CN,,
+e2a13ba4-b62f-4fd6-b9ae-07a69d23c38d,ZX,ZX,,CN,,
+31e1a7b2-379d-4586-9d34-ccd89b9a5e6a,WEY,WEY,,CN,,
+812c02c2-03e8-4083-91af-f57396999c3f,XIAMEN_GOLDEN_DRAGON_BUS,Xiamen Golden Dragon Bus,,CN,,
+a6d71853-b2d2-4d2b-8bb8-ca1e8815aba3,YANGWANG,Yangwang,"",CN,"",91a02c3c-87db-4492-adb7-221c76979209
+5bca64ac-bf40-435b-9ba9-b2fe7a59187b,YEMA,Yema,,CN,,
+9f9d2537-3dc5-4da1-a52c-64d3436c2a7b,YIPAI,Yipai,,CN,,
+5b169d45-7da1-4391-9dfc-6e4cd9d3bf50,ZX_AUTO,ZX Auto,,CN,,
+9424f773-ebd0-4162-9a7e-db29657a95aa,BUSSCAR_DE_COLOMBIA,Busscar de Colombia,,CO,,
+98f40851-e78e-4292-baf7-d9bfd02a1c89,SOFASA,Sofasa,,CO,,
+ecac4874-e510-423c-80f4-a264e3d6561b,DOK_ING,DOK-ING,,HR,,
+d92cbc06-2421-4ec9-9fce-84a79daa72e1,RIMAC,Rimac,,HR,,
+91257270-f526-43f3-b41f-0264f0a648bc,SKODA,Skoda,Škoda,CZ,"",af3efd39-13ea-444a-8806-ad68a110224c
+8d0dae1c-0e92-4761-9330-c6fde9384ea3,TATRA,Tatra,,CZ,,
+f725b151-3779-416d-9b33-01a8bdd30264,AVIA,Avia,,CZ,,
+039da247-abe6-4c17-821f-814af6567541,KAIPAN,Kaipan,,CZ,,
+104d4239-790c-48b7-92d0-d4aff5632910,MTX,MTX,,CZ,,
+65fcb56b-0a4f-4568-a99b-42c7ebfe5130,PRAGA,Praga,,CZ,,
+a2e93fb7-c802-476f-be97-a5de21d4c687,GORDON,Gordon,,CZ,,
+52f213ea-fc80-4237-a977-6808161220dd,HYDREMA,Hydrema,,DK,,
+d6678503-cfff-46c1-af03-0b2b85116fb1,ZENVO,Zenvo,,DK,,
+508e374c-ec0e-47e0-944a-20a04674db1e,AYMESA,Aymesa,,EC,,
+dee40c5b-468f-4ebf-aaed-71ce21c0c7d1,MCV_BUS_AND_COACH,MCV Bus & Coach,,EG,,
+efa4801d-8aa3-40f8-8a13-67e38602477d,MARATHON_MOTORS_ENGINEERING,Marathon Motors Engineering,,ET,,
+72292ce4-24c9-4372-9fca-1171d68e8dba,VALMET_AUTOMOTIVE,Valmet Automotive,,FI,,
+ad64b844-c1cb-4f1e-8779-6d1d253571f1,ELECTRIC_RACEABOUT,Electric Raceabout,,FI,,
+3677d895-3eed-4c24-92e3-7ea4444d9687,SISU_AUTO,Sisu Auto,,FI,,
+6d639d94-59bc-4c94-880f-9354a7972d90,AIXAM,Aixam,,FR,,
+be240add-0dd6-4de6-9a84-18faa35c2299,ALPINE,Alpine,"",FR,"",28442497-d127-43f1-bf61-1a679754c3a4
+2c2719d4-fade-48b1-8424-b5df687c229e,AUVERLAND,Auverland,,FR,,
+34707993-165b-4562-964f-1c6b0e9b6ca3,BOLLORÉ,Bolloré,,FR,,
+2444a364-6eca-4ea3-9393-1c5d842f3cdf,BUGATTI,Bugatti,,FR,,
+c7f1521d-938b-4731-8188-cf02a3f0b990,CITROEN,Citroen,Citroën,FR,"",785b6991-0019-4806-a0b0-66fa88dc4383
+d691e253-b27c-49a0-b228-e5d87a651d54,DELAGE,Delage,,FR,,
+f8aecbc9-330d-471b-a9a9-cc7465a180f0,DE_LA_CHAPELLE,De La Chapelle,,FR,,
+324fb8b5-6f30-4e3f-9014-a1a700433cf0,DS,DS,,FR,,
+645d5235-196b-4cbd-b2b3-b250fd2ebdd1,EXAGON,Exagon,,FR,,
+627345fc-1b7d-4018-a2b0-31962b08cd76,HEULIEZ_BUS,Heuliez Bus,,FR,,
+5755feb8-8a0d-4925-8ad4-62bd21818dfe,HOPIUM,Hopium,,FR,,
+6306aa63-c278-48d4-8c03-17d1e50b6880,LIGIER,Ligier,,FR,,
+d02e4a2d-f351-4e79-a40b-dcda6f850317,MICROCAR,Microcar,,FR,,
+c25fb6a2-34b9-44d5-a351-f171dc084792,MOBILIZE,Mobilize,,FR,,
+3411d000-0c1a-4641-90d2-fc28b918d976,MATRA,Matra,,FR,,
+008e50a0-777d-41f0-b0bc-6b12edc9e1d3,MEGA,Mega,Méga,FR,,
+b5be796f-8887-41ad-807f-191dde712095,NAVYA_SAS,Navya SAS,,FR,,
+8e87916f-3123-462b-bf36-ebdddd1ae8c0,PEUGEOT,Peugeot,"",FR,"",785b6991-0019-4806-a0b0-66fa88dc4383
+197cb3d1-7a55-4036-a9ce-0081432439cc,PGO,PGO,,FR,,
+72b8fafd-bc95-4925-8718-af415a285e99,POWER_VEHICLE_INNOVATION,Power Vehicle Innovation,,FR,,
+852caf6a-2391-4431-9919-47d2a058225f,RENAULT,Renault,"",FR,"",28442497-d127-43f1-bf61-1a679754c3a4
+512abdd5-3e2f-4004-bcb3-146923a052e0,RENAULT_TRUCKS,Renault Trucks,"",FR,"",28442497-d127-43f1-bf61-1a679754c3a4
+688d6213-a00d-4894-b7a7-927575e6eec5,SECMA,SECMA,,FR,,
+9ec5d9d1-cfd5-47b4-8ed5-7a27f635bb31,SIMCA,Simca,,FR,,
+db854827-b742-45db-a6b4-adcf6da85ef9,VENTURI,Venturi,,FR,,
+e8ed77d6-2af6-4f7e-8ef1-bb3987b61798,FACEL_VEGA,Facel Vega,,FR,,
+6223202b-aa0e-4ef3-84c2-dfd57eb4927a,KAZ,KAZ,,GE,,
+1791a794-b6e9-4f35-83de-f1d8a5b3cd7c,ADLER,Adler,,DE,,
+b6b37eec-13b6-4313-bd5c-76ddd7fe3bec,AUTO_UNION,Auto Union,,DE,,
+b4800b6f-6bb4-4022-b461-35a008c04a5d,ALPINA,Alpina,,DE,,
+65942e22-ae63-4fe7-9c65-d63a91a67110,BMW,BMW,"",DE,"",ddc8864e-30e3-44c2-8f42-ad9fecac99b1
+3f09f31d-52be-481d-82f7-958f6ad481ca,BORGWARD,Borgward,,DE,,
+1806fc32-4f03-479b-9e03-51286b73bd79,GETRAG,Getrag,,DE,,
+fa7c5354-2306-48c9-a81c-30b03694b817,MERCEDES_BENZ,Mercedes-Benz,"",DE,"",a6a503fb-a698-41bc-b3d2-a5049f2264f3
+563287c9-2387-42ec-a83e-f326e5c59710,MESSERSCHMITT,Messerschmitt,,DE,,
+0281a3f4-67ce-460d-9a49-c90270a1d120,BHARATBENZ,BharatBenz,,DE,,
+70ca520d-c528-45ad-9c97-d32bd90474f6,BRABUS,Brabus,,DE,,
+21fa7c30-9969-4faf-bc70-a282f5ae149e,FUSO,FUSO,,DE,,
+7e999c82-cd11-4f10-8039-cc583493f3c3,SETRA,Setra,,DE,,
+9cdbae64-2919-44cd-ab3a-f199cfb95a0c,SMART,Smart,"",DE,"",a6a503fb-a698-41bc-b3d2-a5049f2264f3
+ebc38466-8a64-4fc0-a6f2-ea296bc3678c,TRABANT,Trabant,,DE,,
+3b185d99-02aa-4f01-9c56-7e30315f1bb3,VW,Volkswagen,"",DE,VW,af3efd39-13ea-444a-8806-ad68a110224c
+70d4d774-1b1d-4335-9c60-403f161b1f66,AUDI,Audi,"",DE,"",af3efd39-13ea-444a-8806-ad68a110224c
+b49b0c29-cd98-42fe-8a37-dba6d7b88db6,MAN,MAN,"",DE,"",af3efd39-13ea-444a-8806-ad68a110224c
+c13b9bbc-8e79-4bc0-b30a-5d4c52856f81,PORSCHE,Porsche,"",DE,"",af3efd39-13ea-444a-8806-ad68a110224c
+5290c661-fe19-4951-8f81-b53f2aa86d9c,PUCH,Puch,,DE,,
+501e2114-f95d-4872-b921-71dd4477f8c6,APOLLO,Apollo,,DE,,
+f2e5d454-6c97-4c34-a5f1-55a77c179f7b,ARTEGA,Artega,,DE,,
+ff139b07-e960-4488-a947-e409928d3399,BITTER,Bitter,,DE,,
+37d0daea-e046-457d-a58e-8e1c88d1d085,ELARIS,Elaris,,DE,,
+2633a226-582f-407f-941f-2f1c7c99edd7,EGO,e.GO,,DE,,
+135f9184-e9d7-412f-b07b-0fa9bfbf42e8,ISDERA,Isdera,,DE,,
+30b5baa0-bfe6-47d9-b967-cb7713ab55a3,LOTEC,Lotec,,DE,,
+52de9ebf-21d7-4efe-8153-aad8bb16e247,MULTICAR,Multicar,,DE,,
+0ed5f1cf-1290-4981-b71d-24975d25b386,MAYBACH,Maybach,"",DE,"",a6a503fb-a698-41bc-b3d2-a5049f2264f3
+09c6765c-c0bd-4b3d-bdee-c01305616873,NEOPLAN,Neoplan,,DE,,
+17e3ccc4-c13a-49dd-837e-03731247d3b7,DKW,DKW,,DE,,
+97fe4e48-6e8a-4795-854a-9dea6aaf7990,OPEL,Opel,"",DE,"",785b6991-0019-4806-a0b0-66fa88dc4383
+3cd20681-fc32-4999-ac14-96e07de91ffd,GOGGOMOBIL,Goggomobil,,DE,,
+3124f2d1-48a2-4ae3-830d-068162279859,HANOMAG,Hanomag,,DE,,
+12b1b2ec-70a7-4504-8b46-3501d3d93aa1,HEINKEL,Heinkel,,DE,,
+da4be817-fcc9-4b0e-b5a0-3c42352b1112,HORCH,Horch,,DE,,
+491c1219-a705-4f59-b977-b0791d9f6a9c,RUF,Ruf,,DE,,
+23363b8f-a795-4a71-9286-83b980ca0dee,SONO,Sono,,DE,,
+2f15630f-bf7a-4cd8-b543-2e9c0b3fc23d,WIESMANN,Wiesmann,,DE,,
+7f968787-86e3-4382-aa6e-4bcb704e6820,WANDERER,Wanderer,,DE,,
+1ee51c6d-0f21-4b81-81d8-5faa48429c4e,WARTBURG,Wartburg,,DE,,
+54e55778-ee5b-423c-9de8-c74d1f7194de,ZF,ZF,,DE,,
+f4058f2e-aae0-4ac1-a24c-918590778929,ROSMO,Rosmo,,GT,,
+ac55d14b-e285-498b-af43-d7df976151b0,KANTANKA,Kantanka,,GH,,
+1740c535-e8c6-44a0-b336-8ec44ba6d3eb,ELVO,ELVO,,GR,,
+245103b1-a00f-431c-a060-7951e8d5fe2b,KERABOSS,Keraboss,,GR,,
+bfea58a9-d149-4690-9b3a-62eca2fea756,KIOLEIDES,Kioleides,,GR,,
+667121ae-9f41-4617-836b-c079bb1e258c,KORRES,Korres,,GR,,
+23535f2b-fb04-42fb-bb0d-cab8185f2e9e,NAMCO,Namco,,GR,,
+d5dbfe1e-d2ad-4c61-8b2d-92f0b4b6c9f2,REPLICAR_HELLAS,Replicar Hellas,,GR,,
+c7cb5f30-7c5e-4f49-ab24-e5169164a275,TEMAX,Temax,,GR,,
+51cb64eb-7777-48a7-acbf-114a48456714,IKARUS,Ikarus,,HU,,
+b27d1b08-e9f1-4b64-97a5-196858a4d962,RABA,Raba,Rába,HU,,
+8bd25615-d6e8-4d26-ab17-b34aa5392492,ARCTIC_TRUCKS,Arctic Trucks,,IS,,
+1a2191dc-40e4-4f15-b53b-f4a58a63ba27,AJANTA_GROUP,Ajanta Group,,IN,,
+1d173989-de10-4c5c-9e7d-e82a33c74f0f,ASHOK_LEYLAND,Ashok Leyland,,IN,,
+5d90cbf0-6745-43aa-9e26-ebe7d33eca0f,ASIA_MOTORWORKS,Asia MotorWorks,,IN,,
+507bcf29-51c6-48f7-b78b-12cdafc8658b,ATUL_AUTO,Atul Auto,,IN,,
+4f07397f-5d39-4485-9e0d-7011866fadef,BAJAJ,Bajaj,,IN,,
+21c27fbc-ee07-4442-9319-929c845b1d05,EICHER,Eicher,,IN,,
+399a46dc-33a4-4a50-828e-86cf13422624,FORCE,Force,,IN,,
+9242f49b-2f27-4a5b-b43c-82764c29b45f,HINDUSTAN,Hindustan,,IN,,
+2a109de6-96f8-4817-a49f-d5fbb30a1e5f,ICML_MOTORS,ICML motors,,IN,,
+f6b9a806-7c55-4a7f-9245-bbd842f75493,KAL,KAL,,IN,,
+6d705ed3-a107-4b0e-a9f2-7fee8044c31d,MAHINDRA,Mahindra,,IN,,
+10dc5f44-d15b-4675-882c-a31ad5ca020a,MARUTI,Maruti,,IN,,
+0706427c-07ff-419f-995d-b2e48f87c252,OLA_ELECTRIC,Ola Electric,,IN,,
+6c223831-4115-4c4c-8f3b-240f374d5fe2,OMEGA_SEIKI_MOBILITY,Omega Seiki Mobility,,IN,,
+504fdc65-98d7-472c-8447-9c3f9072caf0,TARA_INTERNATIONAL,Tara International,,IN,,
+0a8a9559-0649-4972-937d-325d22af9031,TATA,Tata,"",IN,"",1f08bdd0-c3f5-4f6e-a3cd-36a593526e2a
+11aba5fb-ffd3-49d2-95d6-c1acc0b58af2,PREMIER,Premier,,IN,,
+86a5458e-d2e0-46ee-9976-2bccd239befb,ASTRA_INTERNATIONAL,Astra International,,ID,,
+69877a51-0013-4c38-a276-41536e285f19,ESEMKA,Esemka,,ID,,
+aad7374c-f824-43f2-b40d-0f86f5981c7c,INDOMOBIL_GROUP,Indomobil Group,,ID,,
+6f343fda-42b4-48e6-b35e-afebc3a595cc,PINDAD,Pindad,,ID,,
+a51ac478-0165-48ea-85b2-230b254fbf0d,AZAR_MOTOR_INDUSTRIAL_CO,Azar Motor Industrial Co,,IR,,
+60f777cd-7f50-494e-9888-262e5c4cc094,BAHMAN,Bahman,,IR,,
+d75ad4ed-9d69-45d3-9b80-3c610f85aa65,DIAR,Diar,,IR,,
+d262db1a-7e29-4fcf-b3ba-a83f6e84db80,FATH_VEHICLE_INDUSTRIES,Fath Vehicle Industries,,IR,,
+7a90825b-241a-4cc6-8754-2d37f248d335,IRAN_KHODRO,Iran Khodro,,IR,,
+6592c30b-6869-459d-87fa-5273dfbdb498,KHODRO_KAVEER,Khodro Kaveer,,IR,,
+7cf7cd77-be60-4b7a-84f1-b0548a1b1e75,MVM,MVM,,IR,,
+38e656e7-d6f1-4b91-b03e-d1166160943c,MORATTAB,Morattab,,IR,,
+c0263283-936e-4334-8746-6272891e9953,SAIPA,SAIPA,,IR,,
+965d53e6-8a7a-4706-95fc-650fb86a30aa,ZAGROSS_KHODRO,Zagross Khodro,,IR,,
+15c16edd-3e5c-413f-a974-597d9594a9b8,CITY_TRANSFORMER,City Transformer,,IL,,
+a197a7b3-99b8-4908-9a77-4f1a84228cb5,HAARGAZ,Haargaz,Ha'argaz,IL,,
+b97a7d88-31d8-4dae-a1b2-7fd60dd76ebf,MERKAVIM,Merkavim,,IL,,
+0cdfed09-9015-44c6-a864-a97ec96fe139,REE_AUTOMOTIVE,REE Automotive,,IL,,
+0c036ce6-777e-429a-bc3e-b295272e6d23,TOMCAR,Tomcar,,IL,,
+02d1b81c-9830-41c3-9337-7b4166d39a9f,ZIBAR,Zibar,,IL,,
+b6cfda01-e019-438b-92ad-a0531db5fa8e,ABARTH,Abarth,"",IT,"",785b6991-0019-4806-a0b0-66fa88dc4383
+6cd15862-cf7b-4a21-a2af-ebe3e68a269f,AUTOBIANCHI,Autobianchi,,IT,,
+6f49037f-07b2-48e6-8908-3a9b691297c3,ALKE,Alke,Alkè,IT,,
+29632cbd-4f84-4b05-b719-7e3e5a1862b1,ASTRA,Astra,,IT,,
+b3b481bb-ccef-48aa-8a82-4c369f8d89c7,ALFA_ROMEO,Alfa Romeo,"",IT,"",785b6991-0019-4806-a0b0-66fa88dc4383
+f58e0089-e52d-42f5-923c-8516fb81caa0,AUTOMOBILI_ESTREMA,Automobili Estrema,,IT,,
+d418698f-7e65-43f0-b5cb-38a3d273362f,BREMACH,Bremach,,IT,,
+6915e171-5e34-4d10-8b70-305b6d3a380f,BERTONE,Bertone,,IT,,
+4d99f2e6-ccc9-4e19-9695-8959a9512f9a,CASALINI,Casalini,,IT,,
+840ad4ef-4c54-4a5f-9ea0-f130704ba584,CIZETA,Cizeta,,IT,,
+b33a5ab7-2456-45a7-9648-2772986951e7,COVINI,Covini,,IT,,
+f29c0ff0-8528-4e8f-b53d-78bbec35b4e4,COGGIOLA,Coggiola,,IT,,
+ac882bd0-6ef4-44b2-b316-ea515bfe8fa0,CTS,CTS,,IT,,
+34d5b6f9-3f1c-4faa-9840-9319d9687df8,DE_TOMASO,De Tomaso,,IT,,
+a4e66431-70f2-4f98-942d-a9422070aee6,DR,DR,,IT,,
+991f6784-2e47-4c8e-9f70-78bfd5581ca9,DUCATI,Ducati,,IT,,
+1fa6e3e1-d7d0-41ca-b205-2df7b64c1552,DALLARA,Dallara,,IT,,
+209b6a94-5199-42f0-bc70-dad55aec2707,FIAT,Fiat,"",IT,"",785b6991-0019-4806-a0b0-66fa88dc4383
+0a742b93-092c-486e-814e-2f1f93ca75d4,FERRARI,Ferrari,"",IT,"",84d3a440-b65a-4a4b-8648-fbbf08996e17
+09851e9b-4267-41ce-ba5d-ec33cdfa2046,ISO,Iso,,IT,,
+f26d8152-5252-41a3-aa51-006afe81350d,ITALDESIGN,Italdesign,,IT,,
+7083572b-716f-46e9-857d-f212960bf4ae,IVECO,Iveco,,IT,,
+86d59f28-4d1e-4117-bf4a-18401735163c,LANCIA,Lancia,"",IT,"",785b6991-0019-4806-a0b0-66fa88dc4383
+64bbcd65-39b6-4841-b4ed-c12bbc09ac50,LAMBORGHINI,Lamborghini,"",IT,"",af3efd39-13ea-444a-8806-ad68a110224c
+931c468e-0184-4c90-8cf4-0f0b5c7f98f4,MASERATI,Maserati,"",IT,"",785b6991-0019-4806-a0b0-66fa88dc4383
+03b14e88-b173-4bb5-8eb7-ccd0ec8b4853,MAT,M.A.T,,IT,,
+2dd1b2c5-3ba2-45e4-a9e4-defc3cb4177c,MAZZANTI,Mazzanti,,IT,,
+5dd6d4a1-90a4-4026-9d26-9abc285de1cf,MINARDI,Minardi,,IT,,
+fee009f8-a183-4181-b0f2-97e6462d0025,OSCA,Osca,,IT,,
+7d4f48ea-6fa7-4f36-aae2-dc344a2375ae,PAGANI,Pagani,,IT,,
+d5503698-2532-4acd-8142-373917847e4b,PIAGGIO,Piaggio,,IT,,
+5d01fc89-213b-4f8b-8246-1da0ebe180a4,PININFARINA,Pininfarina,,IT,,
+a5cff9fb-b0ba-4335-ac3b-7526b5424562,INNOCENTI,Innocenti,,IT,,
+993f43db-fdd6-4e30-b493-a0424011bae9,SCV_SRL,SCV Srl,,IT,,
+edfdf871-bd82-4e49-8a83-ac045804cfe9,TAZZARI,Tazzari,,IT,,
+c3b074a9-d3a7-4fd7-86d3-71eb6824d44e,QVALE,Qvale,,IT,,
+62a647ce-3496-4b7d-afd8-fb891d53379e,RAYTON_FISSORE,Rayton Fissore,,IT,,
+a79178b1-f4ae-4dd3-9182-001cab7529bf,XEV,XEV,,IT,,
+c7996adc-4b92-4131-9b97-3117b76447de,ZAGATO,Zagato,,IT,,
+26b8cb53-b682-4332-a084-ef59f00ecffb,ACURA,Acura,"",JP,"",ea535446-c3e1-4b1f-bc34-a83014e43ca3
+2ea36124-2178-4c7d-b088-22819af17280,AISIN,Aisin,,JP,,
+5a4a5dd5-e6f0-4878-9780-ebc4f19d4bfc,DAIHATSU,Daihatsu,"",JP,"",895e98e4-935b-4fbd-959b-911876497d66
+e2b2cca5-2c0b-46c9-a727-7bd41c789500,HINO,Hino,"",JP,"",895e98e4-935b-4fbd-959b-911876497d66
+e0a15176-ea8f-4ce3-97a2-afd0430ef93f,HONDA,Honda,"",JP,"",ea535446-c3e1-4b1f-bc34-a83014e43ca3
+713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2,INFINITI,Infiniti,"",JP,"",28442497-d127-43f1-bf61-1a679754c3a4
+e2440330-27e9-40e5-91e2-19504ac1cc63,ISUZU,Isuzu,,JP,,
+f05def21-43cb-4007-bca2-81f3846677a7,LEXUS,Lexus,"",JP,"",895e98e4-935b-4fbd-959b-911876497d66
+42805fe7-dd74-46aa-b8ba-7321c8f31f0a,MAZDA,Mazda,"",JP,"",7de1a811-b60b-48d4-8df8-f7ba0c4e166c
+019b82f0-518f-4edc-a5b9-c62f812057f2,MITSUBISHI,Mitsubishi,"",JP,"",28442497-d127-43f1-bf61-1a679754c3a4
+fb8832a4-00eb-4863-a3b4-d7d6bf5e3ce0,MITSUBISHI_FUSO,Mitsubishi Fuso,"",JP,"",28442497-d127-43f1-bf61-1a679754c3a4
+0d3d5d9e-023f-4b96-a217-fd28bd596a71,NISSAN,Nissan,"",JP,"",28442497-d127-43f1-bf61-1a679754c3a4
+3a787571-7f7d-4b1f-9d63-f49204605648,SUBARU,Subaru,"",JP,"",895e98e4-935b-4fbd-959b-911876497d66
+acd28110-4be4-42f8-9342-0e28e581b946,SUZUKI,Suzuki,,JP,,
+9aec9657-026a-4893-81a4-eb92584d17b9,TOYOTA,Toyota,"",JP,"",895e98e4-935b-4fbd-959b-911876497d66
+6bbbe660-ceb7-4a59-bc9b-ec55363816b3,UD_TRUCKS,UD Trucks,,JP,,
+a9e8287f-c935-4cd6-8f88-f55e9e3e8b79,ASPARK,Aspark,,JP,,
+8d35c73b-0b63-4f12-b6d8-f7d0c6765f4c,DOME,Dome,,JP,,
+828d8ed3-06f5-4906-b568-ba07d41210cb,DATSUN,Datsun,,JP,,
+c20f32ed-4245-488f-a04f-c3b934fe7604,GLM,GLM,,JP,,
+ee953f37-f643-4bd9-b3bf-3962af81f493,J_BUS,J-Bus,,JP,,
+ad3782ea-0c75-4c7c-a190-4b856a6fedcd,JATCO,Jatco,,JP,,
+60d5054b-a9e1-4e69-9287-66b751e9a2f4,MITSUOKA,Mitsuoka,,JP,,
+00e6333c-4609-4d17-9c9c-377356b62434,NMKV,NMKV,,JP,,
+df332fd6-d317-4f94-b560-8b8b90a40693,TOMMYKAIRA,Tommykaira,,JP,,
+974fd2a3-cc92-4e4c-87c4-951554c7b70d,YAMAHA,Yamaha,,JP,,
+a381050f-83b4-493f-90dd-eae06495098a,COOPER_MOTOR_CORPORATION,Cooper Motor Corporation,,KE,,
+ab384921-c117-44c2-b041-8c89eb231d4b,MOBIUS_MOTORS,Mobius Motors,,KE,,
+5a08bd93-6034-472b-8c48-6722b56ae296,BALTIJAS_DZIPS,Baltijas Dzips,,LV,,
+b399c372-c5c3-4af0-9f92-ada3ef4a802f,DARTZ,Dartz,,LV,,
+9421a1c8-1e00-4dff-881b-b59934f1765f,DRIVE_EO,Drive eO,,LV,,
+3c7bc1a3-a3c1-40be-8d78-9fab10109fa9,EV_ELECTRA,EV Electra,,LB,,
+b5b76c41-976e-4347-80d5-9b4dd7c82e55,W_MOTORS,W Motors,,LB,,
+1795c3ce-0718-4aa2-89dc-6525f3a93dab,MDI,MDI,,LU,,
+a907f6c2-6944-45d4-bb80-c41d4241311a,BUFORI,Bufori,,MY,,
+c0826882-d36d-46ff-9834-a31a244b1cbe,DEFTECH,DefTech,,MY,,
+dc530c4b-0933-41d8-9e67-7054bda25f1b,INOKOM,Inokom,,MY,,
+c0e568db-93f9-4e9c-8850-64aff33b6186,NAZA,Naza,,MY,,
+5a6c8c48-7651-4e31-a511-61fb190f1b41,PERODUA,Perodua,,MY,,
+29130229-65ad-487d-90d7-127deaf3525d,PROTON,Proton,"",MY,"",4441a3a0-c292-4486-a8b5-019027c6c2aa
+76c9ac85-5b47-48de-94ab-184c21dca1fb,DINA,DINA,,MX,,
+1abe978a-2606-4aaa-b839-141e3bacc99a,MASTRETTA,Mastretta,,MX,,
+02a6be9e-5250-4504-8153-98e7f2c003cc,VUHL,VUHL,,MX,,
+df1623bb-bd06-4a0c-b016-9127bf7e3011,ZACUA,Zacua,,MX,,
+2af4f666-17e5-44ee-a83d-b291098365be,VENTURI,Venturi,,MC,,
+528841c3-60c3-4839-9b41-28ddcefa9f6c,LARAKI,Laraki,,MA,,
+3ec0efa6-f43f-44f1-92be-58bf46f7c550,NEO_MOTORS,Neo Motors,,MA,,
+0f128239-db35-4917-868f-b322b24a624a,SOMACA,Somaca,,MA,,
+5ae45848-9af1-4955-bd21-6410de6ea5cd,SHAN_STAR,Shan Star,,MM,,
+47721d5a-40b1-49fb-a143-65a27a2eea9c,BURTON,Burton,,NL,,
+1d0f9d6f-7b70-4713-bd76-6fb5a6382dc8,CARVER,Carver,,NL,,
+8fd91062-5f07-414f-9e38-6cc0f579c086,DAF,DAF,,NL,,
+df046519-d834-4f8a-b879-1217419bbf35,DAKAR,Dakar,,NL,,
+f1221349-82df-4e2f-8dc7-cf0da2868067,DONKERVOORT,Donkervoort,,NL,,
+6399f377-e3d3-4301-b8bf-4e3120bb2de1,SPIJKSTAAL,Spijkstaal,,NL,,
+82e6274c-854d-4eb5-8305-f06e7c2fe2ac,SPYKER,Spyker,,NL,,
+c42719b2-b0f3-46df-bd15-39afa2d517a5,STELLANTIS,Stellantis,,NL,,
+d85b5f0c-4206-4732-95a7-e0cfbfb60892,VANDENBRINK,Vandenbrink,,NL,,
+91dca5b8-3f46-4d4f-93eb-5d030704bb51,VDL_BUS_AND_COACH,VDL Bus & Coach,,NL,,
+bfcd238e-4d1d-435d-b14a-99ed78467b77,VENCER,Vencer,,NL,,
+69e22763-8522-473a-8cea-dd54b66fb15e,ALMAC,Almac,,NZ,,
+04aac9e2-f9c2-470a-8ac6-260824e6f447,ANZIEL,Anziel,,NZ,,
+8f3a3e7b-1502-4453-9b17-c573870e0bf1,KIWI_BUS_BUILDERS,Kiwi Bus Builders,,NZ,,
+100d1020-cf64-4367-805c-c3ddd33dc6f8,SAKER_CARS,Saker Cars,,NZ,,
+bc41f845-3199-4b6e-92b0-f8172b1be6b2,TREKKA,Trekka,,NZ,,
+ed8171a7-e08e-411d-b6d3-f99d0de13bfd,INNOSON_MOTORS,Innoson Motors,,NG,,
+35eba14a-be62-4247-9f09-66f98fec04ec,PYEONGHWA_MOTORS,Pyeonghwa Motors,,KP,,
+b08a1628-2285-46c4-9874-a94584e233fb,SUNGRI_MOTORS,Sungri Motors,,KP,,
+636c9c59-553d-48ed-b6db-a0143cde0f63,SAMSUNG,Samsung,"",KP,"",28442497-d127-43f1-bf61-1a679754c3a4
+b382686d-fe6b-43c0-a161-9d29928da7de,FAS_SANOS,FAS Sanos,,MK,,
+7d101b22-f4d1-4054-b3f3-391a42df8d12,THINK,Think,,NO,,
+046b7297-035a-4af7-8974-58d71ba33f5c,SAZGAR,Sazgar,,PK,,
+0b357ecf-fb0f-406a-bb5f-1ad0545882d1,ADAM,ADAM,,PK,,
+37ccc33a-d0bb-4847-aa82-39fcfb22eed0,UNITED_AUTO_INDUSTRIES,United Auto Industries,,PK,,
+9b0d8ef9-4bcc-4abb-a227-e5b10c5fd04d,ALMAZORA_MOTORS,Almazora Motors,,PH,,
+3a3bec96-a46a-413a-b9cf-74c8b970fdbe,FRANCISCO_MOTORS,Francisco Motors,,PH,,
+461f4672-1f1a-4090-bd53-a551ea33d207,DEL_MONTE_MOTORS,Del Monte Motors,,PH,,
+d23d3247-0246-44ea-8d2c-3362023dae44,SARAO_MOTORS,Sarao Motors,,PH,,
+963bf9e9-1161-4198-a39e-663e593910e7,AMZ,AMZ,,PL,,
+7b919bbf-20ef-477a-8c94-85561aa1126d,ARRINERA,Arrinera,,PL,,
+7fa97dfa-b605-49e7-b710-53a88b51a604,AUTOSAN,Autosan,,PL,,
+71aa1976-34ca-47c6-934f-18bc85937584,FSO,FSO,,PL,,
+cb93b9d2-4bf4-4500-9530-de1eac7189d8,FSR,FSR,,PL,,
+9d07ee6e-7112-4abb-bc8d-f50b3b0dab72,JELCZ,Jelcz,,PL,,
+6aa031f5-388b-4c54-b14b-a5636afa2d2b,MELEX,Melex,,PL,,
+34e675fa-cd09-4cda-9b50-05d1f127c996,SOLARIS,Solaris,,PL,,
+66deda6c-0bde-43fb-a9de-160b91984f0a,SOLBUS,Solbus,,PL,,
+5a2acd4b-e842-47fc-b4bd-6277e76b6d84,URSUS,Ursus,,PL,,
+f2f61537-b386-4a18-8576-08244f2ae254,MOBIPEOPLE,MOBIpeople,,PT,,
+cc8b7e77-ebcc-4b7a-a222-23aea79621c4,SALVADOR_CAETANO,Salvador Caetano,,PT,,
+cda22711-153c-42ad-a1bf-4e6d77e45188,VINCI,Vinci,,PT,,
+3cfa1fe1-fc11-4e62-bc91-b48749582305,ARO,Aro,,RO,,
+bf8c1c6b-3ac1-4df2-9e4b-e3f86ffc0c04,DACIA,Dacia,"",RO,"",28442497-d127-43f1-bf61-1a679754c3a4
+2e3ac7ee-9b09-49bd-b626-1d1f28ed5317,ASTRA_BUS,Astra Bus,,RO,,
+49ec0e80-91fb-41b9-9c0e-9cd53104497e,CANDI_EUROTRANS_XXI,C&I Eurotrans XXI,,RO,,
+71edd246-689d-459a-8ed6-bf9a75b2d920,EL_CAR,El Car,,RO,,
+a10992ba-9db4-46bf-a077-9ce600cf4d58,GRIVIȚA,Grivița,,RO,,
+ad8ead30-459c-4b5f-80ea-2dc6abca859a,ROMAN,ROMAN,,RO,,
+d7f4ce97-05ee-4857-b6e6-afcaf7a16a58,AURUS,Aurus,,RU,,
+94f9a748-7adc-4bce-8e8b-52b4e93d28cd,APAL,Apal,,RU,,
+4d459f78-6b02-4779-8c88-695ba531bafd,ATOM,Atom,Атом,RU,,
+9385622d-7eaa-4840-8a01-2ed91365b1a9,AVTOKAM,Avtokam,Автокам,RU,,
+6ecf38c2-9f16-4a7d-8fcf-8b5cf54b2d4a,AMBERAVTO,Amberavto,Амберавто,RU,,
+4a34971b-c155-4e58-be0e-fdd250237c01,AMBERTRUCK,Ambertruck,,RU,,
+578ec3fb-f466-4d39-a1b4-239925fef048,AMBERVAN,Ambervan,,RU,,
+f5330a25-5d2e-42d3-8554-cdfb337aa156,BILENKIN,Bilenkin,,RU,,
+706e8b03-e11e-42d2-985d-6c53737d7bf1,LADA,Lada,ЛАДА,RU,"",28442497-d127-43f1-bf61-1a679754c3a4
+8710e638-ddee-4255-94f0-d86109b057d0,VAZ,VAZ,ВАЗ,RU,,
+980622d3-0b31-439c-8128-3def57b9b4d4,VOLGA,Volga,Волга,RU,,
+06a90107-523f-410c-be60-7e34eaf7e6fa,VORTEX,Vortex,,RU,,
+1581211f-1802-4d1e-a072-ddc44b1a80ff,OKA,Oka,ОКА,RU,,
+4d647b48-4f16-425e-8e08-0a88561a690a,SPUTNIK,Sputnik,Спутник,RU,,
+7d575871-a0d1-4d3c-8191-b97a8dfd5a56,SMZ,SMZ,СМЗ,RU,,
+f47fd79b-7aa8-4ccf-89e5-497e043c4465,DERWAYS,Derways,,RU,,
+83641c2d-ee1b-43b1-9d24-d668bda821e1,DW_HOWER,DW Hower,,RU,,
+201fa3c4-519d-4a7f-833a-60534cb730f7,GAZ,GAZ,ГАЗ,RU,,
+f728c60d-afb2-4177-aa23-56f9103a2585,KAVZ,KAvZ,КАвЗ,RU,,
+94dcc5c6-2fac-48d5-982f-e6c88fbdc557,LIAZ,LiAZ,ЛиАЗ,RU,,
+5331e01b-47ee-4fd5-858b-a5d5cf7eb226,PAZ,PAZ,ПАЗ,RU,,
+1ad3c23a-ba5b-40ef-8884-df74bb1beb3e,PROMO_AUTO,Promo Auto,Спортивные авто и реплики,RU,,
+043b4bef-c995-4da2-906b-106e44879f57,IG,IG,Иж,RU,,
+5130b66d-2997-4bb5-9b94-6984b5a89a5d,KAMAZ,KAMAZ,КАМАЗ,RU,,
+1b4d8866-3fde-468d-b09e-6383d0e9efae,KOMBAT,Kombat,Комбат,RU,,
+e1b235e7-386a-4974-ab83-50730e6fb365,NEFAZ,NefAZ,НефАЗ,RU,,
+7b340168-a223-4dcf-8a87-cf9b8f898c7e,KOMBAT_ARMOURING,Kombat Armouring,,RU,,
+2e4afe94-baf4-4e00-b7bd-9fef8917b5f4,KANONIR,Kanonir,Канонир,RU,,
+f21be602-e4fa-487f-ae50-2ef539ed0fc0,MOSKVICH,Moskvich,Москвич,RU,,
+b7b2bb2d-96f5-4e1b-bc73-6edddb5aa3d5,ROSSA,Rossa,,RU,,
+a97a0fa2-dc8b-4ded-8636-c0169f6a1afa,RUSSO_BALT,Russo-Balt,Руссо-Балт,RU,,
+adf3a889-415a-4ea3-a453-d1f4453a3fa3,SOLLERS,Sollers,,RU,,
+4d891c7a-fa2d-4113-ad21-64f1972830f9,EONYX,Eonyx,,RU,,
+248af77b-2fca-4623-b3ea-45a247dfb44b,FLANKER,Flanker,,RU,,
+b1df9193-997e-4f7e-b33a-9202ff032c95,EVOLUTE,Evolute,,RU,,
+dc58449f-e178-4d31-a625-9fc7718f7963,E_MOBIL,E-Mobil,Ё-мобиль,RU,,
+2ed2650c-a48e-4c7a-8606-9dc29e4046e6,DONINVEST,Doninvest,,RU,,
+bca80d8c-1b79-4c6b-b094-9dd60b535d40,UAZ,UAZ,УАЗ,RU,,
+78bda3c9-1c7d-4b0a-a245-8851496aa579,UMZ,UMZ,УМЗ,RU,,
+40803bc2-b991-40f4-be95-e23aaa61e7b7,TREKOL,TREKOL,ТРЭКОЛ,RU,,
+0f7592ef-57a8-45f6-8fb8-98959fbc053a,TENET,Tenet,,RU,,
+2773fb32-a3dd-4d99-93fc-45790257538c,TAGAZ,TagAZ,ТагАЗ,RU,,
+20c78d6d-185f-42ec-a988-699f706b8b5d,URALAZ,UralAZ,УралАЗ,RU,,
+c920703a-f836-4630-950e-ae7e2b442cba,VOLGABUS,Volgabus,,RU,,
+11c20393-f327-4ed6-83f6-e0e0316bd382,ZIL,ZIL,ЗИЛ,RU,,
+898be877-7baf-411b-b751-f9dafb32b535,ZIS,ZiS,ЗиС,RU,,
+cc722bdc-cbe0-4d38-9602-7ab2e6ac4e97,ZMZ,ZMZ,ЗМЗ,RU,,
+c2824adc-dcbb-401d-ac76-220ad47a29e0,MARUSSIA,Marussia,,RU,,
+b763effe-6a54-437c-ac0c-80b77a0e891c,XCITE,Xcite,,RU,,
+2eb3398b-eeec-4483-a3f1-87a09ccf9984,KSU_GAZAL_1,KSU Gazal-1,,SA,,
+9984f456-dfd0-4cc9-b9ac-1bf8dc66ec37,CEER_MOTORS,Ceer Motors,,SA,,
+ded02daf-0dae-4978-a6a0-31b31e8f1a9c,FAP,FAP,,RS,,
+aa3fa0f4-4f85-420e-96fc-ba17088eaf70,FAS,FAS,,RS,,
+23c14ecd-430e-4f34-8467-ff26073873b6,IKARBUS,Ikarbus,,RS,,
+4ad8b84a-18f9-44b0-84f8-76deae6adef8,IMT,IMT,,RS,,
+87647ce6-97cc-41e6-8575-ec37680b812c,ZASTAVA,Zastava,,RS,,
+bd1bead3-4645-4b66-9e7b-af2238a3ad72,ADRIA_MOBIL,Adria Mobil,,SI,,
+7810384b-0a8d-4206-9cc3-3c457c249e9f,REVOZ,Revoz,,SI,,
+4e79c40d-e258-464b-b6e8-413095a9b58f,TAM_EUROPE,TAM-Europe,,SI,,
+d2fa6d0d-d9ac-48ed-92b6-6511e9a99675,ADVANCED_AUTOMOTIVE_DESIGN,Advanced Automotive Design,,ZA,,
+effe70b1-d18f-4822-9e0d-91a52ec5df0c,PERANA_PERFORMANCE_GROUP,Perana Performance Group,,ZA,,
+64d4ba7f-dcd8-4136-a7e8-e7ca98307aae,ASIA,Asia,,KR,,
+96f28829-4d26-43be-b3ed-efd21f1901a3,CTANDT_UNITED,CT&T United,,KR,,
+d88cfcfe-9bfa-42fe-aa75-a23b9b8d3337,DAEWOO,Daewoo,,KR,,
+e5315a4e-1953-4f3d-a525-6d159797a2e3,DAEWOO_BUS,Daewoo Bus,,KR,,
+2915fa70-f840-496d-a8db-cb475d5d9db4,GENESIS,Genesis,"",KR,"",2e58e296-ddea-4c5b-8253-f373c6487c1c
+ee94692c-4bff-4117-8605-3e686216c34b,GWANGJU_GLOBAL,Gwangju Global,,KR,,
+968edded-cfcf-49bb-a2e9-71c934b62acd,HYUNDAI,Hyundai,"",KR,"",2e58e296-ddea-4c5b-8253-f373c6487c1c
+536a5f18-fcbb-4b44-a6ad-2babaa8f4535,KGM,KGM,,KR,,
+5e9d92a3-da41-4c2c-b862-1c23f160f47a,KIA,Kia,"",KR,"",2e58e296-ddea-4c5b-8253-f373c6487c1c
+5d29ac6b-1fb9-4877-a8be-55b1bf41a3a0,RENAULT_KOREA,Renault Korea,,KR,,
+8952faf3-1134-49f7-9215-5121e4aff813,SPIRRA,Spirra,,KR,,
+563fbcf4-5200-498c-b99f-28407160bf2c,SSANGYONG,SsangYong,,KR,,
+7fb7b215-fe10-473e-92ec-14fb3d22f444,TATA_DAEWOO,Tata Daewoo,"",KR,"",1f08bdd0-c3f5-4f6e-a3cd-36a593526e2a
+30e93b38-6247-4284-93e9-b4145eb82379,WOOJIN_INDUSTRIAL_SYSTEMS,Woojin Industrial Systems,,KR,,
+37e87bac-9c09-4612-81c5-1470fbb5f71e,ASPID,Aspid,,ES,,
+dc7ddc5d-9678-4c1a-b78c-2127b1955554,AYATS,Ayats,,ES,,
+3a1fce5a-736b-4439-83cb-8bb500ffec3a,BEULAS,Beulas,,ES,,
+8fc1018c-452d-459d-8102-6234c6680f93,BALTASAR_CARS,Baltasar Cars,,ES,,
+8ac9879d-2882-40d0-a7be-82fc2e71fa52,CARROCERA_CASTROSUA,Carrocera Castrosua,,ES,,
+aed00153-9cd7-4d90-9cd7-8ae52fd5d37d,CUPRA,Cupra,,ES,,
+5e371485-e7f7-45a8-96f6-bd908bf1049e,COMARTH,Comarth,,ES,,
+e7898bf3-4bbb-45fa-b180-6cff7d230bae,GTA,GTA,,ES,,
+517834af-680f-4fda-aa24-f3946153dfe6,HISPANO_SUIZA,Hispano-Suiza,,ES,,
+094eb2f6-1148-4b89-8489-bad9b041bc4d,HURTAN,Hurtan,,ES,,
+080cf842-e31e-4ca2-8250-d8545e2d5b01,IRIZAR,Irizar,,ES,,
+7d9d2c7b-f8e7-46c5-a3c7-d629af6e09c1,SUNSUNDEGUI,Sunsundegui,,ES,,
+8c3c0986-7011-47f1-b8cd-f078665cd1cf,SEAT,SEAT,"",ES,"",af3efd39-13ea-444a-8806-ad68a110224c
+9a4f5e9a-fd99-419a-b591-3eeb5fab1924,SPANIA,Spania,,ES,,
+54739e90-ee70-4cf8-8963-53ea081f83f5,SANTANA,Santana,,ES,,
+0155d6c1-3e7e-481e-bdae-2dc4fd8150ce,TAURO,Tauro,,ES,,
+673329a3-bb89-4164-8c99-2b1f5e8616ab,TRAMONTANA,Tramontana,,ES,,
+e7fb71e4-74b9-42a8-99dd-ee2527cb931d,URO,Uro,,ES,,
+f52b759c-3608-4845-ab4c-1d52f5501518,MICRO,Micro,,LK,,
+a1b9269a-ed12-4bde-8c62-c15552a1ff09,GIAD_AUTO,Giad Auto,,SD,,
+998aaa9c-aa92-4139-821e-1a1707f7a439,CARESTO,Caresto,,SE,,
+a9eeb1fb-413d-42e8-857d-81717d3b858b,KOENIGSEGG,Koenigsegg,,SE,,
+991ddc44-d8e3-487a-bf8d-923a7bc0de97,POLESTAR,Polestar,"",SE,"",4441a3a0-c292-4486-a8b5-019027c6c2aa
+cc0a91d2-2ac2-4100-9c7e-c5a348f00c70,SCANIA,Scania,"",SE,"",af3efd39-13ea-444a-8806-ad68a110224c
+b2db1924-351f-474d-adac-4cd84538fe2f,VOLVO,Volvo,"",SE,"",4441a3a0-c292-4486-a8b5-019027c6c2aa
+9fe925b5-18cb-4f33-8759-db0f2b513430,SAAB,Saab,,SE,,
+bf9093f3-d9ad-44f2-a1ff-b3354c5f9477,MICRO_MOBILITY_SYSTEMS,Micro Mobility Systems,,CH,,
+1508e921-9de4-49ff-a1d4-a947aea0d974,MINELLI,Minelli,,CH,,
+4ab9f1cd-2a06-4c6e-8abe-dd329c01e026,LEBLANC,Leblanc,,CH,,
+f14c1488-8c4c-4d51-b51f-f9a568f055f2,PIECH_AUTOMOTIVE,Piech Automotive,Piëch Automotive,CH,,
+bfa5ff3d-c370-44eb-a46a-b7f2a4affb08,RINSPEED,Rinspeed,,CH,,
+f6571b9a-b7d6-4453-bd98-188a081e8712,SBARRO,Sbarro,,CH,,
+311ba577-0ab2-4036-be46-ba2a1d2909a8,CMC,CMC,,TW,,
+3fb27754-d56b-4520-bca9-ecf56fd28a0b,HOTAI_MOTORS,Hotai Motors,,TW,,
+9a4e8a4e-2f6b-45b7-956c-77d011ccccd9,FOXTRON,Foxtron,,TW,,
+816fc789-ad25-46c6-93e1-7f4c3467b4a8,KUOZUI_MOTORS,Kuozui Motors,,TW,,
+970740ff-d306-47d9-bca6-f4d02e352256,LUXGEN,Luxgen,,TW,,
+53a132db-6b17-42f0-8086-a4ff271e71d3,THUNDER_POWER,Thunder Power,,TW,,
+ddc082a8-971a-45f5-94b1-2babe229f8e2,YULON,Yulon,,TW,,
+2b5a68bd-7ecd-407a-962c-82bd77565ab6,BANGCHAN,Bangchan,,TH,,
+2f882594-b208-4f36-b524-eb115ba03d32,THAIRUNG,Thairung,,TH,,
+594fefed-66c8-4859-bf4d-58c4bd247014,WALLYSCAR,Wallyscar,,TN,,
+0911af0d-76ed-4198-9bf0-340c65506e1e,BMC,BMC,,TR,,
+49d634c3-2628-4c77-8d2b-4aa9d224a90c,ERKUNT,Erkunt,,TR,,
+a938800f-02da-4f9e-9cc5-f496f9963515,ETOX,Etox,,TR,,
+2d3d926c-6e5a-4c83-8608-1160d0f0255d,GULERYUZ,Guleryuz,,TR,,
+1a2cfeb3-d930-4630-8490-50bd244b6c25,KARSAN,Karsan,,TR,,
+a843e3ef-489c-4256-9ce6-785f0d6470d8,KATMERCILER,Katmerciler,,TR,,
+e1e7170d-e1f3-4a83-946d-130467fc7af9,OTOKAR,Otokar,,TR,,
+d9f1125a-5575-4179-a151-9050384830af,OZALTIN,Ozaltin,,TR,,
+0d747c15-0eaa-4f6c-aab3-6678afefa2c7,TEMSA,Temsa,,TR,,
+2c573d21-54f2-4b99-941d-0957060f339f,TOFAS,Tofas,,TR,,
+96d0e61c-117f-4061-bdcc-1776fc1fa446,TOGG,Togg,,TR,,
+4f75eaa2-eff9-40be-9b13-ac0b9131a0ec,BOGDAN,Bogdan,,UA,,
+4f1ab481-0ae5-4010-9459-7d1aeeea496b,BORYSPIL_BUS_FACTORY,Boryspil Bus Factory,,UA,,
+302b906c-78ce-4d47-b672-dfe3f0b8ff62,CHERNIHIV_BUS_FACTORY,Chernihiv Bus Factory,,UA,,
+a303d97e-125c-4659-b894-03a36c778bfb,EUROCAR,Eurocar,,UA,,
+557f937b-5496-4172-bf66-aa512df4d362,KRAZ,KrAZ,КрАЗ,UA,,
+72a68f27-43e0-4e61-a9c4-bc15045eede7,SHERP,Sherp,,UA,,
+20a8b36a-695e-4031-920f-94855f0c13d4,ZAZ,ZAZ,ЗАЗ,UA,,
+6e4ae84f-6796-4d19-ae0e-071e096d407b,LUAZ,LuAZ,ЛуАЗ,UA,,
+097ed4c3-af52-4c34-aaf1-597ef777861f,NIMR,NIMR,,AE,,
+2d7a34f7-227d-4ae8-a8b0-df26f1d4a567,STREIT_GROUP,STREIT Group,,AE,,
+eb6a7145-a5b4-423a-9fce-f732238ad615,W_MOTORS,W Motors,,AE,,
+26dfc384-18ab-4340-b75a-0247eff84f6e,SANDSTORM,Sandstorm,,AE,,
+ed579e29-39ce-416b-8f66-bb786e769817,AC,AC,,GB,,
+0c4bfa7d-7dae-4fbc-a8aa-b09b58634bc6,ALEXANDER_DENNIS,Alexander Dennis,,GB,,
+93d63ba0-fb72-4ef0-bbc1-8df53014cbd2,APEX,Apex,,GB,,
+a3d35d4c-eb45-4704-98c9-534c5a963ebd,AUSTIN,Austin,,GB,,
+cec2064d-9c88-4222-9004-22670d735fdb,AUSTIN_HEALEY,Austin Healey,,GB,,
+2f3dcbd6-8a33-4c6f-9209-db51fb82ec9a,ARIEL,Ariel,,GB,,
+05ca2668-ab42-4f45-a615-1c5c514bed63,ASTON_MARTIN,Aston Martin,,GB,,
+f637a562-c7ca-4afc-9a4f-92091317f08c,ATALANTA,Atalanta,,GB,,
+42671c02-1de1-47a8-9e2a-e8c2380db9f3,BAC,BAC,,GB,,
+d9ac60cb-6eb3-4534-a97b-a5b0d7acef47,BENTLEY,Bentley,"",GB,"",af3efd39-13ea-444a-8806-ad68a110224c
+1f1cac28-08a9-47af-9fad-8cfa7afe503f,BRISTOL,Bristol,,GB,,
+704b9755-09aa-4cef-afff-cab1c1706d62,BOWLER,Bowler,,GB,,
+80784434-a7b6-427e-8e41-ccf50118e3ef,CATERHAM,Caterham,,GB,,
+40eaab78-344a-4703-8fc5-346bdb4538c9,CARBODIES,Carbodies,,GB,,
+63730f16-1d3a-464d-bcab-dd3be9a7449f,DAIMLER,Daimler,,GB,,
+6719ed9c-7023-4d25-845c-8b740ca8b493,DAVID_BROWN,David Brown,,GB,,
+a9091cd7-4803-4cd6-b955-a13479b40145,ELEMENTAL_CARS,Elemental Cars,,GB,,
+c2df3c1e-7abb-41b2-807b-1b1d4e7273cc,GINETTA,Ginetta,,GB,,
+99c00fe4-bbe5-4018-a688-9c8c289ee0f4,GMA,GMA,,GB,,
+60081652-c1e3-4812-8981-97208958c1a8,GKD_SPORTS,GKD Sports,,GB,,
+0df63c65-63d1-4b2a-843b-d00b860c680f,GP,GP,,GB,,
+98f7f0a9-0841-4eb6-831d-f3f7235a9108,GRINNALL,Grinnall,,GB,,
+2c894d94-911a-4fd8-be10-6d45de9d9d2c,INEOS,Ineos,,GB,,
+2d0d46d1-d48a-4f44-92dc-8c2ae8431790,JAGUAR,Jaguar,"",GB,"",1f08bdd0-c3f5-4f6e-a3cd-36a593526e2a
