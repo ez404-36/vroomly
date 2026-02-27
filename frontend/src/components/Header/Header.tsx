@@ -1,4 +1,13 @@
-import { Button, Center, Flex, useMantineColorScheme, Burger, Container, Group, Title } from '@mantine/core';
+import {
+  Button,
+  Center,
+  Flex,
+  useMantineColorScheme,
+  Burger,
+  Container,
+  Group,
+  Title,
+} from '@mantine/core';
 import { useState } from 'react';
 import { useDisclosure } from '@mantine/hooks';
 import classes from '../../styles/pages/header.module.css';
