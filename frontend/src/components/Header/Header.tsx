@@ -45,8 +45,6 @@ const Header = () => {
       <Flex direction="column">
         <Center>
           <Button variant="subtle"></Button>
-
-
         </Center>
       </Flex>
 

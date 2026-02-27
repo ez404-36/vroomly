@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <>
       <Title order={1} ta="center">
-        VR-90: Верстка страницы "Мой Гараж"
+        VR-90: Верстка страницы «Мой Гараж»
       </Title>
       <Center mt="xl">
         <Link to={routes.userprofile}>
