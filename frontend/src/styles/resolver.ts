@@ -9,6 +9,7 @@ export const resolver: CSSVariablesResolver = () => ({
     '--bg-primary': lightTokens.bgPrimary,
     '--bg-secondary': lightTokens.bgSecondary,
     '--text-primary': lightTokens.textPrimary,
+    '--text-secondary': lightTokens.textSecondary,
     '--surface': lightTokens.surface,
   },
 
@@ -17,6 +18,7 @@ export const resolver: CSSVariablesResolver = () => ({
     '--bg-primary': darkTokens.bgPrimary,
     '--bg-secondary': darkTokens.bgSecondary,
     '--text-primary': darkTokens.textPrimary,
+    '--text-secondary': darkTokens.textSecondary,
     '--surface': darkTokens.surface,
   },
 });

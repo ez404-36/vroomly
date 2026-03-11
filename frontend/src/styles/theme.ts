@@ -4,7 +4,7 @@ import { type MantineThemeOverride } from '@mantine/core';
 export const theme: MantineThemeOverride = {
   primaryColor: 'orange',
 
-  fontFamily: 'Open Sans, sans-serif',
+  fontFamily: 'Tilda Sans, sans-serif',
 
   colors: {
     brandOrange: [
@@ -48,14 +48,13 @@ export const theme: MantineThemeOverride = {
   },
 
   headings: {
-    fontFamily: 'Roboto, sans-serif',
+    fontFamily: 'Tilda Sans, sans-serif',
     sizes: {
       h1: { fontSize: '56px' },
       h2: { fontSize: '40px' },
       h3: { fontSize: '32px' },
     },
   },
-  // cssVariablesResolver передаётся в MantineProvider (main.tsx), не в theme
 
   other: {
     colors: {
