@@ -1,40 +1,29 @@
-from sqlalchemy import String, UniqueConstraint, event
+from sqlalchemy import String, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column
 
 from apps.geo.models.country import get_country_link_mixin
+from apps.vehicles.models.vehicle.vehicle_concern import get_vehicle_concern_link_mixin
+from common.models.mixins.code_model import CodeModelMixin, generate_code_on_create
 from common.models.mixins.relations import get_foreign_key_mixin
 from core.models import AutoSchemaBase
 
 
-def generate_brand_code(brand_name: str) -> str:
-    """
-    Генерирует код бренда в формате FOO_BAR
-    """
-
-    return (
-        brand_name.upper()
-        .replace('' '', '_')
-        .replace('.', '')
-        .replace('&', 'AND')
-        .replace('(', '')
-        .replace(')', '')
-    )
-
-
 class VehicleBrand(
     AutoSchemaBase,
+    CodeModelMixin,
     get_country_link_mixin(back_populates='brands', nullable=False),
+    get_vehicle_concern_link_mixin(back_populates='brands', nullable=True),
 ):
     """
     Марка ТС (Торговая).
     Примеры: Skoda, BMW, Lada
     """
 
-    code: Mapped[str] = mapped_column(
-        String(50), doc='КОД_БРЕНДА (англ. язык, верхний регистр)'
-    )
     name: Mapped[str] = mapped_column(
         String(50), doc='Название бренда на английском языке'
+    )
+    abbreviation: Mapped[str | None] = mapped_column(
+        String(6), doc='Аббревиатура'
     )
     original_name: Mapped[str | None] = mapped_column(
         String(50), doc='Название бренда на родном языке, если отличается от name'
@@ -45,6 +34,9 @@ class VehicleBrand(
             'country_id', 'code', name='vehicle_brand_country_id_code_unique'
         ),
     )
+
+
+generate_code_on_create(VehicleBrand)
 
 
 def get_vehicle_brand_link_mixin(
@@ -60,9 +52,3 @@ def get_vehicle_brand_link_mixin(
         back_populates=back_populates, nullable=nullable, verbose_name=verbose_name
     )
 
-
-@event.listens_for(VehicleBrand, 'before_insert')
-def generate_code_listener(mapper, connection, target):
-    """Генерация кода марки ТС по названию марки"""
-    if target.name and not target.code:
-        target.code = generate_brand_code(target.name)

@@ -20,6 +20,10 @@ class OrmDatabase:
         async with self.get_async_session() as session:
             return await self.session_fetch_one(session, query, raise_exc)
 
+    async def fetch_first(self, query: Select) -> Any:
+        async with self.get_async_session() as session:
+            return await self.session_fetch_first(session, query)
+
     async def fetch_all(self, query: Select) -> Any:
         async with self.get_async_session() as session:
             return await self.session_fetch_all(session, query)
@@ -31,6 +35,11 @@ class OrmDatabase:
             return result.one()
         else:
             return result.one_or_none()
+
+    @staticmethod
+    async def session_fetch_first(session: AsyncSession, query: Select) -> Any:
+        result = await session.scalars(query)
+        return result.first()
 
     @staticmethod
     async def session_fetch_all(session: AsyncSession, query: Select) -> Iterable[Any]:

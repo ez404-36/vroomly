@@ -3,15 +3,15 @@ from enum import Enum
 
 class MotorcycleCoolingType(Enum):
     """Тип охлаждения"""
-    AIR = 0
-    LIQUID = 1
+    AIR = 1
+    LIQUID = 2
 
 
 class MotorcycleShiftType(Enum):
     """Тип переключения передач мотоцикла"""
-    FOOT = 0
-    HAND = 1
-    SEMI_AUTO = 2
+    FOOT = 1
+    HAND = 2
+    SEMI_AUTO = 3
 
 
 class MotorcycleBodyType(Enum):

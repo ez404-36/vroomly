@@ -4,6 +4,7 @@ from sqlalchemy import UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship, declared_attr
 
 from common.models import ForeignKeyTo
+from common.models.fields.foreign_key_to import PostgresOnDeleteFK
 from common.models.scalars import LazyLoadArgumentType
 from core.models import AutoSchemaBase
 
@@ -15,6 +16,7 @@ def get_foreign_key_mixin(
     nullable: bool,
     verbose_name: str | None,
     lazy: LazyLoadArgumentType = "select",
+    on_delete: PostgresOnDeleteFK = None,
 ):
     """
     Миксин для связи модели с другой моделью через внешний ключ.
@@ -29,9 +31,12 @@ def get_foreign_key_mixin(
         field_name: Mapped[UUID | None] if nullable else Mapped[UUID]
     }
 
+    if nullable and on_delete is None:
+        on_delete: PostgresOnDeleteFK = 'SET NULL'
+
     def make_column():
         return mapped_column(
-            ForeignKeyTo(model), doc=verbose_name, nullable=nullable
+            ForeignKeyTo(model, on_delete), doc=verbose_name, nullable=nullable
         )
 
     attrs = {

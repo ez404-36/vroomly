@@ -13,19 +13,20 @@ dependencies = [
     "fastapi-utils[all]>=0.8.0",
     "fastapi[standard]>=0.115.12",
     "passlib[bcrypt]>=1.7.4",
-    "pydantic==2.11",
+    "pydantic==2.12.5",
     "pydantic-settings==2.9.1",
     "pyjwt>=2.10.1",
     "pytest>=8.4.2",
     "python-dotenv>=1.1.0",
     "requests>=2.32.5",
     "sqlalchemy==2.0.46",
-    "sqlalchemy2-stubs>=0.0.2a38",
     "astroid>=3.3.11",
     "pydantic2-to-typescript>=0.0.1",
     "ruff>=0.13.3",
     "pre-commit>=4.3.0",
     "ty>=0.0.13",
+    "beautifulsoup4>=4.14.2",
+    "python-magic>=0.4.27",
 ]
 
 [tool.ruff]
@@ -62,6 +63,8 @@ ignore = [
     "D100", # Missing docstring in public module
     "D101", # Missing docstring in public class
     "D102", # Missing docstring in public method
+    "D104", # Missing docstring in public package
+    "D107", # Missing docstring in __init__
     "D200", # One-line docstring should fit on one line
     "D202", # No blank lines allowed after function docstring
     "D203", # incorrect-blank-line-before-class

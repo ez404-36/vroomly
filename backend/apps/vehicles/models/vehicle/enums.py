@@ -1,4 +1,4 @@
-from enum import IntEnum, IntFlag, Enum
+from enum import Enum, IntEnum, IntFlag
 
 from common.schemas.choices_mixin import ChoicesMixin
 
@@ -6,8 +6,8 @@ from common.schemas.choices_mixin import ChoicesMixin
 class VehicleType(ChoicesMixin, IntEnum):
     """Тип ТС"""
 
-    CAR = 0
-    MOTORCYCLE = 1
+    CAR = 1
+    MOTORCYCLE = 2
 
     __labels__ = {
         CAR: "Автомобиль",
@@ -16,33 +16,70 @@ class VehicleType(ChoicesMixin, IntEnum):
 
 
 class VehicleEngineType(IntFlag):
-    """Тип двигателя ТС (комбинируемые значения)"""
-    PETROL = 0
-    DIESEL = 1
-    ELECTRO = 2
-    GAS = 4
-    ATMOSPHERIC = 8
-    TURBO = 16
+    """
+    Тип двигателя ТС.
+    Комбинируемые значения через ИЛИ (|).
+
+    Например, бензиновый атмосферный двигатель записывается так:
+    PETROL ATMOSPHERIC == 1 | 16 == 17
+    """
+    UNDEFINED = 0  # Не определено
+
+    PETROL = 1
+    DIESEL = 2
+    ELECTRO = 4
+    GAS = 8
+    ATMOSPHERIC = 16
+    TURBO = 32
+
+
+class VehicleEngineGRMType(IntFlag):
+    """Тип привода ГРМ"""
+    UNDEFINED = 0   # Не определено
+
+    BELT = 1    # Ремень
+    CHAIN = 2   # Цепь
+    GEARS = 4   # Шестерни
+    TWO_CHAINS = 8  # 2 Цепи
+    THREE_CHAINS = 16   # 3 цепи
+    FOUR_CHAINS = 32    # 4 Цепи
+    WET_BELT = 64   # "Мокрый" ремень (ремень ГРМ погружен в моторное масло)
+    TWO_BELTS = 128 # 2 ремня
+
+
+class VehicleEnginePhaseRegulatorType(IntEnum):
+    """Тип привода ГРМ"""
+    UNDEFINED = 0  # Не определено
+
+    INPUT = 1   # На впускном распределительном валу
+    OUTPUT = 2   # На выпускном распределительном валу
+    DUAL = 3    # На обоих валах
+    """
+    Сложные системы, управляющие в 1 очередь впускными клапанами, но имеющими доп. механизмы на выпуске.
+    Системы изменения высоты подъема клапанов.
+    """
+    COMPLEX = 4
 
 
 class VehicleTransmissionType(Enum):
     """Тип коробки передач"""
+    UNDEFINED = 0  # Не определено
 
-    MANUAL = 0
-    AUTO = 1
-    ROBOT = 2
-    VARIATOR = 3
+    MANUAL = 1
+    AUTO = 2
+    ROBOT = 3
+    VARIATOR = 4
 
 
 class VehicleBodyType(IntFlag):
     """Тип кузова ТС (комбинируемые значения)"""
-    STEEL = 0   # Сталь
-    ALUMINUM = 1   # Алюминий
-    MAGNESIUM_ALLOYS = 2    # Магниевые сплавы
-    FIBERGLASS = 4 # Стеклопластик
-    CARBON = 8  # Углепластик (карбон)
-    ABS = 16 # Полипропилен, ABS и другие пластики
-    TITAN = 32   # Титан
-    TREE = 64    # Дерево
+    UNDEFINED = 0  # Не определено
 
-
+    STEEL = 1   # Сталь
+    ALUMINUM = 2   # Алюминий
+    MAGNESIUM_ALLOYS = 4    # Магниевые сплавы
+    FIBERGLASS = 8 # Стеклопластик
+    CARBON = 16  # Углепластик (карбон)
+    ABS = 32 # Полипропилен, ABS и другие пластики
+    TITAN = 64   # Титан
+    TREE = 128    # Дерево
