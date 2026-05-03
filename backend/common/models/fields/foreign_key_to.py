@@ -1,8 +1,8 @@
 from typing import Literal
 
-from core.models import AutoSchemaBase
 from sqlalchemy import ForeignKey
 
+from core.models import AutoSchemaBase
 
 PostgresOnDeleteFK = Literal[
     'CASCADE',

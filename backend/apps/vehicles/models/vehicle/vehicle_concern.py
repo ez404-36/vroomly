@@ -1,11 +1,11 @@
-from sqlalchemy import String, event
+from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column
 
 from apps.geo.models.country import get_country_link_mixin
 from common.models.mixins.code_model import CodeModelMixin, generate_code_on_create
 from common.models.mixins.relations import get_foreign_key_mixin
-from common.utils.generators import generate_code
 from core.models import AutoSchemaBase
+
 
 class VehicleConcern(
     AutoSchemaBase,

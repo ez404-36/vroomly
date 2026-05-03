@@ -146,6 +146,16 @@ services:
     restart: no
     profiles: [ no-profiles ]
 
+  linters: # ruff + ty linting
+    build: *backend-build-context
+    command: bash -c "ruff check . && ruff format --check . && ty check ."
+    env_file: .env
+    volumes:
+      - *app-backend
+      - *backend-venv
+    restart: no
+    profiles: [ no-profiles ]
+
   libretranslate:
     image: libretranslate/libretranslate
     environment:

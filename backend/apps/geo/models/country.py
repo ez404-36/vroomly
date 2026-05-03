@@ -22,7 +22,7 @@ def get_country_link_mixin(
     back_populates: str | None,
     nullable: bool,
     verbose_name='Страна',
-    on_delete: PostgresOnDeleteFK = None,
+    on_delete: PostgresOnDeleteFK = "CASCADE",
 ):
     """
     Миксин связи со страной

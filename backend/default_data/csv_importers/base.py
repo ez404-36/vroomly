@@ -2,7 +2,7 @@ import csv
 from pathlib import Path
 from typing import Any, Iterable, TypeVar
 
-from sqlalchemy import BigInteger, DECIMAL, Float, Integer, Numeric, SmallInteger, select
+from sqlalchemy import DECIMAL, BigInteger, Float, Integer, Numeric, SmallInteger, select
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import Session

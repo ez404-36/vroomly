@@ -56,13 +56,14 @@ class IntEnumType(TypeDecorator):
         self.enum_class = enum_class
         super().__init__(*args, **kwargs)
 
-    def process_bind_param(self, value, _dialect) -> int:
+    def process_bind_param(self, value, _dialect) -> int | None:
+        if value is None:
+            return None
         if isinstance(value, str):
             return int(value)
-        elif isinstance(value, int):
+        if isinstance(value, int):
             return value
-
-        return value.value if value is not None else None
+        return value.value
 
     def process_result_value(self, value, _dialect):
         return self.enum_class(value) if value is not None else None
@@ -78,7 +79,7 @@ class IntEnumArrayType(TypeDecorator):
     impl = ARRAY(SmallInteger)
     cache_ok = True
 
-    def __init__(self, enum_class: enum.Flag | enum.IntFlag, *args, **kwargs):
+    def __init__(self, enum_class: type[enum.Enum], *args, **kwargs):
         self.enum_class = enum_class
         super().__init__(*args, **kwargs)
 

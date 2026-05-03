@@ -1,7 +1,7 @@
 import logging
 import os
 from contextlib import asynccontextmanager
-from typing import Awaitable, Callable
+from typing import Callable
 
 import uvicorn
 from dotenv import load_dotenv

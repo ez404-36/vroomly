@@ -1,4 +1,5 @@
 from apps.vehicles.models.vehicle.vehicle_series import VehicleSeries
+
 from .base import ImportObjectsFromCSVBase
 
 

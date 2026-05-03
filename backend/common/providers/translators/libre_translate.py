@@ -1,7 +1,8 @@
+from pydantic import BaseModel
+
 from common.providers.base_api_provider import BaseApiProvider
 from common.providers.translators.base import AbstractTranslator
 from core.settings import settings
-from pydantic import BaseModel
 
 
 class LibreTranslateDetectedLanguage(BaseModel):

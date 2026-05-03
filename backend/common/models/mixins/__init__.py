@@ -1,2 +1,2 @@
-from .deleted import DeletedModelMixin
-from .timestamped_model import TimestampedModelMixin
+from .deleted import *
+from .timestamped_model import *

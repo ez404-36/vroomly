@@ -1,8 +1,9 @@
 from typing import Any, Iterable
 
-from core.settings import settings
 from sqlalchemy import MetaData, Select
-from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine, AsyncEngine
+from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession, async_sessionmaker, create_async_engine
+
+from core.settings import settings
 
 DATABASE_URL = settings.db.url
 metadata = MetaData()

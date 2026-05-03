@@ -15,9 +15,7 @@ def __generate_code_listener(mapper, connection, target):
     """Генерация кода марки ТС по аббревиатуре или названию марки"""
     if not target.code:
         target.code = generate_code(
-            getattr(target, 'abbreviation', None)
-            or
-            getattr(target, 'name', None)
+            getattr(target, 'abbreviation', None) or getattr(target, 'name', None) or ''
         )
 
 

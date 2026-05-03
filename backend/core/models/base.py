@@ -3,7 +3,7 @@ import uuid
 from collections import defaultdict
 
 from pydantic.v1 import UUID4
-from sqlalchemy import Column, UUID
+from sqlalchemy import UUID, Column
 from sqlalchemy.orm import Mapped, declarative_base, mapped_column
 
 Base = declarative_base()

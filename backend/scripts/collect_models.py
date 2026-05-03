@@ -1,9 +1,9 @@
+import ast
 import datetime
 import os
-import ast
 import subprocess
 from pathlib import Path
-from typing import List, Dict, Set, Tuple
+from typing import Dict, List, Set, Tuple
 
 from common.utils.file_inspectors import get_all_python_files
 from core.constants import BACKEND_DIR

@@ -41,5 +41,11 @@ codegen:
 recreate-db:
 	docker exec -it vroomly-db-1 bash -c "psql -U postgres -f /app/scripts/recreate_db.sql"
 
+lint:
+	docker compose up -d linters
 
-.PHONY: base-setup docker-setup setup-for-backend setup-for-frontend network-prepare volumes-prepare env-prepare set-profile-frontend up-project seeds tests codegen
+typecheck:
+	docker compose run --rm linters ty check .
+
+
+.PHONY: base-setup docker-setup setup-for-backend setup-for-frontend network-prepare volumes-prepare env-prepare set-profile-frontend up-project seeds tests codegen lint typecheck

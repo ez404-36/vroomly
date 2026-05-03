@@ -1,6 +1,11 @@
 from typing import Annotated
 from uuid import UUID
 
+from fastapi import Query
+from fastapi_utils.cbv import cbv
+from sqlalchemy import select
+from sqlalchemy.orm import joinedload
+
 from apps.vehicles.api.routers import series_router
 from apps.vehicles.api.vehicle_series.filters import VehicleSeriesFilterParams
 from apps.vehicles.api.vehicle_series.schemas.readers import (
@@ -11,10 +16,6 @@ from apps.vehicles.models.vehicle.vehicle_series import VehicleSeries
 from common.orm.filters import apply_search
 from common.orm.views.mixins import BaseAPI
 from core.db import database
-from fastapi import Query
-from fastapi_utils.cbv import cbv
-from sqlalchemy import select
-from sqlalchemy.orm import joinedload
 
 
 @cbv(series_router)

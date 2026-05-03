@@ -1,7 +1,7 @@
 import importlib
 import os
 from pathlib import Path
-from typing import Iterable, Any
+from typing import Any, Iterable
 
 
 def is_python_file(file_path: Path) -> bool:

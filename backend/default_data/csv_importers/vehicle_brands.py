@@ -1,4 +1,5 @@
 from apps.vehicles.models.vehicle.vehicle_brand import VehicleBrand
+
 from .base import ImportObjectsFromCsvWithGenerateCode
 
 

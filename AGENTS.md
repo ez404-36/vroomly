@@ -18,6 +18,7 @@ Vroomly is a microservice-based web application for vehicle management.
 |-----------|---------|----------|-------------------|
 | `backend` / `backend-build` | Main FastAPI application and backend scripts | `vr-backend`, `vr-frontend` | Scripts must run inside this container |
 | `tests` | Backend pytest tests | `no-profiles` | `docker compose run --rm tests` |
+| `linters` | Ruff linting + ty type checking | `no-profiles` | `make lint` |
 | `frontend` | React development server (Vite) | `vr-frontend`, `vr-backend` | `docker compose run --rm frontend <cmd>` |
 | `db` | PostgreSQL 17 database | `default` | Already running |
 | `codegen` | Generates TypeScript types from Python models | `vr-frontend`, `vr-backend` | `make codegen` |
@@ -94,6 +95,12 @@ make codegen
 
 # Recreate database
 make recreate-db
+
+# Run ruff linter + ty type checker
+make lint
+
+# Run only type checker
+make typecheck
 ```
 
 ---
@@ -217,6 +224,27 @@ def process_items(items):
 3. Self-documenting code
 4. Better IDE support and refactoring safety
 
+### Code Coverage Requirements
+
+**All code must be covered by tests.** This is not optional:
+
+- **Backend (Python):** Every function, method, and class must have corresponding unit tests
+- **Frontend (TypeScript):** Critical UI components and business logic must have tests (Vitest + React Testing Library)
+- **No code without tests:** Before writing new functionality, ensure tests exist or create them first
+- **Test completeness:** Tests should cover:
+  - Happy path scenarios
+  - Edge cases and boundary conditions
+  - Error handling and exception cases
+  - Invalid input validation
+- **Test correctness:** Existing tests should be reviewed for correctness and completeness
+  - Fix incorrect or outdated tests
+  - Extend coverage where needed
+
+**Workflow for new code:**
+1. Write tests first (TDD) or alongside implementation
+2. Ensure new code is covered by tests
+3. If modifying existing code, update or add tests accordingly
+
 **Running Ruff:**
 ```bash
 # Inside backend-build container
@@ -229,6 +257,18 @@ ruff check --fix .    # Auto-fix
 ```bash
 # Inside backend-build container
 ty check .
+```
+
+### Running Linters via Docker
+```bash
+# Run all linters (ruff + ty) in one command
+make lint
+
+# Run only ruff
+docker compose run --rm linters ruff check .
+
+# Run only ty
+make typecheck
 ```
 
 ### TypeScript/JavaScript

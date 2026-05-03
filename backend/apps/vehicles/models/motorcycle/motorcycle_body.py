@@ -1,5 +1,5 @@
 from sqlalchemy import SmallInteger
-from sqlalchemy.orm import mapped_column, Mapped
+from sqlalchemy.orm import Mapped, mapped_column
 
 from apps.vehicles.models.motorcycle.enums import MotorcycleBodyType
 from apps.vehicles.models.vehicle.abstract.vehicle_body import VehicleBodyAbstract

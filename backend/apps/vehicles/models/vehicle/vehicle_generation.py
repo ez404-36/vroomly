@@ -1,4 +1,4 @@
-from sqlalchemy import String, Boolean, SmallInteger
+from sqlalchemy import Boolean, SmallInteger, String
 from sqlalchemy.orm import Mapped, mapped_column
 
 from apps.vehicles.models.vehicle.vehicle_series import get_vehicle_series_link_mixin

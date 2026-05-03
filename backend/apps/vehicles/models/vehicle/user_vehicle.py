@@ -1,6 +1,6 @@
 from decimal import Decimal
 
-from sqlalchemy import Boolean, Numeric, Integer
+from sqlalchemy import Boolean, Integer, Numeric
 from sqlalchemy.orm import Mapped, mapped_column
 
 from apps.accounts.models.user import get_user_link_mixin

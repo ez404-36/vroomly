@@ -23,11 +23,11 @@ import types
 from pathlib import Path
 from typing import (
     Any,
-    Union,
-    List,
     Dict,
-    Tuple,
+    List,
     Set,
+    Tuple,
+    Union,
 )
 
 from fastapi_utils.api_model import APIModel
@@ -202,7 +202,7 @@ def generate_dataclass_source(name: str, model_cls) -> Tuple[str, Set[str]]:
     lines = []
     used_typing: Set[str] = set()
 
-    lines.append(f"@dataclass")
+    lines.append("@dataclass")
     lines.append(f"class {name}:")
 
     annotations = getattr(model_cls, "__annotations__", {}) or {}
@@ -271,6 +271,10 @@ def generate_enum_source(name: str, enum_cls) -> str:
 
 
 def main():
+    """
+    Сканирование всех backend-модулей и генерация dataclasses из моделей SQLAlchemy и Enum
+    """
+
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
 
     print(f"[info] scanning modules from {BACKEND_DIR} ...")

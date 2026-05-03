@@ -6,9 +6,10 @@ __all__ = (
 import importlib
 import logging
 
+from fastapi import APIRouter, FastAPI
+
 from common.utils.file_inspectors import get_all_python_files, path_to_module_name
 from core.constants import APPS_DIR
-from fastapi import APIRouter, FastAPI
 
 logger = logging.getLogger(__name__)
 

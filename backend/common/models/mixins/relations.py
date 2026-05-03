@@ -1,7 +1,7 @@
-from typing import cast
+from typing import Any, cast
 
 from sqlalchemy import UUID
-from sqlalchemy.orm import Mapped, mapped_column, relationship, declared_attr
+from sqlalchemy.orm import Mapped, declared_attr, mapped_column, relationship
 
 from common.models import ForeignKeyTo
 from common.models.fields.foreign_key_to import PostgresOnDeleteFK
@@ -16,7 +16,7 @@ def get_foreign_key_mixin(
     nullable: bool,
     verbose_name: str | None,
     lazy: LazyLoadArgumentType = "select",
-    on_delete: PostgresOnDeleteFK = None,
+    on_delete: PostgresOnDeleteFK = "CASCADE",
 ):
     """
     Миксин для связи модели с другой моделью через внешний ключ.
@@ -39,7 +39,7 @@ def get_foreign_key_mixin(
             ForeignKeyTo(model, on_delete), doc=verbose_name, nullable=nullable
         )
 
-    attrs = {
+    attrs: dict[str, Any] = {
         "extend_existing": True,
         "__annotations__": annotations,
         field_name: declared_attr(lambda cls: make_column()),
@@ -47,10 +47,8 @@ def get_foreign_key_mixin(
             lambda cls, _model_str=model_str, _field_name=field_name, _lazy=lazy, _back_pop=back_populates: relationship(
                 _model_str,
                 foreign_keys=lambda: getattr(cls, _field_name),
-                # TODO: линтер плохо понимает backref, об этом говорит сама дока SQLAlchemy
-                # back_populates=_back_pop,
-                backref=cast(str, _back_pop),
-                lazy=cast(str, _lazy),
+                backref=cast(str, _back_pop) if _back_pop else None,
+                lazy=_lazy,
             )
         ),
     }
