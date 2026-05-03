@@ -1,0 +1,241 @@
+# Vroomly Project Documentation
+
+## Overview
+
+Vroomly is a microservice-based web application for vehicle management.
+
+**Stack:**
+- Backend: Python 3 + FastAPI
+- Frontend: React 19 + TypeScript + Vite + Mantine + Redux Toolkit + React Router
+- Database: PostgreSQL 17
+- Development: Docker-based environment
+
+---
+
+## Docker Containers
+
+| Container | Purpose | Profiles | How to Run Scripts |
+|-----------|---------|----------|-------------------|
+| `backend` / `backend-build` | Main FastAPI application and backend scripts | `vr-backend`, `vr-frontend` | Scripts must run inside this container |
+| `tests` | Backend pytest tests | `no-profiles` | `docker compose run --rm tests` |
+| `frontend` | React development server (Vite) | `vr-frontend`, `vr-backend` | `docker compose run --rm frontend <cmd>` |
+| `db` | PostgreSQL 17 database | `default` | Already running |
+| `codegen` | Generates TypeScript types from Python models | `vr-frontend`, `vr-backend` | `make codegen` |
+| `migrations` | Runs Alembic database migrations | `vr-frontend` | `docker compose run --rm migrations` |
+| `seed` | Populates database with initial data | `no-profiles` | `make seeds` |
+| `libretranslate` | Translation service (English/Russian) | `default` | Already running |
+
+**Important:** Scripts inside `backend/tests/` directory must use the `tests` container, not `backend-build`. All other backend scripts use `backend-build`.
+
+---
+
+## Project Structure
+
+```
+vroomly/
+├── backend/                    # Python FastAPI backend
+│   ├── apps/                  # Microservices (each is a FastAPI app)
+│   │   ├── accounts/          # User accounts, authentication
+│   │   ├── geo/               # Geographic data, locations
+│   │   └── vehicles/          # Vehicle-related functionality
+│   ├── common/                # Shared utilities (mixins, schemas, helpers)
+│   ├── core/                  # Config, base ORM models, constants, DB setup
+│   ├── migrations/            # Alembic migrations
+│   │   └── versions/          # Migration files
+│   ├── tests/                 # Backend tests (run in `tests` container)
+│   │   ├── integration/      # Integration tests (external services)
+│   │   └── unit/            # Unit tests (structure mirrors backend/)
+│   │       ├── core/         # Tests for backend/core
+│   │       ├── common/      # Tests for backend/common
+│   │       └── apps/        # Tests for backend/apps/
+│   │           ├── accounts/
+│   │           ├── geo/
+│   │           └── vehicles/
+│   ├── default_data/          # Scripts to populate DB with initial data
+│   ├── scripts/               # Utility scripts (DB recreation, etc.)
+│   ├── src/                   # Internal Python packages
+│   ├── main.py               # FastAPI entry point
+│   ├── Dockerfile             # Multi-stage: backend-base, codegen
+│   └── pyproject.toml        # Python dependencies
+│
+├── frontend/                  # React + TypeScript frontend
+│   ├── src/                   # Source code
+│   │   └── (components, pages, hooks, store, types, etc.)
+│   ├── package.json          # Node dependencies
+│   ├── vite.config.ts        # Vite configuration
+│   └── Dockerfile            # Node.js container
+│
+├── docker-compose.yaml       # All container definitions
+├── Makefile                  # Development commands
+├── .env                      # Environment variables (actual)
+├── .env.example              # Environment variables template
+└── README.md                 # Setup instructions
+```
+
+---
+
+## Key Development Commands
+
+```bash
+# Setup for backend development
+make setup-for-backend
+
+# Setup for frontend development
+make setup-for-frontend
+
+# Populate database with initial data
+make seeds
+
+# Run backend tests
+make tests
+
+# Generate TypeScript types from backend models
+make codegen
+
+# Recreate database
+make recreate-db
+```
+
+---
+
+## Environment Variables
+
+Key variables (see `.env.example`):
+- `DB_USER`, `DB_PASSWORD` - PostgreSQL credentials
+- `BACKEND_PORT` - Backend API port (default: 8000)
+- `EXPOSE_DB_PORT` - Database port (default: 5432)
+- `LIBRETRANSLATE_PORT` - Translation service port (default: 5000)
+- `LIBRETRANSLATE_HOST` - Hostname for translation service
+
+---
+
+## Code Generation (TypeScript from Python)
+
+The `codegen` container runs `scripts/collect_models.py` which:
+1. Reads Python model definitions from `backend/core` and `backend/apps`
+2. Generates TypeScript interfaces in `frontend/src/types/`
+
+**Important:** After running codegen, TypeScript types in frontend will be updated based on backend models.
+
+---
+
+## Database Migrations
+
+Migrations are managed with Alembic:
+- Config: `backend/alembic.ini`
+- Migration scripts: `backend/migrations/versions/`
+
+To apply migrations: `docker compose run --rm migrations`
+
+---
+
+## Testing
+
+Backend tests are located in `backend/tests/` and run in the `tests` container.
+
+### Test Types
+
+| Type | Location | Purpose |
+|------|----------|---------|
+| `unit` | `backend/tests/unit/` | Unit tests - test individual functions/classes. Structure mirrors `backend/` folder |
+| `integration` | `backend/tests/integration/` | Integration tests - test interaction with external services (DB, APIs) |
+
+### Unit Tests Structure
+
+Unit tests must mirror the `backend/` directory structure:
+- `tests/unit/core/` → tests for `backend/core/`
+- `tests/unit/apps/accounts/` → tests for `backend/apps/accounts/`
+- `tests/unit/common/` → tests for `backend/common/`
+
+### Running Tests
+
+```bash
+# Run all tests (via Makefile)
+make tests
+
+# Run specific test type
+docker compose run --rm tests pytest tests/unit/
+docker compose run --rm tests pytest tests/integration/
+```
+
+---
+
+## Code Style
+
+### Python
+
+**Formatter:** Ruff
+**Type Checker:** ty (from the ruff team)
+**Config files:** `backend/pyproject.toml`, `backend/ty.toml`
+
+**Ruff Configuration** (`backend/pyproject.toml`):
+- Quote style: single quotes `'`
+- Indent style: tabs
+- Line length: 120 characters
+- Target Python: 3.13
+- Enabled linters: E, F, W, D (docstrings), I (isort), N (naming), PLR (pylint)
+
+**ty Configuration** (`backend/ty.toml`):
+- Python version: 3.13
+- Analyzes: `apps/`, `common/`, `core/`, `tests/`
+- Excludes: `core/settings.py`
+
+### Python Type Annotation Requirements
+
+**All Python code must be fully typed.** This is not optional — type annotations are mandatory:
+
+- **Every function and method** must have annotated parameters and return type
+- **Variables** should have type hints where the type is not immediately obvious from the assignment
+- **Class attributes** must have type annotations
+- **Complex data structures** must be properly typed (dicts, lists with specific item types, etc.)
+- **Generics** must be used appropriately (`list[str]`, `dict[str, int]`, `Optional[X]`, `Union[A, B]`)
+- **Type aliases** should be defined for complex or repeated types
+
+```python
+# ✅ Correct
+def get_user(user_id: int) -> User | None:
+    ...
+
+def process_items(items: list[ItemConfig]) -> dict[str, ValidationResult]:
+    ...
+
+UserId = int  # Type alias for clarity
+def get_user(id: UserId) -> User:
+    ...
+
+# ❌ Incorrect - untyped
+def get_user(user_id):
+    ...
+
+def process_items(items):
+    ...
+```
+
+**Reasoning:** The project uses `ty` (static type checker from ruff team) and generates TypeScript types from Python models. Full type coverage ensures:
+1. Catch bugs at development time with `ty check`
+2. Reliable codegen to TypeScript frontend
+3. Self-documenting code
+4. Better IDE support and refactoring safety
+
+**Running Ruff:**
+```bash
+# Inside backend-build container
+ruff check .          # Lint
+ruff format .         # Format
+ruff check --fix .    # Auto-fix
+```
+
+**Running ty:**
+```bash
+# Inside backend-build container
+ty check .
+```
+
+### TypeScript/JavaScript
+- Formatter: Prettier
+- Linter: ESLint + Stylelint
+- Run linting: `npm run lint` in frontend container
+- Auto-fix: `npm run lint:fix-all`
+
+### Pre-commit Hooks
+Installed in `backend-build` container via pre-commit.

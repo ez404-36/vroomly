@@ -18,6 +18,20 @@ make seeds
 
 ### Известные проблемы
 
-В Windows не устанавливаются гит-хуки в контейнер бекенда:
+**Конфликт подсетей Docker и VPN (Amnezia, WireGuard и др.)**
+
+Если при включённом VPN БД недоступна, это значит, что подсеть Docker пересекается с VPN-туннелем.
+
+Решение: удалите старую сеть и пересоздайте с правильной подсетью:
+```bash
+docker compose down
+docker network rm vroomly
+make setup-for-backend
+```
+
+---
+
+**Windows: не устанавливаются гит-хуки в контейнер бекенда:**
+
 Ошибка: `./backend/scripts/setup_docker_precommit.sh: /bin/sh^M: bad interpreter: No such file or directory`
-Решение: для файла (а лучше для всего проекта) `./backend/scripts/setup_docker_precommit.sh` изменить отступы с CRLF на LF
+Решение: для файла `./backend/scripts/setup_docker_precommit.sh` изменить перенос строк с CRLF на LF

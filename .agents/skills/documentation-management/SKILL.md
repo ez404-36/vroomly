@@ -1,10 +1,6 @@
 ---
-closecode_version: 1.0.0
 name: documentation-management
 description: Documentation analysis, changelog generation, cross-reference validation, and freshness tracking using git and file system tools
-scope: any
-provisionedAt: "2026-04-30T16:58:06.656Z"
-provisionedFrom: templates/skills/documentation-management/SKILL.md
 ---
 
 # Documentation Management Skill
@@ -32,6 +28,7 @@ git log --since="{{since}}" --pretty=format:"%s" --no-merges | grep -oP "^(feat|
 
 When commits don't follow conventional commit format, infer categories from file paths:
 
+
 | File Pattern                             | Category                      |
 | ---------------------------------------- | ----------------------------- |
 | `src/**/*.ts`, `src/**/*.tsx`            | Feature or Fix (inspect diff) |
@@ -40,6 +37,7 @@ When commits don't follow conventional commit format, infer categories from file
 | `package.json`, `tsconfig*`, `.*rc*`     | Configuration                 |
 | `Dockerfile*`, `.github/**/*`, `ci/**/*` | CI/Build                      |
 | `*.css`, `*.scss`, `*.less`              | Styling                       |
+
 
 ### Write changelog
 
@@ -136,4 +134,4 @@ When producing reports, write them as markdown files in the project's documentat
 
 Always include a summary section at the top of reports with key metrics and actionable items.
 
-&nbsp;
+

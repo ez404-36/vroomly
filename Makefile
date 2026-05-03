@@ -5,7 +5,12 @@ setup-for-backend: base-setup docker-setup install-git-hooks
 setup-for-frontend: base-setup set-profile-frontend docker-setup
 
 network-prepare:
-	docker network create vroomly || true
+	@echo "Проверка и создание сети vroomly (подсеть 10.245.0.0/16 для избежания конфликтов с VPN)..."
+	@if docker network inspect vroomly >/dev/null 2>&1; then \
+		echo "Сеть vroomly уже существует. Если есть конфликт с VPN, удалите: docker network rm vroomly"; \
+	else \
+		docker network create --subnet=10.245.0.0/16 vroomly; \
+	fi
 
 volumes-prepare:
 	docker volume create vroomly-postgres-data || true
