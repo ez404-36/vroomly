@@ -7,6 +7,7 @@ index-out-of-bounds = "ignore"
 unresolved-import = "ignore"
 unsupported-base = "ignore"
 invalid-method-override = "ignore"
+deprecated = "ignore"
 
 [src]
 include = [
