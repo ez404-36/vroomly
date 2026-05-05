@@ -9,4 +9,4 @@ dist
 dist-ssr
 *.local
 
-src/types/schemas.ts
+src/types/*.ts

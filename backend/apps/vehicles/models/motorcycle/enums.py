@@ -16,3 +16,11 @@ class MotorcycleShiftType(Enum):
 
 class MotorcycleBodyType(Enum):
     """Тип кузова мотоцикла"""
+    CRUISER = 1
+    SPORTBIKE = 2
+    TOURIST = 3
+    DUAL_SPORT = 4
+    NAKED = 5
+    CAFE_RACER = 6
+    BOBBER = 7
+    CHOPPER = 8
