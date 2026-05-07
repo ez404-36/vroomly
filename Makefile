@@ -1,7 +1,7 @@
 base-setup: network-prepare volumes-prepare env-prepare
 docker-setup: up-project
 
-setup-for-backend: base-setup docker-setup install-git-hooks
+setup-for-backend: base-setup docker-setup
 setup-for-frontend: base-setup set-profile-frontend docker-setup
 
 network-prepare:
@@ -23,11 +23,6 @@ set-profile-frontend:
 
 up-project:
 	docker compose up -d
-
-install-git-hooks:
-	docker compose run --rm backend-build bash -c "pre-commit install --install-hooks --overwrite"
-	./backend/scripts/setup_docker_precommit.sh vroomly-backend-build-1
-	docker compose stop backend-build
 
 seeds:
 	docker compose up -d seed

@@ -25,6 +25,7 @@ Vroomly is a microservice-based web application for vehicle management.
 | `migrations` | Runs Alembic database migrations | `vr-frontend` | `docker compose run --rm migrations` |
 | `seed` | Populates database with initial data | `no-profiles` | `make seeds` |
 | `libretranslate` | Translation service (English/Russian) | `default` | Already running |
+| `default_data_runner` | Runs persistent background scripts from `backend/default_data` | `background` | *No manual command needed; runs persistently.* |
 
 **Important:** Scripts inside `backend/tests/` directory must use the `tests` container, not `backend-build`. All other backend scripts use `backend-build`.
 
@@ -52,7 +53,8 @@ vroomly/
 │   │           ├── accounts/
 │   │           ├── geo/
 │   │           └── vehicles/
-│   ├── default_data/          # Scripts to populate DB with initial data
+│   ├── default_data/          # Scripts to populate DB with initial data (Managed by default_data_runner service)
+
 │   ├── scripts/               # Utility scripts (DB recreation, etc.)
 │   ├── src/                   # Internal Python packages
 │   ├── main.py               # FastAPI entry point
@@ -86,6 +88,9 @@ make setup-for-frontend
 
 # Populate database with initial data
 make seeds
+
+# Run default data scripts (if needed for non-seed operations)
+docker compose run --rm default_data_runner bash -c "python backend/default_data/run_scripts.py" # Placeholder command to be refined
 
 # Run backend tests
 make tests

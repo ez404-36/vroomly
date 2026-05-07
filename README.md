@@ -29,9 +29,4 @@ docker network rm vroomly
 make setup-for-backend
 ```
 
----
 
-**Windows: не устанавливаются гит-хуки в контейнер бекенда:**
-
-Ошибка: `./backend/scripts/setup_docker_precommit.sh: /bin/sh^M: bad interpreter: No such file or directory`
-Решение: для файла `./backend/scripts/setup_docker_precommit.sh` изменить перенос строк с CRLF на LF
