@@ -24,7 +24,6 @@ export const theme: MantineThemeOverride = {
 
   other: {
     colors: {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       background: (theme: any) =>
         theme.colorScheme === 'dark' ? theme.colors.dark[9] : theme.white,
 
