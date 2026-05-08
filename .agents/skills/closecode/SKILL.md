@@ -1,6 +1,8 @@
 ---
 name: closecode
 description: CloseCode ADE management tools - projects, services, agents, tasks, skills, layouts, panels, documents, schedules, and git via embedded MCP server
+provisionedAt: "2026-05-07T19:36:42.079Z"
+provisionedFrom: templates/skills/closecode/SKILL.md
 ---
 
 # Closecode Skill
@@ -410,5 +412,3 @@ These tools query the backend analysis module. For git write operations (commit,
 - The backend has no granular panel endpoints; all tree manipulation happens in the MCP tool layer
 - The `ensureFlexPanel` invariant is enforced after every panel add/remove/move operation
 - Document search is client-side (fetch all + filter) — matches CLI behavior
-
-

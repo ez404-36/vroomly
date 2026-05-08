@@ -1,6 +1,8 @@
 ---
 name: documentation-management
 description: Documentation analysis, changelog generation, cross-reference validation, and freshness tracking using git and file system tools
+provisionedAt: "2026-05-07T19:36:42.113Z"
+provisionedFrom: templates/skills/documentation-management/SKILL.md
 ---
 
 # Documentation Management Skill
@@ -133,5 +135,3 @@ When producing reports, write them as markdown files in the project's documentat
 - **Validation report** — `docs/reports/cross-reference-validation-YYYY-MM-DD.md`
 
 Always include a summary section at the top of reports with key metrics and actionable items.
-
-

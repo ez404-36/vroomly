@@ -2,15 +2,13 @@ from typing import TYPE_CHECKING
 
 import jwt
 from fastapi import HTTPException
-
 from sqlalchemy import select
 from starlette import status
 
 from common.schemas.models import CurrentUser
 from common.utils.file_inspectors import import_class
 from core.db import database
-from core.safety.token import TOKEN, SECRET_KEY, ALGORITHM, TokenData
-
+from core.safety.token import ALGORITHM, SECRET_KEY, TOKEN, TokenData
 from core.settings import settings
 
 if TYPE_CHECKING:

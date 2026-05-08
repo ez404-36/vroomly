@@ -1,1 +1,1 @@
-from .base import AutoSchemaBase
+from .base import AutoSchemaBase as AutoSchemaBase

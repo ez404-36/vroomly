@@ -32,7 +32,10 @@ def to_choice_field_list(instances: list[AutoSchemaBase]) -> list[ChoiceFieldSch
 		for instance in instances
 	]
 
-def to_choice_field_with_parent_list(instances: list[AutoSchemaBase], parent_attr: str) -> list[ChoiceFieldWithParentSchema]:
+def to_choice_field_with_parent_list(
+    instances: list[AutoSchemaBase],
+    parent_attr: str,
+) -> list[ChoiceFieldWithParentSchema]:
 	return [
 		to_choice_field_with_parent(instance, parent_attr)
 		for instance in instances

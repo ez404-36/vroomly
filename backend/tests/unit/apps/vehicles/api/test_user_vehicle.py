@@ -1,17 +1,17 @@
 """Tests for UserVehicle API endpoints."""
 
+
 import pytest
-from uuid import UUID
-from unittest.mock import AsyncMock, patch, MagicMock
-from pydantic import BaseModel
+
+from common.schemas.fields import ChoiceFieldSchema
 
 from apps.vehicles.api.user_vehicle.schemas import (
-    CreateUserVehicleByVinSchema,
     CreateUserVehicleByChoiceSchema,
+    CreateUserVehicleByVinSchema,
     CreateUserVehicleManualSchema,
+    UserVehicleChoiceSchema,
     UserVehicleDetailSchema,
     UserVehicleWithChoicesSchema,
-    UserVehicleChoiceSchema,
 )
 
 
@@ -140,10 +140,10 @@ class TestUserVehicleWithChoicesSchema:
         schema = UserVehicleWithChoicesSchema(
             choices=[
                 UserVehicleChoiceSchema(
-                    brand={'id': '1', 'name': 'Skoda'},
-                    model={'id': '2', 'name': 'Octavia'},
+                    brand=ChoiceFieldSchema(id='1', name='Skoda'),
+                    model=ChoiceFieldSchema(id='2', name='Octavia'),
                     generation=[
-                        {'id': '3', 'name': 'III'},
+                        ChoiceFieldSchema(id='3', name='III'),
                     ],
                     configuration=[],
                 ),
@@ -162,11 +162,11 @@ class TestUserVehicleWithChoicesSchema:
         schema = UserVehicleWithChoicesSchema(
             choices=[
                 UserVehicleChoiceSchema(
-                    brand={'id': '1', 'name': 'Skoda'},
-                    model={'id': '2', 'name': 'Octavia'},
+                    brand=ChoiceFieldSchema(id='1', name='Skoda'),
+                    model=ChoiceFieldSchema(id='2', name='Octavia'),
                     generation=[
-                        {'id': '3', 'name': 'II'},
-                        {'id': '4', 'name': 'III'},
+                        ChoiceFieldSchema(id='3', name='II'),
+                        ChoiceFieldSchema(id='4', name='III'),
                     ],
                     configuration=[],
                 ),

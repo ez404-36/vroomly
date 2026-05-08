@@ -742,6 +742,7 @@ class TestEnumCollectorErasableSyntax:
 
         result = collector.generate_ts_enum(enum_info)
 
+        assert result is not None
         # Should use collector's default (False)
         assert "export enum Mode {" in result
 
@@ -760,6 +761,7 @@ class TestEnumCollectorErasableSyntax:
 
         result = collector.generate_ts_enum(enum_info)
 
+        assert result is not None
         # Should use collector's default (True)
         assert "export type Mode = 'on' | 'off';" in result
 
@@ -1041,7 +1043,7 @@ class Status(Enum):
 
         collector.write_ts_file()
 
-        ts_file = tmp_path / "frontend" / "src" / "types" / "generated_enums.ts"
+        ts_file = tmp_path / "frontend" / "src" / "types" / "enums.ts"
         assert ts_file.exists()
         content = ts_file.read_text()
         assert "export type Status" in content
@@ -1059,7 +1061,7 @@ class Status(Enum):
         collector.enums = {}
         collector.write_ts_file()  # Should not raise
 
-        ts_file = tmp_path / "frontend" / "src" / "types" / "generated_enums.ts"
+        ts_file = tmp_path / "frontend" / "src" / "types" / "enums.ts"
         assert not ts_file.exists()
 
     def test_write_ts_file_multiple_enums(self, tmp_path: Path, monkeypatch):
@@ -1085,7 +1087,7 @@ class Status(Enum):
 
         collector.write_ts_file()
 
-        ts_file = tmp_path / "frontend" / "src" / "types" / "generated_enums.ts"
+        ts_file = tmp_path / "frontend" / "src" / "types" / "enums.ts"
         assert ts_file.exists()
         content = ts_file.read_text()
         assert "export type Color" in content
@@ -1113,7 +1115,7 @@ class TestLiteralCollectorWriteTsFile:
 
         collector.write_ts_file()
 
-        ts_file = tmp_path / "frontend" / "src" / "types" / "generated_literals.ts"
+        ts_file = tmp_path / "frontend" / "src" / "types" / "literals.ts"
         assert ts_file.exists()
         content = ts_file.read_text()
         assert "export type Status" in content
@@ -1131,7 +1133,7 @@ class TestLiteralCollectorWriteTsFile:
         collector.literals = {}
         collector.write_ts_file()  # Should not raise
 
-        ts_file = tmp_path / "frontend" / "src" / "types" / "generated_literals.ts"
+        ts_file = tmp_path / "frontend" / "src" / "types" / "literals.ts"
         assert not ts_file.exists()
 
     def test_write_ts_file_single_value(self, tmp_path: Path, monkeypatch):
@@ -1152,7 +1154,7 @@ class TestLiteralCollectorWriteTsFile:
 
         collector.write_ts_file()
 
-        ts_file = tmp_path / "frontend" / "src" / "types" / "generated_literals.ts"
+        ts_file = tmp_path / "frontend" / "src" / "types" / "literals.ts"
         assert ts_file.exists()
         content = ts_file.read_text()
         assert "export type SingleValue = 'only';" in content
@@ -1180,7 +1182,7 @@ class TestLiteralCollectorWriteTsFile:
 
         collector.write_ts_file()
 
-        ts_file = tmp_path / "frontend" / "src" / "types" / "generated_literals.ts"
+        ts_file = tmp_path / "frontend" / "src" / "types" / "literals.ts"
         assert ts_file.exists()
         content = ts_file.read_text()
         assert "export type TokenType" in content

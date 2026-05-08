@@ -29,6 +29,11 @@ dependencies = [
     "python-magic>=0.4.27",
 ]
 
+[tool.pyproject.extra-dependencies]
+local = [
+    { path = "/home/egor/close_code_projects/tschema", editable = true },
+]
+
 [tool.ruff]
 exclude = [
     ".git",

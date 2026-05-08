@@ -1,0 +1,114 @@
+.container {
+  padding: 0;
+}
+
+.header {
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--mantine-color-dark-8);
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--mantine-color-gray-6);
+  margin: 0;
+}
+
+.addButton {
+  background-color: var(--mantine-color-orange-6);
+  color: white;
+  font-weight: 500;
+  border: none;
+}
+
+.addButton:hover {
+  background-color: var(--mantine-color-orange-7);
+}
+
+.vehiclesList {
+  gap: 12px;
+}
+
+.vehicleCard {
+  background-color: var(--mantine-color-white);
+  border: 1px solid var(--mantine-color-gray-2);
+  border-radius: 12px;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.vehicleCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: var(--mantine-color-gray-3);
+}
+
+.vehicleIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background-color: var(--mantine-color-orange-0);
+  border-radius: 12px;
+  color: var(--mantine-color-orange-6);
+  flex-shrink: 0;
+}
+
+.vehicleName {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--mantine-color-dark-8);
+  margin: 0;
+}
+
+.editButton {
+  color: var(--mantine-color-gray-6);
+  font-size: 13px;
+}
+
+.editButton:hover {
+  color: var(--mantine-color-orange-6);
+  background-color: var(--mantine-color-orange-0);
+}
+
+.emptyCard {
+  background-color: var(--mantine-color-white);
+  border: 2px dashed var(--mantine-color-gray-3);
+  border-radius: 16px;
+  padding: 48px 24px;
+}
+
+.emptyIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background-color: var(--mantine-color-gray-0);
+  border-radius: 50%;
+  color: var(--mantine-color-gray-5);
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .vehicleCard {
+    padding: 12px;
+  }
+
+  .vehicleIcon {
+    width: 48px;
+    height: 48px;
+  }
+}

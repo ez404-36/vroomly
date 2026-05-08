@@ -20,7 +20,10 @@ class MotorcycleTransmission(
     Коробка переда мотоцикла
     """
 
-    shift_type: Mapped[MotorcycleShiftType] = mapped_column(IntEnumType(MotorcycleShiftType), doc='Тип переключения передач')
+    shift_type: Mapped[MotorcycleShiftType] = mapped_column(
+        IntEnumType(MotorcycleShiftType),
+        doc='Тип переключения передач',
+    )
     slipper_clutch: Mapped[bool] = mapped_column(Boolean, doc='Наличие скользящего сцепления')
 
 

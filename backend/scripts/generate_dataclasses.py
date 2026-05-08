@@ -185,9 +185,14 @@ def get_field_info_from_pydantic(model_cls, field_name):
         if model_fields is not None and field_name in model_fields:
             info = model_fields[field_name]
             # info может быть FieldInfo-like dict or pydantic.fields.ModelFieldInfo
-            ann = info.get("annotation") if isinstance(info, dict) else getattr(info, "annotation", None)
-            default = info.get("default", dataclasses.MISSING) if isinstance(info, dict) else getattr(info, "default", dataclasses.MISSING)
-            default_factory = info.get("default_factory", None) if isinstance(info, dict) else getattr(info, "default_factory", None)
+            if isinstance(info, dict):
+                ann = info.get("annotation")
+                default = info.get("default", dataclasses.MISSING)
+                default_factory = info.get("default_factory", None)
+            else:
+                ann = getattr(info, "annotation", None)
+                default = getattr(info, "default", dataclasses.MISSING)
+                default_factory = getattr(info, "default_factory", None)
             return ann, default, default_factory
 
     except Exception as e:

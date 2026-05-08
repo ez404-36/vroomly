@@ -1,12 +1,12 @@
 __all__ = ("authenticate_user",)
 
+from fastapi import HTTPException
+from sqlalchemy import and_, or_, select
 from starlette import status
 
 from apps.accounts.models.user import User
 from core.db import database
 from core.safety.token import TokenData, verify_password
-from fastapi import HTTPException
-from sqlalchemy import and_, or_, select
 
 
 async def authenticate_user(username: str, password: str) -> TokenData | None:

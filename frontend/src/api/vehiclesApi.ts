@@ -121,6 +121,19 @@ export const vehiclesApi = createApi({
     getVehicleSeries: builder.query<VehicleSeriesListSchema[], string>({
       query: (brandId) => `series/?brand_id=${brandId}`,
     }),
+
+    // Get user's vehicles list
+    getUserVehicles: builder.query<UserVehicleDetailSchema[], void>({
+      query: () => 'user-vehicles/',
+    }),
+
+    // Delete user vehicle
+    deleteUserVehicle: builder.mutation<void, string>({
+      query: (vehicleId) => ({
+        url: `user-vehicles/${vehicleId}/`,
+        method: 'DELETE',
+      }),
+    }),
   }),
 });
 
@@ -159,4 +172,6 @@ export const {
   useCreateUserVehicleManualMutation,
   useGetVehicleBrandsQuery,
   useGetVehicleSeriesQuery,
+  useGetUserVehiclesQuery,
+  useDeleteUserVehicleMutation,
 } = vehiclesApi;

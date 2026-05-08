@@ -172,6 +172,12 @@ docker compose run --rm tests pytest tests/integration/
 
 ---
 
+## Design Resources
+
+- **Figma**: https://www.figma.com/design/IiR4zoi5BtMXjO0pVmJCGt/vroomly-или-car-car-или...?node-id=6-2&p=f
+
+---
+
 ## Code Style
 
 ### Python
@@ -284,3 +290,34 @@ make typecheck
 
 ### Pre-commit Hooks
 Installed in `backend-build` container via pre-commit.
+
+---
+
+## Frontend Development Rules
+
+### Verification After Changes
+
+**Обязательно после каждого изменения в frontend:**
+
+1. Открыть главную страницу приложения в браузере (http://localhost:5173 или указанный порт)
+2. Проверить консоль браузера на наличие ошибок (Error level)
+3. Проверить логи frontend контейнера на наличие ошибок
+
+**Команда для проверки логов:**
+```bash
+docker compose logs -f frontend
+```
+
+**Причина:** Vite делает hot reload, ошибки отображаются в браузере и в терминале. Это позволяет быстро обнаружить:
+- Ошибки импорта модулей
+- Ошибки TypeScript/ESLint
+- Проблемы с маршрутизацией
+- Проблемы с компонентами
+
+### Path Conventions
+
+Пути импортов в файлах `frontend/src/pages/`:
+- `../utils/routes` — утилиты роутов
+- `../api/*` — API модули
+- `../types/*` — TypeScript типы
+- `../styles/pages/*` — CSS модули страниц
