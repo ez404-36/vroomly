@@ -32,10 +32,8 @@ RUN groupadd -g "${GID}" vroomly && \
     chown -R vroomly:vroomly /app
 
 
-COPY --link --from=ghcr.io/astral-sh/uv:0.4 /uv /usr/local/bin/uv
+COPY --link --from=ghcr.io/astral-sh/uv:0.11 /uv /usr/local/bin/uv
 ENV PATH="/root/.cargo/bin:${PATH}"
-
-COPY .pre-commit-config.yaml $backend_dir
 
 RUN uv venv /app/.venv
 ENV PATH="/app/.venv/bin:$PATH"

@@ -64,7 +64,6 @@ services:
     volumes:
       - &app-backend ./backend:/app:rw
       - &backend-venv vroomly-backend-venv:/app/.venv
-      - .git:/app/.git
     ports:
       - ${EXPOSE_BACKEND_PORT:-8000}:${BACKEND_PORT:-8000}
     depends_on:
@@ -100,7 +99,7 @@ services:
       - *app-backend
       - *backend-venv
       - ./frontend/src:/frontend/src:rw
-    command: python scripts/collect_models.py
+    command: sleep infinity
     profiles: [ vr-frontend, vr-backend ]
     deploy:
       resources:

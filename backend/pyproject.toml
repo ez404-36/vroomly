@@ -16,22 +16,32 @@ dependencies = [
     "pydantic==2.12.5",
     "pydantic-settings==2.9.1",
     "pyjwt>=2.10.1",
-    "pytest>=8.4.2",
     "python-dotenv>=1.1.0",
     "requests>=2.32.5",
     "sqlalchemy==2.0.46",
     "astroid>=3.3.11",
-    "pydantic2-to-typescript>=0.0.1",
-    "ruff>=0.13.3",
-    "pre-commit>=4.3.0",
-    "ty>=0.0.13",
     "beautifulsoup4>=4.14.2",
     "python-magic>=0.4.27",
+    "tschema==0.1.4",
 ]
 
-[tool.pyproject.extra-dependencies]
-local = [
-    { path = "/home/egor/close_code_projects/tschema", editable = true },
+[tool.uv.sources]
+tschema = { url = "https://test-files.pythonhosted.org/packages/6c/b9/9b7c229e9139129fcb91ce1331ffc43e5581bedd63773645c199bb32dc93/tschema-0.1.4.tar.gz" }
+
+[dependency-groups]
+dev = [
+    {include-group = "lint"},
+    {include-group = "test"},
+]
+codegen = [
+    "pydantic2-to-typescript>=0.0.1",
+]
+lint = [
+    "ruff>=0.15.12",
+    "ty>=0.0.34",
+]
+test = [
+    "pytest>=9.0.3",
 ]
 
 [tool.ruff]
