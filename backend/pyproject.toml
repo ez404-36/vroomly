@@ -22,11 +22,11 @@ dependencies = [
     "astroid>=3.3.11",
     "beautifulsoup4>=4.14.2",
     "python-magic>=0.4.27",
-    "tschema==0.1.4",
+    "tschema==0.1.5",
 ]
 
 [tool.uv.sources]
-tschema = { url = "https://test-files.pythonhosted.org/packages/6c/b9/9b7c229e9139129fcb91ce1331ffc43e5581bedd63773645c199bb32dc93/tschema-0.1.4.tar.gz" }
+tschema = { url = "https://test-files.pythonhosted.org/packages/be/dd/dccbc886eb1ee439674752206a4192dc2f73ac15c595e09c18c161a026c0/tschema-0.1.5.tar.gz" }
 
 [dependency-groups]
 dev = [

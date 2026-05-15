@@ -6,8 +6,6 @@ networks:
 volumes:
   vroomly-postgres-data:
     external: true
-  vroomly-backend-venv:
-
 
 services:
   db:
@@ -63,7 +61,6 @@ services:
     env_file: .env
     volumes:
       - &app-backend ./backend:/app:rw
-      - &backend-venv vroomly-backend-venv:/app/.venv
     ports:
       - ${EXPOSE_BACKEND_PORT:-8000}:${BACKEND_PORT:-8000}
     depends_on:
@@ -97,7 +94,6 @@ services:
     restart: no
     volumes:
       - *app-backend
-      - *backend-venv
       - ./frontend/src:/frontend/src:rw
     command: sleep infinity
     profiles: [ vr-frontend, vr-backend ]
@@ -113,7 +109,6 @@ services:
     env_file: .env
     volumes:
       - *app-backend
-      - *backend-venv
     depends_on:
       - db
     restart: no
@@ -125,7 +120,6 @@ services:
     env_file: .env
     volumes:
       - *app-backend
-      - *backend-venv
     depends_on:
       - db
     restart: no
@@ -139,7 +133,6 @@ services:
       PYTHONOPTIMIZE: 0
     volumes:
       - *app-backend
-      - *backend-venv
     depends_on:
       - db
     restart: no
@@ -151,7 +144,6 @@ services:
     env_file: .env
     volumes:
       - *app-backend
-      - *backend-venv
     restart: no
     profiles: [ no-profiles ]
 

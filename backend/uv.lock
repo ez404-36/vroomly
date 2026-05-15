@@ -1105,12 +1105,12 @@ wheels = [
 
 [[package]]
 name = "tschema"
-version = "0.1.4"
-source = { url = "https://test-files.pythonhosted.org/packages/6c/b9/9b7c229e9139129fcb91ce1331ffc43e5581bedd63773645c199bb32dc93/tschema-0.1.4.tar.gz" }
+version = "0.1.5"
+source = { url = "https://test-files.pythonhosted.org/packages/be/dd/dccbc886eb1ee439674752206a4192dc2f73ac15c595e09c18c161a026c0/tschema-0.1.5.tar.gz" }
 dependencies = [
     { name = "pydantic" },
 ]
-sdist = { hash = "sha256:74c1b0bbaa6ca3e6730a9d13a220abdfc029cd1153c2fdca0ba967da085c5b71" }
+sdist = { hash = "sha256:69548033ad43e815e54abf69f5589b7ff0f5e0493f62fd3de8af6bf2a52b22ae" }
 
 [package.metadata]
 requires-dist = [
@@ -1312,7 +1312,7 @@ requires-dist = [
     { name = "python-magic", specifier = ">=0.4.27" },
     { name = "requests", specifier = ">=2.32.5" },
     { name = "sqlalchemy", specifier = "==2.0.46" },
-    { name = "tschema", url = "https://test-files.pythonhosted.org/packages/6c/b9/9b7c229e9139129fcb91ce1331ffc43e5581bedd63773645c199bb32dc93/tschema-0.1.4.tar.gz" },
+    { name = "tschema", url = "https://test-files.pythonhosted.org/packages/be/dd/dccbc886eb1ee439674752206a4192dc2f73ac15c595e09c18c161a026c0/tschema-0.1.5.tar.gz" },
 ]
 
 [package.metadata.requires-dev]

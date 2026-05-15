@@ -22,9 +22,15 @@ ENV VIRTUAL_ENV=/app/.venv
 ENV PATH="${VIRTUAL_ENV}/bin:$PATH"
 
 
-RUN apt-get update --quiet && \
-    apt-get install -y git
-
+# Переменные окружения для пакетного менеджера UV
+# отключить локальное кеширование пакетов
+ENV UV_NO_CACHE=1
+# не скачивать python с помощью UV
+ENV UV_PYTHON_DOWNLOADS=never
+# не использовать управляемый python
+ENV UV_NO_MANAGED_PYTHON=1
+# устанавливаемая версия
+ENV UV_VERSION=0.11
 
 # Cоздание пользователя
 RUN groupadd -g "${GID}" vroomly && \
@@ -32,11 +38,12 @@ RUN groupadd -g "${GID}" vroomly && \
     chown -R vroomly:vroomly /app
 
 
-COPY --link --from=ghcr.io/astral-sh/uv:0.11 /uv /usr/local/bin/uv
-ENV PATH="/root/.cargo/bin:${PATH}"
+RUN apt-get update --quiet
+
+RUN pip install "uv==${UV_VERSION}" && \
+    uv --version
 
 RUN uv venv /app/.venv
-ENV PATH="/app/.venv/bin:$PATH"
 
 RUN --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
