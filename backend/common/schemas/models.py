@@ -34,8 +34,6 @@ class UpdateUserProfile(APIModel):
     Схема для обновления профиля пользователя
     """
 
-    login: str | None = Field(None, min_length=1, max_length=50)
-    email: str | None = None
     name: str | None = None
     surname: str | None = None
     birth_date: date | None = None

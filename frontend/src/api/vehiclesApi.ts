@@ -1,4 +1,5 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi } from '@reduxjs/toolkit/query/react';
+import { createBaseQuery } from './baseQuery';
 
 // Types for UserVehicle API
 export interface CreateUserVehicleByVinDTO {
@@ -61,15 +62,7 @@ export interface UserVehicleWithChoicesSchema {
 
 export const vehiclesApi = createApi({
   reducerPath: 'vehiclesApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:8077/api/vehicles/',
-    credentials: 'include',
-    prepareHeaders: (headers) => {
-      headers.set('Content-Type', 'application/json');
-      headers.set('Accept', 'application/json');
-      return headers;
-    },
-  }),
+  baseQuery: createBaseQuery('vehicles/'),
   endpoints: (builder) => ({
     // Lookup car info by VIN
     lookupByVin: builder.query<CarInfoByVinDataSchema, string>({

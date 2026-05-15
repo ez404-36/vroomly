@@ -3,7 +3,10 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
 import { ColorSchemeScript, MantineProvider } from '@mantine/core';
+import { Notifications } from '@mantine/notifications';
 import '@mantine/core/styles.css';
+import '@mantine/dates/styles.css';
+import '@mantine/notifications/styles.css';
 import './fonts/fonts.css';
 import './styles/global.css';
 
@@ -21,8 +24,9 @@ createRoot(document.getElementById('root')!).render(
         <>
           <ColorSchemeScript defaultColorScheme="dark" />
           <MantineProvider theme={theme} cssVariablesResolver={resolver}>
-            <App />
-          </MantineProvider>
+              <Notifications />
+              <App />
+            </MantineProvider>
         </>
       </BrowserRouter>
     </StrictMode>

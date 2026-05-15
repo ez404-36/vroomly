@@ -9,6 +9,9 @@ import {
   Select,
   Loader,
 } from '@mantine/core';
+import { notifications } from '@mantine/notifications';
+import dayjs from 'dayjs';
+import { CustomDatePickerInput } from '../components/Common/CustomDatePickerInput';
 import { useForm } from 'react-hook-form';
 import { useGetCurrentUserQuery, useUpdateCurrentUserMutation } from '../api/authApi';
 import { useGetCountriesQuery } from '../api/geoApi';
@@ -20,7 +23,7 @@ interface ProfileFormData {
   email: string;
   name: string | null;
   surname: string | null;
-  birth_date: string;
+  birth_date: Date | null;
   country_id: string | null;
 }
 
@@ -33,6 +36,7 @@ export const SettingsPage = () => {
   const {
     register,
     handleSubmit,
+    watch,
     setValue,
     formState: { errors },
   } = useForm<ProfileFormData>({
@@ -41,7 +45,7 @@ export const SettingsPage = () => {
       email: '',
       name: null,
       surname: null,
-      birth_date: '',
+      birth_date: null,
       country_id: null,
     },
   });
@@ -54,7 +58,7 @@ export const SettingsPage = () => {
       setValue('surname', user.surname);
       setValue('country_id', user.countryId);
       if (user.birthDate) {
-        setValue('birth_date', user.birthDate);
+        setValue('birth_date', new Date(user.birthDate));
       }
     }
   }, [user, setValue]);
@@ -62,18 +66,27 @@ export const SettingsPage = () => {
   const onSubmit = async (data: ProfileFormData) => {
     try {
       const formattedData = {
-        login: data.login,
-        email: data.email,
         name: data.name || null,
         surname: data.surname || null,
         country_id: data.country_id,
-        birth_date: data.birth_date || null,
+        birth_date: data.birth_date
+          ? dayjs(data.birth_date).format('YYYY-MM-DD')
+          : null,
       };
 
       await updateUser(formattedData).unwrap();
+      notifications.show({
+        title: 'Успешно',
+        message: 'Профиль обновлён',
+        color: 'green',
+      });
       navigate('/');
     } catch (err) {
-      console.error('Ошибка обновления профиля:', err);
+      notifications.show({
+        title: 'Ошибка',
+        message: 'Не удалось обновить профиль',
+        color: 'red',
+      });
     }
   };
 
@@ -101,24 +114,20 @@ export const SettingsPage = () => {
 
           <form onSubmit={handleSubmit(onSubmit)}>
             <Stack>
-              <TextInput
+<TextInput
                 label="Username"
                 placeholder="Введите username"
-                {...register('login', { required: 'Введите username' })}
-                error={errors.login?.message}
+                {...register('login')}
+                disabled
+                readOnly
               />
 
               <TextInput
                 label="Email"
                 placeholder="Введите ваш email"
-                {...register('email', {
-                  required: 'Введите email',
-                  pattern: {
-                    value: /^\S+@\S+$/i,
-                    message: 'Некорректный email',
-                  },
-                })}
-                error={errors.email?.message}
+                {...register('email')}
+                disabled
+                readOnly
               />
 
               <TextInput
@@ -133,10 +142,13 @@ export const SettingsPage = () => {
                 {...register('surname')}
               />
 
-              <TextInput
+              <CustomDatePickerInput
                 label="Дата рождения"
-                placeholder="ГГГГ-ММ-ДД"
-                {...register('birth_date')}
+                onChange={(value) => setValue('birth_date', value)}
+                value={watch('birth_date')}
+                clearable
+                maxDate={new Date()}
+                defaultLevel="decade"
               />
 
               <Select
@@ -145,9 +157,8 @@ export const SettingsPage = () => {
                 data={countryOptions}
                 searchable
                 clearable
-                {...register('country_id')}
                 onChange={(value) => setValue('country_id', value)}
-                value={user?.countryId || null}
+                value={watch('country_id')}
               />
 
               <Group justify="flex-end" mt="md">

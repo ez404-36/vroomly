@@ -85,8 +85,8 @@ export const VehicleForm = ({ onSuccess }: VehicleFormProps) => {
             data={brandOptions}
             searchable
             clearable
-            {...register('brand_id')}
             onChange={(value) => setValue('brand_id', value || undefined)}
+            value={selectedBrand || undefined}
             error={errors.brand_id?.message}
           />
 
@@ -97,8 +97,8 @@ export const VehicleForm = ({ onSuccess }: VehicleFormProps) => {
             searchable
             clearable
             disabled={!selectedBrand}
-            {...register('series_id')}
             onChange={(value) => setValue('series_id', value || undefined)}
+            value={selectedSeries || undefined}
             error={errors.series_id?.message}
           />
 

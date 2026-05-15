@@ -15,11 +15,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "-": "^0.0.1",
-    "@mantine/core": "^8.3.2",
-    "@mantine/hooks": "^8.3.2",
-    "@mantine/notifications": "^8.3.2",
+    "@mantine/core": "^8.3.18",
+    "@mantine/dates": "^8.3.18",
+    "@mantine/hooks": "^8.3.18",
+    "@mantine/notifications": "^8.3.18",
     "@reduxjs/toolkit": "^2.9.0",
+    "dayjs": "^1.11.13",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-hook-form": "^7.66.0",

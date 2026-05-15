@@ -2,3 +2,22 @@
   --header-height: 64px;
   --sidebar-width: 280px;
 }
+
+.datepicker-fixed {
+  --calendar-width: 280px;
+}
+
+.mantine-DatePickerInput-levelsGroup {
+  width: var(--calendar-width);
+  height: 300px !important;
+}
+
+.datepicker-fixed .mantine-DatePickerInput-calendar {
+  width: var(--calendar-width);
+  height: 100%;
+}
+
+.datepicker-fixed .mantine-DatePickerInput-day {
+  width: 32px;
+  height: 32px;
+}

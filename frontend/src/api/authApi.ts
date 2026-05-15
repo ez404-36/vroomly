@@ -1,5 +1,6 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi } from '@reduxjs/toolkit/query/react';
 import type { CurrentUser } from '../types/schemas';
+import { createBaseQuery } from './baseQuery';
 
 const formDataBody = (data: Record<string, unknown>) =>
   Object.entries(data)
@@ -9,22 +10,9 @@ const formDataBody = (data: Record<string, unknown>) =>
     )
     .join('&');
 
-const baseQuery = fetchBaseQuery({
-  baseUrl: 'http://localhost:8077/api/accounts/',
-  credentials: 'include',
-  prepareHeaders: (headers) => {
-    const token = localStorage.getItem('access_token');
-    if (token) {
-      headers.set('Authorization', `Bearer ${token}`);
-    }
-    headers.set('Accept', 'application/json');
-    return headers;
-  },
-});
-
 export const authApi = createApi({
   reducerPath: 'authApi',
-  baseQuery: baseQuery,
+  baseQuery: createBaseQuery('accounts/'),
   endpoints: (builder) => ({
     login: builder.mutation({
       query: (body) => ({
@@ -65,6 +53,13 @@ export const authApi = createApi({
         },
       }),
     }),
+
+    logout: builder.mutation<void, void>({
+      query: () => ({
+        url: 'logout',
+        method: 'POST',
+      }),
+    }),
   }),
 });
 
@@ -73,4 +68,5 @@ export const {
   useRegisterMutation,
   useGetCurrentUserQuery,
   useUpdateCurrentUserMutation,
+  useLogoutMutation,
 } = authApi;

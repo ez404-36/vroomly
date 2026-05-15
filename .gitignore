@@ -3,6 +3,7 @@
 TODO.md
 .env
 .cache
+.git
 .vscode/*
 !.vscode/extensions.json
 .DS_Store

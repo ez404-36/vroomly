@@ -33,16 +33,48 @@ async def lifespan(_app: FastAPI):
 
 app = FastAPI(lifespan=lifespan)
 
-allowed_origins = [
-    'http://localhost:8077',
-    'http://localhost:5173',
-]
+def _get_allowed_origins() -> list[str]:
+    """Get allowed origins for development. Allows all localhost variants."""
+    import socket
+
+    def resolve_host_ip() -> str:
+        try:
+            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            s.connect(("8.8.8.8", 80))
+            host_ip = s.getsockname()[0]
+            s.close()
+            return host_ip
+        except Exception:
+            return "172.17.0.1"
+
+    host_ip = resolve_host_ip()
+
+    return [
+        "http://localhost:8077",
+        "http://127.0.0.1:8077",
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        f"http://{host_ip}:8077",
+        f"http://{host_ip}:5173",
+        "http://host.docker.internal:8077",
+        "http://host.docker.internal:5173",
+    ]
+
+
+allowed_origins: list[str] = _get_allowed_origins()
+
+CORS_EXEMPT_PATHS = {"/docs", "/openapi.json", "/redoc", "/swagger"}
+
 
 @app.middleware("http")
 async def strict_cors_blocker(request: Request, call_next):
     """
     Без этого слоя код эндпоинта будет выполнен, несмотря на ошибку CORS
     """
+    # Swagger/OpenAPI endpoints always allowed
+    if request.url.path in CORS_EXEMPT_PATHS or request.url.path.startswith("/docs/"):
+        return await call_next(request)
+
     if request.method == "OPTIONS":
         return await call_next(request)
 

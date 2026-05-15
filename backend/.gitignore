@@ -1,5 +1,4 @@
 __pycache__
-.git
 .mypy_cache
 .pytest_cache
 .pytype
@@ -8,3 +7,4 @@ __pycache__
 src/*.py
 
 libs
+.venv/
