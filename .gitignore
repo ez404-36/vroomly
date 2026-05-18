@@ -15,4 +15,8 @@ TODO.md
 
 # Logs
 logs
+tasks
 *.log
+
+# Generated types (from OpenAPI)
+frontend/src/types/schemas.ts

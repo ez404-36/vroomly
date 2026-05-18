@@ -31,7 +31,7 @@ tests:
 	docker compose up -d tests
 
 codegen:
-	docker compose up -d codegen
+	docker compose run --rm codegen
 
 recreate-db:
 	docker exec -it vroomly-db-1 bash -c "psql -U postgres -f /app/scripts/recreate_db.sql"

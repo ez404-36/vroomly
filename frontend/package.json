@@ -12,6 +12,7 @@
     "format": "prettier . --write",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:fix-all": "npm run lint:js:fix && npm run lint:css:fix && npm run format",
+    "codegen:openapi": "openapi-typescript ${BACKEND_URL}/openapi.json --output src/types/schemas.ts",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -42,6 +43,7 @@
     "eslint-plugin-react-hooks": "^7.0.0",
     "globals": "^16.4.0",
     "jiti": "^2.6.0",
+    "openapi-typescript": "^7.13.0",
     "prettier": "^3.7.4",
     "stylelint": "^16.25.0",
     "stylelint-config-standard": "^39.0.1",

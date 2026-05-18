@@ -1,50 +1,26 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { createBaseQuery } from './baseQuery';
+import type {
+  CarInfoByVinDataSchema,
+  ChoiceFieldSchema,
+  ChoiceFieldWithParentSchema,
+  CreateUserVehicleByChoiceSchema,
+  CreateUserVehicleByVinSchema,
+  CreateUserVehicleManualSchema,
+  UserVehicleDetailSchema,
+  UserVehicleWithChoicesSchema,
+  VehicleBrandDetailSchema,
+  VehicleSeriesListSchema,
+} from '../types/schemas';
 
 // Types for UserVehicle API
-export interface CreateUserVehicleByVinDTO {
-  vin: string;
-}
+export type CreateUserVehicleByVinDTO = CreateUserVehicleByVinSchema;
 
-export interface CreateUserVehicleByChoiceDTO {
-  brand_id: string;
-  series_id: string;
-  generation_id: string;
-  trim_id?: string;
-}
+export type CreateUserVehicleByChoiceDTO = CreateUserVehicleByChoiceSchema;
 
-export interface CreateUserVehicleManualDTO {
-  brand_id?: string;
-  series_id?: string;
-  generation_id?: string;
-  trim_id?: string;
-  production_year?: number;
-  color?: string;
-}
+export type CreateUserVehicleManualDTO = CreateUserVehicleManualSchema;
 
-export interface UserVehicleDetailSchema {
-  id: string;
-  vehicle_id: string | null;
-  user_id: string;
-  mileage: number | null;
-  is_mileage_in_miles: boolean;
-  avg_fuel_consumption: number | null;
-  brand: string | null;
-  series: string | null;
-  generation: string | null;
-  trim: string | null;
-  production_year: number | null;
-  color: string | null;
-}
-
-export interface ChoiceFieldSchema {
-  id: string;
-  name: string;
-}
-
-export interface ChoiceFieldWithParentSchema extends ChoiceFieldSchema {
-  parent: ChoiceFieldSchema;
-}
+export type { ChoiceFieldSchema, ChoiceFieldWithParentSchema, UserVehicleChoiceSchema } from '../types/schemas';
 
 export interface UserVehicleChoiceSchema {
   brand: ChoiceFieldSchema;
@@ -52,6 +28,8 @@ export interface UserVehicleChoiceSchema {
   generation: ChoiceFieldSchema[];
   configuration: ChoiceFieldWithParentSchema[];
 }
+
+export { UserVehicleDetailSchema } from '../types/schemas';
 
 export interface UserVehicleWithChoicesSchema {
   choices: UserVehicleChoiceSchema[];
@@ -130,33 +108,7 @@ export const vehiclesApi = createApi({
   }),
 });
 
-export interface CarInfoByVinDataSchema {
-  model: string;
-  year: number;
-  frame: string | null;
-  vin: string;
-  carplate: string;
-  color: string;
-  type: string;
-  volume: number;
-  power: number;
-  frame_id: number;
-  vehicle_type: string;
-}
-
-export interface VehicleBrandDetailSchema {
-  id: string;
-  countryId: string;
-  code: string;
-  name: string;
-  originalName: string | null;
-}
-
-export interface VehicleSeriesListSchema {
-  id: string;
-  name: string;
-  brandId: string;
-}
+export { UserVehicleWithChoicesSchema } from '../types/schemas';
 
 export const {
   useLookupByVinQuery,

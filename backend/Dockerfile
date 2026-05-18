@@ -53,20 +53,3 @@ RUN --mount=type=bind,source=uv.lock,target=uv.lock \
       --no-install-project
 
 USER vroomly
-
-
-FROM backend-base as codegen
-
-USER root
-
-# Обновляем пакеты и ставим Node.js + npm
-RUN apt-get update && apt-get install -y \
-    curl \
-    && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
-    && apt-get install -y nodejs \
-    && npm install -g json-schema-to-typescript \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
-
-USER vroomly

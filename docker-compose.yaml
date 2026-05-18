@@ -63,17 +63,11 @@ services:
       - &app-backend ./backend:/app:rw
     ports:
       - ${EXPOSE_BACKEND_PORT:-8000}:${BACKEND_PORT:-8000}
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     depends_on:
       - db
       - libretranslate
     restart: unless-stopped
     working_dir: /app
-    profiles: [ vr-backend ]
-    networks:
-      default:
-        aliases: [ vroomly-backend ]
     deploy:
       resources:
         limits:
@@ -82,28 +76,27 @@ services:
 
   backend:
     <<: *backend-build
+    networks:
+      default:
+        aliases: [ vroomly-backend ]
     command: python main.py
-    profiles: [ vr-frontend ]
 
   codegen:
     build:
-      context: ./backend
-      target: codegen
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: builder
       args:
         - UID=${UID:-1000}
         - GID=${GID:-1000}
     env_file: .env
-    restart: no
     volumes:
-      - *app-backend
-      - ./frontend/src:/frontend/src:rw
-    command: sleep infinity
-    profiles: [ vr-frontend, vr-backend ]
-    deploy:
-      resources:
-        limits:
-          cpus: "2"
-          memory: 1G
+      - ./frontend:/app:rw
+    command: npm run codegen:openapi
+    profiles: [ vr-backend, vr-frontend ]
+    working_dir: /app
+    depends_on:
+      - backend
 
   migrations:
     build: *backend-build-context
@@ -159,3 +152,5 @@ services:
       default:
         aliases: [ $LIBRETRANSLATE_HOST ]
     restart: on-failure
+    profiles: [ vr-backend, vr-frontend ]
+
