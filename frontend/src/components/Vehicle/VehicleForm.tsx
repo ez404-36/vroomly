@@ -1,8 +1,10 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import {
   TextInput,
   NumberInput,
   Select,
+  Switch,
   Button,
   Stack,
   Paper,
@@ -12,14 +14,20 @@ import {
   useCreateUserVehicleManualMutation,
   useGetVehicleBrandsQuery,
   useGetVehicleSeriesQuery,
+  useGetVehicleGenerationsQuery,
+  useGetVehicleTrimsQuery,
 } from '../../api/vehiclesApi';
 
 export interface VehicleFormData {
   brand_id?: string;
   series_id?: string;
   generation_id?: string;
+  trim_id?: string;
   production_year?: number;
   color?: string;
+  mileage?: number;
+  avg_fuel_consumption?: number;
+  is_mileage_in_miles?: boolean;
 }
 
 export interface VehicleFormProps {
@@ -30,26 +38,72 @@ export const VehicleForm = ({ onSuccess }: VehicleFormProps) => {
   const [createVehicle, { isLoading, error }] =
     useCreateUserVehicleManualMutation();
   const { data: brands } = useGetVehicleBrandsQuery();
-  const { data: series } = useGetVehicleSeriesQuery;
 
   const {
     register,
     handleSubmit,
     watch,
     setValue,
+    reset,
     formState: { errors },
   } = useForm<VehicleFormData>({
     defaultValues: {
       brand_id: '',
       series_id: '',
+      generation_id: '',
+      trim_id: '',
       production_year: undefined,
       color: '',
+      mileage: undefined,
+      avg_fuel_consumption: undefined,
+      is_mileage_in_miles: false,
     },
     mode: 'onChange',
   });
 
   const selectedBrand = watch('brand_id');
   const selectedSeries = watch('series_id');
+  const selectedGeneration = watch('generation_id');
+  const isMileageInMiles = watch('is_mileage_in_miles');
+
+  const { data: series, isLoading: isSeriesLoading } = useGetVehicleSeriesQuery(
+    selectedBrand || '',
+    { skip: !selectedBrand }
+  );
+
+  const { data: generations, isLoading: isGenerationsLoading } =
+    useGetVehicleGenerationsQuery(selectedSeries || '', {
+      skip: !selectedSeries,
+    });
+
+  const { data: trims, isLoading: isTrimsLoading } = useGetVehicleTrimsQuery(
+    selectedGeneration || '',
+    { skip: !selectedGeneration }
+  );
+
+  // Cascade reset when brand changes
+  useEffect(() => {
+    if (!selectedBrand) {
+      setValue('series_id', '', { shouldValidate: false });
+      setValue('generation_id', '', { shouldValidate: false });
+      setValue('trim_id', '', { shouldValidate: false });
+    }
+  }, [selectedBrand, setValue]);
+
+  // Cascade reset when series changes
+  useEffect(() => {
+    if (!selectedSeries) {
+      setValue('generation_id', '', { shouldValidate: false });
+      setValue('trim_id', '', { shouldValidate: false });
+    }
+  }, [selectedSeries, setValue]);
+
+  // Cascade reset when generation changes
+  useEffect(() => {
+    if (!selectedGeneration) {
+      setValue('trim_id', '', { shouldValidate: false });
+    }
+  }, [selectedGeneration, setValue]);
 
   const brandOptions =
     brands?.map((brand) => ({
@@ -63,11 +117,26 @@ export const VehicleForm = ({ onSuccess }: VehicleFormProps) => {
       label: s.name,
     })) || [];
 
+  const generationOptions =
+    generations?.map((g) => ({
+      value: g.id,
+      label: g.name,
+    })) || [];
+
+  const trimOptions =
+    trims?.map((t) => ({
+      value: t.id,
+      label: t.name,
+    })) || [];
+
   const onSubmit = async (data: VehicleFormData) => {
     try {
       await createVehicle({
         ...data,
         production_year: data.production_year,
+        mileage: data.mileage,
+        avg_fuel_consumption: data.avg_fuel_consumption,
+        is_mileage_in_miles: data.is_mileage_in_miles,
       }).unwrap();
       onSuccess?.();
     } catch (err) {
@@ -81,25 +150,55 @@ export const VehicleForm = ({ onSuccess }: VehicleFormProps) => {
         <Stack>
           <Select
             label="Марка"
+            required
             placeholder="Выберите марку автомобиля"
             data={brandOptions}
             searchable
             clearable
-            onChange={(value) => setValue('brand_id', value || undefined)}
-            value={selectedBrand || undefined}
+            onChange={(value) => setValue('brand_id', value || '')}
+            value={selectedBrand || ''}
             error={errors.brand_id?.message}
           />
 
           <Select
+            key={`series-${selectedBrand}`}
             label="Модель"
+            required
             placeholder="Выберите модель"
             data={seriesOptions}
             searchable
             clearable
-            disabled={!selectedBrand}
-            onChange={(value) => setValue('series_id', value || undefined)}
-            value={selectedSeries || undefined}
+            disabled={!selectedBrand || isSeriesLoading}
+            onChange={(value) => setValue('series_id', value || '')}
+            value={selectedSeries || ''}
             error={errors.series_id?.message}
+          />
+
+          <Select
+            key={`generation-${selectedSeries}`}
+            label="Поколение"
+            required
+            placeholder="Выберите поколение"
+            data={generationOptions}
+            searchable
+            clearable
+            disabled={!selectedSeries || isGenerationsLoading}
+            onChange={(value) => setValue('generation_id', value || '')}
+            value={selectedGeneration || ''}
+            error={errors.generation_id?.message}
+          />
+
+          <Select
+            key={`trim-${selectedGeneration}`}
+            label="Комплектация"
+            placeholder="Выберите комплектацию (опционально)"
+            data={trimOptions}
+            searchable
+            clearable
+            disabled={!selectedGeneration || isTrimsLoading}
+            onChange={(value) => setValue('trim_id', value || '')}
+            value={watch('trim_id') || ''}
+            error={errors.trim_id?.message}
           />
 
           <NumberInput
@@ -119,13 +218,44 @@ export const VehicleForm = ({ onSuccess }: VehicleFormProps) => {
             {...register('color')}
           />
 
+          <NumberInput
+            label="Пробег"
+            placeholder="0"
+            min={0}
+            {...register('mileage', {
+              setValueAs: (value) => (value ? Number(value) : undefined),
+            })}
+            error={errors.mileage?.message}
+          />
+
+          <Switch
+            label="Пробег в милях"
+            {...register('is_mileage_in_miles')}
+            checked={isMileageInMiles}
+          />
+
+          <NumberInput
+            label="Средний расход топлива"
+            placeholder="0.0"
+            min={0}
+            decimalScale={1}
+            {...register('avg_fuel_consumption', {
+              setValueAs: (value) => (value ? Number(value) : undefined),
+            })}
+            error={errors.avg_fuel_consumption?.message}
+          />
+
           {error && (
             <Text c="red" size="sm">
               {JSON.stringify(error)}
             </Text>
           )}
 
-          <Button type="submit" loading={isLoading}>
+          <Button
+            type="submit"
+            loading={isLoading}
+            disabled={!selectedBrand || !selectedSeries || !selectedGeneration}
+          >
             Сохранить
           </Button>
         </Stack>

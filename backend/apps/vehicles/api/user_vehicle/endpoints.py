@@ -134,6 +134,10 @@ class UserVehicleAPI(BaseAPI):
 		user_vehicle = await self._create_user_vehicle(
 			user_id=str(self.user.id),
 			generation_id=data.generation_id,
+			trim_id=data.trim_id,
+			mileage=data.mileage,
+			is_mileage_in_miles=data.is_mileage_in_miles,
+			avg_fuel_consumption=data.avg_fuel_consumption,
 		)
 
 		return UserVehicleDetailSchema(
@@ -155,6 +159,10 @@ class UserVehicleAPI(BaseAPI):
 	async def _create_user_vehicle(
 		user_id: str,
 		generation_id: str | None = None,
+		trim_id: str | None = None,
+		mileage: int | None = None,
+		is_mileage_in_miles: bool = False,
+		avg_fuel_consumption: float | None = None,
 	) -> UserVehicle:
 		"""
 		Создать запись UserVehicle в БД.
@@ -163,10 +171,10 @@ class UserVehicleAPI(BaseAPI):
 			user_id=UUID(user_id),
 			vehicle_id=None,
 			generation_id=UUID(generation_id) if generation_id else None,
-			trim_id=None,
-			mileage=None,
-			is_mileage_in_miles=False,
-			avg_fuel_consumption=None,
+			trim_id=UUID(trim_id) if trim_id else None,
+			mileage=mileage,
+			is_mileage_in_miles=is_mileage_in_miles,
+			avg_fuel_consumption=avg_fuel_consumption,
 		)
 		async with database.get_async_session() as session:
 			session.add(user_vehicle)

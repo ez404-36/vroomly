@@ -27,6 +27,9 @@ class CreateUserVehicleManualSchema(BaseModel):
 	trim_id: str | None = Field(default=None, description='ID комплектации')
 	production_year: int | None = Field(default=None, ge=1900, le=2100, description='Год выпуска')
 	color: str | None = Field(default=None, description='Цвет')
+	mileage: int | None = Field(default=None, ge=0, description='Пробег')
+	is_mileage_in_miles: bool = Field(default=False, description='Пробег в милях')
+	avg_fuel_consumption: float | None = Field(default=None, ge=0, description='Средний расход топлива')
 
 
 class UserVehicleChoiceSchema(BaseModel):

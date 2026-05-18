@@ -11,6 +11,8 @@ import type {
   UserVehicleWithChoicesSchema,
   VehicleBrandDetailSchema,
   VehicleSeriesListSchema,
+  VehicleGenerationListSchema,
+  VehicleTrimListSchema,
 } from '../types/schemas';
 
 // Types for UserVehicle API
@@ -85,7 +87,17 @@ export const vehiclesApi = createApi({
 
     // Get list of vehicle series by brand ID
     getVehicleSeries: builder.query<VehicleSeriesListSchema[], string>({
-      query: (brandId) => `series/?brand_id=${brandId}`,
+      query: (brandId) => `series/?brand=${brandId}`,
+    }),
+
+    // Get list of vehicle generations by series ID
+    getVehicleGenerations: builder.query<VehicleGenerationListSchema[], string>({
+      query: (seriesId) => `generation/?series=${seriesId}`,
+    }),
+
+    // Get list of vehicle trims by generation ID
+    getVehicleTrims: builder.query<VehicleTrimListSchema[], string>({
+      query: (generationId) => `trim/?generation=${generationId}`,
     }),
 
     // Get user's vehicles list
@@ -110,6 +122,8 @@ export const {
   useCreateUserVehicleManualMutation,
   useGetVehicleBrandsQuery,
   useGetVehicleSeriesQuery,
+  useGetVehicleGenerationsQuery,
+  useGetVehicleTrimsQuery,
   useGetUserVehiclesQuery,
   useDeleteUserVehicleMutation,
 } = vehiclesApi;
