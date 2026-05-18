@@ -11,7 +11,11 @@ from core.models import AutoSchemaBase
 from core.safety.token import ACCESS_TOKEN_EXPIRE_MINUTES
 
 
-class UserSession(AutoSchemaBase, TimestampedModelMixin, get_user_link_mixin(back_populates=None, nullable=False)):
+class UserSession(
+	AutoSchemaBase,
+	TimestampedModelMixin,
+	get_user_link_mixin(back_populates=None, nullable=False),
+):
 	"""
 	Сессия пользователя
 	"""
