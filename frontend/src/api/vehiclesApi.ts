@@ -20,22 +20,17 @@ export type CreateUserVehicleByChoiceDTO = CreateUserVehicleByChoiceSchema;
 
 export type CreateUserVehicleManualDTO = CreateUserVehicleManualSchema;
 
-export type { ChoiceFieldSchema, ChoiceFieldWithParentSchema, UserVehicleChoiceSchema } from '../types/schemas';
+export type {
+  ChoiceFieldSchema,
+  ChoiceFieldWithParentSchema,
+} from '../types/schemas';
 
+// UserVehicleChoiceSchema is defined inline as it's used in UserVehicleWithChoicesSchema
 export interface UserVehicleChoiceSchema {
   brand: ChoiceFieldSchema;
   model: ChoiceFieldSchema;
   generation: ChoiceFieldSchema[];
   configuration: ChoiceFieldWithParentSchema[];
-}
-
-export { UserVehicleDetailSchema } from '../types/schemas';
-
-export interface UserVehicleWithChoicesSchema {
-  choices: UserVehicleChoiceSchema[];
-  vin: string;
-  year: number;
-  color: string | null;
 }
 
 export const vehiclesApi = createApi({
@@ -107,8 +102,6 @@ export const vehiclesApi = createApi({
     }),
   }),
 });
-
-export { UserVehicleWithChoicesSchema } from '../types/schemas';
 
 export const {
   useLookupByVinQuery,

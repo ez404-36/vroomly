@@ -56,11 +56,7 @@ export const RegistrationPage = () => {
   return (
     <Container size={1200} py={80}>
       <Group grow gap="xl" align="stretch">
-        <Paper
-          p="xl"
-          radius="md"
-          style={{ flex: 1 }}
-        >
+        <Paper p="xl" radius="md" style={{ flex: 1 }}>
           <Stack>
             <Title order={2}>Регистрация</Title>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -76,7 +72,10 @@ export const RegistrationPage = () => {
                   placeholder="Введите ваш email"
                   {...register('email', {
                     required: 'Введите email',
-                    pattern: { value: /^\S+@\S+$/i, message: 'Некорректный email' },
+                    pattern: {
+                      value: /^\S+@\S+$/i,
+                      message: 'Некорректный email',
+                    },
                   })}
                   error={errors.email?.message}
                 />

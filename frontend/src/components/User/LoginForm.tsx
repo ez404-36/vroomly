@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { useLoginMutation } from '../../api/authApi';
 
 // Интерфейс для формы логина
-export interface LoginDataForm {
-  username: string; // здесь вводится login ИЛИ email
+interface LoginDataForm {
+  username: string;
   password: string;
 }
 

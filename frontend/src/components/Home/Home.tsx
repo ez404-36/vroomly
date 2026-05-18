@@ -3,7 +3,6 @@ import Sidebar from '../Sidebar/Sidebar';
 import MainContent from '../MainContent/MainContent';
 
 const Home = () => {
-
   return (
     <>
       <Title order={1} ta="center">

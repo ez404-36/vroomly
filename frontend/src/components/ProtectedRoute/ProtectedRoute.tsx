@@ -7,17 +7,21 @@ import { type RootState } from '../../store/store';
 import { routes } from '../../utils/routes';
 
 interface ProtectedRouteProps {
-	children: ReactNode;
+  children: ReactNode;
 }
 
-const ProtectedRoute = ({ children }: ProtectedRouteProps): React.ReactElement => {
-	const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
+const ProtectedRoute = ({
+  children,
+}: ProtectedRouteProps): React.ReactElement => {
+  const isAuthenticated = useSelector(
+    (state: RootState) => state.auth.isAuthenticated,
+  );
 
-	if (!isAuthenticated) {
-		return <Navigate to={routes.login} replace />;
-	}
+  if (!isAuthenticated) {
+    return <Navigate to={routes.login} replace />;
+  }
 
-	return <>{children}</>;
+  return <>{children}</>;
 };
 
 export default ProtectedRoute;

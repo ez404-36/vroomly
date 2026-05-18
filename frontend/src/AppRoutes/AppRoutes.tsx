@@ -13,16 +13,16 @@ import { SettingsPage } from '../pages/SettingsPage';
 import GaragePage from '../pages/GaragePage';
 
 const AppRoutes = (): React.ReactElement => {
-	return (
-		<Routes>
-			<Route
-				index
-				element={
-					<ProtectedRoute>
-						<Home />
-					</ProtectedRoute>
-				}
-			/>
+  return (
+    <Routes>
+      <Route
+        index
+        element={
+          <ProtectedRoute>
+            <Home />
+          </ProtectedRoute>
+        }
+      />
       <Route path={routes.garage} element={<GaragePage />} />
       <Route path={routes.userprofile} element={<UserProfile />} />
       <Route path={routes.registration} element={<RegistrationPage />} />

@@ -14,7 +14,9 @@ const navItems = [
 
 const Sidebar = () => {
   const location = useLocation();
-  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
+  const isAuthenticated = useSelector(
+    (state: RootState) => state.auth.isAuthenticated,
+  );
 
   if (!isAuthenticated) {
     return null;

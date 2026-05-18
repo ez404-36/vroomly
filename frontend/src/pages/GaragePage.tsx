@@ -15,16 +15,23 @@ import {
 import { useDisclosure } from '@mantine/hooks';
 import { Link, useNavigate } from 'react-router-dom';
 import { routes } from '../utils/routes';
-import { useGetUserVehiclesQuery, useDeleteUserVehicleMutation } from '../api/vehiclesApi';
-import { UserVehicleDetailSchema } from '../types/vehicleSchemas';
+import {
+  useGetUserVehiclesQuery,
+  useDeleteUserVehicleMutation,
+  UserVehicleDetailSchema,
+} from '../api/vehiclesApi';
 import classes from '../styles/pages/Garage.module.css';
 
 const GaragePage = () => {
   const navigate = useNavigate();
   const { data: vehicles, isLoading, error } = useGetUserVehiclesQuery();
   const [deleteVehicle] = useDeleteUserVehicleMutation();
-  const [deleteModalOpened, { open: openDeleteModal, close: closeDeleteModal }] = useDisclosure(false);
-  const [vehicleToDelete, setVehicleToDelete] = useState<UserVehicleDetailSchema | null>(null);
+  const [
+    deleteModalOpened,
+    { open: openDeleteModal, close: closeDeleteModal },
+  ] = useDisclosure(false);
+  const [vehicleToDelete, setVehicleToDelete] =
+    useState<UserVehicleDetailSchema | null>(null);
 
   const handleDeleteClick = (vehicle: UserVehicleDetailSchema) => {
     setVehicleToDelete(vehicle);
@@ -66,7 +73,11 @@ const GaragePage = () => {
                 : 'Добавьте свой первый автомобиль'}
             </Text>
           </Stack>
-          <Button component={Link} to={routes.addVehicle} className={classes.addButton}>
+          <Button
+            component={Link}
+            to={routes.addVehicle}
+            className={classes.addButton}
+          >
             + Добавить ТС
           </Button>
         </Group>
@@ -113,10 +124,16 @@ const GaragePage = () => {
                 В гараже пока пусто
               </Text>
               <Text size="sm" c="dimmed" ta="center">
-                Добавьте свой первый автомобиль, чтобы отслеживать его обслуживание и расходы
+                Добавьте свой первый автомобиль, чтобы отслеживать его
+                обслуживание и расходы
               </Text>
             </Stack>
-            <Button component={Link} to={routes.addVehicle} size="md" className={classes.addButton}>
+            <Button
+              component={Link}
+              to={routes.addVehicle}
+              size="md"
+              className={classes.addButton}
+            >
               + Добавить автомобиль
             </Button>
           </Stack>
@@ -181,7 +198,9 @@ const GaragePage = () => {
                     variant="subtle"
                     size="xs"
                     className={classes.editButton}
-                    onClick={() => navigate(`${routes.garage}/edit/${vehicle.id}`)}
+                    onClick={() =>
+                      navigate(`${routes.garage}/edit/${vehicle.id}`)
+                    }
                   >
                     Редактировать
                   </Button>
@@ -208,10 +227,13 @@ const GaragePage = () => {
       >
         <Stack gap="md">
           <Text>
-            Вы уверены, что хотите удалить {vehicleToDelete && getVehicleDisplayName(vehicleToDelete)} из гаража?
+            Вы уверены, что хотите удалить{' '}
+            {vehicleToDelete && getVehicleDisplayName(vehicleToDelete)} из
+            гаража?
           </Text>
           <Text size="sm" c="dimmed">
-            Это действие нельзя отменить. Все данные об автомобиле будут удалены.
+            Это действие нельзя отменить. Все данные об автомобиле будут
+            удалены.
           </Text>
           <Group justify="flex-end" gap="sm">
             <Button variant="subtle" onClick={closeDeleteModal}>

@@ -68,11 +68,7 @@ export const LoginPage = () => {
           </Stack>
         </Paper>
 
-        <Paper
-          p="xl"
-          radius="md"
-          style={{ flex: 1 }}
-        >
+        <Paper p="xl" radius="md" style={{ flex: 1 }}>
           <Stack>
             <Title order={2}>Вход</Title>
             <form onSubmit={handleSubmit(onSubmit)}>

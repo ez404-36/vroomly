@@ -13,7 +13,10 @@ import { notifications } from '@mantine/notifications';
 import dayjs from 'dayjs';
 import { CustomDatePickerInput } from '../components/Common/CustomDatePickerInput';
 import { useForm } from 'react-hook-form';
-import { useGetCurrentUserQuery, useUpdateCurrentUserMutation } from '../api/authApi';
+import {
+  useGetCurrentUserQuery,
+  useUpdateCurrentUserMutation,
+} from '../api/authApi';
 import { useGetCountriesQuery } from '../api/geoApi';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -30,15 +33,16 @@ interface ProfileFormData {
 export const SettingsPage = () => {
   const navigate = useNavigate();
   const { data: user, isLoading: isLoadingUser } = useGetCurrentUserQuery();
-  const { data: countries, isLoading: isLoadingCountries } = useGetCountriesQuery();
-  const [updateUser, { isLoading: isUpdating }] = useUpdateCurrentUserMutation();
+  const { data: countries, isLoading: isLoadingCountries } =
+    useGetCountriesQuery();
+  const [updateUser, { isLoading: isUpdating }] =
+    useUpdateCurrentUserMutation();
 
   const {
     register,
     handleSubmit,
     watch,
     setValue,
-    formState: { errors },
   } = useForm<ProfileFormData>({
     defaultValues: {
       login: '',
@@ -81,7 +85,7 @@ export const SettingsPage = () => {
         color: 'green',
       });
       navigate('/');
-    } catch (err) {
+    } catch {
       notifications.show({
         title: 'Ошибка',
         message: 'Не удалось обновить профиль',
@@ -114,7 +118,7 @@ export const SettingsPage = () => {
 
           <form onSubmit={handleSubmit(onSubmit)}>
             <Stack>
-<TextInput
+              <TextInput
                 label="Username"
                 placeholder="Введите username"
                 {...register('login')}

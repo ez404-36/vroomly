@@ -11,7 +11,9 @@
   font-weight: 500;
   font-size: 14px;
   padding: 10px 12px;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
 }
 
 .navLink:hover {

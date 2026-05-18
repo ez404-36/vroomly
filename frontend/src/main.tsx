@@ -24,9 +24,9 @@ createRoot(document.getElementById('root')!).render(
         <>
           <ColorSchemeScript defaultColorScheme="dark" />
           <MantineProvider theme={theme} cssVariablesResolver={resolver}>
-              <Notifications />
-              <App />
-            </MantineProvider>
+            <Notifications />
+            <App />
+          </MantineProvider>
         </>
       </BrowserRouter>
     </StrictMode>
