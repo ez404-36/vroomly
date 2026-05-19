@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
-import { TextInput, PasswordInput, Button, Flex, Text } from '@mantine/core';
+import { Button, Flex, Text } from '../../ui';
+import { TextInput as MantineTextInput, PasswordInput as MantinePasswordInput } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 import { useLoginMutation } from '../../api/authApi';
 
@@ -42,7 +43,7 @@ export const LoginForm = () => {
       onSubmit={handleSubmit(onSubmit)}
       style={{ maxWidth: 400, margin: '0 auto' }}
     >
-      <TextInput
+      <MantineTextInput
         label="Логин или Email"
         placeholder="Введите логин или email"
         {...register('username', {
@@ -52,7 +53,7 @@ export const LoginForm = () => {
         mt="sm"
       />
 
-      <PasswordInput
+      <MantinePasswordInput
         label="Пароль"
         placeholder="Введите пароль"
         {...register('password', {
@@ -67,7 +68,7 @@ export const LoginForm = () => {
       />
 
       {error && (
-        <Text c="red" mt="xs">
+        <Text color="red" mt="xs">
           {JSON.stringify(error, null, 2)}
         </Text>
       )}

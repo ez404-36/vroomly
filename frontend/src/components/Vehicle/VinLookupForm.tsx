@@ -1,14 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import {
-  TextInput,
-  Button,
-  Text,
-  Paper,
-  Stack,
-  Alert,
-  LoadingOverlay,
-} from '@mantine/core';
+import { Button, Paper, Stack, Text } from '../../ui';
+import { TextInput as MantineTextInput, Alert, LoadingOverlay } from '@mantine/core';
 import {
   useCreateUserVehicleByVinMutation,
   UserVehicleDetailSchema,
@@ -63,12 +56,12 @@ export const VinLookupForm = ({
   const isResultWithChoices = result && 'choices' in result;
 
   return (
-    <Paper withBorder p="md" pos="relative">
+    <Paper withBorder p="md" style={{ position: 'relative' }}>
       <LoadingOverlay visible={isLoading} />
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <Stack>
-          <TextInput
+          <MantineTextInput
             label="VIN-номер"
             placeholder="Введите 17-значный VIN-номер"
             description="Идентификационный номер транспортного средства"
@@ -100,7 +93,7 @@ export const VinLookupForm = ({
             </strong>
             {result.generation && ` ${result.generation}`}
           </Text>
-          <Text size="sm" c="dimmed">
+          <Text size="sm" color="dimmed">
             Год выпуска: {result.production_year || 'не указан'} | Цвет:{' '}
             {result.color || 'не указан'}
           </Text>

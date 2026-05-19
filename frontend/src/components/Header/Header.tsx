@@ -1,13 +1,13 @@
+import { Link, useNavigate } from 'react-router-dom';
 import {
   Button,
   Container,
-  Group,
+  Flex,
   Title,
   ActionIcon,
   Indicator,
   Tooltip,
-} from '@mantine/core';
-import { Link, useNavigate } from 'react-router-dom';
+} from '../../ui';
 import { useMantineColorScheme } from '@mantine/core';
 import { routes } from '../../utils/routes';
 import classes from '../../styles/pages/Header.module.css';
@@ -53,7 +53,7 @@ const Header = () => {
         <Link to={routes.home} style={{ textDecoration: 'none' }}>
           <Title order={4}>Vroomly</Title>
         </Link>
-        <Group gap={5} visibleFrom="xs">
+        <Flex gap="xs">
           {items}
           <Button variant="subtle" onClick={toggleColorScheme}>
             {colorScheme === 'dark' ? 'Light mode' : 'Dark mode'}
@@ -107,28 +107,28 @@ const Header = () => {
               </Tooltip>
 
               <Tooltip label="Настройки">
-                <ActionIcon
-                  component={Link}
-                  to={routes.settings}
-                  variant="subtle"
-                  size="lg"
-                  aria-label="Настройки"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                <Link to={routes.settings} style={{ textDecoration: 'none' }}>
+                  <ActionIcon
+                    variant="subtle"
+                    size="lg"
+                    aria-label="Настройки"
                   >
-                    <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
-                    <circle cx="12" cy="12" r="3" />
-                  </svg>
-                </ActionIcon>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                  </ActionIcon>
+                </Link>
               </Tooltip>
 
               <Button variant="subtle" onClick={handleLogout}>
@@ -137,15 +137,15 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Button component={Link} to={routes.login} variant="subtle">
-                Войти
-              </Button>
-              <Button component={Link} to={routes.registration}>
-                Регистрация
-              </Button>
+              <Link to={routes.login} style={{ textDecoration: 'none' }}>
+                <Button variant="subtle">Войти</Button>
+              </Link>
+              <Link to={routes.registration} style={{ textDecoration: 'none' }}>
+                <Button>Регистрация</Button>
+              </Link>
             </>
           )}
-        </Group>
+        </Flex>
       </Container>
     </header>
   );

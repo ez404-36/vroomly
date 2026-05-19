@@ -1,15 +1,13 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import {
-  TextInput,
-  NumberInput,
   Select,
-  Switch,
   Button,
   Stack,
   Paper,
   Text,
-} from '@mantine/core';
+} from '../../ui';
+import { NumberInput, TextInput, Switch } from '@mantine/core';
 import {
   useCreateUserVehicleManualMutation,
   useGetVehicleBrandsQuery,
@@ -44,7 +42,6 @@ export const VehicleForm = ({ onSuccess }: VehicleFormProps) => {
     handleSubmit,
     watch,
     setValue,
-    reset,
     formState: { errors },
   } = useForm<VehicleFormData>({
     defaultValues: {
@@ -64,7 +61,6 @@ export const VehicleForm = ({ onSuccess }: VehicleFormProps) => {
   const selectedBrand = watch('brand_id');
   const selectedSeries = watch('series_id');
   const selectedGeneration = watch('generation_id');
-  const isMileageInMiles = watch('is_mileage_in_miles');
 
   const { data: series, isLoading: isSeriesLoading } = useGetVehicleSeriesQuery(
     selectedBrand || '',
@@ -152,7 +148,7 @@ export const VehicleForm = ({ onSuccess }: VehicleFormProps) => {
             label="Марка"
             required
             placeholder="Выберите марку автомобиля"
-            data={brandOptions}
+            options={brandOptions}
             searchable
             clearable
             onChange={(value) => setValue('brand_id', value || '')}
@@ -165,7 +161,7 @@ export const VehicleForm = ({ onSuccess }: VehicleFormProps) => {
             label="Модель"
             required
             placeholder="Выберите модель"
-            data={seriesOptions}
+            options={seriesOptions}
             searchable
             clearable
             disabled={!selectedBrand || isSeriesLoading}
@@ -179,7 +175,7 @@ export const VehicleForm = ({ onSuccess }: VehicleFormProps) => {
             label="Поколение"
             required
             placeholder="Выберите поколение"
-            data={generationOptions}
+            options={generationOptions}
             searchable
             clearable
             disabled={!selectedSeries || isGenerationsLoading}
@@ -192,7 +188,7 @@ export const VehicleForm = ({ onSuccess }: VehicleFormProps) => {
             key={`trim-${selectedGeneration}`}
             label="Комплектация"
             placeholder="Выберите комплектацию (опционально)"
-            data={trimOptions}
+            options={trimOptions}
             searchable
             clearable
             disabled={!selectedGeneration || isTrimsLoading}
@@ -231,7 +227,6 @@ export const VehicleForm = ({ onSuccess }: VehicleFormProps) => {
           <Switch
             label="Пробег в милях"
             {...register('is_mileage_in_miles')}
-            checked={isMileageInMiles}
           />
 
           <NumberInput
@@ -246,7 +241,7 @@ export const VehicleForm = ({ onSuccess }: VehicleFormProps) => {
           />
 
           {error && (
-            <Text c="red" size="sm">
+            <Text color="red" size="sm">
               {JSON.stringify(error)}
             </Text>
           )}

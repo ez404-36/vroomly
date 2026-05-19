@@ -31,13 +31,13 @@ PARSED_DATA_DIR = BACKEND_DIR / 'default_data' / 'parsed'
 NUMBER_PATTERN = r'\d+'
 VehicleNodeType = Literal['engine', 'transmission']
 
-logging.basicConfig(
-	filename=PARSED_DATA_DIR / 'otoba_ru_parser.log',
-	filemode='w',
-	format='%(asctime)s,%(msecs)03d %(name)s %(levelname)s %(message)s',
-	datefmt='%Y-%m-%d %H:%M:%S',
-	level=logging.WARNING,
-)
+# logging.basicConfig(
+# 	filename=PARSED_DATA_DIR / 'otoba_ru_parser.log',
+# 	filemode='w',
+# 	format='%(asctime)s,%(msecs)03d %(name)s %(levelname)s %(message)s',
+# 	datefmt='%Y-%m-%d %H:%M:%S',
+# 	level=logging.WARNING,
+# )
 
 logger = logging.getLogger('OtobaRuHtmlParser')
 
@@ -421,10 +421,9 @@ class OtobaRuTransmissionValueTransformer(OtobaRuValueBaseTransformer):
 			values = value.split('+')
 		elif value == 'любой':
 			values = [
-				VehicleTransmissionType.MANUAL,
-				VehicleTransmissionType.AUTO,
-				VehicleTransmissionType.ROBOT,
-				VehicleTransmissionType.VARIATOR,
+				CarDriveType.FRONT,
+				CarDriveType.BACK,
+				CarDriveType.FULL,
 			]
 		else:
 			values = [value]
@@ -501,6 +500,7 @@ class OtobaRuHtmlParser:
 		brands_uri = await self._parse_brands_uri(root_uri)
 		logger.info(f'Обнаружено {len(brands_uri)} производителей {vehicle_node_title}: {brands_uri}')
 		for brand_uri in brands_uri:
+			print(f'Парсинг бренда {brand_uri}')
 			brand_or_concern_code = generate_code(brand_uri.name)
 
 			brand_mapped_code = self.brand_map.get(brand_or_concern_code, brand_or_concern_code)
@@ -673,13 +673,13 @@ async def create_from_pkl_file(pkl_file: str | Path):
 
 	async with database.get_async_session() as session:
 		session.add_all(engines)
-		session.add_all(transmissions)
+		session.add_all([it for it in transmissions if it.type is not None])
 		await session.commit()
 		await session.close()
 
 
 if __name__ == '__main__':
 	parser = OtobaRuHtmlParser()
-	file_path = PARSED_DATA_DIR / 'engines.pkl'
+	file_path = PARSED_DATA_DIR / 'transmissions.pkl'
 	# asyncio.run(parser.run(file_path, only='transmission'))
 	asyncio.run(create_from_pkl_file(file_path))

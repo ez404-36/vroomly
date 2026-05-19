@@ -1,8 +1,15 @@
 import { useForm } from 'react-hook-form';
-import { TextInput, PasswordInput, Button, Flex, Text } from '@mantine/core';
+import { Button, Flex, Text } from '../../ui';
+import { TextInput as MantineTextInput, PasswordInput as MantinePasswordInput } from '@mantine/core';
 import { useRegisterMutation } from '../../api/authApi';
-import type { RegistrationDataForm } from '../../types/schemas';
 import { useNavigate } from 'react-router-dom';
+
+interface RegistrationDataForm {
+  login: string;
+  email: string;
+  password: string;
+  confirm_password: string;
+}
 
 export const RegisterForm = () => {
   const navigate = useNavigate();
@@ -37,14 +44,14 @@ export const RegisterForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <TextInput
+      <MantineTextInput
         label="Логин"
         placeholder="Введите логин"
         {...register('login', { required: 'Введите логин' })}
         error={errors.login?.message}
         mt="sm"
       />
-      <TextInput
+      <MantineTextInput
         label="Email"
         placeholder="Введите ваш email"
         {...register('email', {
@@ -54,7 +61,7 @@ export const RegisterForm = () => {
         error={errors.email?.message}
         mt="sm"
       />
-      <PasswordInput
+      <MantinePasswordInput
         label="Пароль"
         placeholder="Введите пароль"
         {...register('password', {
@@ -64,7 +71,7 @@ export const RegisterForm = () => {
         error={errors.password?.message}
         mt="sm"
       />
-      <PasswordInput
+      <MantinePasswordInput
         label="Подтверждение пароля"
         placeholder="Повторите пароль"
         {...register('confirm_password', {
@@ -82,7 +89,7 @@ export const RegisterForm = () => {
       </Flex>
 
       {error && (
-        <Text c="red" mt="xs">
+        <Text color="red" mt="xs">
           {JSON.stringify(error, null, 2)}
         </Text>
       )}

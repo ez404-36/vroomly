@@ -12,7 +12,7 @@ priority: medium
 linkedDialogIds: []
 createdBy: dev-user
 createdAt: "2026-05-07T21:09:11.194Z"
-updatedAt: "2026-05-07T21:12:54.023Z"
+updatedAt: "2026-05-18T13:40:48.627Z"
 ---
 
 ## Суть
@@ -34,20 +34,24 @@ Layout-паттерн для React-приложения с двумя collapsibl
 ```
 
 ### Left Sidebar
+
 - На всю высоту экрана (включая header)
 - Collapsible (скрывается/раскрывается)
 - Перекрывает header по вертикали
 
 ### Header
+
 - Фиксированный, не прокручивается
 - Ширина = 100% - левый сайдбар (когда открыт)
 
 ### Right Sidebar
+
 - Высота = высота main контента
 - Не перекрывает header
 - Collapsible
 
 ### Main Content
+
 - Прокручиваемая область
 - Высота = header + контент
 
@@ -64,3 +68,5 @@ Layout-паттерн для React-приложения с двумя collapsibl
 - React state для toggle
 - CSS transitions для анимации
 - CSS custom properties для ширин
+
+

@@ -66,26 +66,6 @@ allowed_origins: list[str] = _get_allowed_origins()
 CORS_EXEMPT_PATHS = {"/docs", "/openapi.json", "/redoc", "/swagger"}
 
 
-@app.middleware("http")
-async def strict_cors_blocker(request: Request, call_next):
-    """
-    Без этого слоя код эндпоинта будет выполнен, несмотря на ошибку CORS
-    """
-    # Swagger/OpenAPI endpoints always allowed
-    if request.url.path in CORS_EXEMPT_PATHS or request.url.path.startswith("/docs/"):
-        return await call_next(request)
-
-    if request.method == "OPTIONS":
-        return await call_next(request)
-
-    origin = request.headers.get("origin")
-
-    if origin not in allowed_origins:
-        return PlainTextResponse("CORS policy violation", status_code=200)
-
-    response = await call_next(request)
-    return response
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=allowed_origins,
@@ -93,6 +73,27 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+# @app.middleware("http")
+# async def strict_cors_blocker(request: Request, call_next):
+#     """
+#     Без этого слоя код эндпоинта будет выполнен, несмотря на ошибку CORS
+#     """
+#     # Swagger/OpenAPI endpoints always allowed
+#     if request.url.path in CORS_EXEMPT_PATHS or request.url.path.startswith("/docs/"):
+#         return await call_next(request)
+#
+#     if request.method == "OPTIONS":
+#         return await call_next(request)
+#
+#     origin = request.headers.get("origin")
+#
+#     if origin not in allowed_origins:
+#         return PlainTextResponse("CORS policy violation", status_code=200)
+#
+#     response = await call_next(request)
+#     return response
 
 _root_api_router = APIRouter(prefix="/api")
 register_all_service_routers(_root_api_router)
