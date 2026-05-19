@@ -97,7 +97,7 @@ export const LoginPage = () => {
 
             <Text size="sm" ta="center">
               Нет аккаунта?{' '}
-              <Link to={routes.registration} className="text-[--color-primary] hover:underline">
+              <Link to={routes.registration} className="text-(--color-primary) hover:underline">
                 Зарегистрироваться
               </Link>
             </Text>

@@ -102,7 +102,7 @@ export const RegistrationPage = () => {
 
             <Text size="sm" ta="center">
               У меня уже есть аккаунт{' '}
-              <Link to={routes.login} className="text-[--color-primary] hover:underline">
+              <Link to={routes.login} className="text-(--color-primary) hover:underline">
                 Войти
               </Link>
             </Text>

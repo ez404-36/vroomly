@@ -1,6 +1,6 @@
 import { cva } from 'class-variance-authority';
 
-export const titleVariants = cva('font-bold leading-tight text-[--color-text]', {
+export const titleVariants = cva('font-bold leading-tight text-(--color-text)', {
   variants: {
     order: {
       1: 'text-5xl',

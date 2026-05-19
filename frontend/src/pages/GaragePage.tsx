@@ -80,14 +80,14 @@ const GaragePage = () => {
           {[1, 2, 3].map((i) => (
             <div
               key={i}
-              className="h-24 rounded-md bg-[--color-bg-muted] animate-pulse"
+              className="h-24 rounded-md bg-(--color-bg-muted) animate-pulse"
             />
           ))}
         </Stack>
       )}
 
       {error && (
-        <div className="rounded-md border border-[--color-danger] bg-[--color-danger]/10 px-4 py-3 text-sm text-[--color-danger]">
+        <div className="rounded-md border border-(--color-danger) bg-(--color-danger)/10 px-4 py-3 text-sm text-(--color-danger)">
           Не удалось загрузить список автомобилей
         </div>
       )}
@@ -168,17 +168,17 @@ const GaragePage = () => {
                     </div>
                     <div className="flex gap-2 flex-nowrap">
                       {vehicle.color && (
-                        <span className="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium bg-[--color-bg-muted] text-[--color-text-muted]">
+                        <span className="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium bg-(--color-bg-muted) text-(--color-text-muted)">
                           {vehicle.color}
                         </span>
                       )}
                       {vehicle.generation && (
-                        <span className="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium bg-[--color-bg-muted] text-[--color-text-muted]">
+                        <span className="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium bg-(--color-bg-muted) text-(--color-text-muted)">
                           {vehicle.generation}
                         </span>
                       )}
                       {vehicle.mileage != null && (
-                        <span className="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium bg-[--color-bg-muted] text-[--color-text-muted]">
+                        <span className="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium bg-(--color-bg-muted) text-(--color-text-muted)">
                           {vehicle.mileage.toLocaleString('ru-RU')} км
                         </span>
                       )}
@@ -213,8 +213,8 @@ const GaragePage = () => {
       <Dialog.Root open={deleteModalOpened} onOpenChange={setDeleteModalOpened}>
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-black/50 z-40" />
-          <Dialog.Content className="fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 w-full max-w-md rounded-lg bg-[--color-surface] p-6 shadow-xl">
-            <Dialog.Title className="text-lg font-semibold text-[--color-text] mb-4">
+          <Dialog.Content className="fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 w-full max-w-md rounded-lg bg-(--color-surface) p-6 shadow-xl">
+            <Dialog.Title className="text-lg font-semibold text-(--color-text) mb-4">
               Удалить автомобиль
             </Dialog.Title>
             <Stack gap="md">

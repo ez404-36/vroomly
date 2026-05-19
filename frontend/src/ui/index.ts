@@ -14,6 +14,7 @@ export { ActionIcon } from './components/ActionIcon';
 export { Tooltip } from './components/Tooltip';
 export { Indicator } from './components/Indicator';
 export { DatePickerInput } from './components/DatePickerInput';
+export { Tabs, TabContent } from './components/Tabs';
 
 export { UIProvider } from './context/UIProvider';
 export { useUIRegistry } from './context/UIProvider';
@@ -37,3 +38,4 @@ export type { ActionIconProps } from './components/ActionIcon';
 export type { TooltipProps } from './components/Tooltip';
 export type { IndicatorProps } from './components/Indicator';
 export type { DatePickerInputProps } from './components/DatePickerInput';
+export type { TabsProps, TabContentProps, TabItem } from './components/Tabs/index';

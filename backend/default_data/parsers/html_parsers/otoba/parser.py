@@ -468,7 +468,6 @@ class OtobaRuHtmlParser:
 
 
 if __name__ == '__main__':
-	sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 	parser = OtobaRuHtmlParser()
 	file_path = PARSED_DATA_DIR / 'trims.pkl'
 	asyncio.run(parser.run(file_path, only='vehicle'))

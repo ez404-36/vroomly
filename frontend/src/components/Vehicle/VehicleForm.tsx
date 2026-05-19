@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import {
   Select,
   Button,
@@ -32,9 +32,10 @@ export interface VehicleFormData {
 
 export interface VehicleFormProps {
   onSuccess?: () => void;
+  onBack?: () => void;
 }
 
-export const VehicleForm = ({ onSuccess }: VehicleFormProps) => {
+export const VehicleForm = ({ onSuccess, onBack }: VehicleFormProps) => {
   const [createVehicle, { isLoading, error }] =
     useCreateUserVehicleManualMutation();
   const { data: brands } = useGetVehicleBrandsQuery();
@@ -44,6 +45,7 @@ export const VehicleForm = ({ onSuccess }: VehicleFormProps) => {
     handleSubmit,
     watch,
     setValue,
+    control,
     formState: { errors },
   } = useForm<VehicleFormData>({
     defaultValues: {
@@ -66,7 +68,7 @@ export const VehicleForm = ({ onSuccess }: VehicleFormProps) => {
 
   const { data: series, isLoading: isSeriesLoading } = useGetVehicleSeriesQuery(
     selectedBrand || '',
-    { skip: !selectedBrand }
+    { skip: !selectedBrand },
   );
 
   const { data: generations, isLoading: isGenerationsLoading } =
@@ -140,7 +142,7 @@ export const VehicleForm = ({ onSuccess }: VehicleFormProps) => {
   };
 
   return (
-    <Paper withBorder p="md">
+    <Paper p="md">
       <form onSubmit={handleSubmit(onSubmit)}>
         <Stack>
           <Select
@@ -223,9 +225,16 @@ export const VehicleForm = ({ onSuccess }: VehicleFormProps) => {
             error={errors.mileage?.message}
           />
 
-          <Switch
-            label="Пробег в милях"
-            {...register('is_mileage_in_miles')}
+          <Controller
+            name="is_mileage_in_miles"
+            control={control}
+            render={({ field }) => (
+              <Switch
+                label="Пробег в милях"
+                checked={field.value}
+                onCheckedChange={(checked) => field.onChange(checked)}
+              />
+            )}
           />
 
           <NumberInput
@@ -245,13 +254,19 @@ export const VehicleForm = ({ onSuccess }: VehicleFormProps) => {
             </Text>
           )}
 
-          <Button
-            type="submit"
-            loading={isLoading}
-            disabled={!selectedBrand || !selectedSeries || !selectedGeneration}
-          >
-            Сохранить
-          </Button>
+          <div className="flex gap-3">
+            <Button type="button" variant="ghost" onClick={onBack}>
+              Назад
+            </Button>
+            <Button
+              type="submit"
+              variant="filled"
+              loading={isLoading}
+              disabled={!selectedBrand || !selectedSeries || !selectedGeneration}
+            >
+              Сохранить
+            </Button>
+          </div>
         </Stack>
       </form>
     </Paper>

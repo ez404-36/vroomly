@@ -2,7 +2,7 @@ import type React from 'react';
 
 export interface ButtonProps {
   children?: React.ReactNode;
-  variant?: 'filled' | 'primary' | 'outline' | 'secondary' | 'subtle' | 'ghost' | 'danger';
+  variant?: 'filled' | 'primary' | 'outline' | 'secondary' | 'subtle' | 'subtleInverse' | 'ghost' | 'danger';
   size?: 'xs' | 'sm' | 'md' | 'lg';
   disabled?: boolean;
   loading?: boolean;

@@ -1,14 +1,16 @@
 import { cva } from 'class-variance-authority';
 
 export const actionIconVariants = cva(
-  'inline-flex items-center justify-center rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--ring] disabled:opacity-50 disabled:pointer-events-none cursor-pointer',
+  'inline-flex items-center justify-center rounded-(--radius) transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--ring) disabled:opacity-50 disabled:pointer-events-none cursor-pointer',
   {
     variants: {
       variant: {
-        filled: 'bg-[--color-primary] text-[--color-primary-fg] hover:bg-[--color-primary-hover]',
-        subtle: 'bg-transparent text-[--color-text] hover:bg-[--color-ghost-hover]',
-        ghost: 'bg-transparent text-[--color-text] hover:bg-[--color-ghost-hover]',
-        outline: 'border border-[--color-border] text-[--color-text] bg-transparent hover:bg-[--color-ghost-hover]',
+        filled: 'bg-(--color-primary) text-(--color-primary-fg) hover:bg-(--color-primary-hover)',
+        subtle: 'bg-transparent text-(--color-text) hover:bg-(--color-ghost-hover)',
+        subtleInverse: 'bg-transparent text-(--color-primary-fg) hover:bg-white/15',
+        ghost: 'bg-transparent text-(--color-text) hover:bg-(--color-ghost-hover)',
+        ghostInverse: 'bg-transparent text-(--color-primary-fg) hover:bg-white/15',
+        outline: 'border border-(--color-border) text-(--color-text) bg-transparent hover:bg-(--color-ghost-hover)',
       },
       size: {
         sm: 'h-7 w-7',

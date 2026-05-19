@@ -6,7 +6,7 @@ Vroomly is a microservice-based web application for vehicle management.
 
 **Stack:**
 - Backend: Python 3 + FastAPI
-- Frontend: React 19 + TypeScript + Vite + Mantine + Redux Toolkit + React Router
+- Frontend: React 19 + TypeScript + Vite + Radix UI + Redux Toolkit + React Router
 - Database: PostgreSQL 17
 - Development: Docker-based environment
 

@@ -51,19 +51,30 @@ const Header = () => {
     <header className={classes.header}>
       <Container size="md" className={classes.inner}>
         <Link to={routes.home} style={{ textDecoration: 'none' }}>
-          <Title order={4}>Vroomly</Title>
+          <Title order={4} style={{ color: 'var(--color-primary-fg)' }}>Vroomly</Title>
         </Link>
         <Flex gap="xs">
           {items}
-          <Button variant="subtle" onClick={toggleColorScheme}>
-            {colorScheme === 'dark' ? 'Light mode' : 'Dark mode'}
-          </Button>
+          <Tooltip label={colorScheme === 'dark' ? 'Светлая тема' : 'Тёмная тема'}>
+            <ActionIcon variant="subtleInverse" size="lg" onClick={toggleColorScheme} aria-label="Сменить тему">
+              {colorScheme === 'dark' ? (
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="4"/>
+                  <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+              )}
+            </ActionIcon>
+          </Tooltip>
 
           {isAuthenticated ? (
             <>
               <Tooltip label="Сообщения">
                 <Indicator color="red" size={8} offset={4} processing>
-                  <ActionIcon variant="subtle" size="lg" aria-label="Сообщения">
+                  <ActionIcon variant="subtleInverse" size="lg" aria-label="Сообщения">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="20"
@@ -84,7 +95,7 @@ const Header = () => {
               <Tooltip label="Уведомления">
                 <Indicator color="red" size={8} offset={4} processing>
                   <ActionIcon
-                    variant="subtle"
+                    variant="subtleInverse"
                     size="lg"
                     aria-label="Уведомления"
                   >
@@ -109,7 +120,7 @@ const Header = () => {
               <Tooltip label="Настройки">
                 <Link to={routes.settings} style={{ textDecoration: 'none' }}>
                   <ActionIcon
-                    variant="subtle"
+                    variant="subtleInverse"
                     size="lg"
                     aria-label="Настройки"
                   >
@@ -131,17 +142,17 @@ const Header = () => {
                 </Link>
               </Tooltip>
 
-              <Button variant="subtle" onClick={handleLogout}>
+              <Button variant="subtleInverse" onClick={handleLogout}>
                 Выйти
               </Button>
             </>
           ) : (
             <>
               <Link to={routes.login} style={{ textDecoration: 'none' }}>
-                <Button variant="subtle">Войти</Button>
+                <Button variant="subtleInverse">Войти</Button>
               </Link>
               <Link to={routes.registration} style={{ textDecoration: 'none' }}>
-                <Button>Регистрация</Button>
+                <Button variant="filled">Регистрация</Button>
               </Link>
             </>
           )}

@@ -10,11 +10,11 @@ export const textVariants = cva('', {
       xl: 'text-xl',
     },
     color: {
-      default: 'text-[--color-text]',
-      muted: 'text-[--color-text-muted]',
-      dimmed: 'text-[--color-text-muted]',
-      red: 'text-[--color-danger]',
-      primary: 'text-[--color-primary]',
+      default: 'text-(--color-text)',
+      muted: 'text-(--color-text-muted)',
+      dimmed: 'text-(--color-text-muted)',
+      red: 'text-(--color-danger)',
+      primary: 'text-(--color-primary)',
     },
     fw: {
       normal: 'font-normal',

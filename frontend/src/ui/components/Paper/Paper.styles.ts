@@ -1,6 +1,6 @@
 import { cva } from 'class-variance-authority';
 
-export const paperVariants = cva('bg-[--color-surface]', {
+export const paperVariants = cva('bg-(--color-surface)', {
   variants: {
     shadow: {
       none: '',
@@ -9,12 +9,12 @@ export const paperVariants = cva('bg-[--color-surface]', {
       lg: 'shadow-lg',
     },
     withBorder: {
-      true: 'border border-[--color-border]',
+      true: 'border border-(--color-border)',
       false: '',
     },
     radius: {
       sm: 'rounded-sm',
-      md: 'rounded-md',
+      md: 'rounded-(--radius)',
       lg: 'rounded-lg',
       xl: 'rounded-xl',
     },

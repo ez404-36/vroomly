@@ -93,7 +93,7 @@ export const SettingsPage = () => {
     return (
       <Container size="sm" py="xl">
         <div className="flex justify-center py-8">
-          <div className="animate-spin h-8 w-8 rounded-full border-4 border-[--color-primary] border-t-transparent" />
+          <div className="animate-spin h-8 w-8 rounded-full border-4 border-(--color-primary) border-t-transparent" />
         </div>
       </Container>
     );

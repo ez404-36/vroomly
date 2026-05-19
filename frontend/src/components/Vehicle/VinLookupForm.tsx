@@ -10,11 +10,13 @@ import {
 export interface VinLookupFormProps {
   onSuccess?: (data: UserVehicleDetailSchema) => void;
   onMultipleChoices?: (data: UserVehicleWithChoicesSchema) => void;
+  onBack?: () => void;
 }
 
 export const VinLookupForm = ({
   onSuccess,
   onMultipleChoices,
+  onBack,
 }: VinLookupFormProps) => {
   const [result, setResult] = useState<
     UserVehicleDetailSchema | UserVehicleWithChoicesSchema | null
@@ -53,10 +55,10 @@ export const VinLookupForm = ({
   const isResultWithChoices = result && 'choices' in result;
 
   return (
-    <Paper withBorder p="md" style={{ position: 'relative' }}>
+    <Paper p="md" style={{ position: 'relative' }}>
       {isCreating && (
-        <div className="absolute inset-0 flex items-center justify-center bg-[--color-surface]/70 rounded-md z-10">
-          <div className="animate-spin h-8 w-8 rounded-full border-4 border-[--color-primary] border-t-transparent" />
+        <div className="absolute inset-0 flex items-center justify-center bg-(--color-surface)/70 rounded-md z-10">
+          <div className="animate-spin h-8 w-8 rounded-full border-4 border-(--color-primary) border-t-transparent" />
         </div>
       )}
 
@@ -79,9 +81,14 @@ export const VinLookupForm = ({
             error={errors.vin?.message}
           />
 
-          <Button type="submit" disabled={!isValidVin} loading={isCreating}>
-            Найти по VIN
-          </Button>
+          <div className="flex gap-3">
+            <Button type="button" variant="ghost" onClick={onBack}>
+              Назад
+            </Button>
+            <Button type="submit" variant="filled" disabled={!isValidVin} loading={isCreating}>
+              Найти по VIN
+            </Button>
+          </div>
         </Stack>
       </form>
 

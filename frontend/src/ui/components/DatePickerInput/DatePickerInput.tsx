@@ -32,7 +32,7 @@ export const DatePickerInput = React.forwardRef<HTMLButtonElement, DatePickerInp
         {label && (
           <label className={labelBase}>
             {label}
-            {required && <span className="text-[--color-danger] ml-0.5">*</span>}
+            {required && <span className="text-(--color-danger) ml-0.5">*</span>}
           </label>
         )}
         <Popover.Root open={open} onOpenChange={setOpen}>
@@ -41,9 +41,9 @@ export const DatePickerInput = React.forwardRef<HTMLButtonElement, DatePickerInp
               ref={ref}
               type="button"
               disabled={disabled}
-              className={clsx(triggerBase, error && 'border-[--color-danger] focus:ring-[--color-danger]')}
+              className={clsx(triggerBase, error && 'border-(--color-danger) focus:ring-(--color-danger)')}
             >
-              <span className={value ? 'text-[--color-text]' : 'text-[--color-text-muted]'}>
+              <span className={value ? 'text-(--color-text)' : 'text-(--color-text-muted)'}>
                 {value ? formatDate(value) : placeholder}
               </span>
               <span className="flex items-center gap-1 ml-auto">
@@ -53,7 +53,7 @@ export const DatePickerInput = React.forwardRef<HTMLButtonElement, DatePickerInp
                     tabIndex={0}
                     onClick={handleClear}
                     onKeyDown={(e) => e.key === 'Enter' && handleClear(e as unknown as React.MouseEvent)}
-                    className="text-[--color-text-muted] hover:text-[--color-text] cursor-pointer"
+                    className="text-(--color-text-muted) hover:text-(--color-text) cursor-pointer"
                     aria-label="Очистить дату"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

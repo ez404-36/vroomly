@@ -2,7 +2,7 @@ import type React from 'react';
 
 export interface ActionIconProps {
   children?: React.ReactNode;
-  variant?: 'filled' | 'subtle' | 'ghost' | 'outline';
+  variant?: 'filled' | 'subtle' | 'subtleInverse' | 'ghost' | 'ghostInverse' | 'outline';
   size?: 'sm' | 'md' | 'lg' | 'xl';
   disabled?: boolean;
   loading?: boolean;
