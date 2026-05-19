@@ -1,3 +1,2 @@
-export * from './types';
-export { MantineSwitch } from './MantineSwitch';
-export { Switch } from '../../factory';
+export { Switch } from './Switch';
+export type { SwitchProps } from './Switch.types';

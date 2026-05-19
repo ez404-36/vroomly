@@ -1,3 +1,2 @@
-export * from './types';
-export { MantineSelect } from './MantineSelect';
-export { Select } from '../../factory';
+export { Select } from './Select';
+export type { SelectProps, SelectOption } from './Select.types';

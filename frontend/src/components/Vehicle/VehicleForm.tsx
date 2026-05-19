@@ -6,8 +6,10 @@ import {
   Stack,
   Paper,
   Text,
+  NumberInput,
+  TextInput,
+  Switch,
 } from '../../ui';
-import { NumberInput, TextInput, Switch } from '@mantine/core';
 import {
   useCreateUserVehicleManualMutation,
   useGetVehicleBrandsQuery,
@@ -77,7 +79,6 @@ export const VehicleForm = ({ onSuccess }: VehicleFormProps) => {
     { skip: !selectedGeneration }
   );
 
-  // Cascade reset when brand changes
   useEffect(() => {
     if (!selectedBrand) {
       setValue('series_id', '', { shouldValidate: false });
@@ -86,7 +87,6 @@ export const VehicleForm = ({ onSuccess }: VehicleFormProps) => {
     }
   }, [selectedBrand, setValue]);
 
-  // Cascade reset when series changes
   useEffect(() => {
     if (!selectedSeries) {
       setValue('generation_id', '', { shouldValidate: false });
@@ -94,7 +94,6 @@ export const VehicleForm = ({ onSuccess }: VehicleFormProps) => {
     }
   }, [selectedSeries, setValue]);
 
-  // Cascade reset when generation changes
   useEffect(() => {
     if (!selectedGeneration) {
       setValue('trim_id', '', { shouldValidate: false });
@@ -132,7 +131,7 @@ export const VehicleForm = ({ onSuccess }: VehicleFormProps) => {
         production_year: data.production_year,
         mileage: data.mileage,
         avg_fuel_consumption: data.avg_fuel_consumption,
-        is_mileage_in_miles: data.is_mileage_in_miles,
+        is_mileage_in_miles: data.is_mileage_in_miles ?? false,
       }).unwrap();
       onSuccess?.();
     } catch (err) {
@@ -203,7 +202,7 @@ export const VehicleForm = ({ onSuccess }: VehicleFormProps) => {
             min={1900}
             max={new Date().getFullYear() + 1}
             {...register('production_year', {
-              setValueAs: (value) => (value ? Number(value) : undefined),
+              setValueAs: (value: unknown) => (value ? Number(value) : undefined),
             })}
             error={errors.production_year?.message}
           />
@@ -219,7 +218,7 @@ export const VehicleForm = ({ onSuccess }: VehicleFormProps) => {
             placeholder="0"
             min={0}
             {...register('mileage', {
-              setValueAs: (value) => (value ? Number(value) : undefined),
+              setValueAs: (value: unknown) => (value ? Number(value) : undefined),
             })}
             error={errors.mileage?.message}
           />
@@ -235,7 +234,7 @@ export const VehicleForm = ({ onSuccess }: VehicleFormProps) => {
             min={0}
             decimalScale={1}
             {...register('avg_fuel_consumption', {
-              setValueAs: (value) => (value ? Number(value) : undefined),
+              setValueAs: (value: unknown) => (value ? Number(value) : undefined),
             })}
             error={errors.avg_fuel_consumption?.message}
           />

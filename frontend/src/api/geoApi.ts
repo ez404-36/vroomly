@@ -1,5 +1,5 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
-import type { CountryDetailSchema } from '../types/schemas';
+import type { CountryDetailSchema } from '../types/schema-types';
 import { createBaseQuery } from './baseQuery';
 
 export const geoApi = createApi({

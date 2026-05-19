@@ -1,10 +1,8 @@
 import { useForm } from 'react-hook-form';
-import { Button, Flex, Text } from '../../ui';
-import { TextInput as MantineTextInput, PasswordInput as MantinePasswordInput } from '@mantine/core';
+import { Button, Flex, Text, TextInput, PasswordInput } from '../../ui';
 import { useNavigate } from 'react-router-dom';
 import { useLoginMutation } from '../../api/authApi';
 
-// Интерфейс для формы логина
 interface LoginDataForm {
   username: string;
   password: string;
@@ -25,7 +23,7 @@ export const LoginForm = () => {
 
   const onSubmit = async (data: LoginDataForm) => {
     const payload = {
-      username: data.username, // login или email
+      username: data.username,
       password: data.password,
     };
 
@@ -43,17 +41,17 @@ export const LoginForm = () => {
       onSubmit={handleSubmit(onSubmit)}
       style={{ maxWidth: 400, margin: '0 auto' }}
     >
-      <MantineTextInput
+      <TextInput
         label="Логин или Email"
         placeholder="Введите логин или email"
         {...register('username', {
           required: 'Введите логин или email',
         })}
         error={errors.username?.message}
-        mt="sm"
+        mt="8px"
       />
 
-      <MantinePasswordInput
+      <PasswordInput
         label="Пароль"
         placeholder="Введите пароль"
         {...register('password', {
@@ -64,16 +62,16 @@ export const LoginForm = () => {
           },
         })}
         error={errors.password?.message}
-        mt="sm"
+        mt="8px"
       />
 
       {error && (
-        <Text color="red" mt="xs">
+        <Text c="red" mt="xs">
           {JSON.stringify(error, null, 2)}
         </Text>
       )}
 
-      <Flex direction="column" gap="sm" mt="sm">
+      <Flex direction="column" gap="sm" mt="8px">
         <Button type="submit" loading={isLoading}>
           Войти
         </Button>

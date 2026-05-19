@@ -1,6 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { Button, Flex, Text } from '../../ui';
-import { TextInput as MantineTextInput, PasswordInput as MantinePasswordInput } from '@mantine/core';
+import { Button, Flex, Text, TextInput, PasswordInput } from '../../ui';
 import { useRegisterMutation } from '../../api/authApi';
 import { useNavigate } from 'react-router-dom';
 
@@ -44,14 +43,14 @@ export const RegisterForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <MantineTextInput
+      <TextInput
         label="Логин"
         placeholder="Введите логин"
         {...register('login', { required: 'Введите логин' })}
         error={errors.login?.message}
-        mt="sm"
+        mt="8px"
       />
-      <MantineTextInput
+      <TextInput
         label="Email"
         placeholder="Введите ваш email"
         {...register('email', {
@@ -59,9 +58,9 @@ export const RegisterForm = () => {
           pattern: { value: /^\S+@\S+$/i, message: 'Некорректный email' },
         })}
         error={errors.email?.message}
-        mt="sm"
+        mt="8px"
       />
-      <MantinePasswordInput
+      <PasswordInput
         label="Пароль"
         placeholder="Введите пароль"
         {...register('password', {
@@ -69,9 +68,9 @@ export const RegisterForm = () => {
           minLength: { value: 6, message: 'Минимум 6 символов' },
         })}
         error={errors.password?.message}
-        mt="sm"
+        mt="8px"
       />
-      <MantinePasswordInput
+      <PasswordInput
         label="Подтверждение пароля"
         placeholder="Повторите пароль"
         {...register('confirm_password', {
@@ -80,21 +79,21 @@ export const RegisterForm = () => {
             value === watch('password') || 'Пароли не совпадают',
         })}
         error={errors.confirm_password?.message}
-        mt="sm"
+        mt="8px"
       />
-      <Flex mt="sm">
+      <Flex mt="8px">
         <Button type="submit" loading={isLoading}>
           Зарегистрироваться
         </Button>
       </Flex>
 
       {error && (
-        <Text color="red" mt="xs">
+        <Text c="red" mt="xs">
           {JSON.stringify(error, null, 2)}
         </Text>
       )}
 
-      <Button mt="sm" onClick={() => navigate(-1)}>
+      <Button mt="8px" onClick={() => navigate(-1)}>
         Назад
       </Button>
     </form>

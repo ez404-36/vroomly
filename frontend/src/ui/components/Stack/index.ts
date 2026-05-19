@@ -1,3 +1,2 @@
-export * from './types';
-export { MantineStack } from './MantineStack';
-export { Stack } from '../../factory';
+export { Stack } from './Stack';
+export type { StackProps } from './Stack.types';

@@ -1,7 +1,7 @@
 .mainContent {
   padding: 24px 32px;
   min-height: 100vh;
-  background-color: var(--mantine-color-gray-0);
+  background-color: var(--color-bg-muted);
 }
 
 @media (max-width: 768px) {

@@ -1,3 +1,2 @@
-export * from './types';
-export { MantinePaper } from './MantinePaper';
-export { Paper } from '../../factory';
+export { Paper } from './Paper';
+export type { PaperProps } from './Paper.types';

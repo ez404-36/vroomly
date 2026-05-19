@@ -1,3 +1,2 @@
-export * from './types';
-export { MantineActionIcon } from './MantineActionIcon';
-export { ActionIcon } from '../../factory';
+export { ActionIcon } from './ActionIcon';
+export type { ActionIconProps } from './ActionIcon.types';

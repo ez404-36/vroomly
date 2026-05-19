@@ -13,7 +13,7 @@ import type {
   VehicleSeriesListSchema,
   VehicleGenerationListSchema,
   VehicleTrimListSchema,
-} from '../types/schemas';
+} from '../types/schema-types';
 
 // Types for UserVehicle API
 export type CreateUserVehicleByVinDTO = CreateUserVehicleByVinSchema;
@@ -25,7 +25,9 @@ export type CreateUserVehicleManualDTO = CreateUserVehicleManualSchema;
 export type {
   ChoiceFieldSchema,
   ChoiceFieldWithParentSchema,
-} from '../types/schemas';
+  UserVehicleDetailSchema,
+  UserVehicleWithChoicesSchema,
+} from '../types/schema-types';
 
 // UserVehicleChoiceSchema is defined inline as it's used in UserVehicleWithChoicesSchema
 export interface UserVehicleChoiceSchema {

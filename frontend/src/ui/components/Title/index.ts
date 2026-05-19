@@ -1,3 +1,2 @@
-export * from './types';
-export { MantineTitle } from './MantineTitle';
-export { Title } from '../../factory';
+export { Title } from './Title';
+export type { TitleProps } from './Title.types';

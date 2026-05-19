@@ -1,5 +1,5 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
-import type { CurrentUser } from '../types/schemas';
+import type { CurrentUser } from '../types/schema-types';
 import { createBaseQuery } from './baseQuery';
 
 const formDataBody = (data: Record<string, unknown>) =>

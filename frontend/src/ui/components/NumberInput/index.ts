@@ -1,3 +1,2 @@
-export * from './types';
-export { MantineNumberInput } from './MantineNumberInput';
-export { NumberInput } from '../../factory';
+export { NumberInput } from './NumberInput';
+export type { NumberInputProps } from './NumberInput.types';

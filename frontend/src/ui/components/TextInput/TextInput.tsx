@@ -1,0 +1,22 @@
+import React from 'react';
+import { clsx } from 'clsx';
+import { inputBase, inputError, labelBase, errorBase } from './TextInput.styles';
+import type { TextInputProps } from './TextInput.types';
+
+export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
+  ({ label, error, mt, wrapperClassName, className, ...rest }, ref) => {
+    return (
+      <div className={clsx('flex flex-col', wrapperClassName)} style={{ marginTop: mt }}>
+        {label && <label className={labelBase}>{label}</label>}
+        <input
+          ref={ref}
+          className={clsx(inputBase, error && inputError, className)}
+          {...rest}
+        />
+        {error && <span className={errorBase}>{error}</span>}
+      </div>
+    );
+  },
+);
+
+TextInput.displayName = 'TextInput';

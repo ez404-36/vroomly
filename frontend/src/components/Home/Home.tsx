@@ -1,4 +1,4 @@
-import { Box, Container, Title } from '@mantine/core';
+import { Title, Container } from '../../ui';
 import Sidebar from '../Sidebar/Sidebar';
 import MainContent from '../MainContent/MainContent';
 
@@ -9,15 +9,15 @@ const Home = () => {
         VR-90: Верстка страницы «Мой Гараж»
       </Title>
 
-      <Container fluid my="md" px={0}>
-        <Box
+      <Container fluid style={{ marginTop: '16px', marginBottom: '16px', paddingInline: 0 }}>
+        <div
           style={{
             width: '100%',
             paddingInline: '2.604%',
             boxSizing: 'border-box',
           }}
         >
-          <Box
+          <div
             style={{
               display: 'grid',
               gridTemplateColumns: '21.978% 78.022%',
@@ -26,8 +26,8 @@ const Home = () => {
           >
             <Sidebar />
             <MainContent />
-          </Box>
-        </Box>
+          </div>
+        </div>
       </Container>
     </>
   );

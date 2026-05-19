@@ -1,21 +1,10 @@
-import {
-  Container,
-  Paper,
-  Title,
-  Text,
-  TextInput,
-  PasswordInput,
-  Button,
-  Stack,
-  Anchor,
-  Group,
-} from '@mantine/core';
+import { Container, Paper, Title, Text, TextInput, PasswordInput, Button, Stack } from '../ui';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { routes } from '../utils/routes';
 import { useRegisterMutation } from '../api/authApi';
-import type { RegistrationDataForm } from '../types/schemas';
+import type { RegistrationDataForm } from '../types/schema-types';
 import { useNavigate } from 'react-router-dom';
 import { type AppDispatch } from '../store/store';
 import { setAuthenticated } from '../store/authSlice';
@@ -54,8 +43,8 @@ export const RegistrationPage = () => {
   };
 
   return (
-    <Container size={1200} py={80}>
-      <Group grow gap="xl" align="stretch">
+    <Container size={1200} py="80px">
+      <div className="flex gap-6 items-stretch">
         <Paper p="xl" radius="md" style={{ flex: 1 }}>
           <Stack>
             <Title order={2}>Регистрация</Title>
@@ -113,9 +102,9 @@ export const RegistrationPage = () => {
 
             <Text size="sm" ta="center">
               У меня уже есть аккаунт{' '}
-              <Anchor component={Link} to={routes.login}>
+              <Link to={routes.login} className="text-[--color-primary] hover:underline">
                 Войти
-              </Anchor>
+              </Link>
             </Text>
           </Stack>
         </Paper>
@@ -123,14 +112,14 @@ export const RegistrationPage = () => {
         <Paper
           p="xl"
           radius="md"
-          style={{ flex: 1, background: 'var(--mantine-color-gray-1)' }}
+          style={{ flex: 1, background: 'var(--color-bg-muted)' }}
         >
-          <Stack justify="center" h="100%">
+          <Stack justify="center" style={{ height: '100%' }}>
             <Title order={1}>Vroomly</Title>
             <Text size="xl">Ваш автомобильный помощник</Text>
           </Stack>
         </Paper>
-      </Group>
+      </div>
     </Container>
   );
 };

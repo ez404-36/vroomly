@@ -1,3 +1,2 @@
-export * from './types';
-export { MantineFlex } from './MantineFlex';
-export { Flex } from '../../factory';
+export { Flex } from './Flex';
+export type { FlexProps } from './Flex.types';

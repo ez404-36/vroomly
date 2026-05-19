@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
-import { NavLink, Stack, Box } from '@mantine/core';
 import { Link, useLocation } from 'react-router-dom';
 import { routes } from '../../utils/routes';
 import { type RootState } from '../../store/store';
 import classes from '../../styles/pages/Sidebar.module.css';
+import { clsx } from 'clsx';
 
 const navItems = [
   { label: 'Мой гараж', path: routes.garage, icon: CarIcon },
@@ -23,22 +23,23 @@ const Sidebar = () => {
   }
 
   return (
-    <Box className={classes.sidebar}>
-      <Stack gap={4} p="md">
-        {navItems.map((item) => (
-          <NavLink
-            key={item.path}
-            component={Link}
-            to={item.path}
-            label={item.label}
-            leftSection={<item.icon />}
-            className={classes.navLink}
-            activeClassName={classes.navLinkActive}
-            data-active={location.pathname === item.path || undefined}
-          />
-        ))}
-      </Stack>
-    </Box>
+    <div className={classes.sidebar}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', padding: '16px' }}>
+        {navItems.map((item) => {
+          const isActive = location.pathname === item.path;
+          return (
+            <Link
+              key={item.path}
+              to={item.path}
+              className={clsx(classes.navLink, isActive && classes.navLinkActive)}
+            >
+              <item.icon />
+              {item.label}
+            </Link>
+          );
+        })}
+      </div>
+    </div>
   );
 };
 

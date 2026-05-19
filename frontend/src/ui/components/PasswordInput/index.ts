@@ -1,3 +1,2 @@
-export * from './types';
-export { MantinePasswordInput } from './MantinePasswordInput';
-export { PasswordInput } from '../../factory';
+export { PasswordInput } from './PasswordInput';
+export type { PasswordInputProps } from './PasswordInput.types';

@@ -1,3 +1,2 @@
-export * from './types';
-export { MantineIndicator } from './MantineIndicator';
-export { Indicator } from '../../factory';
+export { Indicator } from './Indicator';
+export type { IndicatorProps } from './Indicator.types';

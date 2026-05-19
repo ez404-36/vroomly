@@ -1,23 +1,77 @@
+@import "tailwindcss";
+
+/* ── Layout variables ───────────────────────────────────────────── */
 :root {
   --header-height: 64px;
   --sidebar-width: 280px;
 }
 
+/* ── Light theme (default) ──────────────────────────────────────── */
+:root,
+[data-theme='light'] {
+  --color-primary: #ff7300;
+  --color-primary-hover: #f76707;
+  --color-primary-fg: #ffffff;
+  --color-primary-subtle: #fff4ed;
+  --color-secondary: transparent;
+  --color-secondary-fg: #373737;
+  --color-ghost-hover: rgba(0, 0, 0, 0.05);
+  --color-danger: #d20000;
+  --color-danger-hover: #b00000;
+  --color-danger-fg: #ffffff;
+  --color-text: #373737;
+  --color-text-muted: #999999;
+  --color-border: #e0e0e0;
+  --color-surface: #ffffff;
+  --color-bg: #fffaf7;
+  --color-bg-muted: #f2f2f2;
+  --color-input-bg: #ffffff;
+  --ring: #ff7300;
+}
+
+/* ── Dark theme ─────────────────────────────────────────────────── */
+[data-theme='dark'] {
+  --color-primary: #ff8c2a;
+  --color-primary-hover: #ff7300;
+  --color-primary-fg: #ffffff;
+  --color-primary-subtle: rgba(255, 115, 0, 0.15);
+  --color-secondary: transparent;
+  --color-secondary-fg: #eaeaea;
+  --color-ghost-hover: rgba(255, 255, 255, 0.1);
+  --color-danger: #d20000;
+  --color-danger-hover: #b00000;
+  --color-danger-fg: #ffffff;
+  --color-text: #eaeaea;
+  --color-text-muted: #aaaaaa;
+  --color-border: #373737;
+  --color-surface: #25262b;
+  --color-bg: #121212;
+  --color-bg-muted: #1a1b1e;
+  --color-input-bg: #1a1b1e;
+  --ring: #ff8c2a;
+}
+
+/* ── Base styles ────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Tilda Sans', sans-serif;
+  line-height: 1.5;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Tilda Sans', sans-serif;
+  min-height: 100vh;
+}
+
+/* ── DatePicker overrides ───────────────────────────────────────── */
 .datepicker-fixed {
   --calendar-width: 280px;
-}
-
-.mantine-DatePickerInput-levelsGroup {
-  width: var(--calendar-width);
-  height: 300px !important;
-}
-
-.datepicker-fixed .mantine-DatePickerInput-calendar {
-  width: var(--calendar-width);
-  height: 100%;
-}
-
-.datepicker-fixed .mantine-DatePickerInput-day {
-  width: 32px;
-  height: 32px;
 }

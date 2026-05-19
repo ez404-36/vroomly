@@ -1,3 +1,2 @@
-export * from './types';
-export { MantineTextInput } from './MantineTextInput';
-export { TextInput } from '../../factory';
+export { TextInput } from './TextInput';
+export type { TextInputProps } from './TextInput.types';

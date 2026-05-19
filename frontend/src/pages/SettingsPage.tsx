@@ -5,11 +5,8 @@ import {
   TextInput,
   Button,
   Stack,
-  Group,
   Select,
-  Loader,
-} from '@mantine/core';
-import { notifications } from '@mantine/notifications';
+} from '../ui';
 import dayjs from 'dayjs';
 import { CustomDatePickerInput } from '../components/Common/CustomDatePickerInput';
 import { useForm } from 'react-hook-form';
@@ -79,18 +76,10 @@ export const SettingsPage = () => {
       };
 
       await updateUser(formattedData).unwrap();
-      notifications.show({
-        title: 'Успешно',
-        message: 'Профиль обновлён',
-        color: 'green',
-      });
+      alert('Профиль обновлён');
       navigate('/');
     } catch {
-      notifications.show({
-        title: 'Ошибка',
-        message: 'Не удалось обновить профиль',
-        color: 'red',
-      });
+      alert('Не удалось обновить профиль');
     }
   };
 
@@ -103,9 +92,9 @@ export const SettingsPage = () => {
   if (isLoadingUser || isLoadingCountries) {
     return (
       <Container size="sm" py="xl">
-        <Group justify="center">
-          <Loader />
-        </Group>
+        <div className="flex justify-center py-8">
+          <div className="animate-spin h-8 w-8 rounded-full border-4 border-[--color-primary] border-t-transparent" />
+        </div>
       </Container>
     );
   }
@@ -158,21 +147,21 @@ export const SettingsPage = () => {
               <Select
                 label="Страна"
                 placeholder="Выберите страну"
-                data={countryOptions}
+                options={countryOptions}
                 searchable
                 clearable
                 onChange={(value) => setValue('country_id', value)}
                 value={watch('country_id')}
               />
 
-              <Group justify="flex-end" mt="md">
-                <Button variant="subtle" onClick={() => navigate(-1)}>
+              <div className="flex justify-end gap-3 mt-4">
+                <Button variant="ghost" onClick={() => navigate(-1)}>
                   Отмена
                 </Button>
                 <Button type="submit" loading={isUpdating}>
                   Сохранить
                 </Button>
-              </Group>
+              </div>
             </Stack>
           </form>
         </Stack>

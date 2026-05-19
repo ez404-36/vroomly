@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, Paper, Stack, Text } from '../../ui';
-import { TextInput as MantineTextInput, Alert, LoadingOverlay } from '@mantine/core';
+import { Button, Paper, Stack, Text, TextInput } from '../../ui';
 import {
   useCreateUserVehicleByVinMutation,
-  UserVehicleDetailSchema,
-  UserVehicleWithChoicesSchema,
+  type UserVehicleDetailSchema,
+  type UserVehicleWithChoicesSchema,
 } from '../../api/vehiclesApi';
 
 export interface VinLookupFormProps {
@@ -35,14 +34,12 @@ export const VinLookupForm = ({
 
   const vin = watch('vin');
   const isValidVin = vin && vin.length === 17;
-  const isLoading = false;
 
   const onSubmit = async (data: { vin: string }) => {
     try {
       const response = await createVehicle({ vin: data.vin }).unwrap();
       setResult(response);
 
-      // Check if we got choices (multiple options) or direct result
       if ('choices' in response) {
         onMultipleChoices?.(response);
       } else {
@@ -57,14 +54,17 @@ export const VinLookupForm = ({
 
   return (
     <Paper withBorder p="md" style={{ position: 'relative' }}>
-      <LoadingOverlay visible={isLoading} />
+      {isCreating && (
+        <div className="absolute inset-0 flex items-center justify-center bg-[--color-surface]/70 rounded-md z-10">
+          <div className="animate-spin h-8 w-8 rounded-full border-4 border-[--color-primary] border-t-transparent" />
+        </div>
+      )}
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <Stack>
-          <MantineTextInput
+          <TextInput
             label="VIN-номер"
             placeholder="Введите 17-значный VIN-номер"
-            description="Идентификационный номер транспортного средства"
             {...register('vin', {
               required: 'Введите VIN-номер',
               minLength: {
@@ -86,26 +86,28 @@ export const VinLookupForm = ({
       </form>
 
       {result && !isResultWithChoices && 'brand' in result && (
-        <Alert color="green" title="Автомобиль найден" mt="md">
+        <div className="mt-4 rounded-md border border-green-500 bg-green-500/10 p-4">
+          <p className="text-sm font-medium text-green-700 mb-1">Автомобиль найден</p>
           <Text size="sm">
             <strong>
               {result.brand} {result.series}
             </strong>
             {result.generation && ` ${result.generation}`}
           </Text>
-          <Text size="sm" color="dimmed">
+          <Text size="sm" c="dimmed">
             Год выпуска: {result.production_year || 'не указан'} | Цвет:{' '}
             {result.color || 'не указан'}
           </Text>
-        </Alert>
+        </div>
       )}
 
       {isResultWithChoices && (
-        <Alert color="yellow" title="Выберите комплектацию" mt="md">
+        <div className="mt-4 rounded-md border border-yellow-500 bg-yellow-500/10 p-4">
+          <p className="text-sm font-medium text-yellow-700 mb-1">Выберите комплектацию</p>
           <Text size="sm">
             Найдено несколько вариантов. Выберите подходящую комплектацию.
           </Text>
-        </Alert>
+        </div>
       )}
     </Paper>
   );

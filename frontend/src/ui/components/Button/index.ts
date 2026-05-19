@@ -1,3 +1,2 @@
-export * from './types';
-export { MantineButton } from './MantineButton';
-export { Button } from '../../factory';
+export { Button } from './Button';
+export type { ButtonProps } from './Button.types';

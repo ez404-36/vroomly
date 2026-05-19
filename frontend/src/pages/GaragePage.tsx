@@ -1,24 +1,17 @@
 import { useState } from 'react';
+import * as Dialog from '@radix-ui/react-dialog';
 import {
   Title,
   Text,
-  Card,
-  Group,
   Stack,
-  Badge,
   Button,
-  Box,
-  Modal,
-  Skeleton,
-  Alert,
-} from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
+} from '../ui';
 import { Link, useNavigate } from 'react-router-dom';
 import { routes } from '../utils/routes';
 import {
   useGetUserVehiclesQuery,
   useDeleteUserVehicleMutation,
-  UserVehicleDetailSchema,
+  type UserVehicleDetailSchema,
 } from '../api/vehiclesApi';
 import classes from '../styles/pages/Garage.module.css';
 
@@ -26,16 +19,17 @@ const GaragePage = () => {
   const navigate = useNavigate();
   const { data: vehicles, isLoading, error } = useGetUserVehiclesQuery();
   const [deleteVehicle] = useDeleteUserVehicleMutation();
-  const [
-    deleteModalOpened,
-    { open: openDeleteModal, close: closeDeleteModal },
-  ] = useDisclosure(false);
+  const [deleteModalOpened, setDeleteModalOpened] = useState(false);
   const [vehicleToDelete, setVehicleToDelete] =
     useState<UserVehicleDetailSchema | null>(null);
 
   const handleDeleteClick = (vehicle: UserVehicleDetailSchema) => {
     setVehicleToDelete(vehicle);
-    openDeleteModal();
+    setDeleteModalOpened(true);
+  };
+
+  const closeDeleteModal = () => {
+    setDeleteModalOpened(false);
   };
 
   const handleConfirmDelete = async () => {
@@ -60,9 +54,9 @@ const GaragePage = () => {
   };
 
   return (
-    <Box className={classes.container}>
-      <Box className={classes.header}>
-        <Group justify="space-between" align="flex-start">
+    <div className={classes.container}>
+      <div className={classes.header}>
+        <div className="flex justify-between items-start">
           <Stack gap={4}>
             <Title order={2} className={classes.title}>
               Мой гараж
@@ -73,34 +67,35 @@ const GaragePage = () => {
                 : 'Добавьте свой первый автомобиль'}
             </Text>
           </Stack>
-          <Button
-            component={Link}
-            to={routes.addVehicle}
-            className={classes.addButton}
-          >
-            + Добавить ТС
-          </Button>
-        </Group>
-      </Box>
+          <Link to={routes.addVehicle}>
+            <Button className={classes.addButton}>
+              + Добавить ТС
+            </Button>
+          </Link>
+        </div>
+      </div>
 
       {isLoading && (
         <Stack gap="md">
           {[1, 2, 3].map((i) => (
-            <Skeleton key={i} height={100} radius="md" />
+            <div
+              key={i}
+              className="h-24 rounded-md bg-[--color-bg-muted] animate-pulse"
+            />
           ))}
         </Stack>
       )}
 
       {error && (
-        <Alert color="red" title="Ошибка загрузки">
+        <div className="rounded-md border border-[--color-danger] bg-[--color-danger]/10 px-4 py-3 text-sm text-[--color-danger]">
           Не удалось загрузить список автомобилей
-        </Alert>
+        </div>
       )}
 
       {!isLoading && !error && vehicles && vehicles.length === 0 && (
-        <Card className={classes.emptyCard}>
-          <Stack align="center" gap="md" py="xl">
-            <Box className={classes.emptyIcon}>
+        <div className={classes.emptyCard}>
+          <Stack align="center" gap="md">
+            <div className={classes.emptyIcon}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="48"
@@ -118,9 +113,9 @@ const GaragePage = () => {
                 <path d="M14 17H9" />
                 <path d="M5 10h14" />
               </svg>
-            </Box>
+            </div>
             <Stack gap={4} align="center">
-              <Text fw={600} size="lg">
+              <Text fw="semibold" size="lg">
                 В гараже пока пусто
               </Text>
               <Text size="sm" c="dimmed" ta="center">
@@ -128,25 +123,22 @@ const GaragePage = () => {
                 обслуживание и расходы
               </Text>
             </Stack>
-            <Button
-              component={Link}
-              to={routes.addVehicle}
-              size="md"
-              className={classes.addButton}
-            >
-              + Добавить автомобиль
-            </Button>
+            <Link to={routes.addVehicle}>
+              <Button size="md" className={classes.addButton}>
+                + Добавить автомобиль
+              </Button>
+            </Link>
           </Stack>
-        </Card>
+        </div>
       )}
 
       {!isLoading && !error && vehicles && vehicles.length > 0 && (
         <Stack gap="md" className={classes.vehiclesList}>
           {vehicles.map((vehicle) => (
-            <Card key={vehicle.id} className={classes.vehicleCard} padding="lg">
-              <Group justify="space-between" wrap="nowrap">
-                <Group gap="md" wrap="nowrap" style={{ flex: 1 }}>
-                  <Box className={classes.vehicleIcon}>
+            <div key={vehicle.id} className={classes.vehicleCard} style={{ padding: '16px' }}>
+              <div className="flex justify-between items-center flex-nowrap">
+                <div className="flex gap-3 items-center flex-nowrap" style={{ flex: 1 }}>
+                  <div className={classes.vehicleIcon}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="32"
@@ -164,38 +156,38 @@ const GaragePage = () => {
                       <path d="M14 17H9" />
                       <path d="M5 10h14" />
                     </svg>
-                  </Box>
+                  </div>
                   <Stack gap={4} style={{ flex: 1 }}>
-                    <Group gap="xs" wrap="nowrap">
-                      <Text fw={600} className={classes.vehicleName}>
+                    <div className="flex gap-2 items-center flex-nowrap">
+                      <Text fw="semibold" className={classes.vehicleName}>
                         {getVehicleDisplayName(vehicle)}
                       </Text>
                       <Text size="sm" c="dimmed">
                         {getVehicleYear(vehicle)}
                       </Text>
-                    </Group>
-                    <Group gap="xs" wrap="nowrap">
+                    </div>
+                    <div className="flex gap-2 flex-nowrap">
                       {vehicle.color && (
-                        <Badge variant="light" size="sm" color="gray">
+                        <span className="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium bg-[--color-bg-muted] text-[--color-text-muted]">
                           {vehicle.color}
-                        </Badge>
+                        </span>
                       )}
                       {vehicle.generation && (
-                        <Badge variant="light" size="sm" color="gray">
+                        <span className="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium bg-[--color-bg-muted] text-[--color-text-muted]">
                           {vehicle.generation}
-                        </Badge>
+                        </span>
                       )}
-                      {vehicle.mileage !== null && (
-                        <Badge variant="light" size="sm" color="gray">
+                      {vehicle.mileage != null && (
+                        <span className="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium bg-[--color-bg-muted] text-[--color-text-muted]">
                           {vehicle.mileage.toLocaleString('ru-RU')} км
-                        </Badge>
+                        </span>
                       )}
-                    </Group>
+                    </div>
                   </Stack>
-                </Group>
-                <Group gap="xs">
+                </div>
+                <div className="flex gap-2 items-center">
                   <Button
-                    variant="subtle"
+                    variant="ghost"
                     size="xs"
                     className={classes.editButton}
                     onClick={() =>
@@ -205,47 +197,49 @@ const GaragePage = () => {
                     Редактировать
                   </Button>
                   <Button
-                    variant="subtle"
+                    variant="danger"
                     size="xs"
-                    color="red"
                     onClick={() => handleDeleteClick(vehicle)}
                   >
                     Удалить
                   </Button>
-                </Group>
-              </Group>
-            </Card>
+                </div>
+              </div>
+            </div>
           ))}
         </Stack>
       )}
 
-      <Modal
-        opened={deleteModalOpened}
-        onClose={closeDeleteModal}
-        title="Удалить автомобиль"
-        centered
-      >
-        <Stack gap="md">
-          <Text>
-            Вы уверены, что хотите удалить{' '}
-            {vehicleToDelete && getVehicleDisplayName(vehicleToDelete)} из
-            гаража?
-          </Text>
-          <Text size="sm" c="dimmed">
-            Это действие нельзя отменить. Все данные об автомобиле будут
-            удалены.
-          </Text>
-          <Group justify="flex-end" gap="sm">
-            <Button variant="subtle" onClick={closeDeleteModal}>
-              Отмена
-            </Button>
-            <Button color="red" onClick={handleConfirmDelete}>
-              Удалить
-            </Button>
-          </Group>
-        </Stack>
-      </Modal>
-    </Box>
+      <Dialog.Root open={deleteModalOpened} onOpenChange={setDeleteModalOpened}>
+        <Dialog.Portal>
+          <Dialog.Overlay className="fixed inset-0 bg-black/50 z-40" />
+          <Dialog.Content className="fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 w-full max-w-md rounded-lg bg-[--color-surface] p-6 shadow-xl">
+            <Dialog.Title className="text-lg font-semibold text-[--color-text] mb-4">
+              Удалить автомобиль
+            </Dialog.Title>
+            <Stack gap="md">
+              <Text>
+                Вы уверены, что хотите удалить{' '}
+                {vehicleToDelete && getVehicleDisplayName(vehicleToDelete)} из
+                гаража?
+              </Text>
+              <Text size="sm" c="dimmed">
+                Это действие нельзя отменить. Все данные об автомобиле будут
+                удалены.
+              </Text>
+              <div className="flex justify-end gap-3">
+                <Button variant="ghost" onClick={closeDeleteModal}>
+                  Отмена
+                </Button>
+                <Button variant="danger" onClick={handleConfirmDelete}>
+                  Удалить
+                </Button>
+              </div>
+            </Stack>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
+    </div>
   );
 };
 

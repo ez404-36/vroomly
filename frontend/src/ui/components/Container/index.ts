@@ -1,3 +1,2 @@
-export * from './types';
-export { MantineContainer } from './MantineContainer';
-export { Container } from '../../factory';
+export { Container } from './Container';
+export type { ContainerProps } from './Container.types';

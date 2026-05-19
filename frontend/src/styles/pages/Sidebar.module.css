@@ -1,41 +1,45 @@
 .sidebar {
   min-height: 100vh;
-  background-color: var(--mantine-color-white);
-  border-right: 1px solid var(--mantine-color-gray-2);
+  background-color: var(--color-surface);
+  border-right: 1px solid var(--color-border);
   padding-top: 16px;
 }
 
 .navLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   border-radius: 8px;
-  color: var(--mantine-color-gray-7);
+  color: var(--color-text-muted);
   font-weight: 500;
   font-size: 14px;
   padding: 10px 12px;
+  text-decoration: none;
   transition:
     background-color 0.15s ease,
     color 0.15s ease;
 }
 
 .navLink:hover {
-  background-color: var(--mantine-color-gray-0);
-  color: var(--mantine-color-dark-8);
+  background-color: var(--color-bg-muted);
+  color: var(--color-text);
 }
 
 .navLinkActive {
-  background-color: var(--mantine-color-orange-0);
-  color: var(--mantine-color-orange-7);
+  background-color: var(--color-primary-subtle);
+  color: var(--color-primary);
 }
 
 .navLinkActive:hover {
-  background-color: var(--mantine-color-orange-1);
-  color: var(--mantine-color-orange-8);
+  background-color: var(--color-primary-subtle);
+  color: var(--color-primary-hover);
 }
 
 @media (max-width: 768px) {
   .sidebar {
     min-height: auto;
     border-right: none;
-    border-bottom: 1px solid var(--mantine-color-gray-2);
+    border-bottom: 1px solid var(--color-border);
     padding-top: 0;
   }
 }

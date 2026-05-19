@@ -8,7 +8,7 @@ import {
   Indicator,
   Tooltip,
 } from '../../ui';
-import { useMantineColorScheme } from '@mantine/core';
+import { useColorScheme } from '../../hooks/useColorScheme';
 import { routes } from '../../utils/routes';
 import classes from '../../styles/pages/Header.module.css';
 import { useSelector, useDispatch } from 'react-redux';
@@ -24,7 +24,7 @@ const links = [
 ];
 
 const Header = () => {
-  const { toggleColorScheme, colorScheme } = useMantineColorScheme();
+  const { toggleColorScheme, colorScheme } = useColorScheme();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAuthenticated = useSelector(

@@ -1,15 +1,4 @@
-import {
-  Container,
-  Paper,
-  Title,
-  Text,
-  TextInput,
-  PasswordInput,
-  Button,
-  Stack,
-  Anchor,
-  Group,
-} from '@mantine/core';
+import { Container, Paper, Title, Text, TextInput, PasswordInput, Button, Stack } from '../ui';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -55,14 +44,14 @@ export const LoginPage = () => {
   };
 
   return (
-    <Container size={1200} py={80}>
-      <Group grow gap="xl" align="stretch">
+    <Container size={1200} py="80px">
+      <div className="flex gap-6 items-stretch">
         <Paper
           p="xl"
           radius="md"
-          style={{ flex: 1, background: 'var(--mantine-color-gray-1)' }}
+          style={{ flex: 1, background: 'var(--color-bg-muted)' }}
         >
-          <Stack justify="center" h="100%">
+          <Stack justify="center" style={{ height: '100%' }}>
             <Title order={1}>Vroomly</Title>
             <Text size="xl">Ваш автомобильный помощник</Text>
           </Stack>
@@ -108,13 +97,13 @@ export const LoginPage = () => {
 
             <Text size="sm" ta="center">
               Нет аккаунта?{' '}
-              <Anchor component={Link} to={routes.registration}>
+              <Link to={routes.registration} className="text-[--color-primary] hover:underline">
                 Зарегистрироваться
-              </Anchor>
+              </Link>
             </Text>
           </Stack>
         </Paper>
-      </Group>
+      </div>
     </Container>
   );
 };

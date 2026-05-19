@@ -106,10 +106,10 @@ vroomly/
 - `src/store/slices/` — Redux Toolkit slices
 - `src/types/schemas.ts` — **auto-generated** from backend OpenAPI; do not edit manually, run `make codegen`
 - `src/AppRoutes/` — React Router v7 route definitions
-- `src/ui/` — reusable Mantine-based UI components
-- `src/styles/` — global CSS and Mantine theme
+- `src/ui/` — reusable Radix-based UI components
+- `src/styles/` — global CSS and Radix theme
 
-**State:** Redux Toolkit global store, Mantine for UI components and theming (dark/light via CSS variables).
+**State:** Redux Toolkit global store, Radix for UI components and theming (dark/light via CSS variables).
 
 ### Docker Compose Services
 

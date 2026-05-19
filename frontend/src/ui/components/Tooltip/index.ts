@@ -1,3 +1,2 @@
-export * from './types';
-export { MantineTooltip } from './MantineTooltip';
-export { Tooltip } from '../../factory';
+export { Tooltip } from './Tooltip';
+export type { TooltipProps } from './Tooltip.types';
