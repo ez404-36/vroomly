@@ -3,9 +3,9 @@ import { routes } from '../../utils/routes';
 import { Box, Button, Center, Container, Title } from '@mantine/core';
 import Sidebar from '../Sidebar/Sidebar';
 import MainContent from '../MainContent/MainContent';
+import classes from '../../styles/pages/Home.module.css';
 
 const Home = () => {
-
   return (
     <>
       <Title order={1} ta="center">
@@ -25,14 +25,10 @@ const Home = () => {
             boxSizing: 'border-box',
           }}
         >
-          <Box
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '21.978% 78.022%',
-              width: '100%',
-            }}
-          >
-            <Sidebar />
+          <Box className={classes.homeLayout}>
+            <Box className={classes.sidebarColumn}>
+              <Sidebar />
+            </Box>
             <MainContent />
           </Box>
         </Box>

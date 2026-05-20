@@ -1,0 +1,14 @@
+.homeLayout {
+  display: grid;
+  grid-template-columns: 21.978% 78.022%;
+  width: 100%;
+}
+
+.sidebarColumn {
+  border-right: 1px solid var(--text-primary);
+  padding-right: 50px;
+}
+
+.mainColumn {
+  padding-left: 24px;
+}

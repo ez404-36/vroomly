@@ -6,6 +6,30 @@ export const theme: MantineThemeOverride = {
 
   fontFamily: 'Tilda Sans, sans-serif',
 
+  components: {
+    Button: {
+      defaultProps: {
+        variant: 'filled', // глобальный variant
+        radius: 'md', // закругление
+        size: 'md', // размер по умолчанию
+        color: 'brandOrange', // если хотите использовать свою палитру
+      },
+      styles: (theme, params) => ({
+        root: {
+          fontWeight: 600,
+          textTransform: 'none',
+          borderRadius: '10px',
+          boxShadow: '0 3px 0 0 #cd5c00',
+          background: `linear-gradient(180deg, ${theme.colors.brandOrange[5]} 0%, ${theme.colors.brandOrange[6]} 100%)`,
+          color: theme.colors.brandNeutral[0],
+          '&:hover': {
+            background: `linear-gradient(180deg, ${theme.colors.brandOrange[6]} 0%, ${theme.colors.brandOrange[7]} 100%)`,
+          },
+        },
+      }),
+    },
+  },
+
   colors: {
     brandOrange: [
       '#fff4ed', // 0

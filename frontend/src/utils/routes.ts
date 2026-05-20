@@ -3,4 +3,7 @@ export const routes = {
   userprofile: '/userprofile',
   registration: '/userprofile/registrationform',
   login: '/userprofile/loginform',
+  support: '/support',
+  contacts: '/contacts',
+  about: '/about',
 };
