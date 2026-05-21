@@ -175,11 +175,7 @@ class UserVehicleAPI(BaseAPI):
             select(UserVehicle)
             .where(UserVehicle.user_id == self.user.id)
             .options(
-                selectinload(UserVehicle.generation).selectinload(
-                    UserVehicle.__mapper__.relationships['generation'].entity.class_.series
-                ).selectinload(
-                    UserVehicle.__mapper__.relationships['generation'].entity.class_.series.entity.class_.brand
-                ),
+                selectinload(UserVehicle.vehicle)
             )
         )
         return await database.fetch_all(query)
