@@ -1,9 +1,8 @@
 from datetime import date
-
 from uuid import UUID
 
 from fastapi_utils.api_model import APIModel
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class FrozenModelType(BaseModel):
@@ -27,3 +26,15 @@ class CurrentUser(APIModel):
     name: str | None
     surname: str | None
     birth_date: date | None
+    country_id: str | None
+
+
+class UpdateUserProfile(APIModel):
+    """
+    Схема для обновления профиля пользователя
+    """
+
+    name: str | None = None
+    surname: str | None = None
+    birth_date: date | None = None
+    country_id: str | None = Field(None, max_length=3)

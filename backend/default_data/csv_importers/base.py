@@ -1,14 +1,37 @@
 import csv
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterable, TypeVar
 
-from core.models import AutoSchemaBase
+from sqlalchemy import DECIMAL, BigInteger, Float, Integer, Numeric, SmallInteger, select
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import Session
 
+from common.models import IntEnumType, IntFlagType
+from common.utils.generators import generate_code
+from core.db import database
+from core.models import AutoSchemaBase
 
-class ImportFromCSVBase:
+T = TypeVar('T', bound=type[AutoSchemaBase])
+
+
+def get_numeric_columns(model_class: type[AutoSchemaBase]) -> list[str]:
+    """Возвращает список имен колонок, которые являются числовыми"""
+    numeric_types = (
+        Integer, BigInteger, SmallInteger,
+        Float, Numeric, DECIMAL, IntEnumType, IntFlagType,
+    )
+
+    numeric_columns = []
+
+    for column in model_class.get_table_columns():
+        if isinstance(column.type, numeric_types):
+            numeric_columns.append(column.name)
+
+    return numeric_columns
+
+
+class ImportObjectsFromCSVBase:
     """
     Базовый класс импорта данных из CSV-файла в БД
     """
@@ -29,54 +52,64 @@ class ImportFromCSVBase:
     """
     mapper: dict[str, str] = {}
 
-    filename: str = NotImplemented
+    source_filename: str = NotImplemented
     default_data = {}  # данные по умолчанию для создаваемых сущностей
 
     def __init__(self, session: Session | AsyncSession) -> None:
         self.session = session
+        self.nullable_fields = None
+
+        table_columns = self.model.get_table_columns()
+
+        self.nullable_columns = set([col.name for col in table_columns if col.nullable])
+        self.numeric_columns = set(get_numeric_columns(self.model))
+
+        self.prefetched_data: dict[str, dict[Any, Any]] = {}
+
 
     async def run(self):
-        prefetched_data = await self.prefetch_data()
+        await self.prefetch_data()
 
-        with open(Path(__file__).parent.parent / "csv_files" / self.filename) as f_obj:
+        with open(Path(__file__).parent.parent / 'csv_files' / self.source_filename) as f_obj:
             reader = csv.DictReader(f_obj)
 
             instances = []
             for row in reader:
                 instance_data = {}
                 for key, value in row.items():
-                    if key is None or key.startswith("_"):
+                    if key is None or key.startswith('_'):
                         # столбцы, которые начинаются с _, будут игнорироваться
                         continue
 
                     mapped_key = self.mapper.get(key, key)
-                    if ":" in mapped_key:
-                        prefetched_data_field, fk_field = mapped_key.split(":")
-                        if prefetched_data_field not in prefetched_data:
-                            raise ValueError(
-                                f"Вспомогательные данные по {prefetched_data_field} не были загружены из БД"
-                            )
 
-                        related_instances = prefetched_data[prefetched_data_field]
-                        instance_data[fk_field] = related_instances[value]
-                    else:
-                        instance_data[mapped_key] = value
+                    if value == '' and mapped_key in self.nullable_columns:
+                        value = None
+                    elif value and mapped_key in self.numeric_columns:
+                        value = int(value)
+
+                    instance_data[mapped_key] = value
 
                 instance_data.update(**self.default_data)
-                instance_data = self.transform_data(instance_data)
+                instance_data = self.transform_object_data(instance_data)
                 instances.append(instance_data)
 
-        query = insert(self.model).values(instances).on_conflict_do_nothing()
-        await self.session.execute(query)
-        print(f"Обработано {len(instances)} записей {self.model}")
+        await self.bulk_insert(instances)
+        print(f'Обработано {len(instances)} записей {self.model}')
 
-    def transform_data(self, instance_data: dict) -> dict:
+    async def bulk_insert(self, instances: list[dict], batch_size: int = 500):
+        for i in range(0, len(instances), batch_size):
+            batch = instances[i:i + batch_size]
+            query = insert(self.model).values(batch)
+            await self.session.execute(query)
+
+    def transform_object_data(self, instance_data: dict) -> dict:
         """
         Преобразование входных данных создаваемого объекта
         """
         return instance_data
 
-    async def prefetch_data(self) -> dict[str, dict[Any, Any]]:
+    async def prefetch_data(self):
         """
         Загруженные из БД данные для маппинга данных из CSV-файла.
         Пример:
@@ -86,4 +119,32 @@ class ImportFromCSVBase:
         $column_in_csv - название столбца с данными о стране в CSV-файле
         $foreign_key_column - поле внешнего ключа для связи со страной в модели
         """
-        return {}
+        self.prefetched_data = {}
+
+    async def prefetch_objects(self, model: T) -> Iterable[T]:
+        return await database.session_fetch_all(
+            self.session, select(model)
+        )
+
+
+class ImportObjectsFromCsvWithGenerateCode(ImportObjectsFromCSVBase):
+    """
+    Класс для объектов, содержащих поле code (наследующихся от CodeModelMixin)
+    """
+
+    """
+    Из какого поля модели генерировать код.
+    Будет выбрано первое не пустое значение
+    """
+    code_from_fields: Iterable[str] = ()
+
+    def transform_object_data(self, instance_data: dict) -> dict:
+        instance_data = super().transform_object_data(instance_data)
+
+        if not instance_data.get('code'):
+            for field in self.code_from_fields:
+                if value := instance_data.get(field):
+                    instance_data['code'] = generate_code(value)
+                    break
+
+        return instance_data

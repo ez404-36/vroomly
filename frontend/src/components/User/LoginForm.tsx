@@ -1,11 +1,10 @@
 import { useForm } from 'react-hook-form';
-import { TextInput, PasswordInput, Button, Flex, Text } from '@mantine/core';
+import { Button, Flex, Text, TextInput, PasswordInput } from '../../ui';
 import { useNavigate } from 'react-router-dom';
 import { useLoginMutation } from '../../api/authApi';
 
-// Интерфейс для формы логина
-export interface LoginDataForm {
-  username: string; // здесь вводится login ИЛИ email
+interface LoginDataForm {
+  username: string;
   password: string;
 }
 
@@ -24,7 +23,7 @@ export const LoginForm = () => {
 
   const onSubmit = async (data: LoginDataForm) => {
     const payload = {
-      username: data.username, // login или email
+      username: data.username,
       password: data.password,
     };
 
@@ -49,7 +48,7 @@ export const LoginForm = () => {
           required: 'Введите логин или email',
         })}
         error={errors.username?.message}
-        mt="sm"
+        mt="8px"
       />
 
       <PasswordInput
@@ -63,7 +62,7 @@ export const LoginForm = () => {
           },
         })}
         error={errors.password?.message}
-        mt="sm"
+        mt="8px"
       />
 
       {error && (
@@ -72,7 +71,7 @@ export const LoginForm = () => {
         </Text>
       )}
 
-      <Flex direction="column" gap="sm" mt="sm">
+      <Flex direction="column" gap="sm" mt="8px">
         <Button type="submit" loading={isLoading}>
           Войти
         </Button>

@@ -1,4 +1,147 @@
+@import "tailwindcss";
+
+/* ── Layout variables ───────────────────────────────────────────── */
 :root {
-  --header-height: 64px;
+  --header-height: 56px;
   --sidebar-width: 280px;
+}
+
+/* ── Light theme (default) ──────────────────────────────────────── */
+:root,
+[data-theme='light'] {
+  --radius: 10px;
+  --color-primary: #ff7300;
+  --color-primary-hover: #f76707;
+  --color-primary-fg: #ffffff;
+  --color-primary-subtle: #fff4ed;
+  --color-primary-disabled: #ff9742;
+  --color-secondary: transparent;
+  --color-secondary-fg: #373737;
+  --color-ghost-hover: rgba(0, 0, 0, 0.05);
+  --color-danger: #d20000;
+  --color-danger-hover: #b00000;
+  --color-danger-fg: #ffffff;
+  --color-success: #2b9348;
+  --color-success-hover: #217a39;
+  --color-success-fg: #ffffff;
+  --color-warning: #e9a000;
+  --color-warning-hover: #c98a00;
+  --color-warning-fg: #ffffff;
+  --color-text: #373737;
+  --color-text-muted: #999999;
+  --color-border: #e0e0e0;
+  --color-surface: #ffffff;
+  --color-bg: #fffaf7;
+  --color-bg-muted: #f2f2f2;
+  --color-input-bg: #ffffff;
+  --ring: #ff7300;
+}
+
+/* ── Dark theme ─────────────────────────────────────────────────── */
+[data-theme='dark'] {
+  --radius: 10px;
+  --color-primary: #ff8c2a;
+  --color-primary-hover: #ff7300;
+  --color-primary-fg: #ffffff;
+  --color-primary-subtle: rgba(255, 115, 0, 0.15);
+  --color-primary-disabled: #ff9742;
+  --color-secondary: transparent;
+  --color-secondary-fg: #d4c5b5;
+  --color-ghost-hover: rgba(255, 200, 150, 0.08);
+  --color-danger: #e03030;
+  --color-danger-hover: #c02020;
+  --color-danger-fg: #ffffff;
+  --color-success: #34a85a;
+  --color-success-hover: #2b9348;
+  --color-success-fg: #ffffff;
+  --color-warning: #f0b429;
+  --color-warning-hover: #d09a1a;
+  --color-warning-fg: #1a1410;
+  --color-text: #e8ddd3;
+  --color-text-muted: #9a8a7a;
+  --color-border: #3d3128;
+  --color-surface: #231d17;
+  --color-bg: #1a1410;
+  --color-bg-muted: #231d17;
+  --color-input-bg: #231d17;
+  --ring: #ff8c2a;
+}
+
+/* ── Base styles ────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Tilda Sans', sans-serif;
+  line-height: 1.5;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Tilda Sans', sans-serif;
+  min-height: 100vh;
+}
+
+/* ── Forms ─────────────────────────────────────────────────────── */
+form {
+  padding: 20px;
+}
+
+/* ── Radix Popper z-index (Popover/Tooltip/Select content wrapper) ── */
+[data-radix-popper-content-wrapper] {
+  z-index: 9999 !important;
+}
+
+/* ── DatePicker overrides ───────────────────────────────────────── */
+.datepicker-fixed {
+  --calendar-width: 280px;
+}
+
+/* ── Radix Tabs overrides ───────────────────────────────────────── */
+[data-radix-tabs-viewport] {
+  outline: none;
+}
+
+/* Vroomly Tab Trigger - primary color themed */
+.vroomly-tab-trigger {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: var(--radius);
+  background-color: var(--color-primary-fg);
+  color: var(--color-primary);
+  border: none;
+  outline: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.vroomly-tab-trigger:hover {
+  opacity: 0.9;
+}
+
+.vroomly-tab-trigger[data-state="active"] {
+  background-color: var(--color-primary);
+  color: var(--color-primary-fg);
+  font-weight: 600;
+}
+
+/* Vroomly Button - ensure filled variant uses primary color */
+button[class*="filled"],
+a[class*="filled"],
+.vroomly-button-filled {
+  background-color: var(--color-primary) !important;
+  color: var(--color-primary-fg) !important;
+}
+
+button[class*="filled"]:hover,
+a[class*="filled"]:hover,
+.vroomly-button-filled:hover {
+  background-color: var(--color-primary-hover) !important;
 }

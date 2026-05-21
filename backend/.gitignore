@@ -1,8 +1,10 @@
 __pycache__
-.git
 .mypy_cache
 .pytest_cache
 .pytype
 .ruff_cache
 
 src/*.py
+
+libs
+.venv/

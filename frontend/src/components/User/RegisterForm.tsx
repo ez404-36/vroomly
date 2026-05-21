@@ -1,8 +1,14 @@
 import { useForm } from 'react-hook-form';
-import { TextInput, PasswordInput, Button, Flex, Text } from '@mantine/core';
+import { Button, Flex, Text, TextInput, PasswordInput } from '../../ui';
 import { useRegisterMutation } from '../../api/authApi';
-import type { RegistrationDataForm } from '../../types/schemas';
 import { useNavigate } from 'react-router-dom';
+
+interface RegistrationDataForm {
+  login: string;
+  email: string;
+  password: string;
+  confirm_password: string;
+}
 
 export const RegisterForm = () => {
   const navigate = useNavigate();
@@ -42,7 +48,7 @@ export const RegisterForm = () => {
         placeholder="Введите логин"
         {...register('login', { required: 'Введите логин' })}
         error={errors.login?.message}
-        mt="sm"
+        mt="8px"
       />
       <TextInput
         label="Email"
@@ -52,7 +58,7 @@ export const RegisterForm = () => {
           pattern: { value: /^\S+@\S+$/i, message: 'Некорректный email' },
         })}
         error={errors.email?.message}
-        mt="sm"
+        mt="8px"
       />
       <PasswordInput
         label="Пароль"
@@ -62,7 +68,7 @@ export const RegisterForm = () => {
           minLength: { value: 6, message: 'Минимум 6 символов' },
         })}
         error={errors.password?.message}
-        mt="sm"
+        mt="8px"
       />
       <PasswordInput
         label="Подтверждение пароля"
@@ -73,9 +79,9 @@ export const RegisterForm = () => {
             value === watch('password') || 'Пароли не совпадают',
         })}
         error={errors.confirm_password?.message}
-        mt="sm"
+        mt="8px"
       />
-      <Flex mt="sm">
+      <Flex mt="8px">
         <Button type="submit" loading={isLoading}>
           Зарегистрироваться
         </Button>
@@ -87,7 +93,7 @@ export const RegisterForm = () => {
         </Text>
       )}
 
-      <Button mt="sm" onClick={() => navigate(-1)}>
+      <Button mt="8px" onClick={() => navigate(-1)}>
         Назад
       </Button>
     </form>

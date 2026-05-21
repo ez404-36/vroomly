@@ -1,7 +1,7 @@
 import logging
 import os
 from contextlib import asynccontextmanager
-from typing import Awaitable, Callable
+from typing import Callable
 
 import uvicorn
 from dotenv import load_dotenv
@@ -33,26 +33,38 @@ async def lifespan(_app: FastAPI):
 
 app = FastAPI(lifespan=lifespan)
 
-allowed_origins = [
-    'http://localhost:8077',
-    'http://localhost:5173',
-]
+def _get_allowed_origins() -> list[str]:
+    """Get allowed origins for development. Allows all localhost variants."""
+    import socket
 
-@app.middleware("http")
-async def strict_cors_blocker(request: Request, call_next):
-    """
-    Без этого слоя код эндпоинта будет выполнен, несмотря на ошибку CORS
-    """
-    if request.method == "OPTIONS":
-        return await call_next(request)
+    def resolve_host_ip() -> str:
+        try:
+            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            s.connect(("8.8.8.8", 80))
+            host_ip = s.getsockname()[0]
+            s.close()
+            return host_ip
+        except Exception:
+            return "172.17.0.1"
 
-    origin = request.headers.get("origin")
+    host_ip = resolve_host_ip()
 
-    if origin not in allowed_origins:
-        return PlainTextResponse("CORS policy violation", status_code=200)
+    return [
+        "http://localhost:8077",
+        "http://127.0.0.1:8077",
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        f"http://{host_ip}:8077",
+        f"http://{host_ip}:5173",
+        "http://host.docker.internal:8077",
+        "http://host.docker.internal:5173",
+    ]
 
-    response = await call_next(request)
-    return response
+
+allowed_origins: list[str] = _get_allowed_origins()
+
+CORS_EXEMPT_PATHS = {"/docs", "/openapi.json", "/redoc", "/swagger"}
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -61,6 +73,27 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+# @app.middleware("http")
+# async def strict_cors_blocker(request: Request, call_next):
+#     """
+#     Без этого слоя код эндпоинта будет выполнен, несмотря на ошибку CORS
+#     """
+#     # Swagger/OpenAPI endpoints always allowed
+#     if request.url.path in CORS_EXEMPT_PATHS or request.url.path.startswith("/docs/"):
+#         return await call_next(request)
+#
+#     if request.method == "OPTIONS":
+#         return await call_next(request)
+#
+#     origin = request.headers.get("origin")
+#
+#     if origin not in allowed_origins:
+#         return PlainTextResponse("CORS policy violation", status_code=200)
+#
+#     response = await call_next(request)
+#     return response
 
 _root_api_router = APIRouter(prefix="/api")
 register_all_service_routers(_root_api_router)

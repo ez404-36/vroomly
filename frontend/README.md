@@ -11,7 +11,7 @@
 - Redux Toolkit
 - React Router
 - Vite
-- Mantine UI
+- Radix UI
 
 ## Основные Команды
 

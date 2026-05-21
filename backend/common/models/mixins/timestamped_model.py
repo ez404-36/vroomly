@@ -1,3 +1,7 @@
+__all__ = (
+    "TimestampedModelMixin",
+)
+
 from datetime import datetime
 
 from sqlalchemy import func

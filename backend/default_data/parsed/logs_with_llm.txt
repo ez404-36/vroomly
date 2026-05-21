@@ -1,0 +1,194 @@
+```json
+ [
+     {
+         "generation": {
+             "brand": "ALFA ROMEO",
+             "series": "147",
+             "name": "1",
+             "is_restyling": false,
+             "start_year": 2000,
+             "end_year": 2004
+         },
+         "trims": [
+             {
+                 "name": "",
+                 "engine": "AR37203",
+                 "transmission": "C510",
+                 "body": "Type 937",
+                 "drive_type": "front"
+             },
+             {
+                 "name": "",
+                 "engine": "AR32104",
+                 "transmission": "C510",
+                 "body": "Type 937",
+                 "drive_type": "front"
+             },
+             {
+                 "name": "",
+                 "engine": "AR32310",
+                 "transmission": "C510",
+                 "body": "Type 937",
+                 "drive_type": "front"
+             },
+             {
+                 "name": "",
+                 "engine": "AR32310",
+                 "transmission": "Selespeed",
+                 "body": "Type 937",
+                 "drive_type": "front"
+             },
+             {
+                 "name": "",
+                 "engine": "182B9000",
+                 "transmission": "C510",
+                 "body": "Type 937",
+                 "drive_type": "front"
+             },
+             {
+                 "name": "",
+                 "engine": "937А2000",
+                 "transmission": "C530",
+                 "body": "Type 937",
+                 "drive_type": "front"
+             },
+             {
+                 "name": "",
+                 "engine": "192А5000",
+                 "transmission": "C630",
+                 "body": "Type 937",
+                 "drive_type": "front"
+             },
+             {
+                 "name": "GTA",
+                 "engine": "932A000",
+                 "transmission": "C630",
+                 "body": "Type 937",
+                 "drive_type": "front"
+             },
+             {
+                 "name": "GTA",
+                 "engine": "932A000",
+                 "transmission": "Selespeed",
+                 "body": "Type 937",
+                 "drive_type": "front"
+             }
+         ]
+     },
+     {
+         "generation": {
+             "brand": "ALFA ROMEO",
+             "series": "147",
+             "name": "1",
+             "is_restyling": true,
+             "start_year": 2004,
+             "end_year": 2006
+         },
+         "trims": [
+             {
+                 "name": "",
+                 "engine": "AR37203",
+                 "transmission": "C510",
+                 "body": "Type 937",
+                 "drive_type": "front"
+             },
+             {
+                 "name": "",
+                 "engine": "AR32104",
+                 "transmission": "C510",
+                 "body": "Type 937",
+                 "drive_type": "front"
+             },
+             {
+                 "name": "",
+                 "engine": "AR32310",
+                 "transmission": "C510",
+                 "body": "Type 937",
+                 "drive_type": "front"
+             },
+             {
+                 "name": "",
+                 "engine": "AR32310",
+                 "transmission": "Selespeed",
+                 "body": "Type 937",
+                 "drive_type": "front"
+             },
+             {
+                 "name": "",
+                 "engine": "937A3000",
+                 "transmission": "C530",
+                 "body": "Type 937",
+                 "drive_type": "front"
+             },
+             {
+                 "name": "",
+                 "engine": "937A5000",
+                 "transmission": "C630",
+                 "body": "Type 937",
+                 "drive_type": "front"
+             }
+         ]
+     },
+     {
+         "generation": {
+             "brand": "ALFA ROMEO",
+             "series": "147",
+             "name": "1",
+             "is_restyling": true,
+             "start_year": 2006,
+             "end_year": 2010
+         },
+         "trims": [
+             {
+                 "name": "",
+                 "engine": "AR37203",
+                 "transmission": "C510",
+                 "body": "Type 937",
+                 "drive_type": "front"
+             },
+             {
+                 "name": "",
+                 "engine": "AR32104",
+                 "transmission": "C510",
+                 "body": "Type 937",
+                 "drive_type": "front"
+             },
+             {
+                 "name": "",
+                 "engine": "AR32310",
+                 "transmission": "C510",
+                 "body": "Type 937",
+                 "drive_type": "front"
+             },
+             {
+                 "name": "",
+                 engine: "AR32310",
+                 "transmission": "Selespeed",
+                 "body": "Type 937",
+                 "drive_type": "front"
+             },
+             {
+                 "name": "",
+                 "engine": "937A3000",
+                 "transmission": "C530",
+                 "body": "Type 937",
+                 "drive_type": "front"
+             },
+             {
+                 "name": "",
+                 "engine": "937A5000",
+                 "transmission": "C630",
+                 "body": "Type 937",
+                 "drive_type": "front"
+             },
+             {
+                 "name": "",
+                 "engine": "937А6000",
+                 "transmission": "C630",
+                 "body": "Type 937",
+                 "drive_type": "front"
+             }
+         ]
+     }
+ ]
+ ```

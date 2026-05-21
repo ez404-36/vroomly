@@ -22,9 +22,15 @@ ENV VIRTUAL_ENV=/app/.venv
 ENV PATH="${VIRTUAL_ENV}/bin:$PATH"
 
 
-RUN apt-get update --quiet && \
-    apt-get install -y git
-
+# Переменные окружения для пакетного менеджера UV
+# отключить локальное кеширование пакетов
+ENV UV_NO_CACHE=1
+# не скачивать python с помощью UV
+ENV UV_PYTHON_DOWNLOADS=never
+# не использовать управляемый python
+ENV UV_NO_MANAGED_PYTHON=1
+# устанавливаемая версия
+ENV UV_VERSION=0.11
 
 # Cоздание пользователя
 RUN groupadd -g "${GID}" vroomly && \
@@ -32,13 +38,12 @@ RUN groupadd -g "${GID}" vroomly && \
     chown -R vroomly:vroomly /app
 
 
-COPY --link --from=ghcr.io/astral-sh/uv:0.4 /uv /usr/local/bin/uv
-ENV PATH="/root/.cargo/bin:${PATH}"
+RUN apt-get update --quiet
 
-COPY .pre-commit-config.yaml $backend_dir
+RUN pip install "uv==${UV_VERSION}" && \
+    uv --version
 
 RUN uv venv /app/.venv
-ENV PATH="/app/.venv/bin:$PATH"
 
 RUN --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
@@ -46,22 +51,5 @@ RUN --mount=type=bind,source=uv.lock,target=uv.lock \
       --locked \
       --no-editable \
       --no-install-project
-
-USER vroomly
-
-
-FROM backend-base as codegen
-
-USER root
-
-# Обновляем пакеты и ставим Node.js + npm
-RUN apt-get update && apt-get install -y \
-    curl \
-    && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
-    && apt-get install -y nodejs \
-    && npm install -g json-schema-to-typescript \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
 
 USER vroomly

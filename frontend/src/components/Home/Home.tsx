@@ -1,41 +1,26 @@
-import { Link } from 'react-router-dom';
-import { routes } from '../../utils/routes';
-import { Box, Button, Center, Container, Title } from '@mantine/core';
-import Sidebar from '../Sidebar/Sidebar';
+import { Title, Container } from '../../ui';
 import MainContent from '../MainContent/MainContent';
 
 const Home = () => {
-
   return (
     <>
       <Title order={1} ta="center">
         VR-90: Верстка страницы «Мой Гараж»
       </Title>
-      <Center mt="xl">
-        <Link to={routes.userprofile}>
-          <Button>К странице регистрации (VR-24)</Button>
-        </Link>
-      </Center>
 
-      <Container fluid my="md" px={0}>
-        <Box
+      <Container
+        fluid
+        style={{ marginTop: '16px', marginBottom: '16px', paddingInline: 0 }}
+      >
+        <div
           style={{
             width: '100%',
             paddingInline: '2.604%',
             boxSizing: 'border-box',
           }}
         >
-          <Box
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '21.978% 78.022%',
-              width: '100%',
-            }}
-          >
-            <Sidebar />
-            <MainContent />
-          </Box>
-        </Box>
+          <MainContent />
+        </div>
       </Container>
     </>
   );

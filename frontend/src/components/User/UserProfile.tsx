@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Flex } from '@mantine/core';
+import { Button, Flex } from '../../ui';
 
 import { LoginForm } from './LoginForm';
 import { RegisterForm } from './RegisterForm';

@@ -1,5 +1,9 @@
 from typing import Annotated
 
+from fastapi import Query
+from fastapi_utils.cbv import cbv
+from sqlalchemy import select
+
 from apps.vehicles.api.routers import router
 from apps.vehicles.api.vehicle_brand.filters import VehicleBrandFilterParams
 from apps.vehicles.api.vehicle_brand.schemas.readers import VehicleBrandDetailSchema
@@ -7,9 +11,6 @@ from apps.vehicles.models.vehicle.vehicle_brand import VehicleBrand
 from common.orm.filters import apply_search
 from common.orm.views.mixins import BaseAPI
 from core.db import database
-from fastapi import Query
-from fastapi_utils.cbv import cbv
-from sqlalchemy import select
 
 
 @cbv(router)

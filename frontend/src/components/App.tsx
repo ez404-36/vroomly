@@ -1,12 +1,11 @@
 import AppRoutes from '../AppRoutes/AppRoutes';
-import Header from './Header/Header';
+import AppLayout from './AppLayout/AppLayout';
 
 function App() {
   return (
-    <>
-      <Header />
+    <AppLayout>
       <AppRoutes />
-    </>
+    </AppLayout>
   );
 }
 

@@ -3,6 +3,7 @@
 TODO.md
 .env
 .cache
+.git
 .vscode/*
 !.vscode/extensions.json
 .DS_Store
@@ -14,4 +15,8 @@ TODO.md
 
 # Logs
 logs
+tasks
 *.log
+
+# Generated types (from OpenAPI)
+frontend/src/types/schemas.ts

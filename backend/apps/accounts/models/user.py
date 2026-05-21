@@ -15,7 +15,12 @@ class User(
     AutoSchemaBase,
     DeletedModelMixin,
     TimestampedModelMixin,
-    get_country_link_mixin(back_populates='users', nullable=True, verbose_name='Местоположение (страна)'),
+    get_country_link_mixin(
+        back_populates='users',
+        nullable=True,
+        verbose_name='Местоположение (страна)',
+        on_delete='SET NULL',
+    ),
 ):
     """
     Пользователь

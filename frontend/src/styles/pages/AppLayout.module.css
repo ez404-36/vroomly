@@ -1,0 +1,217 @@
+.layout {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr;
+  min-height: 100vh;
+}
+
+/* ── Left Sidebar ─────────────────────────────────────────────── */
+
+.leftSidebarWrapper {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: 100;
+  flex-shrink: 0;
+}
+
+.leftSidebar {
+  height: 100%;
+  width: var(--sidebar-width);
+  background-color: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: width 0.25s ease;
+}
+
+.leftSidebarCollapsed {
+  width: 0;
+  border-right: none;
+}
+
+.leftSidebarInner {
+  width: var(--sidebar-width);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Left Sidebar edge toggle ─────────────────────────────────── */
+
+.leftEdgeToggle {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  translate: 50% -50%;
+  z-index: 101;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background-color: var(--color-surface);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease,
+    right 0.25s ease;
+  padding: 0;
+}
+
+.leftEdgeToggle:hover {
+  background-color: var(--color-bg-muted);
+  color: var(--color-text);
+}
+
+.leftEdgeToggleCollapsed {
+  right: -12px;
+}
+
+/* ── Right column (header + main + right sidebar) ─────────────── */
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* ── Header ───────────────────────────────────────────────────── */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--header-height);
+  background-color: var(--color-primary);
+  border-bottom: 1px solid var(--color-primary);
+  flex-shrink: 0;
+}
+
+.headerInner {
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ── Content area (main + right sidebar) ──────────────────────── */
+
+.contentArea {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.main {
+  flex: 1;
+  overflow-y: auto;
+  min-width: 0;
+}
+
+/* ── Right Sidebar ────────────────────────────────────────────── */
+
+.rightSidebar {
+  width: var(--sidebar-width);
+  background-color: var(--color-surface);
+  border-left: 1px solid var(--color-border);
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: width 0.25s ease;
+  flex-shrink: 0;
+}
+
+.rightSidebarCollapsed {
+  width: 0;
+}
+
+.rightSidebarInner {
+  width: var(--sidebar-width);
+  padding: 16px;
+}
+
+/* ── Toggle buttons ───────────────────────────────────────────── */
+
+.sidebarToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--color-primary-fg);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.sidebarToggle:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ── Header links ─────────────────────────────────────────────── */
+
+.headerLink {
+  display: block;
+  line-height: 1;
+  padding: 8px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--color-primary-fg);
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.7;
+  transition: opacity 0.15s ease, background-color 0.15s ease;
+}
+
+.headerLink:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  opacity: 1;
+}
+
+.rightToggle {
+  color: var(--color-text-muted);
+}
+
+.rightToggle:hover {
+  background-color: var(--color-ghost-hover);
+  color: var(--color-text);
+}
+
+/* ── Responsive ───────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .leftSidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 200;
+  }
+
+  .leftSidebarCollapsed {
+    width: 0;
+  }
+
+  .rightSidebar {
+    display: none;
+  }
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 199;
+  }
+}

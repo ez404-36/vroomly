@@ -1,8 +1,9 @@
 import re
 import uuid
+from collections import defaultdict
 
 from pydantic.v1 import UUID4
-from sqlalchemy import UUID
+from sqlalchemy import UUID, Column
 from sqlalchemy.orm import Mapped, declarative_base, mapped_column
 
 Base = declarative_base()
@@ -57,3 +58,26 @@ class AutoSchemaBase(Base):
         pattern = r"(?<!^)(?=[A-Z])"
 
         return re.sub(pattern, "_", cls.__name__).lower()
+
+    def validate(self) -> dict[str, list]:
+        """
+        Валидирует модель и возвращает список ошибок по полю
+        """
+        errors = defaultdict(list)
+        required_error = 'Обязательное поле'
+
+        for col in self.get_table_columns():
+            col_name = col.name
+
+            if col_name == 'id':
+                continue
+
+            col_value = getattr(self, col_name)
+            if col_value is None and col.nullable is False:
+                errors[col_name].append(required_error)
+
+        return dict(errors)
+
+    @classmethod
+    def get_table_columns(cls) -> list[Column]:
+        return list(cls.__table__.columns)

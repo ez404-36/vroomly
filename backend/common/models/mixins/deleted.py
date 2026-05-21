@@ -1,3 +1,7 @@
+__all__ = (
+    "DeletedModelMixin",
+)
+
 from sqlalchemy import Boolean
 from sqlalchemy.orm import Mapped, mapped_column
 
