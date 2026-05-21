@@ -3,6 +3,9 @@ import type { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolk
 import { logout } from '../store/authSlice';
 import { routes } from '../utils/routes';
 
+// Импорт для авто-регистрации моков (сработает только при VITE_USE_MOCKS=true)
+import '../mocks/autoRegister';
+
 const createRawBaseQuery = (baseUrl: string) =>
   fetchBaseQuery({
     baseUrl: `http://localhost:8077/api/${baseUrl}`,
@@ -23,6 +26,16 @@ export const createBaseQuery = (
   const rawBaseQuery = createRawBaseQuery(baseUrl);
 
   return async (args, api, extraOptions) => {
+    // Проверяем включены ли моки
+    const { MockService } = await import('../mocks');
+
+    if (MockService.isEnabled()) {
+      // Используем mock baseQuery
+      const mockBaseQuery = MockService.createMockBaseQuery(baseUrl);
+      return mockBaseQuery(args, api, extraOptions);
+    }
+
+    // Реальный API
     const result = await rawBaseQuery(args, api, extraOptions);
 
     if (result.error && result.error.status === 401) {

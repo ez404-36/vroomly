@@ -146,3 +146,34 @@ a[class*="filled"]:hover,
 .vroomly-button-filled:hover {
   background-color: var(--color-primary-hover) !important;
 }
+
+/* ── Carousel slide animations ──────────────────────────────────── */
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-right {
+  animation: slide-in-right 300ms ease-out forwards;
+}
+
+.animate-slide-left {
+  animation: slide-in-left 300ms ease-out forwards;
+}

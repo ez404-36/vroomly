@@ -13,7 +13,7 @@ const tagMap: Record<1 | 2 | 3 | 4 | 5 | 6, 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | '
 };
 
 export const Title = React.forwardRef<HTMLHeadingElement, TitleProps>(
-  ({ children, order = 2, className, style, ta }, ref) => {
+  ({ children, order = 2, className, style, ta, onClick }, ref) => {
     const Tag = tagMap[order];
 
     return (
@@ -21,6 +21,7 @@ export const Title = React.forwardRef<HTMLHeadingElement, TitleProps>(
         ref={ref}
         className={clsx(titleVariants({ order }), ta && `text-${ta}`, className)}
         style={style}
+        onClick={onClick}
       >
         {children}
       </Tag>

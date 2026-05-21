@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as Popover from '@radix-ui/react-popover';
 import { DayPicker } from 'react-day-picker';
 import { clsx } from 'clsx';
-import { triggerBase, popoverContent } from './DatePickerInput.styles';
+import { triggerBase, popoverContent, dayPickerStyles } from './DatePickerInput.styles';
 import { labelBase, errorBase } from '../TextInput/TextInput.styles';
 import type { DatePickerInputProps } from './DatePickerInput.types';
 
@@ -78,10 +78,9 @@ export const DatePickerInput = React.forwardRef<HTMLButtonElement, DatePickerInp
                 selected={value ?? undefined}
                 onSelect={handleSelect}
                 disabled={maxDate ? { after: maxDate } : undefined}
-                style={{
-                  '--rdp-accent-color': 'var(--color-primary)',
-                  '--rdp-background-color': 'var(--color-primary-subtle)',
-                } as React.CSSProperties}
+                startWeekOnMonday
+                showOutsideDays
+                style={dayPickerStyles}
               />
             </Popover.Content>
           </Popover.Portal>

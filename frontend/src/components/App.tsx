@@ -2,13 +2,14 @@ import { Route, Routes } from 'react-router-dom';
 import AppLayout from './AppLayout/AppLayout';
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 import { routes } from '../utils/routes';
-import Home from './Home/Home';
+import SmartRedirect from './SmartRedirect/SmartRedirect';
 import UserProfile from './User/UserProfile';
 import { LoginPage } from '../pages/LoginPage';
 import { RegistrationPage } from '../pages/RegistrationPage';
 import { SettingsPage } from '../pages/SettingsPage';
 import { AddVehiclePage } from '../pages/AddVehiclePage';
 import GaragePage from '../pages/GaragePage';
+import { AboutPage } from '../pages/AboutPage';
 
 function App() {
   return (
@@ -21,14 +22,7 @@ function App() {
         element={
           <AppLayout>
             <Routes>
-              <Route
-                index
-                element={
-                  <ProtectedRoute>
-                    <Home />
-                  </ProtectedRoute>
-                }
-              />
+              <Route index element={<SmartRedirect />} />
               <Route
                 path={routes.garage}
                 element={
@@ -58,6 +52,14 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <AddVehiclePage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path={routes.about}
+                element={
+                  <ProtectedRoute>
+                    <AboutPage />
                   </ProtectedRoute>
                 }
               />

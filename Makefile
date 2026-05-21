@@ -21,6 +21,14 @@ env-prepare:
 set-profile-frontend:
 	sed -i 's/COMPOSE_PROFILES=vr-backend/COMPOSE_PROFILES=vr-frontend/' .env
 
+enable-mocks:
+	sed -i 's/VITE_USE_MOCKS=false/VITE_USE_MOCKS=true/' frontend/.env
+	@echo "Mocks enabled. Set VITE_USE_MOCKS=true in frontend/.env"
+
+disable-mocks:
+	sed -i 's/VITE_USE_MOCKS=true/VITE_USE_MOCKS=false/' frontend/.env
+	@echo "Mocks disabled. Set VITE_USE_MOCKS=false in frontend/.env"
+
 up-project:
 	docker compose up -d
 
@@ -43,4 +51,4 @@ typecheck:
 	docker compose run --rm linters ty check .
 
 
-.PHONY: base-setup docker-setup setup-for-backend setup-for-frontend network-prepare volumes-prepare env-prepare set-profile-frontend up-project seeds tests codegen lint typecheck
+.PHONY: base-setup docker-setup setup-for-backend setup-for-frontend network-prepare volumes-prepare env-prepare set-profile-frontend up-project seeds tests codegen lint typecheck enable-mocks disable-mocks

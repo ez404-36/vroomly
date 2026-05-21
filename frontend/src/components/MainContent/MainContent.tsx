@@ -6,7 +6,11 @@ const MainContent = () => {
   const location = useLocation();
 
   if (location.pathname === '/garage') {
-    return <GaragePage />;
+    return (
+      <div className={classes.mainContent}>
+        <GaragePage />
+      </div>
+    );
   }
 
   return (

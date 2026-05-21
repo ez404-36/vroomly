@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   Button,
   Container,
@@ -50,9 +50,17 @@ const Header = () => {
   return (
     <header className={classes.header}>
       <Container size="md" className={classes.inner}>
-        <Link to={routes.home} style={{ textDecoration: 'none' }}>
-          <Title order={4} style={{ color: 'var(--color-primary-fg)' }}>Vroomly</Title>
-        </Link>
+        <Title
+          order={4}
+          style={{
+            color: 'var(--color-primary-fg)',
+            cursor: 'pointer',
+            userSelect: 'none',
+          }}
+          onClick={() => navigate(isAuthenticated ? routes.garage : routes.about)}
+        >
+          Vroomly
+        </Title>
         <Flex gap="xs">
           {items}
           <Tooltip label={colorScheme === 'dark' ? 'Светлая тема' : 'Тёмная тема'}>

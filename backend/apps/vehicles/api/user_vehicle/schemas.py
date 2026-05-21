@@ -1,5 +1,7 @@
+from typing import Any
+
 from fastapi_utils.api_model import APIModel
-from pydantic import Field
+from pydantic import Field, model_validator
 
 from common.schemas.fields import ChoiceFieldSchema, ChoiceFieldWithParentSchema
 
@@ -75,92 +77,36 @@ class UserVehicleListSchema(APIModel):
 	"""Минимальная схема для списка ТС пользователя."""
 
 	id: str = Field(description='ID записи')
+	vehicle_id: str | None = Field(default=None, description='ID транспортного средства')
 	mileage: int | None = Field(default=None, description='Пробег')
 	is_mileage_in_miles: bool = Field(default=False, description='Пробег в милях')
 	brand: str | None = Field(default=None, description='Бренд')
 	series: str | None = Field(default=None, description='Модель/серия')
 	generation: str | None = Field(default=None, description='Поколение')
 
+	@model_validator(mode='before')
+	@classmethod
+	def convert_user_vehicle_list(cls, data: Any) -> Any:
+		"""Convert UserVehicle ORM model to list schema."""
+		if hasattr(data, 'id'):
+			brand_name = None
+			series_name = None
+			generation_name = None
 
-class EngineSchema(APIModel):
-	"""Схема двигателя."""
+			if hasattr(data, 'generation') and data.generation:
+				generation_name = data.generation.name
+				if hasattr(data.generation, 'series') and data.generation.series:
+					series_name = data.generation.series.name
+					if hasattr(data.generation.series, 'brand') and data.generation.series.brand:
+						brand_name = data.generation.series.brand.name
 
-	id: str = Field(description='ID двигателя')
-	name: str = Field(description='Название двигателя')
-	volume: int = Field(description='Рабочий объём (сс)')
-	power: int = Field(description='Мощность (л.с)')
-	type: list[str] = Field(default_factory=list, description='Тип двигателя')
-	eco_class: str | None = Field(default=None, description='Экологический класс')
-	cylinders: int | None = Field(default=None, description='Кол-во цилиндров')
-	valves: int | None = Field(default=None, description='Кол-во клапанов')
-	torque: int | None = Field(default=None, description='Крутящий момент (Нм)')
-	grm_drive_type: str | None = Field(default=None, description='Тип привода ГРМ')
-	phase_regulator_type: str | None = Field(default=None, description='Фазорегулятор')
-
-
-class TransmissionSchema(APIModel):
-	"""Схема трансмиссии."""
-
-	id: str = Field(description='ID трансмиссии')
-	name: str = Field(description='Название')
-	index: str | None = Field(default=None, description='Заводской индекс')
-	type: str = Field(description='Тип коробки передач')
-	gears: int = Field(description='Количество передач')
-	drive_types: list[str] = Field(default_factory=list, description='Типы привода')
-	torque: int | None = Field(default=None, description='Крутящий момент (Нм)')
-
-
-class TrimSchema(APIModel):
-	"""Схема комплектации."""
-
-	id: str = Field(description='ID комплектации')
-	name: str = Field(description='Название комплектации')
-	avg_fuel_consumption: float | None = Field(default=None, description='Средний расход топлива (по паспорту)')
-	acceleration: float | None = Field(default=None, description='Разгон до 100 км/ч (по паспорту)')
-	drive_type: str | None = Field(default=None, description='Тип привода')
-	body_str: str | None = Field(default=None, description='Кузов автомобиля')
-	clearance: int | None = Field(default=None, description='Клиренс')
-
-
-class GenerationSchema(APIModel):
-	"""Схема поколения."""
-
-	id: str = Field(description='ID поколения')
-	name: str = Field(description='Название поколения')
-	is_restyling: bool = Field(default=False, description='Рестайлинг')
-	start_year: int = Field(description='Начало продаж (год)')
-	end_year: int | None = Field(default=None, description='Окончание продаж (год)')
-
-
-class SeriesSchema(APIModel):
-	"""Схема серии/модели."""
-
-	id: str = Field(description='ID серии')
-	name: str = Field(description='Название модели')
-
-
-class BrandSchema(APIModel):
-	"""Схема бренда."""
-
-	id: str = Field(description='ID бренда')
-	name: str = Field(description='Название бренда')
-	abbreviation: str | None = Field(default=None, description='Аббревиатура')
-
-
-class UserVehicleDetailFullSchema(APIModel):
-	"""Полная схема ТС пользователя для детального просмотра."""
-
-	id: str = Field(description='ID записи')
-	vehicle_id: str | None = Field(default=None, description='ID транспортного средства')
-	user_id: str = Field(description='ID пользователя')
-	mileage: int | None = Field(default=None, description='Пробег')
-	is_mileage_in_miles: bool = Field(default=False, description='Пробег в милях')
-	avg_fuel_consumption: float | None = Field(default=None, description='Средний расход топлива')
-	production_year: int | None = Field(default=None, description='Год выпуска')
-	color: str | None = Field(default=None, description='Цвет')
-	brand: BrandSchema | None = Field(default=None, description='Бренд')
-	series: SeriesSchema | None = Field(default=None, description='Серия/модель')
-	generation: GenerationSchema | None = Field(default=None, description='Поколение')
-	trim: TrimSchema | None = Field(default=None, description='Комплектация')
-	engine: EngineSchema | None = Field(default=None, description='Двигатель')
-	transmission: TransmissionSchema | None = Field(default=None, description='Трансмиссия')
+			return {
+				'id': str(data.id),
+				'vehicle_id': str(data.vehicle_id) if data.vehicle_id else None,
+				'mileage': getattr(data, 'mileage', None),
+				'is_mileage_in_miles': getattr(data, 'is_mileage_in_miles', False),
+				'brand': brand_name,
+				'series': series_name,
+				'generation': generation_name,
+			}
+		return data

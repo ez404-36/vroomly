@@ -30,7 +30,7 @@ const navItems = [
 const footerLinks = [
   { label: 'Техническая поддержка', path: routes.home, icon: SupportIcon },
   { label: 'Контакты', path: routes.home, icon: ContactsIcon },
-  { label: 'О сервисе', path: routes.home, icon: InfoIcon },
+  { label: 'О сервисе', path: routes.about, icon: InfoIcon },
 ];
 
 function getInitials(

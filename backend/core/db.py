@@ -29,6 +29,12 @@ class OrmDatabase:
         async with self.get_async_session() as session:
             return await self.session_fetch_all(session, query)
 
+    async def execute(self, query: Any) -> Any:
+        """Execute raw SQL statement (INSERT, UPDATE, DELETE)."""
+        async with self.get_async_session() as session:
+            await session.execute(query)
+            await session.commit()
+
     @staticmethod
     async def session_fetch_one(session: AsyncSession, query: Select, raise_exc=False) -> Any:
         result = await session.scalars(query)

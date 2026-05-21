@@ -81,18 +81,20 @@ const AppLayout = ({ children, rightSidebar }: AppLayoutProps) => {
               <Sidebar isCollapsed={!leftOpen} />
             </div>
           </aside>
-          <button
-            className={clsx(
-              classes.leftEdgeToggle,
-              !leftOpen && classes.leftEdgeToggleCollapsed,
-            )}
-            onClick={() => dispatch(toggleLeftSidebar())}
-            aria-label={
-              leftOpen ? 'Скрыть боковую панель' : 'Показать боковую панель'
-            }
-          >
-            <ChevronLeftIcon flipped={!leftOpen} />
-          </button>
+          <Tooltip label={leftOpen ? 'Свернуть' : 'Развернуть'}>
+            <button
+              className={clsx(
+                classes.leftEdgeToggle,
+                !leftOpen && classes.leftEdgeToggleCollapsed,
+              )}
+              onClick={() => dispatch(toggleLeftSidebar())}
+              aria-label={
+                leftOpen ? 'Свернуть боковую панель' : 'Развернуть боковую панель'
+              }
+            >
+              <ChevronLeftIcon flipped={!leftOpen} />
+            </button>
+          </Tooltip>
         </div>
       )}
 
@@ -116,7 +118,9 @@ const AppLayout = ({ children, rightSidebar }: AppLayoutProps) => {
                   className={classes.sidebarToggle}
                   onClick={() => dispatch(toggleLeftSidebar())}
                   aria-label={
-                    leftOpen ? 'Скрыть боковую панель' : 'Показать боковую панель'
+                    leftOpen
+                      ? 'Скрыть боковую панель'
+                      : 'Показать боковую панель'
                   }
                 >
                   <span className={classes.headerIcon}>
@@ -124,11 +128,17 @@ const AppLayout = ({ children, rightSidebar }: AppLayoutProps) => {
                   </span>
                 </button>
               )}
-              <Link to={routes.home} style={{ textDecoration: 'none' }}>
-                <Title order={4} style={{ color: 'var(--color-primary-fg)' }}>
-                  Vroomly
-                </Title>
-              </Link>
+              <Title
+                order={4}
+                style={{
+                  color: 'var(--color-primary-fg)',
+                  cursor: 'pointer',
+                  userSelect: 'none',
+                }}
+                onClick={() => navigate(isAuthenticated ? routes.garage : routes.about)}
+              >
+                Vroomly
+              </Title>
             </Flex>
 
             <Flex gap="xs" align="center">

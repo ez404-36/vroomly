@@ -6,4 +6,5 @@ export interface TitleProps {
   className?: string;
   style?: React.CSSProperties;
   ta?: 'left' | 'center' | 'right';
+  onClick?: React.MouseEventHandler<HTMLHeadingElement>;
 }

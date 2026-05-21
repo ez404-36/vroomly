@@ -61,7 +61,7 @@ class GuessCommonCarInfo:
 			brand=to_choice_field(guess_brand),
 			model=to_choice_field(guess_series),
 			generation=to_choice_field_list(guess_generations),
-			configuration=to_choice_field_with_parent_list(guess_trims, ''),	# TODO
+			configuration=to_choice_field_with_parent_list(guess_trims, ''),
 		)
 
 	@staticmethod
@@ -93,7 +93,13 @@ class GuessCommonCarInfo:
 		return await database.fetch_all(guess_generation_query)
 
 	@staticmethod
-	async def _guess_trims(generation_ids: list[UUID], **kwargs) -> list[CarTrim]:
-		# TODO
-		print(generation_ids)
-		return []
+	async def _guess_trims(generation_ids: list[UUID], **kwargs: None) -> list[CarTrim]:
+		if not generation_ids:
+			return []
+
+		trim_query = (
+			select(CarTrim)
+			.where(CarTrim.generation_id.in_(generation_ids))
+		)
+
+		return await database.fetch_all(trim_query)

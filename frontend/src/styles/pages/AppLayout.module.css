@@ -42,33 +42,31 @@
 .leftEdgeToggle {
   position: absolute;
   top: 50%;
-  right: 0;
-  translate: 50% -50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
   z-index: 101;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 24px;
   height: 24px;
-  border: 1px solid var(--color-border);
+  border: none;
   border-radius: 50%;
-  background-color: var(--color-surface);
-  color: var(--color-text-muted);
+  background-color: var(--color-primary);
+  color: var(--color-primary-fg);
   cursor: pointer;
   transition:
-    color 0.15s ease,
     background-color 0.15s ease,
-    right 0.25s ease;
+    left 0.25s ease;
   padding: 0;
 }
 
 .leftEdgeToggle:hover {
-  background-color: var(--color-bg-muted);
-  color: var(--color-text);
+  background-color: var(--color-primary-hover);
 }
 
 .leftEdgeToggleCollapsed {
-  right: -12px;
+  left: calc(var(--sidebar-collapsed-width) / 2);
 }
 
 /* ── Right column (header + main + right sidebar) ─────────────── */
@@ -114,6 +112,7 @@
   overflow-y: auto;
   min-width: 0;
   height: 100%;
+  padding: 20px;
 }
 
 /* ── Right Sidebar ────────────────────────────────────────────── */
@@ -202,13 +201,23 @@
 @media (max-width: 768px) {
   .layout {
     grid-template-columns: 1fr;
+    min-height: 100dvh;
+    height: 100dvh;
+  }
+
+  .leftSidebarWrapper {
+    display: none;
+  }
+
+  .rightColumn {
+    min-height: 100dvh;
   }
 
   .leftSidebar {
     position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
+    height: 100dvh;
     z-index: 200;
   }
 
