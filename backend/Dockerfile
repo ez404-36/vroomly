@@ -52,4 +52,9 @@ RUN --mount=type=bind,source=uv.lock,target=uv.lock \
       --no-editable \
       --no-install-project
 
+COPY --chown=vroomly:vroomly entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
 USER vroomly
+
+ENTRYPOINT ["/entrypoint.sh"]

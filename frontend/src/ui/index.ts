@@ -42,5 +42,8 @@ export type { ActionIconProps } from './components/ActionIcon';
 export type { TooltipProps } from './components/Tooltip';
 export type { IndicatorProps } from './components/Indicator';
 export type { DatePickerInputProps } from './components/DatePickerInput';
-export type { TimeInputProps } from './components/TimeInput';
-export type { TabsProps, TabContentProps, TabItem } from './components/Tabs/index';
+export type {
+  TabsProps,
+  TabContentProps,
+  TabItem,
+} from './components/Tabs/index';
