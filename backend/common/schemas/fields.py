@@ -1,9 +1,9 @@
-from pydantic import BaseModel
+from fastapi_utils.api_model import APIModel
 
 from common.schemas.types import ID
 
 
-class ChoiceFieldSchema(BaseModel):
+class ChoiceFieldSchema(APIModel):
 	id: ID
 	name: str
 
