@@ -36,8 +36,8 @@ async def get_current_user(token: TOKEN) -> CurrentUser | None:
 		jti = payload.get('jti')
 		if user_id is None or jti is None:
 			raise credentials_exception
-	except jwt.InvalidTokenError:
-		raise credentials_exception
+	except jwt.InvalidTokenError as exc:
+		raise credentials_exception from exc
 
 	session = await database.fetch_one(
 		select(UserSession).where(UserSession.token_jti == jti),
