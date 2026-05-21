@@ -1,4 +1,4 @@
-import { Container, Paper, Title, Text, TextInput, PasswordInput, Button, Stack } from '../ui';
+import { Paper, Title, Text, TextInput, PasswordInput, Button, Stack } from '../ui';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -43,8 +43,8 @@ export const RegistrationPage = () => {
   };
 
   return (
-    <Container size={1200} py="80px">
-      <div className="flex gap-6 items-stretch">
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', padding: '40px 24px' }}>
+      <div style={{ display: 'flex', gap: '24px', width: '100%', alignItems: 'stretch' }}>
         <Paper p="xl" radius="md" style={{ flex: 1 }}>
           <Stack>
             <Title order={2}>Регистрация</Title>
@@ -120,6 +120,6 @@ export const RegistrationPage = () => {
           </Stack>
         </Paper>
       </div>
-    </Container>
+    </div>
   );
 };

@@ -59,33 +59,35 @@ const AppLayout = ({ children, rightSidebar }: AppLayoutProps) => {
   return (
     <div className={classes.layout}>
       {/* Left Sidebar */}
-      <div className={classes.leftSidebarWrapper}>
-        <aside
-          className={clsx(
-            classes.leftSidebar,
-            !leftOpen && classes.leftSidebarCollapsed,
-          )}
-        >
-          <div className={classes.leftSidebarInner}>
-            <Sidebar />
-          </div>
-        </aside>
-        <button
-          className={clsx(
-            classes.leftEdgeToggle,
-            !leftOpen && classes.leftEdgeToggleCollapsed,
-          )}
-          onClick={() => dispatch(toggleLeftSidebar())}
-          aria-label={
-            leftOpen ? 'Скрыть боковую панель' : 'Показать боковую панель'
-          }
-        >
-          <ChevronLeftIcon flipped={!leftOpen} />
-        </button>
-      </div>
+      {isAuthenticated && (
+        <div className={classes.leftSidebarWrapper}>
+          <aside
+            className={clsx(
+              classes.leftSidebar,
+              !leftOpen && classes.leftSidebarCollapsed,
+            )}
+          >
+            <div className={classes.leftSidebarInner}>
+              <Sidebar />
+            </div>
+          </aside>
+          <button
+            className={clsx(
+              classes.leftEdgeToggle,
+              !leftOpen && classes.leftEdgeToggleCollapsed,
+            )}
+            onClick={() => dispatch(toggleLeftSidebar())}
+            aria-label={
+              leftOpen ? 'Скрыть боковую панель' : 'Показать боковую панель'
+            }
+          >
+            <ChevronLeftIcon flipped={!leftOpen} />
+          </button>
+        </div>
+      )}
 
       {/* Mobile overlay */}
-      {isMobile && leftOpen && (
+      {isAuthenticated && isMobile && leftOpen && (
         <div
           className={classes.overlay}
           onClick={() => dispatch(setLeftSidebar(false))}
@@ -99,15 +101,17 @@ const AppLayout = ({ children, rightSidebar }: AppLayoutProps) => {
         <header className={classes.header}>
           <div className={classes.headerInner}>
             <Flex gap="sm" align="center">
-              <button
-                className={classes.sidebarToggle}
-                onClick={() => dispatch(toggleLeftSidebar())}
-                aria-label={
-                  leftOpen ? 'Скрыть боковую панель' : 'Показать боковую панель'
-                }
-              >
-                <SidebarIcon />
-              </button>
+              {isAuthenticated && (
+                <button
+                  className={classes.sidebarToggle}
+                  onClick={() => dispatch(toggleLeftSidebar())}
+                  aria-label={
+                    leftOpen ? 'Скрыть боковую панель' : 'Показать боковую панель'
+                  }
+                >
+                  <SidebarIcon />
+                </button>
+              )}
               <Link to={routes.home} style={{ textDecoration: 'none' }}>
                 <Title order={4} style={{ color: 'var(--color-primary-fg)' }}>
                   Vroomly
@@ -205,7 +209,7 @@ const AppLayout = ({ children, rightSidebar }: AppLayoutProps) => {
         <div className={classes.contentArea}>
           <main className={classes.main}>{children}</main>
 
-          {rightSidebar !== undefined && (
+          {isAuthenticated && rightSidebar !== undefined && (
             <>
               <button
                 className={clsx(classes.sidebarToggle, classes.rightToggle)}
