@@ -13,6 +13,16 @@ import {
   setLeftSidebar,
 } from '../../store/layoutSlice';
 import { useLogoutMutation } from '../../api/authApi';
+import {
+  ChevronLeftIcon,
+  SidebarIcon,
+  SidebarRightIcon,
+  SunIcon,
+  MoonIcon,
+  ChatIcon,
+  BellIcon,
+  GearIcon,
+} from '../../svg';
 import Sidebar from '../Sidebar/Sidebar';
 import classes from '../../styles/pages/AppLayout.module.css';
 
@@ -68,7 +78,7 @@ const AppLayout = ({ children, rightSidebar }: AppLayoutProps) => {
             )}
           >
             <div className={classes.leftSidebarInner}>
-              <Sidebar />
+              <Sidebar isCollapsed={!leftOpen} />
             </div>
           </aside>
           <button
@@ -109,7 +119,9 @@ const AppLayout = ({ children, rightSidebar }: AppLayoutProps) => {
                     leftOpen ? 'Скрыть боковую панель' : 'Показать боковую панель'
                   }
                 >
-                  <SidebarIcon />
+                  <span className={classes.headerIcon}>
+                    <SidebarIcon />
+                  </span>
                 </button>
               )}
               <Link to={routes.home} style={{ textDecoration: 'none' }}>
@@ -139,7 +151,9 @@ const AppLayout = ({ children, rightSidebar }: AppLayoutProps) => {
                   onClick={toggleColorScheme}
                   aria-label="Сменить тему"
                 >
-                  {colorScheme === 'dark' ? <SunIcon /> : <MoonIcon />}
+                  <span className={classes.headerIcon}>
+                    {colorScheme === 'dark' ? <SunIcon /> : <MoonIcon />}
+                  </span>
                 </ActionIcon>
               </Tooltip>
 
@@ -152,7 +166,9 @@ const AppLayout = ({ children, rightSidebar }: AppLayoutProps) => {
                         size="lg"
                         aria-label="Сообщения"
                       >
-                        <ChatIcon />
+                        <span className={classes.headerIcon}>
+                          <ChatIcon />
+                        </span>
                       </ActionIcon>
                     </Indicator>
                   </Tooltip>
@@ -164,7 +180,9 @@ const AppLayout = ({ children, rightSidebar }: AppLayoutProps) => {
                         size="lg"
                         aria-label="Уведомления"
                       >
-                        <BellIcon />
+                        <span className={classes.headerIcon}>
+                          <BellIcon />
+                        </span>
                       </ActionIcon>
                     </Indicator>
                   </Tooltip>
@@ -179,7 +197,9 @@ const AppLayout = ({ children, rightSidebar }: AppLayoutProps) => {
                         size="lg"
                         aria-label="Настройки"
                       >
-                        <GearIcon />
+                        <span className={classes.headerIcon}>
+                          <GearIcon />
+                        </span>
                       </ActionIcon>
                     </Link>
                   </Tooltip>
@@ -219,7 +239,9 @@ const AppLayout = ({ children, rightSidebar }: AppLayoutProps) => {
                 }
                 style={{ alignSelf: 'flex-start', margin: '8px 4px' }}
               >
-                <SidebarRightIcon />
+                <span className={classes.headerIcon}>
+                  <SidebarRightIcon />
+                </span>
               </button>
               <aside
                 className={clsx(
@@ -236,157 +258,5 @@ const AppLayout = ({ children, rightSidebar }: AppLayoutProps) => {
     </div>
   );
 };
-
-/* ── SVG icons ─────────────────────────────────────────────────── */
-
-function ChevronLeftIcon({ flipped }: { flipped: boolean }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      stroke="none"
-      style={{
-        transition: 'transform 0.25s ease',
-        transform: flipped ? 'rotate(180deg)' : undefined,
-      }}
-    >
-      <path d="M15 19l-7-7 7-7z" />
-    </svg>
-  );
-}
-
-function SidebarIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect width="18" height="18" x="3" y="3" rx="2" />
-      <path d="M9 3v18" />
-    </svg>
-  );
-}
-
-function SidebarRightIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect width="18" height="18" x="3" y="3" rx="2" />
-      <path d="M15 3v18" />
-    </svg>
-  );
-}
-
-function SunIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="12" cy="12" r="4" />
-      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
-    </svg>
-  );
-}
-
-function MoonIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-    </svg>
-  );
-}
-
-function ChatIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-    </svg>
-  );
-}
-
-function BellIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-      <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-    </svg>
-  );
-}
-
-function GearIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
-      <circle cx="12" cy="12" r="3" />
-    </svg>
-  );
-}
 
 export default AppLayout;

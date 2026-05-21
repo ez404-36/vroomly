@@ -15,6 +15,11 @@
   border-bottom: 1px solid var(--color-border);
 }
 
+.profileCollapsed {
+  padding: 16px 8px;
+  gap: 8px;
+}
+
 .avatar {
   width: 100px;
   height: 100px;
@@ -31,6 +36,12 @@
   flex-shrink: 0;
 }
 
+.avatarCollapsed {
+  width: 40px;
+  height: 40px;
+  font-size: 14px;
+}
+
 .login {
   font-size: 14px;
   font-weight: 500;
@@ -41,6 +52,10 @@
   max-width: 100%;
 }
 
+.loginHidden {
+  display: none;
+}
+
 /* ── Navigation ────────────────────────────────────────────────── */
 
 .nav {
@@ -49,6 +64,11 @@
   gap: 4px;
   padding: 16px;
   flex: 1;
+}
+
+.navCollapsed {
+  padding: 16px 8px;
+  align-items: center;
 }
 
 .navLink {
@@ -64,6 +84,75 @@
   transition:
     background-color 0.15s ease,
     color 0.15s ease;
+}
+
+.navLinkCollapsed {
+  padding: 10px;
+  justify-content: center;
+  height: 42px;
+}
+
+.navIcon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.navLabel {
+  transition: opacity 0.2s ease;
+}
+
+.navLabelHidden {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  font-size: 14px;
+  padding: 10px 12px;
+  text-decoration: none;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.navIcon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.navLabel {
+  transition: opacity 0.2s ease;
+}
+
+.navLabelHidden {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
 }
 
 .navLink:hover {
@@ -91,6 +180,11 @@
   border-top: 1px solid var(--color-border);
 }
 
+.footerCollapsed {
+  padding: 12px 8px 16px;
+  align-items: center;
+}
+
 .footerLink {
   display: flex;
   align-items: center;
@@ -104,6 +198,36 @@
   transition:
     background-color 0.15s ease,
     color 0.15s ease;
+}
+
+.footerLinkCollapsed {
+  padding: 8px;
+  justify-content: center;
+  height: 42px;
+}
+
+.footerIcon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.footerLabel {
+  transition: opacity 0.2s ease;
+}
+
+.footerLabelHidden {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
 }
 
 .footerLink:hover {

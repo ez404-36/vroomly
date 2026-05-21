@@ -4,6 +4,7 @@
 :root {
   --header-height: 56px;
   --sidebar-width: 280px;
+  --sidebar-collapsed-width: 64px;
 }
 
 /* ── Light theme (default) ──────────────────────────────────────── */
