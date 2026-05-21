@@ -63,6 +63,8 @@ services:
       - &app-backend ./backend:/app:rw
     ports:
       - ${EXPOSE_BACKEND_PORT:-8000}:${BACKEND_PORT:-8000}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     depends_on:
       - db
       - libretranslate
@@ -107,6 +109,8 @@ services:
     depends_on:
       - db
     restart: no
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     profiles: [ vr-frontend ]
 
   seed: # Наполнение БД первичными данными

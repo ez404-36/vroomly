@@ -10,6 +10,7 @@ import requests
 from bs4 import BeautifulSoup, Tag
 from sqlalchemy import or_, select
 from typing_inspect import get_args
+from sqlalchemy import and_
 
 from apps.vehicles.models.car.car_trim import CarTrim
 from apps.vehicles.models.car.car_transmission import CarTransmission
@@ -18,9 +19,11 @@ from apps.vehicles.models.vehicle.vehicle_concern import VehicleConcern
 from apps.vehicles.models.vehicle.vehicle_engine import VehicleEngine
 from apps.vehicles.models.vehicle.vehicle_generation import VehicleGeneration
 from apps.vehicles.models.vehicle.vehicle_series import VehicleSeries
+from common.providers.llm.lm_studio import LMStudioProvider
 from common.utils.generators import generate_code
 from core.constants import BACKEND_DIR
 from core.db import database
+from default_data.parsers.html_parsers.otoba.prompts import parse_vehicle_generation_prompt
 from default_data.parsers.html_parsers.otoba.types import VehicleNodeType
 from default_data.parsers.html_parsers.otoba.utils import create_from_pkl_file
 from default_data.parsers.html_parsers.otoba.value_transformers.engine import OtobaRuEngineValueTransformer
@@ -43,7 +46,7 @@ class OtobaRuHtmlParser:
 	root_uri = Path('otoba.ru')
 	engines_uri = root_uri / 'dvigatel' / 'catalog'
 	transmissions_uri = root_uri / 'transmissii' / 'catalog'
-	vehicles_uri = root_uri / 'auto'
+	vehicles_uri = root_uri / 'auto' / 'catalog'
 
 	"""
 	Маппер концернов, указанных на сайте, с кодом концерна в БД
@@ -65,6 +68,7 @@ class OtobaRuHtmlParser:
 			'transmissions': [],
 			'vehicles': [],
 		}
+		self._llm_provider = LMStudioProvider()
 
 	async def run(self, output_path: Path, only: VehicleNodeType = None):
 		parse_pages: tuple[VehicleNodeType] = get_args(VehicleNodeType)
@@ -134,11 +138,12 @@ class OtobaRuHtmlParser:
 				logger.error(f'Не удалось определить бренд/концерн по коду {brand_or_concern_code}. URI: {brand_uri}')
 				continue
 
-			nodes_uri = await self._parse_all_engine_or_transmissions_uri(brand_uri)
+			nodes_uri = await self._parse_all_brand_page_links_uri(brand_uri)
 			for node_uri in nodes_uri:
 				await self._parse_detail_page(node_uri, brand, concern, vehicle_node_type)
 
-	def _get_soup(self, page_uri: str | Path) -> BeautifulSoup:
+	@staticmethod
+	def _get_soup(page_uri: str | Path) -> BeautifulSoup:
 		str_page_uri = str(page_uri).removesuffix('.html').removeprefix("https://")
 
 		page = requests.get(f'https://{str_page_uri}.html')
@@ -171,7 +176,7 @@ class OtobaRuHtmlParser:
 
 		return [page_uri.parent / href for href in brand_names]
 
-	async def _parse_all_engine_or_transmissions_uri(self, brand_page_url: Path) -> list[Path | str]:
+	async def _parse_all_brand_page_links_uri(self, brand_page_url: Path) -> list[Path | str]:
 		"""
 		Парсит список ссылок на двигатели/трансмиссии/модели со страницы конкретного бренда.
 
@@ -223,11 +228,11 @@ class OtobaRuHtmlParser:
 		soup = self._get_soup(detail_page_uri)
 
 		if vehicle_node_type == 'vehicle':
-			await self._parse_vehicle_page(soup, detail_page_uri, brand, concern)
+			await self._parse_vehicle_generation_page(soup, detail_page_uri, brand, concern)
 		else:
 			await self._parse_engine_or_transmission_page(soup, detail_page_uri, brand, concern, vehicle_node_type)
 
-	async def _parse_vehicle_page(
+	async def _parse_vehicle_generation_page(
 		self,
 		soup: BeautifulSoup,
 		detail_page_uri: Path | str,
@@ -235,9 +240,14 @@ class OtobaRuHtmlParser:
 		concern: VehicleConcern | None,
 	):
 		"""
-		Парсит страницу с информацией о поколении и комплектации автомобиля.
+		Парсит страницу с информацией о поколении и комплектациях автомобиля.
 		Создаёт VehicleGeneration и CarTrim из одной страницы.
 		"""
+
+		prompt = parse_vehicle_generation_prompt(str(soup.select_one('article')))
+		llm_response = self._llm_provider.send_prompt(prompt)
+		self.parsed_data['vehicles'].append(llm_response)
+		print(llm_response)
 		prop_tables: list[Tag] = soup.select('div.table-tth')
 
 		if not prop_tables:
@@ -263,8 +273,6 @@ class OtobaRuHtmlParser:
 		# Находим VehicleSeries по бренду и названию модели
 		series: VehicleSeries | None = None
 		if brand:
-			from sqlalchemy import and_
-			from common.utils.generators import generate_code
 			model_code = generate_code(model_name)
 			series = await database.fetch_one(
 				select(VehicleSeries).where(

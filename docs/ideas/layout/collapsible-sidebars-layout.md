@@ -62,11 +62,3 @@ Layout-паттерн для React-приложения с двумя collapsibl
 - Левый закрыт, правый открыт
 - Оба закрыты
 
-## Технический подход
-
-- CSS Grid для layout
-- React state для toggle
-- CSS transitions для анимации
-- CSS custom properties для ширин
-
-

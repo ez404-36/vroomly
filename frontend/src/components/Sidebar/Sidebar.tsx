@@ -23,23 +23,21 @@ const Sidebar = () => {
   }
 
   return (
-    <div className={classes.sidebar}>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', padding: '16px' }}>
-        {navItems.map((item) => {
-          const isActive = location.pathname === item.path;
-          return (
-            <Link
-              key={item.path}
-              to={item.path}
-              className={clsx(classes.navLink, isActive && classes.navLinkActive)}
-            >
-              <item.icon />
-              {item.label}
-            </Link>
-          );
-        })}
-      </div>
-    </div>
+    <nav className={classes.nav}>
+      {navItems.map((item) => {
+        const isActive = location.pathname === item.path;
+        return (
+          <Link
+            key={item.path}
+            to={item.path}
+            className={clsx(classes.navLink, isActive && classes.navLinkActive)}
+          >
+            <item.icon />
+            {item.label}
+          </Link>
+        );
+      })}
+    </nav>
   );
 };
 

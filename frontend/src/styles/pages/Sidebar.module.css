@@ -1,8 +1,8 @@
-.sidebar {
-  min-height: 100vh;
-  background-color: var(--color-surface);
-  border-right: 1px solid var(--color-border);
-  padding-top: 16px;
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
 }
 
 .navLink {
@@ -33,13 +33,4 @@
 .navLinkActive:hover {
   background-color: var(--color-primary-subtle);
   color: var(--color-primary-hover);
-}
-
-@media (max-width: 768px) {
-  .sidebar {
-    min-height: auto;
-    border-right: none;
-    border-bottom: 1px solid var(--color-border);
-    padding-top: 0;
-  }
 }
