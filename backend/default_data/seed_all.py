@@ -62,6 +62,7 @@ async def clean_data():
 
 
 async def main():
+    """Точка входа CLI: вычищает таблицы и заново наполняет их данными из CSV."""
     await clean_data()
     await seed_all()
 
