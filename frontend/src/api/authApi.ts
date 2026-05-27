@@ -1,6 +1,7 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import type { CurrentUser } from '../types/schema-types';
 import { createBaseQuery } from './baseQuery';
+import { formatApiError } from './errors';
 
 const formDataBody = (data: Record<string, unknown>) =>
   Object.entries(data)
@@ -23,6 +24,7 @@ export const authApi = createApi({
           'Content-Type': 'application/x-www-form-urlencoded',
         },
       }),
+      transformErrorResponse: formatApiError,
     }),
 
     register: builder.mutation({

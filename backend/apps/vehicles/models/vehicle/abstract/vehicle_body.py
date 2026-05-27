@@ -15,4 +15,7 @@ class VehicleBodyAbstract(
     __abstract__ = True
 
     name: Mapped[str | None] = mapped_column(String(50), doc='Название кузова')
-    material: Mapped[str | None] = mapped_column(IntFlagType(VehicleBodyType), doc='Основной материал кузова')
+    material: Mapped[VehicleBodyType | None] = mapped_column(
+        IntFlagType(VehicleBodyType),
+        doc='Основной материал кузова (комбинация флагов VehicleBodyType)',
+    )

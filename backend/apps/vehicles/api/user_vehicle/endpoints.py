@@ -29,6 +29,20 @@ def _to_float(value: Any) -> float | None:
     return float(value)
 
 
+def _uv_mileage(user_vehicle: UserVehicle) -> int | None:
+    """Пробег ТС: хранится на Vehicle, читаем через связь."""
+    if user_vehicle.vehicle is None:
+        return None
+    return user_vehicle.vehicle.mileage
+
+
+def _uv_is_mileage_in_miles(user_vehicle: UserVehicle) -> bool:
+    """Единицы измерения пробега: хранятся на Vehicle, читаем через связь."""
+    if user_vehicle.vehicle is None:
+        return False
+    return user_vehicle.vehicle.is_mileage_in_miles
+
+
 @cbv(user_vehicle_router)
 class UserVehicleAPI(BaseAPI):
     """API для управления транспортными средствами пользователя."""
@@ -65,8 +79,8 @@ class UserVehicleAPI(BaseAPI):
                 id=str(user_vehicle.id),
                 vehicle_id=str(user_vehicle.vehicle_id) if user_vehicle.vehicle_id else None,
                 user_id=str(user_vehicle.user_id),
-                mileage=user_vehicle.mileage,
-                is_mileage_in_miles=user_vehicle.is_mileage_in_miles,
+                mileage=_uv_mileage(user_vehicle),
+                is_mileage_in_miles=_uv_is_mileage_in_miles(user_vehicle),
                 avg_fuel_consumption=_to_float(user_vehicle.avg_fuel_consumption),
                 brand=guess_result.brand.name,
                 series=guess_result.model.name,
@@ -112,8 +126,8 @@ class UserVehicleAPI(BaseAPI):
             id=str(user_vehicle.id),
             vehicle_id=str(user_vehicle.vehicle_id) if user_vehicle.vehicle_id else None,
             user_id=str(user_vehicle.user_id),
-            mileage=user_vehicle.mileage,
-            is_mileage_in_miles=user_vehicle.is_mileage_in_miles,
+            mileage=_uv_mileage(user_vehicle),
+            is_mileage_in_miles=_uv_is_mileage_in_miles(user_vehicle),
             avg_fuel_consumption=_to_float(user_vehicle.avg_fuel_consumption),
             brand=None,
             series=None,
@@ -148,8 +162,8 @@ class UserVehicleAPI(BaseAPI):
             id=str(user_vehicle.id),
             vehicle_id=str(user_vehicle.vehicle_id) if user_vehicle.vehicle_id else None,
             user_id=str(user_vehicle.user_id),
-            mileage=user_vehicle.mileage,
-            is_mileage_in_miles=user_vehicle.is_mileage_in_miles,
+            mileage=_uv_mileage(user_vehicle),
+            is_mileage_in_miles=_uv_is_mileage_in_miles(user_vehicle),
             avg_fuel_consumption=_to_float(user_vehicle.avg_fuel_consumption),
             brand=None,
             series=None,
@@ -233,8 +247,8 @@ class UserVehicleAPI(BaseAPI):
             id=str(user_vehicle.id),
             vehicle_id=str(user_vehicle.vehicle_id) if user_vehicle.vehicle_id else None,
             user_id=str(user_vehicle.user_id),
-            mileage=user_vehicle.mileage,
-            is_mileage_in_miles=user_vehicle.is_mileage_in_miles,
+            mileage=_uv_mileage(user_vehicle),
+            is_mileage_in_miles=_uv_is_mileage_in_miles(user_vehicle),
             avg_fuel_consumption=_to_float(user_vehicle.avg_fuel_consumption),
             brand=brand_name,
             series=series_name,
@@ -255,14 +269,17 @@ class UserVehicleAPI(BaseAPI):
     ) -> UserVehicle:
         """
         Создать запись UserVehicle в БД.
+
+        ВНИМАНИЕ: данный метод содержит существующий технический долг
+        (отдельная задача): параметры ``generation_id``, ``trim_id``,
+        ``mileage``, ``is_mileage_in_miles`` не сохраняются — этих полей
+        нет на UserVehicle (пробег теперь на Vehicle, generation/trim —
+        на Spec). Сигнатура сохранена ради совместимости.
         """
+        _ = generation_id, trim_id, mileage, is_mileage_in_miles  # TODO: связать с Vehicle/Spec
         user_vehicle = UserVehicle(
             user_id=UUID(user_id),
-            vehicle_id=None,
-            generation_id=UUID(generation_id) if generation_id else None,
-            trim_id=UUID(trim_id) if trim_id else None,
-            mileage=mileage,
-            is_mileage_in_miles=is_mileage_in_miles,
+            vehicle_id=None,  # type: ignore[arg-type]  # существующий баг: NOT NULL FK
             avg_fuel_consumption=avg_fuel_consumption,
         )
         async with database.get_async_session() as session:

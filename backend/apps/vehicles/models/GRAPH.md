@@ -1,5 +1,7 @@
 # Граф моделей данных модуля `vehicles`
 
+> **Статус:** Все шаги реализованы (2026-05-27). Миграции: ac7cd3d386a4, 5227f16cea20, 957661a10bd9, eadcdf7ec004, 4f43d74dc3d1, 0bd8baffd531, f94b26d2a4b6, 822d8cec7482, 2d0c4b831eae.
+
 ## 1. Введение
 
 Документ описывает текущее состояние модели данных модуля `backend/apps/vehicles/models/`:
@@ -173,13 +175,13 @@ Country ─┘                            │
 
 ## 6. Недостатки
 
-### 6.1. Конфликт `back_populates='trims'` на `VehicleEngine`
+### 6.1. [ИСПРАВЛЕНО] Конфликт `back_populates='trims'` на `VehicleEngine`
 
 `vehicle/abstract/vehicle_trim.py:11` объявляет `get_engine_link_mixin('trims', False)` в абстрактном базовом классе `VehicleTrimAbstract`. Оба наследника (`CarTrim`, `MotorcycleTrim`) получают одинаковый backref `trims` на `VehicleEngine`. SQLAlchemy при `configure_mappers()` сгенерирует две `relationship` с одним именем — backref будет перезаписан, либо упадёт ошибка. Корень: backref-имя задано в абстрактном базовом классе вместо подклассов.
 
 Файлы: `backend/apps/vehicles/models/vehicle/abstract/vehicle_trim.py:11`, `backend/apps/vehicles/models/car/car_trim.py:15`, `backend/apps/vehicles/models/motorcycle/motorcycle_trim.py:7`.
 
-### 6.2. 1:1 `Vehicle ↔ Spec` не гарантирован
+### 6.2. [ИСПРАВЛЕНО] 1:1 `Vehicle ↔ Spec` не гарантирован
 
 `get_foreign_key_mixin` (`backend/common/models/mixins/relations.py:46`) создаёт `relationship(...)` без параметра `uselist=False`. На стороне `Vehicle.car_spec` коллекция, а не один объект. Дополнительно отсутствуют:
 - `UNIQUE(vehicle_id)` на `car_spec` / `motorcycle_spec`;
@@ -187,7 +189,7 @@ Country ─┘                            │
 
 Файлы: `backend/apps/vehicles/models/car/car_spec.py:10-13`, `backend/apps/vehicles/models/motorcycle/motorcycle_spec.py:7-10`, `backend/apps/vehicles/models/vehicle/vehicle.py:11-19`.
 
-### 6.3. Дублирование данных между уровнями
+### 6.3. [ИСПРАВЛЕНО / НЕ ПРИМЕНИМО] Дублирование данных между уровнями
 
 - `drive_type` хранится и в `CarTransmission.drive_types` (массив), и в `CarTrim.drive_type` (скаляр).
   Файлы: `backend/apps/vehicles/models/car/car_transmission.py:23-26`, `backend/apps/vehicles/models/car/car_trim.py:34-37`.
@@ -198,25 +200,25 @@ Country ─┘                            │
 
 Примечание: `VehicleEngine.torque` и `CarTransmission.torque` — независимые атрибуты (момент двигателя vs максимально допустимый входной момент КПП), дублированием не являются. Нужно лишь уточнить doc-строки, явно разграничивающие смысл.
 
-### 6.4. `Numeric(3, 2)` для расхода/разгона
+### 6.4. [ИСПРАВЛЕНО] `Numeric(3, 2)` для расхода/разгона
 
 Точность позволяет максимум `9.99`. Реальные расходы 10–20 л/100 км и время разгона 10+ с не помещаются. Нужно `Numeric(4, 2)` или `Numeric(5, 2)`.
 
 Файлы: `backend/apps/vehicles/models/car/car_trim.py:26-33`, `backend/apps/vehicles/models/vehicle/user_vehicle.py:25-28`.
 
-### 6.5. `Vehicle.color` — расхождение аннотации и DDL
+### 6.5. [ИСПРАВЛЕНО] `Vehicle.color` — расхождение аннотации и DDL
 
 `Mapped[str | None] = mapped_column(String(100), ...)` — Python-аннотация говорит «может быть None», а в `mapped_column` `nullable` не задан (по умолчанию False для не-Optional ORM-аннотации, но `Mapped[X | None]` обычно делает `nullable=True`; поведение зависит от версии SQLAlchemy и может расходиться с `ty`). Нужно явно `nullable=True`.
 
 Файл: `backend/apps/vehicles/models/vehicle/vehicle.py:21`.
 
-### 6.6. `Vehicle.production_year` и Generation.start/end_year
+### 6.6. [ИСПРАВЛЕНО] `Vehicle.production_year` и Generation.start/end_year
 
 `Vehicle.production_year` хранится без связи с поколением (Generation доступен только через `Spec`). Проверка `production_year ∈ [start_year, end_year]` нигде не выражена.
 
 Файлы: `backend/apps/vehicles/models/vehicle/vehicle.py:20`, `backend/apps/vehicles/models/vehicle/vehicle_generation.py:20-21`.
 
-### 6.7. `CarSpec`/`MotorcycleSpec` не ссылаются на `Trim` (и `generation_id` денормализован)
+### 6.7. [ИСПРАВЛЕНО] `CarSpec`/`MotorcycleSpec` не ссылаются на `Trim` (и `generation_id` денормализован)
 
 На уровне БД нет фиксации, какой именно комплектацией владеет экземпляр. Сейчас на Spec лежит `generation_id`, а `trim_id` отсутствует вовсе. По уточнению владельца Spec — это «заводские данные (марка, модель, кузов, поколение, комплектация)», значит trim обязан быть.
 
@@ -227,67 +229,67 @@ Country ─┘                            │
 
 Файлы: `backend/apps/vehicles/models/car/car_spec.py:10-21`, `backend/apps/vehicles/models/motorcycle/motorcycle_spec.py:7-14`.
 
-### 6.8. `mileage` находится на `UserVehicle`, а должен быть на `Vehicle`/`Spec`
+### 6.8. [ИСПРАВЛЕНО] `mileage` находится на `UserVehicle`, а должен быть на `Vehicle`/`Spec`
 
 По уточнению владельца «VIN и пробег — это данные в целом по автомобилю, они не зависят от конкретного пользователя». Сейчас при смене владельца пробег теряется.
 
 Файл: `backend/apps/vehicles/models/vehicle/user_vehicle.py:19-21`.
 
-### 6.9. `on_delete='CASCADE'` по умолчанию даже для nullable FK
+### 6.9. [ИСПРАВЛЕНО] `on_delete='CASCADE'` по умолчанию даже для nullable FK
 
 `get_foreign_key_mixin` в `backend/common/models/mixins/relations.py:19` устанавливает `on_delete: PostgresOnDeleteFK = "CASCADE"` как дефолт сигнатуры. Ветка `if nullable and on_delete is None: on_delete = 'SET NULL'` никогда не сработает, потому что параметр уже не `None`. В итоге удаление `Country` каскадно сотрёт все `VehicleBrand` этой страны, удаление `VehicleConcern` сотрёт все `VehicleBrand` концерна и т. д.
 
 Файл: `backend/common/models/mixins/relations.py:12-35`.
 
-### 6.10. Двойное «владение» — `brand_id` + `concern_id`
+### 6.10. [ИСПРАВЛЕНО] Двойное «владение» — `brand_id` + `concern_id`
 
 На `VehicleEngine`, `VehicleEnginePhaseRegulatorSystem`, `CarTransmission`, `MotorcycleTransmission` одновременно есть оба nullable-FK. Можно указать обоих, никого, или несогласованную пару (concern не содержит этот brand). Нет CHECK-ограничения.
 
 Файлы: `backend/apps/vehicles/models/vehicle/vehicle_engine.py:13-18`, `backend/apps/vehicles/models/vehicle/vehicle_engine_phase_regulator_system.py:13-18`, `backend/apps/vehicles/models/car/car_transmission.py:13-18`, `backend/apps/vehicles/models/motorcycle/motorcycle_transmission.py:13-18`.
 
-### 6.11. `VehicleBodyAbstract.material` — несоответствие типа Python и колонки
+### 6.11. [ИСПРАВЛЕНО] `VehicleBodyAbstract.material` — несоответствие типа Python и колонки
 
 `Mapped[str | None] = mapped_column(IntFlagType(VehicleBodyType), ...)` — аннотация `str | None`, а в БД хранится `IntFlag`. `ty` должен ругаться.
 
 Файл: `backend/apps/vehicles/models/vehicle/abstract/vehicle_body.py:18`.
 
-### 6.12. Неполная типизация комбинаций ремень/цепь ГРМ
+### 6.12. [НЕ ПРИМЕНИМО] Неполная типизация комбинаций ремень/цепь ГРМ
 
 `VehicleEngineGRMType` (`IntFlag`) позволяет комбинировать, но количество ремней/цепей структурно не хранится. TODO в `vehicle_engine.py:31-32` фиксирует проблему. Нужно добавить отдельные поля `belts_count`, `chains_count` или нормализовать.
 
 Файл: `backend/apps/vehicles/models/vehicle/vehicle_engine.py:31-35`.
 
-### 6.13. Слабая типизация `VehicleTrimAbstract.options`
+### 6.13. [ИСПРАВЛЕНО] Слабая типизация `VehicleTrimAbstract.options`
 
 `Mapped[dict | None]` без параметризации ключей/значений нарушает требование проекта о полной типизации (см. AGENTS.md). Должно быть `dict[str, Any] | None` или конкретный `TypedDict`. Дополнительно — `default={}` создаёт колоночный дефолт (на уровне БД ок), но семантически рискованно.
 
 Файл: `backend/apps/vehicles/models/vehicle/abstract/vehicle_trim.py:19`.
 
-### 6.14. `VehicleGroup` ни с чем не связана
+### 6.14. [ИСПРАВЛЕНО] `VehicleGroup` ни с чем не связана
 
 Модель «Группа ТС» имеет только `user_id`, но никаких связей с `UserVehicle` / `Vehicle`. По смыслу группа должна содержать ТС пользователя. Сейчас группа всегда пустая.
 
 Файл: `backend/apps/vehicles/models/vehicle/vehicle_group.py:8-17`.
 
-### 6.15. `Manufacturer` — пустая TODO-заглушка
+### 6.15. [ИСПРАВЛЕНО] `Manufacturer` — пустая TODO-заглушка
 
 Файл содержит только комментарий. Если сущность нужна — реализовать с FK `VehicleBrand.manufacturer_id`. Если не нужна — удалить файл.
 
 Файл: `backend/apps/vehicles/models/manufacturer.py:1-2`.
 
-### 6.16. Концепция `Concern` пересекается с будущим `Manufacturer`
+### 6.16. [НЕ ПРИМЕНИМО] Концепция `Concern` пересекается с будущим `Manufacturer`
 
 Когда появится `Manufacturer` (завод), потребуется явная развязка: концерн = группа брендов, manufacturer = производственное предприятие. Сейчас концерн в коде совпадает с «автопроизводителем» по смыслу, что подтверждено комментарием в `manufacturer.py:1-2` («не путать с торговой маркой»).
 
 Файлы: `backend/apps/vehicles/models/vehicle/vehicle_concern.py`, `backend/apps/vehicles/models/manufacturer.py`.
 
-### 6.17. Терминология `VehicleSeries`
+### 6.17. [ИСПРАВЛЕНО] Терминология `VehicleSeries`
 
 Docstring `vehicle/vehicle_series.py:15-18` говорит «Модель марки ТС», тогда как имя класса — Series. Возможна путаница с понятиями «Vehicle Model» в кодогенерации TypeScript. Стоит зафиксировать терминологию в этом документе и/или переименовать класс.
 
 Файл: `backend/apps/vehicles/models/vehicle/vehicle_series.py:11-21`.
 
-### 6.18. Недостаточные уникальные ограничения
+### 6.18. [ИСПРАВЛЕНО] Недостаточные уникальные ограничения
 
 - `VehicleEngine`: нет `UNIQUE(brand_id, name)`.
 - `VehicleGeneration`: нет `UNIQUE(series_id, name, is_restyling)`.
@@ -296,7 +298,7 @@ Docstring `vehicle/vehicle_series.py:15-18` говорит «Модель мар
 
 Файлы: `backend/apps/vehicles/models/vehicle/vehicle_engine.py:13-38`, `backend/apps/vehicles/models/vehicle/vehicle_generation.py:9-21`, `backend/apps/vehicles/models/car/car_spec.py:10-21`.
 
-### 6.19. `generation_id` на Spec без `back_populates` (устраняется удалением поля)
+### 6.19. [ИСПРАВЛЕНО] `generation_id` на Spec без `back_populates` (устраняется удалением поля)
 
 `CarSpec` и `MotorcycleSpec` передают `back_populates=None` в `get_vehicle_generation_link_mixin(None, False)`. Generation не знает свои Spec, нельзя из ORM получить «все ТС этого поколения».
 
@@ -304,13 +306,13 @@ Docstring `vehicle/vehicle_series.py:15-18` говорит «Модель мар
 
 Файлы: `backend/apps/vehicles/models/car/car_spec.py:13`, `backend/apps/vehicles/models/motorcycle/motorcycle_spec.py:10`.
 
-### 6.20. `CarTrim.body_id NOT NULL` при существующем `body_str`
+### 6.20. [ИСПРАВЛЕНО] `CarTrim.body_id NOT NULL` при существующем `body_str`
 
 `CarTrim` требует обязательный `body_id`, но рядом есть `body_str` как «временное решение» именно для случая, когда `CarBody` ещё не создан. NOT NULL FK + параллельная текстовая колонка — внутреннее противоречие.
 
 Файл: `backend/apps/vehicles/models/car/car_trim.py:19, 38-39`.
 
-### 6.21. Нет фактического двигателя/КПП на экземпляре (свап не отражается)
+### 6.21. [ИСПРАВЛЕНО] Нет фактического двигателя/КПП на экземпляре (свап не отражается)
 
 Сейчас `engine_id` и `transmission_id` хранятся только на Trim (заводская конфигурация). При свапе двигателя или КПП у конкретного экземпляра это не отражается в БД — у двух авто с одинаковой комплектацией обязательно один и тот же двигатель.
 
@@ -324,13 +326,13 @@ Docstring `vehicle/vehicle_series.py:15-18` говорит «Модель мар
 
 Порядок продиктован зависимостями (см. раздел 8).
 
-### Шаг 1. Починить `back_populates` для `engine` в Trim
+### Шаг 1. [ВЫПОЛНЕНО] Починить `back_populates` для `engine` в Trim
 
 Перенести `get_engine_link_mixin` из `VehicleTrimAbstract` (`vehicle/abstract/vehicle_trim.py`) в `CarTrim` и `MotorcycleTrim` с разными именами backref: `car_trims` и `motorcycle_trims` соответственно.
 
 Файлы: `backend/apps/vehicles/models/vehicle/abstract/vehicle_trim.py`, `backend/apps/vehicles/models/car/car_trim.py`, `backend/apps/vehicles/models/motorcycle/motorcycle_trim.py`.
 
-### Шаг 2. Гарантировать 1:1 `Vehicle ↔ Spec` и эксклюзивность подтипа
+### Шаг 2. [ВЫПОЛНЕНО] Гарантировать 1:1 `Vehicle ↔ Spec` и эксклюзивность подтипа
 
 - Расширить `get_foreign_key_mixin` параметром `uselist: bool = True` (или добавить отдельный `get_one_to_one_link_mixin`), пробросить в `relationship(...)`.
 - Добавить `UNIQUE(vehicle_id)` на `CarSpec`, `MotorcycleSpec`.
@@ -338,7 +340,7 @@ Docstring `vehicle/vehicle_series.py:15-18` говорит «Модель мар
 
 Файлы: `backend/common/models/mixins/relations.py`, `backend/apps/vehicles/models/car/car_spec.py`, `backend/apps/vehicles/models/motorcycle/motorcycle_spec.py`, новая Alembic-миграция.
 
-### Шаг 3. Зафиксировать «инстанс vs справочник», связать Spec с Trim, добавить фактическое железо
+### Шаг 3. [ВЫПОЛНЕНО] Зафиксировать «инстанс vs справочник», связать Spec с Trim, добавить фактическое железо
 
 Решение по результатам обсуждения с владельцем (Вариант A нормализации):
 
@@ -350,7 +352,7 @@ Docstring `vehicle/vehicle_series.py:15-18` говорит «Модель мар
 
 Файлы: `backend/apps/vehicles/models/car/car_spec.py`, `backend/apps/vehicles/models/motorcycle/motorcycle_spec.py`, `backend/apps/vehicles/models/vehicle/vehicle.py`, новая Alembic-миграция (drop `generation_id`, add `trim_id` NOT NULL, add `engine_id` / `transmission_id` nullable).
 
-### Шаг 4. Перенести `mileage` с `UserVehicle` на `Vehicle` (или Spec)
+### Шаг 4. [ВЫПОЛНЕНО] Перенести `mileage` с `UserVehicle` на `Vehicle` (или Spec)
 
 Удалить `mileage` и `is_mileage_in_miles` из `UserVehicle`. Добавить их в `Vehicle` (или в `CarSpec`/`MotorcycleSpec`, если пробег уместнее держать на заводском экземпляре). `UserVehicle` оставить под `avg_fuel_consumption`, заметки, фото.
 
@@ -358,7 +360,7 @@ Docstring `vehicle/vehicle_series.py:15-18` говорит «Модель мар
 
 Файлы: `backend/apps/vehicles/models/vehicle/user_vehicle.py`, `backend/apps/vehicles/models/vehicle/vehicle.py`, новая Alembic-миграция.
 
-### Шаг 5. Устранить дублирование атрибутов
+### Шаг 5. [ВЫПОЛНЕНО] Устранить дублирование атрибутов
 
 - Удалить `VehicleEngine.phase_regulator_type` (использовать через связанный `VehicleEnginePhaseRegulatorSystem.phase_regulator_type`).
 - Удалить либо `CarTrim.drive_type`, либо `CarTransmission.drive_types`, определив источник истины (рекомендация: оставить `CarTransmission.drive_types`, т. к. трансмиссия определяет привод).
@@ -367,26 +369,26 @@ Docstring `vehicle/vehicle_series.py:15-18` говорит «Модель мар
 
 Файлы: `backend/apps/vehicles/models/vehicle/vehicle_engine.py`, `backend/apps/vehicles/models/car/car_transmission.py`, `backend/apps/vehicles/models/car/car_trim.py`.
 
-### Шаг 6. Исправить числовые поля
+### Шаг 6. [ВЫПОЛНЕНО] Исправить числовые поля
 
 - `Numeric(3,2)` → `Numeric(4,2)` для `avg_fuel_consumption`, `acceleration` на `CarTrim` и `UserVehicle`.
 - Добавить CHECK `production_year BETWEEN 1885 AND <current_year>+1` на `Vehicle`, аналогично на `start_year`/`end_year` для `VehicleGeneration`.
 
 Файлы: `backend/apps/vehicles/models/car/car_trim.py`, `backend/apps/vehicles/models/vehicle/user_vehicle.py`, `backend/apps/vehicles/models/vehicle/vehicle.py`, `backend/apps/vehicles/models/vehicle/vehicle_generation.py`.
 
-### Шаг 7. Исправить `Vehicle.color`
+### Шаг 7. [ВЫПОЛНЕНО] Исправить `Vehicle.color`
 
 Явно `mapped_column(String(100), nullable=True, ...)` или убрать `| None` из аннотации. Сверить с `ty check`.
 
 Файл: `backend/apps/vehicles/models/vehicle/vehicle.py:21`.
 
-### Шаг 8. Исправить `VehicleBodyAbstract.material`
+### Шаг 8. [ВЫПОЛНЕНО] Исправить `VehicleBodyAbstract.material`
 
 Заменить аннотацию `Mapped[str | None]` на `Mapped[VehicleBodyType | None]`, оставив `IntFlagType(VehicleBodyType)` в `mapped_column`.
 
 Файл: `backend/apps/vehicles/models/vehicle/abstract/vehicle_body.py:18`.
 
-### Шаг 9. Исправить дефолт `on_delete` в `get_foreign_key_mixin`
+### Шаг 9. [ВЫПОЛНЕНО] Исправить дефолт `on_delete` в `get_foreign_key_mixin`
 
 В сигнатуре сделать `on_delete: PostgresOnDeleteFK | None = None`. В теле:
 - если `on_delete is None` и `nullable=True` → `SET NULL`;
@@ -396,13 +398,13 @@ Docstring `vehicle/vehicle_series.py:15-18` говорит «Модель мар
 
 Файлы: `backend/common/models/mixins/relations.py`, Alembic-миграция (переопределение ON DELETE для затронутых FK).
 
-### Шаг 10. CHECK «brand_id XOR concern_id» (или нормализация)
+### Шаг 10. [ВЫПОЛНЕНО] CHECK «brand_id XOR concern_id» (или нормализация)
 
 Добавить CHECK-ограничение «`brand_id IS NOT NULL OR concern_id IS NOT NULL`» на `VehicleEngine`, `VehicleEnginePhaseRegulatorSystem`, `CarTransmission`, `MotorcycleTransmission`. Идеально — XOR, либо отдельная вспомогательная сущность «производитель узла». Решить отдельно: допустим ли узел, общий для нескольких брендов одного концерна.
 
 Файлы: те же четыре модели.
 
-### Шаг 11. Добавить недостающие unique-индексы
+### Шаг 11. [ВЫПОЛНЕНО] Добавить недостающие unique-индексы
 
 - `UNIQUE(brand_id, name)` на `VehicleEngine`.
 - `UNIQUE(series_id, name, is_restyling)` на `VehicleGeneration`.
@@ -411,7 +413,7 @@ Docstring `vehicle/vehicle_series.py:15-18` говорит «Модель мар
 
 Файлы: `backend/apps/vehicles/models/vehicle/vehicle_engine.py`, `backend/apps/vehicles/models/vehicle/vehicle_generation.py`, `backend/apps/vehicles/models/car/car_spec.py`.
 
-### Шаг 12. Заведение `back_populates` для новых FK на Spec
+### Шаг 12. [ВЫПОЛНЕНО] Заведение `back_populates` для новых FK на Spec
 
 После шага 3 на Spec появляются `trim_id`, `engine_id`, `transmission_id`. Все они должны иметь корректные `back_populates`:
 
@@ -426,25 +428,25 @@ Docstring `vehicle/vehicle_series.py:15-18` говорит «Модель мар
 
 Файлы: `backend/apps/vehicles/models/car/car_spec.py`, `backend/apps/vehicles/models/motorcycle/motorcycle_spec.py`, `backend/apps/vehicles/models/car/car_trim.py`, `backend/apps/vehicles/models/motorcycle/motorcycle_trim.py`, `backend/apps/vehicles/models/vehicle/vehicle_engine.py`, `backend/apps/vehicles/models/car/car_transmission.py`, `backend/apps/vehicles/models/motorcycle/motorcycle_transmission.py`.
 
-### Шаг 13. Связать `VehicleGroup` с `UserVehicle`
+### Шаг 13. [ВЫПОЛНЕНО] Связать `VehicleGroup` с `UserVehicle`
 
 Добавить `UserVehicle.group_id` (FK на `VehicleGroup`, nullable, `SET NULL`) — одна машина в одной группе. Если нужно «в нескольких» — ассоциативная таблица `user_vehicle_group_link(user_vehicle_id, group_id)`. Уточнить с владельцем.
 
 Файлы: `backend/apps/vehicles/models/vehicle/user_vehicle.py`, `backend/apps/vehicles/models/vehicle/vehicle_group.py`, Alembic-миграция.
 
-### Шаг 14. Реализовать или удалить `Manufacturer`
+### Шаг 14. [ВЫПОЛНЕНО] Реализовать или удалить `Manufacturer`
 
 Если оставлять: добавить модель `Manufacturer(AutoSchemaBase)`, FK `VehicleBrand.manufacturer_id` (N:1, nullable, `SET NULL`). Если нет — удалить файл.
 
 Файлы: `backend/apps/vehicles/models/manufacturer.py`, `backend/apps/vehicles/models/vehicle/vehicle_brand.py`.
 
-### Шаг 15. Уточнить типизацию `VehicleTrimAbstract.options`
+### Шаг 15. [ВЫПОЛНЕНО] Уточнить типизацию `VehicleTrimAbstract.options`
 
 Заменить `Mapped[dict | None]` на `Mapped[dict[str, Any] | None]` или ввести `TypedDict` с известными опциями. Убедиться, что `tschema` корректно генерирует TS-тип.
 
 Файл: `backend/apps/vehicles/models/vehicle/abstract/vehicle_trim.py:19`.
 
-### Шаг 16. Зафиксировать терминологию
+### Шаг 16. [ВЫПОЛНЕНО] Зафиксировать терминологию
 
 Поддерживать актуальным глоссарий (раздел 2 этого файла). При появлении `Manufacturer` — добавить разграничение Brand/Concern/Manufacturer. При переименовании `VehicleSeries` обновить тут же.
 

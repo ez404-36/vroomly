@@ -85,7 +85,7 @@ export const LoginPage = () => {
 
                 {error && (
                   <Text c="red" size="sm">
-                    {JSON.stringify(error, null, 2)}
+                    {error}
                   </Text>
                 )}
 
