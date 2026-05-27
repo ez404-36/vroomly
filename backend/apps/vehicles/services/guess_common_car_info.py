@@ -97,9 +97,6 @@ class GuessCommonCarInfo:
 		if not generation_ids:
 			return []
 
-		trim_query = (
-			select(CarTrim)
-			.where(CarTrim.generation_id.in_(generation_ids))
-		)
+		trim_query = select(CarTrim).where(CarTrim.generation_id.in_(generation_ids))
 
 		return await database.fetch_all(trim_query)

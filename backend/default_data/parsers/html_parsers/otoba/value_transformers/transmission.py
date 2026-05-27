@@ -3,9 +3,9 @@ from typing import Any
 
 from apps.vehicles.models.car.enums import CarDriveType
 from apps.vehicles.models.vehicle.enums import VehicleTransmissionType
+
 from ..mappers import transmission_drive_type_mapper, transmission_type_mapper
 from .base import OtobaRuValueBaseTransformer
-
 
 logger = logging.getLogger('OtobaRuTransmissionValueTransformer')
 

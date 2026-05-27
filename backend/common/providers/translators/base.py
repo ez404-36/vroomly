@@ -7,11 +7,12 @@ class AbstractTranslator(ABC):
 	"""
 
 	@abstractmethod
-	def translate(self, text: str, source: str = "ru", target: str = "en", **kwargs) -> str:
+	def translate(self, text: str, source: str = 'ru', target: str = 'en', **kwargs) -> str:
 		"""
-		Перевод текста
+		Перевод текста.
+
 		:param text: Исходный текст
-        :param source: С какого языка (Префикс языка или 'auto')
-        :param target: На какой язык
+		:param source: С какого языка (Префикс языка или 'auto')
+		:param target: На какой язык
 		"""
 		raise NotImplementedError

@@ -13,6 +13,7 @@ from core.safety.token import ALGORITHM, SECRET_KEY, TOKEN
 
 
 async def decode_token(user_id: str) -> CurrentUser | None:
+	"""Загружает CurrentUser по user_id из payload-токена."""
 	from apps.accounts.models.user import User
 
 	user = await database.fetch_one(select(User).where(User.id == UUID(user_id)))
@@ -24,6 +25,7 @@ async def decode_token(user_id: str) -> CurrentUser | None:
 
 
 async def get_current_user(token: TOKEN) -> CurrentUser | None:
+	"""FastAPI-зависимость: декодирует JWT и возвращает текущего пользователя."""
 	credentials_exception = HTTPException(
 		status_code=status.HTTP_401_UNAUTHORIZED,
 		detail='Invalid credentials',

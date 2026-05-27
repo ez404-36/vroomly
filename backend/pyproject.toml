@@ -94,3 +94,13 @@ ignore = [
 
 [tool.ruff.lint.pylint]
 allow-magic-value-types = ["str"]
+# PLR0913: по умолчанию 5 — слишком строго для функций-парсеров с явными
+# опциональными контекстными аргументами (brand/concern/series/years).
+max-args = 7
+
+[tool.ruff.lint.per-file-ignores]
+# В тестах допустимы сравнения с magic-числами и отсутствие docstring'ов:
+# имена test_* самодокументируемы.
+"tests/**/*.py" = ["PLR2004", "D103"]
+# Alembic-миграции автогенерируются: тулу запрещаем требовать docstring/имена.
+"migrations/versions/*.py" = ["D103", "N999"]

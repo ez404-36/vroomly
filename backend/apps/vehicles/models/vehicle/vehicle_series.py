@@ -9,30 +9,30 @@ from core.models import AutoSchemaBase
 
 
 class VehicleSeries(
-    AutoSchemaBase,
-    get_vehicle_brand_link_mixin(back_populates='series', nullable=False),
+	AutoSchemaBase,
+	get_vehicle_brand_link_mixin(back_populates='series', nullable=False),
 ):
-    """
-    Модель марки ТС. Является родительской сущностью для Car, Motorcycle.
-    Примеры: Octavia (Skoda), Vesta (Lada)
-    """
+	"""
+	Модель марки ТС. Является родительской сущностью для Car, Motorcycle.
+	Примеры: Octavia (Skoda), Vesta (Lada)
+	"""
 
-    name: Mapped[str] = mapped_column(String(50), doc='Название модели')
-    vehicle_type: Mapped[VehicleType] = mapped_column(IntEnumType(VehicleType), doc='Тип ТС')
+	name: Mapped[str] = mapped_column(String(50), doc='Название модели')
+	vehicle_type: Mapped[VehicleType] = mapped_column(IntEnumType(VehicleType), doc='Тип ТС')
 
-    __table_args__ = (
-        UniqueConstraint(
-            "brand_id", "name", name="vehicle_series_brand_id_name_unique"
-        ),
-    )
+	__table_args__ = (UniqueConstraint('brand_id', 'name', name='vehicle_series_brand_id_name_unique'),)
 
 
 def get_vehicle_series_link_mixin(
-    back_populates: str | None,
-    nullable: bool,
-    verbose_name='Модель',
+	back_populates: str | None,
+	nullable: bool,
+	verbose_name='Модель',
 ):
-    return get_foreign_key_mixin(
-        VehicleSeries, relation_name='series',
-        back_populates=back_populates, nullable=nullable, verbose_name=verbose_name,
-    )
+	"""Миксин связи с серией (моделью) ТС."""
+	return get_foreign_key_mixin(
+		VehicleSeries,
+		relation_name='series',
+		back_populates=back_populates,
+		nullable=nullable,
+		verbose_name=verbose_name,
+	)

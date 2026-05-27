@@ -8,16 +8,17 @@ from core.models import AutoSchemaBase
 
 
 class VehicleTrimAbstract(
-    AutoSchemaBase,
+	AutoSchemaBase,
 ):
-    """
-    Базовый класс комплектации ТС.
+	"""
+	Базовый класс комплектации ТС.
 
-    Связь с двигателем (engine_id) выносится в конкретные подклассы
-    (CarTrim, MotorcycleTrim), чтобы backref-имена не пересекались
-    на одной таблице VehicleEngine.
-    """
-    __abstract__ = True
+	Связь с двигателем (engine_id) выносится в конкретные подклассы
+	(CarTrim, MotorcycleTrim), чтобы backref-имена не пересекались
+	на одной таблице VehicleEngine.
+	"""
 
-    name: Mapped[str] = mapped_column(String(50), doc='Название комплектации')
-    options: Mapped[dict[str, Any] | None] = mapped_column(JSONB, default={})
+	__abstract__ = True
+
+	name: Mapped[str] = mapped_column(String(50), doc='Название комплектации')
+	options: Mapped[dict[str, Any] | None] = mapped_column(JSONB, default={})

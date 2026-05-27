@@ -9,8 +9,8 @@ from sqlalchemy.orm import joinedload
 from apps.vehicles.api.routers import series_router
 from apps.vehicles.api.vehicle_series.filters import VehicleSeriesFilterParams
 from apps.vehicles.api.vehicle_series.schemas.readers import (
-    VehicleSeriesDetailSchema,
-    VehicleSeriesListSchema,
+	VehicleSeriesDetailSchema,
+	VehicleSeriesListSchema,
 )
 from apps.vehicles.models.vehicle.vehicle_series import VehicleSeries
 from common.orm.filters import apply_search
@@ -20,38 +20,33 @@ from core.db import database
 
 @cbv(series_router)
 class VehicleSeriesAPI(
-    BaseAPI,
+	BaseAPI,
 ):
+	@series_router.get(
+		'/',
+		response_model=list[VehicleSeriesListSchema],
+		summary='Список моделей',
+	)
+	async def list(self, filter_query: Annotated[VehicleSeriesFilterParams, Query()]):
+		search_fields = ('name',)
 
-    @series_router.get(
-        "/",
-        response_model=list[VehicleSeriesListSchema],
-        summary="Список моделей",
-    )
-    async def list(self, filter_query: Annotated[VehicleSeriesFilterParams, Query()]):
-        search_fields = ("name",)
+		query = apply_search(
+			select(VehicleSeries).order_by(VehicleSeries.name.asc()),
+			filter_query.search,
+			search_fields,
+		)
 
-        query = apply_search(
-            select(VehicleSeries).order_by(VehicleSeries.name.asc()),
-            filter_query.search,
-            search_fields,
-        )
+		if brand := filter_query.brand:
+			query = query.filter(VehicleSeries.brand_id == brand)
 
-        if brand := filter_query.brand:
-            query = query.filter(VehicleSeries.brand_id == brand)
+		return await database.fetch_all(query)
 
-        return await database.fetch_all(query)
+	@series_router.get(
+		'/{series_id}',
+		response_model=VehicleSeriesDetailSchema,
+		summary='Детальный просмотр модели',
+	)
+	async def retrieve(self, series_id: UUID):
+		query = select(VehicleSeries).options(joinedload(VehicleSeries.brand)).where(VehicleSeries.id == series_id)
 
-    @series_router.get(
-        "/{series_id}",
-        response_model=VehicleSeriesDetailSchema,
-        summary="Детальный просмотр модели",
-    )
-    async def retrieve(self, series_id: UUID):
-        query = (
-            select(VehicleSeries)
-            .options(joinedload(VehicleSeries.brand))
-            .where(VehicleSeries.id == series_id)
-        )
-
-        return await database.fetch_one(query)
+		return await database.fetch_one(query)

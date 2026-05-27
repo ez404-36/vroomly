@@ -1,5 +1,5 @@
 from apps.vehicles.api.vehicle_generation.schemas.readers import (
-    VehicleGenerationListSchema,
+	VehicleGenerationListSchema,
 )
 
 __all__ = ['VehicleGenerationListSchema']

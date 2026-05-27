@@ -1,19 +1,16 @@
 import asyncio
 import logging
-import os
 import pickle
 import re
-import sys
 from pathlib import Path
 
 import requests
 from bs4 import BeautifulSoup, Tag
-from sqlalchemy import or_, select
+from sqlalchemy import and_, or_, select
 from typing_inspect import get_args
-from sqlalchemy import and_
 
-from apps.vehicles.models.car.car_trim import CarTrim
 from apps.vehicles.models.car.car_transmission import CarTransmission
+from apps.vehicles.models.car.car_trim import CarTrim
 from apps.vehicles.models.vehicle.vehicle_brand import VehicleBrand
 from apps.vehicles.models.vehicle.vehicle_concern import VehicleConcern
 from apps.vehicles.models.vehicle.vehicle_engine import VehicleEngine
@@ -25,13 +22,15 @@ from core.constants import BACKEND_DIR
 from core.db import database
 from default_data.parsers.html_parsers.otoba.prompts import parse_vehicle_generation_prompt
 from default_data.parsers.html_parsers.otoba.types import VehicleNodeType
-from default_data.parsers.html_parsers.otoba.utils import create_from_pkl_file
 from default_data.parsers.html_parsers.otoba.value_transformers.engine import OtobaRuEngineValueTransformer
 from default_data.parsers.html_parsers.otoba.value_transformers.generation import OtobaRuGenerationValueTransformer
 from default_data.parsers.html_parsers.otoba.value_transformers.transmission import OtobaRuTransmissionValueTransformer
 from default_data.parsers.html_parsers.otoba.value_transformers.trim import OtobaRuTrimValueTransformer
 
 PARSED_DATA_DIR = BACKEND_DIR / 'default_data' / 'parsed'
+
+# Минимум tds, при котором ячейка считается парой "ключ-значение".
+_MIN_PROP_TABLE_CELLS = 2
 
 logger = logging.getLogger('OtobaRuHtmlParser')
 
@@ -81,7 +80,6 @@ class OtobaRuHtmlParser:
 		with open(output_path, 'wb') as f_obj:
 			pickle.dump(self.parsed_data, f_obj, protocol=pickle.HIGHEST_PROTOCOL)
 
-
 	async def parse_vehicle_node_page(self, vehicle_node_type: VehicleNodeType):
 		"""
 		Парсит корневую страницу со списком производителей и сохраняет информацию в parsed_data
@@ -113,33 +111,27 @@ class OtobaRuHtmlParser:
 			brand_mapped_code = self.brand_map.get(brand_or_concern_code, brand_or_concern_code)
 
 			brand: VehicleBrand | None = await database.fetch_one(
-				select(VehicleBrand)
-					.where(
-						or_(
-							VehicleBrand.code == brand_mapped_code,
-							VehicleBrand.abbreviation == brand_mapped_code,
-						)
+				select(VehicleBrand).where(
+					or_(
+						VehicleBrand.code == brand_mapped_code,
+						VehicleBrand.abbreviation == brand_mapped_code,
 					)
+				)
 			)
 
 			concern_mapped_code = self.concern_map.get(brand_or_concern_code, brand_or_concern_code)
 
 			concern: VehicleConcern | None = await database.fetch_one(
-				select(VehicleConcern)
-					.where(
-						or_(
-							VehicleConcern.code == concern_mapped_code,
-							VehicleConcern.abbreviation == concern_mapped_code,
-						)
+				select(VehicleConcern).where(
+					or_(
+						VehicleConcern.code == concern_mapped_code,
+						VehicleConcern.abbreviation == concern_mapped_code,
 					)
+				)
 			)
 
 			if brand and brand.concern_id and not concern:
-				concern = await database.fetch_one(
-					select(VehicleConcern).where(
-						VehicleConcern.id == brand.concern_id
-					)
-				)
+				concern = await database.fetch_one(select(VehicleConcern).where(VehicleConcern.id == brand.concern_id))
 
 			if not brand and not concern:
 				logger.error(f'Не удалось определить бренд/концерн по коду {brand_or_concern_code}. URI: {brand_uri}')
@@ -151,7 +143,7 @@ class OtobaRuHtmlParser:
 
 	@staticmethod
 	def _get_soup(page_uri: str | Path) -> BeautifulSoup:
-		str_page_uri = str(page_uri).removesuffix('.html').removeprefix("https://")
+		str_page_uri = str(page_uri).removesuffix('.html').removeprefix('https://')
 
 		page = requests.get(f'https://{str_page_uri}.html')
 		return BeautifulSoup(page.text, 'html.parser')
@@ -280,13 +272,9 @@ class OtobaRuHtmlParser:
 		# Находим VehicleSeries по бренду и названию модели
 		series: VehicleSeries | None = None
 		if brand:
-			model_code = generate_code(model_name)
 			series = await database.fetch_one(
 				select(VehicleSeries).where(
-					and_(
-						VehicleSeries.brand_id == brand.id,
-						VehicleSeries.name.ilike(f'%{model_name}%')
-					)
+					and_(VehicleSeries.brand_id == brand.id, VehicleSeries.name.ilike(f'%{model_name}%'))
 				)
 			)
 
@@ -308,9 +296,7 @@ class OtobaRuHtmlParser:
 		if generation_instance:
 			self.parsed_data['vehicles'].append(generation_instance)
 			# Создаём CarTrim с привязкой к поколению
-			trim_instance = await self._create_trim(
-				soup, detail_page_uri, model_name, generation_instance.id
-			)
+			trim_instance = await self._create_trim(soup, detail_page_uri, model_name, generation_instance.id)
 			if trim_instance:
 				self.parsed_data['vehicles'].append(trim_instance)
 
@@ -338,7 +324,7 @@ class OtobaRuHtmlParser:
 			for column in prop_table.select('table.tab-tth'):
 				for prop in column.select('tr'):
 					tds = prop.select('td')
-					if len(tds) >= 2:
+					if len(tds) >= _MIN_PROP_TABLE_CELLS:
 						key_orig_tag, value_tag = tds[0], tds[1]
 						tags_data[key_orig_tag.text.lower().strip()] = value_tag.text.strip()
 
@@ -391,7 +377,7 @@ class OtobaRuHtmlParser:
 				for column in prop_table.select('table.tab-tth'):
 					for prop in column.select('tr'):
 						tds = prop.select('td')
-						if len(tds) >= 2:
+						if len(tds) >= _MIN_PROP_TABLE_CELLS:
 							key_orig_tag, value_tag = tds[0], tds[1]
 							tags_data[key_orig_tag.text.lower().strip()] = value_tag.text.strip()
 
@@ -459,7 +445,7 @@ class OtobaRuHtmlParser:
 				modifications = {base_name}
 
 			tags_data = {}
-			for column in prop_table.select('table.tab-tth'): # type: Tag
+			for column in prop_table.select('table.tab-tth'):  # type: Tag
 				for prop in column.select('tr'):  # type: Tag
 					key_orig_tag, value_tag = prop.select('td')
 					tags_data[key_orig_tag.text.lower().strip()] = value_tag.text.strip()

@@ -1,1 +1,1 @@
-from .authenticate import *
+from .authenticate import *  # noqa: F403

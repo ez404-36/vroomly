@@ -10,52 +10,46 @@ from core.models import AutoSchemaBase
 
 
 class VehicleBrand(
-    AutoSchemaBase,
-    CodeModelMixin,
-    get_country_link_mixin(back_populates='brands', nullable=False),
-    get_vehicle_concern_link_mixin(back_populates='brands', nullable=True, on_delete='SET NULL'),
+	AutoSchemaBase,
+	CodeModelMixin,
+	get_country_link_mixin(back_populates='brands', nullable=False),
+	get_vehicle_concern_link_mixin(back_populates='brands', nullable=True, on_delete='SET NULL'),
 ):
-    """
-    Марка ТС (Торговая).
-    Примеры: Skoda, BMW, Lada
-    """
+	"""
+	Марка ТС (Торговая).
+	Примеры: Skoda, BMW, Lada
+	"""
 
-    name: Mapped[str] = mapped_column(
-        String(50), doc='Название бренда на английском языке'
-    )
-    abbreviation: Mapped[str | None] = mapped_column(
-        String(6), doc='Аббревиатура'
-    )
-    original_name: Mapped[str | None] = mapped_column(
-        String(50), doc='Название бренда на родном языке, если отличается от name'
-    )
+	name: Mapped[str] = mapped_column(String(50), doc='Название бренда на английском языке')
+	abbreviation: Mapped[str | None] = mapped_column(String(6), doc='Аббревиатура')
+	original_name: Mapped[str | None] = mapped_column(
+		String(50), doc='Название бренда на родном языке, если отличается от name'
+	)
 
-    __table_args__ = (
-        UniqueConstraint(
-            'country_id', 'code', name='vehicle_brand_country_id_code_unique'
-        ),
-    )
+	__table_args__ = (UniqueConstraint('country_id', 'code', name='vehicle_brand_country_id_code_unique'),)
 
 
 generate_code_on_create(VehicleBrand)
 
 
 def get_vehicle_brand_link_mixin(
-    back_populates: str | None,
-    nullable: bool,
-    verbose_name: str = 'Марка',
-    on_delete: PostgresOnDeleteFK = 'CASCADE',
+	back_populates: str | None,
+	nullable: bool,
+	verbose_name: str = 'Марка',
+	on_delete: PostgresOnDeleteFK = 'CASCADE',
 ):
-    """
-    Миксин связи с маркой ТС.
+	"""
+	Миксин связи с маркой ТС.
 
-    Параметр ``on_delete`` обязательно передавать ``'SET NULL'`` для nullable-связей,
-    иначе удаление бренда удалит все связанные сущности каскадно
-    (см. backend/apps/vehicles/models/GRAPH.md, шаг 9).
-    """
-    return get_foreign_key_mixin(
-        VehicleBrand, 'brand',
-        back_populates=back_populates, nullable=nullable,
-        verbose_name=verbose_name, on_delete=on_delete,
-    )
-
+	Параметр ``on_delete`` обязательно передавать ``'SET NULL'`` для nullable-связей,
+	иначе удаление бренда удалит все связанные сущности каскадно
+	(см. backend/apps/vehicles/models/GRAPH.md, шаг 9).
+	"""
+	return get_foreign_key_mixin(
+		VehicleBrand,
+		'brand',
+		back_populates=back_populates,
+		nullable=nullable,
+		verbose_name=verbose_name,
+		on_delete=on_delete,
+	)

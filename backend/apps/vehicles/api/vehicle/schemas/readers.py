@@ -6,7 +6,7 @@ from apps.vehicles.models.vehicle.enums import VehicleType
 
 
 class VehicleDetailSchema(APIModel):
-    id: UUID
-    vehicle_type: VehicleType
-    production_year: int
-    color: str | None
+	id: UUID
+	vehicle_type: VehicleType
+	production_year: int
+	color: str | None

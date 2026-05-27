@@ -1,1 +1,1 @@
-from .micro_service_base import *
+from .micro_service_base import *  # noqa: F403

@@ -1,6 +1,4 @@
-__all__ = (
-    "TimestampedModelMixin",
-)
+__all__ = ('TimestampedModelMixin',)
 
 from datetime import datetime
 
@@ -9,7 +7,5 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 
 class TimestampedModelMixin:
-    created_at: Mapped[datetime] = mapped_column(server_default=func.now())
-    updated_at: Mapped[datetime] = mapped_column(
-        default=None, onupdate=func.now(), nullable=True
-    )
+	created_at: Mapped[datetime] = mapped_column(server_default=func.now())
+	updated_at: Mapped[datetime] = mapped_column(default=None, onupdate=func.now(), nullable=True)

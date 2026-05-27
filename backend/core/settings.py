@@ -7,43 +7,43 @@ load_dotenv()
 
 
 class DatabaseSettings(BaseSettings):
-    user: str
-    password: str
-    host: str
-    port: int
-    name: str
+	user: str
+	password: str
+	host: str
+	port: int
+	name: str
 
-    model_config = SettingsConfigDict(env_prefix="DB_")
+	model_config = SettingsConfigDict(env_prefix='DB_')
 
-    @property
-    def url(self) -> str:
-        return f"postgresql+asyncpg://{self.user}:{self.password}@{self.host}:{self.port}/{self.name}"
+	@property
+	def url(self) -> str:
+		return f'postgresql+asyncpg://{self.user}:{self.password}@{self.host}:{self.port}/{self.name}'
 
 
 class LibretranslateSettings(BaseSettings):
-    host: str
-    port: int
+	host: str
+	port: int
 
-    model_config = SettingsConfigDict(env_prefix="LIBRETRANSLATE_")
+	model_config = SettingsConfigDict(env_prefix='LIBRETRANSLATE_')
 
-    @property
-    def url(self) -> str:
-        return f"http://{self.host}:{self.port}"    # noqa
+	@property
+	def url(self) -> str:
+		return f'http://{self.host}:{self.port}'  # noqa
 
 
 class Settings(BaseSettings):
-    db: DatabaseSettings = DatabaseSettings()  # noqa
-    libretranslate: LibretranslateSettings = LibretranslateSettings()  # noqa
+	db: DatabaseSettings = DatabaseSettings()  # noqa
+	libretranslate: LibretranslateSettings = LibretranslateSettings()  # noqa
 
-    encoding: str = "utf-8"
+	encoding: str = 'utf-8'
 
-    user_model: str = 'apps.accounts.models.user.User'
-    translator_model: str = 'common.providers.translators.libre_translate.LibreTranslate'
+	user_model: str = 'apps.accounts.models.user.User'
+	translator_model: str = 'common.providers.translators.libre_translate.LibreTranslate'
 
-    model_config = SettingsConfigDict(
-        env_file=Path(__file__).parent.parent / ".env",
-        extra="ignore",
-    )
+	model_config = SettingsConfigDict(
+		env_file=Path(__file__).parent.parent / '.env',
+		extra='ignore',
+	)
 
 
 settings = Settings()  # noqa

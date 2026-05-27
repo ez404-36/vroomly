@@ -7,16 +7,17 @@ from core.models import AutoSchemaBase
 
 
 class VehicleTransmissionAbstract(
-    AutoSchemaBase,
+	AutoSchemaBase,
 ):
-    """
-    Базовый класс коробки передач
-    """
-    __abstract__ = True
+	"""
+	Базовый класс коробки передач
+	"""
 
-    name: Mapped[str] = mapped_column(String(50), doc='Название')
-    index: Mapped[str | None] = mapped_column(String(50), doc='Заводской индекс')
-    type: Mapped[VehicleTransmissionType] = mapped_column(
-        IntEnumType(VehicleTransmissionType), doc='Тип коробки передач'
-    )
-    gears: Mapped[int] = mapped_column(SmallInteger, doc='Количество передач')
+	__abstract__ = True
+
+	name: Mapped[str] = mapped_column(String(50), doc='Название')
+	index: Mapped[str | None] = mapped_column(String(50), doc='Заводской индекс')
+	type: Mapped[VehicleTransmissionType] = mapped_column(
+		IntEnumType(VehicleTransmissionType), doc='Тип коробки передач'
+	)
+	gears: Mapped[int] = mapped_column(SmallInteger, doc='Количество передач')

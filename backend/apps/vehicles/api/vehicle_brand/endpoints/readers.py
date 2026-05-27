@@ -15,24 +15,23 @@ from core.db import database
 
 @cbv(router)
 class BrandAPI(
-    BaseAPI,
+	BaseAPI,
 ):
+	@router.get(
+		'/brands/',
+		response_model=list[VehicleBrandDetailSchema],
+		summary='Список марок',
+	)
+	async def list(self, filter_query: Annotated[VehicleBrandFilterParams, Query()]):
+		search_fields = ('code',)
 
-    @router.get(
-        "/brands/",
-        response_model=list[VehicleBrandDetailSchema],
-        summary="Список марок",
-    )
-    async def list(self, filter_query: Annotated[VehicleBrandFilterParams, Query()]):
-        search_fields = ("code",)
+		query = apply_search(
+			select(VehicleBrand).order_by(filter_query.ordering),
+			filter_query.search,
+			search_fields,
+		)
 
-        query = apply_search(
-            select(VehicleBrand).order_by(filter_query.ordering),
-            filter_query.search,
-            search_fields,
-        )
+		if country := filter_query.country:
+			query = query.filter(VehicleBrand.country_id == country.upper())
 
-        if country := filter_query.country:
-            query = query.filter(VehicleBrand.country_id == country.upper())
-
-        return await database.fetch_all(query)
+		return await database.fetch_all(query)

@@ -7,13 +7,13 @@ from apps.vehicles.models.vehicle.enums import VehicleEngineGRMType, VehicleEngi
 from apps.vehicles.models.vehicle.vehicle_engine_phase_regulator_system import VehicleEnginePhaseRegulatorSystem
 from common.utils.generators import generate_code
 from core.db import database
+
 from ..mappers import (
 	grm_drive_type_mapper,
 	phase_regulator_mapper,
-    phase_regulator_system_mapper,
+	phase_regulator_system_mapper,
 )
 from .base import OtobaRuValueBaseTransformer
-
 
 logger = logging.getLogger('OtobaRuEngineValueTransformer')
 
@@ -53,11 +53,7 @@ class OtobaRuEngineValueTransformer(OtobaRuValueBaseTransformer):
 		else:
 			as_bool = self.to_bool(value)
 			if as_bool is None:
-				value = (
-					value.removeprefix('на впуске ')
-					.replace('Dual ', 'D')
-					.replace('dual ', 'D')
-				)
+				value = value.removeprefix('на впуске ').replace('Dual ', 'D').replace('dual ', 'D')
 
 				code = phase_regulator_system_mapper.get(value, generate_code(value))
 
@@ -68,9 +64,8 @@ class OtobaRuEngineValueTransformer(OtobaRuValueBaseTransformer):
 								VehicleEnginePhaseRegulatorSystem.code == code,
 								VehicleEnginePhaseRegulatorSystem.code == value,
 							),
-							self.brand_or_concern_condition(VehicleEnginePhaseRegulatorSystem)
+							self.brand_or_concern_condition(VehicleEnginePhaseRegulatorSystem),
 						)
-
 					)
 				)
 
@@ -80,10 +75,10 @@ class OtobaRuEngineValueTransformer(OtobaRuValueBaseTransformer):
 					# Пытаемся найти регулятор фаз с таким же названием у другого Бренда
 					other_brand_phase_regulator_system = await database.fetch_first(
 						select(VehicleEnginePhaseRegulatorSystem).where(
-								or_(
-									VehicleEnginePhaseRegulatorSystem.code == code,
-									VehicleEnginePhaseRegulatorSystem.code == value,
-								)
+							or_(
+								VehicleEnginePhaseRegulatorSystem.code == code,
+								VehicleEnginePhaseRegulatorSystem.code == value,
+							)
 						)
 					)
 					if other_brand_phase_regulator_system:

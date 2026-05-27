@@ -9,63 +9,63 @@ from default_data.csv_importers.vehicle_brands import ImportVehicleBrandsCSV
 from default_data.csv_importers.vehicle_concerns import ImportVehicleConcernsCSV
 from default_data.csv_importers.vehicle_engine import ImportVehicleEnginesCSV
 from default_data.csv_importers.vehicle_engine_phase_regulator_systems import (
-    ImportVehicleEnginePhaseRegulatorSystemsCSV,
+	ImportVehicleEnginePhaseRegulatorSystemsCSV,
 )
 from default_data.csv_importers.vehicle_generations import ImportVehicleGenerationsCSV
 from default_data.csv_importers.vehicle_series import ImportVehicleSeriesCSV
 
 
 async def seed_all():
-    """
-    Наполняет БД первичными данными о:
-    - Странах
-    - Автомобильных концернах
-    - Автопроизводителях
-    - Марках автомобилей
-    - Системах управления фазами газораспределения в двигателе
-    - Двигателях
-    - Коробках передач автомобилей
-    - Поколениях ТС
-    - Комплектациях автомобилей
-    """
+	"""
+	Наполняет БД первичными данными о:
+	- Странах
+	- Автомобильных концернах
+	- Автопроизводителях
+	- Марках автомобилей
+	- Системах управления фазами газораспределения в двигателе
+	- Двигателях
+	- Коробках передач автомобилей
+	- Поколениях ТС
+	- Комплектациях автомобилей
+	"""
 
-    async with database.get_async_session() as session:
-        await ImportCountriesCSV(session).run()
-        await ImportVehicleConcernsCSV(session).run()
-        await ImportVehicleBrandsCSV(session).run()
-        await ImportVehicleSeriesCSV(session).run()
-        await ImportVehicleEnginePhaseRegulatorSystemsCSV(session).run()
-        await ImportVehicleEnginesCSV(session).run()
-        await ImportCarTransmissionsCSV(session).run()
-        await ImportVehicleGenerationsCSV(session).run()
-        await ImportCarTrimsCSV(session).run()
+	async with database.get_async_session() as session:
+		await ImportCountriesCSV(session).run()
+		await ImportVehicleConcernsCSV(session).run()
+		await ImportVehicleBrandsCSV(session).run()
+		await ImportVehicleSeriesCSV(session).run()
+		await ImportVehicleEnginePhaseRegulatorSystemsCSV(session).run()
+		await ImportVehicleEnginesCSV(session).run()
+		await ImportCarTransmissionsCSV(session).run()
+		await ImportVehicleGenerationsCSV(session).run()
+		await ImportCarTrimsCSV(session).run()
 
-        await session.commit()
-        await session.close()
+		await session.commit()
+		await session.close()
 
-    print("Наполнение БД первичными данными успешно завершено")
+	print('Наполнение БД первичными данными успешно завершено')
 
 
 async def clean_data():
-    """
-    В AutoSchemaBase.metadata будут собраны только те модели,
-    которые были явно импортированы в модуль default_data.
-    Будьте осторожны !
-    """
+	"""
+	В AutoSchemaBase.metadata будут собраны только те модели,
+	которые были явно импортированы в модуль default_data.
+	Будьте осторожны !
+	"""
 
-    async with database.get_async_session() as session:
-        for tbl in reversed(AutoSchemaBase.metadata.sorted_tables):
-            await session.execute(tbl.delete())
+	async with database.get_async_session() as session:
+		for tbl in reversed(AutoSchemaBase.metadata.sorted_tables):
+			await session.execute(tbl.delete())
 
-            await session.commit()
-            await session.close()
+			await session.commit()
+			await session.close()
 
 
 async def main():
-    """Точка входа CLI: вычищает таблицы и заново наполняет их данными из CSV."""
-    await clean_data()
-    await seed_all()
+	"""Точка входа CLI: вычищает таблицы и заново наполняет их данными из CSV."""
+	await clean_data()
+	await seed_all()
 
 
-if __name__ == "__main__":
-    asyncio.run(main())
+if __name__ == '__main__':
+	asyncio.run(main())

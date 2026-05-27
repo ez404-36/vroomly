@@ -10,8 +10,8 @@ def is_python_file(file_path: Path) -> bool:
 
 
 def get_all_python_files(
-		root_dir: str | Path,
-		only_names: str | Iterable[str] | None = None,
+	root_dir: str | Path,
+	only_names: str | Iterable[str] | None = None,
 ) -> list[Path]:
 	"""Получает все Python файлы в проекте"""
 	python_files = []
@@ -26,10 +26,9 @@ def get_all_python_files(
 	for root, dirs, files in os.walk(root_dir):
 		# Пропускаем служебные директории
 		dirs[:] = [
-			d for d in dirs
-			if not d.startswith('.') and d not in [
-				'__pycache__', '.venv', '.env', 'tests', 'src', 'migrations'
-			]
+			d
+			for d in dirs
+			if not d.startswith('.') and d not in ['__pycache__', '.venv', '.env', 'tests', 'src', 'migrations']
 		]
 
 		module_name = root.split('/')[-1]
@@ -46,9 +45,10 @@ def get_all_python_files(
 	return python_files
 
 
-def path_to_module_name(path: Path, start="apps") -> str:
+def path_to_module_name(path: Path, start='apps') -> str:
+	"""Переводит файловый путь в путь Python-модуля относительно ``start``."""
 	path_parts = path.parts
-	models_file_module_path = '.'.join(path_parts[path_parts.index(start):])
+	models_file_module_path = '.'.join(path_parts[path_parts.index(start) :])
 	return models_file_module_path.removesuffix('.py')
 
 
@@ -57,7 +57,7 @@ def import_class(path_to_class: str) -> Any:
 	Извлекает класс из модуля. Путь до класса записывается через точку.
 	Пример: apps.users.models.User
 	"""
-	path_chunks = path_to_class.split(".")
-	module_name = ".".join(path_chunks[:-1])
+	path_chunks = path_to_class.split('.')
+	module_name = '.'.join(path_chunks[:-1])
 	module = importlib.import_module(module_name)
 	return getattr(module, path_chunks[-1], None)

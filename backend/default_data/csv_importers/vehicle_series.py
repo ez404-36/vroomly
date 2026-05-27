@@ -4,9 +4,9 @@ from .base import ImportObjectsFromCSVBase
 
 
 class ImportVehicleSeriesCSV(ImportObjectsFromCSVBase):
-    """
-    Импорт моделей автомобилей
-    """
+	"""
+	Импорт моделей автомобилей
+	"""
 
-    model = VehicleSeries
-    source_filename = 'vehicle_series.csv'
+	model = VehicleSeries
+	source_filename = 'vehicle_series.csv'

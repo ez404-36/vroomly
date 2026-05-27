@@ -7,15 +7,16 @@ from core.models import AutoSchemaBase
 
 
 class VehicleBodyAbstract(
-    AutoSchemaBase,
+	AutoSchemaBase,
 ):
-    """
-    Базовый класс кузова ТС
-    """
-    __abstract__ = True
+	"""
+	Базовый класс кузова ТС
+	"""
 
-    name: Mapped[str | None] = mapped_column(String(50), doc='Название кузова')
-    material: Mapped[VehicleBodyType | None] = mapped_column(
-        IntFlagType(VehicleBodyType),
-        doc='Основной материал кузова (комбинация флагов VehicleBodyType)',
-    )
+	__abstract__ = True
+
+	name: Mapped[str | None] = mapped_column(String(50), doc='Название кузова')
+	material: Mapped[VehicleBodyType | None] = mapped_column(
+		IntFlagType(VehicleBodyType),
+		doc='Основной материал кузова (комбинация флагов VehicleBodyType)',
+	)

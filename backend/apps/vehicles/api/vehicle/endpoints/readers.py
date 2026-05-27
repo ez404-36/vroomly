@@ -15,25 +15,22 @@ from core.db import database
 
 @cbv(vehicle_router)
 class VehicleAPI(
-    BaseAPI,
+	BaseAPI,
 ):
-    @vehicle_router.get(
-        "/{vehicle_id}",
-        response_model=VehicleDetailSchema,
-        summary="Общая информация о ТС",
-    )
-    async def get_one(self, vehicle_id: UUID):
-        query = (
-            select(Vehicle)
-            .where(Vehicle.id == vehicle_id)
-        )
+	@vehicle_router.get(
+		'/{vehicle_id}',
+		response_model=VehicleDetailSchema,
+		summary='Общая информация о ТС',
+	)
+	async def get_one(self, vehicle_id: UUID):
+		query = select(Vehicle).where(Vehicle.id == vehicle_id)
 
-        return await database.fetch_one(query)
+		return await database.fetch_one(query)
 
-    @vehicle_router.get(
-        "/types/choices",
-        response_model=list[ChoiceFieldSchema],
-        summary="Список типов ТС",
-    )
-    async def get_vehicle_types_list(self):
-        return enum_to_choices_list(VehicleType)
+	@vehicle_router.get(
+		'/types/choices',
+		response_model=list[ChoiceFieldSchema],
+		summary='Список типов ТС',
+	)
+	async def get_vehicle_types_list(self):
+		return enum_to_choices_list(VehicleType)

@@ -9,37 +9,38 @@ from core.models import AutoSchemaBase
 
 
 class VehicleConcern(
-    AutoSchemaBase,
-    CodeModelMixin,
-    get_country_link_mixin(back_populates='concerns', nullable=True, on_delete='SET NULL'),
+	AutoSchemaBase,
+	CodeModelMixin,
+	get_country_link_mixin(back_populates='concerns', nullable=True, on_delete='SET NULL'),
 ):
-    """
-    Концерн/альянс/группа автопроизводителей.
-    Примеры: VAG, Hyundai-KIA
-    """
-    name: Mapped[str] = mapped_column(
-        String(50), doc='Название концерна на английском языке'
-    )
-    abbreviation: Mapped[str | None] = mapped_column(
-        String(6), doc='Аббревиатура'
-    )
+	"""
+	Концерн/альянс/группа автопроизводителей.
+	Примеры: VAG, Hyundai-KIA
+	"""
+
+	name: Mapped[str] = mapped_column(String(50), doc='Название концерна на английском языке')
+	abbreviation: Mapped[str | None] = mapped_column(String(6), doc='Аббревиатура')
 
 
 generate_code_on_create(VehicleConcern)
 
-def get_vehicle_concern_link_mixin(
-    back_populates: str | None,
-    nullable: bool,
-    verbose_name: str = 'Концерн',
-    on_delete: PostgresOnDeleteFK = 'CASCADE',
-):
-    """
-    Миксин связи с концерном автопроизводителей.
 
-    Параметр ``on_delete`` обязательно передавать ``'SET NULL'`` для nullable-связей.
-    """
-    return get_foreign_key_mixin(
-        VehicleConcern, 'concern',
-        back_populates=back_populates, nullable=nullable,
-        verbose_name=verbose_name, on_delete=on_delete,
-    )
+def get_vehicle_concern_link_mixin(
+	back_populates: str | None,
+	nullable: bool,
+	verbose_name: str = 'Концерн',
+	on_delete: PostgresOnDeleteFK = 'CASCADE',
+):
+	"""
+	Миксин связи с концерном автопроизводителей.
+
+	Параметр ``on_delete`` обязательно передавать ``'SET NULL'`` для nullable-связей.
+	"""
+	return get_foreign_key_mixin(
+		VehicleConcern,
+		'concern',
+		back_populates=back_populates,
+		nullable=nullable,
+		verbose_name=verbose_name,
+		on_delete=on_delete,
+	)

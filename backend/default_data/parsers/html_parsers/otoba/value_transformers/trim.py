@@ -1,9 +1,6 @@
 from decimal import Decimal
 from typing import Any
 
-from apps.vehicles.models.car.enums import CarDriveType
-from apps.vehicles.models.vehicle.enums import VehicleTransmissionType
-from ..mappers import transmission_type_mapper, transmission_drive_type_mapper
 from .base import OtobaRuValueBaseTransformer
 
 
@@ -11,6 +8,7 @@ class OtobaRuTrimValueTransformer(OtobaRuValueBaseTransformer):
 	"""
 	Парсит данные о комплектации автомобиля.
 	"""
+
 	int_fields = ('clearance',)
 	fields_map = {
 		'мощность мотора': 'power',
@@ -43,6 +41,7 @@ class OtobaRuTrimValueTransformer(OtobaRuValueBaseTransformer):
 		Разгон до 100 км/ч - парсим как Decimal
 		"""
 		from ..utils import find_first_number_in_text
+
 		year = find_first_number_in_text(value)
 		if year:
 			return {'acceleration': Decimal(str(year / 10))}
@@ -53,6 +52,7 @@ class OtobaRuTrimValueTransformer(OtobaRuValueBaseTransformer):
 		Средний расход топлива - парсим как Decimal
 		"""
 		from ..utils import find_first_number_in_text
+
 		year = find_first_number_in_text(value)
 		if year:
 			return {'avg_fuel_consumption': Decimal(str(year / 10))}

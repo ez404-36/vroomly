@@ -10,12 +10,12 @@ from core.db import database
 
 @cbv(router)
 class CountryAPI(
-    BaseAPI,
+	BaseAPI,
 ):
-    @router.get(
-        "/country/",
-        response_model=list[CountryDetailSchema],
-        summary="Список стран",
-    )
-    async def list(self):
-        return await database.fetch_all(select(Country))
+	@router.get(
+		'/country/',
+		response_model=list[CountryDetailSchema],
+		summary='Список стран',
+	)
+	async def list(self):
+		return await database.fetch_all(select(Country))

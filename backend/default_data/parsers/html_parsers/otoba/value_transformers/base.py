@@ -14,6 +14,7 @@ class OtobaRuValueBaseTransformer:
 	"""
 	Преобразует данные на сайте в данные для объекта
 	"""
+
 	int_fields: Iterable[str] = []
 	fields_map: dict[str, str] = {}
 
@@ -24,11 +25,11 @@ class OtobaRuValueBaseTransformer:
 	}
 
 	def __init__(
-			self,
-			tags_data: dict[str, str],
-			page_uri: Path,
-			brand: VehicleBrand | None,
-			concern: VehicleConcern | None,
+		self,
+		tags_data: dict[str, str],
+		page_uri: Path,
+		brand: VehicleBrand | None,
+		concern: VehicleConcern | None,
 	):
 		"""
 		:param tags_data: собранные в словарь данные из таблицы об агрегате;
@@ -102,10 +103,7 @@ class OtobaRuValueBaseTransformer:
 
 	def brand_or_concern_condition(self, model: type[AutoSchemaBase]) -> ColumnElement[bool]:
 		if self.brand and self.concern:
-			return or_(
-				model.brand_id == self.brand.id,
-				model.concern_id == self.concern.id
-			)
+			return or_(model.brand_id == self.brand.id, model.concern_id == self.concern.id)
 		elif self.brand:
 			return model.brand_id == self.brand.id
 		elif self.concern:

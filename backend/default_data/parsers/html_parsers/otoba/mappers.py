@@ -2,7 +2,7 @@ from apps.vehicles.models.car.enums import CarDriveType
 from apps.vehicles.models.vehicle.enums import (
 	VehicleEngineGRMType,
 	VehicleEnginePhaseRegulatorType,
-    VehicleTransmissionType,
+	VehicleTransmissionType,
 )
 
 phase_regulator_mapper = {

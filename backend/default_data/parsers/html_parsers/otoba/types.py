@@ -1,7 +1,8 @@
 from typing import Literal
 
 
-class OtobaRuException(Exception): ...
+class OtobaRuError(Exception):
+	"""Ошибка работы otoba-парсера."""
 
 
 VehicleNodeType = Literal['engine', 'transmission', 'vehicle', 'china_vehicle']
