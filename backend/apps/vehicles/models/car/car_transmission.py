@@ -1,4 +1,4 @@
-from sqlalchemy import CheckConstraint, SmallInteger
+from sqlalchemy import CheckConstraint, Index, SmallInteger, text
 from sqlalchemy.orm import Mapped, mapped_column
 
 from apps.vehicles.models.car.enums import CarDriveType
@@ -33,6 +33,18 @@ class CarTransmission(
         CheckConstraint(
             'brand_id IS NOT NULL OR concern_id IS NOT NULL',
             name='car_transmission_brand_or_concern_required',
+        ),
+        Index(
+            'car_transmission_brand_type_gears_name_unique',
+            'brand_id', 'type', 'gears', 'name',
+            unique=True,
+            postgresql_where=text('brand_id IS NOT NULL'),
+        ),
+        Index(
+            'car_transmission_concern_type_gears_name_unique',
+            'concern_id', 'type', 'gears', 'name',
+            unique=True,
+            postgresql_where=text('concern_id IS NOT NULL'),
         ),
     )
 

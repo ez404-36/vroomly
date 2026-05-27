@@ -2,6 +2,7 @@ import asyncio
 
 from core.db import database
 from core.models import AutoSchemaBase
+from default_data.csv_importers.car_transmissions import ImportCarTransmissionsCSV
 from default_data.csv_importers.countries import ImportCountriesCSV
 from default_data.csv_importers.vehicle_brands import ImportVehicleBrandsCSV
 from default_data.csv_importers.vehicle_concerns import ImportVehicleConcernsCSV
@@ -20,6 +21,8 @@ async def seed_all():
     - Автопроизводителях
     - Марках автомобилей
     - Системах управления фазами газораспределения в двигателе
+    - Двигателях
+    - Коробках передач автомобилей
     """
 
     async with database.get_async_session() as session:
@@ -29,6 +32,7 @@ async def seed_all():
         await ImportVehicleSeriesCSV(session).run()
         await ImportVehicleEnginePhaseRegulatorSystemsCSV(session).run()
         await ImportVehicleEnginesCSV(session).run()
+        await ImportCarTransmissionsCSV(session).run()
 
         await session.commit()
         await session.close()

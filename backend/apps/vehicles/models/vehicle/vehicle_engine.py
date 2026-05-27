@@ -44,14 +44,14 @@ class VehicleEngine(
             name='vehicle_engine_brand_or_concern_required',
         ),
         Index(
-            'vehicle_engine_brand_id_name_unique',
-            'brand_id', 'name',
+            'vehicle_engine_brand_name_volume_power_unique',
+            'brand_id', 'name', 'volume', 'power',
             unique=True,
             postgresql_where=text('brand_id IS NOT NULL'),
         ),
         Index(
-            'vehicle_engine_concern_id_name_unique',
-            'concern_id', 'name',
+            'vehicle_engine_concern_name_volume_power_unique',
+            'concern_id', 'name', 'volume', 'power',
             unique=True,
             postgresql_where=text('concern_id IS NOT NULL'),
         ),

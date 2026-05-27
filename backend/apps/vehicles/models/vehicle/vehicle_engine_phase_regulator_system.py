@@ -1,4 +1,4 @@
-from sqlalchemy import CheckConstraint, String
+from sqlalchemy import CheckConstraint, Index, String, text
 from sqlalchemy.orm import Mapped, mapped_column
 
 from apps.vehicles.models.vehicle.enums import VehicleEnginePhaseRegulatorType
@@ -32,6 +32,18 @@ class VehicleEnginePhaseRegulatorSystem(
         CheckConstraint(
             'brand_id IS NOT NULL OR concern_id IS NOT NULL',
             name='vehicle_engine_phase_regulator_system_brand_or_concern_required',
+        ),
+        Index(
+            'vehicle_engine_phase_regulator_system_brand_name_type_unique',
+            'brand_id', 'name', 'phase_regulator_type',
+            unique=True,
+            postgresql_where=text('brand_id IS NOT NULL'),
+        ),
+        Index(
+            'vehicle_engine_phase_regulator_system_concern_name_type_unique',
+            'concern_id', 'name', 'phase_regulator_type',
+            unique=True,
+            postgresql_where=text('concern_id IS NOT NULL'),
         ),
     )
 
