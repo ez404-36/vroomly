@@ -1,6 +1,6 @@
 from decimal import Decimal
 
-from sqlalchemy import Numeric, SmallInteger
+from sqlalchemy import Numeric, SmallInteger, String
 from sqlalchemy.orm import Mapped, mapped_column
 
 from apps.vehicles.models.car.car_body import get_car_body_link_mixin
@@ -17,7 +17,7 @@ class CarTrim(
     get_engine_link_mixin('car_trims', False),
     get_vehicle_generation_link_mixin('car_trims', False),
     get_car_transmission_link_mixin('car_trims', False),
-    get_car_body_link_mixin('car_trims', False),
+    get_car_body_link_mixin('car_trims', True, on_delete='SET NULL'),
 ):
     """
     Комплектация автомобиля.
@@ -27,9 +27,11 @@ class CarTrim(
     как массив — источник истины. Получить привод комплектации можно через
     ``trim.transmission.drive_types``.
 
-    Кузов всегда нормализованная сущность ``CarBody`` (см. ``body_id``).
-    Раньше тут было поле ``body_str`` как временное текстовое представление —
-    оно удалено в шаге 5 рефакторинга (см. GRAPH.md).
+    Кузов нормализуется через сущность ``CarBody`` (см. ``body_id``).
+    Поскольку справочник кузовов ещё не наполнен, ``body_id`` сделан
+    nullable, а исходное текстовое обозначение кузова из импорта (например,
+    ``E210``, ``Type 939``) сохраняется в ``body_str``. Когда ``car_body``
+    будет наполнен, ``body_str`` следует перевести в ``body_id`` и удалить.
     """
 
     avg_fuel_consumption: Mapped[Decimal | None] = mapped_column(
@@ -41,6 +43,13 @@ class CarTrim(
         doc='Разгон до 100 км/ч (по паспорту)'
     )
     clearance: Mapped[int | None] = mapped_column(SmallInteger, doc='Клиренс')
+    body_str: Mapped[str | None] = mapped_column(
+        String(50),
+        doc=(
+            'Текстовое обозначение кузова из источника импорта (например, E210, '
+            'Type 939). Временное поле до наполнения справочника CarBody.'
+        ),
+    )
 
 
 def get_car_trim_link_mixin(

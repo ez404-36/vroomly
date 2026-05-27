@@ -1,0 +1,6341 @@
+{
+  "total": 1056,
+  "items": [
+    {
+      "name": "4HP20",
+      "brand_code": "ALFA_ROMEO",
+      "brand_id": "b3b481bb-ccef-48aa-8a82-4c369f8d89c7",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "AW50-40LM",
+      "brand_code": "ALFA_ROMEO",
+      "brand_id": "b3b481bb-ccef-48aa-8a82-4c369f8d89c7",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "AW55-50SN",
+      "brand_code": "ALFA_ROMEO",
+      "brand_id": "b3b481bb-ccef-48aa-8a82-4c369f8d89c7",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "Aisin F21",
+      "brand_code": "ALFA_ROMEO",
+      "brand_id": "b3b481bb-ccef-48aa-8a82-4c369f8d89c7",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "C503",
+      "brand_code": "ALFA_ROMEO",
+      "brand_id": "b3b481bb-ccef-48aa-8a82-4c369f8d89c7",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "C630",
+      "brand_code": "ALFA_ROMEO",
+      "brand_id": "b3b481bb-ccef-48aa-8a82-4c369f8d89c7",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "C635 DDTC",
+      "brand_code": "ALFA_ROMEO",
+      "brand_id": "b3b481bb-ccef-48aa-8a82-4c369f8d89c7",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "C725 DDTC",
+      "brand_code": "ALFA_ROMEO",
+      "brand_id": "b3b481bb-ccef-48aa-8a82-4c369f8d89c7",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "F40",
+      "brand_code": "ALFA_ROMEO",
+      "brand_id": "b3b481bb-ccef-48aa-8a82-4c369f8d89c7",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "G217",
+      "brand_code": "ALFA_ROMEO",
+      "brand_id": "b3b481bb-ccef-48aa-8a82-4c369f8d89c7",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "TF-80SC",
+      "brand_code": "ALFA_ROMEO",
+      "brand_id": "b3b481bb-ccef-48aa-8a82-4c369f8d89c7",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "ZF 8HP50",
+      "brand_code": "ALFA_ROMEO",
+      "brand_id": "b3b481bb-ccef-48aa-8a82-4c369f8d89c7",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "ZF 8HP75",
+      "brand_code": "ALFA_ROMEO",
+      "brand_id": "b3b481bb-ccef-48aa-8a82-4c369f8d89c7",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "ZF S6-53",
+      "brand_code": "ALFA_ROMEO",
+      "brand_id": "b3b481bb-ccef-48aa-8a82-4c369f8d89c7",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "01E",
+      "brand_code": "AUDI",
+      "brand_id": "70d4d774-1b1d-4335-9c60-403f161b1f66",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "01V",
+      "brand_code": "AUDI",
+      "brand_id": "70d4d774-1b1d-4335-9c60-403f161b1f66",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "5-акпп 01L",
+      "brand_code": "AUDI",
+      "brand_id": "70d4d774-1b1d-4335-9c60-403f161b1f66",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "5-акпп 01V",
+      "brand_code": "AUDI",
+      "brand_id": "70d4d774-1b1d-4335-9c60-403f161b1f66",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "6-мкпп 01E",
+      "brand_code": "AUDI",
+      "brand_id": "70d4d774-1b1d-4335-9c60-403f161b1f66",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "DQ250 (6-ркпп)",
+      "brand_code": "AUDI",
+      "brand_id": "70d4d774-1b1d-4335-9c60-403f161b1f66",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "DQ381 (7-ркпп)",
+      "brand_code": "AUDI",
+      "brand_id": "70d4d774-1b1d-4335-9c60-403f161b1f66",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "DQ500 (7-ркпп)",
+      "brand_code": "AUDI",
+      "brand_id": "70d4d774-1b1d-4335-9c60-403f161b1f66",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "DS085",
+      "brand_code": "AUDI",
+      "brand_id": "70d4d774-1b1d-4335-9c60-403f161b1f66",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "ML285 (5-мкпп)",
+      "brand_code": "AUDI",
+      "brand_id": "70d4d774-1b1d-4335-9c60-403f161b1f66",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "ML310 / AL420",
+      "brand_code": "AUDI",
+      "brand_id": "70d4d774-1b1d-4335-9c60-403f161b1f66",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "ML310 / VL300",
+      "brand_code": "AUDI",
+      "brand_id": "70d4d774-1b1d-4335-9c60-403f161b1f66",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "ML310 / VL380",
+      "brand_code": "AUDI",
+      "brand_id": "70d4d774-1b1d-4335-9c60-403f161b1f66",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "ML311 / DL501",
+      "brand_code": "AUDI",
+      "brand_id": "70d4d774-1b1d-4335-9c60-403f161b1f66",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "ML322 / DL382",
+      "brand_code": "AUDI",
+      "brand_id": "70d4d774-1b1d-4335-9c60-403f161b1f66",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "ML402 / DL382",
+      "brand_code": "AUDI",
+      "brand_id": "70d4d774-1b1d-4335-9c60-403f161b1f66",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "ML450 / AL420",
+      "brand_code": "AUDI",
+      "brand_id": "70d4d774-1b1d-4335-9c60-403f161b1f66",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "ML450 / VL380",
+      "brand_code": "AUDI",
+      "brand_id": "70d4d774-1b1d-4335-9c60-403f161b1f66",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "ML451 / DL501",
+      "brand_code": "AUDI",
+      "brand_id": "70d4d774-1b1d-4335-9c60-403f161b1f66",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "MQ150 / 01M",
+      "brand_code": "AUDI",
+      "brand_id": "70d4d774-1b1d-4335-9c60-403f161b1f66",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "MQ250 / 01M",
+      "brand_code": "AUDI",
+      "brand_id": "70d4d774-1b1d-4335-9c60-403f161b1f66",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "MQ350 (6-мкпп)",
+      "brand_code": "AUDI",
+      "brand_id": "70d4d774-1b1d-4335-9c60-403f161b1f66",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "VL300",
+      "brand_code": "AUDI",
+      "brand_id": "70d4d774-1b1d-4335-9c60-403f161b1f66",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "VL381",
+      "brand_code": "AUDI",
+      "brand_id": "70d4d774-1b1d-4335-9c60-403f161b1f66",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "5MF17L (МКПП)",
+      "brand_code": "BELGEE",
+      "brand_id": "83a65209-86bf-4e2b-b080-3064fe530c29",
+      "concern_id": null
+    },
+    {
+      "name": "6AT18 (АКПП)",
+      "brand_code": "BELGEE",
+      "brand_id": "83a65209-86bf-4e2b-b080-3064fe530c29",
+      "concern_id": null
+    },
+    {
+      "name": "7DCT300",
+      "brand_code": "BELGEE",
+      "brand_id": "83a65209-86bf-4e2b-b080-3064fe530c29",
+      "concern_id": null
+    },
+    {
+      "name": "7DCT330",
+      "brand_code": "BELGEE",
+      "brand_id": "83a65209-86bf-4e2b-b080-3064fe530c29",
+      "concern_id": null
+    },
+    {
+      "name": "TF-72SC",
+      "brand_code": "BELGEE",
+      "brand_id": "83a65209-86bf-4e2b-b080-3064fe530c29",
+      "concern_id": null
+    },
+    {
+      "name": "GM 4L60E",
+      "brand_code": "BUICK",
+      "brand_id": "2c07bbfb-c0f5-4294-88d0-db65239d9f57",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 4T65E",
+      "brand_code": "BUICK",
+      "brand_id": "2c07bbfb-c0f5-4294-88d0-db65239d9f57",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 6T40",
+      "brand_code": "BUICK",
+      "brand_id": "2c07bbfb-c0f5-4294-88d0-db65239d9f57",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 6T45",
+      "brand_code": "BUICK",
+      "brand_id": "2c07bbfb-c0f5-4294-88d0-db65239d9f57",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 6T50",
+      "brand_code": "BUICK",
+      "brand_id": "2c07bbfb-c0f5-4294-88d0-db65239d9f57",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 6T70",
+      "brand_code": "BUICK",
+      "brand_id": "2c07bbfb-c0f5-4294-88d0-db65239d9f57",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 6T75",
+      "brand_code": "BUICK",
+      "brand_id": "2c07bbfb-c0f5-4294-88d0-db65239d9f57",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 8T65",
+      "brand_code": "BUICK",
+      "brand_id": "2c07bbfb-c0f5-4294-88d0-db65239d9f57",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 9T45",
+      "brand_code": "BUICK",
+      "brand_id": "2c07bbfb-c0f5-4294-88d0-db65239d9f57",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 9T50",
+      "brand_code": "BUICK",
+      "brand_id": "2c07bbfb-c0f5-4294-88d0-db65239d9f57",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 9T60",
+      "brand_code": "BUICK",
+      "brand_id": "2c07bbfb-c0f5-4294-88d0-db65239d9f57",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 9T65",
+      "brand_code": "BUICK",
+      "brand_id": "2c07bbfb-c0f5-4294-88d0-db65239d9f57",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM AF40",
+      "brand_code": "BUICK",
+      "brand_id": "2c07bbfb-c0f5-4294-88d0-db65239d9f57",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM VT40",
+      "brand_code": "BUICK",
+      "brand_id": "2c07bbfb-c0f5-4294-88d0-db65239d9f57",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "Opel F40",
+      "brand_code": "BUICK",
+      "brand_id": "2c07bbfb-c0f5-4294-88d0-db65239d9f57",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "TG‑81SC",
+      "brand_code": "BUICK",
+      "brand_id": "2c07bbfb-c0f5-4294-88d0-db65239d9f57",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "10L80",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "2ML70",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "4T80E",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "5L40",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "5L40E",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "5L50",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "5L50E",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "6L45",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "6L50",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "6T70",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "6T80",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "8L45",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "8L90",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "AW55-50SN",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "F40",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "FM55",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 10L60",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 10L80",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 10L90",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 4L60E",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 4L65E",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 4T80E",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 6L45",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 6L50",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 6L80",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 6L90",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 6L95M",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 8L45",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 8L90",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 9T50",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 9T65",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "Getrag 260 (5-мкпп)",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "M3L",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "TF-80SC",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "TG-81SC",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "TR-6060",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "Tremec T-56 (6-мкпп)",
+      "brand_code": "CADILLAC",
+      "brand_id": "eb066c9b-dec5-40ad-91b3-ce3a8656c88e",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "5-мкпп ТМ155F",
+      "brand_code": "CHANGAN",
+      "brand_id": "ae10b686-eac5-4b47-a4ec-ce62131e1472",
+      "concern_id": null
+    },
+    {
+      "name": "6DCT",
+      "brand_code": "CHANGAN",
+      "brand_id": "ae10b686-eac5-4b47-a4ec-ce62131e1472",
+      "concern_id": null
+    },
+    {
+      "name": "6MTI380",
+      "brand_code": "CHANGAN",
+      "brand_id": "ae10b686-eac5-4b47-a4ec-ce62131e1472",
+      "concern_id": null
+    },
+    {
+      "name": "8HP50",
+      "brand_code": "CHANGAN",
+      "brand_id": "ae10b686-eac5-4b47-a4ec-ce62131e1472",
+      "concern_id": null
+    },
+    {
+      "name": "DF515",
+      "brand_code": "CHANGAN",
+      "brand_id": "ae10b686-eac5-4b47-a4ec-ce62131e1472",
+      "concern_id": null
+    },
+    {
+      "name": "DF727A",
+      "brand_code": "CHANGAN",
+      "brand_id": "ae10b686-eac5-4b47-a4ec-ce62131e1472",
+      "concern_id": null
+    },
+    {
+      "name": "DF727A (7-ркпп)",
+      "brand_code": "CHANGAN",
+      "brand_id": "ae10b686-eac5-4b47-a4ec-ce62131e1472",
+      "concern_id": null
+    },
+    {
+      "name": "DF733A",
+      "brand_code": "CHANGAN",
+      "brand_id": "ae10b686-eac5-4b47-a4ec-ce62131e1472",
+      "concern_id": null
+    },
+    {
+      "name": "TF-70SC",
+      "brand_code": "CHANGAN",
+      "brand_id": "ae10b686-eac5-4b47-a4ec-ce62131e1472",
+      "concern_id": null
+    },
+    {
+      "name": "TF-71SC",
+      "brand_code": "CHANGAN",
+      "brand_id": "ae10b686-eac5-4b47-a4ec-ce62131e1472",
+      "concern_id": null
+    },
+    {
+      "name": "TF-71SC (6-акпп)",
+      "brand_code": "CHANGAN",
+      "brand_id": "ae10b686-eac5-4b47-a4ec-ce62131e1472",
+      "concern_id": null
+    },
+    {
+      "name": "TF-71SC (автомат)",
+      "brand_code": "CHANGAN",
+      "brand_id": "ae10b686-eac5-4b47-a4ec-ce62131e1472",
+      "concern_id": null
+    },
+    {
+      "name": "TF-73SC",
+      "brand_code": "CHANGAN",
+      "brand_id": "ae10b686-eac5-4b47-a4ec-ce62131e1472",
+      "concern_id": null
+    },
+    {
+      "name": "TF-81SC",
+      "brand_code": "CHANGAN",
+      "brand_id": "ae10b686-eac5-4b47-a4ec-ce62131e1472",
+      "concern_id": null
+    },
+    {
+      "name": "TG-81SC",
+      "brand_code": "CHANGAN",
+      "brand_id": "ae10b686-eac5-4b47-a4ec-ce62131e1472",
+      "concern_id": null
+    },
+    {
+      "name": "TS40-SN",
+      "brand_code": "CHANGAN",
+      "brand_id": "ae10b686-eac5-4b47-a4ec-ce62131e1472",
+      "concern_id": null
+    },
+    {
+      "name": "TМ036F / TF-70SC",
+      "brand_code": "CHANGAN",
+      "brand_id": "ae10b686-eac5-4b47-a4ec-ce62131e1472",
+      "concern_id": null
+    },
+    {
+      "name": "Автоматическая",
+      "brand_code": "CHANGAN",
+      "brand_id": "ae10b686-eac5-4b47-a4ec-ce62131e1472",
+      "concern_id": null
+    },
+    {
+      "name": "ТМ036F",
+      "brand_code": "CHANGAN",
+      "brand_id": "ae10b686-eac5-4b47-a4ec-ce62131e1472",
+      "concern_id": null
+    },
+    {
+      "name": "ТМ036F (6-мкпп)",
+      "brand_code": "CHANGAN",
+      "brand_id": "ae10b686-eac5-4b47-a4ec-ce62131e1472",
+      "concern_id": null
+    },
+    {
+      "name": "ТМ036F (механика)",
+      "brand_code": "CHANGAN",
+      "brand_id": "ae10b686-eac5-4b47-a4ec-ce62131e1472",
+      "concern_id": null
+    },
+    {
+      "name": "ТМ155F",
+      "brand_code": "CHANGAN",
+      "brand_id": "ae10b686-eac5-4b47-a4ec-ce62131e1472",
+      "concern_id": null
+    },
+    {
+      "name": "вариатор",
+      "brand_code": "CHANGAN",
+      "brand_id": "ae10b686-eac5-4b47-a4ec-ce62131e1472",
+      "concern_id": null
+    },
+    {
+      "name": "6-DCT",
+      "brand_code": "CHERY",
+      "brand_id": "d49afeb0-fd76-4f8b-88c8-9a6e85948f2c",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "6DCT250",
+      "brand_code": "CHERY",
+      "brand_id": "d49afeb0-fd76-4f8b-88c8-9a6e85948f2c",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "6DCT260",
+      "brand_code": "CHERY",
+      "brand_id": "d49afeb0-fd76-4f8b-88c8-9a6e85948f2c",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "6DCT260 (АКПП)",
+      "brand_code": "CHERY",
+      "brand_id": "d49afeb0-fd76-4f8b-88c8-9a6e85948f2c",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "7-DCT",
+      "brand_code": "CHERY",
+      "brand_id": "d49afeb0-fd76-4f8b-88c8-9a6e85948f2c",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "7DCT300",
+      "brand_code": "CHERY",
+      "brand_id": "d49afeb0-fd76-4f8b-88c8-9a6e85948f2c",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "CVT18",
+      "brand_code": "CHERY",
+      "brand_id": "d49afeb0-fd76-4f8b-88c8-9a6e85948f2c",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "CVT18 (Вариатор)",
+      "brand_code": "CHERY",
+      "brand_id": "d49afeb0-fd76-4f8b-88c8-9a6e85948f2c",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "CVT25",
+      "brand_code": "CHERY",
+      "brand_id": "d49afeb0-fd76-4f8b-88c8-9a6e85948f2c",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "CVT7",
+      "brand_code": "CHERY",
+      "brand_id": "d49afeb0-fd76-4f8b-88c8-9a6e85948f2c",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "DCT380",
+      "brand_code": "CHERY",
+      "brand_id": "d49afeb0-fd76-4f8b-88c8-9a6e85948f2c",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "QR351",
+      "brand_code": "CHERY",
+      "brand_id": "d49afeb0-fd76-4f8b-88c8-9a6e85948f2c",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "QR516 (МКПП) / CVT18 (вариатор)",
+      "brand_code": "CHERY",
+      "brand_id": "d49afeb0-fd76-4f8b-88c8-9a6e85948f2c",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "QR517 (МКПП) / CVT18 (вариатор)",
+      "brand_code": "CHERY",
+      "brand_id": "d49afeb0-fd76-4f8b-88c8-9a6e85948f2c",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "QR525",
+      "brand_code": "CHERY",
+      "brand_id": "d49afeb0-fd76-4f8b-88c8-9a6e85948f2c",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "QR525 (МКПП)",
+      "brand_code": "CHERY",
+      "brand_id": "d49afeb0-fd76-4f8b-88c8-9a6e85948f2c",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "QR525 (МКПП) / CVT25 (вариатор)",
+      "brand_code": "CHERY",
+      "brand_id": "d49afeb0-fd76-4f8b-88c8-9a6e85948f2c",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "QR525 (МКПП) / CVT7 (вариатор)",
+      "brand_code": "CHERY",
+      "brand_id": "d49afeb0-fd76-4f8b-88c8-9a6e85948f2c",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "Роботизированная (АКПП)",
+      "brand_code": "CHERY",
+      "brand_id": "d49afeb0-fd76-4f8b-88c8-9a6e85948f2c",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "робот",
+      "brand_code": "CHERY",
+      "brand_id": "d49afeb0-fd76-4f8b-88c8-9a6e85948f2c",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "4HP16",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "4L60E",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "5-мкпп Aisin AG5",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "5-мкпп ВАЗ 2123",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "6L80",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "6L80E",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "6T40",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "6T45",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "6T70",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "6Т30",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "6Т40",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "6Т40 (автомат)",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "6Т45 (автомат)",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "8L90",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "8T45",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "9T50",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "AW55-50SN",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "AW55-50SN (автомат)",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "AW55-51LE (автомат)",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "AW81-40LE",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "AW81–40LE",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "Aisin 81‑40LE",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "CVT",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "D13",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "D15",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "D16",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "D16 (5-мкпп)",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "D16⁻¹",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "D20 (механика)",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "D24",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "D33",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "D33 (механика)",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "F15",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "F40-6",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "FSO-2505",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 10L80",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 4L60E",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 6L50",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 6L80",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 6T35",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 6T40",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 6T45",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 6T70",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 6T75",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 8L45",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 8T65",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 9T45",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 9T50",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 9T65",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM D16",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM M32",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM VT40",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "JF015E",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "JF405E",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "TG-81SC",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "VT40",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "Voltec 5ET50",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "Y4M",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "ZF 4HP16",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "М32 (механика)",
+      "brand_code": "CHEVROLET",
+      "brand_id": "31366774-e420-4a3d-8f18-27fc2af924f2",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "DB1",
+      "brand_code": "DACIA",
+      "brand_id": "bf8c1c6b-3ac1-4df2-9e4b-e3f86ffc0c04",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "DB45",
+      "brand_code": "DACIA",
+      "brand_id": "bf8c1c6b-3ac1-4df2-9e4b-e3f86ffc0c04",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "DXK0",
+      "brand_code": "DACIA",
+      "brand_id": "bf8c1c6b-3ac1-4df2-9e4b-e3f86ffc0c04",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JH1",
+      "brand_code": "DACIA",
+      "brand_id": "bf8c1c6b-3ac1-4df2-9e4b-e3f86ffc0c04",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JH3",
+      "brand_code": "DACIA",
+      "brand_id": "bf8c1c6b-3ac1-4df2-9e4b-e3f86ffc0c04",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JR5",
+      "brand_code": "DACIA",
+      "brand_id": "bf8c1c6b-3ac1-4df2-9e4b-e3f86ffc0c04",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JS3",
+      "brand_code": "DACIA",
+      "brand_id": "bf8c1c6b-3ac1-4df2-9e4b-e3f86ffc0c04",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JT4",
+      "brand_code": "DACIA",
+      "brand_id": "bf8c1c6b-3ac1-4df2-9e4b-e3f86ffc0c04",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "TL4",
+      "brand_code": "DACIA",
+      "brand_id": "bf8c1c6b-3ac1-4df2-9e4b-e3f86ffc0c04",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "TL8",
+      "brand_code": "DACIA",
+      "brand_id": "bf8c1c6b-3ac1-4df2-9e4b-e3f86ffc0c04",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "TS4",
+      "brand_code": "DACIA",
+      "brand_id": "bf8c1c6b-3ac1-4df2-9e4b-e3f86ffc0c04",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "mkvp",
+      "brand_code": "DACIA",
+      "brand_id": "bf8c1c6b-3ac1-4df2-9e4b-e3f86ffc0c04",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "редуктор",
+      "brand_code": "DACIA",
+      "brand_id": "bf8c1c6b-3ac1-4df2-9e4b-e3f86ffc0c04",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JF414E",
+      "brand_code": "DATSUN",
+      "brand_id": "828d8ed3-06f5-4906-b568-ba07d41210cb",
+      "concern_id": null
+    },
+    {
+      "name": "ВАЗ 21806",
+      "brand_code": "DATSUN",
+      "brand_id": "828d8ed3-06f5-4906-b568-ba07d41210cb",
+      "concern_id": null
+    },
+    {
+      "name": "ВАЗ 2181",
+      "brand_code": "DATSUN",
+      "brand_id": "828d8ed3-06f5-4906-b568-ba07d41210cb",
+      "concern_id": null
+    },
+    {
+      "name": "5MF17E",
+      "brand_code": "DONGFENG",
+      "brand_id": "3b738291-f051-40ea-bfb6-cc7e733bf4e6",
+      "concern_id": null
+    },
+    {
+      "name": "6DCT150",
+      "brand_code": "DONGFENG",
+      "brand_id": "3b738291-f051-40ea-bfb6-cc7e733bf4e6",
+      "concern_id": null
+    },
+    {
+      "name": "7DCT300",
+      "brand_code": "DONGFENG",
+      "brand_id": "3b738291-f051-40ea-bfb6-cc7e733bf4e6",
+      "concern_id": null
+    },
+    {
+      "name": "HD120",
+      "brand_code": "DONGFENG",
+      "brand_id": "3b738291-f051-40ea-bfb6-cc7e733bf4e6",
+      "concern_id": null
+    },
+    {
+      "name": "HD120 (вариатор)",
+      "brand_code": "DONGFENG",
+      "brand_id": "3b738291-f051-40ea-bfb6-cc7e733bf4e6",
+      "concern_id": null
+    },
+    {
+      "name": "MF620",
+      "brand_code": "DONGFENG",
+      "brand_id": "3b738291-f051-40ea-bfb6-cc7e733bf4e6",
+      "concern_id": null
+    },
+    {
+      "name": "PSA BE4",
+      "brand_code": "DONGFENG",
+      "brand_id": "3b738291-f051-40ea-bfb6-cc7e733bf4e6",
+      "concern_id": null
+    },
+    {
+      "name": "PSA MA5",
+      "brand_code": "DONGFENG",
+      "brand_id": "3b738291-f051-40ea-bfb6-cc7e733bf4e6",
+      "concern_id": null
+    },
+    {
+      "name": "PSA MA5 (5-мкпп)",
+      "brand_code": "DONGFENG",
+      "brand_id": "3b738291-f051-40ea-bfb6-cc7e733bf4e6",
+      "concern_id": null
+    },
+    {
+      "name": "SMF517",
+      "brand_code": "DONGFENG",
+      "brand_id": "3b738291-f051-40ea-bfb6-cc7e733bf4e6",
+      "concern_id": null
+    },
+    {
+      "name": "TF-70SC",
+      "brand_code": "DONGFENG",
+      "brand_id": "3b738291-f051-40ea-bfb6-cc7e733bf4e6",
+      "concern_id": null
+    },
+    {
+      "name": "TS40-SN",
+      "brand_code": "DONGFENG",
+      "brand_id": "3b738291-f051-40ea-bfb6-cc7e733bf4e6",
+      "concern_id": null
+    },
+    {
+      "name": "TS40-SN (4-акпп)",
+      "brand_code": "DONGFENG",
+      "brand_id": "3b738291-f051-40ea-bfb6-cc7e733bf4e6",
+      "concern_id": null
+    },
+    {
+      "name": "VT3",
+      "brand_code": "DONGFENG",
+      "brand_id": "3b738291-f051-40ea-bfb6-cc7e733bf4e6",
+      "concern_id": null
+    },
+    {
+      "name": "7DCT300",
+      "brand_code": "EXEED",
+      "brand_id": "c6dee0e8-21f4-4c72-ae02-6ea6552e740b",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "7DCT400",
+      "brand_code": "EXEED",
+      "brand_id": "c6dee0e8-21f4-4c72-ae02-6ea6552e740b",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "CVT25",
+      "brand_code": "EXEED",
+      "brand_id": "c6dee0e8-21f4-4c72-ae02-6ea6552e740b",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "DCT380",
+      "brand_code": "EXEED",
+      "brand_id": "c6dee0e8-21f4-4c72-ae02-6ea6552e740b",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "FA840",
+      "brand_code": "EXEED",
+      "brand_id": "c6dee0e8-21f4-4c72-ae02-6ea6552e740b",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "TG-81SC",
+      "brand_code": "EXEED",
+      "brand_id": "c6dee0e8-21f4-4c72-ae02-6ea6552e740b",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "948TE",
+      "brand_code": "FIAT",
+      "brand_id": "209b6a94-5199-42f0-bc70-dad55aec2707",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "Aisin 6F25",
+      "brand_code": "FIAT",
+      "brand_id": "209b6a94-5199-42f0-bc70-dad55aec2707",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "C544",
+      "brand_code": "FIAT",
+      "brand_id": "209b6a94-5199-42f0-bc70-dad55aec2707",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "C635 / 948TE",
+      "brand_code": "FIAT",
+      "brand_id": "209b6a94-5199-42f0-bc70-dad55aec2707",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "C635 / C635 DDTC",
+      "brand_code": "FIAT",
+      "brand_id": "209b6a94-5199-42f0-bc70-dad55aec2707",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "C635 DDTC",
+      "brand_code": "FIAT",
+      "brand_id": "209b6a94-5199-42f0-bc70-dad55aec2707",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "C725",
+      "brand_code": "FIAT",
+      "brand_id": "209b6a94-5199-42f0-bc70-dad55aec2707",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "C725 DDTC",
+      "brand_code": "FIAT",
+      "brand_id": "209b6a94-5199-42f0-bc70-dad55aec2707",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "TF-70SC",
+      "brand_code": "FIAT",
+      "brand_id": "209b6a94-5199-42f0-bc70-dad55aec2707",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "4F27E (АКПП)",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "5F31J (5-акпп)",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "5R55",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "5R55S",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "7DCT300",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "AW55-51SN",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "AW80-40LS",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "B6",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "CD4E (4-акпп)",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "DPS6",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "Durashift",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "G5M-R",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "HF35",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "HF45",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "HF45 (Вариатор)",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "MMT6 (6-мкпп)",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "MMT6/8F57",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "MPS6",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "MT285",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "MTX75 (5-мкпп)",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "TR-3160",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "TR-6060",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "TR-9070",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "e-CVT",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "e-CVT (вариатор)",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "eCVT",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "iB5",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "iB5 (МКПП)",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "iB5/AW80-40LS",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "iB5/Durashift",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "iB6",
+      "brand_code": "FORD",
+      "brand_id": "1f8e2f68-9fa0-4094-9656-369bd379e684",
+      "concern_id": "30a11ee9-1a39-483f-b02d-dada656e55e1"
+    },
+    {
+      "name": "6MF26D",
+      "brand_code": "GAC",
+      "brand_id": "d6c62057-8f7c-4f41-8b3c-33e12f53cb09",
+      "concern_id": null
+    },
+    {
+      "name": "7WF25G",
+      "brand_code": "GAC",
+      "brand_id": "d6c62057-8f7c-4f41-8b3c-33e12f53cb09",
+      "concern_id": null
+    },
+    {
+      "name": "TF-71SC",
+      "brand_code": "GAC",
+      "brand_id": "d6c62057-8f7c-4f41-8b3c-33e12f53cb09",
+      "concern_id": null
+    },
+    {
+      "name": "TF-83SC",
+      "brand_code": "GAC",
+      "brand_id": "d6c62057-8f7c-4f41-8b3c-33e12f53cb09",
+      "concern_id": null
+    },
+    {
+      "name": "TG-81SC",
+      "brand_code": "GAC",
+      "brand_id": "d6c62057-8f7c-4f41-8b3c-33e12f53cb09",
+      "concern_id": null
+    },
+    {
+      "name": "вариатор",
+      "brand_code": "GAC",
+      "brand_id": "d6c62057-8f7c-4f41-8b3c-33e12f53cb09",
+      "concern_id": null
+    },
+    {
+      "name": "1DHT",
+      "brand_code": "GEELY",
+      "brand_id": "4a358b56-ee14-4a12-a2b7-dddd7d9ecf63",
+      "concern_id": "4441a3a0-c292-4486-a8b5-019027c6c2aa"
+    },
+    {
+      "name": "5MF17L (МКПП)",
+      "brand_code": "GEELY",
+      "brand_id": "4a358b56-ee14-4a12-a2b7-dddd7d9ecf63",
+      "concern_id": "4441a3a0-c292-4486-a8b5-019027c6c2aa"
+    },
+    {
+      "name": "6AT18",
+      "brand_code": "GEELY",
+      "brand_id": "4a358b56-ee14-4a12-a2b7-dddd7d9ecf63",
+      "concern_id": "4441a3a0-c292-4486-a8b5-019027c6c2aa"
+    },
+    {
+      "name": "6DCT250",
+      "brand_code": "GEELY",
+      "brand_id": "4a358b56-ee14-4a12-a2b7-dddd7d9ecf63",
+      "concern_id": "4441a3a0-c292-4486-a8b5-019027c6c2aa"
+    },
+    {
+      "name": "6DCT260",
+      "brand_code": "GEELY",
+      "brand_id": "4a358b56-ee14-4a12-a2b7-dddd7d9ecf63",
+      "concern_id": "4441a3a0-c292-4486-a8b5-019027c6c2aa"
+    },
+    {
+      "name": "6MTT250",
+      "brand_code": "GEELY",
+      "brand_id": "4a358b56-ee14-4a12-a2b7-dddd7d9ecf63",
+      "concern_id": "4441a3a0-c292-4486-a8b5-019027c6c2aa"
+    },
+    {
+      "name": "7DCT",
+      "brand_code": "GEELY",
+      "brand_id": "4a358b56-ee14-4a12-a2b7-dddd7d9ecf63",
+      "concern_id": "4441a3a0-c292-4486-a8b5-019027c6c2aa"
+    },
+    {
+      "name": "CVT18",
+      "brand_code": "GEELY",
+      "brand_id": "4a358b56-ee14-4a12-a2b7-dddd7d9ecf63",
+      "concern_id": "4441a3a0-c292-4486-a8b5-019027c6c2aa"
+    },
+    {
+      "name": "DSI575F6",
+      "brand_code": "GEELY",
+      "brand_id": "4a358b56-ee14-4a12-a2b7-dddd7d9ecf63",
+      "concern_id": "4441a3a0-c292-4486-a8b5-019027c6c2aa"
+    },
+    {
+      "name": "F517A",
+      "brand_code": "GEELY",
+      "brand_id": "4a358b56-ee14-4a12-a2b7-dddd7d9ecf63",
+      "concern_id": "4441a3a0-c292-4486-a8b5-019027c6c2aa"
+    },
+    {
+      "name": "Hybrid/АКПП",
+      "brand_code": "GEELY",
+      "brand_id": "4a358b56-ee14-4a12-a2b7-dddd7d9ecf63",
+      "concern_id": "4441a3a0-c292-4486-a8b5-019027c6c2aa"
+    },
+    {
+      "name": "S170B",
+      "brand_code": "GEELY",
+      "brand_id": "4a358b56-ee14-4a12-a2b7-dddd7d9ecf63",
+      "concern_id": "4441a3a0-c292-4486-a8b5-019027c6c2aa"
+    },
+    {
+      "name": "S170F",
+      "brand_code": "GEELY",
+      "brand_id": "4a358b56-ee14-4a12-a2b7-dddd7d9ecf63",
+      "concern_id": "4441a3a0-c292-4486-a8b5-019027c6c2aa"
+    },
+    {
+      "name": "TF-70SC",
+      "brand_code": "GEELY",
+      "brand_id": "4a358b56-ee14-4a12-a2b7-dddd7d9ecf63",
+      "concern_id": "4441a3a0-c292-4486-a8b5-019027c6c2aa"
+    },
+    {
+      "name": "TF‑72SC",
+      "brand_code": "GEELY",
+      "brand_id": "4a358b56-ee14-4a12-a2b7-dddd7d9ecf63",
+      "concern_id": "4441a3a0-c292-4486-a8b5-019027c6c2aa"
+    },
+    {
+      "name": "TG-81SC",
+      "brand_code": "GEELY",
+      "brand_id": "4a358b56-ee14-4a12-a2b7-dddd7d9ecf63",
+      "concern_id": "4441a3a0-c292-4486-a8b5-019027c6c2aa"
+    },
+    {
+      "name": "V5A1C",
+      "brand_code": "GEELY",
+      "brand_id": "4a358b56-ee14-4a12-a2b7-dddd7d9ecf63",
+      "concern_id": "4441a3a0-c292-4486-a8b5-019027c6c2aa"
+    },
+    {
+      "name": "VT2",
+      "brand_code": "GEELY",
+      "brand_id": "4a358b56-ee14-4a12-a2b7-dddd7d9ecf63",
+      "concern_id": "4441a3a0-c292-4486-a8b5-019027c6c2aa"
+    },
+    {
+      "name": "2ML70",
+      "brand_code": "GMC",
+      "brand_id": "0fd90f01-a8d0-4a88-8f38-67b8b44bb2ba",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "6L80",
+      "brand_code": "GMC",
+      "brand_id": "0fd90f01-a8d0-4a88-8f38-67b8b44bb2ba",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "8L90",
+      "brand_code": "GMC",
+      "brand_id": "0fd90f01-a8d0-4a88-8f38-67b8b44bb2ba",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "8T45",
+      "brand_code": "GMC",
+      "brand_id": "0fd90f01-a8d0-4a88-8f38-67b8b44bb2ba",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 10L80",
+      "brand_code": "GMC",
+      "brand_id": "0fd90f01-a8d0-4a88-8f38-67b8b44bb2ba",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 4L60E",
+      "brand_code": "GMC",
+      "brand_id": "0fd90f01-a8d0-4a88-8f38-67b8b44bb2ba",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 6L80",
+      "brand_code": "GMC",
+      "brand_id": "0fd90f01-a8d0-4a88-8f38-67b8b44bb2ba",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 6T45",
+      "brand_code": "GMC",
+      "brand_id": "0fd90f01-a8d0-4a88-8f38-67b8b44bb2ba",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 6T50",
+      "brand_code": "GMC",
+      "brand_id": "0fd90f01-a8d0-4a88-8f38-67b8b44bb2ba",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 6T70",
+      "brand_code": "GMC",
+      "brand_id": "0fd90f01-a8d0-4a88-8f38-67b8b44bb2ba",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 6T75",
+      "brand_code": "GMC",
+      "brand_id": "0fd90f01-a8d0-4a88-8f38-67b8b44bb2ba",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 8T65",
+      "brand_code": "GMC",
+      "brand_id": "0fd90f01-a8d0-4a88-8f38-67b8b44bb2ba",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 9T45",
+      "brand_code": "GMC",
+      "brand_id": "0fd90f01-a8d0-4a88-8f38-67b8b44bb2ba",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 9T50",
+      "brand_code": "GMC",
+      "brand_id": "0fd90f01-a8d0-4a88-8f38-67b8b44bb2ba",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "GM 9T65",
+      "brand_code": "GMC",
+      "brand_id": "0fd90f01-a8d0-4a88-8f38-67b8b44bb2ba",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "VT40",
+      "brand_code": "GMC",
+      "brand_id": "0fd90f01-a8d0-4a88-8f38-67b8b44bb2ba",
+      "concern_id": "44fa372b-95e2-4601-866e-b86f3e126203"
+    },
+    {
+      "name": "6MTI380",
+      "brand_code": "GREAT_WALL",
+      "brand_id": "4378bd7f-cb59-4336-a316-f3086b6c965a",
+      "concern_id": null
+    },
+    {
+      "name": "8HP50",
+      "brand_code": "GREAT_WALL",
+      "brand_id": "4378bd7f-cb59-4336-a316-f3086b6c965a",
+      "concern_id": null
+    },
+    {
+      "name": "Hycet 9AT",
+      "brand_code": "GREAT_WALL",
+      "brand_id": "4378bd7f-cb59-4336-a316-f3086b6c965a",
+      "concern_id": null
+    },
+    {
+      "name": "ZF 8HP50",
+      "brand_code": "GREAT_WALL",
+      "brand_id": "4378bd7f-cb59-4336-a316-f3086b6c965a",
+      "concern_id": null
+    },
+    {
+      "name": "ZM036BF",
+      "brand_code": "GREAT_WALL",
+      "brand_id": "4378bd7f-cb59-4336-a316-f3086b6c965a",
+      "concern_id": null
+    },
+    {
+      "name": "08H0",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "4CE4",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "4CE6",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "4NN5",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "5-мкпп SEP",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "5-мкпп SEV",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "7GF0",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "9HP48",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "9HP50",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "ARK5⁻¹",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "AST5",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "AWD6",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "B5RA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "BB7A",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "BBSA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "BBTA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "BC5A",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "BCGA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "BJ1A",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "BLJA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "BMXA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "BRHA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "BRJA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "BRKA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "BRZA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "BWG6",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "BY9A",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "BZ0A",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "BZJA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "BZKA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "BZNA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "E5CB",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "E5CC",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "E5CD",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "E5GR",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "E5GT",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "E6D8",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "ECDA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "ECDB",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "EYF0",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "F1H4",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "G4SA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "GDGA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "GDVA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "GNLA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "JDJC",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "JTW5",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "JVF7",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "M3WC",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "M5LA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "M6YA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "M8PA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "M8SA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "MC1A",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "MCVA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "MD3E",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "MD4",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "MDLA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "MDMA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "MFWA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "MH5A",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "MKCA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "MKYA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "MKZA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "ML5A",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "MM4A",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "MM4E",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "MM5E",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "MM7A",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "MM8A",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "MNZA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "MOJ7",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "MR4A",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "MRLA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "MRMA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "MRRA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "MRVA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "MTBE",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "MV7A",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "MZJA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "MZKA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "PB8A",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "PGE4",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "PLW",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "PLWA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "PLXA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "PLXA⁻¹",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "PMW",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "PN3A⁻²",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "PN4A",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "PN4A⁻¹",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "PNN3",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "PNN4",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "PPG6",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "PSB1",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "S4AM",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "S4TA⁻¹",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "S6RM",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "S6TM",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "S7XM",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "S7YM",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "SBXM",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "SC8M",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "SD9M",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "SF9M",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "SJS M",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "SJV3",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "SKH",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "SLW",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "SM3M",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "SM5M",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "SPLM",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "SWLM (МКПП)",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "SWRA (Вариатор)",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "SY0A",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "SY1M",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "SY2M",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "SZB",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "SZCA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "WXZ1",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "Y3U4",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "Z2M1",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "ZFJ3",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "ZGM3",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "вариатор MENA",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "вариатор META",
+      "brand_code": "HONDA",
+      "brand_id": "e0a15176-ea8f-4ce3-97a2-afd0430ef93f",
+      "concern_id": "ea535446-c3e1-4b1f-bc34-a83014e43ca3"
+    },
+    {
+      "name": "Aisin AR5 / GM 4L60E",
+      "brand_code": "HUMMER",
+      "brand_id": "102b3a31-256f-4e3a-8bbb-cd693d6d18b4",
+      "concern_id": null
+    },
+    {
+      "name": "GM 4L60E",
+      "brand_code": "HUMMER",
+      "brand_id": "102b3a31-256f-4e3a-8bbb-cd693d6d18b4",
+      "concern_id": null
+    },
+    {
+      "name": "GM 4L65E",
+      "brand_code": "HUMMER",
+      "brand_id": "102b3a31-256f-4e3a-8bbb-cd693d6d18b4",
+      "concern_id": null
+    },
+    {
+      "name": "GM 6L80E",
+      "brand_code": "HUMMER",
+      "brand_id": "102b3a31-256f-4e3a-8bbb-cd693d6d18b4",
+      "concern_id": null
+    },
+    {
+      "name": "03-72LE",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "30-43LE",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "5-мкпп",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "A6MF2H",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "A6MF2H⁻¹",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "AW 30-40LE",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "Aisin B-600",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "C0GF1",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "F4A21",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "F4A22",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "F4A33",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "F4A42",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "F4A51",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "F5A51",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "F5M",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "IVT",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "JF402E",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "KM135",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "KM206",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "KM206 / F4A22",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "KM210",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "KM210 / F4A22",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "KM210 / F4A23",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "M5AF2 / A4AF2",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "M5BF1 / A4BF1",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "M5BF1 / A4BF2",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "M6CF3 / A6GF1",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "M6CF3 / D7UF1",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "M6CF3-1",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "M6GF2 / D8LF1",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "M6VR1 / A5SR2",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "M6VR2 / A8LR1",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "M6VR2 / ZF 6HP19",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "TF-81SC",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "V4AW2",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "V5MT1",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "ZF 6HP26",
+      "brand_code": "HYUNDAI",
+      "brand_id": "968edded-cfcf-49bb-a2e9-71c934b62acd",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "722.9",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "724.0",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "9HP50",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "Aisin automatic (для AWD)",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "FS6R31A",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "GE0F10A",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "GE0F10A (CVT)",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JF017E",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JF018E",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JR710E",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JR710E (7-ступенчатый автомат)",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JR710E (RE7R01A)",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JR711E",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JR711E / RE7R01B",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JR712E",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "Jatco JF017E",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "Jatco JR507A",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "Jatco JR507A (5-ступенчатый автомат)",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "Jatco JR507A / RE5R05A",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "Jatco JR507E (RE5R05A)",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "Jatco JR710E",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RE4R01A / Jatco JR402E",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RE5R05A",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RE5R05A / JR507A",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RE5R05A / RE7R01A",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RE7R01A",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RE7R01A/B",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "Любая из перечисленных",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "роботом",
+      "brand_code": "INFINITI",
+      "brand_id": "713fd1ca-13b7-4810-9efa-dc9ffaa0a3d2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "6DCT260",
+      "brand_code": "JAECOO",
+      "brand_id": "3c28ac93-fd3e-478f-a9f5-ede31685ea7e",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "7DCT300",
+      "brand_code": "JAECOO",
+      "brand_id": "3c28ac93-fd3e-478f-a9f5-ede31685ea7e",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "7DCT400",
+      "brand_code": "JAECOO",
+      "brand_id": "3c28ac93-fd3e-478f-a9f5-ede31685ea7e",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "6HP28",
+      "brand_code": "JAGUAR",
+      "brand_id": "2d0d46d1-d48a-4f44-92dc-8c2ae8431790",
+      "concern_id": "1f08bdd0-c3f5-4f6e-a3cd-36a593526e2a"
+    },
+    {
+      "name": "6S-45",
+      "brand_code": "JAGUAR",
+      "brand_id": "2d0d46d1-d48a-4f44-92dc-8c2ae8431790",
+      "concern_id": "1f08bdd0-c3f5-4f6e-a3cd-36a593526e2a"
+    },
+    {
+      "name": "8HP45",
+      "brand_code": "JAGUAR",
+      "brand_id": "2d0d46d1-d48a-4f44-92dc-8c2ae8431790",
+      "concern_id": "1f08bdd0-c3f5-4f6e-a3cd-36a593526e2a"
+    },
+    {
+      "name": "8HP51",
+      "brand_code": "JAGUAR",
+      "brand_id": "2d0d46d1-d48a-4f44-92dc-8c2ae8431790",
+      "concern_id": "1f08bdd0-c3f5-4f6e-a3cd-36a593526e2a"
+    },
+    {
+      "name": "8HP70",
+      "brand_code": "JAGUAR",
+      "brand_id": "2d0d46d1-d48a-4f44-92dc-8c2ae8431790",
+      "concern_id": "1f08bdd0-c3f5-4f6e-a3cd-36a593526e2a"
+    },
+    {
+      "name": "8HP75",
+      "brand_code": "JAGUAR",
+      "brand_id": "2d0d46d1-d48a-4f44-92dc-8c2ae8431790",
+      "concern_id": "1f08bdd0-c3f5-4f6e-a3cd-36a593526e2a"
+    },
+    {
+      "name": "8HP76",
+      "brand_code": "JAGUAR",
+      "brand_id": "2d0d46d1-d48a-4f44-92dc-8c2ae8431790",
+      "concern_id": "1f08bdd0-c3f5-4f6e-a3cd-36a593526e2a"
+    },
+    {
+      "name": "6DCT260",
+      "brand_code": "JETOUR",
+      "brand_id": "41219301-803d-4aa2-b504-6fccc9a3f878",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "6MF22A",
+      "brand_code": "JETOUR",
+      "brand_id": "41219301-803d-4aa2-b504-6fccc9a3f878",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "7DCT400",
+      "brand_code": "JETOUR",
+      "brand_id": "41219301-803d-4aa2-b504-6fccc9a3f878",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "DCT380",
+      "brand_code": "JETOUR",
+      "brand_id": "41219301-803d-4aa2-b504-6fccc9a3f878",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "DF727A",
+      "brand_code": "JETOUR",
+      "brand_id": "41219301-803d-4aa2-b504-6fccc9a3f878",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "FA830",
+      "brand_code": "JETOUR",
+      "brand_id": "41219301-803d-4aa2-b504-6fccc9a3f878",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "FA840",
+      "brand_code": "JETOUR",
+      "brand_id": "41219301-803d-4aa2-b504-6fccc9a3f878",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "QR525",
+      "brand_code": "JETOUR",
+      "brand_id": "41219301-803d-4aa2-b504-6fccc9a3f878",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "МКПП (механика)",
+      "brand_code": "JETOUR",
+      "brand_id": "41219301-803d-4aa2-b504-6fccc9a3f878",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "Механика",
+      "brand_code": "JETOUR",
+      "brand_id": "41219301-803d-4aa2-b504-6fccc9a3f878",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "CVT18",
+      "brand_code": "KAIYI",
+      "brand_id": "dbddda70-ca69-4a84-93b2-a7b60b659240",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "CVT25",
+      "brand_code": "KAIYI",
+      "brand_id": "dbddda70-ca69-4a84-93b2-a7b60b659240",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "QR517",
+      "brand_code": "KAIYI",
+      "brand_id": "dbddda70-ca69-4a84-93b2-a7b60b659240",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "QR525",
+      "brand_code": "KAIYI",
+      "brand_id": "dbddda70-ca69-4a84-93b2-a7b60b659240",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "8R40",
+      "brand_code": "KGM",
+      "brand_id": "536a5f18-fcbb-4b44-a6ad-2babaa8f4535",
+      "concern_id": null
+    },
+    {
+      "name": "AWR6B45",
+      "brand_code": "KGM",
+      "brand_id": "536a5f18-fcbb-4b44-a6ad-2babaa8f4535",
+      "concern_id": null
+    },
+    {
+      "name": "T034S6",
+      "brand_code": "KGM",
+      "brand_id": "536a5f18-fcbb-4b44-a6ad-2babaa8f4535",
+      "concern_id": null
+    },
+    {
+      "name": "T037S6",
+      "brand_code": "KGM",
+      "brand_id": "536a5f18-fcbb-4b44-a6ad-2babaa8f4535",
+      "concern_id": null
+    },
+    {
+      "name": "TF-72SC",
+      "brand_code": "KGM",
+      "brand_id": "536a5f18-fcbb-4b44-a6ad-2babaa8f4535",
+      "concern_id": null
+    },
+    {
+      "name": "TF-81SC",
+      "brand_code": "KGM",
+      "brand_id": "536a5f18-fcbb-4b44-a6ad-2babaa8f4535",
+      "concern_id": null
+    },
+    {
+      "name": "e-DHT",
+      "brand_code": "KGM",
+      "brand_id": "536a5f18-fcbb-4b44-a6ad-2babaa8f4535",
+      "concern_id": null
+    },
+    {
+      "name": "03-72LE (4-акпп)",
+      "brand_code": "KIA",
+      "brand_id": "5e9d92a3-da41-4c2c-b862-1c23f160f47a",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "30-40LE",
+      "brand_code": "KIA",
+      "brand_id": "5e9d92a3-da41-4c2c-b862-1c23f160f47a",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "4EAT-F",
+      "brand_code": "KIA",
+      "brand_id": "5e9d92a3-da41-4c2c-b862-1c23f160f47a",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "4EAT‑F (4-акпп)",
+      "brand_code": "KIA",
+      "brand_id": "5e9d92a3-da41-4c2c-b862-1c23f160f47a",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "6HP26",
+      "brand_code": "KIA",
+      "brand_id": "5e9d92a3-da41-4c2c-b862-1c23f160f47a",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "A5GF1⁻²",
+      "brand_code": "KIA",
+      "brand_id": "5e9d92a3-da41-4c2c-b862-1c23f160f47a",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "A6MF2H",
+      "brand_code": "KIA",
+      "brand_id": "5e9d92a3-da41-4c2c-b862-1c23f160f47a",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "C0GF1",
+      "brand_code": "KIA",
+      "brand_id": "5e9d92a3-da41-4c2c-b862-1c23f160f47a",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "F25M",
+      "brand_code": "KIA",
+      "brand_id": "5e9d92a3-da41-4c2c-b862-1c23f160f47a",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "F25M (5-мкпп)",
+      "brand_code": "KIA",
+      "brand_id": "5e9d92a3-da41-4c2c-b862-1c23f160f47a",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "F4A42",
+      "brand_code": "KIA",
+      "brand_id": "5e9d92a3-da41-4c2c-b862-1c23f160f47a",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "F4A42⁻¹",
+      "brand_code": "KIA",
+      "brand_id": "5e9d92a3-da41-4c2c-b862-1c23f160f47a",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "F4A51",
+      "brand_code": "KIA",
+      "brand_id": "5e9d92a3-da41-4c2c-b862-1c23f160f47a",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "F4A51⁻¹",
+      "brand_code": "KIA",
+      "brand_id": "5e9d92a3-da41-4c2c-b862-1c23f160f47a",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "IVT",
+      "brand_code": "KIA",
+      "brand_id": "5e9d92a3-da41-4c2c-b862-1c23f160f47a",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "JF405E",
+      "brand_code": "KIA",
+      "brand_id": "5e9d92a3-da41-4c2c-b862-1c23f160f47a",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "KV-II (5-мкпп) / AW50-40LE (4-акпп)",
+      "brand_code": "KIA",
+      "brand_id": "5e9d92a3-da41-4c2c-b862-1c23f160f47a",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "KV-II (5-мкпп) / AW50-42LE (4-акпп)",
+      "brand_code": "KIA",
+      "brand_id": "5e9d92a3-da41-4c2c-b862-1c23f160f47a",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "M5GF1⁻¹",
+      "brand_code": "KIA",
+      "brand_id": "5e9d92a3-da41-4c2c-b862-1c23f160f47a",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "M6CF3-1",
+      "brand_code": "KIA",
+      "brand_id": "5e9d92a3-da41-4c2c-b862-1c23f160f47a",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "MOBIS (5-мкпп)",
+      "brand_code": "KIA",
+      "brand_id": "5e9d92a3-da41-4c2c-b862-1c23f160f47a",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "N/A",
+      "brand_code": "KIA",
+      "brand_id": "5e9d92a3-da41-4c2c-b862-1c23f160f47a",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "Автоматическая",
+      "brand_code": "KIA",
+      "brand_id": "5e9d92a3-da41-4c2c-b862-1c23f160f47a",
+      "concern_id": "2e58e296-ddea-4c5b-8253-f373c6487c1c"
+    },
+    {
+      "name": "50-40LM",
+      "brand_code": "LANCIA",
+      "brand_id": "86d59f28-4d1e-4117-bf4a-18401735163c",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "55-50SN",
+      "brand_code": "LANCIA",
+      "brand_id": "86d59f28-4d1e-4117-bf4a-18401735163c",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "C510",
+      "brand_code": "LANCIA",
+      "brand_id": "86d59f28-4d1e-4117-bf4a-18401735163c",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "C514",
+      "brand_code": "LANCIA",
+      "brand_id": "86d59f28-4d1e-4117-bf4a-18401735163c",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "C530",
+      "brand_code": "LANCIA",
+      "brand_id": "86d59f28-4d1e-4117-bf4a-18401735163c",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "C544",
+      "brand_code": "LANCIA",
+      "brand_id": "86d59f28-4d1e-4117-bf4a-18401735163c",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "C630",
+      "brand_code": "LANCIA",
+      "brand_id": "86d59f28-4d1e-4117-bf4a-18401735163c",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "C635",
+      "brand_code": "LANCIA",
+      "brand_id": "86d59f28-4d1e-4117-bf4a-18401735163c",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "DFN",
+      "brand_code": "LANCIA",
+      "brand_id": "86d59f28-4d1e-4117-bf4a-18401735163c",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "Dualogic",
+      "brand_code": "LANCIA",
+      "brand_id": "86d59f28-4d1e-4117-bf4a-18401735163c",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "F40",
+      "brand_code": "LANCIA",
+      "brand_id": "86d59f28-4d1e-4117-bf4a-18401735163c",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "TF-80SC",
+      "brand_code": "LANCIA",
+      "brand_id": "86d59f28-4d1e-4117-bf4a-18401735163c",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "019CH",
+      "brand_code": "LIFAN",
+      "brand_id": "2f37d090-1067-44f3-8181-4ed9510426ee",
+      "concern_id": null
+    },
+    {
+      "name": "5-мкпп",
+      "brand_code": "LIFAN",
+      "brand_id": "2f37d090-1067-44f3-8181-4ed9510426ee",
+      "concern_id": null
+    },
+    {
+      "name": "LD515MF",
+      "brand_code": "LIFAN",
+      "brand_id": "2f37d090-1067-44f3-8181-4ed9510426ee",
+      "concern_id": null
+    },
+    {
+      "name": "LD517MF",
+      "brand_code": "LIFAN",
+      "brand_id": "2f37d090-1067-44f3-8181-4ed9510426ee",
+      "concern_id": null
+    },
+    {
+      "name": "LD525MF",
+      "brand_code": "LIFAN",
+      "brand_id": "2f37d090-1067-44f3-8181-4ed9510426ee",
+      "concern_id": null
+    },
+    {
+      "name": "RDC15",
+      "brand_code": "LIFAN",
+      "brand_id": "2f37d090-1067-44f3-8181-4ed9510426ee",
+      "concern_id": null
+    },
+    {
+      "name": "RDC15-FB",
+      "brand_code": "LIFAN",
+      "brand_id": "2f37d090-1067-44f3-8181-4ed9510426ee",
+      "concern_id": null
+    },
+    {
+      "name": "VT2",
+      "brand_code": "LIFAN",
+      "brand_id": "2f37d090-1067-44f3-8181-4ed9510426ee",
+      "concern_id": null
+    },
+    {
+      "name": "Вариатор RDC15-FB",
+      "brand_code": "LIFAN",
+      "brand_id": "2f37d090-1067-44f3-8181-4ed9510426ee",
+      "concern_id": null
+    },
+    {
+      "name": "МКПП (5-ступенчатая)",
+      "brand_code": "LIFAN",
+      "brand_id": "2f37d090-1067-44f3-8181-4ed9510426ee",
+      "concern_id": null
+    },
+    {
+      "name": "вариатор RDC15-FB",
+      "brand_code": "LIFAN",
+      "brand_id": "2f37d090-1067-44f3-8181-4ed9510426ee",
+      "concern_id": null
+    },
+    {
+      "name": "8HP70",
+      "brand_code": "MASERATI",
+      "brand_id": "931c468e-0184-4c90-8cf4-0f0b5c7f98f4",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "ZF 8HP50",
+      "brand_code": "MASERATI",
+      "brand_id": "931c468e-0184-4c90-8cf4-0f0b5c7f98f4",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "ZF 8HP70",
+      "brand_code": "MASERATI",
+      "brand_id": "931c468e-0184-4c90-8cf4-0f0b5c7f98f4",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "ZF 8HP75",
+      "brand_code": "MASERATI",
+      "brand_id": "931c468e-0184-4c90-8cf4-0f0b5c7f98f4",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "A26M-R",
+      "brand_code": "MAZDA",
+      "brand_id": "42805fe7-dd74-46aa-b8ba-7321c8f31f0a",
+      "concern_id": "7de1a811-b60b-48d4-8df8-f7ba0c4e166c"
+    },
+    {
+      "name": "A26MX-R⁻¹",
+      "brand_code": "MAZDA",
+      "brand_id": "42805fe7-dd74-46aa-b8ba-7321c8f31f0a",
+      "concern_id": "7de1a811-b60b-48d4-8df8-f7ba0c4e166c"
+    },
+    {
+      "name": "AW6AX-EL",
+      "brand_code": "MAZDA",
+      "brand_id": "42805fe7-dd74-46aa-b8ba-7321c8f31f0a",
+      "concern_id": "7de1a811-b60b-48d4-8df8-f7ba0c4e166c"
+    },
+    {
+      "name": "B65M-R",
+      "brand_code": "MAZDA",
+      "brand_id": "42805fe7-dd74-46aa-b8ba-7321c8f31f0a",
+      "concern_id": "7de1a811-b60b-48d4-8df8-f7ba0c4e166c"
+    },
+    {
+      "name": "B76M-R / J65M-R",
+      "brand_code": "MAZDA",
+      "brand_id": "42805fe7-dd74-46aa-b8ba-7321c8f31f0a",
+      "concern_id": "7de1a811-b60b-48d4-8df8-f7ba0c4e166c"
+    },
+    {
+      "name": "C66M-R",
+      "brand_code": "MAZDA",
+      "brand_id": "42805fe7-dd74-46aa-b8ba-7321c8f31f0a",
+      "concern_id": "7de1a811-b60b-48d4-8df8-f7ba0c4e166c"
+    },
+    {
+      "name": "C66M-R / FS5A-EL",
+      "brand_code": "MAZDA",
+      "brand_id": "42805fe7-dd74-46aa-b8ba-7321c8f31f0a",
+      "concern_id": "7de1a811-b60b-48d4-8df8-f7ba0c4e166c"
+    },
+    {
+      "name": "C66MX-R",
+      "brand_code": "MAZDA",
+      "brand_id": "42805fe7-dd74-46aa-b8ba-7321c8f31f0a",
+      "concern_id": "7de1a811-b60b-48d4-8df8-f7ba0c4e166c"
+    },
+    {
+      "name": "D66M-R",
+      "brand_code": "MAZDA",
+      "brand_id": "42805fe7-dd74-46aa-b8ba-7321c8f31f0a",
+      "concern_id": "7de1a811-b60b-48d4-8df8-f7ba0c4e166c"
+    },
+    {
+      "name": "D66MX-R",
+      "brand_code": "MAZDA",
+      "brand_id": "42805fe7-dd74-46aa-b8ba-7321c8f31f0a",
+      "concern_id": "7de1a811-b60b-48d4-8df8-f7ba0c4e166c"
+    },
+    {
+      "name": "F35M-R",
+      "brand_code": "MAZDA",
+      "brand_id": "42805fe7-dd74-46aa-b8ba-7321c8f31f0a",
+      "concern_id": "7de1a811-b60b-48d4-8df8-f7ba0c4e166c"
+    },
+    {
+      "name": "F35M-R / FN4A-EL",
+      "brand_code": "MAZDA",
+      "brand_id": "42805fe7-dd74-46aa-b8ba-7321c8f31f0a",
+      "concern_id": "7de1a811-b60b-48d4-8df8-f7ba0c4e166c"
+    },
+    {
+      "name": "FN4A-EL",
+      "brand_code": "MAZDA",
+      "brand_id": "42805fe7-dd74-46aa-b8ba-7321c8f31f0a",
+      "concern_id": "7de1a811-b60b-48d4-8df8-f7ba0c4e166c"
+    },
+    {
+      "name": "FS5A-EL",
+      "brand_code": "MAZDA",
+      "brand_id": "42805fe7-dd74-46aa-b8ba-7321c8f31f0a",
+      "concern_id": "7de1a811-b60b-48d4-8df8-f7ba0c4e166c"
+    },
+    {
+      "name": "FW6AX-EL",
+      "brand_code": "MAZDA",
+      "brand_id": "42805fe7-dd74-46aa-b8ba-7321c8f31f0a",
+      "concern_id": "7de1a811-b60b-48d4-8df8-f7ba0c4e166c"
+    },
+    {
+      "name": "G35M-R",
+      "brand_code": "MAZDA",
+      "brand_id": "42805fe7-dd74-46aa-b8ba-7321c8f31f0a",
+      "concern_id": "7de1a811-b60b-48d4-8df8-f7ba0c4e166c"
+    },
+    {
+      "name": "G66M-R",
+      "brand_code": "MAZDA",
+      "brand_id": "42805fe7-dd74-46aa-b8ba-7321c8f31f0a",
+      "concern_id": "7de1a811-b60b-48d4-8df8-f7ba0c4e166c"
+    },
+    {
+      "name": "G66M-R / FS5A-EL",
+      "brand_code": "MAZDA",
+      "brand_id": "42805fe7-dd74-46aa-b8ba-7321c8f31f0a",
+      "concern_id": "7de1a811-b60b-48d4-8df8-f7ba0c4e166c"
+    },
+    {
+      "name": "GW6AX-EL",
+      "brand_code": "MAZDA",
+      "brand_id": "42805fe7-dd74-46aa-b8ba-7321c8f31f0a",
+      "concern_id": "7de1a811-b60b-48d4-8df8-f7ba0c4e166c"
+    },
+    {
+      "name": "J65M-R",
+      "brand_code": "MAZDA",
+      "brand_id": "42805fe7-dd74-46aa-b8ba-7321c8f31f0a",
+      "concern_id": "7de1a811-b60b-48d4-8df8-f7ba0c4e166c"
+    },
+    {
+      "name": "CVT/Гибрид",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "F1CJA",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "F1CJC",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "F1CJD",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "F1EKA",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "F4AWB",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "F5M41",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "F5M42",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "F5M42 / F4A42",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "F5M43",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "F5M51 / F4A51",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "F5M7A",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "F5MBB",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "F5MGA",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "F5MGB",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "F5MR1",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "F5MR2",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "F5MR3",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "F5MV1",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "F6AJA",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "F6MBA",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "F6MBC",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "F6SGA",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JF022E",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "M011S5",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "M012S5",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "R5A51",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "R5AWF",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "R5M21",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "R5MB1",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "R6AWH",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "R6M5A",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "R6MAA",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "V5M21",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "V5M31",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "V5M31 / V4A51",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "V5M31 / V5A51",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "V5M31 / V5A51 / V5AWF",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "V5MB1",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "V5MT1",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "V6AWH",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "V6M5A",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "V6MAA",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "V8AWG",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "W1CJA",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "W1CJC",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "W1CJD",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "W4A42",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "W4A51",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "W5M42",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "W5MBB",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "W6AJA",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "W6DGB",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "W6MBA",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "W8AWA",
+      "brand_code": "MITSUBISHI",
+      "brand_id": "019b82f0-518f-4edc-a5b9-c62f812057f2",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "7-КПП",
+      "brand_code": "MOSKVICH",
+      "brand_id": "f21be602-e4fa-487f-ae50-2ef539ed0fc0",
+      "concern_id": null
+    },
+    {
+      "name": "MF622",
+      "brand_code": "MOSKVICH",
+      "brand_id": "f21be602-e4fa-487f-ae50-2ef539ed0fc0",
+      "concern_id": null
+    },
+    {
+      "name": "VT3S",
+      "brand_code": "MOSKVICH",
+      "brand_id": "f21be602-e4fa-487f-ae50-2ef539ed0fc0",
+      "concern_id": null
+    },
+    {
+      "name": "9HP50",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "DP2",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "FS5R30A",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "FS5R50A",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "FS5R50B",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "FS5W71C",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "FS6R31A",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JF010E",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JF010E/JF017E",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JF011E",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JF011E (вариатор)",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JF015E",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JF015E (вариатор)",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JF016E",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JF016E (вариатор)",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JF017E",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JF018E",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JF019E",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JF022E",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JF404E",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JF613E",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JH3",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JR711E",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RE0F05A",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RE0F06A",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RE0F06A (вариатор)",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RE0F21A",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RE1F64A",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RE4F03A",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RE4F03A (АКПП)",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RE4F04A",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RE4F04B",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RE4R01A",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RE4R03A",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RE5R05A",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RS5F30A",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RS5F31A",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RS5F32A",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RS5F50A",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RS5F51A",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RS5F70A",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RS5F91R",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RS5F91R (МКПП)",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RS5F92R",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RS6F51A",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RS6F52A",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "RS6F94R",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "ZF 9HP50",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "Рено DP2",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "Рено DP8",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "Рено JR5",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "Рено TL8",
+      "brand_code": "NISSAN",
+      "brand_id": "0d3d5d9e-023f-4b96-a217-fd28bd596a71",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "6DCT260",
+      "brand_code": "OMODA",
+      "brand_id": "b35a0222-c0b9-4a89-a232-a2be0a959cdc",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "7DCT300",
+      "brand_code": "OMODA",
+      "brand_id": "b35a0222-c0b9-4a89-a232-a2be0a959cdc",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "CVT18",
+      "brand_code": "OMODA",
+      "brand_id": "b35a0222-c0b9-4a89-a232-a2be0a959cdc",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "CVT25",
+      "brand_code": "OMODA",
+      "brand_id": "b35a0222-c0b9-4a89-a232-a2be0a959cdc",
+      "concern_id": "1595ccb9-6e57-42dc-a448-2b29812f77bb"
+    },
+    {
+      "name": "5L40E",
+      "brand_code": "OPEL",
+      "brand_id": "97fe4e48-6e8a-4795-854a-9dea6aaf7990",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "6T40",
+      "brand_code": "OPEL",
+      "brand_id": "97fe4e48-6e8a-4795-854a-9dea6aaf7990",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "6T40/M32",
+      "brand_code": "OPEL",
+      "brand_id": "97fe4e48-6e8a-4795-854a-9dea6aaf7990",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "6T45",
+      "brand_code": "OPEL",
+      "brand_id": "97fe4e48-6e8a-4795-854a-9dea6aaf7990",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "6T50",
+      "brand_code": "OPEL",
+      "brand_id": "97fe4e48-6e8a-4795-854a-9dea6aaf7990",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "AF13-II",
+      "brand_code": "OPEL",
+      "brand_id": "97fe4e48-6e8a-4795-854a-9dea6aaf7990",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "AW03-71LE",
+      "brand_code": "OPEL",
+      "brand_id": "97fe4e48-6e8a-4795-854a-9dea6aaf7990",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "AW80-40LS",
+      "brand_code": "OPEL",
+      "brand_id": "97fe4e48-6e8a-4795-854a-9dea6aaf7990",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "D16",
+      "brand_code": "OPEL",
+      "brand_id": "97fe4e48-6e8a-4795-854a-9dea6aaf7990",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "D33",
+      "brand_code": "OPEL",
+      "brand_id": "97fe4e48-6e8a-4795-854a-9dea6aaf7990",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "F13 (механика)",
+      "brand_code": "OPEL",
+      "brand_id": "97fe4e48-6e8a-4795-854a-9dea6aaf7990",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "F13+",
+      "brand_code": "OPEL",
+      "brand_id": "97fe4e48-6e8a-4795-854a-9dea6aaf7990",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "F17 (механика)",
+      "brand_code": "OPEL",
+      "brand_id": "97fe4e48-6e8a-4795-854a-9dea6aaf7990",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "F17+",
+      "brand_code": "OPEL",
+      "brand_id": "97fe4e48-6e8a-4795-854a-9dea6aaf7990",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "M32/6T40",
+      "brand_code": "OPEL",
+      "brand_id": "97fe4e48-6e8a-4795-854a-9dea6aaf7990",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "MF60B",
+      "brand_code": "OPEL",
+      "brand_id": "97fe4e48-6e8a-4795-854a-9dea6aaf7990",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "MF70C",
+      "brand_code": "OPEL",
+      "brand_id": "97fe4e48-6e8a-4795-854a-9dea6aaf7990",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "MSG 5E-T",
+      "brand_code": "OPEL",
+      "brand_id": "97fe4e48-6e8a-4795-854a-9dea6aaf7990",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "MUA 5C-T",
+      "brand_code": "OPEL",
+      "brand_id": "97fe4e48-6e8a-4795-854a-9dea6aaf7990",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "VT20E",
+      "brand_code": "OPEL",
+      "brand_id": "97fe4e48-6e8a-4795-854a-9dea6aaf7990",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "Y4M",
+      "brand_code": "OPEL",
+      "brand_id": "97fe4e48-6e8a-4795-854a-9dea6aaf7990",
+      "concern_id": "785b6991-0019-4806-a0b0-66fa88dc4383"
+    },
+    {
+      "name": "8HP50",
+      "brand_code": "OTING",
+      "brand_id": "504fec7c-0df5-4f73-b26d-5ec5e25aa503",
+      "concern_id": null
+    },
+    {
+      "name": "5HP19HL",
+      "brand_code": "PORSCHE",
+      "brand_id": "c13b9bbc-8e79-4bc0-b30a-5d4c52856f81",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "7DT-45",
+      "brand_code": "PORSCHE",
+      "brand_id": "c13b9bbc-8e79-4bc0-b30a-5d4c52856f81",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "7DT-45 (340 л.с.)",
+      "brand_code": "PORSCHE",
+      "brand_id": "c13b9bbc-8e79-4bc0-b30a-5d4c52856f81",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "7DT-75 (AWD)",
+      "brand_code": "PORSCHE",
+      "brand_id": "c13b9bbc-8e79-4bc0-b30a-5d4c52856f81",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "7DT-75 (RWD/AWD)",
+      "brand_code": "PORSCHE",
+      "brand_id": "c13b9bbc-8e79-4bc0-b30a-5d4c52856f81",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "8DT",
+      "brand_code": "PORSCHE",
+      "brand_id": "c13b9bbc-8e79-4bc0-b30a-5d4c52856f81",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "8DT-80",
+      "brand_code": "PORSCHE",
+      "brand_id": "c13b9bbc-8e79-4bc0-b30a-5d4c52856f81",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "8HP65",
+      "brand_code": "PORSCHE",
+      "brand_id": "c13b9bbc-8e79-4bc0-b30a-5d4c52856f81",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "8HP95",
+      "brand_code": "PORSCHE",
+      "brand_id": "c13b9bbc-8e79-4bc0-b30a-5d4c52856f81",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "A06.04",
+      "brand_code": "PORSCHE",
+      "brand_id": "c13b9bbc-8e79-4bc0-b30a-5d4c52856f81",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "G7000 / 7DT-75 (AWD)",
+      "brand_code": "PORSCHE",
+      "brand_id": "c13b9bbc-8e79-4bc0-b30a-5d4c52856f81",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "G7000 / 7DT-75 (RWD)",
+      "brand_code": "PORSCHE",
+      "brand_id": "c13b9bbc-8e79-4bc0-b30a-5d4c52856f81",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "G81.00",
+      "brand_code": "PORSCHE",
+      "brand_id": "c13b9bbc-8e79-4bc0-b30a-5d4c52856f81",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "G81.20",
+      "brand_code": "PORSCHE",
+      "brand_id": "c13b9bbc-8e79-4bc0-b30a-5d4c52856f81",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "G81.20 (340 л.с.)",
+      "brand_code": "PORSCHE",
+      "brand_id": "c13b9bbc-8e79-4bc0-b30a-5d4c52856f81",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "G86.00",
+      "brand_code": "PORSCHE",
+      "brand_id": "c13b9bbc-8e79-4bc0-b30a-5d4c52856f81",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "G86.01",
+      "brand_code": "PORSCHE",
+      "brand_id": "c13b9bbc-8e79-4bc0-b30a-5d4c52856f81",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "G86.20",
+      "brand_code": "PORSCHE",
+      "brand_id": "c13b9bbc-8e79-4bc0-b30a-5d4c52856f81",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "G87.01",
+      "brand_code": "PORSCHE",
+      "brand_id": "c13b9bbc-8e79-4bc0-b30a-5d4c52856f81",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "G87.10",
+      "brand_code": "PORSCHE",
+      "brand_id": "c13b9bbc-8e79-4bc0-b30a-5d4c52856f81",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "G87.20",
+      "brand_code": "PORSCHE",
+      "brand_id": "c13b9bbc-8e79-4bc0-b30a-5d4c52856f81",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "G87.21",
+      "brand_code": "PORSCHE",
+      "brand_id": "c13b9bbc-8e79-4bc0-b30a-5d4c52856f81",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "G87.40",
+      "brand_code": "PORSCHE",
+      "brand_id": "c13b9bbc-8e79-4bc0-b30a-5d4c52856f81",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "TR-60SN",
+      "brand_code": "PORSCHE",
+      "brand_id": "c13b9bbc-8e79-4bc0-b30a-5d4c52856f81",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "TR-80SD",
+      "brand_code": "PORSCHE",
+      "brand_id": "c13b9bbc-8e79-4bc0-b30a-5d4c52856f81",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "TR-81SD",
+      "brand_code": "PORSCHE",
+      "brand_id": "c13b9bbc-8e79-4bc0-b30a-5d4c52856f81",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "TR-82SD",
+      "brand_code": "PORSCHE",
+      "brand_id": "c13b9bbc-8e79-4bc0-b30a-5d4c52856f81",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "AJ0",
+      "brand_code": "RENAULT",
+      "brand_id": "852caf6a-2391-4431-9919-47d2a058225f",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "AJ0-1",
+      "brand_code": "RENAULT",
+      "brand_id": "852caf6a-2391-4431-9919-47d2a058225f",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "DB1",
+      "brand_code": "RENAULT",
+      "brand_id": "852caf6a-2391-4431-9919-47d2a058225f",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "DC4-1",
+      "brand_code": "RENAULT",
+      "brand_id": "852caf6a-2391-4431-9919-47d2a058225f",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "DK0-2",
+      "brand_code": "RENAULT",
+      "brand_id": "852caf6a-2391-4431-9919-47d2a058225f",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "DP2-1",
+      "brand_code": "RENAULT",
+      "brand_id": "852caf6a-2391-4431-9919-47d2a058225f",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "DW5 (7-ркпп)",
+      "brand_code": "RENAULT",
+      "brand_id": "852caf6a-2391-4431-9919-47d2a058225f",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "DW6 (6-ркпп)",
+      "brand_code": "RENAULT",
+      "brand_id": "852caf6a-2391-4431-9919-47d2a058225f",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "DXK0",
+      "brand_code": "RENAULT",
+      "brand_id": "852caf6a-2391-4431-9919-47d2a058225f",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "FK0",
+      "brand_code": "RENAULT",
+      "brand_id": "852caf6a-2391-4431-9919-47d2a058225f",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JF016E",
+      "brand_code": "RENAULT",
+      "brand_id": "852caf6a-2391-4431-9919-47d2a058225f",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "JF017E",
+      "brand_code": "RENAULT",
+      "brand_id": "852caf6a-2391-4431-9919-47d2a058225f",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "LM0",
+      "brand_code": "RENAULT",
+      "brand_id": "852caf6a-2391-4431-9919-47d2a058225f",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "MB1",
+      "brand_code": "RENAULT",
+      "brand_id": "852caf6a-2391-4431-9919-47d2a058225f",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "ND4 (6-мкпп)",
+      "brand_code": "RENAULT",
+      "brand_id": "852caf6a-2391-4431-9919-47d2a058225f",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "PK9",
+      "brand_code": "RENAULT",
+      "brand_id": "852caf6a-2391-4431-9919-47d2a058225f",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "QS5",
+      "brand_code": "RENAULT",
+      "brand_id": "852caf6a-2391-4431-9919-47d2a058225f",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "SU0",
+      "brand_code": "RENAULT",
+      "brand_id": "852caf6a-2391-4431-9919-47d2a058225f",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "SU1",
+      "brand_code": "RENAULT",
+      "brand_id": "852caf6a-2391-4431-9919-47d2a058225f",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "SU4",
+      "brand_code": "RENAULT",
+      "brand_id": "852caf6a-2391-4431-9919-47d2a058225f",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "TL4 (6-мкпп)",
+      "brand_code": "RENAULT",
+      "brand_id": "852caf6a-2391-4431-9919-47d2a058225f",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "TL4 (A6MF2)",
+      "brand_code": "RENAULT",
+      "brand_id": "852caf6a-2391-4431-9919-47d2a058225f",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "TL6 (6-мкпп)",
+      "brand_code": "RENAULT",
+      "brand_id": "852caf6a-2391-4431-9919-47d2a058225f",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "Variator",
+      "brand_code": "RENAULT",
+      "brand_id": "852caf6a-2391-4431-9919-47d2a058225f",
+      "concern_id": "28442497-d127-43f1-bf61-1a679754c3a4"
+    },
+    {
+      "name": "01X",
+      "brand_code": "SEAT",
+      "brand_id": "8c3c0986-7011-47f1-b8cd-f078665cd1cf",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "VL300",
+      "brand_code": "SEAT",
+      "brand_id": "8c3c0986-7011-47f1-b8cd-f078665cd1cf",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "001",
+      "brand_code": "SKODA",
+      "brand_id": "91257270-f526-43f3-b41f-0264f0a648bc",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "002",
+      "brand_code": "SKODA",
+      "brand_id": "91257270-f526-43f3-b41f-0264f0a648bc",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "01E",
+      "brand_code": "SKODA",
+      "brand_id": "91257270-f526-43f3-b41f-0264f0a648bc",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "01M",
+      "brand_code": "SKODA",
+      "brand_id": "91257270-f526-43f3-b41f-0264f0a648bc",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "01V",
+      "brand_code": "SKODA",
+      "brand_id": "91257270-f526-43f3-b41f-0264f0a648bc",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "DQ200 (РС)",
+      "brand_code": "SKODA",
+      "brand_id": "91257270-f526-43f3-b41f-0264f0a648bc",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "DQ200⁻¹",
+      "brand_code": "SKODA",
+      "brand_id": "91257270-f526-43f3-b41f-0264f0a648bc",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "MQ200 (МКПП)",
+      "brand_code": "SKODA",
+      "brand_id": "91257270-f526-43f3-b41f-0264f0a648bc",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "MQ250 (МКПП)",
+      "brand_code": "SKODA",
+      "brand_id": "91257270-f526-43f3-b41f-0264f0a648bc",
+      "concern_id": "af3efd39-13ea-444a-8806-ad68a110224c"
+    },
+    {
+      "name": "4G-Tronic",
+      "brand_code": "SSANGYONG",
+      "brand_id": "563fbcf4-5200-498c-b99f-28407160bf2c",
+      "concern_id": null
+    },
+    {
+      "name": "5G-Tronic",
+      "brand_code": "SSANGYONG",
+      "brand_id": "563fbcf4-5200-498c-b99f-28407160bf2c",
+      "concern_id": null
+    },
+    {
+      "name": "6F24",
+      "brand_code": "SSANGYONG",
+      "brand_id": "563fbcf4-5200-498c-b99f-28407160bf2c",
+      "concern_id": null
+    },
+    {
+      "name": "7G-Tronic",
+      "brand_code": "SSANGYONG",
+      "brand_id": "563fbcf4-5200-498c-b99f-28407160bf2c",
+      "concern_id": null
+    },
+    {
+      "name": "8R40",
+      "brand_code": "SSANGYONG",
+      "brand_id": "563fbcf4-5200-498c-b99f-28407160bf2c",
+      "concern_id": null
+    },
+    {
+      "name": "AWR6B45",
+      "brand_code": "SSANGYONG",
+      "brand_id": "563fbcf4-5200-498c-b99f-28407160bf2c",
+      "concern_id": null
+    },
+    {
+      "name": "DSI M78",
+      "brand_code": "SSANGYONG",
+      "brand_id": "563fbcf4-5200-498c-b99f-28407160bf2c",
+      "concern_id": null
+    },
+    {
+      "name": "M74LE",
+      "brand_code": "SSANGYONG",
+      "brand_id": "563fbcf4-5200-498c-b99f-28407160bf2c",
+      "concern_id": null
+    },
+    {
+      "name": "T028S6",
+      "brand_code": "SSANGYONG",
+      "brand_id": "563fbcf4-5200-498c-b99f-28407160bf2c",
+      "concern_id": null
+    },
+    {
+      "name": "T034S6",
+      "brand_code": "SSANGYONG",
+      "brand_id": "563fbcf4-5200-498c-b99f-28407160bf2c",
+      "concern_id": null
+    },
+    {
+      "name": "T037S6",
+      "brand_code": "SSANGYONG",
+      "brand_id": "563fbcf4-5200-498c-b99f-28407160bf2c",
+      "concern_id": null
+    },
+    {
+      "name": "TF-72SC",
+      "brand_code": "SSANGYONG",
+      "brand_id": "563fbcf4-5200-498c-b99f-28407160bf2c",
+      "concern_id": null
+    },
+    {
+      "name": "TF-81SC",
+      "brand_code": "SSANGYONG",
+      "brand_id": "563fbcf4-5200-498c-b99f-28407160bf2c",
+      "concern_id": null
+    },
+    {
+      "name": "TSM52",
+      "brand_code": "SSANGYONG",
+      "brand_id": "563fbcf4-5200-498c-b99f-28407160bf2c",
+      "concern_id": null
+    },
+    {
+      "name": "TSM54",
+      "brand_code": "SSANGYONG",
+      "brand_id": "563fbcf4-5200-498c-b99f-28407160bf2c",
+      "concern_id": null
+    },
+    {
+      "name": "Tremec T-5",
+      "brand_code": "SSANGYONG",
+      "brand_id": "563fbcf4-5200-498c-b99f-28407160bf2c",
+      "concern_id": null
+    },
+    {
+      "name": "Tremec TSM54",
+      "brand_code": "SSANGYONG",
+      "brand_id": "563fbcf4-5200-498c-b99f-28407160bf2c",
+      "concern_id": null
+    },
+    {
+      "name": "WM6F1",
+      "brand_code": "SSANGYONG",
+      "brand_id": "563fbcf4-5200-498c-b99f-28407160bf2c",
+      "concern_id": null
+    },
+    {
+      "name": "N/A",
+      "brand_code": "SUBARU",
+      "brand_id": "3a787571-7f7d-4b1f-9d63-f49204605648",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "TR580 (Вариатор)",
+      "brand_code": "SUBARU",
+      "brand_id": "3a787571-7f7d-4b1f-9d63-f49204605648",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "TR580 (вариатор)",
+      "brand_code": "SUBARU",
+      "brand_id": "3a787571-7f7d-4b1f-9d63-f49204605648",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "TY751",
+      "brand_code": "SUBARU",
+      "brand_id": "3a787571-7f7d-4b1f-9d63-f49204605648",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "TY756",
+      "brand_code": "SUBARU",
+      "brand_id": "3a787571-7f7d-4b1f-9d63-f49204605648",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "TY756 (6-мкпп)",
+      "brand_code": "SUBARU",
+      "brand_id": "3a787571-7f7d-4b1f-9d63-f49204605648",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "TY758",
+      "brand_code": "SUBARU",
+      "brand_id": "3a787571-7f7d-4b1f-9d63-f49204605648",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "TY758 (5-мкпп)",
+      "brand_code": "SUBARU",
+      "brand_id": "3a787571-7f7d-4b1f-9d63-f49204605648",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "TY758/4EAT",
+      "brand_code": "SUBARU",
+      "brand_id": "3a787571-7f7d-4b1f-9d63-f49204605648",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "57KA",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "5‑мкпп PP8⁻¹",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "5‑ркпп 5AGS",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "6-мкпп",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "6T70",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "77R",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "78R",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "79J0",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "79JA",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "81A",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "A174",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "AL2",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "AW03-72LE",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "AW03‑72LE (4-акпп)",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "AW50-40LE",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "AW55-51LE",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "AW60-40LE",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "AW80-40LS",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "Aisin AG5",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "Aisin AG5 (5-мкпп)",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "BVM5",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "C635",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "F17",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "F17+",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "JF011E",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "JF015E",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "KT330R",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "P30",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "P31",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "PA0",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "PA2",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "PA3",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "PJC",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "R64",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "R72",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "R7ME",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "TB-50LS",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "TB‑50LS (5-акпп)",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "TF-71SC",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "TF-73SC",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "TW-40E",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "XA-10LN",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "ZAA",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "ZE0",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "ZE2",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "ZE6",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "ZE7",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "ZFB",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "ZFD",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "ZH6",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "ZH7",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "ZHY",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "ZHZ",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "ZL1",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "ZL3",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "ZMB",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "ZMD",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "ZN2",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "ZNB",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "ZND",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "ZP0",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "ZP2",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "ZPA",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "ZPS",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "ZV0",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "ZV2",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "вариатор JF015E",
+      "brand_code": "SUZUKI",
+      "brand_id": "acd28110-4be4-42f8-9342-0e28e581b946",
+      "concern_id": null
+    },
+    {
+      "name": "5-мкпп",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "A246E (4-акпп)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C150",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C153",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C154",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C250",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C251 (МКПП)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C251A (Роботизированная КПП)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C50",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C50 (механика)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C50F",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C51",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C51 (5-мкпп)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C51 (5МКПП)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C52 (5-мкпп)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C52 (механика)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C53",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C53 -¹",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C53⁻¹",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C54",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C550",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C551",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C551A",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C56",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C59",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C59 (5-мкпп)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C59 (мкпп)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C60",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C60 (6-мкпп)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C64",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "C66",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "D-18C",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "D-CVT",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "D‑18C",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "E250 (МКПП)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "E250F (МКПП)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "E351",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "E351 (механика)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "E351 (мкпп)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "E352",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "E352F",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "E353F",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "E354",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "E357",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "E358 (МКПП)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "E359F",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EA60",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EA61",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EA62",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EA62 (МКПП)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EA63",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EA63 (МКПП)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EA64",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EA65",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EA66",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EB60",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EB61",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EB61F",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EB62⁻¹",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EC60",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EC60A",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EC61",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EC62",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EC65",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EC65 (МКПП)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EC65A",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EC66",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EC66A",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EC67",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EC69",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EC6A",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EC6D",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EC6E / K320",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "EG62",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "K112E",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "K120E",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "K310 (Вариатор)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "K310E",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "K310F (Вариатор)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "K311 (Вариатор)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "K311E",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "K311F (Вариатор)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "K313 (вариатор)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "L4A0F",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "L580F⁻¹",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "P310",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "P311 (Вариатор)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "P313",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "P313 (Вариатор)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "P314",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "P314⁻¹",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "P410",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "P410 ⁻¹",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "P410⁻¹",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "P510",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "P610",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "P610 ¹",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "P610⁻¹",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "P710 -1",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "P710⁻¹",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "P711",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "P711⁻²",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "P810",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "P910",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "PA10",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "PA10 ²",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "PA10 ¹",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "PB10",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "PB10 ²",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "PB10 ³",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "PB11",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "R150 (мех)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "R150F",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "R150F (мех)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "R151",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "R151 (мех)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "R151F",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "R151F (мех)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "RA61F",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "RC60",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "U240E (4-акпп)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "U250E (акпп)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "U340E (4-акпп)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "U340F (4-акпп)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "U341E (4-акпп)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "U341E (АКПП)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "U341E (автомат)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "U341E (акпп)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "U341F (4-акпп)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "U760E⁻¹",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "UA81E",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "W56",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "XA‑11LN",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "А241Е",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "А540Н",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "К210",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "К210 (вариатор)",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "К312",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "К410",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "К411",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "МКПП/АКПП",
+      "brand_code": "TOYOTA",
+      "brand_id": "9aec9657-026a-4893-81a4-eb92584d17b9",
+      "concern_id": "895e98e4-935b-4fbd-959b-911876497d66"
+    },
+    {
+      "name": "6L50 (6-акпп)",
+      "brand_code": "UAZ",
+      "brand_id": "bca80d8c-1b79-4c6b-b094-9dd60b535d40",
+      "concern_id": null
+    },
+    {
+      "name": "Dymos (5мкпп)",
+      "brand_code": "UAZ",
+      "brand_id": "bca80d8c-1b79-4c6b-b094-9dd60b535d40",
+      "concern_id": null
+    },
+    {
+      "name": "Редуктор",
+      "brand_code": "VOYAH",
+      "brand_id": "938dd2a7-ebe7-47b0-ab56-19f2ae6c7930",
+      "concern_id": null
+    },
+    {
+      "name": "Электрический привод",
+      "brand_code": "VOYAH",
+      "brand_id": "938dd2a7-ebe7-47b0-ab56-19f2ae6c7930",
+      "concern_id": null
+    },
+    {
+      "name": "редуктор (26 кВт*ч)",
+      "brand_code": "VOYAH",
+      "brand_id": "938dd2a7-ebe7-47b0-ab56-19f2ae6c7930",
+      "concern_id": null
+    },
+    {
+      "name": "редуктор (43 кВт*ч)",
+      "brand_code": "VOYAH",
+      "brand_id": "938dd2a7-ebe7-47b0-ab56-19f2ae6c7930",
+      "concern_id": null
+    }
+  ]
+}

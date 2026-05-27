@@ -47,6 +47,7 @@ class OtobaRuHtmlParser:
 	engines_uri = root_uri / 'dvigatel' / 'catalog'
 	transmissions_uri = root_uri / 'transmissii' / 'catalog'
 	vehicles_uri = root_uri / 'auto' / 'catalog'
+	china_vehicles_uri = root_uri / 'auto' / 'chine-catalog'
 
 	"""
 	Маппер концернов, указанных на сайте, с кодом концерна в БД
@@ -94,6 +95,12 @@ class OtobaRuHtmlParser:
 		elif vehicle_node_type == 'vehicle':
 			root_uri = self.vehicles_uri
 			vehicle_node_title = 'автомобилей'
+		elif vehicle_node_type == 'china_vehicle':
+			# Отдельный каталог otoba.ru для китайских автомобилей. Структура страниц
+			# совпадает с обычным `auto/catalog`, поэтому дальше обрабатываем как
+			# обычные автомобили (через ``_parse_vehicle_generation_page``).
+			root_uri = self.china_vehicles_uri
+			vehicle_node_title = 'китайских автомобилей'
 		else:
 			return
 
@@ -227,7 +234,7 @@ class OtobaRuHtmlParser:
 
 		soup = self._get_soup(detail_page_uri)
 
-		if vehicle_node_type == 'vehicle':
+		if vehicle_node_type in ('vehicle', 'china_vehicle'):
 			await self._parse_vehicle_generation_page(soup, detail_page_uri, brand, concern)
 		else:
 			await self._parse_engine_or_transmission_page(soup, detail_page_uri, brand, concern, vehicle_node_type)
