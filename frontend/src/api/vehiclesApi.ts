@@ -18,7 +18,6 @@ import type {
 
 export type {
   ChoiceFieldSchema,
-  ChoiceFieldWithParentSchema,
   CreateReminderSchema,
   CreateUserVehicleSchema,
   GuessByVinResponseSchema,

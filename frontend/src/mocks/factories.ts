@@ -20,7 +20,6 @@ import type {
   VehicleGenerationListSchema,
   VehicleTrimListSchema,
   ChoiceFieldSchema,
-  ChoiceFieldWithParentSchema,
   TrimChoiceSchema,
   CurrentUser,
   UserVehicleDetailSchema,
@@ -145,26 +144,6 @@ export function choiceField(
 /** Генератор для ChoiceFieldSchema[] */
 export function choiceFields(count: number): ChoiceFieldSchema[] {
   return Array.from({ length: count }, () => choiceField());
-}
-
-/** Генератор для ChoiceFieldWithParentSchema */
-export function choiceFieldWithParent(
-  overrides?: Partial<ChoiceFieldWithParentSchema>,
-): ChoiceFieldWithParentSchema {
-  const parent = choiceField();
-  return {
-    id: mockGenerators.uuid(),
-    name: `Configuration ${Math.floor(Math.random() * 100)}`,
-    parent,
-    ...overrides,
-  };
-}
-
-/** Генератор для ChoiceFieldWithParentSchema[] */
-export function choiceFieldsWithParent(
-  count: number,
-): ChoiceFieldWithParentSchema[] {
-  return Array.from({ length: count }, () => choiceFieldWithParent());
 }
 
 /** Генератор для CurrentUser */
