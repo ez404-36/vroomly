@@ -4,7 +4,7 @@ from pathlib import Path
 
 from core.db import database
 
-from .types import NUMBER_PATTERN
+from .domains import NUMBER_PATTERN
 
 
 def find_first_number_in_text(text: str) -> int | None:

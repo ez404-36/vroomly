@@ -4,8 +4,9 @@ import pickle
 import re
 from pathlib import Path
 
-import requests
 from bs4 import BeautifulSoup, Tag
+from curl_cffi import requests as curl_requests
+from curl_cffi.requests.exceptions import Timeout as CurlTimeout
 from sqlalchemy import and_, or_, select
 from typing_inspect import get_args
 
@@ -21,7 +22,7 @@ from common.utils.generators import generate_code
 from core.constants import BACKEND_DIR
 from core.db import database
 from default_data.parsers.html_parsers.otoba.prompts import parse_vehicle_generation_prompt
-from default_data.parsers.html_parsers.otoba.types import VehicleNodeType
+from default_data.parsers.html_parsers.otoba.domains import VehicleNodeType
 from default_data.parsers.html_parsers.otoba.value_transformers.engine import OtobaRuEngineValueTransformer
 from default_data.parsers.html_parsers.otoba.value_transformers.generation import OtobaRuGenerationValueTransformer
 from default_data.parsers.html_parsers.otoba.value_transformers.transmission import OtobaRuTransmissionValueTransformer
@@ -31,6 +32,14 @@ PARSED_DATA_DIR = BACKEND_DIR / 'default_data' / 'parsed'
 
 # Минимум tds, при котором ячейка считается парой "ключ-значение".
 _MIN_PROP_TABLE_CELLS = 2
+
+# DDoS-Guard на otoba.ru с некоторых IP молча дропает первый TLS Client Hello
+# новой сессии, а повторный — пропускает. Поэтому даём один retry на timeout.
+_OTOBA_FETCH_RETRIES = 3
+_OTOBA_FETCH_TIMEOUT = 20
+# curl_cffi профиль impersonate: дефолтный 'chrome' (старый) блокируется DDoS-Guard;
+# 'chrome131' и новее проходят.
+_OTOBA_IMPERSONATE = 'chrome131'
 
 logger = logging.getLogger('OtobaRuHtmlParser')
 
@@ -69,6 +78,9 @@ class OtobaRuHtmlParser:
 			'vehicles': [],
 		}
 		self._llm_provider = LMStudioProvider()
+		# Общая сессия curl_cffi для переиспользования cookies DDoS-Guard
+		# (__ddg8_/__ddg9_/__ddg10_) между запросами.
+		self._http_session = curl_requests.Session(impersonate=_OTOBA_IMPERSONATE)
 
 	async def run(self, output_path: Path, only: VehicleNodeType = None):
 		parse_pages: tuple[VehicleNodeType] = get_args(VehicleNodeType)
@@ -77,8 +89,11 @@ class OtobaRuHtmlParser:
 				await self.parse_vehicle_node_page(page)
 
 		output_path.parent.mkdir(exist_ok=True, parents=True)
-		with open(output_path, 'wb') as f_obj:
-			pickle.dump(self.parsed_data, f_obj, protocol=pickle.HIGHEST_PROTOCOL)
+		if any(self.parsed_data.values()):
+			with open(output_path, 'wb') as f_obj:
+				pickle.dump(self.parsed_data, f_obj, protocol=pickle.HIGHEST_PROTOCOL)
+		else:
+			logger.warning('Не удалось собрать данные')
 
 	async def parse_vehicle_node_page(self, vehicle_node_type: VehicleNodeType):
 		"""
@@ -141,12 +156,20 @@ class OtobaRuHtmlParser:
 			for node_uri in nodes_uri:
 				await self._parse_detail_page(node_uri, brand, concern, vehicle_node_type)
 
-	@staticmethod
-	def _get_soup(page_uri: str | Path) -> BeautifulSoup:
+	def _get_soup(self, page_uri: str | Path) -> BeautifulSoup:
 		str_page_uri = str(page_uri).removesuffix('.html').removeprefix('https://')
 
-		page = requests.get(f'https://{str_page_uri}.html')
-		return BeautifulSoup(page.text, 'html.parser')
+		url = f'https://{str_page_uri}.html'
+		last_error: CurlTimeout | None = None
+		for attempt in range(1, _OTOBA_FETCH_RETRIES + 1):
+			logger.info(f'GET {url} (попытка {attempt}/{_OTOBA_FETCH_RETRIES})')
+			try:
+				page = self._http_session.get(url, timeout=_OTOBA_FETCH_TIMEOUT)
+				return BeautifulSoup(page.text, 'html.parser')
+			except CurlTimeout as e:
+				last_error = e
+				logger.warning(f'Таймаут запроса к {url} (попытка {attempt}/{_OTOBA_FETCH_RETRIES})')
+		raise RuntimeError(f'Не удалось получить {url} после {_OTOBA_FETCH_RETRIES} попыток') from last_error
 
 	async def _parse_brands_uri(self, page_uri: Path) -> list[Path]:
 		"""
@@ -469,7 +492,11 @@ class OtobaRuHtmlParser:
 
 
 if __name__ == '__main__':
+	logging.basicConfig(
+		level=logging.INFO,
+		format='%(asctime)s %(levelname)s %(name)s | %(message)s',
+	)
 	parser = OtobaRuHtmlParser()
-	file_path = PARSED_DATA_DIR / 'trims.pkl'
-	asyncio.run(parser.run(file_path, only='vehicle'))
+	file_path = PARSED_DATA_DIR / 'trims_china.pkl'
+	asyncio.run(parser.run(file_path, only='china_vehicle'))
 	# asyncio.run(create_from_pkl_file(file_path))
