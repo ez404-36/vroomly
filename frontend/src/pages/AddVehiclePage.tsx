@@ -33,7 +33,7 @@ export const AddVehiclePage = () => {
   };
 
   return (
-    <Container size="sm" py="xl">
+    <Container size="md" py="xl">
       <Stack>
         <Title order={2}>Добавить транспортное средство</Title>
 

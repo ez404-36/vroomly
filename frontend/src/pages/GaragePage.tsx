@@ -6,30 +6,38 @@ import { Link, useNavigate } from 'react-router-dom';
 import { routes } from '../utils/routes';
 import {
   useGetUserVehiclesQuery,
+  useGetUserVehicleQuery,
+  useUpdateUserVehicleMileageMutation,
   useDeleteUserVehicleMutation,
-  type UserVehicleDetailSchema,
+  type UserVehicleListSchema,
 } from '../api/vehiclesApi';
 import {
   ReminderItem,
   RecommendationCard,
   VehicleCard,
   AddReminderModal,
+  UpdateMileageModal,
 } from '../components/GaragePage';
 import {
   generateGarageMocks,
   type Reminder,
   type Recommendation,
 } from '../mocks/garageMocks';
+import { MockService } from '../mocks';
 import classes from '../styles/pages/Garage.module.css';
 
 const GaragePage = () => {
   const navigate = useNavigate();
   const { data: vehicles, isLoading, error } = useGetUserVehiclesQuery();
   const [deleteVehicle] = useDeleteUserVehicleMutation();
+  const [updateMileage, { isLoading: isMileageUpdating }] =
+    useUpdateUserVehicleMileageMutation();
   const [deleteModalOpened, setDeleteModalOpened] = useState(false);
   const [addReminderModalOpened, setAddReminderModalOpened] = useState(false);
+  const [mileageModalOpened, setMileageModalOpened] = useState(false);
+  const [mileageError, setMileageError] = useState<string | null>(null);
   const [vehicleToDelete, setVehicleToDelete] =
-    useState<UserVehicleDetailSchema | null>(null);
+    useState<UserVehicleListSchema | null>(null);
   const [selectedVehicleIndex, setSelectedVehicleIndex] = useState(0);
 
   // Mock reminders state - dynamically generated per vehicle
@@ -41,11 +49,22 @@ const GaragePage = () => {
 // Generate mocks when vehicle changes
   const currentVehicle = vehicles && vehicles.length > 0 ? vehicles[selectedVehicleIndex] : null;
 
+  // Детальная информация по выбранному ТС (все характеристики)
+  const { data: currentVehicleDetail, isFetching: isDetailFetching } =
+    useGetUserVehicleQuery(currentVehicle?.id ?? '', {
+      skip: !currentVehicle,
+    });
+
   const prevVehicleIdRef = useRef<string | null>(null);
 
   const generateMocksForVehicle = useCallback((vehicleId: string) => {
     if (prevVehicleIdRef.current !== vehicleId) {
       prevVehicleIdRef.current = vehicleId;
+      if (!MockService.isEnabled()) {
+        setReminders([]);
+        setRecommendations([]);
+        return;
+      }
       const { reminders: newReminders, recommendations: newRecommendations } = generateGarageMocks(vehicleId);
       setReminders(newReminders);
       setRecommendations(newRecommendations);
@@ -70,9 +89,39 @@ const GaragePage = () => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
   }, [vehicles, selectedVehicleIndex]);
 
-  const handleDeleteClick = (vehicle: UserVehicleDetailSchema) => {
+  const handleDeleteClick = (vehicle: UserVehicleListSchema) => {
     setVehicleToDelete(vehicle);
     setDeleteModalOpened(true);
+  };
+
+  const handleUpdateMileageClick = () => {
+    if (!currentVehicle) {
+      return;
+    }
+    setMileageError(null);
+    setMileageModalOpened(true);
+  };
+
+  const handleMileageSubmit = async (data: {
+    mileage: number;
+    isMileageInMiles: boolean;
+  }) => {
+    if (!currentVehicle) {
+      return;
+    }
+    setMileageError(null);
+    try {
+      await updateMileage({
+        userVehicleId: currentVehicle.id,
+        body: {
+          mileage: data.mileage,
+          isMileageInMiles: data.isMileageInMiles,
+        },
+      }).unwrap();
+      setMileageModalOpened(false);
+    } catch {
+      setMileageError('Не удалось обновить пробег. Попробуйте ещё раз.');
+    }
   };
 
   const closeDeleteModal = () => {
@@ -231,15 +280,21 @@ const GaragePage = () => {
               onIndexChange={setSelectedVehicleIndex}
               initialIndex={selectedVehicleIndex}
             >
-              {vehicles.map((vehicle) => (
-                <VehicleCard
-                  key={vehicle.id}
-                  vehicle={vehicle}
-                  large
-                  onEdit={(v) => navigate(`${routes.garage}/edit/${v.id}`)}
-                  onDelete={handleDeleteClick}
-                />
-              ))}
+              {vehicles.map((vehicle) => {
+                const isActive = vehicle.id === currentVehicle?.id;
+                return (
+                  <VehicleCard
+                    key={vehicle.id}
+                    vehicle={vehicle}
+                    detail={isActive ? currentVehicleDetail : null}
+                    isDetailLoading={isActive && isDetailFetching}
+                    large
+                    onEdit={(v) => navigate(`${routes.garage}/edit/${v.id}`)}
+                    onDelete={handleDeleteClick}
+                    onUpdateMileage={handleUpdateMileageClick}
+                  />
+                );
+              })}
             </Carousel>
           </section>
 
@@ -342,6 +397,16 @@ const GaragePage = () => {
         open={addReminderModalOpened}
         onOpenChange={setAddReminderModalOpened}
         onAdd={handleAddReminder}
+      />
+
+      <UpdateMileageModal
+        open={mileageModalOpened}
+        onOpenChange={setMileageModalOpened}
+        initialMileage={currentVehicle?.mileage ?? null}
+        initialIsMileageInMiles={currentVehicle?.isMileageInMiles ?? false}
+        isSubmitting={isMileageUpdating}
+        error={mileageError}
+        onSubmit={handleMileageSubmit}
       />
     </div>
   );

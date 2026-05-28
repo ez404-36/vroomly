@@ -17,6 +17,7 @@ from apps.vehicles.api.user_vehicle.endpoints import (
 from apps.vehicles.api.user_vehicle.schemas import (
 	CreateUserVehicleSchema,
 	GuessByVinResponseSchema,
+	UpdateMileageSchema,
 	UserVehicleDetailSchema,
 	UserVehicleListSchema,
 )
@@ -88,6 +89,35 @@ class TestCreateUserVehicleSchema:
 		"""VIN длиной не 17 — ошибка."""
 		with pytest.raises(Exception):
 			CreateUserVehicleSchema(production_year=2020, vin='ABC')
+
+
+class TestUpdateMileageSchema:
+	"""Tests for UpdateMileageSchema validation."""
+
+	def test_minimal_valid(self):
+		"""Mileage обязателен; единицы по умолчанию — км."""
+		schema = UpdateMileageSchema(mileage=12345)
+		assert schema.mileage == 12345
+		assert schema.is_mileage_in_miles is False
+
+	def test_in_miles(self):
+		"""Можно задать пробег в милях."""
+		schema = UpdateMileageSchema(mileage=1000, is_mileage_in_miles=True)
+		assert schema.is_mileage_in_miles is True
+
+	def test_zero_allowed(self):
+		"""Нулевой пробег допустим."""
+		assert UpdateMileageSchema(mileage=0).mileage == 0
+
+	def test_mileage_required(self):
+		"""Без mileage — ошибка валидации."""
+		with pytest.raises(Exception):
+			UpdateMileageSchema.model_validate({})
+
+	def test_negative_rejected(self):
+		"""Отрицательный пробег — ошибка."""
+		with pytest.raises(Exception):
+			UpdateMileageSchema(mileage=-1)
 
 
 class TestGuessByVinResponseSchema:

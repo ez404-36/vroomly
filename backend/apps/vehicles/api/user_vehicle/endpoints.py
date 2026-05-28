@@ -11,6 +11,7 @@ from sqlalchemy.orm import selectinload
 from apps.vehicles.api.routers import user_vehicle_router
 from apps.vehicles.api.user_vehicle.schemas import (
 	CreateUserVehicleSchema,
+	UpdateMileageSchema,
 	UserVehicleDetailSchema,
 	UserVehicleListSchema,
 )
@@ -223,6 +224,51 @@ class UserVehicleAPI(BaseAPI):
 			)
 
 		return _user_vehicle_to_detail(user_vehicle)
+
+	@user_vehicle_router.patch(
+		'/user-vehicles/{user_vehicle_id}/mileage/',
+		response_model=UserVehicleDetailSchema,
+		summary='Обновить пробег ТС пользователя',
+	)
+	async def update_user_vehicle_mileage(
+		self,
+		user_vehicle_id: str,
+		data: UpdateMileageSchema,
+	) -> UserVehicleDetailSchema:
+		"""
+		Обновить пробег транспортного средства пользователя.
+
+		Пробег хранится на ``Vehicle`` (не на ``UserVehicle``), поэтому
+		обновляется связанный ``Vehicle``. Доступно только владельцу ТС.
+		"""
+		async with database.get_async_session() as session:
+			user_vehicle = await self._load_user_vehicle_with_chain(session, UUID(user_vehicle_id))
+
+			if user_vehicle is None or user_vehicle.user_id != self.user.id:
+				raise HTTPException(
+					status_code=status.HTTP_404_NOT_FOUND,
+					detail='Транспортное средство не найдено',
+				)
+
+			vehicle = user_vehicle.vehicle
+			if vehicle is None:
+				raise HTTPException(
+					status_code=status.HTTP_404_NOT_FOUND,
+					detail='У ТС отсутствует связанный объект транспортного средства',
+				)
+
+			vehicle.mileage = data.mileage
+			vehicle.is_mileage_in_miles = data.is_mileage_in_miles
+			await session.commit()
+
+			loaded = await self._load_user_vehicle_with_chain(session, user_vehicle.id)
+
+		if loaded is None:
+			raise HTTPException(
+				status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+				detail='Не удалось загрузить обновлённое ТС',
+			)
+		return _user_vehicle_to_detail(loaded)
 
 	@staticmethod
 	async def _load_user_vehicle_with_chain(

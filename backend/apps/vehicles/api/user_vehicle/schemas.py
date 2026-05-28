@@ -25,6 +25,13 @@ class CreateUserVehicleSchema(APIModel):
 	vin: str | None = Field(default=None, min_length=17, max_length=17, description='VIN-номер')
 
 
+class UpdateMileageSchema(APIModel):
+	"""Схема входа для обновления пробега ТС."""
+
+	mileage: int = Field(ge=0, description='Пробег')
+	is_mileage_in_miles: bool = Field(default=False, description='Пробег в милях')
+
+
 class GuessByVinResponseSchema(APIModel):
 	"""
 	Ответ ``GET /vehicles/guess_by_vin``.

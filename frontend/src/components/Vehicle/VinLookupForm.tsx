@@ -78,6 +78,11 @@ export const VinLookupForm = ({
                 Назад
               </Button>
             )}
+            {onSkipToManual && (
+              <Button type="button" variant="ghost" onClick={onSkipToManual}>
+                Заполнить вручную
+              </Button>
+            )}
             <Button
               type="submit"
               variant="filled"
@@ -86,11 +91,6 @@ export const VinLookupForm = ({
             >
               Найти по VIN
             </Button>
-            {onSkipToManual && (
-              <Button type="button" variant="ghost" onClick={onSkipToManual}>
-                Заполнить вручную
-              </Button>
-            )}
           </div>
 
           {error && (
