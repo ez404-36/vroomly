@@ -20,3 +20,10 @@
 - **Wrong approach:** Relying on `peer-checked:` for elements nested inside the peer's sibling.
 - **Correct approach:** Drive visual state from the controlled `checked` prop with conditional classes (`clsx(base, isChecked && checkedClass)`).
 - **Rule:** `peer-*` Tailwind variants only target direct siblings of the `peer` element. For deeply nested children, derive state in JS and toggle classes conditionally.
+
+### pg_trgm similarity регистрозависима и требует калибровки на реальных данных
+- **Date:** Thu May 28 2026
+- **Context:** В `GuessCommonCarInfo._fuzzy_lookup` использовали `func.similarity(name, query)` без `lower()` и с порогом 0.6, угаданным из плана без проверки. В проде similarity(`'Tucson'`, `'TUXON'`) = 0.3 (а не ~0.6-0.7 как предполагалось), и регистр критичен — триграммы извлекаются из исходной строки. Тесты с моками этого не ловили, потому что подсовывали готовые score.
+- **Wrong approach:** Выбор порога fuzzy-поиска по интуиции; индексы и сравнение без `lower()`; покрытие только моками без проверки на реальной БД.
+- **Correct approach:** Перед выбором порога — запустить `SELECT similarity(lower(name), lower(:q))` на реальных данных для нескольких представительных кейсов. Использовать `func.lower(...)` с обеих сторон. Создавать функциональный GIN-индекс `gin (lower(name) gin_trgm_ops)` — без него запрос с `lower()` уходит в seq scan. Добавлять хотя бы один integration-тест с реальной БД.
+- **Rule:** pg_trgm: всегда нормализуй регистр (`lower()` с обеих сторон) и калибруй threshold/индексы по реальным данным, а не по предположениям. Моки не валидируют SQL-семантику.
