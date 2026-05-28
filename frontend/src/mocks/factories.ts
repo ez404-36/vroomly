@@ -21,14 +21,18 @@ import type {
   VehicleTrimListSchema,
   ChoiceFieldSchema,
   ChoiceFieldWithParentSchema,
+  TrimChoiceSchema,
   CurrentUser,
   UserVehicleDetailSchema,
   CountryDetailSchema,
   CarInfoByVinDataSchema,
+  GuessByVinResponseSchema,
 } from '../types/schema-types';
 
 /** Генератор для VehicleBrandDetailSchema */
-export function vehicleBrand(overrides?: Partial<VehicleBrandDetailSchema>): VehicleBrandDetailSchema {
+export function vehicleBrand(
+  overrides?: Partial<VehicleBrandDetailSchema>,
+): VehicleBrandDetailSchema {
   return {
     id: mockGenerators.uuid(),
     countryId: 'US',
@@ -40,12 +44,17 @@ export function vehicleBrand(overrides?: Partial<VehicleBrandDetailSchema>): Veh
 }
 
 /** Генератор для VehicleBrandDetailSchema[] */
-export function vehicleBrands(count: number, overrides?: Partial<VehicleBrandDetailSchema>): VehicleBrandDetailSchema[] {
+export function vehicleBrands(
+  count: number,
+  overrides?: Partial<VehicleBrandDetailSchema>,
+): VehicleBrandDetailSchema[] {
   return Array.from({ length: count }, () => vehicleBrand(overrides));
 }
 
 /** Генератор для VehicleSeriesListSchema */
-export function vehicleSeriesList(overrides?: Partial<VehicleSeriesListSchema>): VehicleSeriesListSchema {
+export function vehicleSeriesList(
+  overrides?: Partial<VehicleSeriesListSchema>,
+): VehicleSeriesListSchema {
   const brandId = overrides?.brandId ?? mockGenerators.uuid();
   return {
     id: mockGenerators.uuid(),
@@ -56,15 +65,22 @@ export function vehicleSeriesList(overrides?: Partial<VehicleSeriesListSchema>):
 }
 
 /** Генератор для VehicleSeriesListSchema[] */
-export function vehicleSeriesListArray(count: number, brandId?: string): VehicleSeriesListSchema[] {
-  return Array.from({ length: count }, (_, i) => vehicleSeriesList({
-    brandId: brandId ?? mockGenerators.uuid(),
-    name: `Model ${i + 1}`,
-  }));
+export function vehicleSeriesListArray(
+  count: number,
+  brandId?: string,
+): VehicleSeriesListSchema[] {
+  return Array.from({ length: count }, (_, i) =>
+    vehicleSeriesList({
+      brandId: brandId ?? mockGenerators.uuid(),
+      name: `Model ${i + 1}`,
+    }),
+  );
 }
 
 /** Генератор для VehicleSeriesDetailSchema */
-export function vehicleSeriesDetail(overrides?: Partial<VehicleSeriesDetailSchema>): VehicleSeriesDetailSchema {
+export function vehicleSeriesDetail(
+  overrides?: Partial<VehicleSeriesDetailSchema>,
+): VehicleSeriesDetailSchema {
   return {
     id: mockGenerators.uuid(),
     name: 'Corolla',
@@ -74,7 +90,9 @@ export function vehicleSeriesDetail(overrides?: Partial<VehicleSeriesDetailSchem
 }
 
 /** Генератор для VehicleGenerationListSchema */
-export function vehicleGeneration(overrides?: Partial<VehicleGenerationListSchema>): VehicleGenerationListSchema {
+export function vehicleGeneration(
+  overrides?: Partial<VehicleGenerationListSchema>,
+): VehicleGenerationListSchema {
   return {
     id: mockGenerators.uuid(),
     name: `Generation ${Math.floor(Math.random() * 10) + 1}`,
@@ -86,12 +104,17 @@ export function vehicleGeneration(overrides?: Partial<VehicleGenerationListSchem
 }
 
 /** Генератор для VehicleGenerationListSchema[] */
-export function vehicleGenerations(count: number, seriesId?: string): VehicleGenerationListSchema[] {
+export function vehicleGenerations(
+  count: number,
+  seriesId?: string,
+): VehicleGenerationListSchema[] {
   return Array.from({ length: count }, () => vehicleGeneration({ seriesId }));
 }
 
 /** Генератор для VehicleTrimListSchema */
-export function vehicleTrim(overrides?: Partial<VehicleTrimListSchema>): VehicleTrimListSchema {
+export function vehicleTrim(
+  overrides?: Partial<VehicleTrimListSchema>,
+): VehicleTrimListSchema {
   return {
     id: mockGenerators.uuid(),
     name: `Trim ${['Base', 'Comfort', 'Luxury', 'Sport'][Math.floor(Math.random() * 4)]}`,
@@ -101,12 +124,17 @@ export function vehicleTrim(overrides?: Partial<VehicleTrimListSchema>): Vehicle
 }
 
 /** Генератор для VehicleTrimListSchema[] */
-export function vehicleTrims(count: number, generationId?: string): VehicleTrimListSchema[] {
+export function vehicleTrims(
+  count: number,
+  generationId?: string,
+): VehicleTrimListSchema[] {
   return Array.from({ length: count }, () => vehicleTrim({ generationId }));
 }
 
 /** Генератор для ChoiceFieldSchema */
-export function choiceField(overrides?: Partial<ChoiceFieldSchema>): ChoiceFieldSchema {
+export function choiceField(
+  overrides?: Partial<ChoiceFieldSchema>,
+): ChoiceFieldSchema {
   return {
     id: mockGenerators.uuid(),
     name: mockGenerators.vehicleName(),
@@ -120,7 +148,9 @@ export function choiceFields(count: number): ChoiceFieldSchema[] {
 }
 
 /** Генератор для ChoiceFieldWithParentSchema */
-export function choiceFieldWithParent(overrides?: Partial<ChoiceFieldWithParentSchema>): ChoiceFieldWithParentSchema {
+export function choiceFieldWithParent(
+  overrides?: Partial<ChoiceFieldWithParentSchema>,
+): ChoiceFieldWithParentSchema {
   const parent = choiceField();
   return {
     id: mockGenerators.uuid(),
@@ -131,7 +161,9 @@ export function choiceFieldWithParent(overrides?: Partial<ChoiceFieldWithParentS
 }
 
 /** Генератор для ChoiceFieldWithParentSchema[] */
-export function choiceFieldsWithParent(count: number): ChoiceFieldWithParentSchema[] {
+export function choiceFieldsWithParent(
+  count: number,
+): ChoiceFieldWithParentSchema[] {
   return Array.from({ length: count }, () => choiceFieldWithParent());
 }
 
@@ -150,19 +182,21 @@ export function currentUser(overrides?: Partial<CurrentUser>): CurrentUser {
 }
 
 /** Генератор для UserVehicleDetailSchema */
-export function userVehicleDetail(overrides?: Partial<UserVehicleDetailSchema>): UserVehicleDetailSchema {
+export function userVehicleDetail(
+  overrides?: Partial<UserVehicleDetailSchema>,
+): UserVehicleDetailSchema {
   return {
     id: mockGenerators.uuid(),
-    vehicle_id: mockGenerators.uuid(),
-    user_id: mockGenerators.uuid(),
+    vehicleId: mockGenerators.uuid(),
+    userId: mockGenerators.uuid(),
     mileage: Math.floor(Math.random() * 200000),
-    is_mileage_in_miles: false,
-    avg_fuel_consumption: Math.round(Math.random() * 15 * 10) / 10,
+    isMileageInMiles: false,
+    avgFuelConsumption: Math.round(Math.random() * 15 * 10) / 10,
     brand: 'Toyota',
     series: 'Camry',
     generation: 'X50',
     trim: 'Comfort',
-    production_year: mockGenerators.year(2018, 2023),
+    productionYear: mockGenerators.year(2018, 2023),
     color: mockGenerators.color(),
     ...overrides,
   };
@@ -174,7 +208,9 @@ export function userVehicles(count: number): UserVehicleDetailSchema[] {
 }
 
 /** Генератор для CountryDetailSchema */
-export function countryDetail(overrides?: Partial<CountryDetailSchema>): CountryDetailSchema {
+export function countryDetail(
+  overrides?: Partial<CountryDetailSchema>,
+): CountryDetailSchema {
   const countries = [
     { id: 'US', name: 'United States', shortName: 'USA' },
     { id: 'DE', name: 'Germany', shortName: 'GER' },
@@ -209,7 +245,9 @@ export function countries(count: number): CountryDetailSchema[] {
 }
 
 /** Генератор для CarInfoByVinDataSchema */
-export function carInfoByVin(overrides?: Partial<CarInfoByVinDataSchema>): CarInfoByVinDataSchema {
+export function carInfoByVin(
+  overrides?: Partial<CarInfoByVinDataSchema>,
+): CarInfoByVinDataSchema {
   return {
     model: 'Camry',
     year: mockGenerators.year(2018, 2023),
@@ -222,6 +260,41 @@ export function carInfoByVin(overrides?: Partial<CarInfoByVinDataSchema>): CarIn
     power: Math.floor(Math.random() * 200) + 100,
     frame_id: Math.floor(Math.random() * 10000),
     vehicle_type: 'passenger',
+    ...overrides,
+  };
+}
+
+/** Генератор для GuessByVinResponseSchema */
+export function guessByVinResponse(
+  overrides?: Partial<GuessByVinResponseSchema>,
+): GuessByVinResponseSchema {
+  const brand: ChoiceFieldSchema = { id: mockGenerators.uuid(), name: 'Skoda' };
+  const model: ChoiceFieldSchema = {
+    id: mockGenerators.uuid(),
+    name: 'Octavia',
+  };
+  const generation: ChoiceFieldSchema = {
+    id: mockGenerators.uuid(),
+    name: 'III',
+  };
+  const trim: TrimChoiceSchema = {
+    id: mockGenerators.uuid(),
+    name: 'Ambition',
+    parent: generation,
+    description: '1.6 (110 л.с.) Бензин · АКПП 6 · Передний · Седан',
+    engine: { name: 'CWVA', volume: 1600, power: 110, type: 'Бензин', torque: 155 },
+    transmission: { name: '0AM', type: 'АКПП', gears: 6 },
+    driveType: 'Передний',
+    bodyType: 'Седан',
+  };
+  return {
+    brand,
+    model,
+    generations: [generation],
+    trims: [trim],
+    vin: mockGenerators.vin(),
+    year: mockGenerators.year(2018, 2023),
+    color: mockGenerators.color(),
     ...overrides,
   };
 }

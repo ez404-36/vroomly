@@ -6,15 +6,84 @@ from sqlalchemy import ColumnElement, and_, between, func, select
 from sqlalchemy.orm import InstrumentedAttribute, selectinload
 
 from apps.vehicles.integrations.car_info_by_vin.schema import CarInfoByVinDataSchema
+from apps.vehicles.models.car.car_body import CarBody
+from apps.vehicles.models.car.car_transmission import CarTransmission
 from apps.vehicles.models.car.car_trim import CarTrim
+from apps.vehicles.models.car.enums import CarBodyType, CarDriveType
+from apps.vehicles.models.vehicle.enums import VehicleEngineType, VehicleTransmissionType
 from apps.vehicles.models.vehicle.vehicle_brand import VehicleBrand
+from apps.vehicles.models.vehicle.vehicle_engine import VehicleEngine
 from apps.vehicles.models.vehicle.vehicle_generation import VehicleGeneration
 from apps.vehicles.models.vehicle.vehicle_series import VehicleSeries
 from common.providers.translators.main import Translator
-from common.schemas.choices_utils import to_choice_field, to_choice_field_list, to_choice_field_with_parent_list
-from common.schemas.fields import ChoiceFieldSchema, ChoiceFieldWithParentSchema
+from common.schemas.choices_utils import to_choice_field, to_choice_field_list
+from common.schemas.fields import (
+	ChoiceFieldSchema,
+	TrimChoiceSchema,
+	TrimEngineSchema,
+	TrimTransmissionSchema,
+)
 from core.db import database
 from core.models import AutoSchemaBase
+
+_ENGINE_TYPE_LABELS: dict[VehicleEngineType, str] = {
+	VehicleEngineType.PETROL: 'Бензин',
+	VehicleEngineType.DIESEL: 'Дизель',
+	VehicleEngineType.ELECTRO: 'Электро',
+	VehicleEngineType.GAS: 'Газ',
+	VehicleEngineType.ATMOSPHERIC: 'Атмосферный',
+	VehicleEngineType.TURBO: 'Турбо',
+}
+
+_TRANSMISSION_TYPE_LABELS: dict[VehicleTransmissionType, str] = {
+	VehicleTransmissionType.MANUAL: 'МКПП',
+	VehicleTransmissionType.AUTO: 'АКПП',
+	VehicleTransmissionType.ROBOT: 'Робот',
+	VehicleTransmissionType.VARIATOR: 'Вариатор',
+}
+
+_DRIVE_TYPE_LABELS: dict[CarDriveType, str] = {
+	CarDriveType.FRONT: 'Передний',
+	CarDriveType.BACK: 'Задний',
+	CarDriveType.FULL: 'Полный',
+}
+
+_BODY_TYPE_LABELS: dict[CarBodyType, str] = {
+	CarBodyType.SEDAN: 'Седан',
+	CarBodyType.HATCHBACK: 'Хэтчбек',
+	CarBodyType.SW: 'Универсал',
+	CarBodyType.COUPE: 'Купе',
+	CarBodyType.CUV: 'Кроссовер',
+	CarBodyType.SUV: 'Внедорожник',
+	CarBodyType.LIFTBACK: 'Лифтбек',
+	CarBodyType.ROADSTER: 'Родстер',
+	CarBodyType.VAN: 'Фургон',
+	CarBodyType.MINIVAN: 'Минивэн',
+	CarBodyType.PICKUP_TRUCK: 'Пикап',
+	CarBodyType.MINIBUS: 'Микроавтобус',
+	CarBodyType.TARGA: 'Тарга',
+	CarBodyType.FASTBACK: 'Фастбэк',
+	CarBodyType.LANDAU: 'Ландо',
+	CarBodyType.CUV_COUPE: 'Кросс-купе',
+	CarBodyType.SHOOTING_BRAKE: 'Шутинг-брейк',
+}
+
+
+def _engine_type_label(engine_type: VehicleEngineType | None) -> str | None:
+	"""Собрать человекочитаемую строку из IntFlag-типа двигателя."""
+	if not engine_type:
+		return None
+	parts = [label for flag, label in _ENGINE_TYPE_LABELS.items() if flag in engine_type]
+	return ', '.join(parts) if parts else None
+
+
+def _drive_type_label(drive_types: CarDriveType | list[CarDriveType] | None) -> str | None:
+	"""Собрать строку из (возможно множественного) типа привода."""
+	if not drive_types:
+		return None
+	values = drive_types if isinstance(drive_types, list) else [drive_types]
+	parts = [_DRIVE_TYPE_LABELS[value] for value in values if value in _DRIVE_TYPE_LABELS]
+	return ', '.join(parts) if parts else None
 
 TRIGRAM_THRESHOLD: float = 0.3
 TRIGRAM_AMBIGUITY_EPS: float = 0.05
@@ -34,8 +103,8 @@ class GuessCommonCarInfoSchema(BaseModel):
 
 	brand: ChoiceFieldSchema = Field(description='Бренд')
 	model: ChoiceFieldSchema = Field(description='Модель')
-	generation: list[ChoiceFieldSchema] = Field(description='Поколение')
-	configuration: list[ChoiceFieldWithParentSchema] = Field(description='Комплектация')
+	generations: list[ChoiceFieldSchema] = Field(description='Поколение')
+	trims: list[TrimChoiceSchema] = Field(description='Комплектация')
 
 
 class GuessCommonCarInfo:
@@ -77,8 +146,76 @@ class GuessCommonCarInfo:
 		return GuessCommonCarInfoSchema(
 			brand=to_choice_field(guess_brand),
 			model=to_choice_field(guess_series),
-			generation=to_choice_field_list(guess_generations),
-			configuration=to_choice_field_with_parent_list(guess_trims, 'generation'),
+			generations=to_choice_field_list(guess_generations),
+			trims=[self._serialize_trim(trim) for trim in guess_trims],
+		)
+
+	@staticmethod
+	def _serialize_trim(trim: CarTrim) -> TrimChoiceSchema:
+		"""Собрать ``TrimChoiceSchema`` с расширенными данными о комплектации.
+
+		Формирует структурированные данные о двигателе/КПП/приводе/кузове и
+		готовую человекочитаемую строку ``description`` для опции селектора,
+		например: ``1.6 (110 л.с.) Бензин · АКПП 6 · Передний · Седан``.
+		"""
+		engine: VehicleEngine | None = trim.engine
+		transmission: CarTransmission | None = trim.transmission
+		body: CarBody | None = trim.body
+
+		engine_type_label = _engine_type_label(engine.type) if engine is not None else None
+		transmission_type_label = (
+			_TRANSMISSION_TYPE_LABELS.get(transmission.type) if transmission is not None else None
+		)
+		drive_label = _drive_type_label(transmission.drive_types) if transmission is not None else None
+		body_label = _BODY_TYPE_LABELS.get(body.type) if body is not None else None
+
+		engine_schema: TrimEngineSchema | None = None
+		if engine is not None:
+			engine_schema = TrimEngineSchema(
+				name=engine.name,
+				volume=engine.volume,
+				power=engine.power,
+				type=engine_type_label,
+				torque=engine.torque,
+			)
+
+		transmission_schema: TrimTransmissionSchema | None = None
+		if transmission is not None:
+			transmission_schema = TrimTransmissionSchema(
+				name=transmission.name,
+				type=transmission_type_label,
+				gears=transmission.gears,
+			)
+
+		description_parts: list[str] = []
+		if engine is not None:
+			engine_part = f'{engine.volume / 1000:.1f}' if engine.volume else engine.name
+			if engine.power:
+				engine_part = f'{engine_part} ({engine.power} л.с.)'
+			if engine_type_label:
+				engine_part = f'{engine_part} {engine_type_label}'
+			description_parts.append(engine_part)
+		if transmission is not None:
+			transmission_part = transmission_type_label or transmission.name
+			if transmission.gears:
+				transmission_part = f'{transmission_part} {transmission.gears}'
+			description_parts.append(transmission_part)
+		if drive_label:
+			description_parts.append(drive_label)
+		if body_label:
+			description_parts.append(body_label)
+
+		description = ' · '.join(description_parts) if description_parts else trim.name
+
+		return TrimChoiceSchema(
+			id=trim.id,
+			name=trim.name,
+			parent=to_choice_field(trim.generation),
+			description=description,
+			engine=engine_schema,
+			transmission=transmission_schema,
+			drive_type=drive_label,
+			body_type=body_label,
 		)
 
 	@classmethod
@@ -113,7 +250,10 @@ class GuessCommonCarInfo:
 			select(CarTrim)
 			.where(CarTrim.generation_id.in_(generation_ids))
 			.options(
-				selectinload(CarTrim.generation)
+				selectinload(CarTrim.generation),
+				selectinload(CarTrim.engine),
+				selectinload(CarTrim.transmission),
+				selectinload(CarTrim.body),
 			)
 		)
 
@@ -126,21 +266,21 @@ class GuessCommonCarInfo:
 			extra_where: ColumnElement[bool] | None = None,
 	) -> TFuzzyModel | None:
 		"""
-        Найти запись модели по полю ``name``.
+		Найти запись модели по полю ``name``.
 
-        Сначала пробует точное совпадение через ``ILIKE``. Если такой записи нет,
-        выполняет нечёткий поиск через PostgreSQL ``pg_trgm`` (функция ``similarity``).
+		Сначала пробует точное совпадение через ``ILIKE``. Если такой записи нет,
+		выполняет нечёткий поиск через PostgreSQL ``pg_trgm`` (функция ``similarity``).
 
-        Защищает от ложных совпадений:
+		Защищает от ложных совпадений:
 
-        1. Запросы короче ``MIN_FUZZY_QUERY_LENGTH`` символов не идут в trigram-поиск:
-        на коротких строках similarity нестабилен.
-        2. Если top-1 и top-2 кандидата неотличимы по score (разница меньше
-        ``TRIGRAM_AMBIGUITY_EPS``), поднимается ``GuessCommonCarInfoError``,
-        а не возвращается случайный.
+		1. Запросы короче ``MIN_FUZZY_QUERY_LENGTH`` символов не идут в trigram-поиск:
+		на коротких строках similarity нестабилен.
+		2. Если top-1 и top-2 кандидата неотличимы по score (разница меньше
+		``TRIGRAM_AMBIGUITY_EPS``), поднимается ``GuessCommonCarInfoError``,
+		а не возвращается случайный.
 
-        Метод требует, чтобы у ``model`` была колонка ``name``.
-        """
+		Метод требует, чтобы у ``model`` была колонка ``name``.
+		"""
 		stripped_query = query_text.strip()
 
 		name_column = cast(InstrumentedAttribute[str], getattr(model, 'name'))

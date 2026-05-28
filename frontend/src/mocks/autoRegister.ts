@@ -14,20 +14,22 @@ import type {
   CountryDetailSchema,
   CurrentUser,
   UserVehicleDetailSchema,
+  GuessByVinResponseSchema,
 } from '../types/schema-types';
 
 /** Регистрация моков для accounts API */
 function registerAccountsMocks(): void {
   MockService.setMockGenerator<CurrentUser>(
     'GET:accounts/me',
-    () => mockSchemas.currentUser({
-      id: '550e8400-e29b-41d4-a716-446655440000',
-      login: 'test_user',
-      email: 'test@example.com',
-      name: 'Test',
-      surname: 'User',
-    }),
-    { delay: 100 }
+    () =>
+      mockSchemas.currentUser({
+        id: '550e8400-e29b-41d4-a716-446655440000',
+        login: 'test_user',
+        email: 'test@example.com',
+        name: 'Test',
+        surname: 'User',
+      }),
+    { delay: 100 },
   );
 }
 
@@ -36,25 +38,25 @@ function registerVehicleMocks(): void {
   MockService.setMockGenerator<VehicleBrandDetailSchema[]>(
     'GET:vehicles/brands',
     () => mockSchemas.vehicleBrands(8),
-    { delay: 200 }
+    { delay: 200 },
   );
 
   MockService.setMockGenerator<VehicleSeriesListSchema[]>(
     'GET:vehicles/series',
     () => mockSchemas.vehicleSeriesListArray(5),
-    { delay: 150 }
+    { delay: 150 },
   );
 
   MockService.setMockGenerator<VehicleGenerationListSchema[]>(
     'GET:vehicles/generation',
     () => mockSchemas.vehicleGenerations(4),
-    { delay: 150 }
+    { delay: 150 },
   );
 
   MockService.setMockGenerator<VehicleTrimListSchema[]>(
     'GET:vehicles/trim',
     () => mockSchemas.vehicleTrims(3),
-    { delay: 150 }
+    { delay: 150 },
   );
 
   MockService.setMockGenerator<ChoiceFieldSchema[]>(
@@ -62,14 +64,21 @@ function registerVehicleMocks(): void {
     () => [
       { id: '1', name: 'Легковой' },
       { id: '2', name: 'Грузовой' },
-    ]
+    ],
   );
 
   // User vehicles
   MockService.setMockGenerator<UserVehicleDetailSchema[]>(
     'GET:vehicles/user-vehicles',
     () => mockSchemas.userVehicles(3),
-    { delay: 150 }
+    { delay: 150 },
+  );
+
+  // Guess by VIN — подбор предзаполнения формы по VIN
+  MockService.setMockGenerator<GuessByVinResponseSchema>(
+    'GET:vehicles/guess_by_vin',
+    () => mockSchemas.guessByVinResponse(),
+    { delay: 250 },
   );
 }
 
@@ -78,7 +87,7 @@ function registerGeoMocks(): void {
   MockService.setMockGenerator<CountryDetailSchema[]>(
     'GET:geo/country',
     () => mockSchemas.countries(10),
-    { delay: 150 }
+    { delay: 150 },
   );
 }
 

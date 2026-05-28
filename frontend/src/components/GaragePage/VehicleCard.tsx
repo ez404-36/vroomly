@@ -9,19 +9,28 @@ interface VehicleCardProps {
   large?: boolean;
 }
 
-export const VehicleCard = ({ vehicle, onEdit, onDelete, large = false }: VehicleCardProps) => {
+export const VehicleCard = ({
+  vehicle,
+  onEdit,
+  onDelete,
+  large = false,
+}: VehicleCardProps) => {
   const getVehicleDisplayName = (v: UserVehicleDetailSchema) => {
     const parts = [v.brand, v.series].filter(Boolean);
     return parts.length > 0 ? parts.join(' ') : 'Неизвестное ТС';
   };
 
   const getVehicleYear = (v: UserVehicleDetailSchema) => {
-    return v.production_year ? `(${v.production_year})` : '';
+    return v.productionYear ? `(${v.productionYear})` : '';
   };
 
   return (
-    <div className={`flex gap-4 p-5 bg-(--color-surface) border border-(--color-border) rounded-xl ${large ? 'min-w-[400px] max-w-[500px] flex-shrink-0 snap-start' : 'min-w-[300px] flex-shrink-0 snap-start'} transition-opacity duration-300 ease-in-out`}>
-      <div className={`flex items-center justify-center rounded-xl text-(--color-primary) flex-shrink-0 ${large ? 'w-20 h-20 bg-(--color-primary-subtle)' : 'w-14 h-14 bg-(--color-primary-subtle)'}`}>
+    <div
+      className={`flex gap-4 p-5 bg-(--color-surface) border border-(--color-border) rounded-xl ${large ? 'min-w-[400px] max-w-[500px] flex-shrink-0 snap-start' : 'min-w-[300px] flex-shrink-0 snap-start'} transition-opacity duration-300 ease-in-out`}
+    >
+      <div
+        className={`flex items-center justify-center rounded-xl text-(--color-primary) flex-shrink-0 ${large ? 'w-20 h-20 bg-(--color-primary-subtle)' : 'w-14 h-14 bg-(--color-primary-subtle)'}`}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width={large ? 40 : 28}

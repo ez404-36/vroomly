@@ -2,81 +2,44 @@ import { createApi } from '@reduxjs/toolkit/query/react';
 import { createBaseQuery } from './baseQuery';
 import type {
   CarInfoByVinDataSchema,
-  ChoiceFieldSchema,
-  ChoiceFieldWithParentSchema,
-  CreateUserVehicleByChoiceSchema,
-  CreateUserVehicleByVinSchema,
-  CreateUserVehicleManualSchema,
+  CreateUserVehicleSchema,
+  GuessByVinResponseSchema,
   UserVehicleDetailSchema,
-  UserVehicleWithChoicesSchema,
   VehicleBrandDetailSchema,
   VehicleSeriesListSchema,
   VehicleGenerationListSchema,
   VehicleTrimListSchema,
 } from '../types/schema-types';
 
-// Types for UserVehicle API
-export type CreateUserVehicleByVinDTO = CreateUserVehicleByVinSchema;
-
-export type CreateUserVehicleByChoiceDTO = CreateUserVehicleByChoiceSchema;
-
-export type CreateUserVehicleManualDTO = CreateUserVehicleManualSchema;
-
 export type {
   ChoiceFieldSchema,
   ChoiceFieldWithParentSchema,
+  CreateUserVehicleSchema,
+  GuessByVinResponseSchema,
   UserVehicleDetailSchema,
-  UserVehicleWithChoicesSchema,
 } from '../types/schema-types';
-
-// UserVehicleChoiceSchema is defined inline as it's used in UserVehicleWithChoicesSchema
-export interface UserVehicleChoiceSchema {
-  brand: ChoiceFieldSchema;
-  model: ChoiceFieldSchema;
-  generation: ChoiceFieldSchema[];
-  configuration: ChoiceFieldWithParentSchema[];
-}
 
 export const vehiclesApi = createApi({
   reducerPath: 'vehiclesApi',
   baseQuery: createBaseQuery('vehicles/'),
   endpoints: (builder) => ({
-    // Lookup car info by VIN
+    // Lookup raw VIN data from external provider (no DB write)
     lookupByVin: builder.query<CarInfoByVinDataSchema, string>({
       query: (vin) => `by_vin/?vin=${vin}`,
     }),
 
-    // Create user vehicle by VIN (returns UserVehicleDetailSchema or UserVehicleWithChoicesSchema)
-    createUserVehicleByVin: builder.mutation<
-      UserVehicleDetailSchema | UserVehicleWithChoicesSchema,
-      CreateUserVehicleByVinDTO
+    // Подобрать данные ТС по VIN для предзаполнения формы (read-only, ничего не пишет в БД)
+    guessByVin: builder.query<GuessByVinResponseSchema, string>({
+      query: (vin) => `guess_by_vin/?vin=${vin}`,
+    }),
+
+    // Создать ТС в гараже пользователя (единый эндпоинт)
+    createUserVehicle: builder.mutation<
+      UserVehicleDetailSchema,
+      CreateUserVehicleSchema
     >({
       query: (body) => ({
         url: 'user-vehicles/',
-        method: 'POST',
-        body,
-      }),
-    }),
-
-    // Create user vehicle by choice (after selecting from multiple options)
-    createUserVehicleByChoice: builder.mutation<
-      UserVehicleDetailSchema,
-      CreateUserVehicleByChoiceDTO
-    >({
-      query: (body) => ({
-        url: 'user-vehicles/by-choice/',
-        method: 'POST',
-        body,
-      }),
-    }),
-
-    // Create user vehicle manually (without VIN)
-    createUserVehicleManual: builder.mutation<
-      UserVehicleDetailSchema,
-      CreateUserVehicleManualDTO
-    >({
-      query: (body) => ({
-        url: 'user-vehicles/manual/',
         method: 'POST',
         body,
       }),
@@ -93,9 +56,11 @@ export const vehiclesApi = createApi({
     }),
 
     // Get list of vehicle generations by series ID
-    getVehicleGenerations: builder.query<VehicleGenerationListSchema[], string>({
-      query: (seriesId) => `generation/?series=${seriesId}`,
-    }),
+    getVehicleGenerations: builder.query<VehicleGenerationListSchema[], string>(
+      {
+        query: (seriesId) => `generation/?series=${seriesId}`,
+      },
+    ),
 
     // Get list of vehicle trims by generation ID
     getVehicleTrims: builder.query<VehicleTrimListSchema[], string>({
@@ -119,9 +84,9 @@ export const vehiclesApi = createApi({
 
 export const {
   useLookupByVinQuery,
-  useCreateUserVehicleByVinMutation,
-  useCreateUserVehicleByChoiceMutation,
-  useCreateUserVehicleManualMutation,
+  useGuessByVinQuery,
+  useLazyGuessByVinQuery,
+  useCreateUserVehicleMutation,
   useGetVehicleBrandsQuery,
   useGetVehicleSeriesQuery,
   useGetVehicleGenerationsQuery,

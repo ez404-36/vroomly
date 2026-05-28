@@ -1,18 +1,34 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Container, Title, Stack, Tabs, TabContent } from '../ui';
+import { Container, Title, Stack } from '../ui';
 import { VinLookupForm } from '../components/Vehicle/VinLookupForm';
 import { VehicleForm } from '../components/Vehicle/VehicleForm';
+import type { GuessByVinResponseSchema } from '../api/vehiclesApi';
+
+type Step = 'vin' | 'form';
 
 export const AddVehiclePage = () => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<string>('vin');
+  const [step, setStep] = useState<Step>('vin');
+  const [prefill, setPrefill] = useState<GuessByVinResponseSchema | undefined>(
+    undefined,
+  );
 
-  const handleVinSuccess = () => {
-    navigate('/garage');
+  const handleGuess = (data: GuessByVinResponseSchema) => {
+    setPrefill(data);
+    setStep('form');
   };
 
-  const handleManualSuccess = () => {
+  const handleSkipToManual = () => {
+    setPrefill(undefined);
+    setStep('form');
+  };
+
+  const handleBackToVin = () => {
+    setStep('vin');
+  };
+
+  const handleSuccess = () => {
     navigate('/garage');
   };
 
@@ -21,28 +37,21 @@ export const AddVehiclePage = () => {
       <Stack>
         <Title order={2}>Добавить транспортное средство</Title>
 
-        <Tabs
-          value={activeTab}
-          onValueChange={setActiveTab}
-          tabs={[
-            { value: 'vin', label: 'Через VIN' },
-            { value: 'manual', label: 'Вручную' },
-          ]}
-        >
-          <TabContent value="vin" className="pt-2">
-            <VinLookupForm
-              onSuccess={handleVinSuccess}
-              onBack={() => navigate(-1)}
-            />
-          </TabContent>
+        {step === 'vin' && (
+          <VinLookupForm
+            onGuess={handleGuess}
+            onBack={() => navigate(-1)}
+            onSkipToManual={handleSkipToManual}
+          />
+        )}
 
-          <TabContent value="manual" className="pt-2">
-            <VehicleForm
-              onSuccess={handleManualSuccess}
-              onBack={() => navigate(-1)}
-            />
-          </TabContent>
-        </Tabs>
+        {step === 'form' && (
+          <VehicleForm
+            prefill={prefill}
+            onSuccess={handleSuccess}
+            onBack={handleBackToVin}
+          />
+        )}
       </Stack>
     </Container>
   );

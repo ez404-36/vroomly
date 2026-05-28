@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import {
   Select,
@@ -11,34 +11,73 @@ import {
   Switch,
 } from '../../ui';
 import {
-  useCreateUserVehicleManualMutation,
+  useCreateUserVehicleMutation,
   useGetVehicleBrandsQuery,
   useGetVehicleSeriesQuery,
   useGetVehicleGenerationsQuery,
   useGetVehicleTrimsQuery,
+  type CreateUserVehicleSchema,
+  type GuessByVinResponseSchema,
 } from '../../api/vehiclesApi';
 
-export interface VehicleFormData {
-  brand_id?: string;
-  series_id?: string;
-  generation_id?: string;
-  trim_id?: string;
-  production_year?: number;
-  color?: string;
-  mileage?: number;
-  avg_fuel_consumption?: number;
-  is_mileage_in_miles?: boolean;
+interface VehicleFormData {
+  brandId: string;
+  seriesId: string;
+  generationId: string;
+  trimId: string;
+  productionYear: number | undefined;
+  color: string;
+  mileage: number | undefined;
+  avgFuelConsumption: number | undefined;
+  isMileageInMiles: boolean;
+  vin: string;
 }
 
 export interface VehicleFormProps {
+  /**
+   * Опциональное предзаполнение из guess_by_vin.
+   * Если задано — brand/series/generations/trims подмешиваются в опции селектов,
+   * production_year/color/vin предзаполняются.
+   */
+  prefill?: GuessByVinResponseSchema;
   onSuccess?: () => void;
   onBack?: () => void;
 }
 
-export const VehicleForm = ({ onSuccess, onBack }: VehicleFormProps) => {
-  const [createVehicle, { isLoading, error }] =
-    useCreateUserVehicleManualMutation();
+const MIN_PRODUCTION_YEAR = 1900;
+
+interface SelectOption {
+  value: string;
+  label: string;
+}
+
+const toOption = <T extends { id: string; name: string }>(
+  item: T,
+): SelectOption => ({
+  value: item.id,
+  label: item.name,
+});
+
+export const VehicleForm = ({
+  prefill,
+  onSuccess,
+  onBack,
+}: VehicleFormProps) => {
+  const [createVehicle, { isLoading, error: createError }] =
+    useCreateUserVehicleMutation();
   const { data: brands } = useGetVehicleBrandsQuery();
+
+  // Single generation/trim из prefill авто-выбираются ниже через useEffect.
+  const prefillBrandId = prefill?.brand.id ? String(prefill.brand.id) : '';
+  const prefillSeriesId = prefill?.model.id ? String(prefill.model.id) : '';
+  const prefillGenerationId =
+    prefill?.generations && prefill.generations.length === 1
+      ? String(prefill.generations[0].id)
+      : '';
+  const prefillTrimId =
+    prefill?.trims && prefill.trims.length === 1
+      ? String(prefill.trims[0].id)
+      : '';
 
   const {
     register,
@@ -49,92 +88,147 @@ export const VehicleForm = ({ onSuccess, onBack }: VehicleFormProps) => {
     formState: { errors },
   } = useForm<VehicleFormData>({
     defaultValues: {
-      brand_id: '',
-      series_id: '',
-      generation_id: '',
-      trim_id: '',
-      production_year: undefined,
-      color: '',
+      brandId: prefillBrandId,
+      seriesId: prefillSeriesId,
+      generationId: prefillGenerationId,
+      trimId: prefillTrimId,
+      productionYear: prefill?.year ?? undefined,
+      color: prefill?.color ?? '',
       mileage: undefined,
-      avg_fuel_consumption: undefined,
-      is_mileage_in_miles: false,
+      avgFuelConsumption: undefined,
+      isMileageInMiles: false,
+      vin: prefill?.vin ?? '',
     },
     mode: 'onChange',
   });
 
-  const selectedBrand = watch('brand_id');
-  const selectedSeries = watch('series_id');
-  const selectedGeneration = watch('generation_id');
+  const selectedBrand = watch('brandId');
+  const selectedSeries = watch('seriesId');
+  const selectedGeneration = watch('generationId');
 
-  const { data: series, isLoading: isSeriesLoading } = useGetVehicleSeriesQuery(
-    selectedBrand || '',
-    { skip: !selectedBrand },
+  // Если brand/series пришли из prefill — не запрашиваем series у API,
+  // но если пользователь сменит бренд вручную, мы переключимся на API-данные.
+  const [seriesOverride, setSeriesOverride] = useState<boolean>(
+    Boolean(prefill),
   );
+  const [generationOverride, setGenerationOverride] = useState<boolean>(
+    Boolean(prefill),
+  );
+  const [trimOverride, setTrimOverride] = useState<boolean>(Boolean(prefill));
+
+  const { data: seriesList, isLoading: isSeriesLoading } =
+    useGetVehicleSeriesQuery(selectedBrand || '', {
+      skip: !selectedBrand || seriesOverride,
+    });
 
   const { data: generations, isLoading: isGenerationsLoading } =
     useGetVehicleGenerationsQuery(selectedSeries || '', {
-      skip: !selectedSeries,
+      skip: !selectedSeries || generationOverride,
     });
 
   const { data: trims, isLoading: isTrimsLoading } = useGetVehicleTrimsQuery(
     selectedGeneration || '',
-    { skip: !selectedGeneration }
+    { skip: !selectedGeneration || trimOverride },
   );
 
+  // При ручной смене бренда отключаем override и чистим зависимые поля.
   useEffect(() => {
+    if (prefill && selectedBrand !== prefillBrandId) {
+      setSeriesOverride(false);
+      setGenerationOverride(false);
+      setTrimOverride(false);
+    }
     if (!selectedBrand) {
-      setValue('series_id', '', { shouldValidate: false });
-      setValue('generation_id', '', { shouldValidate: false });
-      setValue('trim_id', '', { shouldValidate: false });
+      setValue('seriesId', '', { shouldValidate: false });
+      setValue('generationId', '', { shouldValidate: false });
+      setValue('trimId', '', { shouldValidate: false });
     }
-  }, [selectedBrand, setValue]);
+  }, [selectedBrand, prefill, prefillBrandId, setValue]);
 
   useEffect(() => {
+    if (prefill && selectedSeries !== prefillSeriesId) {
+      setGenerationOverride(false);
+      setTrimOverride(false);
+    }
     if (!selectedSeries) {
-      setValue('generation_id', '', { shouldValidate: false });
-      setValue('trim_id', '', { shouldValidate: false });
+      setValue('generationId', '', { shouldValidate: false });
+      setValue('trimId', '', { shouldValidate: false });
     }
-  }, [selectedSeries, setValue]);
+  }, [selectedSeries, prefill, prefillSeriesId, setValue]);
 
   useEffect(() => {
-    if (!selectedGeneration) {
-      setValue('trim_id', '', { shouldValidate: false });
+    if (prefill && selectedGeneration !== prefillGenerationId) {
+      setTrimOverride(false);
     }
-  }, [selectedGeneration, setValue]);
+    if (!selectedGeneration) {
+      setValue('trimId', '', { shouldValidate: false });
+    }
+  }, [selectedGeneration, prefill, prefillGenerationId, setValue]);
 
-  const brandOptions =
-    brands?.map((brand) => ({
-      value: brand.id,
-      label: brand.name,
-    })) || [];
+  // Options:
+  // - если override и есть prefill — берём из prefill
+  // - иначе — из API.
+  const brandOptions = useMemo<SelectOption[]>(() => {
+    const base = brands?.map(toOption) ?? [];
+    if (prefill) {
+      const id = String(prefill.brand.id);
+      const exists = base.some((opt) => opt.value === id);
+      if (!exists) {
+        base.unshift({ value: id, label: prefill.brand.name });
+      }
+    }
+    return base;
+  }, [brands, prefill]);
 
-  const seriesOptions =
-    series?.map((s) => ({
-      value: s.id,
-      label: s.name,
-    })) || [];
+  const seriesOptions = useMemo<SelectOption[]>(() => {
+    if (seriesOverride && prefill) {
+      return [{ value: String(prefill.model.id), label: prefill.model.name }];
+    }
+    return seriesList?.map(toOption) ?? [];
+  }, [seriesList, seriesOverride, prefill]);
 
-  const generationOptions =
-    generations?.map((g) => ({
-      value: g.id,
-      label: g.name,
-    })) || [];
+  const generationOptions = useMemo<SelectOption[]>(() => {
+    if (generationOverride && prefill) {
+      return (
+        prefill.generations?.map((g) => ({
+          value: String(g.id),
+          label: g.name,
+        })) ?? []
+      );
+    }
+    return generations?.map(toOption) ?? [];
+  }, [generations, generationOverride, prefill]);
 
-  const trimOptions =
-    trims?.map((t) => ({
-      value: t.id,
-      label: t.name,
-    })) || [];
+  const trimOptions = useMemo<SelectOption[]>(() => {
+    if (trimOverride && prefill) {
+      return (
+        prefill.trims?.map((t) => ({
+          value: String(t.id),
+          // description содержит двигатель/КПП/привод/кузов — показываем его,
+          // чтобы из селектора было понятно, какую именно комплектацию выбирают.
+          label: t.description ? `${t.name} — ${t.description}` : t.name,
+        })) ?? []
+      );
+    }
+    return trims?.map(toOption) ?? [];
+  }, [trims, trimOverride, prefill]);
 
   const onSubmit = async (data: VehicleFormData) => {
+    if (data.productionYear === undefined) {
+      return;
+    }
+    const payload: CreateUserVehicleSchema = {
+      generationId: data.generationId || null,
+      trimId: data.trimId || null,
+      productionYear: data.productionYear,
+      color: data.color || null,
+      mileage: data.mileage ?? null,
+      isMileageInMiles: data.isMileageInMiles,
+      avgFuelConsumption: data.avgFuelConsumption ?? null,
+      vin: data.vin || null,
+    };
     try {
-      await createVehicle({
-        ...data,
-        production_year: data.production_year,
-        mileage: data.mileage,
-        avg_fuel_consumption: data.avg_fuel_consumption,
-        is_mileage_in_miles: data.is_mileage_in_miles ?? false,
-      }).unwrap();
+      await createVehicle(payload).unwrap();
       onSuccess?.();
     } catch (err) {
       console.error('Ошибка создания ТС:', err);
@@ -152,9 +246,9 @@ export const VehicleForm = ({ onSuccess, onBack }: VehicleFormProps) => {
             options={brandOptions}
             searchable
             clearable
-            onChange={(value) => setValue('brand_id', value || '')}
+            onChange={(value) => setValue('brandId', value || '')}
             value={selectedBrand || ''}
-            error={errors.brand_id?.message}
+            error={errors.brandId?.message}
           />
 
           <Select
@@ -166,23 +260,22 @@ export const VehicleForm = ({ onSuccess, onBack }: VehicleFormProps) => {
             searchable
             clearable
             disabled={!selectedBrand || isSeriesLoading}
-            onChange={(value) => setValue('series_id', value || '')}
+            onChange={(value) => setValue('seriesId', value || '')}
             value={selectedSeries || ''}
-            error={errors.series_id?.message}
+            error={errors.seriesId?.message}
           />
 
           <Select
             key={`generation-${selectedSeries}`}
             label="Поколение"
-            required
             placeholder="Выберите поколение"
             options={generationOptions}
             searchable
             clearable
             disabled={!selectedSeries || isGenerationsLoading}
-            onChange={(value) => setValue('generation_id', value || '')}
+            onChange={(value) => setValue('generationId', value || '')}
             value={selectedGeneration || ''}
-            error={errors.generation_id?.message}
+            error={errors.generationId?.message}
           />
 
           <Select
@@ -193,20 +286,26 @@ export const VehicleForm = ({ onSuccess, onBack }: VehicleFormProps) => {
             searchable
             clearable
             disabled={!selectedGeneration || isTrimsLoading}
-            onChange={(value) => setValue('trim_id', value || '')}
-            value={watch('trim_id') || ''}
-            error={errors.trim_id?.message}
+            onChange={(value) => setValue('trimId', value || '')}
+            value={watch('trimId') || ''}
+            error={errors.trimId?.message}
           />
 
           <NumberInput
             label="Год выпуска"
             placeholder="2020"
-            min={1900}
+            required
+            min={MIN_PRODUCTION_YEAR}
             max={new Date().getFullYear() + 1}
-            {...register('production_year', {
-              setValueAs: (value: unknown) => (value ? Number(value) : undefined),
+            {...register('productionYear', {
+              required: 'Укажите год выпуска',
+              valueAsNumber: true,
+              min: {
+                value: MIN_PRODUCTION_YEAR,
+                message: `Год должен быть не раньше ${MIN_PRODUCTION_YEAR}`,
+              },
             })}
-            error={errors.production_year?.message}
+            error={errors.productionYear?.message}
           />
 
           <TextInput
@@ -215,18 +314,33 @@ export const VehicleForm = ({ onSuccess, onBack }: VehicleFormProps) => {
             {...register('color')}
           />
 
+          <TextInput
+            label="VIN-номер"
+            placeholder="17 символов (опционально)"
+            {...register('vin', {
+              validate: (value) =>
+                !value ||
+                value.length === 17 ||
+                'VIN должен содержать 17 символов',
+            })}
+            error={errors.vin?.message}
+          />
+
           <NumberInput
             label="Пробег"
             placeholder="0"
             min={0}
             {...register('mileage', {
-              setValueAs: (value: unknown) => (value ? Number(value) : undefined),
+              setValueAs: (value: unknown) =>
+                value === '' || value === null || value === undefined
+                  ? undefined
+                  : Number(value),
             })}
             error={errors.mileage?.message}
           />
 
           <Controller
-            name="is_mileage_in_miles"
+            name="isMileageInMiles"
             control={control}
             render={({ field }) => (
               <Switch
@@ -242,27 +356,32 @@ export const VehicleForm = ({ onSuccess, onBack }: VehicleFormProps) => {
             placeholder="0.0"
             min={0}
             decimalScale={1}
-            {...register('avg_fuel_consumption', {
-              setValueAs: (value: unknown) => (value ? Number(value) : undefined),
+            {...register('avgFuelConsumption', {
+              setValueAs: (value: unknown) =>
+                value === '' || value === null || value === undefined
+                  ? undefined
+                  : Number(value),
             })}
-            error={errors.avg_fuel_consumption?.message}
+            error={errors.avgFuelConsumption?.message}
           />
 
-          {error && (
+          {createError && (
             <Text color="red" size="sm">
-              {JSON.stringify(error)}
+              {JSON.stringify(createError)}
             </Text>
           )}
 
           <div className="flex gap-3">
-            <Button type="button" variant="ghost" onClick={onBack}>
-              Назад
-            </Button>
+            {onBack && (
+              <Button type="button" variant="ghost" onClick={onBack}>
+                Назад
+              </Button>
+            )}
             <Button
               type="submit"
               variant="filled"
               loading={isLoading}
-              disabled={!selectedBrand || !selectedSeries || !selectedGeneration}
+              disabled={!selectedBrand || !selectedSeries}
             >
               Сохранить
             </Button>
