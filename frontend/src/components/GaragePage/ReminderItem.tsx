@@ -1,4 +1,3 @@
-import type { UserVehicleDetailSchema } from '../../types/schema-types';
 import { Text } from '../../ui';
 import { Checkbox } from '../../ui';
 import { ActionIcon } from '../../ui';
@@ -9,6 +8,7 @@ interface ReminderItemProps {
   date: string;
   checked: boolean;
   onCheckedChange: (id: string, checked: boolean) => void;
+  onEdit: (id: string) => void;
   onDelete: (id: string) => void;
 }
 
@@ -18,6 +18,7 @@ export const ReminderItem = ({
   date,
   checked,
   onCheckedChange,
+  onEdit,
   onDelete,
 }: ReminderItemProps) => {
   return (
@@ -36,6 +37,27 @@ export const ReminderItem = ({
       <Text size="xs" c="dimmed" className="flex-shrink-0">
         {date}
       </Text>
+      <ActionIcon
+        variant="ghost"
+        size="xs"
+        onClick={() => onEdit(id)}
+        className="flex-shrink-0 opacity-50 hover:opacity-100"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M12 20h9" />
+          <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z" />
+        </svg>
+      </ActionIcon>
       <ActionIcon
         variant="ghost"
         size="xs"

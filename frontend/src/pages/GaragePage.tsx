@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
-import { Title, Text, Stack, Button } from '../ui';
+import { Title, Text, Stack, Button, Tabs, TabContent } from '../ui';
 import { Carousel } from '../ui';
 import { Link, useNavigate } from 'react-router-dom';
 import { routes } from '../utils/routes';
@@ -9,7 +9,14 @@ import {
   useGetUserVehicleQuery,
   useUpdateUserVehicleMileageMutation,
   useDeleteUserVehicleMutation,
+  useGetRemindersQuery,
+  useCreateReminderMutation,
+  useUpdateReminderMutation,
+  useCompleteReminderMutation,
+  useUncompleteReminderMutation,
+  useDeleteReminderMutation,
   type UserVehicleListSchema,
+  type ReminderDetailSchema,
 } from '../api/vehiclesApi';
 import {
   ReminderItem,
@@ -18,13 +25,47 @@ import {
   AddReminderModal,
   UpdateMileageModal,
 } from '../components/GaragePage';
-import {
-  generateGarageMocks,
-  type Reminder,
-  type Recommendation,
-} from '../mocks/garageMocks';
+import type {
+  ReminderFormValue,
+  ReminderModalInitialValue,
+} from '../components/GaragePage/AddReminderModal';
+import { generateGarageMocks, type Recommendation } from '../mocks/garageMocks';
 import { MockService } from '../mocks';
 import classes from '../styles/pages/Garage.module.css';
+
+function formatReminderDate(dueAt: string | null | undefined): string {
+  if (!dueAt) {
+    return '';
+  }
+  return new Date(dueAt).toLocaleDateString('ru-RU', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  });
+}
+
+function reminderToInitialValue(
+  reminder: ReminderDetailSchema,
+): ReminderModalInitialValue {
+  let date: Date | null = null;
+  let time: string | null = null;
+  if (reminder.dueAt) {
+    const parsed = new Date(reminder.dueAt);
+    date = parsed;
+    if (!reminder.isAllDay) {
+      const hours = String(parsed.getHours()).padStart(2, '0');
+      const minutes = String(parsed.getMinutes()).padStart(2, '0');
+      time = `${hours}:${minutes}`;
+    }
+  }
+  return {
+    title: reminder.title,
+    description: reminder.description ?? '',
+    date,
+    time,
+    allDay: reminder.isAllDay,
+  };
+}
 
 const GaragePage = () => {
   const navigate = useNavigate();
@@ -32,22 +73,31 @@ const GaragePage = () => {
   const [deleteVehicle] = useDeleteUserVehicleMutation();
   const [updateMileage, { isLoading: isMileageUpdating }] =
     useUpdateUserVehicleMileageMutation();
+  const [createReminder] = useCreateReminderMutation();
+  const [updateReminder] = useUpdateReminderMutation();
+  const [completeReminder] = useCompleteReminderMutation();
+  const [uncompleteReminder] = useUncompleteReminderMutation();
+  const [deleteReminder] = useDeleteReminderMutation();
+
   const [deleteModalOpened, setDeleteModalOpened] = useState(false);
-  const [addReminderModalOpened, setAddReminderModalOpened] = useState(false);
+  const [reminderModalOpened, setReminderModalOpened] = useState(false);
+  const [reminderToEdit, setReminderToEdit] =
+    useState<ReminderDetailSchema | null>(null);
+  const [reminderToDelete, setReminderToDelete] =
+    useState<ReminderDetailSchema | null>(null);
+  const [remindersTab, setRemindersTab] = useState('active');
   const [mileageModalOpened, setMileageModalOpened] = useState(false);
   const [mileageError, setMileageError] = useState<string | null>(null);
   const [vehicleToDelete, setVehicleToDelete] =
     useState<UserVehicleListSchema | null>(null);
   const [selectedVehicleIndex, setSelectedVehicleIndex] = useState(0);
 
-  // Mock reminders state - dynamically generated per vehicle
-  const [reminders, setReminders] = useState<Reminder[]>([]);
-
-  // Mock recommendations state - dynamically generated per vehicle
+  // Mock recommendations state - dynamically generated per vehicle (out of scope for reminders feature)
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
 
-// Generate mocks when vehicle changes
-  const currentVehicle = vehicles && vehicles.length > 0 ? vehicles[selectedVehicleIndex] : null;
+  const currentVehicle =
+    vehicles && vehicles.length > 0 ? vehicles[selectedVehicleIndex] : null;
+  const currentVehicleId = currentVehicle?.id ?? null;
 
   // Детальная информация по выбранному ТС (все характеристики)
   const { data: currentVehicleDetail, isFetching: isDetailFetching } =
@@ -55,18 +105,27 @@ const GaragePage = () => {
       skip: !currentVehicle,
     });
 
+  // Напоминания по выбранному ТС: активные и история (выполненные)
+  const { data: activeReminders } = useGetRemindersQuery(
+    { userVehicleId: currentVehicleId ?? '', isCompleted: false },
+    { skip: !currentVehicleId },
+  );
+  const { data: completedReminders } = useGetRemindersQuery(
+    { userVehicleId: currentVehicleId ?? '', isCompleted: true },
+    { skip: !currentVehicleId },
+  );
+
   const prevVehicleIdRef = useRef<string | null>(null);
 
   const generateMocksForVehicle = useCallback((vehicleId: string) => {
     if (prevVehicleIdRef.current !== vehicleId) {
       prevVehicleIdRef.current = vehicleId;
       if (!MockService.isEnabled()) {
-        setReminders([]);
         setRecommendations([]);
         return;
       }
-      const { reminders: newReminders, recommendations: newRecommendations } = generateGarageMocks(vehicleId);
-      setReminders(newReminders);
+      const { recommendations: newRecommendations } =
+        generateGarageMocks(vehicleId);
       setRecommendations(newRecommendations);
     }
   }, []);
@@ -74,19 +133,23 @@ const GaragePage = () => {
   // Update mocks when selected vehicle changes
   useEffect(() => {
     if (currentVehicle?.id) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       generateMocksForVehicle(currentVehicle.id);
     }
-    // eslint-disable-next-line react-hooks/set-state-in-effect
   }, [currentVehicle?.id, generateMocksForVehicle]);
 
   // Update selected vehicle index when vehicles load
   const prevVehiclesLengthRef = useRef<number>(0);
   useEffect(() => {
-    if (vehicles && vehicles.length > 0 && selectedVehicleIndex >= vehicles.length) {
+    if (
+      vehicles &&
+      vehicles.length > 0 &&
+      selectedVehicleIndex >= vehicles.length
+    ) {
       prevVehiclesLengthRef.current = vehicles.length;
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setSelectedVehicleIndex(vehicles.length - 1);
     }
-    // eslint-disable-next-line react-hooks/set-state-in-effect
   }, [vehicles, selectedVehicleIndex]);
 
   const handleDeleteClick = (vehicle: UserVehicleListSchema) => {
@@ -140,14 +203,40 @@ const GaragePage = () => {
     }
   };
 
-  const handleReminderCheckedChange = (id: string, checked: boolean) => {
-    setReminders((prev) =>
-      prev.map((r) => (r.id === id ? { ...r, checked } : r)),
-    );
+  const handleReminderCheckedChange = async (id: string, checked: boolean) => {
+    try {
+      if (checked) {
+        await completeReminder(id).unwrap();
+      } else {
+        await uncompleteReminder(id).unwrap();
+      }
+    } catch {
+      // cache stays consistent via tags; a failed mutation simply does not update
+    }
   };
 
-  const handleReminderDelete = (id: string) => {
-    setReminders((prev) => prev.filter((r) => r.id !== id));
+  const handleReminderDelete = async (reminder: ReminderDetailSchema) => {
+    // Выполненные напоминания удаляются сразу, невыполненные — с подтверждением.
+    if (reminder.isCompleted) {
+      try {
+        await deleteReminder(reminder.id).unwrap();
+      } catch {
+        // ignore — list reflects server state via cache tags
+      }
+      return;
+    }
+    setReminderToDelete(reminder);
+  };
+
+  const handleConfirmReminderDelete = async () => {
+    if (reminderToDelete) {
+      try {
+        await deleteReminder(reminderToDelete.id).unwrap();
+      } catch {
+        // ignore
+      }
+      setReminderToDelete(null);
+    }
   };
 
   const handleRecommendationCheckedChange = (id: string, checked: boolean) => {
@@ -160,38 +249,65 @@ const GaragePage = () => {
     if (!currentVehicle) {
       return;
     }
-    setAddReminderModalOpened(true);
+    setReminderToEdit(null);
+    setReminderModalOpened(true);
   };
 
-  const handleAddReminder = (reminder: {
-    title: string;
-    description: string;
-    dateTime: Date | null;
-    allDay: boolean;
-  }) => {
+  const handleEditReminderClick = (reminder: ReminderDetailSchema) => {
+    setReminderToEdit(reminder);
+    setReminderModalOpened(true);
+  };
+
+  const handleSubmitReminder = async (value: ReminderFormValue) => {
     if (!currentVehicle) {
       return;
     }
-    const newId = String(Date.now());
-    const dateStr = reminder.dateTime
-      ? reminder.dateTime.toLocaleDateString('ru-RU', {
-          day: '2-digit',
-          month: '2-digit',
-          year: 'numeric',
-        })
-      : '';
-    setReminders((prev) => [
-      ...prev,
-      {
-        id: newId,
-        text: reminder.title,
-        description: reminder.description,
-        date: dateStr,
-        checked: false,
-        vehicleId: currentVehicle.id,
-      },
-    ]);
+    const dueAt = value.dateTime ? value.dateTime.toISOString() : null;
+    const body = {
+      title: value.title,
+      description: value.description,
+      dueAt,
+      isAllDay: value.allDay,
+    };
+    try {
+      if (reminderToEdit) {
+        await updateReminder({ reminderId: reminderToEdit.id, body }).unwrap();
+      } else {
+        await createReminder({
+          userVehicleId: currentVehicle.id,
+          body,
+        }).unwrap();
+      }
+      setReminderToEdit(null);
+    } catch {
+      // ignore — modal already closed by the form; cache stays in sync via tags
+    }
   };
+
+  const renderReminderList = (
+    items: ReminderDetailSchema[] | undefined,
+    emptyText: string,
+  ) =>
+    items && items.length > 0 ? (
+      <div className={classes.remindersList}>
+        {items.map((reminder) => (
+          <ReminderItem
+            key={reminder.id}
+            id={reminder.id}
+            text={reminder.title}
+            date={formatReminderDate(reminder.dueAt)}
+            checked={reminder.isCompleted}
+            onCheckedChange={handleReminderCheckedChange}
+            onEdit={() => handleEditReminderClick(reminder)}
+            onDelete={() => handleReminderDelete(reminder)}
+          />
+        ))}
+      </div>
+    ) : (
+      <Text size="sm" c="dimmed" className={classes.emptyText}>
+        {emptyText}
+      </Text>
+    );
 
   return (
     <div className={classes.container}>
@@ -304,25 +420,27 @@ const GaragePage = () => {
               Напоминания
             </Title>
             <div className={classes.remindersContainer}>
-              {reminders.length > 0 ? (
-                <div className={classes.remindersList}>
-                  {reminders.map((reminder) => (
-                    <ReminderItem
-                      key={reminder.id}
-                      id={reminder.id}
-                      text={reminder.text}
-                      date={reminder.date}
-                      checked={reminder.checked}
-                      onCheckedChange={handleReminderCheckedChange}
-                      onDelete={handleReminderDelete}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <Text size="sm" c="dimmed" className={classes.emptyText}>
-                  Нет напоминаний для этого автомобиля
-                </Text>
-              )}
+              <Tabs
+                value={remindersTab}
+                onValueChange={setRemindersTab}
+                tabs={[
+                  { value: 'active', label: 'Активные' },
+                  { value: 'history', label: 'История' },
+                ]}
+              >
+                <TabContent value="active">
+                  {renderReminderList(
+                    activeReminders,
+                    'Нет активных напоминаний для этого автомобиля',
+                  )}
+                </TabContent>
+                <TabContent value="history">
+                  {renderReminderList(
+                    completedReminders,
+                    'История напоминаний пуста',
+                  )}
+                </TabContent>
+              </Tabs>
               <Button
                 variant="filled"
                 size="sm"
@@ -393,10 +511,52 @@ const GaragePage = () => {
         </Dialog.Portal>
       </Dialog.Root>
 
+      <Dialog.Root
+        open={reminderToDelete !== null}
+        onOpenChange={(open) => {
+          if (!open) {
+            setReminderToDelete(null);
+          }
+        }}
+      >
+        <Dialog.Portal>
+          <Dialog.Overlay className="fixed inset-0 bg-black/50 z-40" />
+          <Dialog.Content className="fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 w-full max-w-md rounded-lg bg-(--color-surface) p-6 shadow-xl">
+            <Dialog.Title className="text-lg font-semibold text-(--color-text) mb-4">
+              Удалить напоминание
+            </Dialog.Title>
+            <Stack gap="md">
+              <Text>
+                Вы уверены, что хотите удалить напоминание
+                {reminderToDelete && ` «${reminderToDelete.title}»`}?
+              </Text>
+              <Text size="sm" c="dimmed">
+                Напоминание ещё не выполнено. Это действие нельзя отменить.
+              </Text>
+              <div className="flex justify-end gap-3">
+                <Button
+                  variant="ghost"
+                  onClick={() => setReminderToDelete(null)}
+                >
+                  Отмена
+                </Button>
+                <Button variant="danger" onClick={handleConfirmReminderDelete}>
+                  Удалить
+                </Button>
+              </div>
+            </Stack>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
+
       <AddReminderModal
-        open={addReminderModalOpened}
-        onOpenChange={setAddReminderModalOpened}
-        onAdd={handleAddReminder}
+        open={reminderModalOpened}
+        onOpenChange={setReminderModalOpened}
+        onSubmit={handleSubmitReminder}
+        mode={reminderToEdit ? 'edit' : 'create'}
+        initialValue={
+          reminderToEdit ? reminderToInitialValue(reminderToEdit) : null
+        }
       />
 
       <UpdateMileageModal

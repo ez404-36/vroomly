@@ -12,7 +12,7 @@ priority: medium
 linkedDialogIds: []
 createdBy: dev-user
 createdAt: "2026-05-28T21:41:39.997Z"
-updatedAt: "2026-05-28T22:32:40.706Z"
+updatedAt: "2026-05-28T23:20:37.077Z"
 linkedIdeaIds: []
 linkedReviewIds: []
 ---
@@ -53,8 +53,9 @@ linkedReviewIds: []
 - [x] **Этап E** — backend unit-тесты `backend/tests/unit/apps/vehicles/api/test_reminder.py` (33 теста). Покрыто: валидация схем (happy/edge/invalid), ORM-конвертер + guard, все 7 эндпоинтов — create (+404 на чужое ТС), list (+фильтр is_completed, +404), get/patch (exclude_unset, explicit-null clear, +404), complete (идемпотентность), uncomplete (toggle), delete (204, +404). Мок-стиль как в `test_user_vehicle` (`_run`/`asyncio.run`, `unittest.mock`, без pytest-asyncio). Проверено: pytest 33 passed, соседи зелёные, ruff + ty passed.
 - [x] **Этап F** — `make codegen` обновил `schemas.ts` (3 схемы + 7 путей, camelCase). Алиасы `CreateReminderSchema`/`UpdateReminderSchema`/`ReminderDetailSchema` добавлены ВРУЧНУЮ в `schema-types.ts` (этот файл hand-maintained, codegen генерит только `schemas.ts`). Проверено: `tsc --noEmit` EXIT=0. Примечание: codegen фетчит OpenAPI с живого backend — нужен запущенный и готовый backend (первый прогон упал ECONNREFUSED при рестарте контейнера).
 - [x] **Этап G** — RTK Query в `vehiclesApi.ts`: `tagTypes: ['Reminder','UserVehicle']`, 6 эндпоинтов (`getReminders` с фильтром `isCompleted`, `createReminder`, `updateReminder` PATCH, `completeReminder`, `uncompleteReminder`, `deleteReminder`) + providesTags/invalidatesTags; теги добавлены и на user-vehicle эндпоинты. Хуки + типы экспортированы. Проверено: `tsc --noEmit` EXIT=0, `eslint src/api/vehiclesApi.ts` EXIT=0 (полный eslint по проекту слишком долгий в контейнере — линтили изменённый файл точечно).
-- [ ] Этап H — frontend UI
-- [ ] Этап I — frontend тесты
+- [x] **Этап H** — UI: `GaragePage.tsx` (реальные данные, tabs Активные/История, confirm-dialog), `AddReminderModal.tsx` (create+edit reuse через `mode`+`initialValue`), `ReminderItem.tsx` (кнопка Edit, передаёт id). Правило удаления: completed → удаление сразу без диалога, not-completed → подтверждение. Моки напоминаний убраны (рекомендации оставлены). Surgical-edits, mileage-фичи сохранены, `VehicleCard.tsx` не тронут. Проверено: tsc=0, eslint=0 по изменённым файлам, Vite HMR без ошибок.
+- [x] **Этап I** — bootstrap FE test-инфры (vitest ^3.2.4, @testing-library/react ^16.3.2, jest-dom ^6.9.1, user-event ^14.6.1, jsdom ^25.0.1, @vitest/coverage-v8) + `vitest.config.ts`, `src/test/setup.ts`, скрипты `test`/`test:watch`/`test:coverage`, tsconfig types. Тесты: `ReminderItem.test.tsx` (7) + `GaragePage.deleteRule.test.tsx` (3 — правило подтверждения: completed→сразу, active→диалог, отмена). Итог: 10 passed, tsc=0, eslint=0.
+  - **Чистка после субагента:** удалены дубли тестов (`__tests__/`-варианты от повторных запусков) и хрупкий `vehiclesApi.test.ts` (RTK Query не отдаёт `endpoints.X.query` как функцию и не вызывал замоканный fetch — URL-mapping тест был "optional" в плане, убран).
 
 ## Шаги
 
