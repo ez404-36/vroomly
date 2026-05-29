@@ -1,14 +1,14 @@
-from apps.vehicles.models.car.car_transmission import CarTransmission
-from default_data.csv_importers.base import ImportObjectsFromCSVBase
+from apps.vehicles.models.node.transmission_node import CarTransmissionNode
+from default_data.csv_importers.base import ImportJTINodesFromCSVBase
 
 
-class ImportCarTransmissionsCSV(ImportObjectsFromCSVBase):
+class ImportCarTransmissionsCSV(ImportJTINodesFromCSVBase):
 	"""
-	Импорт коробок передач автомобилей
+	Импорт коробок передач автомобилей (JTI-узел ``CarTransmissionNode``)
 	"""
 
-	model = CarTransmission
-	source_filename = 'car_transmission.csv'
+	model = CarTransmissionNode
+	source_filename = 'car_transmission_node.csv'
 
 	def transform_object_data(self, instance_data: dict) -> dict:
 		"""

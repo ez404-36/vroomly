@@ -1,6 +1,15 @@
 # Граф моделей данных модуля `vehicles`
 
 > **Статус:** Все шаги реализованы (2026-05-27). Миграции: ac7cd3d386a4, 5227f16cea20, 957661a10bd9, eadcdf7ec004, 4f43d74dc3d1, 0bd8baffd531, f94b26d2a4b6, 822d8cec7482, 2d0c4b831eae.
+>
+> **Обновление (2026-05-29) — унификация узлов ТС (JTI):** двигатель/КПП/кузов
+> унифицированы в `VehicleNode` через Joined Table Inheritance. Подробности и
+> предыстория решений — в `docs/plans/унификация-узлов-тс-vehicle-node.md`.
+> Миграция: `beaf2f8564a1`. Раздел 3 (диаграмма) и глоссарий ниже отражают
+> уже новую модель; разделы 6–10 — исторический контекст исходного рефакторинга
+> GRAPH и могут ссылаться на старые имена таблиц (`VehicleEngine`,
+> `CarTransmission`, `CarBody`, `MotorcycleTransmission`, `MotorcycleBody`),
+> которых больше нет.
 
 ## 1. Введение
 
@@ -23,76 +32,78 @@
 | `Series` | `vehicle/vehicle_series.py` | Модельный ряд бренда (Octavia, Vesta). Родитель для Car/Motorcycle поколений. |
 | `Generation` | `vehicle/vehicle_generation.py` | Поколение модели (E34, Polo 2). |
 | `Trim` | `car/car_trim.py`, `motorcycle/motorcycle_trim.py` | Комплектация (Club# Lada Granta). |
-| `Body` | `car/car_body.py`, `motorcycle/motorcycle_body.py` | Кузов (тип, материал, объём багажника / высота сиденья). |
-| `Transmission` | `car/car_transmission.py`, `motorcycle/motorcycle_transmission.py` | Коробка передач. |
-| `Engine` | `vehicle/vehicle_engine.py` | Двигатель (общий для car/motorcycle). |
-| `PhaseRegulatorSystem` | `vehicle/vehicle_engine_phase_regulator_system.py` | Система управления фазами газораспределения (фазорегулятор). |
-| `Spec` | `car/car_spec.py`, `motorcycle/motorcycle_spec.py` | Заводская спецификация конкретного экземпляра (VIN, гос. номер, поколение). |
+| `VehicleNode` | `node/vehicle_node.py` | Базовый узел/агрегат ТС (JTI root). Несёт только `id` + `node_type`. Единая адресуемая сущность для основных агрегатов. |
+| `EngineNode` | `node/engine_node.py` | Двигатель как узел (деталь JTI). Поля двигателя + brand/concern + `phase_regulator_system_id`. |
+| `CarTransmissionNode` / `MotorcycleTransmissionNode` | `node/transmission_node.py` | Коробка передач как узел (детали JTI). |
+| `CarBodyNode` / `MotorcycleBodyNode` | `node/body_node.py` | Кузов как узел (детали JTI). |
+| `PhaseRegulatorSystem` | `vehicle/vehicle_engine_phase_regulator_system.py` | Система управления фазами (фазорегулятор). НЕ узел — обычный справочник, явный FK с `EngineNode`. Один справочник ставится в N двигателей («несколько parent» на уровне справочника). |
+| `Spec` | `car/car_spec.py`, `motorcycle/motorcycle_spec.py` | Заводская спецификация конкретного экземпляра (VIN, гос. номер, trim, опц. свап двигателя/КПП). |
 | `Vehicle` | `vehicle/vehicle.py` | Общая модель ТС как объекта реального мира (тип, год, цвет, страна). |
-| `UserVehicle` | `vehicle/user_vehicle.py` | Факт владения экземпляром ТС конкретным пользователем (пробег, расход). |
+| `UserVehicle` | `vehicle/user_vehicle.py` | Факт владения экземпляром ТС конкретным пользователем. |
+| `UserVehicleNode` | `node/user_vehicle_node.py` | Экземпляр узла на машине пользователя (`user_vehicle_id` + `vehicle_node_id` + `notes`). Якорь для пер-машинных событий. M2M с `VehicleReminder` через `reminder_node_link`. |
+| `Reminder` | `vehicle/reminder.py` | Напоминание по ТС пользователя. Привязано к `UserVehicle`; M2M с `UserVehicleNode` («всё, что связано с двигателем»). |
 | `Group` | `vehicle/vehicle_group.py` | Пользовательская группа в гараже (без связи с UserVehicle). |
 
 ---
 
 ## 3. Граф связей (Mermaid `erDiagram`)
 
+Диаграмма ограничена моделями модуля `vehicles/models` и фокусируется на связях
+ТС ↔ агрегаты (узлы). Внешние сущности (`Country`, `User`) и периферийные модели
+(`VehicleGroup`, `VehicleReminder`) опущены — они описаны в глоссарии и таблице
+связей.
+
 ```mermaid
 erDiagram
-    Country ||--o{ VehicleBrand : "country_id (N:1, NOT NULL)"
-    Country ||--o{ VehicleConcern : "country_id (N:1, NULL)"
-    Country ||--o{ Vehicle : "country_id (N:1, NULL)"
-    Country ||--o{ User : "country_id (N:1, NULL)"
+    VehicleBrand ||--o{ VehicleSeries : "brand_id (NOT NULL)"
+    VehicleSeries ||--o{ VehicleGeneration : "series_id (NOT NULL)"
 
-    VehicleConcern ||--o{ VehicleBrand : "concern_id (N:1, NULL)"
-    VehicleConcern ||--o{ VehicleEngine : "concern_id (N:1, NULL)"
-    VehicleConcern ||--o{ VehicleEnginePhaseRegulatorSystem : "concern_id (N:1, NULL)"
-    VehicleConcern ||--o{ CarTransmission : "concern_id (N:1, NULL)"
-    VehicleConcern ||--o{ MotorcycleTransmission : "concern_id (N:1, NULL)"
+    VehicleBrand ||--o{ EngineNode : "brand_id (SET NULL)"
+    VehicleBrand ||--o{ CarTransmissionNode : "brand_id (SET NULL)"
+    VehicleBrand ||--o{ MotorcycleTransmissionNode : "brand_id (SET NULL)"
+    VehicleConcern ||--o{ EngineNode : "concern_id (SET NULL)"
+    VehicleConcern ||--o{ CarTransmissionNode : "concern_id (SET NULL)"
+    VehicleConcern ||--o{ MotorcycleTransmissionNode : "concern_id (SET NULL)"
 
-    VehicleBrand ||--o{ VehicleSeries : "brand_id (N:1, NOT NULL)"
-    VehicleBrand ||--o{ VehicleEngine : "brand_id (N:1, NULL)"
-    VehicleBrand ||--o{ VehicleEnginePhaseRegulatorSystem : "brand_id (N:1, NULL)"
-    VehicleBrand ||--o{ CarTransmission : "brand_id (N:1, NULL)"
-    VehicleBrand ||--o{ MotorcycleTransmission : "brand_id (N:1, NULL)"
+    VehicleNode ||--o| EngineNode : "JTI node_type=engine"
+    VehicleNode ||--o| CarTransmissionNode : "JTI node_type=car_transmission"
+    VehicleNode ||--o| MotorcycleTransmissionNode : "JTI node_type=motorcycle_transmission"
+    VehicleNode ||--o| CarBodyNode : "JTI node_type=car_body"
+    VehicleNode ||--o| MotorcycleBodyNode : "JTI node_type=motorcycle_body"
 
-    VehicleSeries ||--o{ VehicleGeneration : "series_id (N:1, NOT NULL)"
+    VehicleEnginePhaseRegulatorSystem ||--o{ EngineNode : "phase_regulator_system_id — N двигателей на 1 справочник"
 
-    VehicleGeneration ||--o{ CarTrim : "generation_id (N:1, NOT NULL)"
-    VehicleGeneration ||--o{ MotorcycleTrim : "generation_id (N:1, NOT NULL)"
-    VehicleGeneration ||--o{ CarSpec : "generation_id (N:1, NOT NULL, no back_populates) [к удалению, см. шаг 3]"
-    VehicleGeneration ||--o{ MotorcycleSpec : "generation_id (N:1, NOT NULL, no back_populates) [к удалению, см. шаг 3]"
+    VehicleGeneration ||--o{ CarTrim : "generation_id (NOT NULL)"
+    VehicleGeneration ||--o{ MotorcycleTrim : "generation_id (NOT NULL)"
 
-    VehicleEnginePhaseRegulatorSystem ||--o{ VehicleEngine : "phase_regulator_system_id (N:1, NULL)"
+    EngineNode ||--o{ CarTrim : "engine_id (NOT NULL)"
+    CarTransmissionNode ||--o{ CarTrim : "transmission_id (NOT NULL)"
+    CarBodyNode ||--o{ CarTrim : "body_id (SET NULL)"
+    EngineNode ||--o{ MotorcycleTrim : "engine_id (NOT NULL)"
+    MotorcycleTransmissionNode ||--o{ MotorcycleTrim : "transmission_id (NOT NULL)"
+    MotorcycleBodyNode ||--o{ MotorcycleTrim : "body_id (NOT NULL)"
 
-    VehicleEngine ||--o{ CarTrim : "engine_id (N:1, NOT NULL) [conflict 'trims']"
-    VehicleEngine ||--o{ MotorcycleTrim : "engine_id (N:1, NOT NULL) [conflict 'trims']"
-    VehicleEngine ||--o{ CarSpec : "engine_id (N:1, NULL) [плановая связь, шаг 3]"
-    VehicleEngine ||--o{ MotorcycleSpec : "engine_id (N:1, NULL) [плановая связь, шаг 3]"
+    CarTrim ||--o{ CarSpec : "trim_id (NOT NULL)"
+    MotorcycleTrim ||--o{ MotorcycleSpec : "trim_id (NOT NULL)"
+    EngineNode ||--o{ CarSpec : "engine_id (SET NULL — свап)"
+    CarTransmissionNode ||--o{ CarSpec : "transmission_id (SET NULL — свап)"
+    EngineNode ||--o{ MotorcycleSpec : "engine_id (SET NULL — свап)"
+    MotorcycleTransmissionNode ||--o{ MotorcycleSpec : "transmission_id (SET NULL — свап)"
 
-    CarTransmission ||--o{ CarTrim : "transmission_id (N:1, NOT NULL)"
-    CarTransmission ||--o{ CarSpec : "transmission_id (N:1, NULL) [плановая связь, шаг 3]"
-    MotorcycleTransmission ||--o{ MotorcycleTrim : "transmission_id (N:1, NOT NULL)"
-    MotorcycleTransmission ||--o{ MotorcycleSpec : "transmission_id (N:1, NULL) [плановая связь, шаг 3]"
-    CarBody ||--o{ CarTrim : "body_id (N:1, NOT NULL)"
-    MotorcycleBody ||--o{ MotorcycleTrim : "body_id (N:1, NOT NULL)"
+    Vehicle ||--o| CarSpec : "vehicle_id (1:1, UNIQUE)"
+    Vehicle ||--o| MotorcycleSpec : "vehicle_id (1:1, UNIQUE)"
+    Vehicle ||--o{ UserVehicle : "vehicle_id (NOT NULL)"
 
-    CarTrim ||--o{ CarSpec : "trim_id (N:1, NOT NULL) [плановая связь, шаг 3]"
-    MotorcycleTrim ||--o{ MotorcycleSpec : "trim_id (N:1, NOT NULL) [плановая связь, шаг 3]"
-
-    Vehicle ||--o| CarSpec : "vehicle_id (declared 1:1, factually N:1)"
-    Vehicle ||--o| MotorcycleSpec : "vehicle_id (declared 1:1, factually N:1)"
-    Vehicle ||--o{ UserVehicle : "vehicle_id (N:1, NOT NULL)"
-
-    User ||--o{ UserVehicle : "user_id (N:1, NOT NULL)"
-    User ||--o{ VehicleGroup : "user_id (N:1, NOT NULL)"
+    UserVehicle ||--o{ UserVehicleNode : "user_vehicle_id (CASCADE)"
+    VehicleNode ||--o{ UserVehicleNode : "vehicle_node_id (RESTRICT)"
 ```
 
-Условные обозначения на стрелках:
-- `имя_FK_поля` — реальное имя колонки FK в таблице-источнике (`<relation_name>_id`).
-- `cardinality` — N:1 (одна сторона ссылается на одну запись родителя) либо заявленная 1:1 (см. раздел недостатков).
-- `nullable` — может ли быть `NULL` в FK.
-
-Дополнительные ассоциации (через mixin `get_foreign_key_mixin`): связь создаётся `relationship(...)` с `backref=back_populates`, лениво загружается (`lazy="select"` по умолчанию), `on_delete` по умолчанию `CASCADE`.
+Как читать диаграмму:
+- Подпись на ребре — имя FK-колонки в таблице-источнике (`<relation_name>_id`) и `on_delete`.
+- `VehicleNode ||--o| *Node` — Joined Table Inheritance: каждая деталь хранит `id` как PK + FK на `vehicle_node.id`.
+- `PhaseRegulatorSystem → EngineNode` — один справочник фазорегулятора ставится в N двигателей («несколько parent» на уровне справочника).
+- Trim/Spec ссылаются на узлы типизированными FK; `CarSpec.engine_id`/`transmission_id` — опциональный свап (NULL ⇒ берётся из `trim`).
+- `UserVehicleNode` — экземпляр узла на машине пользователя (якорь событий).
 
 ---
 
@@ -152,17 +163,34 @@ Country ─┘                            │
 - `VehicleSeries.vehicle_type` дублирует подтип (CAR/MOTORCYCLE), который дальше используется в подграфе экземпляров.
 - На уровне `VehicleSeries` действует `UNIQUE(brand_id, name)`.
 
-### 5.2. Подграф «Техническая обвязка» — Engine / Transmission / Body / PhaseRegulatorSystem / Trim
+### 5.2. Подграф «Узлы ТС» — VehicleNode (JTI) / PhaseRegulatorSystem / Trim
 
-Эти сущности описывают конкретные технические узлы и их применение в комплектациях.
+Технические узлы унифицированы в `VehicleNode` через Joined Table Inheritance
+(см. `docs/plans/унификация-узлов-тс-vehicle-node.md`):
 
-- `VehicleEngine` опционально привязан и к бренду, и к концерну (один объект может ссылаться на оба или ни на одного — см. недостаток 10).
-- `VehicleEngine` ссылается на `VehicleEnginePhaseRegulatorSystem` — система фазорегуляции вынесена в отдельную модель и сама привязана к бренду/концерну.
-- `CarTransmission` и `MotorcycleTransmission` наследуют `VehicleTransmissionAbstract` (`vehicle/abstract/vehicle_transmission.py`) и привязаны к бренду/концерну.
-- `CarBody` и `MotorcycleBody` наследуют `VehicleBodyAbstract` (`vehicle/abstract/vehicle_body.py`); они ни с чем не связаны напрямую кроме Trim.
-- `CarTrim` и `MotorcycleTrim` наследуют `VehicleTrimAbstract` (`vehicle/abstract/vehicle_trim.py`) и являются «точкой сборки» — ссылаются на Generation, Engine, Transmission, Body.
+- `VehicleNode` (таблица `vehicle_node`) — базовый узел-якорь, несёт только `id` и
+  `node_type` (JTI-дискриминатор). Открытый набор типов: новый тип = новый
+  подкласс-деталь + миграция.
+- Детали JTI (каждая своя таблица, `id` = PK + FK на `vehicle_node.id`,
+  `polymorphic_identity`):
+  - `EngineNode` — характеристики двигателя, brand/concern, явный FK
+    `phase_regulator_system_id`.
+  - `CarTransmissionNode` / `MotorcycleTransmissionNode` — общие поля КПП через
+    mixin `TransmissionNodeFieldsMixin` + специфичные, brand/concern.
+  - `CarBodyNode` / `MotorcycleBodyNode` — общие поля через `BodyNodeFieldsMixin`.
+  - Натуральные ключи уникальности (`name`, `volume`, `power`, …) и CHECK
+    `brand_or_concern_required` живут на деталях (в JTI cross-table-уникальность
+    невозможна).
+- `PhaseRegulatorSystem` — НЕ узел, обычный справочник; один объект ставится в
+  несколько `EngineNode` (явный FK `phase_regulator_system_id`). Это и есть
+  «несколько parent» на уровне справочника — экземплярное дерево остаётся
+  однозначным.
+- `CarTrim` / `MotorcycleTrim` наследуют `VehicleTrimAbstract` и являются «точкой
+  сборки» — ссылаются на Generation и на узлы (`engine_id`, `transmission_id`,
+  `body_id`) с сохранёнными именами связей `engine`/`transmission`/`body`.
 
-Связь Trim → Body — N:1 (один Body может встречаться у нескольких Trim), что подтверждено владельцем как корректное бизнес-правило (один и тот же кузов может предлагаться в разных комплектациях).
+Связь Trim → Body — N:1 (один кузов может встречаться у нескольких комплектаций),
+подтверждено владельцем как корректное бизнес-правило.
 
 ### 5.3. Подграф «Экземпляры» — Vehicle / Spec / UserVehicle / Group
 

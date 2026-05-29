@@ -130,6 +130,24 @@ class ImportObjectsFromCSVBase:
 		return await database.session_fetch_all(self.session, select(model))
 
 
+class ImportJTINodesFromCSVBase(ImportObjectsFromCSVBase):
+	"""
+	Базовый класс импорта JTI-узлов (``VehicleNode`` и его деталей).
+
+	Для Joined Table Inheritance запись должна попасть и в базовую таблицу
+	``vehicle_node`` (id + node_type), и в таблицу-деталь. Core-``insert`` из
+	базового класса этого не делает (он пишет в одну таблицу). Поэтому здесь
+	используется ORM ``session.add_all`` — SQLAlchemy сам заполняет обе таблицы
+	и проставляет ``node_type`` из ``polymorphic_identity``.
+	"""
+
+	async def bulk_insert(self, instances: list[dict], batch_size: int = 500) -> None:
+		for i in range(0, len(instances), batch_size):
+			batch = instances[i : i + batch_size]
+			self.session.add_all([self.model(**data) for data in batch])
+			await self.session.flush()
+
+
 class ImportObjectsFromCsvWithGenerateCode(ImportObjectsFromCSVBase):
 	"""
 	Класс для объектов, содержащих поле code (наследующихся от CodeModelMixin)

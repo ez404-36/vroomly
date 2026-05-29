@@ -3,10 +3,10 @@ from decimal import Decimal
 from sqlalchemy import Numeric, SmallInteger, String
 from sqlalchemy.orm import Mapped, mapped_column
 
-from apps.vehicles.models.car.car_body import get_car_body_link_mixin
-from apps.vehicles.models.car.car_transmission import get_car_transmission_link_mixin
+from apps.vehicles.models.node.body_node import get_car_body_link_mixin
+from apps.vehicles.models.node.engine_node import get_engine_link_mixin
+from apps.vehicles.models.node.transmission_node import get_car_transmission_link_mixin
 from apps.vehicles.models.vehicle.abstract.vehicle_trim import VehicleTrimAbstract
-from apps.vehicles.models.vehicle.vehicle_engine import get_engine_link_mixin
 from apps.vehicles.models.vehicle.vehicle_generation import get_vehicle_generation_link_mixin
 from common.models.fields.foreign_key_to import PostgresOnDeleteFK
 from common.models.mixins.relations import get_foreign_key_mixin

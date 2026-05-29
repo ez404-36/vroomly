@@ -2,16 +2,16 @@ from typing import TYPE_CHECKING
 
 from sqlalchemy import UniqueConstraint
 
-from apps.vehicles.models.motorcycle.motorcycle_transmission import get_motorcycle_transmission_link_mixin
 from apps.vehicles.models.motorcycle.motorcycle_trim import get_motorcycle_trim_link_mixin
+from apps.vehicles.models.node.engine_node import get_engine_link_mixin
+from apps.vehicles.models.node.transmission_node import get_motorcycle_transmission_link_mixin
 from apps.vehicles.models.utils import SpecBackRefs
 from apps.vehicles.models.vehicle.vehicle import get_vehicle_link_mixin
-from apps.vehicles.models.vehicle.vehicle_engine import get_engine_link_mixin
 from core.models import AutoSchemaBase
 
 if TYPE_CHECKING:
-	from apps.vehicles.models.motorcycle.motorcycle_transmission import MotorcycleTransmission
-	from apps.vehicles.models.vehicle.vehicle_engine import VehicleEngine
+	from apps.vehicles.models.node.engine_node import EngineNode
+	from apps.vehicles.models.node.transmission_node import MotorcycleTransmissionNode
 
 
 class MotorcycleSpec(
@@ -32,11 +32,11 @@ class MotorcycleSpec(
 	__table_args__ = (UniqueConstraint('vehicle_id', name='motorcycle_spec_vehicle_id_unique'),)
 
 	@property
-	def effective_engine(self) -> 'VehicleEngine':
+	def effective_engine(self) -> 'EngineNode':
 		"""Фактический двигатель экземпляра (свап или из trim)."""
 		return self.engine if self.engine_id is not None else self.trim.engine
 
 	@property
-	def effective_transmission(self) -> 'MotorcycleTransmission':
+	def effective_transmission(self) -> 'MotorcycleTransmissionNode':
 		"""Фактическая КПП экземпляра (свап или из trim)."""
 		return self.transmission if self.transmission_id is not None else self.trim.transmission

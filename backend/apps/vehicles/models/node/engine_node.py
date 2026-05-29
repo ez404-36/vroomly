@@ -1,25 +1,33 @@
 from sqlalchemy import CheckConstraint, Index, SmallInteger, String, text
 from sqlalchemy.orm import Mapped, mapped_column
 
-from apps.vehicles.models.vehicle.enums import VehicleEngineGRMType, VehicleEnginePhaseRegulatorType, VehicleEngineType
+from apps.vehicles.models.node.base import VehicleNodeDetailMixin
+from apps.vehicles.models.node.vehicle_node import VehicleNode
+from apps.vehicles.models.vehicle.enums import VehicleEngineGRMType, VehicleEngineType
 from apps.vehicles.models.vehicle.vehicle_brand import get_vehicle_brand_link_mixin
 from apps.vehicles.models.vehicle.vehicle_concern import get_vehicle_concern_link_mixin
 from apps.vehicles.models.vehicle.vehicle_engine_phase_regulator_system import get_phase_regulator_system_mixin
 from common.models import IntEnumType, IntFlagType
 from common.models.fields.foreign_key_to import PostgresOnDeleteFK
 from common.models.mixins.relations import get_foreign_key_mixin
-from core.models import AutoSchemaBase
 
 
-class VehicleEngine(
-	AutoSchemaBase,
+class EngineNode(
+	VehicleNodeDetailMixin,
+	VehicleNode,
 	get_vehicle_brand_link_mixin(back_populates='engines', nullable=True, on_delete='SET NULL'),
 	get_vehicle_concern_link_mixin(back_populates='engines', nullable=True, on_delete='SET NULL'),
 	get_phase_regulator_system_mixin(back_populates='engines', nullable=True, on_delete='SET NULL'),
 ):
 	"""
-	Модель "Двигатель ТС"
+	Двигатель ТС как узел (деталь JTI ``VehicleNode``).
+
+	Название двигателя, технические характеристики, принадлежность бренду/концерну
+	и связь с системой фазорегулирования (явный FK ``phase_regulator_system_id``)
+	живут здесь. Базовый ``VehicleNode`` хранит только ``node_type``.
 	"""
+
+	__mapper_args__ = {'polymorphic_identity': 'engine'}
 
 	name: Mapped[str] = mapped_column(String(50), doc='Название двигателя')
 	volume: Mapped[int] = mapped_column(SmallInteger, doc='Рабочий объём (сс)')
@@ -29,23 +37,18 @@ class VehicleEngine(
 	cylinders: Mapped[int | None] = mapped_column(SmallInteger, doc='Кол-во цилиндров')
 	valves: Mapped[int | None] = mapped_column(SmallInteger, doc='Кол-во клапанов')
 	torque: Mapped[int | None] = mapped_column(SmallInteger, doc='Крутящий момент двигателя (Нм)')
-	# TODO: Привод может быть цепь + ремень, 2 ремня, 2 ремня + цепь, 2 цепи у ремень.
-	#  Надо наверно добавить отдельно поля с кол-вом ремней и отдельно с кол-вом цепей
 	grm_drive_type: Mapped[VehicleEngineGRMType] = mapped_column(
 		IntEnumType(VehicleEngineGRMType),
 		doc='Тип привода ГРМ',
-	)
-	phase_regulator_type: Mapped[VehicleEnginePhaseRegulatorType | None] = mapped_column(
-		IntEnumType(VehicleEnginePhaseRegulatorType), doc='Фазорегулятор'
 	)
 
 	__table_args__ = (
 		CheckConstraint(
 			'brand_id IS NOT NULL OR concern_id IS NOT NULL',
-			name='vehicle_engine_brand_or_concern_required',
+			name='engine_node_brand_or_concern_required',
 		),
 		Index(
-			'vehicle_engine_brand_name_volume_power_unique',
+			'engine_node_brand_name_volume_power_unique',
 			'brand_id',
 			'name',
 			'volume',
@@ -54,7 +57,7 @@ class VehicleEngine(
 			postgresql_where=text('brand_id IS NOT NULL'),
 		),
 		Index(
-			'vehicle_engine_concern_name_volume_power_unique',
+			'engine_node_concern_name_volume_power_unique',
 			'concern_id',
 			'name',
 			'volume',
@@ -72,12 +75,12 @@ def get_engine_link_mixin(
 	on_delete: PostgresOnDeleteFK = 'CASCADE',
 ):
 	"""
-	Миксин связи с двигателем ТС.
+	Миксин связи с двигателем-узлом (``EngineNode``).
 
 	Параметр ``on_delete`` обязательно передавать ``'SET NULL'`` для nullable-связей.
 	"""
 	return get_foreign_key_mixin(
-		VehicleEngine,
+		EngineNode,
 		'engine',
 		back_populates=back_populates,
 		nullable=nullable,

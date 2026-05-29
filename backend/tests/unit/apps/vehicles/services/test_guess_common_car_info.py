@@ -8,13 +8,13 @@ from uuid import UUID, uuid4
 
 import pytest
 
-from apps.vehicles.models.car.car_body import CarBody
-from apps.vehicles.models.car.car_transmission import CarTransmission
 from apps.vehicles.models.car.car_trim import CarTrim
 from apps.vehicles.models.car.enums import CarBodyType, CarDriveType
+from apps.vehicles.models.node.body_node import CarBodyNode
+from apps.vehicles.models.node.engine_node import EngineNode
+from apps.vehicles.models.node.transmission_node import CarTransmissionNode
 from apps.vehicles.models.vehicle.enums import VehicleEngineType, VehicleTransmissionType
 from apps.vehicles.models.vehicle.vehicle_brand import VehicleBrand
-from apps.vehicles.models.vehicle.vehicle_engine import VehicleEngine
 from apps.vehicles.models.vehicle.vehicle_generation import VehicleGeneration
 from apps.vehicles.models.vehicle.vehicle_series import VehicleSeries
 from apps.vehicles.services.guess_common_car_info import (
@@ -261,7 +261,7 @@ def _make_generation(name: str) -> Any:
 
 
 def _make_engine(name: str, volume: int, power: int, engine_type: VehicleEngineType, torque: int | None) -> Any:
-	stub = MagicMock(spec=VehicleEngine)
+	stub = MagicMock(spec=EngineNode)
 	stub.id = uuid4()
 	stub.name = name
 	stub.volume = volume
@@ -277,7 +277,7 @@ def _make_transmission(
 	gears: int,
 	drive_types: list[CarDriveType],
 ) -> Any:
-	stub = MagicMock(spec=CarTransmission)
+	stub = MagicMock(spec=CarTransmissionNode)
 	stub.id = uuid4()
 	stub.name = name
 	stub.type = transmission_type
@@ -287,7 +287,7 @@ def _make_transmission(
 
 
 def _make_body(body_type: CarBodyType) -> Any:
-	stub = MagicMock(spec=CarBody)
+	stub = MagicMock(spec=CarBodyNode)
 	stub.id = uuid4()
 	stub.type = body_type
 	return stub

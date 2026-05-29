@@ -14,7 +14,7 @@ def find_first_number_in_text(text: str) -> int | None:
 
 
 async def create_from_pkl_file(pkl_file: str | Path):
-	"""Создаёт ``VehicleEngine`` и ``CarTransmission`` из заранее запарсенного pkl."""
+	"""Создаёт ``EngineNode`` и ``CarTransmissionNode`` из заранее запарсенного pkl."""
 	with open(pkl_file, 'rb') as f_obj:
 		data = pickle.load(f_obj)
 

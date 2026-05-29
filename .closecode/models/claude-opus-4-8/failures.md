@@ -19,6 +19,24 @@
 - **Context:** `make codegen` fetches `${BACKEND_URL}/openapi.json` over HTTP. First run failed `ECONNREFUSED` right after the backend container was recreated.
 - **Rule:** Before `make codegen`, ensure the backend container is Up and "Application startup complete"; retry once if it was just (re)started. `schema-types.ts` is hand-maintained — add new aliases manually; only `schemas.ts` is generated.
 
+### JTI + AutoSchemaBase: get_table_name must read cls.__dict__, not inherited __tablename__
+- **Date:** Fri May 29 2026
+- **Context:** Implementing Joined Table Inheritance (VehicleNode root + EngineNode detail). configure_mappers() failed: "Table 'vehicles.vehicle_node' is already defined".
+- **Wrong approach:** Assuming JTI subclasses auto-get their own tablename. `AutoSchemaBase.get_table_name` used `getattr(cls, '__tablename__', None)`, which returns the PARENT's inherited `__tablename__`, so the child tried to redefine the parent table.
+- **Correct approach:** Use `cls.__dict__.get('__tablename__')` so only an explicitly-set-on-this-class tablename is honored. JTI child `id` must be redefined as `mapped_column(UUID, ForeignKeyTo(parent,'CASCADE'), primary_key=True)` via a mixin. Cross-table unique constraints are impossible in JTI — keep ALL natural-key columns (name, brand_id, volume...) on the DETAIL table; the base node holds only the discriminator (node_type) + id.
+- **Rule:** For JTI under AutoSchemaBase: detail tables own all data + natural keys; base = node_type + id only. Validate every incremental model with `docker compose run --rm backend-build python -c "...; configure_mappers()"` before moving on.
+
+### JTI seed import: Core insert() writes one table; use ORM add_all for both
+- **Date:** Fri May 29 2026
+- **Context:** Phase 4 — seeding EngineNode/CarTransmissionNode (JTI). Base CSV importer used `insert(self.model).values(batch)` (Core), which writes only the detail table, leaving `vehicle_node` (base) empty → broken JTI rows.
+- **Correct approach:** Added `ImportJTINodesFromCSVBase` overriding `bulk_insert` with ORM `session.add_all([self.model(**data) ...]); await session.flush()`. SQLAlchemy then populates BOTH `vehicle_node` (id + node_type from polymorphic_identity) and the detail table. CSV must include `id`. Regenerate seed CSVs from migrated DB via `\copy (SELECT <detail cols incl id>) TO STDOUT WITH CSV HEADER`.
+- **Rule:** For JTI seeding never use Core `insert()`; use ORM `add_all`. node_type is auto-filled from polymorphic_identity — don't put it in CSV.
+
+### replaceAll on a class name can corrupt its own import line
+- **Date:** Fri May 29 2026
+- **Context:** Renaming `CarTransmission`→`CarTransmissionNode` via Edit replaceAll across a file ALSO matched the substring inside the freshly-added `from ...transmission_node import CarTransmissionNode` import, mangling/duplicating it (F821 undefined name).
+- **Rule:** When using replaceAll for a rename, do the import-line edit LAST, or verify imports with grep after; prefer renaming via distinct full-qualified edits when the new name contains the old as a substring.
+
 ### Frontend has no test infra by default; full-project eslint OOMs in container
 - **Date:** Fri May 29 2026
 - **Context:** No Vitest/RTL was installed pre-Phase I. Also `npm run lint` (eslint .) over the whole project times out / OOMs in the frontend container.

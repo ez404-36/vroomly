@@ -3,16 +3,16 @@ from typing import TYPE_CHECKING
 from sqlalchemy import String, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column
 
-from apps.vehicles.models.car.car_transmission import get_car_transmission_link_mixin
 from apps.vehicles.models.car.car_trim import get_car_trim_link_mixin
+from apps.vehicles.models.node.engine_node import get_engine_link_mixin
+from apps.vehicles.models.node.transmission_node import get_car_transmission_link_mixin
 from apps.vehicles.models.utils import SpecBackRefs
 from apps.vehicles.models.vehicle.vehicle import get_vehicle_link_mixin
-from apps.vehicles.models.vehicle.vehicle_engine import get_engine_link_mixin
 from core.models import AutoSchemaBase
 
 if TYPE_CHECKING:
-	from apps.vehicles.models.car.car_transmission import CarTransmission
-	from apps.vehicles.models.vehicle.vehicle_engine import VehicleEngine
+	from apps.vehicles.models.node.engine_node import EngineNode
+	from apps.vehicles.models.node.transmission_node import CarTransmissionNode
 
 
 class CarSpec(
@@ -49,7 +49,7 @@ class CarSpec(
 	)
 
 	@property
-	def effective_engine(self) -> 'VehicleEngine':
+	def effective_engine(self) -> 'EngineNode':
 		"""
 		Фактический двигатель экземпляра.
 
@@ -59,7 +59,7 @@ class CarSpec(
 		return self.engine if self.engine_id is not None else self.trim.engine
 
 	@property
-	def effective_transmission(self) -> 'CarTransmission':
+	def effective_transmission(self) -> 'CarTransmissionNode':
 		"""
 		Фактическая КПП экземпляра.
 

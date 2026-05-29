@@ -44,47 +44,54 @@ class OtobaRuEngineValueTransformer(OtobaRuValueBaseTransformer):
 	async def parse_phase_regulator(self, value: str):
 		"""
 		Данные о фазорегуляторе.
-		Если на найдено значение из enum, возвращается значение для phase_regulator_str
+
+		У ``EngineNode`` больше нет поля ``phase_regulator_type`` (тип хранится на
+		самой системе фазорегулирования ``VehicleEnginePhaseRegulatorSystem``).
+		Поэтому здесь резолвится только ссылка ``phase_regulator_system_id`` на
+		конкретную систему; «голый» тип регулятора, не привязанный к системе,
+		больше не сохраняется на двигателе.
 		"""
 		output = {}
 
-		if system_regular_type := phase_regulator_mapper.get(value.lower()):
-			output['phase_regulator_type'] = system_regular_type
-		else:
-			as_bool = self.to_bool(value)
-			if as_bool is None:
-				value = value.removeprefix('на впуске ').replace('Dual ', 'D').replace('dual ', 'D')
+		if phase_regulator_mapper.get(value.lower()):
+			# Известен только обобщённый тип регулятора без конкретной системы —
+			# хранить его на двигателе негде, пропускаем.
+			return output
 
-				code = phase_regulator_system_mapper.get(value, generate_code(value))
+		as_bool = self.to_bool(value)
+		if as_bool is None:
+			value = value.removeprefix('на впуске ').replace('Dual ', 'D').replace('dual ', 'D')
 
-				phase_regulator_system = await database.fetch_one(
+			code = phase_regulator_system_mapper.get(value, generate_code(value))
+
+			phase_regulator_system = await database.fetch_one(
+				select(VehicleEnginePhaseRegulatorSystem).where(
+					and_(
+						or_(
+							VehicleEnginePhaseRegulatorSystem.code == code,
+							VehicleEnginePhaseRegulatorSystem.code == value,
+						),
+						self.brand_or_concern_condition(VehicleEnginePhaseRegulatorSystem),
+					)
+				)
+			)
+
+			if phase_regulator_system:
+				output['phase_regulator_system_id'] = phase_regulator_system.id
+			else:
+				# Пытаемся найти регулятор фаз с таким же названием у другого Бренда
+				other_brand_phase_regulator_system = await database.fetch_first(
 					select(VehicleEnginePhaseRegulatorSystem).where(
-						and_(
-							or_(
-								VehicleEnginePhaseRegulatorSystem.code == code,
-								VehicleEnginePhaseRegulatorSystem.code == value,
-							),
-							self.brand_or_concern_condition(VehicleEnginePhaseRegulatorSystem),
+						or_(
+							VehicleEnginePhaseRegulatorSystem.code == code,
+							VehicleEnginePhaseRegulatorSystem.code == value,
 						)
 					)
 				)
-
-				if phase_regulator_system:
-					output['phase_regulator_system_id'] = phase_regulator_system.id
+				if other_brand_phase_regulator_system:
+					output['phase_regulator_system_id'] = other_brand_phase_regulator_system.id
 				else:
-					# Пытаемся найти регулятор фаз с таким же названием у другого Бренда
-					other_brand_phase_regulator_system = await database.fetch_first(
-						select(VehicleEnginePhaseRegulatorSystem).where(
-							or_(
-								VehicleEnginePhaseRegulatorSystem.code == code,
-								VehicleEnginePhaseRegulatorSystem.code == value,
-							)
-						)
-					)
-					if other_brand_phase_regulator_system:
-						output['phase_regulator_system_id'] = other_brand_phase_regulator_system.id
-					else:
-						logger.warning(f'Не опознан тип регулирования фаз странице {self.page_uri}: {value}')
+					logger.warning(f'Не опознан тип регулирования фаз странице {self.page_uri}: {value}')
 
 		return output
 

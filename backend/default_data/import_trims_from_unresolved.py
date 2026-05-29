@@ -41,10 +41,10 @@ from typing import Any
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from apps.vehicles.models.car.car_transmission import CarTransmission
 from apps.vehicles.models.car.car_trim import CarTrim
+from apps.vehicles.models.node.engine_node import EngineNode
+from apps.vehicles.models.node.transmission_node import CarTransmissionNode
 from apps.vehicles.models.vehicle.vehicle_brand import VehicleBrand
-from apps.vehicles.models.vehicle.vehicle_engine import VehicleEngine
 from apps.vehicles.models.vehicle.vehicle_generation import VehicleGeneration
 from apps.vehicles.models.vehicle.vehicle_series import VehicleSeries
 from core.db import database
@@ -80,10 +80,10 @@ class _NodeIndex:
 		# натуральный ключ generation -> уже существующая запись
 		self.generation_by_key: dict[tuple[uuid.UUID, str, bool], VehicleGeneration] = {}
 
-		self.engine_by_brand: dict[tuple[uuid.UUID, str], VehicleEngine] = {}
-		self.engine_by_concern: dict[tuple[uuid.UUID, str], VehicleEngine] = {}
-		self.transmission_by_brand: dict[tuple[uuid.UUID, str], CarTransmission] = {}
-		self.transmission_by_concern: dict[tuple[uuid.UUID, str], CarTransmission] = {}
+		self.engine_by_brand: dict[tuple[uuid.UUID, str], EngineNode] = {}
+		self.engine_by_concern: dict[tuple[uuid.UUID, str], EngineNode] = {}
+		self.transmission_by_brand: dict[tuple[uuid.UUID, str], CarTransmissionNode] = {}
+		self.transmission_by_concern: dict[tuple[uuid.UUID, str], CarTransmissionNode] = {}
 
 		# Существующие CarTrim'ы — для дедупликации.
 		# Ключ — (generation_id, engine_id, transmission_id, name, body_str)
@@ -101,7 +101,7 @@ class _NodeIndex:
 		for gen in generations:
 			self.generation_by_key[(gen.series_id, gen.name, gen.is_restyling)] = gen
 
-		engines = (await session.execute(select(VehicleEngine))).scalars().all()
+		engines = (await session.execute(select(EngineNode))).scalars().all()
 		for engine in engines:
 			if engine.brand_id is not None:
 				self.engine_by_brand.setdefault((engine.brand_id, engine.name), engine)
@@ -111,7 +111,7 @@ class _NodeIndex:
 					engine,
 				)
 
-		transmissions = (await session.execute(select(CarTransmission))).scalars().all()
+		transmissions = (await session.execute(select(CarTransmissionNode))).scalars().all()
 		for transmission in transmissions:
 			if transmission.brand_id is not None:
 				self.transmission_by_brand.setdefault(
@@ -150,7 +150,7 @@ class _NodeIndex:
 		self,
 		brand: VehicleBrand,
 		candidates: list[str],
-	) -> VehicleEngine | None:
+	) -> EngineNode | None:
 		for name in candidates:
 			engine = self.engine_by_brand.get((brand.id, name))
 			if engine is not None:
@@ -165,7 +165,7 @@ class _NodeIndex:
 		self,
 		brand: VehicleBrand,
 		candidates: list[str],
-	) -> CarTransmission | None:
+	) -> CarTransmissionNode | None:
 		for name in candidates:
 			transmission = self.transmission_by_brand.get((brand.id, name))
 			if transmission is not None:

@@ -47,20 +47,27 @@ def load_all_models() -> tuple[set[str], list[str]]:
 						):
 							obj = getattr(models_file_module, name)
 
+							# Учитываем только модели, ОПРЕДЕЛЁННЫЕ в этом модуле, а не
+							# импортированные в его пространство имён. Иначе реэкспортированный
+							# символ (например, базовый VehicleNode, импортируемый в каждый
+							# модуль-деталь JTI) ложно считается повторной загрузкой.
+							if (
+								not isinstance(obj, type)
+								or not issubclass(obj, base)
+								or obj is base
+								or name.endswith('Abstract')
+								or obj.__module__ != models_file_module.__name__
+							):
+								continue
+
 							if name in loaded_models:
 								errors.append(
 									f'Model {name} already loaded before (current path: {models_file_module})'
 								)
 								continue
 
-							if (
-								isinstance(obj, type)
-								and issubclass(obj, base)
-								and obj is not base
-								and not name.endswith('Abstract')
-							):
-								obj.metadata  # Регистрируем модель
-								loaded_models.add(name)
+							obj.metadata  # Регистрируем модель
+							loaded_models.add(name)
 					except ImportError as e:
 						logger.warning(f'Предупреждение: Не удалось загрузить модели для сервиса {service_name}: {e}')
 						continue

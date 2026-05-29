@@ -10,19 +10,19 @@ from curl_cffi.requests.exceptions import Timeout as CurlTimeout
 from sqlalchemy import and_, or_, select
 from typing_inspect import get_args
 
-from apps.vehicles.models.car.car_transmission import CarTransmission
 from apps.vehicles.models.car.car_trim import CarTrim
+from apps.vehicles.models.node.engine_node import EngineNode
+from apps.vehicles.models.node.transmission_node import CarTransmissionNode
 from apps.vehicles.models.vehicle.vehicle_brand import VehicleBrand
 from apps.vehicles.models.vehicle.vehicle_concern import VehicleConcern
-from apps.vehicles.models.vehicle.vehicle_engine import VehicleEngine
 from apps.vehicles.models.vehicle.vehicle_generation import VehicleGeneration
 from apps.vehicles.models.vehicle.vehicle_series import VehicleSeries
 from common.providers.llm.lm_studio import LMStudioProvider
 from common.utils.generators import generate_code
 from core.constants import BACKEND_DIR
 from core.db import database
-from default_data.parsers.html_parsers.otoba.prompts import parse_vehicle_generation_prompt
 from default_data.parsers.html_parsers.otoba.domains import VehicleNodeType
+from default_data.parsers.html_parsers.otoba.prompts import parse_vehicle_generation_prompt
 from default_data.parsers.html_parsers.otoba.value_transformers.engine import OtobaRuEngineValueTransformer
 from default_data.parsers.html_parsers.otoba.value_transformers.generation import OtobaRuGenerationValueTransformer
 from default_data.parsers.html_parsers.otoba.value_transformers.transmission import OtobaRuTransmissionValueTransformer
@@ -448,11 +448,11 @@ class OtobaRuHtmlParser:
 		base_name = last_breadcrumb.text.strip()
 
 		if vehicle_node_type == 'engine':
-			model = VehicleEngine
+			model = EngineNode
 			parsed_data_key = 'engines'
 			transform_class = OtobaRuEngineValueTransformer
 		else:
-			model = CarTransmission
+			model = CarTransmissionNode
 			parsed_data_key = 'transmissions'
 			transform_class = OtobaRuTransmissionValueTransformer
 

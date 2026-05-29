@@ -48,10 +48,10 @@ from typing import Any
 from sqlalchemy import delete, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from apps.vehicles.models.car.car_transmission import CarTransmission
 from apps.vehicles.models.car.car_trim import CarTrim
+from apps.vehicles.models.node.engine_node import EngineNode
+from apps.vehicles.models.node.transmission_node import CarTransmissionNode
 from apps.vehicles.models.vehicle.vehicle_brand import VehicleBrand
-from apps.vehicles.models.vehicle.vehicle_engine import VehicleEngine
 from apps.vehicles.models.vehicle.vehicle_generation import VehicleGeneration
 from apps.vehicles.models.vehicle.vehicle_series import VehicleSeries
 from common.utils.generators import generate_code
@@ -201,11 +201,11 @@ class CarTrimBuilder:
 		self._brand_by_code: dict[str, VehicleBrand] = {}
 		# (brand_id, series_name_lower) -> VehicleSeries
 		self._series_by_brand_name: dict[tuple[uuid.UUID, str], VehicleSeries] = {}
-		# (engine_name, brand_id|None, concern_id|None) -> VehicleEngine
-		self._engines_by_brand: dict[tuple[uuid.UUID, str], VehicleEngine] = {}
-		self._engines_by_concern: dict[tuple[uuid.UUID, str], VehicleEngine] = {}
-		self._transmissions_by_brand: dict[tuple[uuid.UUID, str], CarTransmission] = {}
-		self._transmissions_by_concern: dict[tuple[uuid.UUID, str], CarTransmission] = {}
+		# (engine_name, brand_id|None, concern_id|None) -> EngineNode
+		self._engines_by_brand: dict[tuple[uuid.UUID, str], EngineNode] = {}
+		self._engines_by_concern: dict[tuple[uuid.UUID, str], EngineNode] = {}
+		self._transmissions_by_brand: dict[tuple[uuid.UUID, str], CarTransmissionNode] = {}
+		self._transmissions_by_concern: dict[tuple[uuid.UUID, str], CarTransmissionNode] = {}
 
 		self.generations: list[VehicleGeneration] = []
 		# дедуп по (series_id, name, is_restyling) — уникальный констрейнт в БД
@@ -231,14 +231,14 @@ class CarTrimBuilder:
 		for series in series_list:
 			self._series_by_brand_name[(series.brand_id, series.name.lower())] = series
 
-		engines = (await self.session.execute(select(VehicleEngine))).scalars().all()
+		engines = (await self.session.execute(select(EngineNode))).scalars().all()
 		for engine in engines:
 			if engine.brand_id is not None:
 				self._engines_by_brand.setdefault((engine.brand_id, engine.name), engine)
 			if engine.concern_id is not None:
 				self._engines_by_concern.setdefault((engine.concern_id, engine.name), engine)
 
-		transmissions = (await self.session.execute(select(CarTransmission))).scalars().all()
+		transmissions = (await self.session.execute(select(CarTransmissionNode))).scalars().all()
 		for transmission in transmissions:
 			if transmission.brand_id is not None:
 				self._transmissions_by_brand.setdefault(
@@ -278,7 +278,7 @@ class CarTrimBuilder:
 		self,
 		brand: VehicleBrand,
 		candidates: list[str],
-	) -> VehicleEngine | None:
+	) -> EngineNode | None:
 		for name in candidates:
 			# Сначала пытаемся найти в рамках бренда, затем — в рамках концерна.
 			engine = self._engines_by_brand.get((brand.id, name))
@@ -294,7 +294,7 @@ class CarTrimBuilder:
 		self,
 		brand: VehicleBrand,
 		candidates: list[str],
-	) -> CarTransmission | None:
+	) -> CarTransmissionNode | None:
 		for name in candidates:
 			transmission = self._transmissions_by_brand.get((brand.id, name))
 			if transmission is not None:

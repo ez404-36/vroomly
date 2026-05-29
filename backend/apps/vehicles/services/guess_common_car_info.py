@@ -6,13 +6,13 @@ from sqlalchemy import ColumnElement, and_, between, func, select
 from sqlalchemy.orm import InstrumentedAttribute, selectinload
 
 from apps.vehicles.integrations.car_info_by_vin.schema import CarInfoByVinDataSchema
-from apps.vehicles.models.car.car_body import CarBody
-from apps.vehicles.models.car.car_transmission import CarTransmission
 from apps.vehicles.models.car.car_trim import CarTrim
 from apps.vehicles.models.car.enums import CarBodyType, CarDriveType
+from apps.vehicles.models.node.body_node import CarBodyNode
+from apps.vehicles.models.node.engine_node import EngineNode
+from apps.vehicles.models.node.transmission_node import CarTransmissionNode
 from apps.vehicles.models.vehicle.enums import VehicleEngineType, VehicleTransmissionType
 from apps.vehicles.models.vehicle.vehicle_brand import VehicleBrand
-from apps.vehicles.models.vehicle.vehicle_engine import VehicleEngine
 from apps.vehicles.models.vehicle.vehicle_generation import VehicleGeneration
 from apps.vehicles.models.vehicle.vehicle_series import VehicleSeries
 from common.providers.translators.main import Translator
@@ -158,9 +158,9 @@ class GuessCommonCarInfo:
 		готовую человекочитаемую строку ``description`` для опции селектора,
 		например: ``1.6 (110 л.с.) Бензин · АКПП 6 · Передний · Седан``.
 		"""
-		engine: VehicleEngine | None = trim.engine
-		transmission: CarTransmission | None = trim.transmission
-		body: CarBody | None = trim.body
+		engine: EngineNode | None = trim.engine
+		transmission: CarTransmissionNode | None = trim.transmission
+		body: CarBodyNode | None = trim.body
 
 		engine_type_label = _engine_type_label(engine.type) if engine is not None else None
 		transmission_type_label = (

@@ -51,9 +51,15 @@ class AutoSchemaBase(Base):
 		"""
 		Преобразует имя класса в имя таблицы в БД (если не задано внутри класса) по принципу:
 		CamelCase в snake_case
+
+		Учитывается только ``__tablename__``, заданный непосредственно на этом классе
+		(``cls.__dict__``), а не унаследованный от родителя. Это критично для
+		Joined Table Inheritance: подкласс-деталь (например, ``EngineNode``) не должен
+		переиспользовать ``__tablename__`` родителя (``VehicleNode``), иначе SQLAlchemy
+		попытается переопределить уже существующую таблицу родителя.
 		"""
 
-		if existing_table_name := getattr(cls, '__tablename__', None):
+		if existing_table_name := cls.__dict__.get('__tablename__'):
 			return existing_table_name
 
 		pattern = r'(?<!^)(?=[A-Z])'

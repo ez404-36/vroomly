@@ -1,12 +1,18 @@
+from __future__ import annotations
+
 from datetime import datetime
+from typing import TYPE_CHECKING
 
 from sqlalchemy import Boolean, DateTime, String
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from apps.accounts.models.user import get_user_link_mixin
 from apps.vehicles.models.vehicle.user_vehicle import get_user_vehicle_link_mixin
 from common.models import TimestampedModelMixin
 from core.models import AutoSchemaBase
+
+if TYPE_CHECKING:
+	from apps.vehicles.models.node.user_vehicle_node import UserVehicleNode
 
 
 class VehicleReminder(
@@ -22,6 +28,9 @@ class VehicleReminder(
 	напоминания, опциональные дату/время выполнения и статус выполнения.
 	Выполненные напоминания остаются в таблице (``is_completed`` +
 	``completed_at``) и формируют историю.
+
+	Может быть связано с несколькими узлами ТС (``UserVehicleNode``) через
+	M:N ``reminder_node_link`` — например, «всё, что связано с двигателем».
 	"""
 
 	title: Mapped[str] = mapped_column(String(100), doc='Суть напоминания')
@@ -45,4 +54,11 @@ class VehicleReminder(
 		DateTime(timezone=True),
 		nullable=True,
 		doc='Дата/время отметки о выполнении',
+	)
+
+	nodes: Mapped[list[UserVehicleNode]] = relationship(
+		'UserVehicleNode',
+		secondary='vehicles.reminder_node_link',
+		back_populates='reminders',
+		lazy='select',
 	)

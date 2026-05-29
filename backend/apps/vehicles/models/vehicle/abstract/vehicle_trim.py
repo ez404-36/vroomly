@@ -15,7 +15,7 @@ class VehicleTrimAbstract(
 
 	Связь с двигателем (engine_id) выносится в конкретные подклассы
 	(CarTrim, MotorcycleTrim), чтобы backref-имена не пересекались
-	на одной таблице VehicleEngine.
+	на одной таблице EngineNode.
 	"""
 
 	__abstract__ = True

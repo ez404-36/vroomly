@@ -43,24 +43,134 @@
 
 ```mermaid
 erDiagram
-    VehicleNode ||--o| EngineNode : "JTI node_type=engine"
-    VehicleNode ||--o| CarTransmissionNode : "JTI"
-    VehicleNode ||--o| MotorcycleTransmissionNode : "JTI"
-    VehicleNode ||--o| CarBodyNode : "JTI"
-    VehicleNode ||--o| MotorcycleBodyNode : "JTI"
+    VEHICLE_NODE {
+        uuid id PK
+        string node_type "JTI-дискриминатор"
+    }
+    ENGINE_NODE {
+        uuid id PK "FK→vehicle_node.id CASCADE"
+        string name
+        smallint volume
+        smallint power
+        int type "VehicleEngineType (flag)"
+        string eco_class "nullable"
+        smallint cylinders "nullable"
+        smallint valves "nullable"
+        smallint torque "nullable"
+        int grm_drive_type
+        uuid brand_id "nullable, SET NULL"
+        uuid concern_id "nullable, SET NULL"
+        uuid phase_regulator_system_id "nullable, SET NULL"
+    }
+    CAR_TRANSMISSION_NODE {
+        uuid id PK "FK→vehicle_node.id CASCADE"
+        string name
+        string index "nullable"
+        int type
+        smallint gears
+        int_array drive_types
+        smallint torque "nullable"
+        uuid brand_id "nullable"
+        uuid concern_id "nullable"
+    }
+    MOTORCYCLE_TRANSMISSION_NODE {
+        uuid id PK "FK→vehicle_node.id CASCADE"
+        string name
+        string index "nullable"
+        int type
+        smallint gears
+        int shift_type
+        bool slipper_clutch
+        uuid brand_id "nullable"
+        uuid concern_id "nullable"
+    }
+    CAR_BODY_NODE {
+        uuid id PK "FK→vehicle_node.id CASCADE"
+        string name "nullable"
+        int material "nullable"
+        int type "CarBodyType"
+        smallint trunk_volume "nullable"
+    }
+    MOTORCYCLE_BODY_NODE {
+        uuid id PK "FK→vehicle_node.id CASCADE"
+        string name "nullable"
+        int material "nullable"
+        int type "MotorcycleBodyType"
+        smallint seat_height "nullable"
+    }
+    PHASE_REGULATOR_SYSTEM {
+        uuid id PK
+        string name
+        int phase_regulator_type "nullable"
+        string code
+        uuid brand_id "nullable"
+        uuid concern_id "nullable"
+    }
+    CAR_TRIM {
+        uuid id PK
+        uuid generation_id FK
+        uuid engine_id FK
+        uuid transmission_id FK
+        uuid body_id "FK nullable, SET NULL"
+    }
+    MOTORCYCLE_TRIM {
+        uuid id PK
+        uuid generation_id FK
+        uuid engine_id FK
+        uuid transmission_id FK
+        uuid body_id FK
+    }
+    CAR_SPEC {
+        uuid id PK
+        uuid vehicle_id FK "UNIQUE"
+        uuid trim_id FK
+        uuid engine_id "FK nullable (свап)"
+        uuid transmission_id "FK nullable (свап)"
+    }
+    USER_VEHICLE {
+        uuid id PK
+        uuid vehicle_id FK
+    }
+    USER_VEHICLE_NODE {
+        uuid id PK
+        uuid user_vehicle_id "FK CASCADE"
+        uuid vehicle_node_id "FK RESTRICT"
+        string notes "nullable"
+    }
+    VEHICLE_REMINDER {
+        uuid id PK
+        uuid user_vehicle_id FK
+    }
+    REMINDER_NODE_LINK {
+        uuid reminder_id PK "FK CASCADE"
+        uuid user_vehicle_node_id PK "FK CASCADE"
+    }
 
-    PhaseRegulatorSystem ||--o{ EngineNode : "phase_regulator_system_id (явный FK, N:1)"
+    VEHICLE_NODE ||--o| ENGINE_NODE : "JTI"
+    VEHICLE_NODE ||--o| CAR_TRANSMISSION_NODE : "JTI"
+    VEHICLE_NODE ||--o| MOTORCYCLE_TRANSMISSION_NODE : "JTI"
+    VEHICLE_NODE ||--o| CAR_BODY_NODE : "JTI"
+    VEHICLE_NODE ||--o| MOTORCYCLE_BODY_NODE : "JTI"
 
-    VehicleGeneration ||--o{ CarTrim : ""
-    EngineNode ||--o{ CarTrim : "engine_id"
-    CarTransmissionNode ||--o{ CarTrim : "transmission_id"
-    CarBodyNode ||--o{ CarTrim : "body_id (nullable)"
+    PHASE_REGULATOR_SYSTEM ||--o{ ENGINE_NODE : "N двигателей → 1 (multi-parent на справочнике)"
 
-    UserVehicle ||--o{ UserVehicleNode : "user_vehicle_id (CASCADE)"
-    VehicleNode ||--o{ UserVehicleNode : "vehicle_node_id (RESTRICT)"
+    ENGINE_NODE ||--o{ CAR_TRIM : "engine_id"
+    CAR_TRANSMISSION_NODE ||--o{ CAR_TRIM : "transmission_id"
+    CAR_BODY_NODE ||--o{ CAR_TRIM : "body_id"
+    ENGINE_NODE ||--o{ MOTORCYCLE_TRIM : "engine_id"
+    MOTORCYCLE_TRANSMISSION_NODE ||--o{ MOTORCYCLE_TRIM : "transmission_id"
+    MOTORCYCLE_BODY_NODE ||--o{ MOTORCYCLE_TRIM : "body_id"
 
-    UserVehicleNode }o--o{ VehicleReminder : "M2M reminder_node_link"
-    UserVehicle ||--o{ VehicleReminder : "user_vehicle_id (как сейчас)"
+    ENGINE_NODE ||--o{ CAR_SPEC : "engine_id (свап)"
+    CAR_TRANSMISSION_NODE ||--o{ CAR_SPEC : "transmission_id (свап)"
+    CAR_TRIM ||--o{ CAR_SPEC : "trim_id"
+
+    USER_VEHICLE ||--o{ USER_VEHICLE_NODE : "user_vehicle_id"
+    VEHICLE_NODE ||--o{ USER_VEHICLE_NODE : "vehicle_node_id"
+
+    USER_VEHICLE_NODE ||--o{ REMINDER_NODE_LINK : "M2M"
+    VEHICLE_REMINDER ||--o{ REMINDER_NODE_LINK : "M2M"
+    USER_VEHICLE ||--o{ VEHICLE_REMINDER : "user_vehicle_id"
 ```
 
 ### Слой 1. `VehicleNode` — справочный якорь (JTI root)
@@ -125,33 +235,43 @@ EngineNode.phase_regulator_system_id → PhaseRegulatorSystem  (N:1)
 
 После каждой фазы — `make lint` (ruff + ty).
 
-### Фаза 1 — Модели
+### Фаза 1 — Модели [ВЫПОЛНЕНО]
 - `VehicleNode` (JTI root) + 5 деталей.
 - `UserVehicleNode`.
 - Новые FK-миксины узлов (`get_engine_link_mixin` и пр. → на `*Node`).
 - Правки `CarTrim`/`MotorcycleTrim`/`CarSpec`/`MotorcycleSpec`.
 - M2M `reminder_node_link` + relationship на `VehicleReminder` и `UserVehicleNode`.
-- Прогон `configure_mappers()` — снять риск совместимости JTI с `AutoSchemaBase.__init_subclass__`.
+- Прогон `configure_mappers()` — риск JTI снят. Корневая правка: `AutoSchemaBase.get_table_name` теперь читает `cls.__dict__` вместо унаследованного `__tablename__`.
 
-### Фаза 2 — Миграция
-- Alembic: create `vehicle_node` + 5 деталей + `user_vehicle_node` + `reminder_node_link`.
-- Drop `vehicle_engine`, `car_transmission`, `motorcycle_transmission`, `car_body`, `motorcycle_body`, `vehicle_engine_phase_regulator_system` (если фазорегулятор переименовывается).
-- `upgrade` / `downgrade` отрабатывают чисто.
+### Фаза 2 — Миграция [ВЫПОЛНЕНО]
+- Миграция `beaf2f8564a1`: create `vehicle_node` + 5 деталей + `user_vehicle_node` + `reminder_node_link`.
+- **Data-migration:** в БД оказались реальные seed-данные (3138 двигателей, 846 КПП, 2662 trim'а), поэтому допущение «данных нет» неверно. Миграция переносит справочные строки в JTI-узлы с сохранением `id` (INSERT...SELECT), затем перенаправляет FK у trim/spec, и только потом удаляет старые таблицы.
+- Drop `vehicle_engine`, `car_transmission`, `motorcycle_transmission`, `car_body`, `motorcycle_body`. Фазорегулятор сохранён как справочник.
+- `upgrade`/`downgrade` проверены, данные сохраняются в обе стороны.
+- Ручные правки автогенерации: убраны ложные `drop_index` для `ix_vehicle_*_trgm` и reminder-индексов; починен `postgresql.ARRAY`; исправлен порядок (data → repoint FK → drop).
 
-### Фаза 3 — Потребители кода
-- `apps/vehicles/services/guess_common_car_info.py` (импорты → `*Node`).
-- `default_data/parsers/html_parsers/otoba/` (parser.py, utils.py, value_transformers/engine.py).
-- API-схемы, если затронуты.
+### Фаза 3 — Потребители кода [ВЫПОЛНЕНО]
+- `apps/vehicles/services/guess_common_car_info.py` (импорты + аннотации → `EngineNode`/`CarTransmissionNode`/`CarBodyNode`; имена связей `engine`/`transmission`/`body` сохранены).
+- `tests/unit/apps/vehicles/services/test_guess_common_car_info.py` (`MagicMock(spec=*Node)`) — 28 тестов зелёные.
+- Поправлена устаревшая doc-ссылка в `vehicle_trim.py`.
+- API-схемы/роутеры узлы не импортируют (проверено — ссылок нет).
+- `otoba`-парсер и importers НЕ трогались — они в `default_data/` (Фаза 4); `ty.toml` их не анализирует, поэтому typecheck зелёный.
+- Гейты: `ruff` + `ty` (весь backend) + целевой тест — зелёные.
 
-### Фаза 4 — Seed / CSV
-- Переписать CSV-импортёры (`car_transmissions.py`, `vehicle_engine.py`, `vehicle_engine_phase_regulator_systems.py`).
-- Переименовать/перегенерировать CSV-файлы под новые таблицы.
-- Обновить `seed_all.py`, `create_car_trims_from_pkl.py`, `import_trims_from_unresolved.py`.
+### Фаза 4 — Seed / CSV [ВЫПОЛНЕНО]
+- Добавлен `ImportJTINodesFromCSVBase` (ORM `add_all` вместо Core `insert`) — для JTI заполняет и `vehicle_node`, и деталь. `node_type` берётся из `polymorphic_identity`.
+- Импортёры `vehicle_engine.py`/`car_transmissions.py` → `EngineNode`/`CarTransmissionNode`, CSV `engine_node.csv`/`car_transmission_node.csv` перегенерированы из мигрированной БД (старые CSV удалены). Фазорегулятор-импортёр не тронут.
+- otoba-парсер (`parser.py`) → `EngineNode`/`CarTransmissionNode`; в `value_transformers/engine.py` убрано присвоение `phase_regulator_type` (поля больше нет на двигателе — резолвится только `phase_regulator_system_id`).
+- `create_car_trims_from_pkl.py` и `import_trims_from_unresolved.py` → node-классы (с починкой импортов после replaceAll).
+- `seed_all.py` — импорты по именам классов, не менялись.
+- Гейты: `make seeds` отработал (3138 EngineNode + 846 CarTransmissionNode + 2662 CarTrim, JTI base заполнен корректно), `ruff` + `ty` зелёные.
 
-### Фаза 5 — Сервис узлов + тесты + codegen
-- Сервис создания `UserVehicleNode` при добавлении ТС в гараж (по заводской комплектации).
-- Тесты: JTI-полиморфизм, переиспользование `PhaseRegulatorSystem` несколькими двигателями, M2M reminder↔node, CHECK brand/concern, unique-индексы, `effective_engine`.
-- `make codegen`, `make lint`, `make tests`.
+### Фаза 5 — Сервис узлов + тесты + codegen [ВЫПОЛНЕНО]
+- `SyncUserVehicleNodes.for_user_vehicle(user_vehicle_id)` — резолвит `UserVehicle → Vehicle → CarSpec`, собирает фактические узлы (двигатель/КПП через `effective_*` со свапом, кузов из `trim.body_id`) и идемпотентно (`insert ... on_conflict_do_nothing` по `user_vehicle_node_unique`) материализует `UserVehicleNode`. trim.engine/transmission грузятся eager (selectinload) под async-fallback `effective_*`.
+- Тесты `test_sync_user_vehicle_nodes.py` (6) — приоритет свапа над trim, кузов из trim, дедуп, пустой результат без spec. Стиль unit-тестов с моками `database` (интеграционной инфры в проекте нет).
+- `make codegen` — успех (схемы сгенерированы).
+- Починен `core/models/loader.py`: дубль-детект теперь по `obj.__module__ == module.__name__` (реэкспорт `VehicleNode` в модули-детали больше не считается повторной загрузкой) — иначе падал `test_load_db_models`.
+- Гейты: `ruff` + `ty` (весь backend) зелёные; `make tests` зелёный (137 тестов). Исключены 2 пред-существующих сломанных файла `tests/unit/scripts/` (ссылаются на удалённые до этой задачи модули `scripts.collect_models`/`generate_dataclasses`; мной не трогались).
 
 ---
 

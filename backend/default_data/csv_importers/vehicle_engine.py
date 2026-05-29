@@ -1,11 +1,11 @@
-from apps.vehicles.models.vehicle.vehicle_engine import VehicleEngine
-from default_data.csv_importers.base import ImportObjectsFromCSVBase
+from apps.vehicles.models.node.engine_node import EngineNode
+from default_data.csv_importers.base import ImportJTINodesFromCSVBase
 
 
-class ImportVehicleEnginesCSV(ImportObjectsFromCSVBase):
+class ImportVehicleEnginesCSV(ImportJTINodesFromCSVBase):
 	"""
-	Импорт двигателей
+	Импорт двигателей (JTI-узел ``EngineNode``)
 	"""
 
-	model = VehicleEngine
-	source_filename = 'vehicle_engine.csv'
+	model = EngineNode
+	source_filename = 'engine_node.csv'
