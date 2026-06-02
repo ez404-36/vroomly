@@ -62,3 +62,9 @@ class VehicleReminder(
 		back_populates='reminders',
 		lazy='select',
 	)
+
+
+# Регистрируем UserVehicleNode + таблицу reminder_node_link, чтобы M2M-связь
+# nodes ↔ reminders резолвилась при импорте VehicleReminder в одиночку (например,
+# из reminders-API). Импорт в конце модуля исключает цикл.
+from apps.vehicles.models.node import user_vehicle_node as _user_vehicle_node  # noqa: E402, F401

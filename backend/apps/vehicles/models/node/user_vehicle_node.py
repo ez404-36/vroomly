@@ -88,3 +88,9 @@ def get_user_vehicle_node_link_mixin(
 		verbose_name=verbose_name,
 		on_delete=on_delete,
 	)
+
+
+# Регистрируем VehicleReminder, чтобы M2M-связь reminders ↔ nodes резолвилась
+# при импорте любой из сторон (импорт в конце модуля — после определения
+# UserVehicleNode — исключает цикл при загрузке reminder.py).
+from apps.vehicles.models.vehicle import reminder as _reminder  # noqa: E402, F401

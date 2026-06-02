@@ -37,6 +37,13 @@
 - **Context:** Renaming `CarTransmission`→`CarTransmissionNode` via Edit replaceAll across a file ALSO matched the substring inside the freshly-added `from ...transmission_node import CarTransmissionNode` import, mangling/duplicating it (F821 undefined name).
 - **Rule:** When using replaceAll for a rename, do the import-line edit LAST, or verify imports with grep after; prefer renaming via distinct full-qualified edits when the new name contains the old as a substring.
 
+### Mutual M2M relationship fails to init depending on import order
+- **Date:** Sat May 30 2026
+- **Context:** `VehicleReminder.nodes` ↔ `UserVehicleNode.reminders` (M2M via `reminder_node_link`). App startup failed: "mappers failed to initialize ... 'vehicles.reminder_node_link'" when only one side was imported (reminders API imports reminder.py alone; the association Table lived in user_vehicle_node.py).
+- **Wrong approach:** String `secondary='vehicles.reminder_node_link'` alone — the table/other-class isn't registered unless both modules are imported. Importing the other module at the TOP of one side creates a real circular import.
+- **Correct approach:** Both relationships use string refs (class + secondary table). Each module imports the OTHER at the BOTTOM (after its own class is defined): `reminder.py` ends with `import ...node.user_vehicle_node`, and `user_vehicle_node.py` ends with `import ...vehicle.reminder`. Trailing placement breaks the cycle (the importing module's class is already defined when the partial module is returned), and guarantees both sides register regardless of entry point. Verify with isolated imports of EACH side + `configure_mappers()` + `import main`.
+- **Rule:** For mutually-dependent mapped classes (M2M/bidirectional), use string refs AND a trailing cross-import in each module. Always test BOTH single-side import paths, not just the loader.
+
 ### Frontend has no test infra by default; full-project eslint OOMs in container
 - **Date:** Fri May 29 2026
 - **Context:** No Vitest/RTL was installed pre-Phase I. Also `npm run lint` (eslint .) over the whole project times out / OOMs in the frontend container.
