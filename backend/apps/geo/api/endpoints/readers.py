@@ -1,11 +1,9 @@
 from fastapi_utils.cbv import cbv
-from sqlalchemy import select
 
 from apps.geo.api.routers import router
 from apps.geo.api.schemas.readers import CountryDetailSchema
-from apps.geo.models.country import Country
+from apps.geo.repositories.country import CountryRepository
 from common.orm.views.mixins import BaseAPI
-from core.db import database
 
 
 @cbv(router)
@@ -18,4 +16,4 @@ class CountryAPI(
 		summary='Список стран',
 	)
 	async def list(self):
-		return await database.fetch_all(select(Country))
+		return await CountryRepository().list_all()

@@ -1,18 +1,20 @@
-import { Paper, Title, Text, TextInput, PasswordInput, Button, Stack } from '../ui';
-import { useDispatch } from 'react-redux';
+import {
+  Paper,
+  Title,
+  Text,
+  TextInput,
+  PasswordInput,
+  Button,
+  Stack,
+} from '../ui';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { routes } from '../utils/routes';
-import { useRegisterMutation } from '../api/authApi';
 import type { RegistrationDataForm } from '../types/schema-types';
-import { useNavigate } from 'react-router-dom';
-import { type AppDispatch } from '../store/store';
-import { setAuthenticated } from '../store/authSlice';
+import { useRegisterSubmit } from '../hooks/useAuthSubmit';
 
 export const RegistrationPage = () => {
-  const dispatch = useDispatch<AppDispatch>();
-  const navigate = useNavigate();
-  const [registerUser, { isLoading, error }] = useRegisterMutation();
+  const { submit, isLoading, error } = useRegisterSubmit();
 
   const {
     register,
@@ -25,30 +27,28 @@ export const RegistrationPage = () => {
     reValidateMode: 'onChange',
   });
 
-  const onSubmit = async (data: RegistrationDataForm) => {
-    try {
-      const res = await registerUser({
-        login: data.login,
-        email: data.email,
-        password: data.password,
-        confirm_password: data.confirm_password,
-      }).unwrap();
-
-      console.log('REGISTER SUCCESS:', res);
-      dispatch(setAuthenticated(true));
-      navigate(routes.login);
-    } catch (err) {
-      console.error('Ошибка регистрации:', err);
-    }
-  };
-
   return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', padding: '40px 24px' }}>
-      <div style={{ display: 'flex', gap: '24px', width: '100%', alignItems: 'stretch' }}>
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '100vh',
+        padding: '40px 24px',
+      }}
+    >
+      <div
+        style={{
+          display: 'flex',
+          gap: '24px',
+          width: '100%',
+          alignItems: 'stretch',
+        }}
+      >
         <Paper p="xl" radius="md" style={{ flex: 1 }}>
           <Stack>
             <Title order={2}>Регистрация</Title>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(submit)}>
               <Stack>
                 <TextInput
                   label="Username"
@@ -90,7 +90,7 @@ export const RegistrationPage = () => {
 
                 {error && (
                   <Text c="red" size="sm">
-                    {JSON.stringify(error, null, 2)}
+                    {error}
                   </Text>
                 )}
 
@@ -102,7 +102,10 @@ export const RegistrationPage = () => {
 
             <Text size="sm" ta="center">
               У меня уже есть аккаунт{' '}
-              <Link to={routes.login} className="text-(--color-primary) hover:underline">
+              <Link
+                to={routes.login}
+                className="text-(--color-primary) hover:underline"
+              >
                 Войти
               </Link>
             </Text>

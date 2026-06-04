@@ -1,16 +1,14 @@
 from uuid import UUID
 
 from fastapi_utils.cbv import cbv
-from sqlalchemy import select
 
 from apps.vehicles.api.routers import vehicle_router
 from apps.vehicles.api.vehicle.schemas.readers import VehicleDetailSchema
 from apps.vehicles.models.vehicle.enums import VehicleType
-from apps.vehicles.models.vehicle.vehicle import Vehicle
+from apps.vehicles.repositories.vehicle import VehicleRepository
 from common.orm.views.mixins import BaseAPI
 from common.schemas.choices_utils import enum_to_choices_list
 from common.schemas.fields import ChoiceFieldSchema
-from core.db import database
 
 
 @cbv(vehicle_router)
@@ -23,9 +21,7 @@ class VehicleAPI(
 		summary='Общая информация о ТС',
 	)
 	async def get_one(self, vehicle_id: UUID):
-		query = select(Vehicle).where(Vehicle.id == vehicle_id)
-
-		return await database.fetch_one(query)
+		return await VehicleRepository().get_by_id(vehicle_id)
 
 	@vehicle_router.get(
 		'/types/choices',

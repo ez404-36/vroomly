@@ -3,3 +3,7 @@ export { RecommendationCard } from './RecommendationCard';
 export { VehicleCard } from './VehicleCard';
 export { AddReminderModal } from './AddReminderModal';
 export { UpdateMileageModal } from './UpdateMileageModal';
+export { ConfirmDeleteDialog } from './ConfirmDeleteDialog';
+export { EmptyGarage } from './EmptyGarage';
+export { RemindersSection } from './RemindersSection';
+export { RecommendationsSection } from './RecommendationsSection';

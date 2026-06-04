@@ -1,7 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import {
-  Select,
   Button,
   Stack,
   Paper,
@@ -10,28 +9,16 @@ import {
   TextInput,
   Switch,
 } from '../../ui';
+import type { GuessByVinResponseSchema } from '../../api/vehiclesApi';
 import {
-  useCreateUserVehicleMutation,
-  useGetVehicleBrandsQuery,
-  useGetVehicleSeriesQuery,
-  useGetVehicleGenerationsQuery,
-  useGetVehicleTrimsQuery,
-  type CreateUserVehicleSchema,
-  type GuessByVinResponseSchema,
-} from '../../api/vehiclesApi';
-
-interface VehicleFormData {
-  brandId: string;
-  seriesId: string;
-  generationId: string;
-  trimId: string;
-  productionYear: number | undefined;
-  color: string;
-  mileage: number | undefined;
-  avgFuelConsumption: number | undefined;
-  isMileageInMiles: boolean;
-  vin: string;
-}
+  useVehicleCatalogCascade,
+  type CascadeReset,
+} from '../../hooks/useVehicleCatalogCascade';
+import {
+  useCreateVehicleSubmit,
+  type VehicleFormData,
+} from '../../hooks/useCreateVehicleSubmit';
+import { VehicleCatalogSelects } from './VehicleCatalogSelects';
 
 export interface VehicleFormProps {
   /**
@@ -46,28 +33,11 @@ export interface VehicleFormProps {
 
 const MIN_PRODUCTION_YEAR = 1900;
 
-interface SelectOption {
-  value: string;
-  label: string;
-}
-
-const toOption = <T extends { id: string; name: string }>(
-  item: T,
-): SelectOption => ({
-  value: item.id,
-  label: item.name,
-});
-
 export const VehicleForm = ({
   prefill,
   onSuccess,
   onBack,
 }: VehicleFormProps) => {
-  const [createVehicle, { isLoading, error: createError }] =
-    useCreateUserVehicleMutation();
-  const { data: brands } = useGetVehicleBrandsQuery();
-
-  // Single generation/trim из prefill авто-выбираются ниже через useEffect.
   const prefillBrandId = prefill?.brand.id ? String(prefill.brand.id) : '';
   const prefillSeriesId = prefill?.model.id ? String(prefill.model.id) : '';
   const prefillGenerationId =
@@ -105,190 +75,71 @@ export const VehicleForm = ({
   const selectedBrand = watch('brandId');
   const selectedSeries = watch('seriesId');
   const selectedGeneration = watch('generationId');
+  const selectedTrim = watch('trimId');
 
-  // Если brand/series пришли из prefill — не запрашиваем series у API,
-  // но если пользователь сменит бренд вручную, мы переключимся на API-данные.
-  const [seriesOverride, setSeriesOverride] = useState<boolean>(
-    Boolean(prefill),
-  );
-  const [generationOverride, setGenerationOverride] = useState<boolean>(
-    Boolean(prefill),
-  );
-  const [trimOverride, setTrimOverride] = useState<boolean>(Boolean(prefill));
-
-  const { data: seriesList, isLoading: isSeriesLoading } =
-    useGetVehicleSeriesQuery(selectedBrand || '', {
-      skip: !selectedBrand || seriesOverride,
-    });
-
-  const { data: generations, isLoading: isGenerationsLoading } =
-    useGetVehicleGenerationsQuery(selectedSeries || '', {
-      skip: !selectedSeries || generationOverride,
-    });
-
-  const { data: trims, isLoading: isTrimsLoading } = useGetVehicleTrimsQuery(
-    selectedGeneration || '',
-    { skip: !selectedGeneration || trimOverride },
-  );
-
-  // При ручной смене бренда отключаем override и чистим зависимые поля.
-  useEffect(() => {
-    if (prefill && selectedBrand !== prefillBrandId) {
-      setSeriesOverride(false);
-      setGenerationOverride(false);
-      setTrimOverride(false);
-    }
-    if (!selectedBrand) {
-      setValue('seriesId', '', { shouldValidate: false });
-      setValue('generationId', '', { shouldValidate: false });
-      setValue('trimId', '', { shouldValidate: false });
-    }
-  }, [selectedBrand, prefill, prefillBrandId, setValue]);
-
-  useEffect(() => {
-    if (prefill && selectedSeries !== prefillSeriesId) {
-      setGenerationOverride(false);
-      setTrimOverride(false);
-    }
-    if (!selectedSeries) {
-      setValue('generationId', '', { shouldValidate: false });
-      setValue('trimId', '', { shouldValidate: false });
-    }
-  }, [selectedSeries, prefill, prefillSeriesId, setValue]);
-
-  useEffect(() => {
-    if (prefill && selectedGeneration !== prefillGenerationId) {
-      setTrimOverride(false);
-    }
-    if (!selectedGeneration) {
-      setValue('trimId', '', { shouldValidate: false });
-    }
-  }, [selectedGeneration, prefill, prefillGenerationId, setValue]);
-
-  // Options:
-  // - если override и есть prefill — берём из prefill
-  // - иначе — из API.
-  const brandOptions = useMemo<SelectOption[]>(() => {
-    const base = brands?.map(toOption) ?? [];
-    if (prefill) {
-      const id = String(prefill.brand.id);
-      const exists = base.some((opt) => opt.value === id);
-      if (!exists) {
-        base.unshift({ value: id, label: prefill.brand.name });
+  const handleResetFields = useCallback(
+    (fields: CascadeReset) => {
+      if (fields.series) {
+        setValue('seriesId', '', { shouldValidate: false });
       }
-    }
-    return base;
-  }, [brands, prefill]);
+      if (fields.generation) {
+        setValue('generationId', '', { shouldValidate: false });
+      }
+      if (fields.trim) {
+        setValue('trimId', '', { shouldValidate: false });
+      }
+    },
+    [setValue],
+  );
 
-  const seriesOptions = useMemo<SelectOption[]>(() => {
-    if (seriesOverride && prefill) {
-      return [{ value: String(prefill.model.id), label: prefill.model.name }];
-    }
-    return seriesList?.map(toOption) ?? [];
-  }, [seriesList, seriesOverride, prefill]);
+  const {
+    brandOptions,
+    seriesOptions,
+    generationOptions,
+    trimOptions,
+    isSeriesLoading,
+    isGenerationsLoading,
+    isTrimsLoading,
+  } = useVehicleCatalogCascade({
+    prefill,
+    selectedBrand,
+    selectedSeries,
+    selectedGeneration,
+    onResetFields: handleResetFields,
+  });
 
-  const generationOptions = useMemo<SelectOption[]>(() => {
-    if (generationOverride && prefill) {
-      return (
-        prefill.generations?.map((g) => ({
-          value: String(g.id),
-          label: g.name,
-        })) ?? []
-      );
-    }
-    return generations?.map(toOption) ?? [];
-  }, [generations, generationOverride, prefill]);
-
-  const trimOptions = useMemo<SelectOption[]>(() => {
-    if (trimOverride && prefill) {
-      return (
-        prefill.trims?.map((t) => ({
-          value: String(t.id),
-          // description содержит двигатель/КПП/привод/кузов — показываем его,
-          // чтобы из селектора было понятно, какую именно комплектацию выбирают.
-          label: t.description ? `${t.name} — ${t.description}` : t.name,
-        })) ?? []
-      );
-    }
-    return trims?.map(toOption) ?? [];
-  }, [trims, trimOverride, prefill]);
-
-  const onSubmit = async (data: VehicleFormData) => {
-    if (data.productionYear === undefined) {
-      return;
-    }
-    const payload: CreateUserVehicleSchema = {
-      generationId: data.generationId || null,
-      trimId: data.trimId || null,
-      productionYear: data.productionYear,
-      color: data.color || null,
-      mileage: data.mileage ?? null,
-      isMileageInMiles: data.isMileageInMiles,
-      avgFuelConsumption: data.avgFuelConsumption ?? null,
-      vin: data.vin || null,
-    };
-    try {
-      await createVehicle(payload).unwrap();
-      onSuccess?.();
-    } catch (err) {
-      console.error('Ошибка создания ТС:', err);
-    }
-  };
+  const {
+    submit,
+    isLoading,
+    error: createError,
+  } = useCreateVehicleSubmit(onSuccess);
 
   return (
     <Paper p="md">
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(submit)}>
         <Stack>
-          <Select
-            label="Марка"
-            required
-            placeholder="Выберите марку автомобиля"
-            options={brandOptions}
-            searchable
-            clearable
-            onChange={(value) => setValue('brandId', value || '')}
-            value={selectedBrand || ''}
-            error={errors.brandId?.message}
-          />
-
-          <Select
-            key={`series-${selectedBrand}`}
-            label="Модель"
-            required
-            placeholder="Выберите модель"
-            options={seriesOptions}
-            searchable
-            clearable
-            disabled={!selectedBrand || isSeriesLoading}
-            onChange={(value) => setValue('seriesId', value || '')}
-            value={selectedSeries || ''}
-            error={errors.seriesId?.message}
-          />
-
-          <Select
-            key={`generation-${selectedSeries}`}
-            label="Поколение"
-            placeholder="Выберите поколение"
-            options={generationOptions}
-            searchable
-            clearable
-            disabled={!selectedSeries || isGenerationsLoading}
-            onChange={(value) => setValue('generationId', value || '')}
-            value={selectedGeneration || ''}
-            error={errors.generationId?.message}
-          />
-
-          <Select
-            key={`trim-${selectedGeneration}`}
-            label="Комплектация"
-            placeholder="Выберите комплектацию (опционально)"
-            options={trimOptions}
-            searchable
-            clearable
-            disabled={!selectedGeneration || isTrimsLoading}
-            onChange={(value) => setValue('trimId', value || '')}
-            value={watch('trimId') || ''}
-            error={errors.trimId?.message}
+          <VehicleCatalogSelects
+            brandOptions={brandOptions}
+            seriesOptions={seriesOptions}
+            generationOptions={generationOptions}
+            trimOptions={trimOptions}
+            selectedBrand={selectedBrand}
+            selectedSeries={selectedSeries}
+            selectedGeneration={selectedGeneration}
+            selectedTrim={selectedTrim}
+            isSeriesLoading={isSeriesLoading}
+            isGenerationsLoading={isGenerationsLoading}
+            isTrimsLoading={isTrimsLoading}
+            errors={{
+              brandId: errors.brandId?.message,
+              seriesId: errors.seriesId?.message,
+              generationId: errors.generationId?.message,
+              trimId: errors.trimId?.message,
+            }}
+            onBrandChange={(value) => setValue('brandId', value)}
+            onSeriesChange={(value) => setValue('seriesId', value)}
+            onGenerationChange={(value) => setValue('generationId', value)}
+            onTrimChange={(value) => setValue('trimId', value)}
           />
 
           <NumberInput

@@ -7,89 +7,15 @@ import {
   Stack,
   Select,
 } from '../ui';
-import dayjs from 'dayjs';
 import { CustomDatePickerInput } from '../components/Common/CustomDatePickerInput';
-import { useForm } from 'react-hook-form';
-import {
-  useGetCurrentUserQuery,
-  useUpdateCurrentUserMutation,
-} from '../api/authApi';
-import { useGetCountriesQuery } from '../api/geoApi';
-import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
-
-interface ProfileFormData {
-  login: string;
-  email: string;
-  name: string | null;
-  surname: string | null;
-  birth_date: Date | null;
-  country_id: string | null;
-}
+import { useProfileForm } from '../hooks/useProfileForm';
 
 export const SettingsPage = () => {
-  const navigate = useNavigate();
-  const { data: user, isLoading: isLoadingUser } = useGetCurrentUserQuery();
-  const { data: countries, isLoading: isLoadingCountries } =
-    useGetCountriesQuery();
-  const [updateUser, { isLoading: isUpdating }] =
-    useUpdateCurrentUserMutation();
+  const { form, countryOptions, isLoading, isUpdating, submit, cancel } =
+    useProfileForm();
+  const { register, handleSubmit, watch, setValue } = form;
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    setValue,
-  } = useForm<ProfileFormData>({
-    defaultValues: {
-      login: '',
-      email: '',
-      name: null,
-      surname: null,
-      birth_date: null,
-      country_id: null,
-    },
-  });
-
-  useEffect(() => {
-    if (user) {
-      setValue('login', user.login);
-      setValue('email', user.email);
-      setValue('name', user.name);
-      setValue('surname', user.surname);
-      setValue('country_id', user.countryId);
-      if (user.birthDate) {
-        setValue('birth_date', new Date(user.birthDate));
-      }
-    }
-  }, [user, setValue]);
-
-  const onSubmit = async (data: ProfileFormData) => {
-    try {
-      const formattedData = {
-        name: data.name || null,
-        surname: data.surname || null,
-        country_id: data.country_id,
-        birth_date: data.birth_date
-          ? dayjs(data.birth_date).format('YYYY-MM-DD')
-          : null,
-      };
-
-      await updateUser(formattedData).unwrap();
-      alert('Профиль обновлён');
-      navigate('/');
-    } catch {
-      alert('Не удалось обновить профиль');
-    }
-  };
-
-  const countryOptions =
-    countries?.map((country) => ({
-      value: country.id,
-      label: country.name,
-    })) || [];
-
-  if (isLoadingUser || isLoadingCountries) {
+  if (isLoading) {
     return (
       <Container size="sm" py="xl">
         <div className="flex justify-center py-8">
@@ -105,7 +31,7 @@ export const SettingsPage = () => {
         <Stack>
           <Title order={2}>Настройки профиля</Title>
 
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(submit)}>
             <Stack>
               <TextInput
                 label="Username"
@@ -155,7 +81,7 @@ export const SettingsPage = () => {
               />
 
               <div className="flex justify-end gap-3 mt-4">
-                <Button variant="ghost" onClick={() => navigate(-1)}>
+                <Button variant="ghost" onClick={cancel}>
                   Отмена
                 </Button>
                 <Button type="submit" loading={isUpdating}>

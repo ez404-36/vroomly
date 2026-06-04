@@ -1,85 +1,28 @@
-"""Tests for UserSession model."""
+"""Tests for UserSession model.
 
-from datetime import datetime, timedelta, timezone
+После выноса парсинга токена в ``core.safety.token.decode_token_claims`` модель
+стала простым ORM-объектом: проверяем только конфигурацию полей и присвоение
+готовых ``token_jti``/``expires_at`` через конструктор.
+"""
+
+from datetime import datetime, timezone
 from uuid import UUID
 
-import jwt
-import pytest
-
 from apps.accounts.models.user_session import UserSession
-from core.safety.token import ACCESS_TOKEN_EXPIRE_MINUTES, ALGORITHM, SECRET_KEY
 
 
-class TestUserSessionCreateFromToken:
-	"""Tests for UserSession.create_from_token classmethod."""
+class TestUserSessionConstruction:
+	"""Модель принимает готовые jti + expires_at в простом конструкторе."""
 
-	def test_create_from_token_with_full_token(self) -> None:
-		"""Test creating session from valid token with jti and exp claims."""
+	def test_assigns_given_claims(self) -> None:
 		user_id = UUID('62368046-3c26-4779-8f2d-ed668abb891f')
-		exp_timestamp = int((datetime.now(timezone.utc) + timedelta(hours=1)).timestamp())
-		jti = 'test-jti-12345'
+		expires_at = datetime(2026, 6, 1, 12, 0, tzinfo=timezone.utc)
 
-		token_payload = {
-			'sub': str(user_id),
-			'exp': exp_timestamp,
-			'jti': jti,
-		}
-		token = jwt.encode(token_payload, SECRET_KEY, algorithm=ALGORITHM)
-
-		session = UserSession.create_from_token(user_id=user_id, token=token)
+		session = UserSession(user_id=user_id, token_jti='jti-123', expires_at=expires_at)
 
 		assert session.user_id == user_id
-		assert session.token_jti == jti
-		assert session.expires_at.timestamp() == pytest.approx(exp_timestamp, rel=1)
-
-	def test_create_from_token_without_jti(self) -> None:
-		"""Test creating session from token without jti claim."""
-		user_id = UUID('62368046-3c26-4779-8f2d-ed668abb891f')
-		exp_timestamp = int((datetime.now(timezone.utc) + timedelta(hours=1)).timestamp())
-
-		token_payload = {
-			'sub': str(user_id),
-			'exp': exp_timestamp,
-		}
-		token = jwt.encode(token_payload, SECRET_KEY, algorithm=ALGORITHM)
-
-		session = UserSession.create_from_token(user_id=user_id, token=token)
-
-		assert session.user_id == user_id
-		assert session.token_jti == ''
-		assert session.expires_at.timestamp() == pytest.approx(exp_timestamp, rel=1)
-
-	def test_create_from_token_without_exp(self) -> None:
-		"""Test creating session from token without exp claim uses default expiration."""
-		user_id = UUID('62368046-3c26-4779-8f2d-ed668abb891f')
-
-		token_payload = {
-			'sub': str(user_id),
-			'jti': 'test-jti',
-		}
-		token = jwt.encode(token_payload, SECRET_KEY, algorithm=ALGORITHM)
-
-		session = UserSession.create_from_token(user_id=user_id, token=token)
-
-		assert session.user_id == user_id
-		assert session.token_jti == 'test-jti'
-		expected_exp = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-		assert session.expires_at.timestamp() == pytest.approx(expected_exp.timestamp(), rel=1)
-
-
-class TestUserSessionDefaultExpires:
-	"""Tests for UserSession._default_expires staticmethod."""
-
-	def test_default_expires_timedelta(self) -> None:
-		"""Test that default expiration is ACCESS_TOKEN_EXPIRE_MINUTES from now."""
-		before = datetime.now(timezone.utc)
-		expires = UserSession._default_expires()
-		after = datetime.now(timezone.utc)
-
-		expected_min = before + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-		expected_max = after + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-
-		assert expected_min.timestamp() <= expires.timestamp() <= expected_max.timestamp()
+		assert session.token_jti == 'jti-123'
+		assert session.expires_at == expires_at
 
 
 class TestUserSessionFields:

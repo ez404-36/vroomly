@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import {
   TextInput,
@@ -8,6 +7,7 @@ import {
   Button,
   Stack,
 } from '../../ui';
+import { useReminderForm } from '../../hooks/garage/useReminderForm';
 
 export interface ReminderFormValue {
   title: string;
@@ -32,14 +32,6 @@ interface AddReminderModalProps {
   initialValue?: ReminderModalInitialValue | null;
 }
 
-const EMPTY_INITIAL: ReminderModalInitialValue = {
-  title: '',
-  description: '',
-  date: null,
-  time: null,
-  allDay: false,
-};
-
 export function AddReminderModal({
   open,
   onOpenChange,
@@ -47,49 +39,27 @@ export function AddReminderModal({
   mode = 'create',
   initialValue,
 }: AddReminderModalProps) {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [date, setDate] = useState<Date | null>(null);
-  const [time, setTime] = useState<string | null>(null);
-  const [allDay, setAllDay] = useState(false);
-
-  useEffect(() => {
-    // Синхронизируем поля формы с переданным напоминанием при открытии модалки.
-    if (open) {
-      const init = initialValue ?? EMPTY_INITIAL;
-      /* eslint-disable react-hooks/set-state-in-effect */
-      setTitle(init.title);
-      setDescription(init.description);
-      setDate(init.date);
-      setTime(init.time);
-      setAllDay(init.allDay);
-      /* eslint-enable react-hooks/set-state-in-effect */
-    }
-  }, [open, initialValue]);
+  const {
+    title,
+    setTitle,
+    description,
+    setDescription,
+    date,
+    setDate,
+    time,
+    setTime,
+    allDay,
+    setAllDay,
+    buildValue,
+  } = useReminderForm(open, initialValue);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!title.trim()) {
+    const value = buildValue();
+    if (!value) {
       return;
     }
-
-    let dateTime: Date | null = null;
-    if (date) {
-      dateTime = new Date(date);
-      if (!allDay && time) {
-        const [hours, minutes] = time.split(':');
-        dateTime.setHours(parseInt(hours, 10), parseInt(minutes, 10), 0, 0);
-      } else {
-        dateTime.setHours(0, 0, 0, 0);
-      }
-    }
-
-    onSubmit({
-      title: title.trim(),
-      description: description.trim(),
-      dateTime,
-      allDay,
-    });
+    onSubmit(value);
     onOpenChange(false);
   };
 

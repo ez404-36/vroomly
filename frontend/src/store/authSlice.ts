@@ -20,6 +20,14 @@ const authSlice = createSlice({
     setAuthenticated: (state, action: PayloadAction<boolean>) => {
       state.isAuthenticated = action.payload;
     },
+    /**
+     * Успешный вход: сохраняет токен и помечает сессию аутентифицированной.
+     * Запись токена инкапсулирована в auth-слое (симметрично `logout`).
+     */
+    loginSucceeded: (state, action: PayloadAction<string>) => {
+      localStorage.setItem('access_token', action.payload);
+      state.isAuthenticated = true;
+    },
     logout: (state) => {
       localStorage.removeItem('access_token');
       state.isAuthenticated = false;
@@ -27,5 +35,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { setAuthenticated, logout } = authSlice.actions;
+export const { setAuthenticated, loginSucceeded, logout } = authSlice.actions;
 export default authSlice.reducer;

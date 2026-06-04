@@ -45,6 +45,25 @@ def get_password_hash(password: str) -> str:
 	).decode('utf-8')
 
 
+def decode_token_claims(token: str) -> tuple[str, datetime]:
+	"""Извлечь ``jti`` и время истечения из JWT (без проверки подписи).
+
+	:returns: кортеж ``(jti, expires_at)``. Если в токене нет ``jti`` —
+		возвращается пустая строка; если нет ``exp`` — берётся время истечения
+		по умолчанию (``ACCESS_TOKEN_EXPIRE_MINUTES`` от текущего момента).
+	"""
+	payload = jwt.decode(token, options={'verify_signature': False})
+	jti = payload.get('jti') or ''
+	exp = payload.get('exp')
+	expires_at = datetime.fromtimestamp(exp, tz=timezone.utc) if exp else _default_token_expiry()
+	return jti, expires_at
+
+
+def _default_token_expiry() -> datetime:
+	"""Время истечения токена по умолчанию (``ACCESS_TOKEN_EXPIRE_MINUTES`` от now)."""
+	return datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+
+
 def create_access_token(data: dict, expires_delta: timedelta | None = None) -> str:
 	"""Create a JWT access token with a unique jti claim."""
 	to_encode = data.copy()

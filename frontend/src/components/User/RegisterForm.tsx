@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { Button, Flex, Text, TextInput, PasswordInput } from '../../ui';
-import { useRegisterMutation } from '../../api/authApi';
 import { useNavigate } from 'react-router-dom';
+import { useRegisterSubmit } from '../../hooks/useAuthSubmit';
 
 interface RegistrationDataForm {
   login: string;
@@ -12,7 +12,7 @@ interface RegistrationDataForm {
 
 export const RegisterForm = () => {
   const navigate = useNavigate();
-  const [registerUser, { isLoading, error }] = useRegisterMutation();
+  const { submit, isLoading, error } = useRegisterSubmit('/');
 
   const {
     register,
@@ -25,24 +25,8 @@ export const RegisterForm = () => {
     reValidateMode: 'onChange',
   });
 
-  const onSubmit = async (data: RegistrationDataForm) => {
-    try {
-      const res = await registerUser({
-        login: data.login,
-        email: data.email,
-        password: data.password,
-        confirm_password: data.confirm_password,
-      }).unwrap();
-
-      console.log('REGISTER SUCCESS:', res);
-      navigate('/');
-    } catch (err) {
-      console.error('Ошибка регистрации:', err);
-    }
-  };
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(submit)}>
       <TextInput
         label="Логин"
         placeholder="Введите логин"
@@ -89,7 +73,7 @@ export const RegisterForm = () => {
 
       {error && (
         <Text c="red" mt="xs">
-          {JSON.stringify(error, null, 2)}
+          {error}
         </Text>
       )}
 

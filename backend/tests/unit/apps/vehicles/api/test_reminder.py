@@ -1,9 +1,19 @@
-"""Tests for VehicleReminder API schemas and endpoint logic."""
+"""Tests for VehicleReminder API schemas and endpoint delegation.
+
+После выделения слоёв (Фаза 2) бизнес-логика и доступ к данным живут в
+``ReminderService``/репозиториях. Эндпоинты — тонкие: делегируют сервису и
+маппят ``None`` → 404. Здесь тестируются:
+
+- валидация схем (вход/выход);
+- делегирование эндпоинтов сервису и маппинг 404.
+
+Бизнес-логика (идемпотентность, проверки владения) покрыта в
+``tests/unit/apps/vehicles/services/test_reminder_service.py``.
+"""
 
 import asyncio
-from contextlib import asynccontextmanager
 from datetime import datetime, timezone
-from typing import Any, AsyncIterator, Coroutine, TypeVar
+from typing import Any, Coroutine, TypeVar
 from unittest.mock import AsyncMock, MagicMock, patch
 from uuid import uuid4
 
@@ -19,7 +29,7 @@ from apps.vehicles.api.reminder.schemas import (
 
 T = TypeVar('T')
 
-_DB_PATH = 'apps.vehicles.api.reminder.endpoints.database'
+_SERVICE_PATH = 'apps.vehicles.api.reminder.endpoints.ReminderService'
 
 
 def _run(coro: Coroutine[Any, Any, T]) -> T:
@@ -32,38 +42,6 @@ def _make_api(user_id: Any = None) -> ReminderAPI:
 	api = ReminderAPI.__new__(ReminderAPI)
 	api.user = MagicMock(id=user_id if user_id is not None else uuid4())
 	return api
-
-
-def _make_session() -> MagicMock:
-	"""Мокает AsyncSession с async-методами add/commit/refresh/delete.
-
-	``refresh`` имитирует заполнение БД-значений по умолчанию (``id`` и
-	``created_at`` обычно проставляются на стороне СУБД при commit), чтобы
-	созданный ORM-объект мог быть сериализован схемой.
-	"""
-	session = MagicMock()
-	session.add = MagicMock()
-	session.commit = AsyncMock()
-	session.delete = AsyncMock()
-
-	async def _refresh(instance: Any) -> None:
-		if getattr(instance, 'id', None) is None:
-			instance.id = uuid4()
-		if getattr(instance, 'created_at', None) is None:
-			instance.created_at = datetime(2026, 5, 1, 9, 0, tzinfo=timezone.utc)
-
-	session.refresh = AsyncMock(side_effect=_refresh)
-	return session
-
-
-def _patch_session(database_mock: MagicMock, session: MagicMock) -> None:
-	"""Настраивает database.get_async_session() как async-context-manager."""
-
-	@asynccontextmanager
-	async def _ctx() -> AsyncIterator[MagicMock]:
-		yield session
-
-	database_mock.get_async_session.side_effect = _ctx
 
 
 def _make_reminder_orm(**overrides: Any) -> MagicMock:
@@ -83,6 +61,14 @@ def _make_reminder_orm(**overrides: Any) -> MagicMock:
 	}
 	defaults.update(overrides)
 	return MagicMock(**defaults)
+
+
+def _patch_service(**methods: Any) -> Any:
+	"""Патчит ReminderService так, что service() возвращает mock с заданными методами."""
+	service = MagicMock()
+	for name, value in methods.items():
+		setattr(service, name, value)
+	return patch(_SERVICE_PATH, return_value=service)
 
 
 class TestCreateReminderSchema:
@@ -231,125 +217,87 @@ class TestReminderDetailSchemaConverter:
 
 
 class TestCreateReminderEndpoint:
-	"""Tests for ReminderAPI.create_reminder."""
+	"""create_reminder: делегирование сервису + маппинг 404."""
 
-	def test_creates_reminder_for_owned_vehicle(self):
-		"""При владении ТС создаёт VehicleReminder с user_id текущего пользователя."""
+	def test_delegates_and_maps_result(self):
+		"""Эндпоинт зовёт service.create и возвращает Detail-схему."""
 		user_id = uuid4()
 		user_vehicle_id = uuid4()
 		api = _make_api(user_id)
-		session = _make_session()
+		orm = _make_reminder_orm(title='Замена масла')
 		data = CreateReminderSchema(title='Замена масла', is_all_day=True)
 
-		with patch(_DB_PATH) as db:
-			_patch_session(db, session)
-			db.session_fetch_one = AsyncMock(return_value=MagicMock(id=user_vehicle_id))
+		create = AsyncMock(return_value=orm)
+		with _patch_service(create=create):
 			result = _run(api.create_reminder(user_vehicle_id=str(user_vehicle_id), data=data))
 
 		assert isinstance(result, ReminderDetailSchema)
-		session.add.assert_called_once()
-		added = session.add.call_args.args[0]
-		assert added.user_id == user_id
-		assert added.user_vehicle_id == user_vehicle_id
-		assert added.title == 'Замена масла'
-		assert added.is_all_day is True
-		assert added.is_completed is False
-		assert added.completed_at is None
-		session.commit.assert_awaited_once()
+		assert result.title == 'Замена масла'
+		create.assert_awaited_once_with(user_vehicle_id, user_id, data)
 
 	def test_foreign_vehicle_raises_404(self):
-		"""Чужое/несуществующее ТС → 404, напоминание не создаётся."""
+		"""service.create вернул None (чужое ТС) → 404."""
 		api = _make_api()
-		session = _make_session()
 		data = CreateReminderSchema(title='Замена масла')
 
-		with patch(_DB_PATH) as db:
-			_patch_session(db, session)
-			db.session_fetch_one = AsyncMock(return_value=None)
+		with _patch_service(create=AsyncMock(return_value=None)):
 			with pytest.raises(HTTPException) as exc_info:
 				_run(api.create_reminder(user_vehicle_id=str(uuid4()), data=data))
 
 		assert exc_info.value.status_code == 404
-		session.add.assert_not_called()
 
 
 class TestListRemindersEndpoint:
-	"""Tests for ReminderAPI.list_reminders."""
+	"""list_reminders: делегирование + маппинг 404."""
 
 	def test_returns_mapped_list(self):
-		"""Возвращает список ReminderDetailSchema для напоминаний ТС."""
+		"""Возвращает список ReminderDetailSchema."""
 		api = _make_api()
-		session = _make_session()
 		reminders = [_make_reminder_orm(), _make_reminder_orm()]
 
-		with patch(_DB_PATH) as db:
-			_patch_session(db, session)
-			db.session_fetch_one = AsyncMock(return_value=MagicMock())
-			db.session_fetch_all = AsyncMock(return_value=reminders)
+		with _patch_service(list_for_vehicle=AsyncMock(return_value=reminders)):
 			result = _run(api.list_reminders(user_vehicle_id=str(uuid4())))
 
 		assert len(result) == 2
 		assert all(isinstance(item, ReminderDetailSchema) for item in result)
 
-	def test_filter_by_is_completed(self):
-		"""С фильтром is_completed=True вызывается выборка истории."""
+	def test_passes_is_completed_filter(self):
+		"""Параметр is_completed пробрасывается в сервис."""
 		api = _make_api()
-		session = _make_session()
-		completed = _make_reminder_orm(is_completed=True)
+		uv_id = uuid4()
+		list_for_vehicle = AsyncMock(return_value=[_make_reminder_orm(is_completed=True)])
 
-		with patch(_DB_PATH) as db:
-			_patch_session(db, session)
-			db.session_fetch_one = AsyncMock(return_value=MagicMock())
-			db.session_fetch_all = AsyncMock(return_value=[completed])
-			result = _run(
-				api.list_reminders(user_vehicle_id=str(uuid4()), is_completed=True),
-			)
+		with _patch_service(list_for_vehicle=list_for_vehicle):
+			result = _run(api.list_reminders(user_vehicle_id=str(uv_id), is_completed=True))
 
-		db.session_fetch_all.assert_awaited_once()
-		assert len(result) == 1
+		list_for_vehicle.assert_awaited_once_with(uv_id, api.user.id, True)
 		assert result[0].is_completed is True
 
 	def test_foreign_vehicle_raises_404(self):
-		"""Чужое ТС → 404, список не запрашивается."""
+		"""service.list_for_vehicle вернул None → 404."""
 		api = _make_api()
-		session = _make_session()
-
-		with patch(_DB_PATH) as db:
-			_patch_session(db, session)
-			db.session_fetch_one = AsyncMock(return_value=None)
-			db.session_fetch_all = AsyncMock()
+		with _patch_service(list_for_vehicle=AsyncMock(return_value=None)):
 			with pytest.raises(HTTPException) as exc_info:
 				_run(api.list_reminders(user_vehicle_id=str(uuid4())))
 
 		assert exc_info.value.status_code == 404
-		db.session_fetch_all.assert_not_awaited()
 
 
 class TestGetReminderEndpoint:
-	"""Tests for ReminderAPI.get_reminder."""
+	"""get_reminder: делегирование + 404."""
 
 	def test_returns_owned_reminder(self):
-		"""Возвращает напоминание текущего пользователя."""
 		api = _make_api()
-		session = _make_session()
 		orm = _make_reminder_orm(title='Проверить тормоза')
-
-		with patch(_DB_PATH) as db:
-			_patch_session(db, session)
-			db.session_fetch_one = AsyncMock(return_value=orm)
+		with _patch_service(get=AsyncMock(return_value=orm)):
 			result = _run(api.get_reminder(reminder_id=str(uuid4())))
 
 		assert isinstance(result, ReminderDetailSchema)
 		assert result.title == 'Проверить тормоза'
 
 	def test_missing_reminder_raises_404(self):
-		"""Отсутствующее/чужое напоминание → 404."""
 		api = _make_api()
-		session = _make_session()
-
-		with patch(_DB_PATH) as db:
-			_patch_session(db, session)
-			db.session_fetch_one = AsyncMock(return_value=None)
+		with _patch_service(get=AsyncMock(return_value=None)):
 			with pytest.raises(HTTPException) as exc_info:
 				_run(api.get_reminder(reminder_id=str(uuid4())))
 
@@ -357,179 +305,76 @@ class TestGetReminderEndpoint:
 
 
 class TestUpdateReminderEndpoint:
-	"""Tests for ReminderAPI.update_reminder."""
+	"""update_reminder: делегирование + 404."""
 
-	def test_applies_only_provided_fields(self):
-		"""Применяются только переданные поля (exclude_unset)."""
+	def test_delegates_with_data(self):
 		api = _make_api()
-		session = _make_session()
-		orm = _make_reminder_orm(title='Старое', description='Старое описание')
+		orm = _make_reminder_orm(title='Новое название')
 		data = UpdateReminderSchema(title='Новое название')
+		update = AsyncMock(return_value=orm)
 
-		with patch(_DB_PATH) as db:
-			_patch_session(db, session)
-			db.session_fetch_one = AsyncMock(return_value=orm)
-			_run(api.update_reminder(reminder_id=str(uuid4()), data=data))
+		with _patch_service(update=update):
+			result = _run(api.update_reminder(reminder_id=str(uuid4()), data=data))
 
-		assert orm.title == 'Новое название'
-		assert orm.description == 'Старое описание'
-		session.commit.assert_awaited_once()
-
-	def test_explicit_none_clears_field(self):
-		"""Явный null очищает поле (due_at=None)."""
-		api = _make_api()
-		session = _make_session()
-		orm = _make_reminder_orm(due_at=datetime(2026, 6, 1, tzinfo=timezone.utc))
-		data = UpdateReminderSchema(due_at=None)
-
-		with patch(_DB_PATH) as db:
-			_patch_session(db, session)
-			db.session_fetch_one = AsyncMock(return_value=orm)
-			_run(api.update_reminder(reminder_id=str(uuid4()), data=data))
-
-		assert orm.due_at is None
+		assert result.title == 'Новое название'
+		update.assert_awaited_once()
 
 	def test_missing_reminder_raises_404(self):
-		"""Отсутствующее напоминание → 404, изменений нет."""
 		api = _make_api()
-		session = _make_session()
 		data = UpdateReminderSchema(title='Новое')
-
-		with patch(_DB_PATH) as db:
-			_patch_session(db, session)
-			db.session_fetch_one = AsyncMock(return_value=None)
+		with _patch_service(update=AsyncMock(return_value=None)):
 			with pytest.raises(HTTPException) as exc_info:
 				_run(api.update_reminder(reminder_id=str(uuid4()), data=data))
 
 		assert exc_info.value.status_code == 404
-		session.commit.assert_not_awaited()
 
 
-class TestCompleteReminderEndpoint:
-	"""Tests for ReminderAPI.complete_reminder."""
+class TestCompleteUncompleteEndpoints:
+	"""complete/uncomplete: делегирование + 404."""
 
-	def test_marks_active_reminder_completed(self):
-		"""Активное напоминание помечается выполненным с completed_at."""
+	def test_complete_returns_schema(self):
 		api = _make_api()
-		session = _make_session()
-		orm = _make_reminder_orm(is_completed=False, completed_at=None)
-
-		with patch(_DB_PATH) as db:
-			_patch_session(db, session)
-			db.session_fetch_one = AsyncMock(return_value=orm)
+		orm = _make_reminder_orm(is_completed=True)
+		with _patch_service(complete=AsyncMock(return_value=orm)):
 			result = _run(api.complete_reminder(reminder_id=str(uuid4())))
+		assert result.is_completed is True
 
-		assert orm.is_completed is True
-		assert orm.completed_at is not None
-		assert isinstance(result, ReminderDetailSchema)
-		session.commit.assert_awaited_once()
-
-	def test_idempotent_preserves_original_completed_at(self):
-		"""Повторный вызов не меняет исходное completed_at и не коммитит."""
+	def test_complete_missing_raises_404(self):
 		api = _make_api()
-		session = _make_session()
-		original = datetime(2026, 5, 1, 9, 0, tzinfo=timezone.utc)
-		orm = _make_reminder_orm(is_completed=True, completed_at=original)
-
-		with patch(_DB_PATH) as db:
-			_patch_session(db, session)
-			db.session_fetch_one = AsyncMock(return_value=orm)
-			_run(api.complete_reminder(reminder_id=str(uuid4())))
-
-		assert orm.completed_at == original
-		session.commit.assert_not_awaited()
-
-	def test_missing_reminder_raises_404(self):
-		"""Отсутствующее напоминание → 404."""
-		api = _make_api()
-		session = _make_session()
-
-		with patch(_DB_PATH) as db:
-			_patch_session(db, session)
-			db.session_fetch_one = AsyncMock(return_value=None)
+		with _patch_service(complete=AsyncMock(return_value=None)):
 			with pytest.raises(HTTPException) as exc_info:
 				_run(api.complete_reminder(reminder_id=str(uuid4())))
-
 		assert exc_info.value.status_code == 404
 
-
-class TestUncompleteReminderEndpoint:
-	"""Tests for ReminderAPI.uncomplete_reminder."""
-
-	def test_clears_completed_state(self):
-		"""Выполненное напоминание возвращается в активные (completed_at=None)."""
+	def test_uncomplete_returns_schema(self):
 		api = _make_api()
-		session = _make_session()
-		orm = _make_reminder_orm(
-			is_completed=True,
-			completed_at=datetime(2026, 5, 1, 9, 0, tzinfo=timezone.utc),
-		)
+		orm = _make_reminder_orm(is_completed=False)
+		with _patch_service(uncomplete=AsyncMock(return_value=orm)):
+			result = _run(api.uncomplete_reminder(reminder_id=str(uuid4())))
+		assert result.is_completed is False
 
-		with patch(_DB_PATH) as db:
-			_patch_session(db, session)
-			db.session_fetch_one = AsyncMock(return_value=orm)
-			_run(api.uncomplete_reminder(reminder_id=str(uuid4())))
-
-		assert orm.is_completed is False
-		assert orm.completed_at is None
-		session.commit.assert_awaited_once()
-
-	def test_noop_when_already_active(self):
-		"""Активное напоминание не меняется и не коммитится."""
+	def test_uncomplete_missing_raises_404(self):
 		api = _make_api()
-		session = _make_session()
-		orm = _make_reminder_orm(is_completed=False, completed_at=None)
-
-		with patch(_DB_PATH) as db:
-			_patch_session(db, session)
-			db.session_fetch_one = AsyncMock(return_value=orm)
-			_run(api.uncomplete_reminder(reminder_id=str(uuid4())))
-
-		assert orm.is_completed is False
-		session.commit.assert_not_awaited()
-
-	def test_missing_reminder_raises_404(self):
-		"""Отсутствующее напоминание → 404."""
-		api = _make_api()
-		session = _make_session()
-
-		with patch(_DB_PATH) as db:
-			_patch_session(db, session)
-			db.session_fetch_one = AsyncMock(return_value=None)
+		with _patch_service(uncomplete=AsyncMock(return_value=None)):
 			with pytest.raises(HTTPException) as exc_info:
 				_run(api.uncomplete_reminder(reminder_id=str(uuid4())))
-
 		assert exc_info.value.status_code == 404
 
 
 class TestDeleteReminderEndpoint:
-	"""Tests for ReminderAPI.delete_reminder."""
+	"""delete_reminder: делегирование + 404."""
 
-	def test_deletes_owned_reminder(self):
-		"""Удаляет напоминание текущего пользователя."""
+	def test_deletes_when_service_returns_true(self):
 		api = _make_api()
-		session = _make_session()
-		orm = _make_reminder_orm()
-
-		with patch(_DB_PATH) as db:
-			_patch_session(db, session)
-			db.session_fetch_one = AsyncMock(return_value=orm)
+		delete = AsyncMock(return_value=True)
+		with _patch_service(delete=delete):
 			result = _run(api.delete_reminder(reminder_id=str(uuid4())))
-
 		assert result is None
-		session.delete.assert_awaited_once_with(orm)
-		session.commit.assert_awaited_once()
+		delete.assert_awaited_once()
 
 	def test_missing_reminder_raises_404(self):
-		"""Отсутствующее/чужое напоминание → 404, удаления нет."""
 		api = _make_api()
-		session = _make_session()
-
-		with patch(_DB_PATH) as db:
-			_patch_session(db, session)
-			db.session_fetch_one = AsyncMock(return_value=None)
+		with _patch_service(delete=AsyncMock(return_value=False)):
 			with pytest.raises(HTTPException) as exc_info:
 				_run(api.delete_reminder(reminder_id=str(uuid4())))
-
 		assert exc_info.value.status_code == 404
-		session.delete.assert_not_awaited()

@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { Button, Flex, Text, TextInput, PasswordInput } from '../../ui';
 import { useNavigate } from 'react-router-dom';
-import { useLoginMutation } from '../../api/authApi';
+import { useLoginSubmit } from '../../hooks/useAuthSubmit';
 
 interface LoginDataForm {
   username: string;
@@ -10,7 +10,7 @@ interface LoginDataForm {
 
 export const LoginForm = () => {
   const navigate = useNavigate();
-  const [loginUser, { isLoading, error }] = useLoginMutation();
+  const { submit, isLoading, error } = useLoginSubmit();
 
   const {
     register,
@@ -21,24 +21,9 @@ export const LoginForm = () => {
     mode: 'onChange',
   });
 
-  const onSubmit = async (data: LoginDataForm) => {
-    const payload = {
-      username: data.username,
-      password: data.password,
-    };
-
-    try {
-      const res = await loginUser(payload).unwrap();
-      console.log('LOGIN SUCCESS:', res);
-      navigate('/');
-    } catch (err) {
-      console.error('Ошибка логина:', err);
-    }
-  };
-
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(submit)}
       style={{ maxWidth: 400, margin: '0 auto' }}
     >
       <TextInput

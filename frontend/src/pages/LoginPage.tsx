@@ -1,12 +1,16 @@
-import { Paper, Title, Text, TextInput, PasswordInput, Button, Stack } from '../ui';
-import { useDispatch } from 'react-redux';
+import {
+  Paper,
+  Title,
+  Text,
+  TextInput,
+  PasswordInput,
+  Button,
+  Stack,
+} from '../ui';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { routes } from '../utils/routes';
-import { useLoginMutation } from '../api/authApi';
-import { useNavigate } from 'react-router-dom';
-import { type AppDispatch } from '../store/store';
-import { setAuthenticated } from '../store/authSlice';
+import { useLoginSubmit } from '../hooks/useAuthSubmit';
 
 export interface LoginDataForm {
   username: string;
@@ -14,9 +18,7 @@ export interface LoginDataForm {
 }
 
 export const LoginPage = () => {
-  const dispatch = useDispatch<AppDispatch>();
-  const navigate = useNavigate();
-  const [loginUser, { isLoading, error }] = useLoginMutation();
+  const { submit, isLoading, error } = useLoginSubmit();
 
   const {
     register,
@@ -27,25 +29,24 @@ export const LoginPage = () => {
     mode: 'onChange',
   });
 
-  const onSubmit = async (data: LoginDataForm) => {
-    try {
-      const res = await loginUser({
-        username: data.username,
-        password: data.password,
-      }).unwrap();
-
-      console.log('LOGIN SUCCESS:', res);
-      localStorage.setItem('access_token', res.access_token);
-      dispatch(setAuthenticated(true));
-      navigate('/');
-    } catch (err) {
-      console.error('Ошибка логина:', err);
-    }
-  };
-
   return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', padding: '40px 24px' }}>
-      <div style={{ display: 'flex', gap: '24px', width: '100%', alignItems: 'stretch' }}>
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '100vh',
+        padding: '40px 24px',
+      }}
+    >
+      <div
+        style={{
+          display: 'flex',
+          gap: '24px',
+          width: '100%',
+          alignItems: 'stretch',
+        }}
+      >
         <Paper
           p="xl"
           radius="md"
@@ -60,7 +61,7 @@ export const LoginPage = () => {
         <Paper p="xl" radius="md" style={{ flex: 1 }}>
           <Stack>
             <Title order={2}>Вход</Title>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(submit)}>
               <Stack>
                 <TextInput
                   label="Username or Email"
@@ -97,7 +98,10 @@ export const LoginPage = () => {
 
             <Text size="sm" ta="center">
               Нет аккаунта?{' '}
-              <Link to={routes.registration} className="text-(--color-primary) hover:underline">
+              <Link
+                to={routes.registration}
+                className="text-(--color-primary) hover:underline"
+              >
                 Зарегистрироваться
               </Link>
             </Text>

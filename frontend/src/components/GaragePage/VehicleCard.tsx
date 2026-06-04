@@ -4,6 +4,10 @@ import type {
 } from '../../types/schema-types';
 import { Text } from '../../ui';
 import { Button } from '../../ui';
+import {
+  getVehicleDisplayName,
+  buildVehicleCharacteristics,
+} from '../../utils/garage';
 
 interface VehicleCardProps {
   vehicle: UserVehicleListSchema;
@@ -15,11 +19,6 @@ interface VehicleCardProps {
   large?: boolean;
 }
 
-interface Characteristic {
-  label: string;
-  value: string;
-}
-
 export const VehicleCard = ({
   vehicle,
   detail,
@@ -29,32 +28,10 @@ export const VehicleCard = ({
   onUpdateMileage,
   large = false,
 }: VehicleCardProps) => {
-  const getVehicleDisplayName = () => {
-    const parts = [vehicle.brand, vehicle.series, vehicle.generation].filter(
-      Boolean,
-    );
-    return parts.length > 0 ? parts.join(' ') : 'Неизвестное ТС';
-  };
-
   const productionYear = detail?.productionYear ?? null;
   const year = productionYear ? `(${productionYear})` : '';
 
-  const characteristics: Characteristic[] = [
-    detail?.trim ? { label: 'Комплектация', value: detail.trim } : null,
-    detail?.color ? { label: 'Цвет', value: detail.color } : null,
-    detail?.avgFuelConsumption != null
-      ? {
-          label: 'Средний расход',
-          value: `${detail.avgFuelConsumption.toLocaleString('ru-RU')} л/100км`,
-        }
-      : null,
-    vehicle.mileage != null
-      ? {
-          label: 'Текущий пробег',
-          value: `${vehicle.mileage.toLocaleString('ru-RU')} ${vehicle.isMileageInMiles ? 'миль' : 'км'}`,
-        }
-      : null,
-  ].filter((item): item is Characteristic => item !== null);
+  const characteristics = buildVehicleCharacteristics(vehicle, detail);
 
   return (
     <div
@@ -84,7 +61,7 @@ export const VehicleCard = ({
       <div className="flex flex-col flex-1 gap-3">
         <div className="flex gap-3 items-center">
           <Text fw="semibold" size={large ? 'lg' : 'sm'}>
-            {getVehicleDisplayName()}
+            {getVehicleDisplayName(vehicle)}
           </Text>
           <Text size={large ? 'md' : 'sm'} c="dimmed">
             {year}

@@ -3,15 +3,13 @@ from uuid import UUID
 
 from fastapi import Query
 from fastapi_utils.cbv import cbv
-from sqlalchemy import select
 
 from apps.vehicles.api.routers import generation_router
 from apps.vehicles.api.vehicle_generation.schemas.readers import (
 	VehicleGenerationListSchema,
 )
-from apps.vehicles.models.vehicle.vehicle_generation import VehicleGeneration
+from apps.vehicles.repositories.vehicle_generation import VehicleGenerationRepository
 from common.orm.views.mixins import BaseAPI
-from core.db import database
 
 
 @cbv(generation_router)
@@ -25,12 +23,7 @@ class VehicleGenerationAPI(BaseAPI):
 		self,
 		series: Annotated[UUID | None, Query(description='ID серии')] = None,
 	):
-		query = select(VehicleGeneration).order_by(VehicleGeneration.start_year.desc())
-
-		if series:
-			query = query.where(VehicleGeneration.series_id == series)
-
-		return await database.fetch_all(query)
+		return await VehicleGenerationRepository().list_for_series(series)
 
 	@generation_router.get(
 		'/{generation_id}',
@@ -38,5 +31,4 @@ class VehicleGenerationAPI(BaseAPI):
 		summary='Детальный просмотр поколения',
 	)
 	async def retrieve(self, generation_id: UUID):
-		query = select(VehicleGeneration).where(VehicleGeneration.id == generation_id)
-		return await database.fetch_one(query)
+		return await VehicleGenerationRepository().get_by_id(generation_id)

@@ -3,7 +3,27 @@ import type { CurrentUser } from '../types/schema-types';
 import { createBaseQuery } from './baseQuery';
 import { formatApiError } from './errors';
 
-const formDataBody = (data: Record<string, unknown>) =>
+export interface LoginResponse {
+  access_token: string;
+  token_type: string;
+}
+
+// Заданы как type-алиасы (а не interface), чтобы быть присваиваемыми
+// `Record<string, string>` в `formDataBody` (у interface нет неявной
+// index-сигнатуры).
+export type LoginRequest = {
+  username: string;
+  password: string;
+};
+
+export type RegisterRequest = {
+  login: string;
+  email: string;
+  password: string;
+  confirm_password: string;
+};
+
+const formDataBody = <T extends Record<string, string>>(data: T): string =>
   Object.entries(data)
     .map(
       ([key, value]) =>
@@ -15,7 +35,7 @@ export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: createBaseQuery('accounts/'),
   endpoints: (builder) => ({
-    login: builder.mutation({
+    login: builder.mutation<LoginResponse, LoginRequest>({
       query: (body) => ({
         url: 'login',
         method: 'POST',
@@ -27,7 +47,7 @@ export const authApi = createApi({
       transformErrorResponse: formatApiError,
     }),
 
-    register: builder.mutation({
+    register: builder.mutation<string, RegisterRequest>({
       query: (body) => ({
         url: 'registration',
         method: 'POST',
@@ -36,6 +56,7 @@ export const authApi = createApi({
           'Content-Type': 'application/x-www-form-urlencoded',
         },
       }),
+      transformErrorResponse: formatApiError,
     }),
 
     getCurrentUser: builder.query<CurrentUser, void>({

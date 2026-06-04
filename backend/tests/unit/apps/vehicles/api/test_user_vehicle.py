@@ -9,10 +9,10 @@ from uuid import uuid4
 import pytest
 
 from apps.vehicles.api.car_info.endpoints import CarInfoByVinAPI
-from apps.vehicles.api.user_vehicle.endpoints import (
-	_resolve_trim_chain,
-	_to_float,
-	_user_vehicle_to_detail,
+from apps.vehicles.api.user_vehicle.mappers import (
+	resolve_trim_chain,
+	to_float,
+	user_vehicle_to_detail,
 )
 from apps.vehicles.api.user_vehicle.schemas import (
 	CreateUserVehicleSchema,
@@ -22,6 +22,7 @@ from apps.vehicles.api.user_vehicle.schemas import (
 	UserVehicleListSchema,
 )
 from apps.vehicles.integrations.car_info_by_vin.schema import CarInfoByVinDataSchema
+from apps.vehicles.services.guess_by_vin import GuessByVinResult
 from apps.vehicles.services.guess_common_car_info import GuessCommonCarInfoSchema
 from common.schemas.fields import ChoiceFieldSchema, TrimChoiceSchema
 
@@ -153,38 +154,38 @@ class TestGuessByVinResponseSchema:
 
 
 class TestToFloatHelper:
-	"""Tests for _to_float."""
+	"""Tests for to_float."""
 
 	def test_none(self):
-		assert _to_float(None) is None
+		assert to_float(None) is None
 
 	def test_decimal(self):
-		assert _to_float(Decimal('8.5')) == 8.5
+		assert to_float(Decimal('8.5')) == 8.5
 
 	def test_int(self):
-		assert _to_float(8) == 8.0
+		assert to_float(8) == 8.0
 
 
 class TestResolveTrimChain:
-	"""Tests for _resolve_trim_chain — резолв Brand→Series→Generation→Trim."""
+	"""Tests for resolve_trim_chain — резолв Brand→Series→Generation→Trim."""
 
 	def test_no_vehicle(self):
 		"""Без Vehicle — все None."""
 		uv = MagicMock()
 		uv.vehicle = None
-		assert _resolve_trim_chain(uv) == (None, None, None, None)
+		assert resolve_trim_chain(uv) == (None, None, None, None)
 
 	def test_vehicle_without_spec(self):
 		"""Vehicle без CarSpec — все None."""
 		uv = MagicMock()
 		uv.vehicle = MagicMock(car_spec=None)
-		assert _resolve_trim_chain(uv) == (None, None, None, None)
+		assert resolve_trim_chain(uv) == (None, None, None, None)
 
 	def test_spec_without_trim(self):
 		"""CarSpec без trim — все None."""
 		uv = MagicMock()
 		uv.vehicle = MagicMock(car_spec=MagicMock(trim=None))
-		assert _resolve_trim_chain(uv) == (None, None, None, None)
+		assert resolve_trim_chain(uv) == (None, None, None, None)
 
 	def test_full_chain(self):
 		"""Полная цепочка резолвится."""
@@ -203,12 +204,12 @@ class TestResolveTrimChain:
 		vehicle = MagicMock(car_spec=spec)
 		uv = MagicMock(vehicle=vehicle)
 
-		result = _resolve_trim_chain(uv)
+		result = resolve_trim_chain(uv)
 		assert result == ('Skoda', 'Octavia', 'III', 'Ambition')
 
 
 class TestUserVehicleToDetail:
-	"""Tests for _user_vehicle_to_detail."""
+	"""Tests for user_vehicle_to_detail."""
 
 	def test_minimal_vehicle(self):
 		"""Минимальный Vehicle без spec — только базовые поля."""
@@ -230,7 +231,7 @@ class TestUserVehicleToDetail:
 			vehicle=vehicle,
 		)
 
-		result = _user_vehicle_to_detail(uv)
+		result = user_vehicle_to_detail(uv)
 		assert isinstance(result, UserVehicleDetailSchema)
 		assert result.mileage == 10000
 		assert result.production_year == 2020
@@ -249,7 +250,7 @@ class TestUserVehicleToDetail:
 			avg_fuel_consumption=None,
 			vehicle=None,
 		)
-		result = _user_vehicle_to_detail(uv)
+		result = user_vehicle_to_detail(uv)
 		assert result.mileage is None
 		assert result.is_mileage_in_miles is False
 		assert result.production_year is None
@@ -336,18 +337,16 @@ class TestGuessByVinEndpoint:
 
 		api = CarInfoByVinAPI.__new__(CarInfoByVinAPI)
 
-		with (
-			patch(
-				'apps.vehicles.api.car_info.endpoints.CarInfoByVinProvider.get_info',
-				return_value=car_info,
-			),
-			patch(
-				'apps.vehicles.api.car_info.endpoints.GuessCommonCarInfo.get_from_vin01',
-				new=AsyncMock(return_value=guess_result),
-			),
+		service = MagicMock()
+		service.guess = AsyncMock(return_value=GuessByVinResult(car_info=car_info, guess=guess_result))
+
+		with patch(
+			'apps.vehicles.api.car_info.endpoints.GuessByVinService',
+			return_value=service,
 		):
 			result = _run(api.guess_by_vin(vin='1HGBH41JXMN109186'))
 
+		service.guess.assert_awaited_once_with('1HGBH41JXMN109186')
 		assert isinstance(result, GuessByVinResponseSchema)
 		assert result.vin == '1HGBH41JXMN109186'
 		assert result.year == 2020

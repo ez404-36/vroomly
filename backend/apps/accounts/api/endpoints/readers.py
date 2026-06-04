@@ -4,10 +4,9 @@ from fastapi import HTTPException
 from fastapi_utils.cbv import cbv
 from starlette import status
 
-from apps.accounts.models.user import User
+from apps.accounts.services.profile import ProfileService
 from common.orm.views.mixins import BaseAPI
 from common.schemas.models import CurrentUser, UpdateUserProfile
-from core.db import database
 
 from ..routers import router
 
@@ -16,12 +15,15 @@ from ..routers import router
 class UserAPI(
 	BaseAPI,
 ):
+	"""API чтения и обновления профиля текущего пользователя."""
+
 	@router.get(
 		'/me',
 		summary='Получение информации о текущем пользователе',
 		response_model=CurrentUser,
 	)
 	async def api_get_current_user(self) -> CurrentUser:
+		"""Вернуть информацию о текущем пользователе."""
 		return self.user
 
 	@router.patch(
@@ -30,21 +32,8 @@ class UserAPI(
 		response_model=CurrentUser,
 	)
 	async def api_update_current_user(self, data: UpdateUserProfile) -> CurrentUser:
-		from sqlalchemy import select
-
-		query = select(User).where(User.id == self.user.id)
-		user = await database.fetch_one(query)
-
-		if not user:
+		"""Обновить профиль текущего пользователя."""
+		user = await ProfileService().update(self.user.id, data)
+		if user is None:
 			raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='User not found')
-
-		update_data = data.model_dump(exclude_unset=True)
-		for field, value in update_data.items():
-			setattr(user, field, value)
-
-		async with database.get_async_session() as session:
-			session.add(user)
-			await session.commit()
-			await session.refresh(user)
-
 		return CurrentUser.model_validate(user)

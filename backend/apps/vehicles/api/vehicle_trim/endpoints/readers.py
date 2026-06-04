@@ -3,13 +3,11 @@ from uuid import UUID
 
 from fastapi import Query
 from fastapi_utils.cbv import cbv
-from sqlalchemy import select
 
 from apps.vehicles.api.routers import trim_router
 from apps.vehicles.api.vehicle_trim.schemas.readers import VehicleTrimListSchema
-from apps.vehicles.models.car.car_trim import CarTrim
+from apps.vehicles.repositories.car_trim import CarTrimRepository
 from common.orm.views.mixins import BaseAPI
-from core.db import database
 
 
 @cbv(trim_router)
@@ -23,12 +21,7 @@ class VehicleTrimAPI(BaseAPI):
 		self,
 		generation: Annotated[UUID | None, Query(description='ID поколения')] = None,
 	):
-		query = select(CarTrim).order_by(CarTrim.name.asc())
-
-		if generation:
-			query = query.where(CarTrim.generation_id == generation)
-
-		return await database.fetch_all(query)
+		return await CarTrimRepository().list_for_generation(generation)
 
 	@trim_router.get(
 		'/{trim_id}',
@@ -36,5 +29,4 @@ class VehicleTrimAPI(BaseAPI):
 		summary='Детальный просмотр комплектации',
 	)
 	async def retrieve(self, trim_id: UUID):
-		query = select(CarTrim).where(CarTrim.id == trim_id)
-		return await database.fetch_one(query)
+		return await CarTrimRepository().get_by_id(trim_id)

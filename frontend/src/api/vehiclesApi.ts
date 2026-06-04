@@ -26,6 +26,10 @@ export type {
   UpdateReminderSchema,
   UserVehicleDetailSchema,
   UserVehicleListSchema,
+  VehicleBrandDetailSchema,
+  VehicleSeriesListSchema,
+  VehicleGenerationListSchema,
+  VehicleTrimListSchema,
 } from '../types/schema-types';
 
 export interface ListRemindersArgs {

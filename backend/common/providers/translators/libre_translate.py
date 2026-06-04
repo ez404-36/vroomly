@@ -1,25 +1,7 @@
-from pydantic import BaseModel
-
 from common.providers.base_api_provider import BaseApiProvider
 from common.providers.translators.base import AbstractTranslator
+from common.providers.translators.schema import LibreTranslateResponse
 from core.settings import settings
-
-
-class LibreTranslateDetectedLanguage(BaseModel):
-	"""Определенный переводчиком язык"""
-
-	confidence: int
-	language: str
-
-
-class LibreTranslateResponse(BaseModel):
-	"""Модель ответа LibreTranslate"""
-
-	# camelCase-имена обязательны: их возвращает LibreTranslate API,
-	# переименование сломает десериализацию pydantic.
-	translatedText: str  # noqa: N815
-	alternatives: list[str]
-	detectedLanguage: LibreTranslateDetectedLanguage | None = None  # noqa: N815
 
 
 class LibreTranslate(AbstractTranslator, BaseApiProvider):
