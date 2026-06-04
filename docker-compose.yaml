@@ -99,6 +99,7 @@ services:
   migrations:
     <<: *backend-build
     command: alembic upgrade head
+    ports: []
     depends_on:
       - db
     restart: no
@@ -119,6 +120,7 @@ services:
   tests: # тесты бекенда
     <<: *backend-build
     command: pytest
+    ports: []
     environment:
       PYTHONOPTIMIZE: 0
     depends_on:
@@ -129,6 +131,7 @@ services:
   linters: # ruff + ty linting
     <<: *backend-build
     command: bash -c "ruff check . && ruff format --check . && ty check ."
+    ports: []
     restart: no
     profiles: [ no-profiles ]
 
