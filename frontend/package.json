@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint:js": "eslint .",
-    "lint:js:fix": "eslint . --fix",
+    "lint:js": "NODE_OPTIONS=--max-old-space-size=1536 eslint .",
+    "lint:js:fix": "NODE_OPTIONS=--max-old-space-size=1536 eslint . --fix",
+    "lint:css": "stylelint \"**/*.css\"",
     "lint:css:fix": "stylelint \"**/*.css\" --fix",
     "format": "prettier . --write",
     "lint": "npm run lint:js && npm run lint:css",

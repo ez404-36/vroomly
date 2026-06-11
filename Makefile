@@ -22,10 +22,12 @@ set-profile-frontend:
 	sed -i 's/COMPOSE_PROFILES=vr-backend/COMPOSE_PROFILES=vr-frontend/' .env
 
 enable-mocks:
+	@test -f frontend/.env || cp frontend/.env.example frontend/.env
 	sed -i 's/VITE_USE_MOCKS=false/VITE_USE_MOCKS=true/' frontend/.env
 	@echo "Mocks enabled. Set VITE_USE_MOCKS=true in frontend/.env"
 
 disable-mocks:
+	@test -f frontend/.env || cp frontend/.env.example frontend/.env
 	sed -i 's/VITE_USE_MOCKS=true/VITE_USE_MOCKS=false/' frontend/.env
 	@echo "Mocks disabled. Set VITE_USE_MOCKS=false in frontend/.env"
 

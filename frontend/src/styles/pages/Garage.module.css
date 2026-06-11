@@ -44,7 +44,7 @@
 }
 
 .vehicleCard:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 8%);
   border-color: var(--color-text-muted);
 }
 
@@ -103,7 +103,7 @@
   font-size: 18px;
   font-weight: 600;
   color: var(--color-text);
-  margin: 0 0 16px 0;
+  margin: 0 0 16px;
 }
 
 .vehicleCarousel {
@@ -140,7 +140,7 @@
   padding: 8px 0;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .header {
     flex-direction: column;
     gap: 16px;

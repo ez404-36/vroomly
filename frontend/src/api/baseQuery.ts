@@ -6,9 +6,11 @@ import { routes } from '../utils/routes';
 // Импорт для авто-регистрации моков (сработает только при VITE_USE_MOCKS=true)
 import '../mocks/autoRegister';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL ?? 'http://localhost:8077';
+
 const createRawBaseQuery = (baseUrl: string) =>
   fetchBaseQuery({
-    baseUrl: `http://localhost:8077/api/${baseUrl}`,
+    baseUrl: `${BACKEND_URL}/api/${baseUrl}`,
     credentials: 'include',
     prepareHeaders: (headers) => {
       const token = localStorage.getItem('access_token');

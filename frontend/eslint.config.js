@@ -12,8 +12,10 @@ const compat = new FlatCompat({ baseDirectory: import.meta.dirname });
 
 export default defineConfig([
   {
+    ignores: ['dist/**', 'build/**', 'node_modules/**'],
+  },
+  {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    ignores: ['dist', 'build', 'node_modules'],
     plugins: {
       prettier: eslintPluginPrettier,
       react: pluginReact,

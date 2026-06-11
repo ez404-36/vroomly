@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import url('tailwindcss');
 
 /* ── Layout variables ───────────────────────────────────────────── */
 :root {
@@ -13,28 +13,28 @@
   --radius: 10px;
   --color-primary: #ff7300;
   --color-primary-hover: #f76707;
-  --color-primary-fg: #ffffff;
+  --color-primary-fg: #fff;
   --color-primary-subtle: #fff4ed;
   --color-primary-disabled: #ff9742;
   --color-secondary: transparent;
   --color-secondary-fg: #373737;
-  --color-ghost-hover: rgba(0, 0, 0, 0.05);
+  --color-ghost-hover: rgb(0 0 0 / 5%);
   --color-danger: #d20000;
   --color-danger-hover: #b00000;
-  --color-danger-fg: #ffffff;
+  --color-danger-fg: #fff;
   --color-success: #2b9348;
   --color-success-hover: #217a39;
-  --color-success-fg: #ffffff;
+  --color-success-fg: #fff;
   --color-warning: #e9a000;
   --color-warning-hover: #c98a00;
-  --color-warning-fg: #ffffff;
+  --color-warning-fg: #fff;
   --color-text: #373737;
-  --color-text-muted: #999999;
+  --color-text-muted: #999;
   --color-border: #e0e0e0;
-  --color-surface: #ffffff;
+  --color-surface: #fff;
   --color-bg: #fffaf7;
   --color-bg-muted: #f2f2f2;
-  --color-input-bg: #ffffff;
+  --color-input-bg: #fff;
   --ring: #ff7300;
 }
 
@@ -43,18 +43,18 @@
   --radius: 10px;
   --color-primary: #ff8c2a;
   --color-primary-hover: #ff7300;
-  --color-primary-fg: #ffffff;
-  --color-primary-subtle: rgba(255, 115, 0, 0.15);
+  --color-primary-fg: #fff;
+  --color-primary-subtle: rgb(255 115 0 / 15%);
   --color-primary-disabled: #ff9742;
   --color-secondary: transparent;
   --color-secondary-fg: #d4c5b5;
-  --color-ghost-hover: rgba(255, 200, 150, 0.08);
+  --color-ghost-hover: rgb(255 200 150 / 8%);
   --color-danger: #e03030;
   --color-danger-hover: #c02020;
-  --color-danger-fg: #ffffff;
+  --color-danger-fg: #fff;
   --color-success: #34a85a;
   --color-success-hover: #2b9348;
-  --color-success-fg: #ffffff;
+  --color-success-fg: #fff;
   --color-warning: #f0b429;
   --color-warning-hover: #d09a1a;
   --color-warning-fg: #1a1410;
@@ -127,22 +127,22 @@ form {
   opacity: 0.9;
 }
 
-.vroomly-tab-trigger[data-state="active"] {
+.vroomly-tab-trigger[data-state='active'] {
   background-color: var(--color-primary);
   color: var(--color-primary-fg);
   font-weight: 600;
 }
 
 /* Vroomly Button - ensure filled variant uses primary color */
-button[class*="filled"],
-a[class*="filled"],
+button[class*='filled'],
+a[class*='filled'],
 .vroomly-button-filled {
   background-color: var(--color-primary) !important;
   color: var(--color-primary-fg) !important;
 }
 
-button[class*="filled"]:hover,
-a[class*="filled"]:hover,
+button[class*='filled']:hover,
+a[class*='filled']:hover,
 .vroomly-button-filled:hover {
   background-color: var(--color-primary-hover) !important;
 }
@@ -153,6 +153,7 @@ a[class*="filled"]:hover,
     transform: translateX(100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
@@ -164,6 +165,7 @@ a[class*="filled"]:hover,
     transform: translateX(-100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;

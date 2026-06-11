@@ -1,201 +1,201 @@
 .container {
-	padding: 0;
+  padding: 0;
 }
 
 .header {
-	text-align: center;
-	margin-bottom: 48px;
-	padding: 32px 0;
-	background: linear-gradient(135deg, var(--color-primary-subtle) 0%, transparent 100%);
-	border-radius: 16px;
+  text-align: center;
+  margin-bottom: 48px;
+  padding: 32px 0;
+  background: linear-gradient(135deg, var(--color-primary-subtle) 0%, transparent 100%);
+  border-radius: 16px;
 }
 
 .heroIcon {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 80px;
-	height: 80px;
-	margin: 0 auto 24px;
-	background-color: var(--color-primary);
-	border-radius: 20px;
-	color: var(--color-primary-fg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+  background-color: var(--color-primary);
+  border-radius: 20px;
+  color: var(--color-primary-fg);
 }
 
 .title {
-	font-size: 32px;
-	font-weight: 700;
-	color: var(--color-text);
-	margin: 0 0 12px;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 12px;
 }
 
 .subtitle {
-	font-size: 18px;
-	color: var(--color-text-muted);
-	margin: 0;
-	max-width: 600px;
-	margin-inline: auto;
+  font-size: 18px;
+  color: var(--color-text-muted);
+  margin: 0;
+  max-width: 600px;
+  margin-inline: auto;
 }
 
 .section {
-	margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 .sectionTitle {
-	font-size: 22px;
-	font-weight: 600;
-	color: var(--color-text);
-	margin: 0 0 20px;
-	padding-bottom: 12px;
-	border-bottom: 1px solid var(--color-border);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .featuresList {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-	gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
 }
 
 .featureCard {
-	background-color: var(--color-surface);
-	border: 1px solid var(--color-border);
-	border-radius: 12px;
-	padding: 20px;
-	transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 20px;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .featureCard:hover {
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-	border-color: var(--color-primary);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 8%);
+  border-color: var(--color-primary);
 }
 
 .featureIcon {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 44px;
-	height: 44px;
-	background-color: var(--color-primary-subtle);
-	border-radius: 10px;
-	color: var(--color-primary);
-	margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background-color: var(--color-primary-subtle);
+  border-radius: 10px;
+  color: var(--color-primary);
+  margin-bottom: 12px;
 }
 
 .featureTitle {
-	font-size: 16px;
-	font-weight: 600;
-	color: var(--color-text);
-	margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 8px;
 }
 
 .featureDescription {
-	font-size: 14px;
-	color: var(--color-text-muted);
-	margin: 0;
-	line-height: 1.5;
+  font-size: 14px;
+  color: var(--color-text-muted);
+  margin: 0;
+  line-height: 1.5;
 }
 
 .benefitsList {
-	display: flex;
-	flex-direction: column;
-	gap: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .benefitItem {
-	display: flex;
-	align-items: flex-start;
-	gap: 12px;
-	padding: 16px;
-	background-color: var(--color-surface);
-	border: 1px solid var(--color-border);
-	border-radius: 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
 }
 
 .benefitIcon {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 32px;
-	height: 32px;
-	background-color: var(--color-success-subtle);
-	border-radius: 8px;
-	color: var(--color-success);
-	flex-shrink: 0;
-	margin-top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: var(--color-success-subtle);
+  border-radius: 8px;
+  color: var(--color-success);
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 
 .benefitContent {
-	flex: 1;
+  flex: 1;
 }
 
 .benefitTitle {
-	font-size: 15px;
-	font-weight: 600;
-	color: var(--color-text);
-	margin: 0 0 4px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 4px;
 }
 
 .benefitDescription {
-	font-size: 14px;
-	color: var(--color-text-muted);
-	margin: 0;
+  font-size: 14px;
+  color: var(--color-text-muted);
+  margin: 0;
 }
 
 .contactCard {
-	background-color: var(--color-surface);
-	border: 1px solid var(--color-border);
-	border-radius: 12px;
-	padding: 24px;
-	text-align: center;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
 }
 
 .contactTitle {
-	font-size: 18px;
-	font-weight: 600;
-	color: var(--color-text);
-	margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 8px;
 }
 
 .contactDescription {
-	font-size: 14px;
-	color: var(--color-text-muted);
-	margin: 0 0 16px;
+  font-size: 14px;
+  color: var(--color-text-muted);
+  margin: 0 0 16px;
 }
 
 .contactButton {
-	background-color: var(--color-primary);
-	color: var(--color-primary-fg);
-	font-weight: 500;
-	border: none;
-	padding: 10px 24px;
-	border-radius: 8px;
-	cursor: pointer;
-	transition: background-color 0.2s ease;
+  background-color: var(--color-primary);
+  color: var(--color-primary-fg);
+  font-weight: 500;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 .contactButton:hover {
-	background-color: var(--color-primary-hover);
+  background-color: var(--color-primary-hover);
 }
 
-@media (max-width: 768px) {
-	.header {
-		padding: 24px 16px;
-	}
+@media (width <= 768px) {
+  .header {
+    padding: 24px 16px;
+  }
 
-	.title {
-		font-size: 26px;
-	}
+  .title {
+    font-size: 26px;
+  }
 
-	.subtitle {
-		font-size: 16px;
-	}
+  .subtitle {
+    font-size: 16px;
+  }
 
-	.heroIcon {
-		width: 64px;
-		height: 64px;
-	}
+  .heroIcon {
+    width: 64px;
+    height: 64px;
+  }
 
-	.featuresList {
-		grid-template-columns: 1fr;
-	}
+  .featuresList {
+    grid-template-columns: 1fr;
+  }
 }

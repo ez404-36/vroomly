@@ -16,7 +16,7 @@ export default {
     'font-weight-notation': 'numeric', // числовые значения для font-weight
 
     /* 📐 Селекторы */
-    'selector-class-pattern': '^[a-z0-9\\-]+$', // классы в kebab-case
+    'selector-class-pattern': '^[a-z][a-zA-Z0-9]*(-[a-z][a-zA-Z0-9]*)*$', // camelCase или kebab-case (CSS Modules совместимо)
 
     /* 🔁 Свойства */
     'declaration-block-no-duplicate-properties': true, // не дублировать свойства
@@ -39,5 +39,5 @@ export default {
     ],
     'unit-no-unknown': true, // запрет неизвестных единиц измерения
   },
-  ignoreFiles: ['**/node_modules/**', '**/dist/**', '**/build/**'],
+  ignoreFiles: ['**/node_modules/**', '**/dist/**', '**/build/**', '**/fonts/TildaSans/**'],
 };

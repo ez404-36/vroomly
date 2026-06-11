@@ -121,107 +121,18 @@ Key variables (see `.env.example`):
 
 ---
 
-## Code Generation (TypeScript from Python)
+## Code Generation (TypeScript from OpenAPI)
 
-The `codegen` container runs `scripts/collect_models.py` which:
-1. Reads Python model definitions from `backend/core` and `backend/apps`
-2. Generates TypeScript interfaces in `frontend/src/types/`
+The `codegen` container runs `npm run codegen:openapi` inside the `frontend` container, which:
+1. Fetches the OpenAPI schema from the running backend at `${BACKEND_URL}/openapi.json`
+2. Generates TypeScript types in `frontend/src/types/schemas.ts` using [openapi-typescript](https://openapi-ts.dev/)
 
-**Important:** After running codegen, TypeScript types in frontend will be updated based on backend models.
-
----
-
-## TypeScript Schema Generator (tschema)
-
-[tschema](https://github.com/ez404-36/tschema) is a CLI tool used for generating TypeScript interfaces and types from Python Pydantic models and Enums.
-
-**tschema запускается внутри контейнера `codegen`.** Команда `make codegen` выполняет `tschema` для генерации TypeScript типов из Python моделей.
-
-### Installation
+**Important:** The backend must be running before executing `make codegen`. After running codegen, TypeScript types in frontend will be updated based on the backend's OpenAPI schema.
 
 ```bash
-pip install tschema
+# Run codegen (requires backend to be up)
+make codegen
 ```
-
-### Usage
-
-```bash
-# Generate from a directory
-tschema --input ./models --output ./types
-
-# Generate from a single file
-tschema --input ./models/user.py
-
-# Use Zod validation schemas
-tschema ./models --target zod
-
-# Auto-discover configuration (tsconfig.json + pyproject.toml)
-tschema ./models
-```
-
-### CLI Options
-
-| Flag | Description | Default |
-|------|-------------|---------|
-| `input` | Input Python file or directory (positional) | Required |
-| `-i, --input` | Input Python file or directory (alternative) | — |
-| `-o, --output` | Output directory | `src/types` |
-| `--format` | What to generate: `interface`, `enum`, `all` | `all` |
-| `--target` | Target framework: `generic`, `react-query`, `zod` | from config |
-| `--erasable` | Use erasable enum syntax (string literal unions) | `true` |
-| `--config` | Path to pyproject.toml with tschema configuration | auto-discover |
-
-### Configuration (pyproject.toml)
-
-```toml
-[tool.tschema]
-target = "generic"              # Target framework
-strict = true                   # Strict TypeScript mode
-optional_as_union = false       # Optional fields as `| undefined` (default) or `?`
-use_erasable_syntax = true      # String literal unions vs classic enums
-
-[tool.tschema.output]
-output_dir = "src/types"        # Output directory
-file_pattern = "{name}.ts"      # Output file naming pattern
-
-[tool.tschema.naming]
-models = "PascalCase"           # Model name convention
-fields = "camelCase"            # Field name convention
-
-[tool.tschema.exclude]
-models = []                     # Models to skip
-fields = []                     # Fields to skip
-```
-
-### Type Mapping
-
-| Python | TypeScript |
-|--------|------------|
-| `str` | `string` |
-| `int`, `float` | `number` |
-| `bool` | `boolean` |
-| `datetime`, `date`, `time` | `string` |
-| `UUID` | `string` |
-| `list[T]` | `T[]` |
-| `dict[K, V]` | `Record<K, V>` |
-| `Enum` | String literal union or `enum` |
-| `Optional[T]` | `T \| undefined` or `T?` |
-
-### Output Targets
-
-- **Generic (default)** — Plain TypeScript interfaces and const enums
-- **React Query** — Interfaces with React Query helpers (QueryKey, Request, Response types)
-- **Zod** — Interfaces with Zod validation schemas for runtime validation
-
-### Architecture
-
-```
-CLI Input → core.py → backends/pydantic.py → targets/<target>.py → stdout
-```
-
-- `backends/pydantic.py` — Parser for Pydantic v1/v2 models
-- `generators/` — TypeScript interface and enum generators
-- `targets/` — Target frameworks (generic, react-query, zod)
 
 ---
 

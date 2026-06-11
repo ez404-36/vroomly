@@ -4,7 +4,7 @@
   background-color: var(--color-bg-muted);
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .mainContent {
     padding: 16px;
   }

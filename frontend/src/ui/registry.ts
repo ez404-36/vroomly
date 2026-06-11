@@ -18,7 +18,6 @@ export type ComponentName =
   | 'Indicator'
   | 'DatePickerInput';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type ComponentRegistry = Partial<Record<ComponentName, React.ComponentType<any>>>;
+export type ComponentRegistry = Partial<Record<ComponentName, React.ComponentType<Record<string, unknown>>>>;
 
 export const defaultComponents: ComponentRegistry = {};

@@ -9,9 +9,8 @@ export const Text = React.forwardRef<HTMLElement, TextProps>(
     const fwStr = typeof fw === 'number' ? undefined : fw;
 
     return (
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       <Tag
-        ref={ref as React.Ref<any>}
+        ref={ref as React.Ref<HTMLElement>}
         className={clsx(
           textVariants({ size, color: resolvedColor as TextProps['color'], fw: fwStr }),
           ta && `text-${ta}`,
